@@ -12,6 +12,10 @@ dashboard aziendale o mobile game.
 ```
 in-cerca-di-avventura/
 ├── index.html            Pagina unica del sito (tutte le sezioni)
+├── CLAUDE.md             Istruzioni persistenti per Claude Code
+├── docs/
+│   ├── PROJECT_CONTEXT.md Contesto prodotto, architettura e roadmap
+│   └── DESIGN_SYSTEM.md   Direzione visiva e regole UI
 ├── assets/
 │   ├── css/style.css     Stili del sito
 │   ├── js/main.js        Interazioni (menu mobile, anno in footer)
@@ -41,6 +45,12 @@ ancorata dal menu di navigazione.
 - Un backend si introduce solo quando diventa necessario (es. gestione
   eventi/risultati/profili a volume); finché il contenuto resta gestibile a
   mano, si resta su HTML statico.
+
+## Documentazione progetto
+
+- [`CLAUDE.md`](CLAUDE.md) — regole operative per Claude Code.
+- [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md) — obiettivi, sezioni, relazioni dati, contenuti e roadmap.
+- [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md) — identità dark-fantasy, tipografia, palette, componenti e criteri visuali.
 
 ## Modalità di sviluppo
 
