@@ -1,0 +1,265 @@
+{
+  "kit": "Heraldry Kit v1.0",
+  "status": "WEB DELIVERY DERIVATIVES",
+  "format": "WebP with alpha",
+  "repository_target": "assets/web/heraldry-kit-v1/",
+  "assets": [
+    {
+      "code": "SIG-01",
+      "source": "SIG-01.png",
+      "derivative": "sig-01.webp",
+      "dimensions": [
+        720,
+        840
+      ],
+      "bytes": 165496,
+      "source_bytes": 1424502,
+      "reduction_percent": 88.4,
+      "has_transparency": true,
+      "sha256": "885179e3dc31813284034d04b7f5f0dd21c2d79f5a2770208e319798b48c2afb"
+    },
+    {
+      "code": "SIG-01-GLOW",
+      "source": "SIG-01-GLOW.png",
+      "derivative": "sig-01-glow.webp",
+      "dimensions": [
+        720,
+        840
+      ],
+      "bytes": 226998,
+      "source_bytes": 1925541,
+      "reduction_percent": 88.2,
+      "has_transparency": true,
+      "sha256": "0ad4a7568400e92e915c18bfe728132aee3f3c599ab00cb75502dba9f7ad3590"
+    },
+    {
+      "code": "FRM-01",
+      "source": "CRE-01.png",
+      "derivative": "frm-01.webp",
+      "dimensions": [
+        1200,
+        720
+      ],
+      "bytes": 250902,
+      "source_bytes": 1511240,
+      "reduction_percent": 83.4,
+      "has_transparency": true,
+      "sha256": "891f1c6376388b1dad4ae39eec7fb1e529073ac4fd1dacae16575e792762fae6"
+    },
+    {
+      "code": "BNR-01-L",
+      "source": "BAN-LEFT.png",
+      "derivative": "bnr-01-l.webp",
+      "dimensions": [
+        900,
+        540
+      ],
+      "bytes": 161224,
+      "source_bytes": 1796228,
+      "reduction_percent": 91.0,
+      "has_transparency": true,
+      "sha256": "a1b0fa3ae088f0d8cee53554d1c0d1c510f1b7d0cc6bdefae41e40f472b7d940"
+    },
+    {
+      "code": "BNR-01-C",
+      "source": "BAN-CENTER.png",
+      "derivative": "bnr-01-c.webp",
+      "dimensions": [
+        1200,
+        400
+      ],
+      "bytes": 98384,
+      "source_bytes": 1195826,
+      "reduction_percent": 91.8,
+      "has_transparency": true,
+      "sha256": "dd867741d385f9f562e665e744bd340294706f77842a0a22e883b1553f74e2df"
+    },
+    {
+      "code": "BNR-01-R",
+      "source": "BAN-RIGHT.png",
+      "derivative": "bnr-01-r.webp",
+      "dimensions": [
+        900,
+        540
+      ],
+      "bytes": 161202,
+      "source_bytes": 1849341,
+      "reduction_percent": 91.3,
+      "has_transparency": true,
+      "sha256": "5b369410fb71292962d03466940b6cc06f2b84997c0aa56ef970969d8337b8e7"
+    },
+    {
+      "code": "BTN-01",
+      "source": "BTN-01.png",
+      "derivative": "btn-01.webp",
+      "dimensions": [
+        900,
+        300
+      ],
+      "bytes": 79318,
+      "source_bytes": 1762105,
+      "reduction_percent": 95.5,
+      "has_transparency": true,
+      "sha256": "de9baa192e49feec6e99a8900ae3f97eb5322149a681b795567193347450fa21"
+    },
+    {
+      "code": "BTN-01-HOVER",
+      "source": "BTN-01-HOVER.png",
+      "derivative": "btn-01-hover.webp",
+      "dimensions": [
+        900,
+        300
+      ],
+      "bytes": 103910,
+      "source_bytes": 2120192,
+      "reduction_percent": 95.1,
+      "has_transparency": true,
+      "sha256": "e1f69858132e76958fe95cf5d65b5ca1bf5b5a81080f034f729195c5a3e175fd"
+    },
+    {
+      "code": "ORN-01",
+      "source": "RAV-01.png",
+      "derivative": "orn-01.webp",
+      "dimensions": [
+        800,
+        720
+      ],
+      "bytes": 148564,
+      "source_bytes": 1496517,
+      "reduction_percent": 90.1,
+      "has_transparency": true,
+      "sha256": "4636b7fa089c2cc1355ea00532c950982bb3ee2bcdb1a6da4e116de003c51fbe"
+    },
+    {
+      "code": "ORN-02",
+      "source": "RAV-02.png",
+      "derivative": "orn-02.webp",
+      "dimensions": [
+        800,
+        720
+      ],
+      "bytes": 146036,
+      "source_bytes": 1543343,
+      "reduction_percent": 90.5,
+      "has_transparency": true,
+      "sha256": "676dc3b0ac465d10b420f6f7a7ae7d6d7c61039905158e6debb06fdf08db38a3"
+    },
+    {
+      "code": "ORN-03",
+      "source": "ORN-03.png",
+      "derivative": "orn-03.webp",
+      "dimensions": [
+        1000,
+        500
+      ],
+      "bytes": 75670,
+      "source_bytes": 741071,
+      "reduction_percent": 89.8,
+      "has_transparency": true,
+      "sha256": "a5d7f9332ecb84e706747f350ae3b3a7b44be6ed43283cbaf3ae8515e135a6b0"
+    },
+    {
+      "code": "ORN-04",
+      "source": "STA-01.png",
+      "derivative": "orn-04.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "bytes": 48104,
+      "source_bytes": 958637,
+      "reduction_percent": 95.0,
+      "has_transparency": true,
+      "sha256": "ddc5f5841b7f1c8a679e1a17dd59c48b1876441ec51662fc5becf4dac5c5d984"
+    },
+    {
+      "code": "ORN-05",
+      "source": "GEM-01.png",
+      "derivative": "orn-05.webp",
+      "dimensions": [
+        360,
+        600
+      ],
+      "bytes": 44598,
+      "source_bytes": 1092847,
+      "reduction_percent": 95.9,
+      "has_transparency": true,
+      "sha256": "00bcb331bbdaa77a676be8bef2f66bf7debf2244faee4f7a99cf411ac7d5b7d3"
+    },
+    {
+      "code": "ORN-06",
+      "source": "GEM-02.png",
+      "derivative": "orn-06.webp",
+      "dimensions": [
+        274,
+        480
+      ],
+      "bytes": 27766,
+      "source_bytes": 986725,
+      "reduction_percent": 97.2,
+      "has_transparency": true,
+      "sha256": "5f43e50da4773a1529fb84ca6754d46aef53181b0414dbe24df5eab0b590e972"
+    },
+    {
+      "code": "ORN-07",
+      "source": "GEM-03.png",
+      "derivative": "orn-07.webp",
+      "dimensions": [
+        220,
+        440
+      ],
+      "bytes": 21900,
+      "source_bytes": 977846,
+      "reduction_percent": 97.8,
+      "has_transparency": true,
+      "sha256": "c199f2e4539cc8c1f163b6be3f3668fe5747b73fa39783c0971767bdefe1c835"
+    },
+    {
+      "code": "ORN-08",
+      "source": "PEN-01.png",
+      "derivative": "orn-08.webp",
+      "dimensions": [
+        320,
+        640
+      ],
+      "bytes": 37756,
+      "source_bytes": 825255,
+      "reduction_percent": 95.4,
+      "has_transparency": true,
+      "sha256": "0b275eb46f271286a7a200672cdbaab2b42a98685ed9ff30ad5e34ad537f957c"
+    },
+    {
+      "code": "ORN-09",
+      "source": "GHA-01.png",
+      "derivative": "orn-09.webp",
+      "dimensions": [
+        999,
+        333
+      ],
+      "bytes": 64452,
+      "source_bytes": 748511,
+      "reduction_percent": 91.4,
+      "has_transparency": true,
+      "sha256": "f4e4611f6f05e23d9e9ef5348cd46853d4113d8e89337b3fc392fbfec2834690"
+    },
+    {
+      "code": "ORN-10",
+      "source": "GLOW-01.png",
+      "derivative": "orn-10.webp",
+      "dimensions": [
+        700,
+        700
+      ],
+      "bytes": 112544,
+      "source_bytes": 1031754,
+      "reduction_percent": 89.1,
+      "has_transparency": true,
+      "sha256": "98c7a18af19309281f139ab0e18a7b3466fd82b49b5ab3b2a1aaba7aa908b7be"
+    }
+  ],
+  "totals": {
+    "source_bytes": 23987481,
+    "web_bytes": 1974824,
+    "reduction_percent": 91.8
+  }
+}
