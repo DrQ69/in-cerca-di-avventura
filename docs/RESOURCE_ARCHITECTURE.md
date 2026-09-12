@@ -94,6 +94,18 @@ Primary uses:
 
 Claude is **not** the default worker for routine tasks. Its context should be loaded on demand and kept narrow.
 
+#### Claude Code context architecture
+
+The project uses a token-efficient three-layer configuration:
+
+1. `CLAUDE.md` — small always-on kernel containing only non-negotiable defaults, routing and risk policy;
+2. `.claude/rules/` — path-scoped instructions loaded only when matching files are opened;
+3. `.claude/skills/` — concise task procedures whose full bodies load only when invoked/relevant.
+
+Do not restore unconditional `@docs/...` imports in `CLAUDE.md`. Governance documents remain canonical, but Claude should read only those relevant to the current task.
+
+Use one Claude session by default. Subagents or Agent Teams require a clear benefit from independent review, context isolation, parallel investigation or HIGH-risk separation of implementation and review.
+
 ### Microsoft Copilot + OneDrive — Archivist / Source Librarian
 
 Primary uses:
