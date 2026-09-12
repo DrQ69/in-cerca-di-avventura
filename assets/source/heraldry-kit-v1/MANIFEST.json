@@ -1,0 +1,80 @@
+{
+  "kit": "Heraldry Kit v1.0",
+  "status": "APPROVED",
+  "source_type": "owner-approved AI-assisted reconstruction from supplied composite sheet",
+  "repository_target": "assets/source/heraldry-kit-v1/",
+  "assets": [
+    {
+      "filename": "SIG-01.png",
+      "sha256": "ca3f569a6e39bf591492075c940424163e458406f7faf9a7d5d259e5c89db2f6"
+    },
+    {
+      "filename": "SIG-01-GLOW.png",
+      "sha256": "7b1f7eeeb3493a824ee111e3e5c81de79eb9c9a8a6009d37290474f1e9969346"
+    },
+    {
+      "filename": "CRE-01.png",
+      "sha256": "ba6a588c624f2a8e978bf33411e016ae9309961192e1be4fe11f2d718ae895d1"
+    },
+    {
+      "filename": "BAN-LEFT.png",
+      "sha256": "7b84f99cc39e2a77f4baaaa23d2f3bb7888a8ad4044ac94bbc87510f2f1006aa"
+    },
+    {
+      "filename": "BAN-CENTER.png",
+      "sha256": "decf84f38f20e3da5551df9cba675f60938ee9cd1721e12edd5e135ec57602d1"
+    },
+    {
+      "filename": "BAN-RIGHT.png",
+      "sha256": "8cad722e3a48d893145e0ac0d16411f9b61eced018ebc082195894fd313c7edc"
+    },
+    {
+      "filename": "BTN-01.png",
+      "sha256": "b0bb909a84e59f516cc85f4f1b9655ff3c1179bdee3d47f2d5e86a853da27481"
+    },
+    {
+      "filename": "BTN-01-HOVER.png",
+      "sha256": "af6302245742d14205d726d17f1023c1a681008de2bc74fa82f1abb96e8a13d6"
+    },
+    {
+      "filename": "RAV-01.png",
+      "sha256": "4a438d96c632327f342cda2e1ca115eaecf2a78dd518ae90f2515552ff4a62fa"
+    },
+    {
+      "filename": "RAV-02.png",
+      "sha256": "ebc69d55ccb9bd2bf7d05af62b1cceab5b2c76682c5fcc68d2efbece76871163"
+    },
+    {
+      "filename": "STA-01.png",
+      "sha256": "e4a1624a3b6b172ba459f56183c1ff62a61c7a57ce213cbc82bcc8f472466ae0"
+    },
+    {
+      "filename": "ORN-03.png",
+      "sha256": "c38d793367f04b400b3eba254613c89b80a1f49840b4926ab11b6f38beb2a45e"
+    },
+    {
+      "filename": "GEM-01.png",
+      "sha256": "f1bc0611f4f8a4fc4763ae42dcfdbef2b3759103f0a65dd7baf3a0164fe16554"
+    },
+    {
+      "filename": "GEM-02.png",
+      "sha256": "18a95745b0ffe30f2db5c15102bbe6a0528c6e8bd708c2cb8f19edaff8ab2a4a"
+    },
+    {
+      "filename": "GEM-03.png",
+      "sha256": "a3dc342444059cc5b5471da26bf7232c5efb55f50c67daed7c29b9edbdda43a5"
+    },
+    {
+      "filename": "PEN-01.png",
+      "sha256": "107ea39c495022a495f3e4b9cd3cb01eb691efca25bdd805a6534ccbb754f246"
+    },
+    {
+      "filename": "GHA-01.png",
+      "sha256": "aaaa943aa5ec8dc1f96b92718ed7d516e635c94cd4bdf59d449c04929444c596"
+    },
+    {
+      "filename": "GLOW-01.png",
+      "sha256": "1a12e09ed4d5fefbf6a6426cd5d78c3d34cd2cc488dc070cfd313516bbddad1d"
+    }
+  ]
+}
