@@ -2,67 +2,126 @@
 
 ## Purpose
 
-**Team 99** is the agentic operating model for developing and maintaining **In Cerca di Avventura**.
+**Team 99** is the operating model for developing and maintaining **In Cerca di Avventura** with humans, AI assistants and deterministic automation.
 
-Its purpose is not to maximise autonomy at all costs. Its purpose is to make AI-assisted work **repeatable, traceable, safe and coherent** while the project owner retains final control over important decisions and production publication.
+Its goal is not maximum autonomy. Its goal is **high-quality work with minimal duplicated effort, minimal unnecessary AI context/token use, clear evidence and human control of production**.
 
 ## Core operating principle
 
-**Human sets direction. Agents execute within explicit boundaries. GitHub records the work.**
+**Human sets direction. The task is routed to the cheapest reliable specialist. Machines verify what machines can verify. GitHub records the work. Human retains final authority.**
 
-Agents should optimise for:
+## Roles are not products
 
-- correctness;
-- consistency;
-- minimal coherent changes;
-- reversibility;
-- evidence and verification;
-- reuse of established systems;
-- clear escalation when authority is missing.
+Team 99 roles are logical responsibilities, not permanent AI instances.
 
-## Current active team
+A role may be performed by different tools depending on the task. A single session may perform several roles when that is efficient, provided implementation, approval and verification are not falsely conflated.
 
-Team 99 starts deliberately small.
+Consult `docs/RESOURCE_ARCHITECTURE.md` for current tool assignments.
 
-Active roles:
+## Current active roles
 
-1. **Gran Maestro** — orchestration and architecture;
+1. **Gran Maestro** — orchestration, scope and architecture;
 2. **Art Director** — visual coherence and asset governance;
-3. **Frontend Master** — implementation in HTML/CSS/JavaScript;
-4. **QA Sentinel** — verification and regression control.
+3. **Frontend Master** — implementation in the approved technical stack;
+4. **QA Sentinel** — evidence-based verification and regression control;
+5. **Archivist / Source Librarian** — retrieval/synthesis of owner-controlled source material.
 
-Additional agents may be introduced later only when recurring work justifies them.
+Additional named roles should be introduced only when recurring work justifies them.
 
-## Shared mandatory reading
+## Current preferred tool mapping
 
-Before any non-trivial task, agents must consult the relevant parts of:
+This mapping is a default, not a permanent vendor lock-in:
 
-- `CLAUDE.md`;
-- `docs/PROJECT_CONTEXT.md`;
-- `docs/ART_DIRECTION.md`;
-- `docs/DESIGN_SYSTEM.md`;
-- `docs/ASSET_REGISTRY.md`;
-- `docs/CONTENT_SOURCES.md`;
-- this `docs/AGENT_TEAM.md`.
+- **Gran Maestro** → ChatGPT + project owner;
+- **Art Director** → ChatGPT + image tools + project owner;
+- **Frontend Master** → Codex by default; Claude Pro for difficult/specialist cases; GitHub Copilot for micro-edits;
+- **QA Sentinel** → GitHub Actions/deterministic tools first, ChatGPT conceptual review second, independent Claude review only when risk/value justifies it;
+- **Archivist / Source Librarian** → Microsoft Copilot + OneDrive when relevant source material lives there.
 
-The task may require only a subset, but no agent should act as if repository context does not exist.
+Never use multiple premium models simply to simulate a team when one capable session plus deterministic QA is sufficient.
+
+## Governing sources
+
+Use only the documents relevant to the current task:
+
+- `PROJECT_CONTEXT.md` — product and roadmap;
+- `ART_DIRECTION.md` — canonical visual direction;
+- `DESIGN_SYSTEM.md` — web/UI implementation rules;
+- `ASSET_REGISTRY.md` — asset identity/status;
+- `CONTENT_SOURCES.md` — factual provenance;
+- `RESOURCE_ARCHITECTURE.md` — tool routing and cost/context strategy;
+- `SECURITY_POLICY.md` — permissions, filesystem, credentials and safety;
+- this document — role/workflow governance.
+
+Do not load every document into every AI session by default.
 
 ## Shared hard boundaries
 
-Unless the project owner explicitly authorises otherwise, agents must NOT:
+Unless the project owner explicitly authorises otherwise, no agent/tool may:
 
-- commit directly to `main`;
-- merge their own production changes;
+- commit experimental work directly to `main`;
+- merge significant production changes without human approval;
 - force-push production history;
-- delete production content or assets without review;
-- change the domain or DNS;
-- expose, rotate or redistribute secrets;
+- expose or redistribute secrets;
+- grant itself broader filesystem/account permissions;
+- use `sudo` merely for convenience;
 - introduce a framework, build tool, CMS, backend or database;
 - replace the official emblem;
 - invent factual content;
-- silently promote a concept asset to approved status;
-- make irreversible infrastructure changes;
-- bypass failed QA checks just to complete a task.
+- promote a concept/candidate asset to canonical `APPROVED` status;
+- bypass failed QA/security checks to finish a task;
+- perform destructive or difficult-to-reverse production/infrastructure changes without approval.
+
+Security-specific rules live in `SECURITY_POLICY.md` and take precedence over convenience.
+
+## Task classification
+
+Before choosing tools, classify the work.
+
+### LOW risk
+
+Examples:
+
+- typo/documentation correction;
+- known link update;
+- tiny isolated CSS fix;
+- small refactor with obvious behaviour.
+
+Default approach:
+
+`one implementation resource → direct/deterministic verification → review as appropriate`
+
+No multi-agent choreography by default.
+
+### MEDIUM risk
+
+Examples:
+
+- UI/component/layout work;
+- asset integration;
+- responsive changes;
+- new content section using established patterns;
+- non-trivial interaction changes.
+
+Default approach:
+
+`Gran Maestro → relevant specialist → deterministic QA → conceptual/visual QA → human review`
+
+### HIGH risk
+
+Examples:
+
+- architecture/technology changes;
+- major visual-system changes;
+- complex refactors;
+- uncertain public factual claims;
+- deployment/infrastructure/security-sensitive work.
+
+Default approach:
+
+`Gran Maestro → specialist implementation → independent review when valuable → deterministic QA → human approval`
+
+High-risk work is the primary case where using a second premium model can be justified.
 
 ## Standard workflow
 
@@ -70,282 +129,291 @@ For non-trivial work:
 
 ```text
 1. Receive objective
-2. Inspect repository and relevant sources
-3. Classify task and constraints
-4. Define smallest coherent change
-5. Work on dedicated branch
-6. Implement
-7. Verify
-8. Request specialist review when needed
-9. Open Pull Request
-10. Summarise evidence, assumptions and risks
+2. Classify risk and task type
+3. Inspect only the relevant repository/source context
+4. Route the task using RESOURCE_ARCHITECTURE.md
+5. Define the smallest coherent change and acceptance criteria
+6. Work on a dedicated branch
+7. Implement
+8. Run deterministic checks first
+9. Run specialist/conceptual review only where needed
+10. Open/update Pull Request with evidence and assumptions
 11. Human reviews/approves
-12. Merge to production only after approval
+12. Merge only after approval
 ```
 
-No agent should interpret “finish the task” as “merge regardless of uncertainty”.
+Do not interpret “finish the task” as “use every available agent”.
 
-## Role 1 — Gran Maestro
+# Role 1 — Gran Maestro
 
-### Mission
+## Mission
 
-Translate the project owner's objective into a safe, executable plan and coordinate the specialists.
+Translate the owner's objective into the smallest safe executable plan and route work to the appropriate resource.
 
-### May
+## May
 
-- read the full repository;
-- inspect issues, branches and pull requests;
-- decompose an objective into tasks;
-- decide which specialist roles are required;
+- inspect repository state, issues, branches and PRs;
+- decompose objectives;
+- classify task/risk;
 - define acceptance criteria;
-- create feature/chore branches;
-- coordinate implementation and review;
-- open or update Pull Requests;
-- request rework when QA or Art Direction fails;
-- maintain project-level agent documentation.
+- decide which specialist/tool is actually needed;
+- create/update branches, issues and PRs within authorised scope;
+- request rework when evidence fails;
+- maintain project governance.
 
-### Must
+## Must
 
-- minimise scope creep;
-- preserve the current technical architecture unless change is explicitly approved;
-- identify whether content is factual, visual, technical or mixed;
+- minimise scope and unnecessary model use;
+- preserve established architecture unless change is approved;
+- distinguish factual, visual, technical and mixed tasks;
+- prefer deterministic automation for deterministic checks;
 - route visual decisions through Art Direction;
-- route factual content through Content Sources;
-- require QA before production proposals;
-- state assumptions and unresolved questions in the PR.
+- route facts through Content Sources;
+- route permissions/security through Security Policy;
+- document unresolved assumptions.
 
-### Must not
+## Must not
 
+- call multiple premium agents when one is sufficient;
 - declare unverified content factual;
-- overrule an explicit Art Direction or Content Source constraint;
-- merge to `main` without the project owner's approval;
-- introduce technology because it is fashionable or convenient for the agent.
+- override explicit Art Direction/Content/Security constraints;
+- introduce technology because it is fashionable;
+- merge significant work to production without owner approval.
 
-## Role 2 — Art Director
+# Role 2 — Art Director
 
-### Mission
+## Mission
 
 Protect the canonical visual identity of **In Cerca di Avventura**.
 
-### Primary sources
+## Primary sources
 
-- `docs/ART_DIRECTION.md`;
-- `docs/DESIGN_SYSTEM.md`;
-- `docs/ASSET_REGISTRY.md`;
+- `ART_DIRECTION.md`;
+- `DESIGN_SYSTEM.md`;
+- `ASSET_REGISTRY.md`;
 - approved production assets.
 
-### May
+## May
 
 - evaluate visual proposals;
-- identify reusable existing assets;
-- define specifications for new assets;
-- propose asset families and variants;
-- review layouts, banners, frames, ornaments and UI treatments;
-- mark a proposal as visually coherent or requiring revision;
-- prepare prompt/specification language for image creation.
+- reuse existing approved assets;
+- define specifications/prompts for new assets;
+- propose families/variants;
+- review banners, heraldry, frames, ornaments, UI and responsive simplifications.
 
-### Must
+## Must
 
-- compare new work against existing approved assets, not in isolation;
-- preserve `SIG-01` as the primary identity anchor;
-- enforce the modular banner principle;
-- protect readability and responsive simplification;
-- reject generic fantasy drift;
-- distinguish concept/candidate work from approved canonical assets.
+- compare new work against approved assets, not generic fantasy aesthetics;
+- preserve `SIG-01` as identity anchor;
+- enforce modular/reusable visual principles;
+- protect readability and accessibility;
+- keep concepts/candidates separate from approved canon.
 
-### Must not
+## Must not
 
-- independently alter the official emblem;
-- approve its own newly generated asset as canonical without human review;
+- alter the official emblem independently;
+- self-approve newly generated assets as canonical;
 - sacrifice usability for ornament;
-- bake essential text into images when accessible HTML is practical.
+- bake essential functional text into images when real HTML text is practical.
 
-## Role 3 — Frontend Master
+# Role 3 — Frontend Master
 
-### Mission
+## Mission
 
 Implement approved product and visual decisions using the simplest appropriate web solution.
 
-### Current stack
+## Current stack
 
 - static HTML;
 - shared CSS;
 - plain JavaScript;
 - GitHub Pages.
 
-### May
+## Preferred execution
 
-- edit HTML/CSS/JavaScript on a dedicated branch;
-- create reusable CSS classes/components within the current architecture;
-- integrate approved assets;
-- improve semantics, accessibility and responsive behaviour;
-- fix layout and interaction defects;
-- prepare implementation notes for PR review.
+- Codex: medium/large implementation by default;
+- Claude Pro/Claude Code: difficult debugging, architecture critique, second independent implementation/review when justified;
+- GitHub Copilot/local editing: tiny low-risk changes.
 
-### Must
+## Must
 
 - inspect current code before editing;
-- make the smallest coherent change;
-- preserve existing functional behaviour unless change is part of the task;
-- use approved assets and visual rules;
-- maintain semantic HTML and keyboard usability;
-- keep important copy as accessible text where practical;
-- verify paths and asset rendering;
-- avoid unnecessary duplication.
+- change only the necessary files;
+- preserve established behaviour unless intentionally changed;
+- use approved assets/visual rules;
+- maintain semantic HTML, keyboard usability and responsive behaviour;
+- verify paths and actual asset rendering;
+- avoid dependency/tooling expansion without approval.
 
-### Must not
+## Must not
 
-- introduce React, Vue, Next, Astro, a package manager, build pipeline, CMS, backend or database without explicit approval;
-- redesign components outside the approved artistic direction;
-- create factual content to fill empty layouts;
-- directly merge its implementation into production.
+- introduce frameworks/package managers/backends casually;
+- redesign outside approved direction;
+- invent factual filler content;
+- merge significant implementation directly into production.
 
-## Role 4 — QA Sentinel
+# Role 4 — QA Sentinel
 
-### Mission
+## Mission
 
-Act as an independent verification layer before changes are proposed for production.
+Provide evidence that proposed work meets acceptance criteria.
 
-### QA domains
+## Verification order
 
-- functional behaviour;
+1. **Deterministic checks first** — GitHub Actions/scripts/browser tooling where available;
+2. **human/model judgement second** — visual coherence, product intent, ambiguity;
+3. **independent second model only when the risk/value justifies it**.
+
+## QA domains
+
+- functionality;
 - asset/path integrity;
 - responsive layout;
 - accessibility basics;
-- content integrity;
-- visual coherence checks;
+- content provenance;
+- visual coherence;
 - regression risk;
-- link/navigation behaviour;
-- production-safety assumptions.
+- navigation/link behaviour;
+- security/permission assumptions.
 
-### Required viewport checks for significant UI work
+For significant UI work, target checks around:
 
-At minimum, verify behaviour around:
+- desktop ~1400 px;
+- tablet ~768–900 px when relevant;
+- mobile ~390 px.
 
-- desktop: ~1400 px width;
-- tablet: ~768–900 px width;
-- mobile: ~390 px width.
+## Evidence labels
 
-### May
+Use explicit states:
 
-- inspect diffs and implementation;
-- run available checks/tools;
-- reject a change that does not meet acceptance criteria;
-- request specific corrections;
-- identify missing tests or unverifiable assumptions;
-- mark checks as PASS / FAIL / NOT VERIFIED.
+- **VERIFIED** — actually checked with appropriate evidence/tool;
+- **PARTIALLY VERIFIED** — some checks completed; limits stated;
+- **NOT VERIFIED** — not checked;
+- **BLOCKED** — required evidence/input unavailable.
 
-### Must
+Never say “verified” when the result was only inferred.
 
-- distinguish “not tested” from “passed”;
-- never claim visual or browser behaviour was verified if it was not actually checked;
-- validate that referenced assets actually render;
-- flag factual content without acceptable provenance;
-- flag visual assets not registered or not approved when production use is proposed;
-- report regressions clearly.
+# Role 5 — Archivist / Source Librarian
 
-### Must not
+## Mission
 
-- fix failures by weakening acceptance criteria;
-- approve based only on the implementation agent's statement;
-- treat absence of obvious errors as proof of correctness.
+Find and synthesise owner-controlled source material without turning unverified source text into public truth.
 
-## Cross-agent review rules
+## Preferred execution
+
+Use Microsoft Copilot + OneDrive when the relevant material is in the Microsoft/OneDrive source vault.
+
+## May
+
+- locate project documents;
+- compare versions;
+- summarise regulations/source files;
+- extract candidate facts;
+- identify conflicts between source versions.
+
+## Must
+
+- preserve source provenance;
+- distinguish owner source material from already-approved public content;
+- pass publishable claims through `CONTENT_SOURCES.md`;
+- avoid broad access to unrelated OneDrive material.
+
+## Must not
+
+- edit/reorganise the wider OneDrive library without explicit task scope;
+- treat AI summaries as authoritative evidence by themselves;
+- move private or unrelated documents into the public GitHub repository.
+
+## Review paths
 
 ### Visual change
 
-Minimum path:
-
 ```text
-Gran Maestro → Art Director → Frontend Master → QA Sentinel → Human review
+Gran Maestro → Art Direction → implementation → deterministic QA → visual QA → Human
 ```
 
-### Pure technical fix with no visual/content impact
+### Pure technical fix
 
 ```text
-Gran Maestro / Frontend Master → QA Sentinel → Human review
+implementation → deterministic QA → Human/review as appropriate
 ```
 
 ### Factual content update
 
 ```text
-Gran Maestro → Content-source verification → Frontend Master → QA Sentinel → Human review
+source retrieval → Content Sources verification → implementation → QA → Human
 ```
 
-Until a dedicated Content Agent exists, the Gran Maestro owns source verification workflow but may not lower the rules in `CONTENT_SOURCES.md`.
+### Difficult/high-risk technical work
 
-## Evidence levels
-
-Agents should report verification using explicit language:
-
-- **VERIFIED** — actually checked with appropriate evidence/tool;
-- **PARTIALLY VERIFIED** — some checks completed, limits stated;
-- **NOT VERIFIED** — not checked;
-- **BLOCKED** — required evidence/input unavailable.
-
-Never use “verified” as a stylistic synonym for “looks likely correct”.
+```text
+Gran Maestro → primary coding specialist → optional independent specialist → automated QA → Human
+```
 
 ## Pull Request minimum
 
-A Team 99 PR should state:
+A non-trivial Team 99 PR should state, proportionally to risk:
 
 - objective;
 - files changed;
 - what was intentionally not changed;
-- source/provenance for factual updates;
+- provenance for factual updates;
 - asset IDs used/introduced for visual updates;
-- verification performed;
-- known limitations;
-- screenshots or preview evidence when useful and available;
-- whether owner approval is required for any unresolved decision.
+- verification actually performed;
+- known limitations/assumptions;
+- screenshots/preview evidence when useful;
+- explicit human decision still required, if any.
+
+Avoid bloated PR descriptions for trivial changes.
 
 ## Human gates
 
 The project owner retains approval authority for:
 
-- production merge of significant changes;
+- significant production merges;
 - official visual identity changes;
-- new canonical asset approval;
-- material information architecture changes;
-- introduction of new technology/platforms;
+- new canonical assets;
+- material information-architecture changes;
+- new technologies/platforms/paid services;
 - external partnerships/public claims;
-- publication of uncertain or sensitive content;
-- changes to domain, deployment, credentials or infrastructure.
+- uncertain/sensitive publication;
+- domains, deployment, credentials or infrastructure;
+- security-sensitive permission expansion.
 
-## Failure and escalation behaviour
+## Failure and escalation
 
-If an agent lacks evidence or authority:
+If evidence or authority is missing:
 
 1. preserve the current production state;
 2. do not fabricate a resolution;
-3. document what is known;
-4. document what cannot be confirmed;
+3. record what is known;
+4. mark what is not verified;
 5. propose the smallest safe next action;
-6. escalate to the project owner when the missing decision is genuinely human/authoritative.
+6. escalate only the decision that genuinely requires the owner.
 
-## Future roles — not active yet
+## Future domain roles
 
-Possible later specialists:
+Possible later roles include:
 
 - Event Master;
 - Chronicler;
 - Adventurer Keeper;
-- Archivist;
 - Alliance Keeper;
 - SEO/Discoverability specialist;
 - Security/Dependency Guardian;
 - Release Manager.
 
-These roles should be introduced only after their data/workflows are sufficiently structured to avoid duplicated responsibility.
+Create them only when the recurring workload and structured data justify a distinct responsibility.
 
 ## Success condition
 
-Team 99 is successful when the project owner can express an objective at a higher level while the system reliably:
+Team 99 succeeds when Alessandro can state a higher-level objective and the system reliably:
 
-- understands the repository;
+- selects the appropriate resource without unnecessary duplication;
 - preserves artistic identity;
-- protects factual integrity;
+- protects factual integrity and private material;
 - implements cleanly;
-- verifies its work;
-- presents a reviewable Pull Request;
+- uses automation for machine-checkable QA;
+- escalates difficult work intelligently;
+- presents reviewable evidence in GitHub;
 - leaves production under human control.
