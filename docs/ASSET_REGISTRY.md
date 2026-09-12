@@ -18,7 +18,7 @@ An asset must not be treated as canonical merely because a file exists.
 
 Stable asset codes use a three-letter family prefix plus a numeric identifier.
 
-Initial reserved families:
+Reserved families:
 
 - `SIG` — sigils, crests, official identity marks;
 - `BNR` — banners and banner systems;
@@ -30,6 +30,8 @@ Initial reserved families:
 - `ICO` — interface icons.
 
 The code is an identity, not a filename. Filenames may change for technical reasons while the asset code remains stable.
+
+A registered identity may have named technical variants or components. Examples: `SIG-01-GLOW`, `BNR-01-L`, `BNR-01-C`, `BNR-01-R`, and `BTN-01-HOVER`. The base identity remains `SIG-01`, `BNR-01`, or `BTN-01`.
 
 ## Status values
 
@@ -63,6 +65,12 @@ Every canonical asset should eventually record:
 - dependencies;
 - approval notes/version.
 
+## Provenance rule
+
+An asset can become canonical through explicit human approval even when the original native source/master is unavailable, but the registry must state that provenance accurately.
+
+For **Heraldry Kit v1.0**, the approved transparent PNGs are AI-assisted reconstructions derived from the owner-supplied composite heraldry sheet. They are approved project assets, but they are **not represented as the lost/original native masters** from which the composite sheet was originally assembled.
+
 ## Canonical records
 
 ### SIG-01 — Official In Cerca di Avventura emblem
@@ -75,6 +83,14 @@ Every canonical asset should eventually record:
 
 - `assets/logo-emblem.webp`
 
+**Approved Heraldry Kit v1.0 source-quality reconstruction:**
+
+- `SIG-01.png` — 1161 × 1355 px, transparent PNG.
+
+**Approved technical variant:**
+
+- `SIG-01-GLOW.png` — 1161 × 1355 px, transparent PNG with blue luminous treatment.
+
 **Repository usage currently confirmed:**
 
 - site header/brand;
@@ -83,16 +99,195 @@ Every canonical asset should eventually record:
 **Canonical rules:**
 
 - preserve geometry and proportions;
-- do not redraw or reinterpret;
+- do not silently replace the current production emblem;
 - do not recolour without explicit approval;
 - do not crop essential emblem elements;
-- do not bake destructive shadows/backgrounds into the canonical master;
+- do not bake destructive backgrounds into the canonical transparent reconstruction;
 - derivatives may be resized/compressed for delivery but must remain faithful;
+- `SIG-01-GLOW` is a visual variant of `SIG-01`, not a separate identity;
 - where an approved araldo/herald standard is used, the official emblem is expected to appear unless the project owner explicitly approves an exception.
 
-**Source/master note:**
+**Provenance / approval:**
 
-The currently committed `assets/logo-emblem.webp` is the active web derivative. A separately catalogued source-quality master with transparent background should be added when available and then recorded here without changing the identity code `SIG-01`.
+The owner explicitly approved the reconstructed transparent Heraldry Kit v1.0 version on 2026-09-12. The pre-existing `assets/logo-emblem.webp` remains the active production derivative until a separate implementation change is reviewed.
+
+---
+
+### FRM-01 — Heraldic circular frame
+
+**Family:** FRM  
+**Status:** APPROVED  
+**Approved filename:** `CRE-01.png`  
+**Dimensions:** 1619 × 971 px  
+**Format:** transparent PNG  
+**Role:** Large ceremonial frame/plaque with circular opening, antique-gold metalwork, blue gems, dragon-wing ornamentation and blue drapery.
+
+**Allowed uses:** featured heraldry, ceremonial callouts, profile/crest framing, special section compositions.  
+**Rule:** preserve the open central aperture and overall left/right symmetry.
+
+---
+
+### BNR-01 — Modular heraldic banner system
+
+**Family:** BNR  
+**Status:** APPROVED  
+**Role:** Primary modular section-header/banner family.
+
+**Approved components:**
+
+- `BNR-01-L` → approved filename `BAN-LEFT.png` — 1619 × 971 px, transparent PNG;
+- `BNR-01-C` → approved filename `BAN-CENTER.png` — 2172 × 724 px, transparent PNG;
+- `BNR-01-R` → approved filename `BAN-RIGHT.png` — 1619 × 971 px, transparent PNG.
+
+**Composition rule:**
+
+`BNR-01-L + BNR-01-C + BNR-01-R`
+
+**Canonical rules:**
+
+- treat the three files as components of one banner identity;
+- preserve the blue velvet / antique-gold / blue-gem visual language;
+- the center component is the preferred content-bearing region;
+- important titles and functional copy should remain real HTML text where practical rather than being baked into the image;
+- responsive implementations may overlap/crop/reposition components non-destructively, but must not deform them;
+- simplified responsive derivatives require review before being treated as canonical.
+
+---
+
+### BTN-01 — Heraldic button family
+
+**Family:** BTN  
+**Status:** APPROVED  
+**Role:** Primary decorative CTA/button frame family.
+
+**Approved states:**
+
+- default → `BTN-01.png` — 2172 × 724 px, transparent PNG;
+- hover → `BTN-01-HOVER.png` — 2172 × 724 px, transparent PNG.
+
+**Canonical rules:**
+
+- default and hover are states of the same component, not separate button identities;
+- button labels should remain accessible HTML text;
+- do not stretch disproportionately;
+- preserve sufficient central safe area for live text;
+- interaction states must remain keyboard-accessible and must not rely on visual glow alone to communicate focus.
+
+---
+
+### ORN-01 — Heraldic raven, right-facing
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `RAV-01.png`  
+**Dimensions:** 1322 × 1190 px  
+**Format:** transparent PNG  
+**Role:** Black raven ornament holding a gold chain and blue jewel pendant.
+
+---
+
+### ORN-02 — Heraldic raven, left-facing
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `RAV-02.png`  
+**Dimensions:** 1322 × 1190 px  
+**Format:** transparent PNG  
+**Role:** Mirrored companion raven for symmetrical heraldic compositions.
+
+**Pairing rule for ORN-01 / ORN-02:** preserve their opposing orientation when used as a matched pair.
+
+---
+
+### ORN-03 — Gothic gem divider
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `ORN-03.png`  
+**Dimensions:** 1774 × 887 px  
+**Format:** transparent PNG  
+**Role:** Horizontal antique-gold thorn/filigree divider with central blue gemstone.
+
+---
+
+### ORN-04 — Heraldic compass star
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `STA-01.png`  
+**Dimensions:** 1254 × 1254 px  
+**Format:** transparent PNG  
+**Role:** Eight-point antique-gold star/compass ornament.
+
+---
+
+### ORN-05 — Blue gem, large
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `GEM-01.png`  
+**Dimensions:** 971 × 1619 px  
+**Format:** transparent PNG  
+**Role:** Large faceted blue jewel in antique-gold setting.
+
+---
+
+### ORN-06 — Blue gem, medium
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `GEM-02.png`  
+**Dimensions:** 948 × 1659 px  
+**Format:** transparent PNG  
+**Role:** Medium faceted blue jewel in antique-gold setting.
+
+---
+
+### ORN-07 — Blue gem, small
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `GEM-03.png`  
+**Dimensions:** 887 × 1774 px  
+**Format:** transparent PNG  
+**Role:** Small faceted blue jewel in antique-gold setting.
+
+**Gem-family rule for ORN-05 / ORN-06 / ORN-07:** use the appropriate approved size family rather than arbitrarily distorting one gem to extreme proportions.
+
+---
+
+### ORN-08 — Hanging blue-gem pendant
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `PEN-01.png`  
+**Dimensions:** 887 × 1774 px  
+**Format:** transparent PNG  
+**Role:** Short gold chain with hanging blue jewel pendant.
+
+---
+
+### ORN-09 — Decorative gold chain
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `GHA-01.png`  
+**Dimensions:** 2172 × 724 px  
+**Format:** transparent PNG  
+**Role:** Curved antique-gold chain for heraldic compositions and suspended ornamentation.
+
+---
+
+### ORN-10 — Blue magical glow ring
+
+**Family:** ORN  
+**Status:** APPROVED  
+**Approved filename:** `GLOW-01.png`  
+**Dimensions:** 1254 × 1254 px  
+**Format:** transparent PNG  
+**Role:** Circular electric-blue luminous ring/halo effect.
+
+**Rule:** use as a secondary effect; it must not become the dominant visual language or introduce a generic neon aesthetic inconsistent with `ART_DIRECTION.md`.
 
 ---
 
@@ -125,21 +320,35 @@ The currently committed `assets/logo-emblem.webp` is the active web derivative. 
 
 - `assets/favicon-32.png`
 
-## Visual systems pending full inventory
+## Heraldry Kit v1.0 — approval record
 
-### Modular banner system
+**Status:** APPROVED  
+**Owner approval date:** 2026-09-12  
+**Approved item count:** 18 PNG files  
+**Technical property checked before approval:** all 18 reconstructed files contain alpha transparency.
 
-The modular banner work is considered an established **design direction**, but its individual production-ready component files have not yet been fully catalogued in this repository.
+The approved kit comprises:
 
-Until individual files are added and approved:
+- 2 SIG files/states (`SIG-01`, `SIG-01-GLOW`);
+- 1 FRM asset (`FRM-01`, approved source filename `CRE-01.png`);
+- 3 BNR components forming `BNR-01`;
+- 2 BTN states forming `BTN-01`;
+- 10 ORN assets (`ORN-01` through `ORN-10`).
 
-- do not invent missing banner components;
-- do not assume screenshots or flattened composites are canonical source assets;
-- preserve the principle that the banner is assembled from reusable visual parts;
-- preserve central text areas for real HTML text where practical;
-- maintain visual coherence with `SIG-01` and `ART_DIRECTION.md`.
+**Source/master location:** not yet committed to the repository. The reviewed approval package exists outside GitHub as `Heraldry_Kit_v1_CANDIDATE.zip` and should be treated as the approved source package for the next import step.
 
-When the banner assets are introduced, assign stable `BNR`, `HRD`, `FRM`, `ORN` and/or `BTN` codes as appropriate.
+**Important provenance note:** these approved PNGs are reconstructed project masters derived from the supplied composite sheet. They are canonical for this project by explicit owner approval, but they are not claimed to be the original native source files used to create that sheet.
+
+## Production derivative policy
+
+For approved source-quality PNGs:
+
+1. retain the approved transparent PNG without destructive editing;
+2. create web delivery derivatives separately, normally WebP or optimized PNG as appropriate;
+3. record derivative paths here when committed;
+4. never replace the source-quality approved reconstruction with a compressed delivery file;
+5. visual fidelity takes priority over marginal byte savings for identity-defining assets;
+6. verify responsive behaviour before production use.
 
 ## Asset intake workflow
 
@@ -151,8 +360,8 @@ For each new visual asset:
 4. verify visual coherence against `ART_DIRECTION.md`;
 5. verify web usability and responsive behaviour against `DESIGN_SYSTEM.md`;
 6. record production derivatives separately from masters;
-7. change status to `APPROVED` only after explicit review;
-8. update this registry in the same PR that introduces an approved asset.
+7. change status to `APPROVED` only after explicit human review;
+8. update this registry in the same PR that introduces an approved asset or records its approval.
 
 ## Agent rules
 
@@ -163,16 +372,14 @@ AI agents must:
 - never silently replace an `APPROVED` asset;
 - never promote a concept to `APPROVED` on their own;
 - state clearly when a required master/source asset is unavailable;
-- keep asset identity codes stable across technical file-format changes.
+- keep asset identity codes stable across technical file-format changes;
+- distinguish approved reconstructed masters from original native source files when provenance differs.
 
-## Future inventory work
+## Next inventory / implementation work
 
-The next asset-inventory pass should catalogue the modular banner work in detail, including:
-
-- herald standards;
-- banner frame/body;
-- side ornaments;
-- button family;
-- decorative separators;
-- responsive/simplified variants;
-- source-quality masters and delivery derivatives.
+- import the 18 approved Heraldry Kit v1.0 PNGs into an explicit source/master asset location;
+- create reviewed web-delivery derivatives without overwriting the approved sources;
+- integrate `BNR-01` and `BTN-01` first;
+- test responsive behaviour and accessibility;
+- record final repository paths and derivatives in this registry;
+- catalogue future herald standards (`HRD`) when introduced.
