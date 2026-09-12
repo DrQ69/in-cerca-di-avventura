@@ -1,52 +1,92 @@
-# In Cerca di Avventura — Claude Instructions
+# In Cerca di Avventura — Claude Kernel
 
-This repository powers the Italian community hub **In Cerca di Avventura**, dedicated to **Sorcery: Contested Realm**.
+This repository powers the Italian **In Cerca di Avventura** community hub for **Sorcery: Contested Realm**.
 
-Read these files before making substantial changes:
+Claude is a Team 99 specialist. Keep context small, inspect before acting, and load only the project guidance relevant to the current task.
 
-@docs/PROJECT_CONTEXT.md
-@docs/DESIGN_SYSTEM.md
+## Non-negotiable defaults
 
-## Core rules
+- `main` is production. Work on a dedicated branch and use a Pull Request.
+- Inspect the repository and relevant files before making claims or edits.
+- Make the smallest coherent change that satisfies the objective.
+- Current stack: static HTML, shared CSS, plain JavaScript, GitHub Pages.
+- Do not introduce frameworks, package managers, build tooling, a CMS, backend or database without explicit owner approval.
+- Do not invent events, results, partners, player data, dates, prices, rules, statistics or editorial facts.
+- Preserve the official emblem and canonical visual assets. Never mark a new asset `APPROVED` without human approval.
+- Keep important copy as accessible HTML text when practical.
+- Preserve semantic HTML, keyboard usability, readable contrast and responsive behaviour.
+- Never expose secrets, add secrets to the repository, use `sudo` for convenience, request unnecessary Full Disk Access, or perform destructive production actions without explicit approval.
+- Never merge significant work to `main` without human review.
 
-- Treat `main` as production. Work on a dedicated branch and open a PR for changes.
-- Before editing, inspect the current repository state and relevant files.
-- Keep the stack simple: static HTML, CSS and JavaScript until a real requirement justifies more.
-- Do not introduce frameworks, build tools, package managers, a CMS or a backend without explicit approval.
-- Do not invent events, results, partners, player data, dates, prices or editorial content.
-- Some current homepage event cards may contain provisional/demo data. Never treat existing placeholder copy as verified source data unless explicitly confirmed.
-- Preserve responsive behaviour and test desktop and mobile after layout changes.
-- Preserve the official logo unless an explicit request asks to modify it.
-- Do not bake important copy into generated images when it can remain accessible HTML text.
-- Prefer reusable CSS classes and shared assets over duplicated styles.
-- Keep accessibility in mind: semantic HTML, useful alt text, readable contrast and keyboard-friendly navigation.
-- When changing visuals, follow `docs/DESIGN_SYSTEM.md` rather than introducing a new aesthetic direction.
+## Context routing — read on demand
 
-## Product structure
+Do **not** preload all governance documents. Read only the source(s) needed for the task:
 
-The long-term information architecture is:
+- product, information architecture, roadmap → `docs/PROJECT_CONTEXT.md`
+- artistic direction or visual coherence → `docs/ART_DIRECTION.md`
+- web/UI implementation principles → `docs/DESIGN_SYSTEM.md`
+- asset identity, status or reuse → `docs/ASSET_REGISTRY.md`
+- factual provenance/publication → `docs/CONTENT_SOURCES.md`
+- Team 99 roles/workflow → `docs/AGENT_TEAM.md`
+- tool/resource allocation → `docs/RESOURCE_ARCHITECTURE.md`
+- permissions, local machine, secrets or infrastructure → `docs/SECURITY_POLICY.md`
 
-- Home
-- Eventi
-- Lega
-- Alleanze Dinastiche
-- Risultati
-- Avventurieri
-- Community
+Path-scoped rules under `.claude/rules/` apply automatically when relevant files are opened. Use project skills under `.claude/skills/` for task-specific procedures instead of expanding this file.
 
-The intended data relationship is:
+## Claude usage policy
 
-**Eventi → Risultati → Avventurieri**
+Use **one Claude session by default**. Do not create an Agent Team or subagent for routine work.
 
-Player names in result views should eventually link to the corresponding Avventuriero profile.
+Use a subagent only when at least one is true:
 
-## Working style
+- independent review materially increases confidence;
+- the task is large enough that context isolation is useful;
+- parallel investigation saves meaningful time;
+- the task is HIGH risk and benefits from separation between implementation and review.
 
-For non-trivial tasks:
+Prefer deterministic checks/scripts over AI judgment for machine-checkable conditions.
 
-1. inspect the repository;
-2. state the files you intend to modify;
-3. make the smallest coherent change;
-4. verify paths/assets and browser behaviour;
-5. test at least one desktop and one mobile viewport when UI is affected;
-6. summarize what changed and any remaining assumptions.
+## Risk-based verification
+
+### LOW
+Examples: typo, copy-only documentation change, tiny local CSS fix, link correction.
+
+- inspect the affected file;
+- make the minimal change;
+- verify directly;
+- no subagent or full QA workflow unless something unexpected appears.
+
+### MEDIUM
+Examples: component/layout change, interaction change, asset integration, factual content update.
+
+- read the relevant governing document(s);
+- use the relevant skill when available;
+- verify affected behaviour and regressions;
+- use independent review only when it adds value.
+
+### HIGH
+Examples: architecture change, canonical visual identity change, security/deployment change, destructive action, major information-architecture change, uncertain public claim.
+
+- stop before irreversible or production-sensitive action;
+- consult the relevant governance documents;
+- prepare a reviewable proposal/branch;
+- use independent review where useful;
+- require explicit human authorization for the gated decision.
+
+## Stop / escalate
+
+Escalate instead of guessing when the task requires:
+
+- changing the official emblem or canonical identity;
+- approving a new canonical asset;
+- publishing factual information without sufficient provenance;
+- changing the technology stack or information architecture materially;
+- changing hosting, deployment, DNS, credentials, billing or secrets;
+- destructive or hard-to-reverse production action;
+- merging significant work without owner review.
+
+## Completion
+
+A task is complete when the objective is satisfied, relevant constraints were applied, verification was actually performed, and assumptions or unverified items are stated explicitly.
+
+Never describe something as verified unless it was actually checked.
