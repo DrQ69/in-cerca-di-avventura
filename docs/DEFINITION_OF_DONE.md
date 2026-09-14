@@ -2,9 +2,10 @@
 
 **Document ID:** ICA-DOD-001  
 **Status:** Approved specialist specification  
-**Version:** 1.0  
+**Version:** 1.1  
 **Milestone:** M8 — Definition of Done  
-**Authority:** subordinate to `docs/ICA_CANONICAL_SPEC.md`
+**Authority:** subordinate to `docs/ICA_CANONICAL_SPEC.md`  
+**Governance extension:** `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`
 
 ## 1. Purpose
 
@@ -12,16 +13,18 @@ This document defines when work in In Cerca di Avventura (ICA) may be considered
 
 ## 2. Completion states
 
-ICA distinguishes four states:
+ICA distinguishes four object lifecycle states:
 
 `SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED`
 
 - **SPECIFIED**: role, requirements, dependencies and acceptance criteria are documented.
 - **IMPLEMENTED**: the object exists in a usable form and can be tested.
 - **VERIFIED**: applicable checks have been performed and recorded.
-- **APPROVED**: the Product Owner, or an explicitly authorised approval rule, accepts the object as canonical for production use.
+- **APPROVED**: the Product Owner accepts the object as canonical for production use, unless a future written delegation matrix explicitly grants approval authority for a defined object class.
 
-These states are not interchangeable.
+AI agents, automated checks and developers may reach and recommend `VERIFIED`; they may not self-assign `APPROVED`.
+
+Release readiness is separate from object lifecycle and follows M8.1: `NOT_READY`, `STAGING_READY`, `PRODUCTION_READY`.
 
 ## 3. Global Definition of Done
 
@@ -36,9 +39,11 @@ Before any non-trivial object can be marked APPROVED, all applicable conditions 
 7. Desktop/mobile behaviour is defined when UI is involved.
 8. Accessibility requirements are satisfied when applicable.
 9. Source/provenance/permission requirements are satisfied when relevant.
-10. Known exceptions are documented.
+10. Known exceptions are recorded in `docs/EXCEPTION_REGISTER.md`.
 11. The final state is recorded in the repository or another explicitly approved source of truth.
 12. The object has an identifiable version/status.
+13. Non-trivial verification is supported by a Verification Record or equivalent structured evidence.
+14. No Critical/High defect remains open for production readiness.
 
 ## 4. Component Definition of Done
 
@@ -58,7 +63,9 @@ A reusable P0/P1 component is APPROVED only when:
 - decorative assets respect safe areas;
 - visual treatment matches ICA Design Foundation and Sorcery layer;
 - at least one ICA identity anchor survives on mobile for brand/narrative-heavy components;
-- no Critical/High defect remains unresolved.
+- no Critical/High defect remains unresolved for production;
+- applicable Verification Record evidence exists;
+- Product Owner approval is recorded.
 
 ## 5. Asset Definition of Done
 
@@ -73,16 +80,19 @@ An asset governed by M6 may move to `approved` only when:
 - responsive derivatives exist only where genuinely needed;
 - desktop/mobile art direction has been checked when relevant;
 - accessibility classification is correct;
-- provenance and production-use rights are documented to the required level;
+- provenance and production-use rights meet the M8.1 minimum;
 - AI generation method is recorded when applicable;
 - functional copy is not unnecessarily baked into raster art;
-- manifest status/version are updated.
+- manifest status/version are updated;
+- Product Owner approval is recorded.
 
 Reference sheets, raw generations and candidate images are not approved production assets.
 
 ## 6. Page / Template Definition of Done
 
-A page/template is APPROVED only when:
+A page/template may be `STAGING_READY` when its required P0 components are at least VERIFIED and the purpose is validation before final approval.
+
+A page/template is `PRODUCTION_READY` and may be APPROVED only when:
 
 - role and URL follow the approved IA;
 - content ownership follows the Content Model rather than duplicated hard-coded facts;
@@ -90,7 +100,7 @@ A page/template is APPROVED only when:
 - hierarchy remains understandable without decorative art;
 - factual information is prioritised correctly;
 - narrative language does not obscure facts;
-- required P0 components are at least VERIFIED;
+- all required P0 components/assets used in production are APPROVED;
 - responsive layout passes canonical widths and relevant orientation/short-height tests;
 - page-level horizontal overflow is absent;
 - keyboard order and heading/landmark semantics are valid;
@@ -98,7 +108,9 @@ A page/template is APPROVED only when:
 - loading/empty/error states are handled where relevant;
 - links and asset paths resolve;
 - factual content is verified;
-- prototype content is not presented as real content.
+- prototype/synthetic content is not presented as real content;
+- no Critical/High defect is open;
+- Product Owner approval is recorded.
 
 ## 7. Content / Data Definition of Done
 
@@ -109,20 +121,23 @@ A public record is APPROVED only when:
 - data belongs to the correct entity;
 - public/private separation is respected;
 - Avventuriero public identity remains nickname-only;
-- factual fields are verified from an approved source;
+- factual fields are verified from an approved source and source class is recorded where relevant;
 - RESULT uses the approved final-position + W/L/D model unless formally revised;
 - Campaign scoring follows that Campaign's rules;
 - deck data respects Avatar + Atlas + Spellbook;
 - narrative and factual fields remain separate;
 - relations reference valid IDs;
 - synthetic QA fixtures are never published as real data;
-- unknown information remains unknown instead of being guessed.
+- unknown information remains unknown instead of being guessed;
+- conflicting sources are escalated rather than silently reconciled.
+
+Source classes are defined in `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`.
 
 ## 8. Code / Technical Change Definition of Done
 
 A code change is VERIFIED only when:
 
-- it is the smallest coherent change required;
+- it is the smallest coherent change required as defined by M8.1;
 - no framework/backend/database dependency is introduced without approval;
 - referenced files/assets exist;
 - no new console errors or broken internal paths are introduced;
@@ -132,7 +147,8 @@ A code change is VERIFIED only when:
 - semantic HTML is preserved or improved;
 - stress-content fixtures are used when text/data density can affect layout;
 - legacy code is not silently treated as canonical merely because it predates the new system;
-- changed files and residual uncertainty are summarised.
+- changed files and residual uncertainty are summarised;
+- applicable verification evidence is recorded.
 
 ## 9. PR / Release Definition of Done
 
@@ -141,21 +157,23 @@ A coherent PR is ready to merge only when:
 - scope is clear and limited;
 - changed files match the declared scope;
 - canonical/specialist specifications were respected;
-- no unresolved Critical/High defect remains;
+- no unresolved Critical/High defect remains unless the PR is explicitly staging-only under an accepted M8.1 exception;
 - required validation evidence exists;
 - documentation is updated when a rule changes;
 - status/version/manifest records are updated when applicable;
 - PR description states what changed, why, how it was verified and what remains pending;
 - the change is mergeable and does not knowingly overwrite newer approved work.
 
-A merged PR is not automatic proof that every contained object is APPROVED; object-level status still follows its own lifecycle.
+A merged PR is not automatic proof that every contained object is APPROVED or PRODUCTION_READY.
 
 ## 10. Defect severity
 
-- **Critical**: breaks core function, factual integrity, primary navigation or creates a severe usability/accessibility failure. Approval blocked.
-- **High**: materially breaks a P0/P1 component, responsive layout, key interaction, asset integrity or factual presentation. Approval blocked unless explicitly accepted as a temporary exception.
-- **Medium**: degrades quality/consistency but has a workable path around it. May proceed only if logged and accepted.
-- **Low**: minor polish or non-blocking refinement. May proceed if documented.
+- **Critical**: breaks core function, factual integrity, primary navigation or creates a severe usability/accessibility failure. Never acceptable for production.
+- **High**: materially breaks a P0/P1 component, responsive layout, key interaction, asset integrity or factual presentation. Never acceptable for production; staging-only exception requires explicit Product Owner acknowledgement.
+- **Medium**: degrades quality/consistency but has a workable path around it. Must be logged; Product Owner acceptance is required when it affects P0 functionality, accessibility, factual integrity, brand identity or systemic/repeated behaviour.
+- **Low**: minor polish or non-blocking refinement. May proceed if appropriately documented.
+
+Multiple Medium defects affecting the same critical area may be escalated to High due to cumulative risk.
 
 ## 11. Exception rule
 
@@ -165,31 +183,45 @@ No agent or developer may silently waive a DoD criterion. If a criterion cannot 
 2. explain why it cannot currently be met;
 3. classify the risk;
 4. propose mitigation/follow-up;
-5. obtain explicit Product Owner acceptance for Critical/High-impact exceptions;
-6. record the exception in the relevant PR/spec/status document.
+5. obtain required Product Owner acceptance under M8.1 severity rules;
+6. record the exception in `docs/EXCEPTION_REGISTER.md` and link it from the relevant PR/spec/status/verification record.
 
 Temporary acceptance does not rewrite the canonical rule.
 
 ## 12. Evidence standard
 
-Completion claims require evidence appropriate to the claim, for example repository paths/commits, screenshots/renders, viewport matrices, keyboard checks, manifest entries, verified source records or automated checks once available.
+Completion claims require structured evidence appropriate to the claim. Use `docs/VERIFICATION_RECORD_TEMPLATE.md` for non-trivial verification unless M9 later defines a stronger equivalent.
 
-“Looks correct” is not sufficient evidence for a blocking criterion.
+Evidence may include repository paths/commits, screenshots/renders, viewport matrices, keyboard checks, manifest entries, verified source records or automated checks.
 
-## 13. Relationship to M7.1
+“Looks correct” and a checkbox without evidence are not sufficient for a blocking criterion.
+
+## 13. Approval invalidation
+
+Approval is version- and dependency-sensitive. When a material dependency changes, affected objects are flagged `RECHECK_REQUIRED` according to M8.1.
+
+Typical triggers include major font/typography, breakpoint, component contract, Design System, Content Model, required asset, accessibility baseline, scoring/rules or provenance/rights changes.
+
+`RECHECK_REQUIRED` is a verification flag, not a fifth lifecycle state. Current approval claims must not rely on stale evidence.
+
+## 14. Relationship to M7.1
 
 M7/M7.1 define what responsive behaviour must be verified. M8 defines whether that verification is required before an object may be called done. For responsive P0/P1 components, M7.1 verification is therefore part of the component DoD.
 
-## 14. Relationship to future milestones
+## 15. Interim baseline before M12
 
-- M9 — QA Checklist turns DoD criteria into repeatable checks.
+Until M12 formalises technical thresholds, the interim accessibility and performance expectations in M8.1 apply. M6 asset budgets remain binding.
+
+## 16. Relationship to future milestones
+
+- M9 — QA Checklist turns DoD criteria into repeatable checks and standardises Verification Records.
 - M10 — GitHub Workflow defines where and when checks run.
 - M11 — Visual Regression supplies repeatable visual evidence.
-- M12 — Technical Baseline adds performance/accessibility/SEO thresholds.
+- M12 — Technical Baseline adds formal performance/accessibility/SEO thresholds.
 
 When later milestones add stricter checks, this document should be revised rather than allowing conflicting parallel rules.
 
-## 15. M8 exit criteria
+## 17. M8 exit criteria
 
 M8 is complete when:
 
@@ -199,4 +231,5 @@ M8 is complete when:
 4. defect severity and blocking logic are defined;
 5. exception handling cannot be silent;
 6. M7.1 is explicitly connected to component completion;
-7. future agents are instructed to use this DoD before declaring work complete.
+7. future agents are instructed to use this DoD before declaring work complete;
+8. M8.1 governance controls cover approval authority, staging/production readiness, verification evidence, exception tracking, source classification and approval invalidation.

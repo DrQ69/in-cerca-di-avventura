@@ -9,7 +9,7 @@ Before any non-trivial task, read:
 1. `docs/ICA_CANONICAL_SPEC.md` — **authoritative source of truth**.
 2. `docs/PROJECT_CONTEXT.md` — current project/implementation context.
 3. `docs/DESIGN_SYSTEM.md` — visual implementation guidance.
-4. `docs/DEFINITION_OF_DONE.md` — completion, verification, approval and exception rules.
+4. `docs/DEFINITION_OF_DONE.md` and `docs/M8_1_DOD_GOVERNANCE_HARDENING.md` — completion, verification, approval, readiness, evidence and exception rules.
 5. For any task that creates, edits, renames, optimises, selects or integrates visual assets: `docs/ASSET_SPECIFICATION.md` and `assets/manifest.json`.
 6. For any task that affects layout, navigation, component composition, spacing, responsive imagery, tables, mobile/tablet behaviour or UI implementation: `docs/RESPONSIVE_SPECIFICATION.md` and `docs/M7_1_RESPONSIVE_CONFORMANCE.md`.
 7. For responsive validation, use `tests/fixtures/responsive-stress.json` as synthetic stress content. Never publish fixture values as factual ICA data.
@@ -42,8 +42,14 @@ Do not use chat history, generated images, prototype copy or historical local as
 - If a request conflicts with a locked decision, surface the conflict before changing the system.
 - For asset work, do not create a new binary until its role, component/entity relation, filename/path, status, accessibility classification and provenance expectations are clear in the M6 asset system.
 - A generated reference sheet is not a production asset and must never be sliced into production files.
-- Never call work “done”, “approved”, “verified” or “production-ready” merely because it exists or was merged. Apply `docs/DEFINITION_OF_DONE.md` and use the exact lifecycle state supported by evidence.
-- Never silently waive a Definition of Done criterion. Document the exception, risk and mitigation; Critical/High-impact exceptions require explicit Product Owner acceptance.
+- Never call work “done”, “approved”, “verified” or “production-ready” merely because it exists or was merged. Apply the M8/M8.1 governance rules and use only the state supported by evidence.
+- Only the Product Owner may assign `APPROVED` unless a future written delegation matrix explicitly grants authority for a defined object class.
+- AI agents/developers may implement, test and reach/recommend `VERIFIED`, but may not self-approve.
+- `STAGING_READY` and `PRODUCTION_READY` are release-readiness properties, not lifecycle states. A VERIFIED object is not automatically production-ready.
+- No Critical or High defect is acceptable for production readiness.
+- Use `docs/VERIFICATION_RECORD_TEMPLATE.md` for non-trivial verification claims until M9 provides a stronger equivalent.
+- Record all exceptions in `docs/EXCEPTION_REGISTER.md`; no exception is valid if it exists only in chat history or an untracked note.
+- When a material dependency changes, flag affected approved objects as `RECHECK_REQUIRED` and rerun the affected evidence before claiming current verification.
 
 ## Locked product structure
 
@@ -85,28 +91,37 @@ Every P0/P1 component must define its responsive contract before it is considere
 
 ## Completion model
 
-Use these states precisely:
+Object lifecycle:
 
 `SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED`
+
+Release readiness:
+
+`NOT_READY -> STAGING_READY -> PRODUCTION_READY`
 
 - **SPECIFIED** means requirements and acceptance criteria are documented.
 - **IMPLEMENTED** means the object exists in a testable form.
 - **VERIFIED** means applicable checks have been performed and recorded.
-- **APPROVED** means the Product Owner or an explicitly authorised approval rule accepts it as canonical.
+- **APPROVED** means Product Owner approval is recorded.
+- **STAGING_READY** permits controlled preview/testing under M8.1 rules.
+- **PRODUCTION_READY** requires approved P0 dependencies, current evidence, no Critical/High defects and Product Owner approval.
 
-A merged PR does not automatically promote contained objects to APPROVED.
+A merged PR does not automatically promote contained objects to APPROVED or PRODUCTION_READY.
 
 ## Working style for non-trivial tasks
 
 1. Read the canonical specification.
-2. Read `docs/DEFINITION_OF_DONE.md` and specialist specifications required by the task.
+2. Read M8/M8.1 and specialist specifications required by the task.
 3. Inspect repository state and relevant source/data files.
-4. Identify affected components/entities/assets.
+4. Identify affected components/entities/assets and dependencies.
 5. State assumptions or unknowns instead of guessing.
-6. Make the smallest coherent change.
+6. Make the smallest coherent change; avoid unrelated cleanup/refactors.
 7. Test the canonical responsive widths plus short-landscape cases where relevant.
 8. Use the responsive stress fixture for content-sensitive components.
 9. Verify referenced assets actually exist and render.
 10. Preserve accessibility and source integrity.
-11. Classify the result accurately as SPECIFIED, IMPLEMENTED, VERIFIED or APPROVED.
-12. Summarise changed files, evidence, remaining defects and uncertainty.
+11. Create/attach structured verification evidence for non-trivial verification claims.
+12. Record exceptions in the Exception Register when needed.
+13. Check whether dependency changes invalidate prior approvals/evidence.
+14. Classify the result accurately and distinguish lifecycle state from release readiness.
+15. Summarise changed files, evidence, remaining defects, exceptions and uncertainty.
