@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Stress content for M7.1 responsive validation. Values are synthetic QA fixtures and must never be published as factual ICA data.",
+  "fixtures": {
+    "navigation": {
+      "labels": ["Imprese", "Campagne", "Avventurieri", "Cronache", "Il Reame", "Archivio"]
+    },
+    "player": {
+      "nickname": "Il Cartografo delle Terre Sommerse",
+      "narrative_title": "Custode delle Soglie e Viandante del Quarto Confine"
+    },
+    "event": {
+      "title": "Torneo della Compagnia",
+      "narrative_title": "La Lunga Veglia presso le Porte del Reame Settentrionale",
+      "venue": "Associazione Ludica dei Viandanti della Valle Antica",
+      "format": "Constructed — regole speciali di Campagna",
+      "status": "Iscrizioni aperte"
+    },
+    "campaign": {
+      "name": "Campagna delle Quattro Vie e dei Confini Contesi",
+      "points": 1248,
+      "wins": 18,
+      "losses": 12,
+      "draws": 10
+    },
+    "deck": {
+      "name": "Atlante delle Maree Infrante e dei Sentieri Invisibili",
+      "avatar": "Avatar dal nome volutamente molto lungo per stressare la riga",
+      "affinity": ["Air", "Earth", "Fire", "Water"],
+      "atlas_count": 30,
+      "spellbook_count": 60,
+      "card_names": [
+        "Carta Sorcery con Nome Eccezionalmente Lungo per il Test Responsive",
+        "The Longest Road Through the Forgotten Realm",
+        "Artifact of the Four Winds and the Last Watchtower"
+      ]
+    },
+    "chronicle": {
+      "title": "Cronaca della Compagnia che Attraversò il Reame quando le Quattro Vie Erano Ancora Chiuse",
+      "excerpt": "Un testo di prova deliberatamente lungo per verificare il comportamento delle card editoriali, delle righe di lettura e delle parole italiane estese come controinterdipendentemente senza compromettere la leggibilità."
+    },
+    "table": {
+      "player_name": "Il Cartografo delle Terre Sommerse",
+      "position": 128,
+      "campaign_points": 1248,
+      "wins": 18,
+      "losses": 12,
+      "draws": 10
+    }
+  }
+}
