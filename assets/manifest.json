@@ -1,0 +1,317 @@
+{
+  "schema_version": "1.0",
+  "project": "In Cerca di Avventura",
+  "document_id": "ICA-ASSET-MANIFEST-001",
+  "updated_at": "2026-09-14",
+  "authority": "docs/ICA_CANONICAL_SPEC.md",
+  "specialist_spec": "docs/ASSET_SPECIFICATION.md",
+  "notes": [
+    "Historical Heraldry Kit is out of scope.",
+    "Only status=approved denotes a canonical production asset.",
+    "Planned entries may exist before their binary file is created."
+  ],
+  "assets": [
+    {
+      "id": "SIG-01-CANDIDATE-ROOT",
+      "component": "SIG-01",
+      "path": "assets/logo-emblem.webp",
+      "planned_path": "assets/brand/sigils/sig-01-primary.webp",
+      "role": "ICA emblem candidate / current root-level production reference",
+      "category": "brand",
+      "format": "webp",
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "informative",
+        "usage_note": "Alt text depends on context; if adjacent brand text already conveys the identity, decorative treatment may use empty alt."
+      },
+      "source": {
+        "type": "existing-project-asset",
+        "creator": null,
+        "licence_or_permission": "project-owned-or-authorized-to-be-confirmed",
+        "generation_method": null
+      },
+      "budget": "sigil-logo",
+      "constraints": [
+        "Do not redraw, distort, rotate arbitrarily or recolour outside an approved variant.",
+        "Must be reviewed as the source for the canonical SIG-01 derivative family."
+      ]
+    },
+    {
+      "id": "MED-HERO-01-CANDIDATE-ROOT",
+      "component": "MED-HERO-01",
+      "path": "assets/hero-fantasy.webp",
+      "planned_path": "assets/backgrounds/environments/med-hero-01-desktop.webp",
+      "role": "homepage hero artwork candidate",
+      "category": "background",
+      "format": "webp",
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true,
+        "dedicated_mobile_derivative_required": "to-be-validated"
+      },
+      "accessibility": {
+        "classification": "informative",
+        "usage_note": "If used as meaningful hero imagery, provide useful alt; if moved to CSS as atmosphere only, use decorative treatment."
+      },
+      "source": {
+        "type": "existing-project-asset",
+        "creator": null,
+        "licence_or_permission": "to-be-confirmed",
+        "generation_method": null
+      },
+      "budget": "desktop-hero",
+      "constraints": [
+        "Must pass crop/focal-point review at desktop, tablet and mobile.",
+        "Must retain text-safe area via overlay/gradient or composition.",
+        "Current file weight should remain within the desktop hero maximum budget."
+      ]
+    },
+    {
+      "id": "SYS-FAVICON-01-32",
+      "component": "SYS-FAVICON-01",
+      "path": "assets/favicon-32.png",
+      "planned_path": "assets/system/favicon/favicon-32.png",
+      "role": "32px favicon candidate",
+      "category": "system",
+      "format": "png",
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "existing-project-asset",
+        "creator": null,
+        "licence_or_permission": "project-owned-or-authorized-to-be-confirmed",
+        "generation_method": null
+      },
+      "budget": "icon",
+      "constraints": [
+        "Complete favicon family may require additional sizes/formats later."
+      ]
+    },
+    {
+      "id": "BNR-01-STRUCTURE",
+      "component": "BNR-01",
+      "path": null,
+      "planned_path": "assets/banners/navigation/",
+      "role": "main desktop navigation/banner structural asset family",
+      "category": "banner",
+      "format": "to-be-decided-per-part",
+      "exists": false,
+      "status": "planned",
+      "version": "1.0-planned",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": "simplified-or-dedicated-variant",
+        "mobile": false
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "to-be-created",
+        "creator": null,
+        "licence_or_permission": "project-original-required",
+        "generation_method": "may-use-AI-assisted-production-subject-to-M6-workflow"
+      },
+      "budget": "section-banner",
+      "safe_area": {
+        "required": true,
+        "default_horizontal": "12%",
+        "default_vertical": "15%"
+      },
+      "constraints": [
+        "Must support the canonical navigation: Imprese, Campagne, Avventurieri, Cronache, Il Reame, Archivio.",
+        "ICA sigil links to Home and is structurally separate from nav labels.",
+        "All navigation controls must remain completely inside the usable inner surface and never overlap the ornamental border.",
+        "Labels remain HTML, not raster text.",
+        "Mobile uses NAV-02 rather than shrinking the desktop banner."
+      ]
+    },
+    {
+      "id": "BNR-02-SECTION-HERO",
+      "component": "BNR-02",
+      "path": null,
+      "planned_path": "assets/banners/sections/",
+      "role": "reusable section hero/banner visual family",
+      "category": "banner",
+      "format": "webp-or-svg-plus-css-as-specified",
+      "exists": false,
+      "status": "planned",
+      "version": "1.0-planned",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "to-be-created",
+        "creator": null,
+        "licence_or_permission": "project-original-required",
+        "generation_method": "may-use-AI-assisted-production-subject-to-M6-workflow"
+      },
+      "budget": "section-banner",
+      "safe_area": {
+        "required": true,
+        "default_horizontal": "12%",
+        "default_vertical": "15%"
+      },
+      "constraints": [
+        "Section title remains HTML.",
+        "Variant art may be reduced or removed on mobile when it harms readability."
+      ]
+    },
+    {
+      "id": "BOR-01-PRIMARY",
+      "component": "BOR-01",
+      "path": null,
+      "planned_path": "assets/ui/frames/bor-01-primary.svg",
+      "role": "primary reusable ICA frame/border",
+      "category": "ui-frame",
+      "format": "svg-preferred-if-genuinely-vector-otherwise-webp",
+      "exists": false,
+      "status": "planned",
+      "version": "1.0-planned",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "to-be-created",
+        "licence_or_permission": "project-original-required"
+      },
+      "budget": "ornament",
+      "safe_area": {
+        "required": true,
+        "default_horizontal": "8%",
+        "default_vertical": "10%"
+      },
+      "constraints": [
+        "Must visually belong beside SIG-01.",
+        "Must not require baked-in text."
+      ]
+    },
+    {
+      "id": "ORN-01-DIVIDER",
+      "component": "ORN-01",
+      "path": null,
+      "planned_path": "assets/ui/ornaments/orn-01-divider.svg",
+      "role": "section divider",
+      "category": "ornament",
+      "format": "svg-preferred-if-genuinely-vector",
+      "exists": false,
+      "status": "planned",
+      "version": "1.0-planned",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": "may-simplify-or-hide"
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "to-be-created",
+        "licence_or_permission": "project-original-required"
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Use only when spacing or a simple rule is insufficient.",
+        "Must remain visually secondary to content."
+      ]
+    },
+    {
+      "id": "ORN-02-TERMINAL",
+      "component": "ORN-02",
+      "path": null,
+      "planned_path": "assets/ui/ornaments/orn-02-terminal.svg",
+      "role": "corner/endpoint/terminal ornament family",
+      "category": "ornament",
+      "format": "svg-preferred-if-genuinely-vector",
+      "exists": false,
+      "status": "planned",
+      "version": "1.0-planned",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": "may-hide"
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "to-be-created",
+        "licence_or_permission": "project-original-required"
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Variants must share a common ornamental grammar with BOR-01 and BNR-01."
+      ]
+    },
+    {
+      "id": "BTN-01-VISUAL",
+      "component": "BTN-01",
+      "path": null,
+      "planned_path": "assets/ui/buttons/",
+      "role": "optional raster/vector support for primary CTA",
+      "category": "ui-button",
+      "format": "css-first; svg/webp only if required",
+      "exists": false,
+      "status": "planned",
+      "version": "1.0-planned",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "Button label remains HTML and focus state must be visible independently of the decorative asset."
+      },
+      "source": {
+        "type": "to-be-created",
+        "licence_or_permission": "project-original-required"
+      },
+      "budget": "raster-button",
+      "constraints": [
+        "Default/hover/active/focus states must not change layout footprint.",
+        "Prefer CSS/material treatment before adding bitmap state assets.",
+        "Interactive hit area is defined by HTML/CSS, not image transparency."
+      ]
+    }
+  ]
+}
