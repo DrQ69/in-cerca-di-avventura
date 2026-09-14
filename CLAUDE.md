@@ -10,7 +10,7 @@ Before any non-trivial task, read:
 2. `docs/PROJECT_CONTEXT.md` — current project/implementation context.
 3. `docs/DESIGN_SYSTEM.md` — visual implementation guidance.
 4. `docs/DEFINITION_OF_DONE.md` and `docs/M8_1_DOD_GOVERNANCE_HARDENING.md` — completion, verification, approval, readiness, evidence and exception rules.
-5. `docs/QA_CHECKLIST.md` — operational QA checks, blocking logic and stable check IDs.
+5. `docs/QA_CHECKLIST.md` and `docs/M9_1_QA_EXECUTION_MODEL.md` — operational QA checks and execution rules.
 6. For any task that creates, edits, renames, optimises, selects or integrates visual assets: `docs/ASSET_SPECIFICATION.md` and `assets/manifest.json`.
 7. For any task that affects layout, navigation, component composition, spacing, responsive imagery, tables, mobile/tablet behaviour or UI implementation: `docs/RESPONSIVE_SPECIFICATION.md` and `docs/M7_1_RESPONSIVE_CONFORMANCE.md`.
 8. For responsive validation, use `tests/fixtures/responsive-stress.json` as synthetic stress content. Never publish fixture values as factual ICA data.
@@ -48,10 +48,14 @@ Do not use chat history, generated images, prototype copy or historical local as
 - AI agents/developers may implement, test and reach/recommend `VERIFIED`, but may not self-approve.
 - `STAGING_READY` and `PRODUCTION_READY` are release-readiness properties, not lifecycle states. A VERIFIED object is not automatically production-ready.
 - No Critical or High defect is acceptable for production readiness.
-- For non-trivial verification, select the applicable M9 QA families and record their stable check IDs in `docs/VERIFICATION_RECORD_TEMPLATE.md` or an equivalent structured Verification Record.
-- M9 check results are only `PASS`, `FAIL`, `N/A`, or `BLOCKED`. Blocking `N/A` requires a rationale. Every `FAIL` must create or link to a defect; no failed blocking check may be silently ignored.
+- For non-trivial verification, select an M9.1 QA Profile, then the applicable M9 families/check IDs.
+- M9 check results are only `PASS`, `FAIL`, `N/A`, or `BLOCKED`; every `N/A` requires rationale.
+- Apply `test once, reference many`: reuse prior evidence only when version, dependencies and environment still support the claim and no `RECHECK_REQUIRED` trigger applies.
+- Classify QA evidence as `manual`, `automated`, or `hybrid` when recording verification.
+- Store non-sensitive QA evidence using the conventions in `qa/evidence/README.md`.
 - Record all exceptions in `docs/EXCEPTION_REGISTER.md`; no exception is valid if it exists only in chat history or an untracked note.
-- When a material dependency changes, flag affected approved objects as `RECHECK_REQUIRED` and rerun the affected evidence before claiming current verification.
+- When a material dependency changes, flag affected approved objects as `RECHECK_REQUIRED` and rerun only the affected checks plus necessary regression checks.
+- Release verification must review cumulative Medium defects and escalate systemic combined risk when appropriate.
 
 ## Locked product structure
 
@@ -112,31 +116,28 @@ A merged PR does not automatically promote contained objects to APPROVED or PROD
 
 ## QA execution model
 
-Use M9 QA families according to scope:
+Select one primary M9.1 QA Profile:
 
-- `QA-GEN-*` universal;
-- `QA-CMP-*` component;
-- `QA-AST-*` asset;
-- `QA-PAG-*` page/template;
-- `QA-DAT-*` content/data;
-- `QA-TEC-*` technical/code;
-- `QA-A11Y-*` accessibility;
-- `QA-VIS-*` ICA visual/brand;
-- `QA-PERF-*` interim performance;
-- `QA-REL-*` release.
+- `QAP-CMP-I` interactive P0/P1 component;
+- `QAP-CMP-V` visual/narrative component;
+- `QAP-AST-P` production asset;
+- `QAP-PAG` page/template;
+- `QAP-DAT` content/data entity;
+- `QAP-CODE` code/technical change;
+- `QAP-REL` release.
 
-Do not execute every family mechanically. Select all applicable checks and justify blocking N/A results. Use the minimum smoke matrix in `docs/QA_CHECKLIST.md` for release-level UI verification.
+Then apply required/conditional M9 check families. Do not execute every family mechanically. Test at the lowest correct level and reference still-valid evidence at higher levels.
 
 ## Working style for non-trivial tasks
 
 1. Read the canonical specification.
-2. Read M8/M8.1, M9 and specialist specifications required by the task.
+2. Read M8/M8.1, M9/M9.1 and specialist specifications required by the task.
 3. Inspect repository state and relevant source/data files.
 4. Identify affected components/entities/assets and dependencies.
 5. State assumptions or unknowns instead of guessing.
 6. Make the smallest coherent change; avoid unrelated cleanup/refactors.
-7. Select applicable M9 QA families and check IDs before claiming verification.
-8. Test the canonical responsive widths plus short-landscape cases where relevant.
+7. Select the primary QA Profile and applicable M9 families/check IDs before claiming verification.
+8. Test canonical responsive widths plus short-landscape cases where relevant.
 9. Use the responsive stress fixture for content-sensitive components.
 10. Verify referenced assets actually exist and render.
 11. Preserve accessibility and source integrity.
