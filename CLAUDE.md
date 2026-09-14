@@ -9,10 +9,11 @@ Before any non-trivial task, read:
 1. `docs/ICA_CANONICAL_SPEC.md` — **authoritative source of truth**.
 2. `docs/PROJECT_CONTEXT.md` — current project/implementation context.
 3. `docs/DESIGN_SYSTEM.md` — visual implementation guidance.
-4. For any task that creates, edits, renames, optimises, selects or integrates visual assets: `docs/ASSET_SPECIFICATION.md` and `assets/manifest.json`.
-5. For any task that affects layout, navigation, component composition, spacing, responsive imagery, tables, mobile/tablet behaviour or UI implementation: `docs/RESPONSIVE_SPECIFICATION.md` and `docs/M7_1_RESPONSIVE_CONFORMANCE.md`.
-6. For responsive validation, use `tests/fixtures/responsive-stress.json` as synthetic stress content. Never publish fixture values as factual ICA data.
-7. The specific source files/data relevant to the task.
+4. `docs/DEFINITION_OF_DONE.md` — completion, verification, approval and exception rules.
+5. For any task that creates, edits, renames, optimises, selects or integrates visual assets: `docs/ASSET_SPECIFICATION.md` and `assets/manifest.json`.
+6. For any task that affects layout, navigation, component composition, spacing, responsive imagery, tables, mobile/tablet behaviour or UI implementation: `docs/RESPONSIVE_SPECIFICATION.md` and `docs/M7_1_RESPONSIVE_CONFORMANCE.md`.
+7. For responsive validation, use `tests/fixtures/responsive-stress.json` as synthetic stress content. Never publish fixture values as factual ICA data.
+8. The specific source files/data relevant to the task.
 
 If these documents conflict, **`docs/ICA_CANONICAL_SPEC.md` wins** unless the Product Owner explicitly approves a newer decision and the repository documentation is updated. Specialist specifications refine the canonical rules but may not override them.
 
@@ -41,6 +42,8 @@ Do not use chat history, generated images, prototype copy or historical local as
 - If a request conflicts with a locked decision, surface the conflict before changing the system.
 - For asset work, do not create a new binary until its role, component/entity relation, filename/path, status, accessibility classification and provenance expectations are clear in the M6 asset system.
 - A generated reference sheet is not a production asset and must never be sliced into production files.
+- Never call work “done”, “approved”, “verified” or “production-ready” merely because it exists or was merged. Apply `docs/DEFINITION_OF_DONE.md` and use the exact lifecycle state supported by evidence.
+- Never silently waive a Definition of Done criterion. Document the exception, risk and mitigation; Critical/High-impact exceptions require explicit Product Owner acceptance.
 
 ## Locked product structure
 
@@ -80,10 +83,23 @@ Page-level horizontal scrolling is a defect; deliberate contained horizontal scr
 
 Every P0/P1 component must define its responsive contract before it is considered fully specified.
 
+## Completion model
+
+Use these states precisely:
+
+`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED`
+
+- **SPECIFIED** means requirements and acceptance criteria are documented.
+- **IMPLEMENTED** means the object exists in a testable form.
+- **VERIFIED** means applicable checks have been performed and recorded.
+- **APPROVED** means the Product Owner or an explicitly authorised approval rule accepts it as canonical.
+
+A merged PR does not automatically promote contained objects to APPROVED.
+
 ## Working style for non-trivial tasks
 
 1. Read the canonical specification.
-2. Read specialist specifications required by the task, including M6 asset files for asset work and M7 + M7.1 rules for UI/layout work.
+2. Read `docs/DEFINITION_OF_DONE.md` and specialist specifications required by the task.
 3. Inspect repository state and relevant source/data files.
 4. Identify affected components/entities/assets.
 5. State assumptions or unknowns instead of guessing.
@@ -92,4 +108,5 @@ Every P0/P1 component must define its responsive contract before it is considere
 8. Use the responsive stress fixture for content-sensitive components.
 9. Verify referenced assets actually exist and render.
 10. Preserve accessibility and source integrity.
-11. Summarise changed files, behaviour and any remaining uncertainty.
+11. Classify the result accurately as SPECIFIED, IMPLEMENTED, VERIFIED or APPROVED.
+12. Summarise changed files, evidence, remaining defects and uncertainty.
