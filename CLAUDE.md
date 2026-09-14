@@ -1,52 +1,70 @@
-# In Cerca di Avventura — Claude Instructions
+# In Cerca di Avventura — Agent Instructions
 
-This repository powers the Italian community hub **In Cerca di Avventura**, dedicated to **Sorcery: Contested Realm**.
+This repository powers the Italian Sorcery: Contested Realm community ecosystem **In Cerca di Avventura**.
 
-Read these files before making substantial changes:
+## Mandatory reading order
 
-@docs/PROJECT_CONTEXT.md
-@docs/DESIGN_SYSTEM.md
+Before any non-trivial task, read:
 
-## Core rules
+1. `docs/ICA_CANONICAL_SPEC.md` — **authoritative source of truth**.
+2. `docs/PROJECT_CONTEXT.md` — current project/implementation context.
+3. `docs/DESIGN_SYSTEM.md` — visual implementation guidance.
+4. The specific source files/data relevant to the task.
 
-- Treat `main` as production. Work on a dedicated branch and open a PR for changes.
-- Before editing, inspect the current repository state and relevant files.
-- Keep the stack simple: static HTML, CSS and JavaScript until a real requirement justifies more.
-- Do not introduce frameworks, build tools, package managers, a CMS or a backend without explicit approval.
-- Do not invent events, results, partners, player data, dates, prices or editorial content.
-- Some current homepage event cards may contain provisional/demo data. Never treat existing placeholder copy as verified source data unless explicitly confirmed.
-- Preserve responsive behaviour and test desktop and mobile after layout changes.
-- Preserve the official logo unless an explicit request asks to modify it.
-- Do not bake important copy into generated images when it can remain accessible HTML text.
-- Prefer reusable CSS classes and shared assets over duplicated styles.
-- Keep accessibility in mind: semantic HTML, useful alt text, readable contrast and keyboard-friendly navigation.
-- When changing visuals, follow `docs/DESIGN_SYSTEM.md` rather than introducing a new aesthetic direction.
+If these documents conflict, **`docs/ICA_CANONICAL_SPEC.md` wins** unless the Product Owner explicitly approves a newer decision and the repository documentation is updated.
 
-## Product structure
+Do not use chat history, generated images, prototype copy or historical local asset kits as higher authority than the canonical specification.
 
-The long-term information architecture is:
+## Core operating rules
 
-- Home
-- Eventi
-- Lega
-- Alleanze Dinastiche
-- Risultati
+- Treat `main` as production. Work on a dedicated branch and use a PR for coherent changes.
+- Inspect the current repository and relevant files before editing.
+- Never invent events, results, standings, dates, prices, partners, player data, card data or editorial facts.
+- Prototype/demo content is not verified source data merely because it is currently rendered.
+- For Sorcery rules/terminology, rely on an approved authoritative source such as the supplied official rulebook.
+- Preserve the current simple stack: static HTML, shared CSS and lightweight JavaScript unless a documented requirement justifies more.
+- Do not introduce frameworks, build tools, package managers, CMS, backend, database or authentication without explicit approval.
+- Preserve the official ICA emblem unless explicitly asked to modify it.
+- Keep essential navigation and copy as accessible HTML rather than baking it into raster images.
+- Prefer reusable components/classes/tokens to one-off implementations.
+- Preserve semantic HTML, readable contrast, visible focus, useful alt text and keyboard operability.
+- Responsive work must be intentionally designed; mobile is not merely a scaled desktop.
+- If a request conflicts with a locked decision, surface the conflict before changing the system.
+
+## Locked product structure
+
+Primary navigation:
+
+- Imprese
+- Campagne
 - Avventurieri
-- Community
+- Cronache
+- Il Reame
+- Archivio
 
-The intended data relationship is:
+The logo/emblem returns to Home.
 
-**Eventi → Risultati → Avventurieri**
+Key relationships are entity-based rather than duplicated page copy. Important UI relations should be navigable in both directions when useful.
 
-Player names in result views should eventually link to the corresponding Avventuriero profile.
+## Locked content principles
 
-## Working style
+- ICA is dedicated exclusively to Sorcery: Contested Realm.
+- Public Avventuriero profiles use nickname-only identity.
+- Initial administration is centralised; there are no public accounts or self-service profiles.
+- Results use final position plus W/L/D; round-by-round MATCH data is not part of v1.
+- Each Campagna may have its own scoring rules.
+- Sorcery decks are modelled as Avatar + Atlas + Spellbook, not as a generic TCG deck.
+- Narrative language may reinterpret real activity but must never alter facts.
+- The historical Heraldry Kit is out of scope and must be ignored.
 
-For non-trivial tasks:
+## Working style for non-trivial tasks
 
-1. inspect the repository;
-2. state the files you intend to modify;
-3. make the smallest coherent change;
-4. verify paths/assets and browser behaviour;
-5. test at least one desktop and one mobile viewport when UI is affected;
-6. summarize what changed and any remaining assumptions.
+1. Read the canonical specification.
+2. Inspect repository state and relevant source/data files.
+3. Identify affected components/entities/assets.
+4. State assumptions or unknowns instead of guessing.
+5. Make the smallest coherent change.
+6. Test relevant desktop and mobile layouts when UI changes.
+7. Verify referenced assets actually exist and render.
+8. Preserve accessibility and source integrity.
+9. Summarise changed files, behaviour and any remaining uncertainty.
