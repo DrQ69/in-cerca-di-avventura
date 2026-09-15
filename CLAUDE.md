@@ -132,30 +132,40 @@ For a non-trivial task:
 3. inspect current repository state and affected files;
 4. identify affected components/entities/assets/dependencies;
 5. state material assumptions/unknowns instead of guessing;
-6. make the smallest coherent change;
-7. preserve approved architecture, IDs, data ownership and terminology;
-8. run the applicable responsive/accessibility/QA checks;
-9. verify referenced assets and paths actually exist/render;
-10. create/attach structured verification evidence when claiming `VERIFIED`;
-11. record defects/exceptions and any `RECHECK_REQUIRED` impact;
-12. distinguish lifecycle state from release readiness;
-13. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
+6. follow `docs/GITHUB_WORKFLOW.md` for branch/PR/merge mechanics;
+7. make the smallest coherent change;
+8. preserve approved architecture, IDs, data ownership and terminology;
+9. run the applicable responsive/accessibility/QA checks;
+10. verify referenced assets and paths actually exist/render;
+11. create/attach structured verification evidence when claiming `VERIFIED`;
+12. record defects/exceptions and any `RECHECK_REQUIRED` impact;
+13. distinguish lifecycle state from release readiness;
+14. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
 
-## 9. Git discipline
+## 9. Git workflow
 
-- Treat `main` as production.
-- Use a dedicated branch for coherent non-trivial work.
-- Prefer one coherent PR per work block.
-- Do not use unrelated refactors or redesigns as part of a requested fix without approval.
-- Do not overwrite newer approved work knowingly.
+Use `docs/GITHUB_WORKFLOW.md`.
 
-M10 will formalise branch/PR/CI/merge conventions; until then use the existing repository practice plus M8/M9 evidence rules.
+Key rules:
+
+- treat `main` as production-facing;
+- use a short-lived branch for coherent non-trivial work;
+- prefer one coherent PR per work block;
+- use the approved branch prefixes (`feature/`, `fix/`, `design/`, `content/`, `qa/`, `governance/`);
+- use `.github/pull_request_template.md` for non-trivial PRs;
+- use GitHub Issues only for defects that survive the work block or need durable ownership/history;
+- use `docs/EXCEPTION_REGISTER.md` for accepted exceptions;
+- required baseline CI must pass before merge;
+- merge does not itself assign VERIFIED, APPROVED or PRODUCTION_READY;
+- do not overwrite newer approved work knowingly.
+
+Agents should perform routine Git mechanics automatically when the requested task authorises implementation/integration. Do not make the Product Owner orchestrate branch/PR procedure manually.
 
 ## 10. Product Owner interaction goal
 
 The Product Owner should state the desired outcome, not manually orchestrate internal governance.
 
-Agents are responsible for selecting the correct specifications, applying responsive/asset/QA rules and returning a concise result for review.
+Agents are responsible for selecting the correct specifications, applying responsive/asset/QA/workflow rules and returning a concise result for review.
 
 Do not ask the Product Owner to repeat rules that are already authoritative in the repository.
 

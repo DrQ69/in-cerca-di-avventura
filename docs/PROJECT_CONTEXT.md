@@ -2,7 +2,7 @@
 
 **Purpose:** current operational state only. This file is not a product specification and must not duplicate or override canonical rules.
 
-For product, information architecture, content model, design, component, asset, responsive, completion or QA rules, use `docs/PROJECT_INDEX.md` to route to the authoritative document.
+For product, information architecture, content model, design, component, asset, responsive, completion, QA or workflow rules, use `docs/PROJECT_INDEX.md` to route to the authoritative document.
 
 ## Current repository state
 
@@ -45,12 +45,17 @@ Completed/established:
 - M7.1 — Responsive Conformance gate defined; real implementation validation remains pending
 - M8 / M8.1 — Definition of Done and governance hardening
 - M9 / M9.1 — QA Checklist and QA Execution Model
-
-Next planned milestone:
-
 - M10 — GitHub Workflow
 
-Then:
+M10 operational assets:
+
+- `docs/GITHUB_WORKFLOW.md`
+- `.github/pull_request_template.md`
+- `.github/ISSUE_TEMPLATE/defect.md`
+- `.github/workflows/qa-baseline.yml`
+- `scripts/qa_baseline.py`
+
+Next planned milestones:
 
 - M11 — Visual Regression
 - M12 — Technical Baseline
@@ -61,12 +66,13 @@ Then:
 2. The current CSS predates the canonical responsive system and must not be treated as M7-conformant evidence.
 3. M7.1 cannot be fully verified until real canonical P0/P1 components exist and are tested.
 4. Final production typography remains intentionally open pending real HTML fit/readability testing.
-5. M10–M12 are not yet implemented.
+5. M11–M12 are not yet implemented.
 6. Canonical component production has not yet begun in a systematic P0-first sequence.
+7. M10 baseline CI is intentionally narrow; visual regression and formal accessibility/performance thresholds belong to M11/M12.
 
 ## Current implementation objective
 
-After M10–M12, begin the canonical implementation with the P0 system and verify it through M7.1/M9 rather than incrementally polishing legacy patterns.
+After M11–M12, begin the canonical implementation with the P0 system and verify it through M7.1/M9 using the M10 workflow rather than incrementally polishing legacy patterns.
 
 Expected early P0 focus includes brand/navigation, primary banners/headers, core event/player/chronicle cards, entity headers, status badges, results/ranking tables and essential system states, following the approved component inventory embedded in the canonical architecture.
 
