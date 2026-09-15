@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""Lightweight deterministic QA for ICA's current static baseline."""
+
+from __future__ import annotations
+
+import json
+import sys
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlparse
+
+ROOT = Path(__file__).resolve().parents[1]
+
+JSON_FILES = [
+    ROOT / "assets" / "manifest.json",
+    ROOT / "tests" / "fixtures" / "responsive-stress.json",
+]
+
+
+class LocalRefParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.refs: list[tuple[str, str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attr_map = dict(attrs)
+        if tag in {"img", "script"} and attr_map.get("src"):
+            self.refs.append((tag, attr_map["src"] or ""))
+        if tag == "link" and attr_map.get("href"):
+            self.refs.append((tag, attr_map["href"] or ""))
+
+
+def is_local_reference(value: str) -> bool:
+    if not value or value.startswith(("#", "data:", "mailto:", "tel:")):
+        return False
+    parsed = urlparse(value)
+    return not parsed.scheme and not parsed.netloc
+
+
+def resolve_local(value: str) -> Path:
+    clean = value.split("?", 1)[0].split("#", 1)[0]
+    return ROOT / clean.lstrip("/")
+
+
+def validate_json() -> list[str]:
+    errors: list[str] = []
+    for path in JSON_FILES:
+        if not path.exists():
+            errors.append(f"Missing required JSON file: {path.relative_to(ROOT)}")
+            continue
+        try:
+            json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:  # deterministic failure should be visible in CI
+            errors.append(f"Invalid JSON in {path.relative_to(ROOT)}: {exc}")
+    return errors
+
+
+def validate_index_references() -> list[str]:
+    errors: list[str] = []
+    index = ROOT / "index.html"
+    if not index.exists():
+        return ["Missing index.html"]
+
+    parser = LocalRefParser()
+    parser.feed(index.read_text(encoding="utf-8"))
+
+    for tag, ref in parser.refs:
+        if not is_local_reference(ref):
+            continue
+        target = resolve_local(ref)
+        if not target.exists():
+            errors.append(f"Missing local {tag} reference in index.html: {ref}")
+    return errors
+
+
+def main() -> int:
+    errors = validate_json() + validate_index_references()
+    if errors:
+        print("ICA baseline QA: FAIL")
+        for error in errors:
+            print(f"- {error}")
+        return 1
+
+    print("ICA baseline QA: PASS")
+    print("- required JSON parses")
+    print("- local index.html asset/script/stylesheet references resolve")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
