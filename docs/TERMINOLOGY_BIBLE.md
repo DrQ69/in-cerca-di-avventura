@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-TERM-001  
 **Status:** DRAFT — Creative Canonical Lock  
-**Version:** 0.1  
+**Version:** 0.2  
 **Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
 **Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
 
@@ -146,8 +146,8 @@ The following matrix captures the current creative direction. Items marked `DECI
 | Concept | Sorcery official conflict | ICA narrative term | Candidate UX label | TECH identifier | Status |
 |---|---|---|---|---|---|
 | Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | STRONG CANDIDATE |
-| Real tournament/gathering | low | Convocazione / Giostra depending role | Eventi / Giostre | `EVENT` | DECISION REQUIRED |
-| Competitive tournament | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + subtype | STRONG CANDIDATE |
+| Real tournament/gathering | low | Convocazione / Evento depending role | Eventi | `EVENT` | DECISION REQUIRED |
+| ICA-organized competitive event | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + organiser=`ICA` + competitive subtype | PRODUCT OWNER LOCKED |
 | Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
 | Current announcement | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` or announcement type | STRONG CANDIDATE |
 | Community/store/club relation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | STRONG CANDIDATE |
@@ -163,29 +163,44 @@ The following matrix captures the current creative direction. Items marked `DECI
 
 # 5. High-risk terminology decisions
 
-## 5.1 Eventi vs Giostre
+## 5.1 Eventi vs Giostre — Product Owner decision locked
 
-### Problem
+### Canonical semantic boundary
 
-A real competitive tournament is both an event and a Giostra. Two peer navigation destinations would therefore create duplication and uncertainty.
+**Giostre** is the term used to identify **competitive events organized directly by In Cerca di Avventura**.
 
-### Recommended model
+Therefore:
 
-Use `EVENT` as the technical object.
+- a Giostra is always competitive;
+- a Giostra is always organized directly by ICA;
+- not every competitive event is a Giostra;
+- not every event organized by a store, community, partner or external organizer is a Giostra;
+- `Giostra` is not a generic synonym for `tournament` across the wider Sorcery ecosystem.
 
-Use event classification to determine narrative presentation:
+### TECH mapping
 
-- competitive tournament -> **Giostra**;
-- broader gathering / appointment -> **Convocazione** or functional event label;
-- special community activity -> subtype defined in Page Dossier.
+A Giostra remains technically an `EVENT`, with explicit attributes that identify at minimum:
 
-### Navigation implication
+- organiser / ownership = ICA;
+- competitive nature = true;
+- approved ICA event subtype = Giostra.
 
-Do **not** freeze `Eventi` and `Giostre` as two equivalent top-level sections until the Experience Map is complete.
+The exact schema field names are to be defined in the Content Model/Page Dossier and must not be inferred from this terminology document alone.
 
-**Preferred direction:** Eventi as the broad functional domain; Giostre as its strongest competitive narrative subtype, possibly promoted visually without duplicating the underlying information.
+### UX implication
 
-Status: `DECISION REQUIRED`.
+The term `Giostre` may be used as a dedicated ICA-facing destination because it now represents a product-owned class of events rather than a generic duplicate of `Eventi`.
+
+`Eventi` remains the broader domain for real Sorcery gatherings and appointments that ICA may report, list or connect to, regardless of organiser.
+
+### Examples
+
+- Blaze of Glory event organized directly by ICA -> **Giostra**.
+- Competitive Sorcery tournament organized by an independent store -> **Evento competitivo**, not automatically Giostra.
+- Convention, meetup or non-competitive gathering -> **Evento**, not Giostra.
+- Partner event promoted by ICA but organized by another entity -> **Evento**, unless ICA is formally the organizer.
+
+**Status:** `PRODUCT OWNER LOCKED`.
 
 ## 5.2 Cronache vs Proclami
 
@@ -268,7 +283,7 @@ Examples:
 Avventurieri della community
 
 **Il Campo delle Prove**  
-Giostre e tornei
+Giostre — eventi competitivi organizzati da In Cerca di Avventura
 
 **La Camera delle Reliquie**  
 Guide, strumenti e risorse
@@ -289,7 +304,8 @@ Rules:
 
 - no mass renaming merely because narrative labels change;
 - narrative terms should map to technical objects through Page Dossiers;
-- a single `EVENT` may be rendered as Giostra, Convocazione or another approved subtype;
+- a `Giostra` remains an `EVENT` qualified by ICA organisation/ownership and competitive subtype;
+- other competitive events remain `EVENT` without acquiring the Giostra label automatically;
 - `ARTICLE` may support both Cronache and Proclami through explicit editorial type/status rather than ambiguous copy;
 - technical identifiers remain English uppercase singular unless the Content Model is formally revised.
 
@@ -338,20 +354,20 @@ Subject to Product Owner confirmation of this document:
 - `Avventuriero` is the preferred narrative/UX identity for a real community player;
 - `PLAYER` remains the technical identifier;
 - `Cronaca` and `Proclamo` are distinct editorial roles;
-- `Giostra` is the preferred narrative term for competitive tournament activity;
+- **Giostra identifies a competitive event organized directly by In Cerca di Avventura**;
+- a competitive event organized by another entity is not automatically a Giostra;
 - `Tesori` is preferred over `Artefatti` for durable ICA resources;
 - `Mercante` remains future/deferred until content readiness;
 - visible narrative terms do not force renaming of the technical content model.
 
 ---
 
-# 11. Open decisions for v0.2
+# 11. Open decisions for v0.3
 
 Product/UX decisions still requiring explicit resolution:
 
 - primary navigation architecture;
-- whether `Eventi` is the umbrella UX label above Giostre;
-- whether Giostre merits independent top-level navigation despite shared `EVENT` data;
+- whether `Eventi` remains a top-level umbrella destination alongside the now-distinct `Giostre` destination;
 - whether Proclami has its own destination or acts primarily as a cross-site current-information stream;
 - whether `Reami d'Italia / Reami d'Oltreconfine` is retained after UX testing;
 - final Italian/English treatment of official Sorcery terms inside editorial content;
@@ -383,7 +399,8 @@ The Terminology Bible may move from DRAFT to APPROVED when:
 
 - official Sorcery semantic conflicts have been reviewed;
 - Product Owner approves the hard boundaries around Realm, Avatar, Site, Artifact, Storyline, Affinity and Threshold;
-- Eventi/Giostre architecture is resolved;
+- the Giostra semantic boundary is preserved as ICA-organized competitive events;
+- remaining Eventi/Giostre navigation architecture is resolved;
 - Cronache/Proclami distinction is approved;
 - Avventurieri terminology is approved;
 - Alleanze/Reami wording is resolved;
