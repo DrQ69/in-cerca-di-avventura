@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-NAB-001  
 **Status:** DRAFT — Creative Reconciliation  
-**Version:** 0.2  
+**Version:** 0.3  
 **Phase:** Creative Canonical Lock  
 **Authority:** creative source document proposed for Product Owner approval; once approved it will govern narrative/art direction and inform the revision of the Canonical Spec, Page Dossiers, Design System and implementation.  
 
@@ -402,9 +402,11 @@ The correct solution is to simplify the narrative layer, not distort the informa
 
 ---
 
-# 5. Voice and language — initial principles
+# 5. Voice and editorial language
 
-The voice should feel:
+## 5.1 Voice character
+
+The ICA voice should be:
 
 - literary but concise;
 - evocative but understandable;
@@ -412,25 +414,272 @@ The voice should feel:
 - ceremonial when opening a major section;
 - direct when communicating facts;
 - warm toward the community;
+- curious rather than omniscient;
 - never self-important.
 
-Narrative naming should create meaning, not force the visitor to decode ordinary actions.
+The narrator does not pretend to be an all-powerful lore authority. ICA behaves more like a chronicler, herald, keeper of records and host of the cittadella.
 
-Preferred pattern when needed:
+## 5.2 Register ladder
+
+The writing register changes with context.
+
+**Level A — Ceremonial / threshold**  
+Used for Home hero, major page openings, exceptional finals or major historical milestones. Most evocative register; shortest use.
+
+**Level B — Narrative editorial**  
+Used for page introductions, chronicles, player stories, event recaps and curated features. Atmospheric but still precise.
+
+**Level C — Functional editorial**  
+Used for cards, summaries, navigation support and explanatory microcopy. Plain enough to scan quickly.
+
+**Level D — Factual / system**  
+Used for dates, scores, standings, forms, errors, accessibility labels, technical states and instructions. Direct and unambiguous; no decorative phrasing when it would slow comprehension.
+
+The further the user moves from threshold toward data or task completion, the less literary the language becomes.
+
+## 5.3 Naming rule
+
+Narrative naming must create meaning, not require decoding.
+
+Preferred pattern where useful:
 
 **Narrative title**  
 Functional descriptor
 
-Example form:
+Example:
 
 **Il Libro dei Nomi**  
 Avventurieri della community
 
-This principle is provisional pending the Terminology Bible and Page Dossiers.
+This allows the world to remain expressive without sacrificing orientation.
+
+## 5.4 Microcopy rule
+
+Functional controls should normally use clear verbs and nouns rather than forced fantasy synonyms.
+
+Prefer:
+
+- Scopri
+- Leggi la cronaca
+- Vedi risultati
+- Esplora il profilo
+- Iscriviti
+- Consulta la guida
+
+Avoid inventing ceremonial language for every button if the action becomes less obvious.
+
+## 5.5 Narrative restraint
+
+Not every paragraph needs to sound like a fantasy novel.
+
+A page earns narrative intensity at transitions, introductions and memorable moments. Repeated explanatory text should remain natural Italian.
+
+The editorial test is:
+
+> **If removing the fantasy phrasing makes the content clearer without damaging identity, the phrasing was probably too heavy.**
 
 ---
 
-# 6. Visual intensity hierarchy
+# 6. Symbolic and heraldic language
+
+## 6.1 Purpose of symbols
+
+Symbols exist to create **recognition, hierarchy and continuity** across the cittadella-crocevia.
+
+They are not decoration quotas.
+
+A symbol should normally communicate at least one of the following:
+
+- identity;
+- place;
+- category;
+- status;
+- passage / transition;
+- provenance;
+- achievement.
+
+If it communicates none of these, it should probably not exist.
+
+## 6.2 Heraldic principle
+
+ICA heraldry should feel inherited, crafted and coherent, but not pseudo-historical to the point of becoming unreadable or academically rigid.
+
+The visual language may use:
+
+- shields and escutcheon-like fields;
+- banners and pennants;
+- seals;
+- medallions;
+- insignia;
+- monograms;
+- simple beasts, tools, celestial or geographic motifs;
+- framed emblems tied to specific places or roles.
+
+Heraldry should favour **strong silhouettes and low-detail recognition** at small sizes.
+
+## 6.3 The ICA crest
+
+The ICA crest is the primary institutional mark and should act as an identity anchor rather than a universal ornament.
+
+It may appear in:
+
+- primary site identity;
+- threshold moments;
+- official ICA proclamations;
+- provenance marks;
+- selected ceremonial assets.
+
+It should not be repeated on every card, divider or micro-component.
+
+## 6.4 Place symbols
+
+Each major place may eventually receive a symbolic mark, but only after its Page Dossier resolves the writer intent.
+
+A place symbol should be derived from what happens there rather than from a generic medieval icon library.
+
+Examples of symbolic logic, not final designs:
+
+- records / names -> book, ledger, quill, seal, indexed leaves;
+- trials / competition -> field marker, crossed standards, ring, lance-like geometry;
+- proclamations -> horn, notice, seal, hanging notice or heraldic device;
+- alliances -> linked standards, joined emblems, road or bridge motif;
+- treasures / resources -> reliquary, chest, cabinet, key or carefully stored object.
+
+These motifs must be translated by the Art Director and Web Designer before asset production.
+
+## 6.5 Status symbols
+
+Status marks must never be ambiguous.
+
+Decorative badges may support narrative identity, but factual statuses such as winner, upcoming, cancelled, archived, verified or external must remain understandable in text and not depend on iconography alone.
+
+## 6.6 Achievement heraldry
+
+Player achievements may eventually use badges, seals or insignia, but every achievement must correspond to a verifiable rule or fact.
+
+No heraldic title or insignia may imply a factual achievement that the data does not support.
+
+---
+
+# 7. Iconographic system
+
+## 7.1 Icon roles
+
+Icons belong to three classes:
+
+1. **Functional icons** — search, menu, external link, calendar, filters, expand/collapse. Clarity dominates style.
+2. **Semantic icons** — event type, article type, resource type, status. Style and meaning must remain consistent.
+3. **Narrative emblems** — major places, community identity, achievements, ceremonial moments. Most expressive class.
+
+These classes must not be visually conflated.
+
+## 7.2 Functional icon rule
+
+A functional icon must be recognisable without knowledge of ICA lore.
+
+It may adopt line weight, terminals or framing compatible with ICA, but it must not sacrifice established interaction meaning.
+
+## 7.3 Semantic icon rule
+
+Semantic icons require a controlled dictionary. One meaning must not receive several unrelated icons across different pages.
+
+Every semantic icon should later receive:
+
+- stable ID;
+- meaning;
+- usage contexts;
+- accessible label where needed;
+- allowed variants;
+- prohibited alternate meanings.
+
+## 7.4 Narrative emblem rule
+
+Narrative emblems can be richer and more distinctive, but they must remain subordinate to the information architecture.
+
+They may identify a place; they may not become the only way to navigate to it.
+
+## 7.5 Image and icon distinction
+
+Illustration creates atmosphere and narrative space. Icons communicate repeatable meaning.
+
+Do not use miniature paintings where a functional icon is needed, and do not use generic icons as substitutes for page identity artwork.
+
+---
+
+# 8. Visual coherence rules
+
+## 8.1 One world, not eight themes
+
+Every page must feel like a distinct place within the same cittadella-crocevia.
+
+Therefore:
+
+**one design system, multiple places.**
+
+Pages may change environmental emphasis, iconography and material balance, but should not invent independent typography, spacing logic, control styles or unrelated decorative systems.
+
+## 8.2 Identity anchors
+
+A page should normally preserve several recurring ICA anchors, such as:
+
+- shared typographic hierarchy;
+- common structural spacing;
+- consistent gold / iron / blue relationships;
+- shared frame logic;
+- recurring crest or navigation treatment where appropriate;
+- consistent interaction states;
+- shared editorial rhythm.
+
+Not every anchor must be visually loud.
+
+## 8.3 Variation budget
+
+Each Page Dossier must explicitly state what may vary and what must remain shared.
+
+Permitted variation may include:
+
+- hero artwork;
+- environmental setting;
+- secondary material emphasis;
+- local emblem;
+- narrative intro style;
+- page-specific content components.
+
+Shared system elements should normally include:
+
+- typography rules;
+- grid;
+- focus treatment;
+- base controls;
+- accessibility behaviour;
+- core spacing logic;
+- factual/data presentation conventions.
+
+## 8.4 Fantasy density
+
+Fantasy density must decrease as repetition increases.
+
+A one-time hero can support rich art direction. A card repeated thirty times cannot carry the same ornamental weight.
+
+This protects both usability and the perceived value of major moments.
+
+## 8.5 Authenticity over spectacle
+
+ICA should prefer believable materials, restrained ornament and strong composition over visual effects.
+
+Avoid using glow, particles, animated magic, excessive parallax or motion merely to make a page feel "fantasy".
+
+When motion exists, it should suggest life, material or transition — not a videogame HUD.
+
+## 8.6 Content remains the protagonist
+
+Artwork frames the community; it does not replace it.
+
+Player portraits, event photographs, cards, results, stories and real community material must remain able to take visual priority when they are the reason the user is on the page.
+
+---
+
+# 9. Visual intensity hierarchy
 
 The world should not render every surface with equal dramatic intensity.
 
@@ -448,7 +697,7 @@ This hierarchy will later become a formal Visual Hierarchy Matrix.
 
 ---
 
-# 7. Responsive art-direction principle
+# 10. Responsive art-direction principle
 
 Mobile is not a compressed painting of the desktop experience.
 
@@ -465,7 +714,7 @@ The goal is **ICA essenziale**, not ICA miniaturised.
 
 ---
 
-# 8. Creative prohibitions
+# 11. Creative prohibitions
 
 Do not:
 
@@ -477,11 +726,16 @@ Do not:
 - introduce decorative assets merely because empty space exists;
 - make the user understand the fiction before understanding the function;
 - treat legacy/prototype UI as artistic precedent;
-- revive historical asset kits as creative authority.
+- revive historical asset kits as creative authority;
+- use generic fantasy icon packs as place identity;
+- assign symbols arbitrary meanings page by page;
+- make visual effects substitute for composition;
+- create page-specific mini design systems;
+- let narrative microcopy obscure an ordinary action.
 
 ---
 
-# 9. Documents that must derive from this Bible
+# 12. Documents that must derive from this Bible
 
 After Product Owner approval of the relevant sections, the following documents must derive from this source rather than reinterpret it independently:
 
@@ -496,10 +750,11 @@ After Product Owner approval of the relevant sections, the following documents m
 9. Narrative QA checklist
 10. revised Canonical Spec / Information Architecture
 11. revised Design System where necessary
+12. iconographic dictionary / symbol registry as soon as symbols enter production
 
 ---
 
-# 10. Open creative questions for v0.3+
+# 13. Open creative questions for v0.4+
 
 The following are intentionally **not** frozen yet:
 
@@ -509,6 +764,7 @@ The following are intentionally **not** frozen yet:
 - launch status of Tesori and Mercante;
 - final relationship between `Reame` as ICA language and official Sorcery `Realm` terminology;
 - definitive page-by-page art direction;
+- final place emblems and iconographic dictionary;
 - final typography;
 - final colour token values;
 - final asset inventory.
@@ -519,7 +775,7 @@ These remaining decisions must be resolved deliberately through the Creative Can
 
 ---
 
-# 11. Acceptance criteria for the Narrative & Art Bible
+# 14. Acceptance criteria for the Narrative & Art Bible
 
 This document can move from DRAFT to APPROVED only when:
 
@@ -528,6 +784,9 @@ This document can move from DRAFT to APPROVED only when:
 - the emotional and aesthetic principles are unambiguous;
 - reality/diegesis boundaries are explicit;
 - the artistic ancestry and prohibitions are agreed;
+- the editorial register and narrative-restraint rules are agreed;
+- heraldic and iconographic principles are sufficient to prevent arbitrary visual invention;
+- visual-coherence rules make clear which aspects are shared and which may vary by page;
 - the narrative architecture concepts are preserved without prematurely forcing navigation;
 - downstream roles can distinguish Writer Intent, Art Direction, UX Design and Technical Implementation;
 - no known later creative decision remains only in chat and outside the project source of truth.
