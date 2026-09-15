@@ -1,0 +1,394 @@
+# In Cerca di Avventura — Terminology Bible
+
+**Document ID:** ICA-TERM-001  
+**Status:** DRAFT — Creative Canonical Lock  
+**Version:** 0.1  
+**Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
+**Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
+
+> This document separates four vocabularies that must never be conflated: official Sorcery terminology, ICA narrative language, visible UX labels, and technical/data identifiers.
+
+---
+
+# 1. Purpose
+
+The Terminology Bible exists to prevent three recurring failures:
+
+1. using an official Sorcery term with a different ICA meaning;
+2. forcing technical/database terminology into the visible experience;
+3. allowing poetic ICA language to make navigation or actions ambiguous.
+
+Every important term must therefore be classified before it is promoted to the Canonical Spec, Page Dossiers, component copy or data model.
+
+---
+
+# 2. The four terminology layers
+
+## 2.1 Official Sorcery terminology — `SORCERY`
+
+Terms whose meaning is established by Sorcery: Contested Realm rules, cards or official documentation.
+
+Rules:
+
+- preserve the official meaning;
+- do not reuse the term for a contradictory ICA concept;
+- when used in factual game content, prefer the official English form unless an approved Italian editorial convention is later established;
+- ICA narrative language may allude to these ideas, but cannot redefine them.
+
+## 2.2 ICA narrative/editorial language — `ICA-NARRATIVE`
+
+Terms that create the cittadella-crocevia, its places, ceremonies, social roles and atmosphere.
+
+Examples: *Il Libro dei Nomi*, *Il Campo delle Prove*, *Proclami*, *Tesori*.
+
+Rules:
+
+- must enrich meaning rather than merely rename ordinary UI;
+- may be literary;
+- must remain subordinate to factual truth and usability;
+- must not impersonate official Sorcery terminology.
+
+## 2.3 Visible UX labels — `UX`
+
+Words the user must understand immediately in navigation, controls, filters, headings and actions.
+
+Rules:
+
+- clarity first;
+- may use ICA language when the meaning remains immediate;
+- may pair narrative title + functional descriptor;
+- must remain short enough for responsive navigation;
+- may differ from the technical identifier.
+
+## 2.4 Technical / data identifiers — `TECH`
+
+Stable internal names used in code, schemas, APIs, content models and component specifications.
+
+Examples: `EVENT`, `PLAYER`, `ARTICLE`, `RESULT`, `DECK`.
+
+Rules:
+
+- semantic stability is more important than flavour;
+- do not rename technical entities merely to mirror changing UX copy;
+- one technical object may have several narrative presentations;
+- one visible section may aggregate several technical entities.
+
+---
+
+# 3. Official Sorcery protected vocabulary
+
+The December 2025 Rulebook establishes several terms that ICA must treat as protected semantic territory.
+
+## 3.1 Realm
+
+Official meaning: the shared principal game zone; the rulebook defines the realm as the twenty-square play area in which most cards are played. The glossary states that the Realm includes all squares in the game zone.
+
+**ICA rule:** do not use `Reame` as a technical synonym for community, website, geographic chapter or organisation without clear narrative context.
+
+**Current decision:** `Reame` remains allowed in poetic/narrative titles, but is not the primary structural metaphor of ICA. The foundational metaphor is **cittadella-crocevia**.
+
+**Risk status:** HIGH — likely confusion with official game vocabulary.
+
+## 3.2 Avatar
+
+Official meaning: the card/entity representing the player and their connection to the realm.
+
+**ICA rule:** never use `Avatar` as the name for the real community member or user profile.
+
+**ICA real-person term:** `Avventuriero` may represent the community identity/person.
+
+**TECH mapping:** real person = `PLAYER`; game card = Avatar within deck/card data.
+
+## 3.3 Atlas / Spellbook
+
+Official meaning: the two Sorcery decks. The rulebook describes the Atlas as the deck of site cards and the Spellbook as the deck of spell cards.
+
+**ICA rule:** preserve these terms when displaying deck composition. Do not use them as generic names for ICA archives, libraries or resource hubs.
+
+## 3.4 Site
+
+Official meaning: a card type and locus of power within the Realm.
+
+**ICA rule:** avoid using `Site` as a narrative label for an ICA venue or webpage when game context may be present.
+
+**Preferred ICA venue term:** `Luogo` / `Sede` at UX level; `VENUE` technically.
+
+## 3.5 Spell, Minion, Artifact, Aura, Magic
+
+Official card/game meanings.
+
+**ICA rule:** use as factual Sorcery vocabulary only, except for clearly metaphorical prose where no ambiguity can arise.
+
+## 3.6 Elemental Affinity / Threshold
+
+Official game concepts tied to casting requirements and card/site properties.
+
+**ICA rule:** do not reuse `affinità` or `threshold` as generic reputation, ranking or profile metrics.
+
+## 3.7 Storyline
+
+Official meaning: sequence of events currently resolving during play.
+
+**ICA rule:** do not name the editorial chronology, news stream or site history `Storyline`.
+
+## 3.8 Event
+
+The rulebook uses `event` within the Storyline as a rules-resolution unit.
+
+This does **not** prevent ICA from using the common-language word `evento` for real tournaments and gatherings in Italian UX, but implementation and editorial context must make the distinction obvious.
+
+---
+
+# 4. Core ICA vocabulary — working classification
+
+The following matrix captures the current creative direction. Items marked `DECISION REQUIRED` are intentionally not canonical yet.
+
+| Concept | Sorcery official conflict | ICA narrative term | Candidate UX label | TECH identifier | Status |
+|---|---|---|---|---|---|
+| Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | STRONG CANDIDATE |
+| Real tournament/gathering | low | Convocazione / Giostra depending role | Eventi / Giostre | `EVENT` | DECISION REQUIRED |
+| Competitive tournament | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + subtype | STRONG CANDIDATE |
+| Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
+| Current announcement | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` or announcement type | STRONG CANDIDATE |
+| Community/store/club relation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | STRONG CANDIDATE |
+| Geographic alliance grouping | Realm caution | Reami d'Italia / d'Oltreconfine | da validate | taxonomy over `ORGANIZATION` | DECISION REQUIRED |
+| Durable guides/tools/resources | Artifact conflict if called relic generically | Tesori / Camera delle Reliquie | Tesori | resource/content type | STRONG CANDIDATE |
+| Future commercial/artisanal area | none material | Mercante / Bottega del Viandante | Mercante | future commerce object | DEFERRED/P2 |
+| Venue/store physical place | Site conflict | luogo della cittadella / alleato | Luoghi / Sedi | `VENUE` | STRONG CANDIDATE |
+| Competitive outcome | none | esito / memoria della Giostra | Risultati | `RESULT` | STABLE |
+| Player deck | Atlas/Spellbook official structure | grimorio/deck only in prose if useful | Deck | `DECK` | STABLE |
+| Individual card entry | official card vocabulary | none required | Carta | `CARD_ENTRY` | STABLE |
+
+---
+
+# 5. High-risk terminology decisions
+
+## 5.1 Eventi vs Giostre
+
+### Problem
+
+A real competitive tournament is both an event and a Giostra. Two peer navigation destinations would therefore create duplication and uncertainty.
+
+### Recommended model
+
+Use `EVENT` as the technical object.
+
+Use event classification to determine narrative presentation:
+
+- competitive tournament -> **Giostra**;
+- broader gathering / appointment -> **Convocazione** or functional event label;
+- special community activity -> subtype defined in Page Dossier.
+
+### Navigation implication
+
+Do **not** freeze `Eventi` and `Giostre` as two equivalent top-level sections until the Experience Map is complete.
+
+**Preferred direction:** Eventi as the broad functional domain; Giostre as its strongest competitive narrative subtype, possibly promoted visually without duplicating the underlying information.
+
+Status: `DECISION REQUIRED`.
+
+## 5.2 Cronache vs Proclami
+
+This distinction is strong and should be preserved.
+
+**Proclamo** = present/future, actionable communication.  
+Examples: registration opens, schedule changes, announcement, invitation, update.
+
+**Cronaca** = past/memory, durable editorial account.  
+Examples: tournament report, story, interview, retrospective, preserved account.
+
+Rule:
+
+> **Proclamo informs. Cronaca preserves.**
+
+A Proclamo may later point to a Cronaca about the same real-world subject, but the two should not be duplicates.
+
+## 5.3 Reame / Reami
+
+Because `Realm` is a formal Sorcery game term, ICA must avoid making `Reame` its universal noun for site/community/organisation.
+
+Allowed:
+
+- poetic titles where context is obviously ICA narrative;
+- controlled geographic expressions if approved (`Reami d'Italia`, `Reami d'Oltreconfine`);
+- prose that clearly refers to the fictionalised ICA worldview.
+
+Avoid:
+
+- `Il Reame` as an ambiguous generic top-level UX label;
+- `Reame` as technical identifier;
+- calling each individual store/community a Reame by default.
+
+Preferred structural word for ICA itself: **cittadella-crocevia**.
+
+## 5.4 Avventuriero / Avatar
+
+Canonical semantic boundary proposed:
+
+- **Avventuriero** = person/community identity;
+- **Avatar** = Sorcery card/game entity;
+- `PLAYER` = technical person object.
+
+This boundary should be treated as hard unless the Product Owner explicitly changes it.
+
+## 5.5 Tesori / Reliquie / Artifacts
+
+`Artifact` is an official Sorcery card type, so ICA should not use `Artefatti` as the broad UX name for downloadable resources.
+
+Preferred:
+
+- `Tesori` as visible/narrative umbrella;
+- `Camera delle Reliquie` as place-level literary title;
+- functional subcategories underneath: Guide, Strumenti, Documenti, Stampabili, Risorse ufficiali.
+
+## 5.6 Mercante
+
+`Mercante` is narratively coherent but commercially significant.
+
+Rule:
+
+- preserve it in the world model;
+- do not make it primary navigation until a real service/content proposition exists;
+- launch only after Content Readiness Gate.
+
+Status: `DEFERRED/P2`.
+
+---
+
+# 6. Naming pattern for page identity
+
+Where narrative naming would otherwise reduce clarity, use a two-level title:
+
+**Narrative place title**  
+*Functional descriptor*
+
+Examples:
+
+**Il Libro dei Nomi**  
+Avventurieri della community
+
+**Il Campo delle Prove**  
+Giostre e tornei
+
+**La Camera delle Reliquie**  
+Guide, strumenti e risorse
+
+This pattern allows ICA to preserve atmosphere while keeping the user oriented.
+
+---
+
+# 7. Technical identifier policy
+
+The current content-model identifiers remain conceptually separate from UX naming.
+
+Stable technical vocabulary includes:
+
+`ERA`, `CAMPAIGN`, `EVENT`, `PLAYER`, `VENUE`, `ORGANIZATION`, `ARTICLE`, `RESULT`, `DECK`, `CARD_ENTRY`, `GALLERY`, `IMAGE`, `ACHIEVEMENT`.
+
+Rules:
+
+- no mass renaming merely because narrative labels change;
+- narrative terms should map to technical objects through Page Dossiers;
+- a single `EVENT` may be rendered as Giostra, Convocazione or another approved subtype;
+- `ARTICLE` may support both Cronache and Proclami through explicit editorial type/status rather than ambiguous copy;
+- technical identifiers remain English uppercase singular unless the Content Model is formally revised.
+
+---
+
+# 8. Words to avoid as generic ICA UI labels
+
+Unless a Page Dossier justifies them and ambiguity is absent:
+
+- Realm / Reame as generic container;
+- Avatar for a person;
+- Site for a venue/page;
+- Artifact / Artefatto for resources;
+- Storyline for editorial chronology;
+- Affinity / Affinità as reputation or user-profile metric;
+- Threshold as a generic progress level;
+- Cemetery as an archive metaphor.
+
+These are too strongly defined by Sorcery gameplay.
+
+---
+
+# 9. Terminology decision protocol
+
+Before a new visible term is approved, answer:
+
+1. Is this already an official Sorcery term?
+2. If yes, is ICA using exactly the same meaning?
+3. Is the term narrative, functional UX or technical?
+4. Can a first-time visitor understand the action/section without explanation?
+5. Does a functional descriptor need to accompany it?
+6. Does the term create overlap with another page or content type?
+7. Can it survive mobile navigation without truncation or loss of meaning?
+8. Is the term stable enough to become canonical, or should it remain Page-Dossier-level flavour?
+
+Any unresolved answer means `RECHECK_REQUIRED` rather than silent implementation.
+
+---
+
+# 10. Decisions that can be treated as provisionally locked
+
+Subject to Product Owner confirmation of this document:
+
+- ICA itself is a **cittadella-crocevia**, not `Il Reame` as sole metaphor;
+- `Avatar` is reserved for Sorcery game meaning;
+- `Avventuriero` is the preferred narrative/UX identity for a real community player;
+- `PLAYER` remains the technical identifier;
+- `Cronaca` and `Proclamo` are distinct editorial roles;
+- `Giostra` is the preferred narrative term for competitive tournament activity;
+- `Tesori` is preferred over `Artefatti` for durable ICA resources;
+- `Mercante` remains future/deferred until content readiness;
+- visible narrative terms do not force renaming of the technical content model.
+
+---
+
+# 11. Open decisions for v0.2
+
+Product/UX decisions still requiring explicit resolution:
+
+- primary navigation architecture;
+- whether `Eventi` is the umbrella UX label above Giostre;
+- whether Giostre merits independent top-level navigation despite shared `EVENT` data;
+- whether Proclami has its own destination or acts primarily as a cross-site current-information stream;
+- whether `Reami d'Italia / Reami d'Oltreconfine` is retained after UX testing;
+- final Italian/English treatment of official Sorcery terms inside editorial content;
+- definitive label for physical venues (`Luoghi`, `Sedi`, other);
+- launch visibility of Tesori;
+- final opening criteria for Mercante.
+
+---
+
+# 12. Source notes
+
+The official terminology constraints in this document are grounded in the December 2025 *Sorcery: Contested Realm Rulebook* supplied to the project. In particular, the rulebook defines:
+
+- Avatar as the player's representation and connection to the Realm;
+- Realm as the shared twenty-square principal game zone;
+- Atlas and Spellbook as the player's two decks;
+- Site as an official card type/locus within the Realm;
+- Elemental Affinity and Threshold as gameplay concepts;
+- Storyline as the sequence of events resolving during play;
+- Artifact as an official spell/card type.
+
+No ICA term should silently override those meanings.
+
+---
+
+# 13. Acceptance criteria
+
+The Terminology Bible may move from DRAFT to APPROVED when:
+
+- official Sorcery semantic conflicts have been reviewed;
+- Product Owner approves the hard boundaries around Realm, Avatar, Site, Artifact, Storyline, Affinity and Threshold;
+- Eventi/Giostre architecture is resolved;
+- Cronache/Proclami distinction is approved;
+- Avventurieri terminology is approved;
+- Alleanze/Reami wording is resolved;
+- Tesori and Mercante launch roles are defined;
+- every Page Dossier can map narrative term -> UX label -> technical object without ambiguity;
+- downstream QA can detect terminology violations mechanically or through checklist review.
+
+Until then, visible navigation labels remain `RECHECK_REQUIRED` and the existing P0 shell labels must not be treated as final canonical truth.
