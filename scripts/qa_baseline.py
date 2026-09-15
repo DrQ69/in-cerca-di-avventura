@@ -41,9 +41,16 @@ def is_local_reference(value: str) -> bool:
     return not parsed.scheme and not parsed.netloc
 
 
-def resolve_local(value: str) -> Path:
+def resolve_repo_path(value: str) -> Path:
     clean = value.split("?", 1)[0].split("#", 1)[0]
     return ROOT / clean.lstrip("/")
+
+
+def resolve_html_reference(source: Path, value: str) -> Path:
+    clean = value.split("?", 1)[0].split("#", 1)[0]
+    if clean.startswith("/"):
+        return ROOT / clean.lstrip("/")
+    return source.parent / clean
 
 
 def validate_json() -> list[str]:
@@ -54,7 +61,7 @@ def validate_json() -> list[str]:
             continue
         try:
             json.loads(path.read_text(encoding="utf-8"))
-        except Exception as exc:  # deterministic failure should be visible in CI
+        except Exception as exc:
             errors.append(f"Invalid JSON in {path.relative_to(ROOT)}: {exc}")
     return errors
 
@@ -90,7 +97,7 @@ def validate_visual_registry() -> list[str]:
             errors.append(f"Visual baseline entry {index} is missing a non-empty 'file' path")
             continue
 
-        target = resolve_local(baseline_file)
+        target = resolve_repo_path(baseline_file)
         if not target.exists():
             errors.append(
                 f"Visual baseline entry {index} references missing file: {baseline_file}"
@@ -99,26 +106,34 @@ def validate_visual_registry() -> list[str]:
     return errors
 
 
-def validate_index_references() -> list[str]:
+def validate_html_references() -> list[str]:
     errors: list[str] = []
-    index = ROOT / "index.html"
-    if not index.exists():
-        return ["Missing index.html"]
+    html_files = sorted(ROOT.rglob("*.html"))
+    if not html_files:
+        return ["No HTML files found"]
 
-    parser = LocalRefParser()
-    parser.feed(index.read_text(encoding="utf-8"))
-
-    for tag, ref in parser.refs:
-        if not is_local_reference(ref):
+    for html_file in html_files:
+        parser = LocalRefParser()
+        try:
+            parser.feed(html_file.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"Unable to parse {html_file.relative_to(ROOT)}: {exc}")
             continue
-        target = resolve_local(ref)
-        if not target.exists():
-            errors.append(f"Missing local {tag} reference in index.html: {ref}")
+
+        for tag, ref in parser.refs:
+            if not is_local_reference(ref):
+                continue
+            target = resolve_html_reference(html_file, ref)
+            if not target.exists():
+                errors.append(
+                    f"Missing local {tag} reference in {html_file.relative_to(ROOT)}: {ref}"
+                )
+
     return errors
 
 
 def main() -> int:
-    errors = validate_json() + validate_visual_registry() + validate_index_references()
+    errors = validate_json() + validate_visual_registry() + validate_html_references()
     if errors:
         print("ICA baseline QA: FAIL")
         for error in errors:
@@ -129,7 +144,7 @@ def main() -> int:
     print("- required JSON parses")
     print("- visual baseline registry is structurally valid")
     print("- registered visual baseline files resolve")
-    print("- local index.html asset/script/stylesheet references resolve")
+    print("- local asset/script/stylesheet references resolve across all HTML pages")
     return 0
 
 
