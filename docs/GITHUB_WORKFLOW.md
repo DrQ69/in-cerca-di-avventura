@@ -2,8 +2,9 @@
 
 **Document ID:** ICA-WF-001  
 **Status:** Approved specialist specification  
-**Version:** 1.0  
+**Version:** 1.1  
 **Milestone:** M10 — GitHub Workflow  
+**Product Owner approval recorded:** 2026-09-15  
 **Authority:** subordinate to `docs/ICA_CANONICAL_SPEC.md`, `docs/DEFINITION_OF_DONE.md`, `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`, `docs/QA_CHECKLIST.md` and `docs/M9_1_QA_EXECUTION_MODEL.md`
 
 ## 1. Purpose
@@ -25,23 +26,15 @@ M10 does not redefine lifecycle, QA, approval or release-readiness rules. Those 
 5. QA evidence is produced once at the lowest correct level and referenced where still valid.
 6. Do not introduce process steps that do not reduce meaningful risk.
 7. No permanent `develop`, `release` or GitFlow-style branches are required at this stage.
+8. Squash merge is the default for ordinary ICA PRs so `main` preserves one coherent history entry per work block.
 
 ## 3. Trivial vs non-trivial changes
 
 A change is normally **non-trivial** when it affects product behaviour, canonical content/data, reusable UI, responsive behaviour, assets, accessibility, public pages, governance or deployment-relevant code.
 
-Examples:
+Examples include new/changed P0/P1 components, page/template changes, factual event/result/deck/player data, production assets, responsive/navigation changes, JavaScript interactions, governance/specification changes, or any change requiring a Verification Record under M8/M9.
 
-- new or changed P0/P1 component;
-- page/template change;
-- factual event/result/deck/player data;
-- production asset replacement;
-- responsive/layout/navigation change;
-- JavaScript interaction change;
-- governance/specification change;
-- any change requiring a Verification Record under M8/M9.
-
-A change may be treated as **trivial** when it is clearly low-risk, isolated and does not affect behaviour or canonical meaning, for example a typo in non-factual documentation.
+A change may be treated as **trivial** only when it is clearly low-risk, isolated and does not affect behaviour or canonical meaning, for example a typo in non-factual documentation.
 
 When uncertain, treat the change as non-trivial. Do not split one coherent task into many PRs merely to reduce apparent scope.
 
@@ -58,20 +51,21 @@ Allowed prefixes:
 - `qa/` — verification, test or evidence work;
 - `governance/` — project rules, workflow or specification changes.
 
-Examples:
+Branch names describe the outcome, not the person/tool. Short-lived branches are preferred and should be retired after merge when practical.
 
-- `feature/crd-02-player-card`
-- `fix/nav-02-focus-trap`
-- `design/bnr-01-navigation-banner`
-- `content/evt-2026-001-update`
-- `qa/nav-01-responsive-fit`
-- `governance/m10-github-workflow`
+## 5. Agent authorisation rule
 
-Branch names should describe the outcome, not the person or tool performing the work.
+For repository-specific work, instructions such as **“procedi”**, **“implementa”**, **“fai le modifiche”**, **“continua”** or equivalent authorise the agent to complete the normal M10 flow — branch, implementation, QA, PR and merge — when all of the following remain true:
 
-Short-lived branches are preferred. Delete/retire after merge when practical.
+- the requested outcome is already clear;
+- no locked/canonical decision must be changed;
+- no new material product/design/content choice requires Product Owner judgement;
+- no exception requiring Product Owner acceptance is needed;
+- M8/M9 merge conditions are satisfied.
 
-## 5. Standard agent flow
+The agent must stop and request a Product Owner decision when any of those conditions fail. This rule removes routine Git orchestration from the Product Owner without granting agents approval authority they do not have.
+
+## 6. Standard agent flow
 
 For non-trivial work, the agent should:
 
@@ -85,65 +79,57 @@ For non-trivial work, the agent should:
 8. record defects/exceptions when required;
 9. open one PR with concise scope and verification references;
 10. confirm mergeability and blocking status;
-11. merge when the task authorises repository integration and M8/M9 rules permit it;
-12. report changed files, verification status, remaining risk and any Product Owner decision needed.
+11. merge using **squash** by default when authorised and M8/M9 rules permit it;
+12. report changed files, verification status, remaining risk and any Product Owner decision still needed.
 
 Do not ask the Product Owner to repeat workflow rules already defined in the repository.
 
-## 6. Pull Request contract
+## 7. Pull Request contract
 
-Every non-trivial PR should answer only these questions:
+Every non-trivial PR should answer only:
 
 - **Scope:** what changed?
-- **Affected objects/files:** which IDs or paths are involved?
+- **Affected objects/files:** which IDs or paths?
 - **Why:** what outcome does this achieve?
 - **QA:** which QA Profile / Verification Record applies?
 - **Defects / Exceptions:** what remains open?
 - **Uncertainty:** what was not verified?
-- **Approval required:** does this require a Product Owner decision to become `APPROVED` or accept an exception?
+- **Approval required:** is a Product Owner decision needed?
 
-Use `.github/pull_request_template.md`.
+Use `.github/pull_request_template.md`. Do not duplicate full QA evidence in the PR body when it already exists in `qa/verification/` or linked evidence.
 
-Do not duplicate full QA evidence in the PR body when it already exists in `qa/verification/` or linked evidence.
+## 8. Defect handling
 
-## 7. Defect handling
+Use the lightest mechanism that preserves traceability.
 
-Use the lightest tracking mechanism that preserves traceability.
+A defect may remain only in the PR/Verification Record when it is found and fixed in the same work block, does not survive merge and needs no future owner/action.
 
-### Resolve inside the PR
+Create a GitHub Issue when a Medium-or-higher defect survives the current PR, work must be deferred/assigned, durable reproduction/history is needed, or a Critical/High defect is identified.
 
-A defect may remain only in the PR/Verification Record when:
+Defect workflow vocabulary is:
 
-- it is found and fixed in the same work block;
-- it does not survive the merge;
-- no future owner/action is required.
+`Open -> In Progress -> Fixed -> Closed`
 
-### Create a GitHub Issue
+Do not use `Verified` as a defect status; verification evidence belongs in the Verification Record and object lifecycle.
 
-Create a defect Issue when:
+Critical/High defects block production readiness under M8/M8.1. Accepted exceptions use stable `EXC-XXXX` entries in `docs/EXCEPTION_REGISTER.md`; an Issue does not replace the Exception Register.
 
-- a Medium or higher defect survives the current PR;
-- work must be assigned/deferred to another work block;
-- the defect needs durable reproduction/ownership/history;
-- a Critical or High defect is identified.
+## 9. Verification Records
 
-Critical/High defects block production readiness under M8/M8.1.
+A non-trivial claim of `VERIFIED` requires a Verification Record under M8/M9 in `qa/verification/`.
 
-Accepted exceptions use stable `EXC-XXXX` entries in `docs/EXCEPTION_REGISTER.md`. An Issue does not replace the Exception Register.
+Verification Records must identify immutable repository state where available:
 
-## 8. Verification Records
+- tested head SHA;
+- PR number;
+- merged `main` SHA once known;
+- whether tested-head and merged-tree/content equivalence has been confirmed.
 
-A non-trivial claim of `VERIFIED` requires a Verification Record under M8/M9.
+A branch name alone is not sufficient version evidence. If a post-merge SHA cannot yet be known when the record is first written, update the record after merge or record the follow-up reference in the next governance verification.
 
-Canonical location:
+Do not create a Verification Record for every trivial documentation edit.
 
-`qa/verification/`
-
-Use the naming and evidence rules in M9.1.
-
-Do not create a Verification Record for every trivial documentation edit. Do create one when the state or release-readiness claim depends on actual verification evidence.
-
-## 9. Merge policy
+## 10. Merge policy
 
 A PR may be merged when all applicable conditions are true:
 
@@ -157,83 +143,57 @@ A PR may be merged when all applicable conditions are true:
 - documentation/manifest/status updates required by the change are included;
 - the PR is mergeable and does not knowingly overwrite newer approved work.
 
-A PR must not be merged merely because it is technically mergeable.
+A PR must not be merged merely because GitHub reports it mergeable. A successful merge does **not** automatically promote objects to `VERIFIED`, `APPROVED` or `PRODUCTION_READY`.
 
-A successful merge does **not** automatically promote objects to `VERIFIED`, `APPROVED` or `PRODUCTION_READY`.
+**Default merge method:** squash. Use another method only when preserving intermediate commit history has a concrete documented benefit.
 
-## 10. Product Owner decision points
+## 11. Product Owner decision points
 
-The Product Owner is required when:
+The Product Owner is required when an object is promoted to `APPROVED`, a locked/canonical decision changes, an exception needs Product Owner acceptance, unresolved ambiguity materially changes product/design/content intent, or a release is represented as `PRODUCTION_READY` when approval is required.
 
-- an object is to be promoted to `APPROVED`;
-- a locked/canonical decision would change;
-- a required exception needs Product Owner acceptance under M8.1;
-- unresolved ambiguity materially changes product/design/content intent;
-- a release is to be represented as `PRODUCTION_READY` when Product Owner approval is required.
+The Product Owner is not required to manually approve routine branch creation, QA execution, defect logging, PR creation or ordinary technical merge mechanics when the task already authorises implementation/integration under section 5.
 
-The Product Owner is **not** required to manually approve routine branch creation, standard QA execution, defect logging or ordinary technical merge mechanics when the requested task already authorises the agent to proceed.
+## 12. Lightweight CI baseline
 
-## 11. Lightweight CI baseline
+M10 uses deterministic, low-maintenance automated checks suitable for the current static architecture.
 
-M10 introduces only deterministic, low-maintenance automated checks suitable for the current static architecture.
-
-The baseline CI should verify:
+The baseline CI verifies:
 
 - key JSON files parse correctly;
-- local asset/script/stylesheet references in `index.html` resolve;
+- registered M11 visual-baseline files resolve;
+- local asset/script/stylesheet references resolve across **all repository HTML pages**, not only the homepage;
 - obviously missing referenced repository paths fail the check.
 
-This CI is an automated QA aid, not the full quality gate.
+This CI is an automated QA aid, not the full quality gate. M11 owns visual-regression evidence; M12 owns final accessibility/performance/SEO thresholds.
 
-M10 intentionally does **not** define:
+## 13. CI enforcement and branch protection
 
-- visual-regression comparison — M11;
-- final Lighthouse/Core Web Vitals budgets — M12;
-- final automated WCAG threshold — M12;
-- subjective ICA visual identity scoring — manual/hybrid QA.
+A failing required baseline CI check blocks merge until fixed or the check is proven invalid and the workflow itself is corrected.
 
-## 12. CI failure rule
+The target repository setting for `main` is minimal protection:
 
-A failing required baseline CI check blocks merge until:
+- require the `ICA baseline QA` status check before merge;
+- disallow force-push to `main`;
+- disallow deletion of `main`;
+- do **not** require a human review for every routine PR at this stage.
 
-- the defect is fixed; or
-- the check is proven invalid and the workflow itself is corrected.
+These settings are repository-admin controls. If the active agent connection cannot change branch protection, the gap must be tracked durably as a GitHub Issue rather than silently treated as enforced.
 
-Do not bypass a failing deterministic check by changing its result without understanding the cause.
+## 14. Recheck after dependency changes
 
-## 13. Recheck after dependency changes
+When M8.1/M9.1 identifies `RECHECK_REQUIRED`, the PR states which dependency changed, which evidence became stale, which targeted checks were rerun and which higher-level objects may reference refreshed evidence. Do not rerun unrelated QA mechanically.
 
-When M8.1/M9.1 identifies `RECHECK_REQUIRED`, the PR should state:
+## 15. Release handling
 
-- which dependency changed;
-- which prior evidence became stale;
-- which targeted checks were rerun;
-- which higher-level pages/components can safely reference the refreshed evidence.
+ICA does not require a separate permanent release branch. Because `main` is production-facing, only production-safe changes should be merged. Staging/preview validation occurs on branch/PR/local or preview environment before merge; a dedicated staging environment is introduced only when real release complexity justifies it.
 
-Do not rerun unrelated QA mechanically.
+## 16. Relationship to M11 and M12
 
-## 14. Release handling
+M10 provides the workflow hooks. M11 adds repeatable visual-regression evidence; M12 adds formal technical thresholds. They may add required checks while preserving this minimal operational model unless a real need requires more process.
 
-ICA does not require a separate permanent release branch at this stage.
+## 17. Success criterion
 
-Because `main` is production-facing:
-
-- only production-safe changes should be merged into `main`;
-- staging/preview validation should occur on the branch/PR/local or preview environment before merge;
-- a future dedicated staging environment may be introduced only when real release complexity justifies it.
-
-## 15. Relationship to M11 and M12
-
-M10 provides the workflow hooks; later milestones deepen the evidence:
-
-- **M11** adds repeatable screenshot/visual-regression evidence;
-- **M12** adds formal technical thresholds for accessibility, performance and SEO.
-
-M11/M12 may add required checks to PRs, but they should preserve this minimal operational model unless a real need requires more process.
-
-## 16. Success criterion
-
-M10 is successful when the Product Owner can request an outcome without managing GitHub procedure, and agents can consistently:
+M10 is successful when the Product Owner can request an outcome without managing GitHub procedure, and agents consistently:
 
 **route -> branch -> implement -> verify -> PR -> merge/report**
 
