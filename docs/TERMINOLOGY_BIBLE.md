@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-TERM-001  
 **Status:** DRAFT — Creative Canonical Lock  
-**Version:** 0.5  
+**Version:** 0.6  
 **Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
 **Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
 
@@ -39,7 +39,7 @@ Rules:
 
 Terms that create the cittadella-crocevia, its places, ceremonies, social roles and atmosphere.
 
-Examples: *Il Libro dei Nomi*, *Il Campo delle Prove*, *Proclami*, *Tesori*.
+Examples: *Le Adunanze*, *Il Libro dei Nomi*, *Il Campo delle Prove*, *Proclami*, *Tesori*.
 
 Rules:
 
@@ -135,7 +135,7 @@ Official meaning: sequence of events currently resolving during play.
 
 The rulebook uses `event` within the Storyline as a rules-resolution unit.
 
-This does **not** prevent ICA from using the common-language word `evento` for real tournaments and gatherings in Italian UX, but implementation and editorial context must make the distinction obvious.
+This does **not** prevent ICA from using the common-language concept of a real-world event for tournaments and gatherings, but the visible ICA umbrella term is now **Adunanza / Le Adunanze** and implementation/editorial context must keep it distinct from the rules meaning.
 
 ---
 
@@ -144,15 +144,15 @@ This does **not** prevent ICA from using the common-language word `evento` for r
 | Concept | Sorcery official conflict | ICA narrative term | Candidate UX label | TECH identifier | Status |
 |---|---|---|---|---|---|
 | Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | PRODUCT OWNER LOCKED |
-| Real tournament/gathering | low | Convocazione / Evento depending role | Eventi | `EVENT` | DECISION REQUIRED |
+| Real Sorcery event / gathering of interest | low | Adunanza / Le Adunanze | Le Adunanze | `EVENT` | PRODUCT OWNER LOCKED |
 | ICA-organized competitive event | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + organiser=`ICA` + competitive subtype | PRODUCT OWNER LOCKED |
 | Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
 | News item | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` + editorial_type=`NEWS` | PRODUCT OWNER LOCKED |
 | Allied reality / group / organisation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | PRODUCT OWNER LOCKED |
 | Italian geographic alliance grouping | Realm caution | Reami d'Italia | Reami d'Italia | geography/taxonomy over `ORGANIZATION` | PRODUCT OWNER LOCKED |
 | Foreign geographic alliance grouping | Realm caution | Reami d'Oltreconfine | Reami d'Oltreconfine | geography/taxonomy over `ORGANIZATION` | PRODUCT OWNER LOCKED |
-| Durable guides/tools/resources | Artifact conflict if called relic generically | Tesori / Camera delle Reliquie | Tesori | resource/content type | STRONG CANDIDATE |
-| Future commercial/artisanal area | none material | Mercante / Bottega del Viandante | Mercante | future commerce object | DEFERRED/P2 |
+| Collecting / rare Sorcery material area | Artifact caution | Tesori | Tesori | TBD | SUSPENDED — DIRECTION RECORDED |
+| Future commercial/artisanal area | none material | Mercante / Bottega del Viandante | Mercante | future commerce object | ON HOLD |
 | Venue/store physical place | Site conflict | luogo della cittadella / alleato | Luoghi / Sedi | `VENUE` | STRONG CANDIDATE |
 | Competitive outcome | none | esito / memoria della Giostra | Risultati | `RESULT` | STABLE |
 | Player deck | Atlas/Spellbook official structure | grimorio/deck only in prose if useful | Deck | `DECK` | STABLE |
@@ -162,23 +162,28 @@ This does **not** prevent ICA from using the common-language word `evento` for r
 
 # 5. High-risk terminology decisions
 
-## 5.1 Eventi vs Giostre — Product Owner decision locked
+## 5.1 Le Adunanze / Giostre — Product Owner decision locked
 
 ### Canonical semantic boundary
 
-**Giostre** is the term used to identify **competitive events organized directly by In Cerca di Avventura**.
+**Le Adunanze** is the ICA umbrella for real-world Sorcery events and gatherings that ICA decides to list, report, promote or connect to the community.
+
+**Giostre** sits **inside Le Adunanze** and identifies only **competitive events organized directly by In Cerca di Avventura**.
 
 Therefore:
 
+- every Giostra is an Adunanza;
+- not every Adunanza is a Giostra;
 - a Giostra is always competitive;
 - a Giostra is always organized directly by ICA;
-- not every competitive event is a Giostra;
-- not every event organized by a store, community, partner or external organizer is a Giostra;
-- `Giostra` is not a generic synonym for `tournament` across the wider Sorcery ecosystem.
+- a competitive event organized by another entity is an Adunanza/evento competitivo, not automatically a Giostra;
+- `Giostra` is not a generic synonym for tournament across the wider Sorcery ecosystem.
 
 ### TECH mapping
 
-A Giostra remains technically an `EVENT`, with explicit attributes that identify at minimum:
+Both remain technically based on `EVENT`.
+
+A Giostra requires explicit attributes that identify at minimum:
 
 - organiser / ownership = ICA;
 - competitive nature = true;
@@ -188,16 +193,22 @@ The exact schema field names are to be defined in the Content Model/Page Dossier
 
 ### UX implication
 
-The term `Giostre` may be used as a dedicated ICA-facing destination because it represents a product-owned class of events rather than a generic duplicate of `Eventi`.
+The visible hierarchy is:
 
-`Eventi` remains the broader domain for real Sorcery gatherings and appointments that ICA may report, list or connect to, regardless of organiser.
+**Le Adunanze**  
+Eventi e appuntamenti Sorcery
+
+→ **Giostre**  
+Eventi competitivi organizzati direttamente da In Cerca di Avventura
+
+Other tournaments, conventions, meetups, store events and community appointments may appear inside Le Adunanze according to future taxonomy and Page Dossier rules.
 
 ### Examples
 
-- Blaze of Glory event organized directly by ICA -> **Giostra**.
-- Competitive Sorcery tournament organized by an independent store -> **Evento competitivo**, not automatically Giostra.
-- Convention, meetup or non-competitive gathering -> **Evento**, not Giostra.
-- Partner event promoted by ICA but organized by another entity -> **Evento**, unless ICA is formally the organizer.
+- Blaze of Glory event organized directly by ICA -> **Giostra**, therefore also Adunanza.
+- Competitive Sorcery tournament organized by an independent store -> **Adunanza / evento competitivo**, not Giostra.
+- Convention, meetup or non-competitive gathering -> **Adunanza**, not Giostra.
+- Partner event promoted by ICA but organized by another entity -> **Adunanza**, unless ICA is formally the organizer and the event meets the Giostra criteria.
 
 **Status:** `PRODUCT OWNER LOCKED`.
 
@@ -329,7 +340,7 @@ The Avventuriero profile may progressively connect verified public activity such
 
 - nickname;
 - community / Alleanza association where relevant;
-- Giostre and Eventi participated in;
+- Adunanze participated in, including Giostre where applicable;
 - results;
 - decks;
 - Cronache in which the person appears;
@@ -371,27 +382,38 @@ At functional level, `Avventurieri` should remain sufficiently clear as the inde
 
 **Status:** `PRODUCT OWNER LOCKED`.
 
-## 5.5 Tesori / Reliquie / Artifacts
+## 5.5 Tesori — suspended direction
 
-`Artifact` is an official Sorcery card type, so ICA should not use `Artefatti` as the broad UX name for downloadable resources.
+The previous working assumption that `Tesori` was the umbrella for guides, tools, documents and printables is **not canonical** and is superseded by the Product Owner's later direction.
 
-Preferred:
+Current direction to preserve for future review:
 
-- `Tesori` as visible/narrative umbrella;
-- `Camera delle Reliquie` as place-level literary title;
-- functional subcategories underneath: Guide, Strumenti, Documenti, Stampabili, Risorse ufficiali.
+- `Tesori` is better suited to the **collecting side of Sorcery**;
+- possible subjects include the most precious and rare Sorcery cards, Curio, Artist Proofs, original paintings/artworks and other notable collectibles;
+- the exact taxonomy, technical model, page identity and launch scope are not yet decided;
+- guides, documents and rules material must **not** be assigned to Tesori by default.
 
-## 5.6 Mercante
+A separate possibility exists to host guides, documents and regulations within `Cronache` or another editorial/resource structure, but that decision is explicitly unresolved.
 
-`Mercante` is narratively coherent but commercially significant.
+See: `docs/creative-decisions/DECISION_TESORI_SCOPE.md`.
 
-Rule:
+**Status:** `SUSPENDED — DIRECTION RECORDED, NOT CANONICAL`.
 
-- preserve it in the world model;
-- do not make it primary navigation until a real service/content proposition exists;
-- launch only after Content Readiness Gate.
+## 5.6 Mercante — on hold
 
-Status: `DEFERRED/P2`.
+`Mercante` remains a possible future commercial/artisanal concept, but the Product Owner has placed the entire topic **ON HOLD**.
+
+Rules while on hold:
+
+- do not define its scope further;
+- do not include it in primary navigation planning;
+- do not design a Page Dossier or implementation for it;
+- do not assume a business model, catalogue or service proposition;
+- reopen only after an explicit Product Owner decision.
+
+See: `docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md`.
+
+**Status:** `ON HOLD`.
 
 ---
 
@@ -404,20 +426,20 @@ Where narrative naming would otherwise reduce clarity, use a two-level title:
 
 Examples:
 
-**Il Libro dei Nomi**  
-Avventurieri della community
+**Le Adunanze**  
+Eventi e appuntamenti Sorcery
 
 **Il Campo delle Prove**  
 Giostre — eventi competitivi organizzati da In Cerca di Avventura
+
+**Il Libro dei Nomi**  
+Avventurieri della community
 
 **I Proclami dell'Araldo**  
 News e aggiornamenti
 
 **I Reami Alleati**  
 Alleanze della community, in Italia e oltreconfine
-
-**La Camera delle Reliquie**  
-Guide, strumenti e risorse
 
 This pattern allows ICA to preserve atmosphere while keeping the user oriented.
 
@@ -435,13 +457,16 @@ Rules:
 
 - no mass renaming merely because narrative labels change;
 - narrative terms should map to technical objects through Page Dossiers;
-- a `Giostra` remains an `EVENT` qualified by ICA organisation/ownership and competitive subtype;
+- an `Adunanza` remains an `EVENT` at technical level;
+- a `Giostra` remains an `EVENT` nested semantically inside Le Adunanze and qualified by ICA organisation/ownership plus competitive subtype;
 - other competitive events remain `EVENT` without acquiring the Giostra label automatically;
 - a `Proclamo` remains editorial content mapped to `ARTICLE` with explicit News classification;
 - `Cronaca` and `Proclamo` must be distinguishable through editorial type, not inferred only from publication date;
 - an `Alleanza` remains an `ORGANIZATION`; `Reami d'Italia` / `Reami d'Oltreconfine` are geographic narrative groupings rather than new technical entities;
 - an `Avventuriero` remains a `PLAYER`; the ICA narrative identity does not change the technical person entity;
 - Sorcery `Avatar` and ICA `PLAYER` must remain semantically separate;
+- `Tesori` has no approved technical mapping while suspended;
+- `Mercante` has no active implementation scope while on hold;
 - technical identifiers remain English uppercase singular unless the Content Model is formally revised.
 
 ---
@@ -453,7 +478,7 @@ Unless a Page Dossier justifies them and ambiguity is absent:
 - Realm / Reame as generic container;
 - Avatar for a person;
 - Site for a venue/page;
-- Artifact / Artefatto for resources;
+- Artifact / Artefatto for generic resources;
 - Storyline for editorial chronology;
 - Affinity / Affinità as reputation or user-profile metric;
 - Threshold as a generic progress level;
@@ -489,31 +514,34 @@ Subject to Product Owner confirmation of this document:
 - **Avventuriero identifies the real person/community identity represented by ICA**;
 - the Avventuriero's nickname is the primary visible identity;
 - `PLAYER` remains the technical identifier for the real person;
+- **Le Adunanze is the ICA umbrella for real-world Sorcery events and gatherings represented by the site**;
+- **Giostre sits inside Le Adunanze and identifies competitive events organized directly by In Cerca di Avventura**;
+- a competitive event organized by another entity is not automatically a Giostra;
 - **Proclami is the ICA term for News**;
 - `Cronaca` is a separate editorial form dedicated to record, account and preservation rather than the site's News classification;
-- **Giostra identifies a competitive event organized directly by In Cerca di Avventura**;
-- a competitive event organized by another entity is not automatically a Giostra;
 - **Alleanze identifies the network of Sorcery-related realities represented by ICA**;
 - **Reami d'Italia** and **Reami d'Oltreconfine** are the controlled geographic narrative groupings of those Alleanze, never default names for single organisations;
-- `Tesori` is preferred over `Artefatti` for durable ICA resources;
-- `Mercante` remains future/deferred until content readiness;
+- `Tesori` is suspended with a recorded collecting-oriented direction and no final scope;
+- `Mercante` is ON HOLD and excluded from active planning until explicitly reopened;
 - visible narrative terms do not force renaming of the technical content model.
 
 ---
 
-# 11. Open decisions for v0.6
+# 11. Open decisions for v0.7
 
 Product/UX decisions still requiring explicit resolution:
 
 - primary navigation architecture;
-- whether `Eventi` remains a top-level umbrella destination alongside the now-distinct `Giostre` destination;
+- detailed internal taxonomy of **Le Adunanze** beyond the locked `Giostre` subset;
 - whether `Proclami` appears in primary navigation, secondary navigation, or as a prominent editorial destination elsewhere in the experience;
 - final Italian/English treatment of official Sorcery terms inside editorial content;
 - definitive label for physical venues (`Luoghi`, `Sedi`, other);
-- launch visibility of Tesori;
-- final opening criteria for Mercante.
+- exact scope and architecture of `Cronache`;
+- final destination for guides, documents, rules and reference material;
+- `Tesori` scope remains suspended;
+- `Mercante` remains on hold.
 
-The meanings of `Avventurieri`, `Giostre`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
+The meanings/hierarchies of `Le Adunanze`, `Giostre`, `Avventurieri`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
 
 ---
 
@@ -539,15 +567,15 @@ The Terminology Bible may move from DRAFT to APPROVED when:
 
 - official Sorcery semantic conflicts have been reviewed;
 - Product Owner approves the hard boundaries around Realm, Avatar, Site, Artifact, Storyline, Affinity and Threshold;
-- the Giostra semantic boundary is preserved as ICA-organized competitive events;
-- remaining Eventi/Giostre navigation architecture is resolved;
+- `Le Adunanze = event umbrella` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
+- `Giostre` remains a nested subset of Le Adunanze reserved for ICA-organized competitive events;
 - `Proclami = News` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
 - the Cronache/Proclami editorial distinction remains unambiguous;
 - `Avventuriero = real person/community identity` remains distinct from the official Sorcery Avatar concept;
 - nickname remains the primary visible Avventuriero identity unless a later explicit Product Owner decision changes that rule;
 - Alleanze/Reami wording remains consistent with the Product Owner-locked hierarchy;
-- Tesori and Mercante launch roles are defined;
-- every Page Dossier can map narrative term -> UX label -> technical object without ambiguity;
+- suspended/on-hold concepts are not silently reintroduced into active IA;
+- every active Page Dossier can map narrative term -> UX label -> technical object without ambiguity;
 - downstream QA can detect terminology violations mechanically or through checklist review.
 
 Until then, visible navigation labels remain `RECHECK_REQUIRED` and the existing P0 shell labels must not be treated as final canonical truth.
