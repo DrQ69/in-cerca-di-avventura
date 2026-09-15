@@ -14,7 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 JSON_FILES = [
     ROOT / "assets" / "manifest.json",
     ROOT / "tests" / "fixtures" / "responsive-stress.json",
+    ROOT / "qa" / "visual-baselines.json",
 ]
+
+VISUAL_REGISTRY = ROOT / "qa" / "visual-baselines.json"
+VISUAL_STATUSES = {"candidate", "approved", "deprecated"}
 
 
 class LocalRefParser(HTMLParser):
@@ -55,6 +59,46 @@ def validate_json() -> list[str]:
     return errors
 
 
+def validate_visual_registry() -> list[str]:
+    errors: list[str] = []
+    if not VISUAL_REGISTRY.exists():
+        return ["Missing qa/visual-baselines.json"]
+
+    try:
+        data = json.loads(VISUAL_REGISTRY.read_text(encoding="utf-8"))
+    except Exception:
+        return errors  # validate_json reports parse failures
+
+    baselines = data.get("baselines")
+    if not isinstance(baselines, list):
+        return ["qa/visual-baselines.json: 'baselines' must be a list"]
+
+    for index, entry in enumerate(baselines, start=1):
+        if not isinstance(entry, dict):
+            errors.append(f"Visual baseline entry {index} must be an object")
+            continue
+
+        status = entry.get("status")
+        if status not in VISUAL_STATUSES:
+            errors.append(
+                f"Visual baseline entry {index} has invalid status {status!r}; "
+                f"expected one of {sorted(VISUAL_STATUSES)}"
+            )
+
+        baseline_file = entry.get("file")
+        if not isinstance(baseline_file, str) or not baseline_file.strip():
+            errors.append(f"Visual baseline entry {index} is missing a non-empty 'file' path")
+            continue
+
+        target = resolve_local(baseline_file)
+        if not target.exists():
+            errors.append(
+                f"Visual baseline entry {index} references missing file: {baseline_file}"
+            )
+
+    return errors
+
+
 def validate_index_references() -> list[str]:
     errors: list[str] = []
     index = ROOT / "index.html"
@@ -74,7 +118,7 @@ def validate_index_references() -> list[str]:
 
 
 def main() -> int:
-    errors = validate_json() + validate_index_references()
+    errors = validate_json() + validate_visual_registry() + validate_index_references()
     if errors:
         print("ICA baseline QA: FAIL")
         for error in errors:
@@ -83,6 +127,8 @@ def main() -> int:
 
     print("ICA baseline QA: PASS")
     print("- required JSON parses")
+    print("- visual baseline registry is structurally valid")
+    print("- registered visual baseline files resolve")
     print("- local index.html asset/script/stylesheet references resolve")
     return 0
 
