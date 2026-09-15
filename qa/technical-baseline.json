@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "document_id": "ICA-TECH-001",
+  "thresholds": {
+    "wcag_target": "2.2-AA",
+    "contrast_normal_text_min": 4.5,
+    "contrast_large_text_min": 3.0,
+    "contrast_non_text_ui_min": 3.0,
+    "touch_target_css_px": 44,
+    "lcp_seconds_max": 2.5,
+    "cls_max": 0.1,
+    "inp_milliseconds_max": 200,
+    "lighthouse_performance_min": 90
+  },
+  "canonical_pages": []
+}
