@@ -28,13 +28,14 @@ It may be used to inspect existing technical behaviour, but it is not a design, 
 
 In particular, current navigation labels, legacy responsive breakpoints, prototype copy and rendered event data must not be promoted into new work merely because they exist on the current homepage.
 
-Canonical Implementation v1 has now begun P0-first in an isolated validation fixture rather than by cosmetically refactoring the legacy homepage.
+Canonical Implementation v1 has begun P0-first in an isolated validation fixture rather than by cosmetically refactoring the legacy homepage.
 
 First implementation slice:
 
 - `docs/components/P0_SHELL_NAV_SIG.md` — responsive/accessibility contract for Canonical Shell v1, `SIG-01`, `NAV-01`, `NAV-02`;
 - `assets/css/canonical-shell.css` — canonical shell/component styles;
-- `tests/fixtures/canonical-shell.html` — non-production QA fixture.
+- `tests/fixtures/canonical-shell.html` — non-production QA fixture;
+- `qa/verification/VR-0007-m7-1-shell-runtime.md` — first browser/runtime M7.1 evidence.
 
 The legacy public homepage remains unchanged by this first slice.
 
@@ -50,7 +51,7 @@ Completed/established:
 - M4 — Component Baseline
 - M6 — Asset Specification & Manifest
 - M7 — Responsive Specification
-- M7.1 — Responsive Conformance gate defined; real implementation validation remains pending
+- M7.1 — Responsive Conformance gate defined; first shell runtime validation partially passed, full implementation validation still pending
 - M8 / M8.1 — Definition of Done and governance hardening
 - M9 / M9.1 — QA Checklist and QA Execution Model
 - M10 — GitHub Workflow, hardened to v1.1 and Product Owner approved
@@ -76,10 +77,10 @@ Operational assets now include:
 
 1. The legacy homepage does not yet implement the canonical primary navigation: Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.
 2. The current CSS predates the canonical responsive system and must not be treated as M7-conformant evidence.
-3. M7.1 cannot be fully verified until canonical P0 components complete the required viewport/interaction validation.
-4. Final production typography remains intentionally open pending real HTML fit/readability testing.
-5. `SIG-01`, `NAV-01` and `NAV-02` are now IMPLEMENTED in the QA fixture, but remain pending M7.1 visual/interaction evidence and Product Owner approval.
-6. `SIG-01` currently uses the registered candidate emblem asset; asset provenance/approval remains pending and is not silently promoted by implementation.
+3. M7.1 is not fully verified yet: NAV-02 runtime mechanics have passed the tested matrix, while NAV-01 still needs fit verification with the actual Cinzel-family production candidate and final visual evidence.
+4. Final production typography remains intentionally open pending real HTML fit/readability testing and therefore triggers NAV fit recheck.
+5. `SIG-01`, `NAV-01` and `NAV-02` remain formally IMPLEMENTED, not VERIFIED or APPROVED.
+6. `SIG-01` currently uses the registered candidate emblem asset; asset provenance/approval and real-asset visual review remain pending.
 7. M11 has no production screenshots yet by design: the legacy/prototype homepage must not become the canonical baseline.
 8. M12 `canonical_pages` starts empty by design: legacy/prototype pages and QA fixtures must not be counted as canonical technical compliance.
 9. M12 v1.1 guards against future registry omission: a page carrying `<meta name="ica-status" content="canonical">` must be registered or CI fails.
@@ -88,11 +89,13 @@ Operational assets now include:
 
 ## Current implementation objective
 
-Continue **Canonical Implementation v1**, P0-first, by validating the Canonical Shell v1 slice through M7.1/M9 and then integrating approved P0 components into production structures rather than incrementally polishing legacy patterns.
+Continue **Canonical Implementation v1**, P0-first.
 
-The immediate validation target is `SIG-01` + `NAV-01` + `NAV-02` across the mandatory viewport matrix, including NAV fit at 1024/1100/1180/1280/1440, keyboard/focus, touch targets, short-landscape behaviour and overflow.
+The first shell runtime pass now confirms NAV-02 keyboard path, visible focus, 44px targets, mobile/short-landscape containment and no page-level horizontal overflow across the tested matrix. Conditional NAV-01 geometry also fits at the tested desktop widths, but final fit closure requires the real production-font candidate.
 
-After this shell slice is validated, proceed to the next P0 visual/structural components such as `BNR-01`/`BNR-02`, buttons and headers, then core cards/entity/table/system components.
+Immediate next work should therefore focus on closing the remaining shell evidence efficiently: real `SIG-01` rendering + production-font NAV fit + visual acceptance. Once that is done, the shell slice can be considered for VERIFIED and M11 baseline candidacy.
+
+After shell closure, proceed to the next P0 visual/structural components such as `BNR-01`/`BNR-02`, buttons and headers, then core cards/entity/table/system components.
 
 As canonical components/pages become VERIFIED and are accepted visually, populate `qa/visual-baselines.json`. As canonical public pages become real production candidates, add the M12 canonical marker and the corresponding `qa/technical-baseline.json` entry in the same coherent change.
 
