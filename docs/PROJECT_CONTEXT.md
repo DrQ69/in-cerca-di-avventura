@@ -28,7 +28,15 @@ It may be used to inspect existing technical behaviour, but it is not a design, 
 
 In particular, current navigation labels, legacy responsive breakpoints, prototype copy and rendered event data must not be promoted into new work merely because they exist on the current homepage.
 
-The next production phase should progressively replace legacy patterns with canonical P0 components rather than treating the existing homepage as the target architecture.
+Canonical Implementation v1 has now begun P0-first in an isolated validation fixture rather than by cosmetically refactoring the legacy homepage.
+
+First implementation slice:
+
+- `docs/components/P0_SHELL_NAV_SIG.md` — responsive/accessibility contract for Canonical Shell v1, `SIG-01`, `NAV-01`, `NAV-02`;
+- `assets/css/canonical-shell.css` — canonical shell/component styles;
+- `tests/fixtures/canonical-shell.html` — non-production QA fixture.
+
+The legacy public homepage remains unchanged by this first slice.
 
 ## Governance status
 
@@ -68,24 +76,25 @@ Operational assets now include:
 
 1. The legacy homepage does not yet implement the canonical primary navigation: Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.
 2. The current CSS predates the canonical responsive system and must not be treated as M7-conformant evidence.
-3. M7.1 cannot be fully verified until real canonical P0/P1 components exist and are tested.
+3. M7.1 cannot be fully verified until canonical P0 components complete the required viewport/interaction validation.
 4. Final production typography remains intentionally open pending real HTML fit/readability testing.
-5. Canonical component production has not yet begun in a systematic P0-first sequence.
-6. M11 has no production screenshots yet by design: the legacy/prototype homepage must not become the canonical baseline.
-7. M12 `canonical_pages` starts empty by design: legacy/prototype pages must not be counted as canonical technical compliance.
-8. M12 v1.1 now guards against future registry omission: a page carrying `<meta name="ica-status" content="canonical">` must be registered or CI fails.
-9. Browser/runtime performance and accessibility evidence will be generated progressively with canonical pages; static M12 CI does not pretend to measure Core Web Vitals or full WCAG conformance by itself.
-10. Minimal technical protection of `main` is not yet enforced; GitHub Issue #17 tracks the required admin settings (`ICA baseline QA` required, no force-push, no branch deletion).
+5. `SIG-01`, `NAV-01` and `NAV-02` are now IMPLEMENTED in the QA fixture, but remain pending M7.1 visual/interaction evidence and Product Owner approval.
+6. `SIG-01` currently uses the registered candidate emblem asset; asset provenance/approval remains pending and is not silently promoted by implementation.
+7. M11 has no production screenshots yet by design: the legacy/prototype homepage must not become the canonical baseline.
+8. M12 `canonical_pages` starts empty by design: legacy/prototype pages and QA fixtures must not be counted as canonical technical compliance.
+9. M12 v1.1 guards against future registry omission: a page carrying `<meta name="ica-status" content="canonical">` must be registered or CI fails.
+10. Browser/runtime performance and accessibility evidence will be generated progressively with canonical pages; static M12 CI does not pretend to measure Core Web Vitals or full WCAG conformance by itself.
+11. Minimal technical protection of `main` is not yet enforced; GitHub Issue #17 tracks the required admin settings (`ICA baseline QA` required, no force-push, no branch deletion).
 
 ## Current implementation objective
 
-The foundation phase M0–M12 is complete at system-definition level. The next phase is **Canonical Implementation v1**, P0-first.
+Continue **Canonical Implementation v1**, P0-first, by validating the Canonical Shell v1 slice through M7.1/M9 and then integrating approved P0 components into production structures rather than incrementally polishing legacy patterns.
 
-Begin with the canonical identity/navigation and core P0 component system, then validate real implementation through M7.1/M9/M11/M12 using the M10 workflow rather than incrementally polishing legacy patterns.
+The immediate validation target is `SIG-01` + `NAV-01` + `NAV-02` across the mandatory viewport matrix, including NAV fit at 1024/1100/1180/1280/1440, keyboard/focus, touch targets, short-landscape behaviour and overflow.
+
+After this shell slice is validated, proceed to the next P0 visual/structural components such as `BNR-01`/`BNR-02`, buttons and headers, then core cards/entity/table/system components.
 
 As canonical components/pages become VERIFIED and are accepted visually, populate `qa/visual-baselines.json`. As canonical public pages become real production candidates, add the M12 canonical marker and the corresponding `qa/technical-baseline.json` entry in the same coherent change.
-
-Expected early P0 focus includes brand/navigation, primary banners/headers, core event/player/chronicle cards, entity headers, status badges, results/ranking tables and essential system states, following the approved component inventory embedded in the canonical architecture.
 
 ## Operational rule
 
