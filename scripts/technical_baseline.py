@@ -12,17 +12,31 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "qa" / "technical-baseline.json"
 
+EXPECTED_THRESHOLDS = {
+    "wcag_target": "2.2-AA",
+    "contrast_normal_text_min": 4.5,
+    "contrast_large_text_min": 3.0,
+    "contrast_non_text_ui_min": 3.0,
+    "touch_target_css_px": 44,
+    "lcp_seconds_max": 2.5,
+    "cls_max": 0.1,
+    "inp_milliseconds_max": 200,
+    "lighthouse_performance_min": 90,
+}
 REQUIRED_OG = {"og:title", "og:description", "og:type", "og:url", "og:image"}
+CANONICAL_MARKER_NAME = "ica-status"
+CANONICAL_MARKER_VALUE = "canonical"
 
 
 class PageParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.html_lang: str | None = None
+        self.title_count = 0
         self.title_parts: list[str] = []
         self.in_title = False
-        self.meta: dict[str, str] = {}
-        self.canonical: str | None = None
+        self.meta_values: dict[str, list[str]] = {}
+        self.canonicals: list[str] = []
         self.h1_count = 0
         self.local_refs: list[tuple[str, str]] = []
         self.images_missing_alt = 0
@@ -34,15 +48,16 @@ class PageParser(HTMLParser):
         if tag == "html":
             self.html_lang = data.get("lang") or None
         elif tag == "title":
+            self.title_count += 1
             self.in_title = True
         elif tag == "meta":
             key = data.get("name") or data.get("property")
             if key:
-                self.meta[key.lower()] = data.get("content", "").strip()
+                self.meta_values.setdefault(key.lower(), []).append(data.get("content", "").strip())
             if "charset" in data:
-                self.meta["charset"] = data.get("charset", "").strip()
-        elif tag == "link" and data.get("rel", "").lower() == "canonical":
-            self.canonical = data.get("href") or None
+                self.meta_values.setdefault("charset", []).append(data.get("charset", "").strip())
+        elif tag == "link" and "canonical" in data.get("rel", "").lower().split():
+            self.canonicals.append(data.get("href", "").strip())
         elif tag == "h1":
             self.h1_count += 1
         elif tag == "img":
@@ -69,6 +84,17 @@ class PageParser(HTMLParser):
     def title(self) -> str:
         return "".join(self.title_parts).strip()
 
+    def values(self, key: str) -> list[str]:
+        return self.meta_values.get(key.lower(), [])
+
+    def one(self, key: str) -> str:
+        values = self.values(key)
+        return values[0] if values else ""
+
+    @property
+    def is_canonical_marked(self) -> bool:
+        return any(v.lower() == CANONICAL_MARKER_VALUE for v in self.values(CANONICAL_MARKER_NAME))
+
 
 def is_local(value: str) -> bool:
     if not value or value.startswith(("#", "data:", "mailto:", "tel:")):
@@ -84,18 +110,72 @@ def resolve_local(page_path: Path, value: str) -> Path:
     return (page_path.parent / clean).resolve()
 
 
+def load_parser(page: Path) -> tuple[PageParser | None, str | None]:
+    parser = PageParser()
+    try:
+        parser.feed(page.read_text(encoding="utf-8"))
+        return parser, None
+    except Exception as exc:
+        return None, str(exc)
+
+
 def validate_registry(data: object) -> list[str]:
     errors: list[str] = []
     if not isinstance(data, dict):
         return ["qa/technical-baseline.json must contain an object"]
-    if data.get("schema_version") != 1:
-        errors.append("qa/technical-baseline.json schema_version must be 1")
+    if data.get("schema_version") != 2:
+        errors.append("qa/technical-baseline.json schema_version must be 2")
     if data.get("document_id") != "ICA-TECH-001":
         errors.append("qa/technical-baseline.json document_id must be ICA-TECH-001")
-    if not isinstance(data.get("thresholds"), dict):
+
+    thresholds = data.get("thresholds")
+    if not isinstance(thresholds, dict):
         errors.append("qa/technical-baseline.json thresholds must be an object")
-    if not isinstance(data.get("canonical_pages"), list):
+    else:
+        for key, expected in EXPECTED_THRESHOLDS.items():
+            if key not in thresholds:
+                errors.append(f"qa/technical-baseline.json thresholds missing {key}")
+            elif thresholds[key] != expected:
+                errors.append(
+                    f"qa/technical-baseline.json threshold {key} must be {expected!r}, found {thresholds[key]!r}"
+                )
+        extra = sorted(set(thresholds) - set(EXPECTED_THRESHOLDS))
+        if extra:
+            errors.append(f"qa/technical-baseline.json has unsupported threshold key(s): {', '.join(extra)}")
+
+    pages = data.get("canonical_pages")
+    if not isinstance(pages, list):
         errors.append("qa/technical-baseline.json canonical_pages must be a list")
+        return errors
+
+    for field in ("object_id", "path", "canonical_url"):
+        seen: dict[str, int] = {}
+        for index, entry in enumerate(pages, start=1):
+            if isinstance(entry, dict) and isinstance(entry.get(field), str):
+                value = entry[field].strip().rstrip("/") if field == "canonical_url" else entry[field].strip()
+                if value:
+                    if value in seen:
+                        errors.append(
+                            f"canonical_pages duplicate {field} {value!r} in entries {seen[value]} and {index}"
+                        )
+                    else:
+                        seen[value] = index
+    return errors
+
+
+def validate_marked_pages(registered_paths: set[str]) -> list[str]:
+    errors: list[str] = []
+    for page in ROOT.rglob("*.html"):
+        if ".git" in page.parts:
+            continue
+        parser, parse_error = load_parser(page)
+        if parse_error:
+            continue
+        assert parser is not None
+        if parser.is_canonical_marked:
+            rel = page.relative_to(ROOT).as_posix()
+            if rel not in registered_paths:
+                errors.append(f"{rel}: canonical marker present but page is not registered in qa/technical-baseline.json")
     return errors
 
 
@@ -107,15 +187,26 @@ def validate_page(entry: object, index: int) -> list[str]:
     path_value = entry.get("path")
     canonical_url = entry.get("canonical_url")
     object_id = entry.get("object_id")
+    lang = entry.get("lang")
+    indexable = entry.get("indexable")
+    shareable = entry.get("shareable")
 
     if not isinstance(path_value, str) or not path_value.strip():
         return [f"canonical_pages entry {index} missing non-empty path"]
+    path_value = path_value.strip().lstrip("/")
+
     if not isinstance(canonical_url, str) or not canonical_url.startswith("https://"):
         errors.append(f"{path_value}: canonical_url must be absolute HTTPS")
     if not isinstance(object_id, str) or not object_id.strip():
         errors.append(f"{path_value}: object_id must be non-empty")
+    if not isinstance(lang, str) or not lang.strip():
+        errors.append(f"{path_value}: lang must be non-empty")
+    if not isinstance(indexable, bool):
+        errors.append(f"{path_value}: indexable must be boolean")
+    if not isinstance(shareable, bool):
+        errors.append(f"{path_value}: shareable must be boolean")
 
-    page = ROOT / path_value.lstrip("/")
+    page = ROOT / path_value
     if not page.exists():
         errors.append(f"{path_value}: registered canonical page file does not exist")
         return errors
@@ -123,35 +214,51 @@ def validate_page(entry: object, index: int) -> list[str]:
         errors.append(f"{path_value}: registered canonical page must be an .html file")
         return errors
 
-    parser = PageParser()
-    try:
-        parser.feed(page.read_text(encoding="utf-8"))
-    except Exception as exc:
-        errors.append(f"{path_value}: HTML parse/read failed: {exc}")
+    parser, parse_error = load_parser(page)
+    if parse_error:
+        errors.append(f"{path_value}: HTML parse/read failed: {parse_error}")
         return errors
+    assert parser is not None
 
-    if not parser.html_lang:
-        errors.append(f"{path_value}: missing html lang")
-    if parser.meta.get("charset", "").lower() != "utf-8":
-        errors.append(f"{path_value}: missing UTF-8 charset")
-    if not parser.meta.get("viewport"):
-        errors.append(f"{path_value}: missing viewport meta")
-    if not parser.title:
-        errors.append(f"{path_value}: missing non-empty title")
-    if not parser.meta.get("description"):
-        errors.append(f"{path_value}: missing meta description")
+    if not parser.is_canonical_marked:
+        errors.append(f"{path_value}: registered page missing canonical marker meta")
+    if isinstance(lang, str) and parser.html_lang != lang:
+        errors.append(f"{path_value}: html lang must match registry lang {lang!r}; found {parser.html_lang!r}")
+
+    charset_values = parser.values("charset")
+    if len(charset_values) != 1 or charset_values[0].lower() != "utf-8":
+        errors.append(f"{path_value}: expected exactly one UTF-8 charset declaration")
+    if len(parser.values("viewport")) != 1 or not parser.one("viewport"):
+        errors.append(f"{path_value}: expected exactly one non-empty viewport meta")
+    if parser.title_count != 1 or not parser.title:
+        errors.append(f"{path_value}: expected exactly one non-empty title, found {parser.title_count}")
     if parser.h1_count != 1:
         errors.append(f"{path_value}: expected exactly one h1, found {parser.h1_count}")
-    if not parser.canonical:
-        errors.append(f"{path_value}: missing canonical link")
-    elif not parser.canonical.startswith("https://"):
-        errors.append(f"{path_value}: canonical link must use HTTPS")
-    elif isinstance(canonical_url, str) and parser.canonical.rstrip("/") != canonical_url.rstrip("/"):
-        errors.append(f"{path_value}: canonical link does not match registry canonical_url")
 
-    missing_og = sorted(name for name in REQUIRED_OG if not parser.meta.get(name))
-    if missing_og:
-        errors.append(f"{path_value}: missing Open Graph metadata: {', '.join(missing_og)}")
+    if indexable is True:
+        descriptions = parser.values("description")
+        if len(descriptions) != 1 or not descriptions[0]:
+            errors.append(f"{path_value}: indexable page requires exactly one non-empty meta description")
+        if len(parser.canonicals) != 1:
+            errors.append(f"{path_value}: indexable page requires exactly one canonical link")
+        else:
+            canonical = parser.canonicals[0]
+            if not canonical.startswith("https://"):
+                errors.append(f"{path_value}: canonical link must use HTTPS")
+            elif isinstance(canonical_url, str) and canonical.rstrip("/") != canonical_url.rstrip("/"):
+                errors.append(f"{path_value}: canonical link does not match registry canonical_url")
+
+    if shareable is True:
+        missing_og = sorted(name for name in REQUIRED_OG if len(parser.values(name)) != 1 or not parser.one(name))
+        if missing_og:
+            errors.append(f"{path_value}: missing/duplicated Open Graph metadata: {', '.join(missing_og)}")
+        og_url = parser.one("og:url")
+        if isinstance(canonical_url, str) and og_url and og_url.rstrip("/") != canonical_url.rstrip("/"):
+            errors.append(f"{path_value}: og:url must match registry canonical_url")
+        og_image = parser.one("og:image")
+        if og_image and not og_image.startswith("https://"):
+            errors.append(f"{path_value}: og:image must be absolute HTTPS")
+
     if parser.images_missing_alt:
         errors.append(f"{path_value}: {parser.images_missing_alt} img element(s) missing alt attribute")
 
@@ -185,7 +292,12 @@ def main() -> int:
 
     errors = validate_registry(data)
     pages = data.get("canonical_pages", []) if isinstance(data, dict) else []
+    registered_paths: set[str] = set()
     if isinstance(pages, list):
+        for entry in pages:
+            if isinstance(entry, dict) and isinstance(entry.get("path"), str):
+                registered_paths.add(entry["path"].strip().lstrip("/"))
+        errors.extend(validate_marked_pages(registered_paths))
         for index, entry in enumerate(pages, start=1):
             errors.extend(validate_page(entry, index))
 
@@ -196,7 +308,7 @@ def main() -> int:
         return 1
 
     print("ICA technical baseline: PASS")
-    print("- registry structure valid")
+    print("- registry structure and thresholds valid")
     print(f"- canonical pages checked: {len(pages) if isinstance(pages, list) else 0}")
     if not pages:
         print("- canonical coverage pending: legacy/prototype pages are intentionally not registered")

@@ -117,7 +117,7 @@ For canonical public pages, production technical claims or releases, also use:
 - `docs/TECHNICAL_BASELINE.md`
 - `qa/technical-baseline.json`
 
-Canonical production UI targets WCAG 2.2 AA and the measurable M12 thresholds. Deterministic M12 page checks apply to routes registered in `qa/technical-baseline.json`; do not omit a real canonical production candidate merely to bypass the checks.
+Canonical production UI targets WCAG 2.2 AA and the measurable M12 thresholds. When a page becomes a real canonical production candidate, add `<meta name="ica-status" content="canonical">` and register it in `qa/technical-baseline.json` in the same coherent change. Never use omission from the registry to bypass M12.
 
 Select one primary QA Profile from M9.1 and only the applicable families/check IDs.
 
@@ -153,7 +153,7 @@ For a non-trivial task:
 8. preserve approved architecture, IDs, data ownership and terminology;
 9. run the applicable responsive/accessibility/QA checks;
 10. when approved visual baselines are affected, capture/compare the relevant visual states and classify differences under M11;
-11. when canonical pages or release technical behaviour are affected, apply M12 deterministic and runtime checks;
+11. when canonical pages or release technical behaviour are affected, apply M12 deterministic and runtime checks using its measurement protocol;
 12. verify referenced assets and paths actually exist/render;
 13. create/attach structured verification evidence when claiming `VERIFIED`;
 14. record defects/exceptions and any `RECHECK_REQUIRED` impact;

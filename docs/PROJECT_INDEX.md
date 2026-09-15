@@ -65,7 +65,7 @@ Operational records never override Layer 1 or Layer 2 rules.
 | Modify code/technical implementation | Canonical technical constraints + QAP-CODE + affected specialist systems + GitHub Workflow + Technical Baseline when applicable |
 | Compare or update approved visual appearance | Visual Regression + relevant Design/Responsive rules + applicable QA profile |
 | Create/replace a visual baseline | Visual Regression + Verification Record + Product Owner baseline approval |
-| Register/verify a canonical public page | Technical Baseline + QAP-PAG + M7.1 + M11 when visual baselines apply |
+| Register/verify a canonical public page | Technical Baseline + QAP-PAG + M7.1 + M11 when visual baselines apply; add canonical marker + registry entry together |
 | Claim VERIFIED | DoD + QA Checklist + QA Execution Model + Verification Record |
 | Claim APPROVED | Product Owner decision required; DoD/M8.1 applies |
 | Open/prepare/merge non-trivial PR | GitHub Workflow + relevant DoD/QA records |
@@ -106,7 +106,8 @@ Regardless of task:
 - no Critical/High defect is acceptable for production readiness;
 - AI/developers may verify, but only the Product Owner may approve unless a future written delegation exists;
 - legacy/prototype UI must not be frozen into M11 production baselines or registered as M12 canonical-page coverage merely because it is public;
-- canonical production UI targets WCAG 2.2 AA and the measurable thresholds defined by M12.
+- canonical production UI targets WCAG 2.2 AA and the measurable thresholds defined by M12;
+- a real canonical production-candidate page must carry the M12 canonical marker and be registered in the same coherent change.
 
 ## 6. Current milestone state
 
@@ -120,7 +121,7 @@ Current governance/foundation position:
 - M9/M9.1 QA system is established;
 - M10 GitHub Workflow is established;
 - M11 Visual Regression system is established, while production baseline coverage waits for canonical components/pages;
-- M12 Technical Baseline system is established, while canonical-page compliance coverage begins with Canonical Implementation v1.
+- M12 Technical Baseline v1.1 is VERIFIED at system level and awaits explicit Product Owner APPROVED status; canonical-page compliance begins with Canonical Implementation v1.
 
 ## 7. Lifecycle language
 
