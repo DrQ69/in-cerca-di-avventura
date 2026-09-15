@@ -1,161 +1,77 @@
 # Project Context — In Cerca di Avventura
 
-## Mission
+**Purpose:** current operational state only. This file is not a product specification and must not duplicate or override canonical rules.
 
-**In Cerca di Avventura** is an Italian community hub dedicated to **Sorcery: Contested Realm**. The site should bring together events, league information, results, player identities and community partnerships in a coherent fantasy world rather than feeling like a generic event portal.
+For product, information architecture, content model, design, component, asset, responsive, completion or QA rules, use `docs/PROJECT_INDEX.md` to route to the authoritative document.
 
-Public site:
+## Current repository state
 
-`https://drq69.github.io/in-cerca-di-avventura/`
+- Public site: `https://drq69.github.io/in-cerca-di-avventura/`
+- Repository: `DrQ69/in-cerca-di-avventura`
+- Production branch: `main`
+- Hosting: GitHub Pages
+- Current stack: static HTML, shared CSS, lightweight JavaScript
+- No framework, package-manager requirement, CMS, backend, database or authentication
 
-Repository:
+Current implementation entry points:
 
-`DrQ69/in-cerca-di-avventura`
+- `index.html`
+- `assets/css/style.css`
+- `assets/js/main.js`
+- `assets/manifest.json`
 
-## Current technical state
+## Implementation status
 
-The project is intentionally simple:
+The current public markup/CSS predates the canonical ICA architecture and is therefore a **legacy/prototype implementation**.
 
-- static GitHub Pages site;
-- `index.html` as the current main page;
-- shared CSS in `assets/css/style.css`;
-- shared JavaScript in `assets/js/main.js`;
-- image assets under `assets/`;
-- no framework;
-- no build step;
-- no backend;
-- no database.
+It may be used to inspect existing technical behaviour, but it is not a design, IA, responsive or component precedent for new canonical work.
 
-This simplicity should be preserved until product requirements make a more complex architecture worthwhile.
+In particular, current navigation labels, legacy responsive breakpoints, prototype copy and rendered event data must not be promoted into new work merely because they exist on the current homepage.
 
-## Product areas
+The next production phase should progressively replace legacy patterns with canonical P0 components rather than treating the existing homepage as the target architecture.
 
-### Home
+## Governance status
 
-The homepage introduces the identity of In Cerca di Avventura and gives immediate access to the principal areas of the project.
+Completed/established:
 
-### Eventi
+- M0 — Governance / Canonical Specification
+- M1 — Vision Lock
+- M2 — Information Architecture Lock
+- M5 — Content Model Lock
+- M3 — Design Foundation
+- M4 — Component Baseline
+- M6 — Asset Specification & Manifest
+- M7 — Responsive Specification
+- M7.1 — Responsive Conformance gate defined; real implementation validation remains pending
+- M8 / M8.1 — Definition of Done and governance hardening
+- M9 / M9.1 — QA Checklist and QA Execution Model
 
-Event cards/pages should eventually contain real event information such as date, format, venue, timing, registration information and links to results after the event.
+Next planned milestone:
 
-**Important:** existing event information in the current homepage must not automatically be considered verified. Some values were introduced during early prototyping. Before publishing or expanding event data, confirm the source data with the project owner.
+- M10 — GitHub Workflow
 
-### Lega
+Then:
 
-A key league is **Blaze of Glory — La Lega di Cremos**, identified as the **Prima Era 2026/2027**.
+- M11 — Visual Regression
+- M12 — Technical Baseline
 
-The league area is expected to evolve toward:
+## Current known gaps
 
-- calendar/tappe;
-- formats;
-- rules;
-- standings;
-- scoring system;
-- links to event results;
-- season finale information.
+1. The legacy homepage does not yet implement the canonical primary navigation: Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.
+2. The current CSS predates the canonical responsive system and must not be treated as M7-conformant evidence.
+3. M7.1 cannot be fully verified until real canonical P0/P1 components exist and are tested.
+4. Final production typography remains intentionally open pending real HTML fit/readability testing.
+5. M10–M12 are not yet implemented.
+6. Canonical component production has not yet begun in a systematic P0-first sequence.
 
-Do not publish detailed dates, fees, prizes or rules unless they are explicitly confirmed.
+## Current implementation objective
 
-### Risultati
+After M10–M12, begin the canonical implementation with the P0 system and verify it through M7.1/M9 rather than incrementally polishing legacy patterns.
 
-Each event should eventually have a result view containing, where available:
+Expected early P0 focus includes brand/navigation, primary banners/headers, core event/player/chronicle cards, entity headers, status badges, results/ranking tables and essential system states, following the approved component inventory embedded in the canonical architecture.
 
-- final standings;
-- wins/losses or event record;
-- placement;
-- format;
-- prizes/achievements;
-- links to participant profiles.
+## Operational rule
 
-### Avventurieri
+Use this file only to answer **“what exists now, what is legacy, what is pending, and what comes next?”**
 
-Players are presented in-world as **Avventurieri**.
-
-The long-term concept is a fantasy character-sheet style profile, potentially including:
-
-- name or nickname;
-- fantasy caricature/portrait;
-- most-played Sorcery Avatar;
-- city/community when appropriate;
-- events played;
-- wins and podiums;
-- overall record;
-- titles/achievements;
-- preferred decks/archetypes;
-- result history;
-- badges or notable accomplishments.
-
-The player profile should feel like a character sheet from a fantasy campaign, but the information itself must remain clear and easy to scan.
-
-### Alleanze Dinastiche
-
-Partnerships are framed as **Alleanze**.
-
-Current conceptual categories:
-
-- **Mercanti & Botteghe** — stores and sellers;
-- **Community Italiane** — Italian communities and organizers;
-- **Alleanze Oltreconfine** — international communities and partners.
-
-A future alliance card may contain crest/logo, name, city/country, short description and destination link.
-
-### Community
-
-The site also represents the broader In Cerca di Avventura identity: art, collecting, events, stories and community activity around Sorcery: Contested Realm.
-
-## Information architecture
-
-The preferred long-term relationship is:
-
-**Eventi → Risultati → Avventurieri**
-
-An event creates a result set; result rows reference players; player names link back to persistent Avventuriero profiles.
-
-Avoid creating duplicated player information separately inside every event page when the same information belongs in the persistent profile.
-
-## Content integrity
-
-This project should distinguish clearly between:
-
-- confirmed factual data;
-- placeholders/demo copy;
-- future concepts.
-
-Rules:
-
-1. Do not invent event data, partner names, results, standings, prizes or player statistics.
-2. Do not infer that prototype text is confirmed simply because it is currently rendered on the live site.
-3. When source information is incomplete, use an explicit placeholder or ask for confirmation rather than fabricating details.
-4. Preserve Italian as the primary public language unless a page is explicitly intended to be bilingual/international.
-
-## Architecture guidance
-
-For the near term, continue with static HTML/CSS/JS.
-
-Consider a static-site generator such as Astro or Eleventy only when repeated page creation becomes genuinely burdensome, for example when:
-
-- many Avventuriero profiles must be maintained;
-- event/result pages become numerous;
-- shared templates are being copied manually;
-- structured content needs to generate multiple pages.
-
-A true backend/database should come later and only if required by features such as account login, self-service registration, live standings, multi-user editorial workflows or frequent data updates.
-
-## Development workflow
-
-- `main` is production and deploys to GitHub Pages.
-- Use a dedicated feature/chore branch for changes.
-- Prefer one coherent PR per work block.
-- Before merging UI changes, verify desktop and mobile rendering.
-- Check that referenced assets exist and actually render, not merely that the HTTP request succeeds.
-- Keep PR descriptions explicit about assumptions and provisional content.
-
-## Near-term roadmap
-
-1. Maintain a stable technical foundation.
-2. Consolidate design language and reusable visual components.
-3. Replace prototype event data with confirmed information.
-4. Refine Home/Eventi/Lega sections.
-5. Define the first real Avventuriero character-sheet template.
-6. Define reusable Results and Alliance card patterns.
-7. Reassess whether static HTML remains sufficient before introducing new technology.
+If this file conflicts with `docs/ICA_CANONICAL_SPEC.md` or an approved specialist specification, it is stale and must be updated; it never wins the conflict.

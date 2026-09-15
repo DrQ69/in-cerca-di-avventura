@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-CANON-001  
 **Status:** Canonical  
-**Version:** 1.0  
+**Version:** 1.1  
 **Purpose:** single source of truth for product, content, design, asset and implementation decisions.
 
 > If another repository document, prototype, screenshot, generated image, placeholder, previous asset kit or AI conversation conflicts with this file, this file wins unless the Product Owner explicitly approves a newer decision and this file is updated.
@@ -389,9 +389,15 @@ Examples:
 
 **Important:** `FRM` is reserved for forms. Use `BOR` for visual frames/borders.
 
-### Component lifecycle
+### Formal object lifecycle
 
-`CONCEPT -> SPECIFIED -> DESIGNED -> IMPLEMENTED -> QA -> APPROVED -> DEPRECATED`
+ICA uses one formal lifecycle across components and other governed objects:
+
+`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED -> DEPRECATED`
+
+`CONCEPT`, `DESIGNED` and `QA IN PROGRESS` may be used as workflow labels, but they are not additional formal lifecycle states.
+
+AI agents, automated checks and developers may support/recommend `VERIFIED`; only the Product Owner may assign `APPROVED` unless a future written delegation explicitly grants authority.
 
 An AI-generated image is never automatically an approved component.
 
@@ -500,16 +506,19 @@ Prefer semantic HTML, reusable CSS classes, shared tokens and data structures ov
 
 ## 11. Responsive baseline
 
-Every substantial UI change must be checked at minimum around:
+Canonical responsive width boundaries are defined by `docs/RESPONSIVE_SPECIFICATION.md`:
 
-- 1440px desktop;
-- 1280px desktop/laptop where relevant;
-- 1024px tablet/compact desktop where relevant;
-- 768px tablet;
-- 390px mobile;
-- 360px small mobile for critical navigation/layout.
+- 480px;
+- 768px;
+- 1024px;
+- 1280px;
+- 1536px.
 
-No horizontal overflow is acceptable unless explicitly required by a deliberate data-table interaction pattern.
+Required QA width coverage includes 360, 390, 768, 1024, 1280, 1440 and 1920px where applicable, plus relevant short-landscape/orientation tests.
+
+Component-specific local breakpoints are allowed only when a documented fit failure justifies them.
+
+No page-level horizontal overflow is acceptable unless explicitly required by a deliberate contained data-table interaction pattern.
 
 ---
 
@@ -551,14 +560,14 @@ Narrative copy may be evocative, solemn or lightly ironic, but must not become o
 Before any non-trivial change:
 
 1. read this canonical specification;
-2. inspect the current repository state and relevant implementation files;
-3. identify affected entities/components/assets;
-4. state assumptions and unknowns;
-5. make the smallest coherent change;
-6. preserve approved architecture, data ownership and component IDs;
-7. test desktop and mobile when UI changes;
-8. verify that referenced assets actually exist and render;
-9. check accessibility basics;
+2. use `docs/PROJECT_INDEX.md` to select the specialist specifications required by the task;
+3. inspect the current repository state and relevant implementation files;
+4. identify affected entities/components/assets;
+5. state assumptions and unknowns;
+6. make the smallest coherent change;
+7. preserve approved architecture, data ownership and component IDs;
+8. run applicable responsive/accessibility/QA checks;
+9. verify that referenced assets actually exist and render;
 10. summarise exactly what changed and any remaining uncertainty.
 
 ### Never silently reinterpret a locked decision
@@ -567,20 +576,28 @@ If a task appears to require breaking a locked decision, stop and surface the co
 
 ---
 
-## 15. Definition of Done — interim baseline
+## 15. Completion and QA model
 
-Until the dedicated QA/DoD milestone replaces this section, a UI/content change is not complete unless:
+The dedicated completion and QA systems supersede the former interim Definition of Done.
 
-- it follows this specification;
-- factual content is verified or explicitly provisional;
-- component naming is consistent;
-- desktop and mobile behaviour are checked;
-- no accidental overflow or broken layout is introduced;
-- assets resolve and render;
-- text remains accessible HTML where appropriate;
-- focus/keyboard behaviour is not broken;
-- no new visual language is introduced without approval;
-- the change is documented in the PR/commit summary.
+Use:
+
+- `docs/DEFINITION_OF_DONE.md`;
+- `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`;
+- `docs/QA_CHECKLIST.md`;
+- `docs/M9_1_QA_EXECUTION_MODEL.md`.
+
+Formal lifecycle:
+
+`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED -> DEPRECATED`
+
+Release readiness is separate:
+
+`NOT_READY -> STAGING_READY -> PRODUCTION_READY`
+
+A merged PR is not automatic evidence of VERIFIED, APPROVED or PRODUCTION_READY.
+
+Non-trivial verification requires current structured evidence. No Critical or High defect is acceptable for production readiness.
 
 ---
 
@@ -603,6 +620,7 @@ The following are locked until explicitly changed by the Product Owner and docum
 - UI is disciplined; art may be expressive and painterly.
 - Historical Heraldry Kit is ignored.
 - Static HTML/CSS/JS remains the current technical baseline.
+- Responsive architecture follows the approved M7 specification and is verified through M7.1/M9 evidence rather than legacy CSS assumptions.
 
 ---
 
@@ -612,8 +630,8 @@ Do not invent final answers for these until explicitly approved:
 
 - final production font pairing;
 - final exact colour token values after in-browser validation;
-- final responsive breakpoint values beyond the test baseline;
 - final production dimensions for individual banner/button/frame assets;
+- content-driven NAV-01 desktop activation width if real production-fit testing requires a local breakpoint above 1024px;
 - future search implementation;
 - future CMS/static-site-generator decision;
 - future account, marketplace, sponsorship or payment architecture.
