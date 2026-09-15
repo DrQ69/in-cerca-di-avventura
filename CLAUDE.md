@@ -166,10 +166,14 @@ Key rules:
 - use GitHub Issues only for defects that survive the work block or need durable ownership/history;
 - use `docs/EXCEPTION_REGISTER.md` for accepted exceptions;
 - required baseline CI must pass before merge;
+- use **squash merge by default**;
+- record immutable tested/merged SHAs in Verification Records when repository state is part of the claim;
 - merge does not itself assign VERIFIED, APPROVED or PRODUCTION_READY;
 - do not overwrite newer approved work knowingly.
 
-Agents should perform routine Git mechanics automatically when the requested task authorises implementation/integration. Do not make the Product Owner orchestrate branch/PR procedure manually.
+For repository-specific tasks, instructions such as **“procedi”**, **“implementa”**, **“fai le modifiche”** or equivalent authorise the normal branch -> QA -> PR -> squash-merge flow when no new Product Owner decision is required and all merge gates pass. Stop instead of guessing when a locked decision, material ambiguity or approval/exception decision is encountered.
+
+The target `main` protection is minimal: require `ICA baseline QA`, prohibit force-push and prohibit branch deletion. If the connected agent cannot administer branch protection, track that gap explicitly rather than pretending it is enforced.
 
 ## 10. Product Owner interaction goal
 
