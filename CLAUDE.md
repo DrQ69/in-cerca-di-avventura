@@ -1,148 +1,162 @@
 # In Cerca di Avventura — Agent Instructions
 
-This repository powers the Italian Sorcery: Contested Realm community ecosystem **In Cerca di Avventura**.
+This repository powers **In Cerca di Avventura (ICA)**, the Italian Sorcery: Contested Realm community ecosystem.
 
-## Mandatory reading order
+## 1. Start here
 
-Before any non-trivial task, read:
+For every non-trivial task:
 
-1. `docs/ICA_CANONICAL_SPEC.md` — **authoritative source of truth**.
-2. `docs/PROJECT_CONTEXT.md` — current project/implementation context.
-3. `docs/DESIGN_SYSTEM.md` — visual implementation guidance.
-4. `docs/DEFINITION_OF_DONE.md` and `docs/M8_1_DOD_GOVERNANCE_HARDENING.md` — completion, verification, approval, readiness, evidence and exception rules.
-5. `docs/QA_CHECKLIST.md` and `docs/M9_1_QA_EXECUTION_MODEL.md` — operational QA checks and execution rules.
-6. For any task that creates, edits, renames, optimises, selects or integrates visual assets: `docs/ASSET_SPECIFICATION.md` and `assets/manifest.json`.
-7. For any task that affects layout, navigation, component composition, spacing, responsive imagery, tables, mobile/tablet behaviour or UI implementation: `docs/RESPONSIVE_SPECIFICATION.md` and `docs/M7_1_RESPONSIVE_CONFORMANCE.md`.
-8. For responsive validation, use `tests/fixtures/responsive-stress.json` as synthetic stress content. Never publish fixture values as factual ICA data.
-9. The specific source files/data relevant to the task.
+1. read `docs/PROJECT_INDEX.md`;
+2. use it to select the **minimum sufficient authoritative documents** for the task;
+3. inspect the actual repository files/data you will change;
+4. do not rely on chat history, prototypes or legacy implementation as higher authority than the repository specifications.
 
-If these documents conflict, **`docs/ICA_CANONICAL_SPEC.md` wins** unless the Product Owner explicitly approves a newer decision and the repository documentation is updated. Specialist specifications refine the canonical rules but may not override them.
+`docs/ICA_CANONICAL_SPEC.md` remains the authoritative project specification.
 
-Do not use chat history, generated images, prototype copy or historical local asset kits as higher authority than the canonical specification.
+If documents conflict, follow the authority hierarchy defined there.
 
-## Core operating rules
+## 2. Core non-negotiables
 
-- Treat `main` as production. Work on a dedicated branch and use a PR for coherent changes.
-- Inspect the current repository and relevant files before editing.
-- Never invent events, results, standings, dates, prices, partners, player data, card data or editorial facts.
-- Prototype/demo content is not verified source data merely because it is currently rendered.
-- For Sorcery rules/terminology, rely on an approved authoritative source such as the supplied official rulebook.
-- Preserve the current simple stack: static HTML, shared CSS and lightweight JavaScript unless a documented requirement justifies more.
-- Do not introduce frameworks, build tools, package managers, CMS, backend, database or authentication without explicit approval.
+- ICA is dedicated exclusively to **Sorcery: Contested Realm**.
+- Never invent events, dates, fees, results, standings, prizes, partners, player data, card data or editorial facts.
+- Prototype/demo content is not factual merely because it is rendered.
+- Public Avventuriero identity is **nickname-only**.
+- **Avventuriero** = community player; **Avatar** = Sorcery card. Never conflate them.
+- Sorcery decks use **Avatar + Atlas + Spellbook**.
+- Primary navigation is exactly: **Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio**.
+- The ICA emblem/sigil links Home; do not add a redundant Home navigation item.
+- Narrative language may enrich facts but never alter or obscure them.
 - Preserve the official ICA emblem unless explicitly asked to modify it.
-- Keep essential navigation and copy as accessible HTML rather than baking it into raster images.
-- Prefer reusable components/classes/tokens to one-off implementations.
-- Preserve semantic HTML, readable contrast, visible focus, useful alt text and keyboard operability.
-- Responsive work must be intentionally designed; mobile is not merely a scaled desktop.
-- Use the canonical breakpoints and responsive contracts defined in `docs/RESPONSIVE_SPECIFICATION.md`; do not invent arbitrary breakpoints without documenting a component-specific need.
-- M7 is **Specification Approved — Implementation Validation Pending** until the M7.1 gate passes. Do not describe responsive behaviour as verified merely because the written specification exists.
-- The current legacy CSS/markup predates the canonical IA and M7. Do not copy its 620/900px breakpoints into new canonical components by default.
-- Every P0/P1 component must have a responsive contract and pass the relevant M7.1 viewport/content stress checks before being treated as verified.
-- For P0/P1 primary/repeated controls, a 44 × 44 CSS px target is mandatory unless a documented QA-approved exception exists.
-- ICA mobile compositions must preserve at least one strong ICA identity anchor per major block while still prioritising readability and accessibility.
-- If a request conflicts with a locked decision, surface the conflict before changing the system.
-- For asset work, do not create a new binary until its role, component/entity relation, filename/path, status, accessibility classification and provenance expectations are clear in the M6 asset system.
-- A generated reference sheet is not a production asset and must never be sliced into production files.
-- Never call work “done”, “approved”, “verified” or “production-ready” merely because it exists or was merged. Apply the M8/M8.1 governance rules and use only the state supported by evidence.
-- Only the Product Owner may assign `APPROVED` unless a future written delegation matrix explicitly grants authority for a defined object class.
-- AI agents/developers may implement, test and reach/recommend `VERIFIED`, but may not self-approve.
-- `STAGING_READY` and `PRODUCTION_READY` are release-readiness properties, not lifecycle states. A VERIFIED object is not automatically production-ready.
-- No Critical or High defect is acceptable for production readiness.
-- For non-trivial verification, select an M9.1 QA Profile, then the applicable M9 families/check IDs.
-- M9 check results are only `PASS`, `FAIL`, `N/A`, or `BLOCKED`; every `N/A` requires rationale.
-- Apply `test once, reference many`: reuse prior evidence only when version, dependencies and environment still support the claim and no `RECHECK_REQUIRED` trigger applies.
-- Classify QA evidence as `manual`, `automated`, or `hybrid` when recording verification.
-- Store non-sensitive QA evidence using the conventions in `qa/evidence/README.md`.
-- Record all exceptions in `docs/EXCEPTION_REGISTER.md`; no exception is valid if it exists only in chat history or an untracked note.
-- When a material dependency changes, flag affected approved objects as `RECHECK_REQUIRED` and rerun only the affected checks plus necessary regression checks.
-- Release verification must review cumulative Medium defects and escalate systemic combined risk when appropriate.
-
-## Locked product structure
-
-Primary navigation:
-
-- Imprese
-- Campagne
-- Avventurieri
-- Cronache
-- Il Reame
-- Archivio
-
-The logo/emblem returns to Home.
-
-Key relationships are entity-based rather than duplicated page copy. Important UI relations should be navigable in both directions when useful.
-
-## Locked content principles
-
-- ICA is dedicated exclusively to Sorcery: Contested Realm.
-- Public Avventuriero profiles use nickname-only identity.
-- Initial administration is centralised; there are no public accounts or self-service profiles.
-- Results use final position plus W/L/D; round-by-round MATCH data is not part of v1.
-- Each Campagna may have its own scoring rules.
-- Sorcery decks are modelled as Avatar + Atlas + Spellbook, not as a generic TCG deck.
-- Narrative language may reinterpret real activity but must never alter facts.
 - The historical Heraldry Kit is out of scope and must be ignored.
+- Important navigation, headings, controls and factual copy remain accessible HTML where practical.
+- Accessibility and factual clarity take precedence over ornament.
+- Static HTML + shared CSS + lightweight JavaScript + GitHub Pages remain the technical baseline until a documented requirement justifies change.
+- Do not introduce frameworks, CMS, backend, database, authentication, package-manager/build requirements or major dependencies without explicit approval.
 
-## Responsive baseline
+## 3. Current implementation status
 
-Canonical width boundaries are **480 / 768 / 1024 / 1280 / 1536 px** using a mobile-first strategy.
+The current `index.html` and legacy CSS/markup predate the canonical ICA architecture.
 
-Grid progression is **4 / 8 / 12 columns**. Main content max width is **1280 px** and editorial reading width target is **720 px**.
+Treat them as **legacy/prototype implementation**, not as design/IA/responsive precedent for new canonical work.
 
-`NAV-01` is the desktop navigation candidate at 1024 px and above, but the real activation width is content-driven: it must pass the NAV fit test with the six canonical labels, the production font, sigil and ornamental safe areas. If it fails at 1024, `NAV-02` remains active until the measured passing width.
+Do not copy legacy navigation labels, 620/900px media-query assumptions, prototype copy or rendered data into new canonical work merely because they exist.
 
-Page-level horizontal scrolling is a defect; deliberate contained horizontal scroll is allowed for wide semantic data tables.
+Use `docs/PROJECT_CONTEXT.md` for current implementation status and next milestones.
 
-Every P0/P1 component must define its responsive contract before it is considered fully specified.
+## 4. Lifecycle and authority
 
-## Completion model
+Formal object lifecycle:
 
-Object lifecycle:
+`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED -> DEPRECATED`
 
-`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED`
+Workflow labels such as `CONCEPT`, `DESIGNED` or `QA IN PROGRESS` may be used operationally but are not formal lifecycle states.
 
-Release readiness:
+Release readiness is separate:
 
 `NOT_READY -> STAGING_READY -> PRODUCTION_READY`
 
-- **SPECIFIED** means requirements and acceptance criteria are documented.
-- **IMPLEMENTED** means the object exists in a testable form.
-- **VERIFIED** means applicable checks have been performed and recorded.
-- **APPROVED** means Product Owner approval is recorded.
-- **STAGING_READY** permits controlled preview/testing under M8.1 rules.
-- **PRODUCTION_READY** requires approved P0 dependencies, current evidence, no Critical/High defects and Product Owner approval.
+Rules:
 
-A merged PR does not automatically promote contained objects to APPROVED or PRODUCTION_READY.
+- AI agents, automated checks and developers may implement, test and support/recommend `VERIFIED`.
+- Only the Product Owner may assign `APPROVED` unless a future written delegation explicitly grants authority.
+- A merged PR is not automatic proof of `VERIFIED`, `APPROVED` or `PRODUCTION_READY`.
+- No Critical or High defect is acceptable for production readiness.
+- Material dependency changes may trigger `RECHECK_REQUIRED` and targeted re-verification.
 
-## QA execution model
+## 5. Responsive rules
 
-Select one primary M9.1 QA Profile:
+For responsive/layout work, use:
 
-- `QAP-CMP-I` interactive P0/P1 component;
-- `QAP-CMP-V` visual/narrative component;
-- `QAP-AST-P` production asset;
-- `QAP-PAG` page/template;
-- `QAP-DAT` content/data entity;
-- `QAP-CODE` code/technical change;
-- `QAP-REL` release.
+- `docs/RESPONSIVE_SPECIFICATION.md`
+- `docs/M7_1_RESPONSIVE_CONFORMANCE.md`
 
-Then apply required/conditional M9 check families. Do not execute every family mechanically. Test at the lowest correct level and reference still-valid evidence at higher levels.
+Canonical width boundaries are **480 / 768 / 1024 / 1280 / 1536 px**, with the QA viewport matrix defined by M7/M9.
 
-## Working style for non-trivial tasks
+Mobile is deliberately composed, not scaled desktop.
 
-1. Read the canonical specification.
-2. Read M8/M8.1, M9/M9.1 and specialist specifications required by the task.
-3. Inspect repository state and relevant source/data files.
-4. Identify affected components/entities/assets and dependencies.
-5. State assumptions or unknowns instead of guessing.
-6. Make the smallest coherent change; avoid unrelated cleanup/refactors.
-7. Select the primary QA Profile and applicable M9 families/check IDs before claiming verification.
-8. Test canonical responsive widths plus short-landscape cases where relevant.
-9. Use the responsive stress fixture for content-sensitive components.
-10. Verify referenced assets actually exist and render.
-11. Preserve accessibility and source integrity.
-12. Create/attach structured Verification Record evidence for non-trivial verification claims.
-13. Record failures as defects and exceptions in the Exception Register when needed.
-14. Check whether dependency changes invalidate prior approvals/evidence.
-15. Classify the result accurately and distinguish lifecycle state from release readiness.
-16. Summarise changed files, QA evidence, remaining defects, exceptions and uncertainty.
+For P0/P1 work:
+
+- responsive contract required;
+- no page-level horizontal overflow;
+- primary/repeated controls meet the 44×44 CSS px target unless an accepted exception exists;
+- decoration reduces before essential text/control size;
+- brand/narrative-heavy mobile blocks preserve at least one strong ICA identity anchor;
+- use `tests/fixtures/responsive-stress.json` when content density can affect layout.
+
+M7 responsive specification is approved, but real implementation validation remains pending until canonical components pass M7.1.
+
+## 6. Asset rules
+
+For asset work, use:
+
+- `docs/ASSET_SPECIFICATION.md`
+- `assets/manifest.json`
+
+Before creating or integrating a production binary, its role, component/entity relation, path/name, status, accessibility classification and provenance expectations must be clear.
+
+Generated reference sheets are not production assets and must not be sliced into production files.
+
+## 7. QA rules
+
+For non-trivial verification, use:
+
+- `docs/DEFINITION_OF_DONE.md`
+- `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`
+- `docs/QA_CHECKLIST.md`
+- `docs/M9_1_QA_EXECUTION_MODEL.md`
+
+Select one primary QA Profile from M9.1 and only the applicable families/check IDs.
+
+Use only:
+
+`PASS / FAIL / N/A / BLOCKED`
+
+Every `N/A` needs a rationale.
+
+Every `FAIL` must link to a defect or accepted exception.
+
+Apply **test once, reference many**: reuse evidence only while object version, dependencies and environment still support the claim and no `RECHECK_REQUIRED` trigger applies.
+
+Classify evidence as `manual`, `automated` or `hybrid` where appropriate.
+
+Store non-sensitive evidence according to `qa/evidence/README.md`.
+
+Record accepted exceptions in `docs/EXCEPTION_REGISTER.md`.
+
+## 8. Standard working flow
+
+For a non-trivial task:
+
+1. read `docs/PROJECT_INDEX.md`;
+2. load only the required authoritative documents;
+3. inspect current repository state and affected files;
+4. identify affected components/entities/assets/dependencies;
+5. state material assumptions/unknowns instead of guessing;
+6. make the smallest coherent change;
+7. preserve approved architecture, IDs, data ownership and terminology;
+8. run the applicable responsive/accessibility/QA checks;
+9. verify referenced assets and paths actually exist/render;
+10. create/attach structured verification evidence when claiming `VERIFIED`;
+11. record defects/exceptions and any `RECHECK_REQUIRED` impact;
+12. distinguish lifecycle state from release readiness;
+13. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
+
+## 9. Git discipline
+
+- Treat `main` as production.
+- Use a dedicated branch for coherent non-trivial work.
+- Prefer one coherent PR per work block.
+- Do not use unrelated refactors or redesigns as part of a requested fix without approval.
+- Do not overwrite newer approved work knowingly.
+
+M10 will formalise branch/PR/CI/merge conventions; until then use the existing repository practice plus M8/M9 evidence rules.
+
+## 10. Product Owner interaction goal
+
+The Product Owner should state the desired outcome, not manually orchestrate internal governance.
+
+Agents are responsible for selecting the correct specifications, applying responsive/asset/QA rules and returning a concise result for review.
+
+Do not ask the Product Owner to repeat rules that are already authoritative in the repository.
+
+If a request conflicts with a locked decision, surface the conflict before changing the system.
