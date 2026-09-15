@@ -5,6 +5,12 @@
 - **Object type:** P0 interactive component set
 - **Version label:** 1.0
 - **Implementation under test:** merged shell implementation tree from PR #21
+- **Validation PR:** #22
+- **Final validation PR head SHA:** `e392299a6cb1573c3f7a5c3da7d36467f5153f44`
+- **Merged validation SHA:** `a66be5f46241538bd668c39df6b7219eac0d1c89`
+- **Final PR tree / merged validation tree:** `4657416345438f733884e415c369352d5512f463`
+- **PR vs squash-merge tree/content equivalence confirmed:** yes
+- **CI evidence:** `ICA baseline QA` run #25 — success
 - **Lifecycle before validation:** IMPLEMENTED
 - **Requested target:** determine whether runtime evidence is sufficient for VERIFIED
 - **Primary QA Profile:** QAP-CMP-I
