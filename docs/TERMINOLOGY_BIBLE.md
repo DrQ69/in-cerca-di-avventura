@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-TERM-001  
 **Status:** DRAFT — Creative Canonical Lock  
-**Version:** 0.6  
+**Version:** 0.7  
 **Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
 **Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
 
@@ -39,7 +39,7 @@ Rules:
 
 Terms that create the cittadella-crocevia, its places, ceremonies, social roles and atmosphere.
 
-Examples: *Le Adunanze*, *Il Libro dei Nomi*, *Il Campo delle Prove*, *Proclami*, *Tesori*.
+Examples: *Le Adunanze*, *Gli Annali*, *Il Libro dei Nomi*, *Il Campo delle Prove*, *Proclami*, *Tesori*.
 
 Rules:
 
@@ -146,7 +146,7 @@ This does **not** prevent ICA from using the common-language concept of a real-w
 | Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | PRODUCT OWNER LOCKED |
 | Real Sorcery event / gathering of interest | low | Adunanza / Le Adunanze | Le Adunanze | `EVENT` | PRODUCT OWNER LOCKED |
 | ICA-organized competitive event | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + organiser=`ICA` + competitive subtype | PRODUCT OWNER LOCKED |
-| Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
+| Editorial memory / account / retrospective | Storyline must be avoided | Cronaca / Gli Annali | Cronache | `ARTICLE` (+ relations/editorial classification) | PRODUCT OWNER LOCKED |
 | News item | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` + editorial_type=`NEWS` | PRODUCT OWNER LOCKED |
 | Allied reality / group / organisation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | PRODUCT OWNER LOCKED |
 | Italian geographic alliance grouping | Realm caution | Reami d'Italia | Reami d'Italia | geography/taxonomy over `ORGANIZATION` | PRODUCT OWNER LOCKED |
@@ -382,7 +382,64 @@ At functional level, `Avventurieri` should remain sufficiently clear as the inde
 
 **Status:** `PRODUCT OWNER LOCKED`.
 
-## 5.5 Tesori — suspended direction
+## 5.5 Cronache / Gli Annali — Product Owner decision locked
+
+### Canonical semantic boundary
+
+**Cronache** is the editorial memory of In Cerca di Avventura.
+
+It identifies content created to **tell, deepen and preserve the memory** of the Sorcery community represented by ICA.
+
+Cronache may include, according to future editorial taxonomy:
+
+- reports and accounts of Giostre and other Adunanze;
+- interviews;
+- retrospectives;
+- community stories;
+- editorial features and thematic deep dives;
+- decks told in their real competitive/community context;
+- photographs, galleries and testimony when connected to a documented subject;
+- people, places and significant moments worthy of preservation.
+
+This scope does not convert every factual record into a Cronaca. Results, rankings, event records and player data remain factual objects; a Cronaca is the editorial layer that may relate to them.
+
+### Narrative place identity
+
+The approved place-level narrative title is:
+
+**Gli Annali**  
+Cronache della community
+
+`Cronache` remains the functional/section term; `Gli Annali` is the narrative place identity.
+
+### Relationship with Proclami
+
+The distinction is hard:
+
+- **Proclami** = News;
+- **Cronache** = memory, account, interpretation, retrospective and preservation.
+
+Practical rule:
+
+> **Proclamo publishes news. Cronaca preserves and tells the record.**
+
+The same subject may produce both a Proclamo and a Cronaca without duplication of purpose.
+
+### TECH mapping
+
+A Cronaca remains editorial content based on `ARTICLE`, with relations to factual entities such as `EVENT`, `PLAYER`, `DECK`, `ORGANIZATION`, `VENUE`, `GALLERY` or others where appropriate.
+
+The exact editorial classification field and taxonomy are Content Model/Page Dossier decisions and are not fixed by this document alone.
+
+### Guides / documents / rules material
+
+The possible placement of guides, documents, regulations and reference material inside Cronache is **not decided**.
+
+They must not be silently classified as Cronache merely because the broader editorial section exists. Their final destination remains an explicit open product/content decision.
+
+**Status:** `PRODUCT OWNER LOCKED` for the semantic boundary and `Gli Annali` narrative identity; internal taxonomy remains to be designed.
+
+## 5.6 Tesori — suspended direction
 
 The previous working assumption that `Tesori` was the umbrella for guides, tools, documents and printables is **not canonical** and is superseded by the Product Owner's later direction.
 
@@ -399,7 +456,7 @@ See: `docs/creative-decisions/DECISION_TESORI_SCOPE.md`.
 
 **Status:** `SUSPENDED — DIRECTION RECORDED, NOT CANONICAL`.
 
-## 5.6 Mercante — on hold
+## 5.7 Mercante — on hold
 
 `Mercante` remains a possible future commercial/artisanal concept, but the Product Owner has placed the entire topic **ON HOLD**.
 
@@ -432,6 +489,9 @@ Eventi e appuntamenti Sorcery
 **Il Campo delle Prove**  
 Giostre — eventi competitivi organizzati da In Cerca di Avventura
 
+**Gli Annali**  
+Cronache della community
+
 **Il Libro dei Nomi**  
 Avventurieri della community
 
@@ -461,6 +521,7 @@ Rules:
 - a `Giostra` remains an `EVENT` nested semantically inside Le Adunanze and qualified by ICA organisation/ownership plus competitive subtype;
 - other competitive events remain `EVENT` without acquiring the Giostra label automatically;
 - a `Proclamo` remains editorial content mapped to `ARTICLE` with explicit News classification;
+- a `Cronaca` remains editorial content mapped to `ARTICLE`, with explicit editorial classification and relations to factual objects as required;
 - `Cronaca` and `Proclamo` must be distinguishable through editorial type, not inferred only from publication date;
 - an `Alleanza` remains an `ORGANIZATION`; `Reami d'Italia` / `Reami d'Oltreconfine` are geographic narrative groupings rather than new technical entities;
 - an `Avventuriero` remains a `PLAYER`; the ICA narrative identity does not change the technical person entity;
@@ -518,7 +579,9 @@ Subject to Product Owner confirmation of this document:
 - **Giostre sits inside Le Adunanze and identifies competitive events organized directly by In Cerca di Avventura**;
 - a competitive event organized by another entity is not automatically a Giostra;
 - **Proclami is the ICA term for News**;
-- `Cronaca` is a separate editorial form dedicated to record, account and preservation rather than the site's News classification;
+- **Cronache is the editorial memory of ICA, dedicated to account, interpretation, retrospective and preservation**;
+- **Gli Annali** is the approved narrative place identity for the Cronache section;
+- `Cronaca` and `Proclamo` remain distinct editorial forms even when they concern the same subject;
 - **Alleanze identifies the network of Sorcery-related realities represented by ICA**;
 - **Reami d'Italia** and **Reami d'Oltreconfine** are the controlled geographic narrative groupings of those Alleanze, never default names for single organisations;
 - `Tesori` is suspended with a recorded collecting-oriented direction and no final scope;
@@ -527,7 +590,7 @@ Subject to Product Owner confirmation of this document:
 
 ---
 
-# 11. Open decisions for v0.7
+# 11. Open decisions for v0.8
 
 Product/UX decisions still requiring explicit resolution:
 
@@ -536,12 +599,12 @@ Product/UX decisions still requiring explicit resolution:
 - whether `Proclami` appears in primary navigation, secondary navigation, or as a prominent editorial destination elsewhere in the experience;
 - final Italian/English treatment of official Sorcery terms inside editorial content;
 - definitive label for physical venues (`Luoghi`, `Sedi`, other);
-- exact scope and architecture of `Cronache`;
+- detailed internal taxonomy of `Cronache` / `Gli Annali`;
 - final destination for guides, documents, rules and reference material;
 - `Tesori` scope remains suspended;
 - `Mercante` remains on hold.
 
-The meanings/hierarchies of `Le Adunanze`, `Giostre`, `Avventurieri`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
+The meanings/hierarchies of `Le Adunanze`, `Giostre`, `Cronache`, `Avventurieri`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
 
 ---
 
@@ -570,6 +633,8 @@ The Terminology Bible may move from DRAFT to APPROVED when:
 - `Le Adunanze = event umbrella` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
 - `Giostre` remains a nested subset of Le Adunanze reserved for ICA-organized competitive events;
 - `Proclami = News` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
+- `Cronache = editorial memory` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
+- `Gli Annali` remains the narrative place identity for Cronache;
 - the Cronache/Proclami editorial distinction remains unambiguous;
 - `Avventuriero = real person/community identity` remains distinct from the official Sorcery Avatar concept;
 - nickname remains the primary visible Avventuriero identity unless a later explicit Product Owner decision changes that rule;
