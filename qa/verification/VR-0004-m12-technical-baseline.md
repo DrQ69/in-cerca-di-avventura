@@ -3,10 +3,12 @@
 - **Object ID / Name:** ICA-TECH-001 / M12 Technical Baseline
 - **Object type:** governance + code-change
 - **Version label:** 1.0
-- **Tested head SHA:** `812a3eb83a508f41b7c586f913524f33cbdd9937`
+- **Tested implementation head SHA:** `812a3eb83a508f41b7c586f913524f33cbdd9937`
+- **Final PR head SHA:** `bca89251e4cdcc135251e21a5bba6a108e3c4e0d`
 - **PR:** #19
-- **Merged main SHA:** pending at verification time
-- **Tested-head vs merged-tree/content equivalence confirmed:** pending until squash merge
+- **Merged main SHA:** `e41b9780e8677364317978c458c270b783b603ca`
+- **Final PR tree / merged tree:** `cf7b3434f591c105cda53cd457cd9dbef5a0ea03`
+- **Final PR vs squash-merge tree/content equivalence confirmed:** yes
 - **Lifecycle state before verification:** SPECIFIED / IMPLEMENTED
 - **Requested target state:** VERIFIED
 - **Release readiness target:** NOT_READY / governance-system object
@@ -26,8 +28,8 @@
 | QA-GEN-007 | Known uncertainty recorded | PASS | M12 legacy transition/completion sections | — | Runtime evidence and canonical-page coverage are explicitly deferred to Canonical Implementation v1. |
 | QA-TEC-001 | Smallest coherent scope | PASS | PR #19 | — | Adds one specialist spec, registry, stdlib checker, CI hook and routing updates. |
 | QA-TEC-002 | No unapproved dependency | PASS | `scripts/technical_baseline.py` | — | Python standard library only; no package manager/framework/browser dependency. |
-| QA-TEC-003 | Referenced files exist | PASS | `ICA baseline QA` run #13 | — | Structural QA and M12 script completed successfully. |
-| QA-TEC-005 | Internal paths/checks valid | PASS | `ICA baseline QA` run #13 | — | Registry valid; canonical coverage intentionally zero. |
+| QA-TEC-003 | Referenced files exist | PASS | `ICA baseline QA` runs #13 and #14 | — | Structural QA and M12 script completed successfully before merge. |
+| QA-TEC-005 | Internal paths/checks valid | PASS | `ICA baseline QA` run #14 | — | Registry valid; canonical coverage intentionally zero. |
 | QA-A11Y-007 | Measurable contrast baseline defined | PASS | `docs/TECHNICAL_BASELINE.md` §4 | — | 4.5:1 normal text, 3:1 large/non-text UI where applicable. |
 | QA-A11Y-010 | Touch target baseline preserved | PASS | M12 §4 | — | Existing stricter ICA 44×44 CSS px target retained. |
 | QA-PERF-002 | No unnecessary blocking dependency introduced | PASS | implementation review | — | CI remains lightweight and stdlib-only. |
@@ -69,7 +71,8 @@ Static CI does not claim to measure runtime Core Web Vitals or full WCAG conform
 - `CLAUDE.md`
 - `docs/PROJECT_CONTEXT.md`
 - PR #19
-- GitHub Actions `ICA baseline QA` run #13: success
+- GitHub Actions `ICA baseline QA` runs #13 and #14: success
+- final PR tree and squash-merge tree both `cf7b3434f591c105cda53cd457cd9dbef5a0ea03`
 
 ## Coverage state
 
