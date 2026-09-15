@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-TERM-001  
 **Status:** DRAFT — Creative Canonical Lock  
-**Version:** 0.3  
+**Version:** 0.4  
 **Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
 **Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
 
@@ -85,9 +85,9 @@ Official meaning: the shared principal game zone; the rulebook defines the realm
 
 **ICA rule:** do not use `Reame` as a technical synonym for community, website, geographic chapter or organisation without clear narrative context.
 
-**Current decision:** `Reame` remains allowed in poetic/narrative titles, but is not the primary structural metaphor of ICA. The foundational metaphor is **cittadella-crocevia**.
+**Current decision:** `Reame` remains allowed in controlled poetic/geographic expressions, but is not the primary structural metaphor of ICA. The foundational metaphor is **cittadella-crocevia**.
 
-**Risk status:** HIGH — likely confusion with official game vocabulary.
+**Risk status:** HIGH — likely confusion with official game vocabulary if used generically.
 
 ## 3.2 Avatar
 
@@ -141,8 +141,6 @@ This does **not** prevent ICA from using the common-language word `evento` for r
 
 # 4. Core ICA vocabulary — working classification
 
-The following matrix captures the current creative direction. Items marked `DECISION REQUIRED` are intentionally not canonical yet.
-
 | Concept | Sorcery official conflict | ICA narrative term | Candidate UX label | TECH identifier | Status |
 |---|---|---|---|---|---|
 | Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | STRONG CANDIDATE |
@@ -150,8 +148,9 @@ The following matrix captures the current creative direction. Items marked `DECI
 | ICA-organized competitive event | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + organiser=`ICA` + competitive subtype | PRODUCT OWNER LOCKED |
 | Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
 | News item | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` + editorial_type=`NEWS` | PRODUCT OWNER LOCKED |
-| Community/store/club relation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | STRONG CANDIDATE |
-| Geographic alliance grouping | Realm caution | Reami d'Italia / d'Oltreconfine | da validate | taxonomy over `ORGANIZATION` | DECISION REQUIRED |
+| Allied reality / group / organisation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | PRODUCT OWNER LOCKED |
+| Italian geographic alliance grouping | Realm caution | Reami d'Italia | Reami d'Italia | geography/taxonomy over `ORGANIZATION` | PRODUCT OWNER LOCKED |
+| Foreign geographic alliance grouping | Realm caution | Reami d'Oltreconfine | Reami d'Oltreconfine | geography/taxonomy over `ORGANIZATION` | PRODUCT OWNER LOCKED |
 | Durable guides/tools/resources | Artifact conflict if called relic generically | Tesori / Camera delle Reliquie | Tesori | resource/content type | STRONG CANDIDATE |
 | Future commercial/artisanal area | none material | Mercante / Bottega del Viandante | Mercante | future commerce object | DEFERRED/P2 |
 | Venue/store physical place | Site conflict | luogo della cittadella / alleato | Luoghi / Sedi | `VENUE` | STRONG CANDIDATE |
@@ -189,7 +188,7 @@ The exact schema field names are to be defined in the Content Model/Page Dossier
 
 ### UX implication
 
-The term `Giostre` may be used as a dedicated ICA-facing destination because it now represents a product-owned class of events rather than a generic duplicate of `Eventi`.
+The term `Giostre` may be used as a dedicated ICA-facing destination because it represents a product-owned class of events rather than a generic duplicate of `Eventi`.
 
 `Eventi` remains the broader domain for real Sorcery gatherings and appointments that ICA may report, list or connect to, regardless of organiser.
 
@@ -236,39 +235,65 @@ The exact schema field name remains a Content Model decision.
 
 ### Relationship with Cronache
 
-The distinction is no longer temporal alone.
-
 - **Proclamo** = News content.
 - **Cronaca** = editorial record, account, report, retrospective or narrative preservation of something that happened.
 
-A Proclamo can concern past, present or future facts if it is being treated editorially as news.
-A Cronaca exists primarily to document, recount and preserve.
+A Proclamo can concern past, present or future facts if it is being treated editorially as news. A Cronaca exists primarily to document, recount and preserve.
 
 Practical rule:
 
 > **Proclamo publishes news. Cronaca preserves and tells the record.**
 
-The same subject may legitimately generate both: for example, a Proclamo announcing or reporting a development and, separately, a later Cronaca that documents the event in depth.
+The same subject may legitimately generate both.
 
 **Status:** `PRODUCT OWNER LOCKED`.
 
-## 5.3 Reame / Reami
+## 5.3 Alleanze / Reami d'Italia / Reami d'Oltreconfine — Product Owner decision locked
 
-Because `Realm` is a formal Sorcery game term, ICA must avoid making `Reame` its universal noun for site/community/organisation.
+### Canonical semantic boundary
 
-Allowed:
+**Alleanze** identifies the realities, groups and organisations that compose, support or connect to the Sorcery ecosystem represented by ICA.
 
-- poetic titles where context is obviously ICA narrative;
-- controlled geographic expressions if approved (`Reami d'Italia`, `Reami d'Oltreconfine`);
-- prose that clearly refers to the fictionalised ICA worldview.
+An individual store, club, community, association, organiser or other relevant entity may therefore be presented as an **Alleanza** when it belongs to this network.
 
-Avoid:
+**Reami d'Italia** and **Reami d'Oltreconfine** are not names for individual organisations. They are the two controlled geographic narrative groupings used to organise and tell the Alleanze:
 
-- `Il Reame` as an ambiguous generic top-level UX label;
-- `Reame` as technical identifier;
-- calling each individual store/community a Reame by default.
+- **Reami d'Italia** = Italian realities;
+- **Reami d'Oltreconfine** = realities outside Italy.
 
-Preferred structural word for ICA itself: **cittadella-crocevia**.
+### Realm conflict control
+
+Because `Realm` is a formal Sorcery game term, this use of `Reami` is allowed only as a clearly narrative geographic grouping inside the Alleanze domain.
+
+Rules:
+
+- do not call an individual store/community a `Reame` by default;
+- do not use `Reame` as a technical identifier;
+- do not use `Il Reame` as an ambiguous generic top-level UX label;
+- ICA itself remains structurally a **cittadella-crocevia**, not a single Reame.
+
+### TECH mapping
+
+- individual allied entity = `ORGANIZATION`;
+- physical location, when applicable = `VENUE`;
+- real geography = country / region / city fields or equivalent;
+- narrative geographic grouping = `Reami d'Italia` / `Reami d'Oltreconfine`, implemented as taxonomy or derived presentation logic over `ORGANIZATION`.
+
+The exact schema field names remain a Content Model decision.
+
+### UX implication
+
+The hierarchy is:
+
+**Alleanze**  
+Le realtà che animano e sostengono l'ecosistema Sorcery
+
+→ **Reami d'Italia**  
+→ **Reami d'Oltreconfine**
+
+Within each grouping appear the individual allied organisations/entities.
+
+**Status:** `PRODUCT OWNER LOCKED`.
 
 ## 5.4 Avventuriero / Avatar
 
@@ -322,6 +347,9 @@ Giostre — eventi competitivi organizzati da In Cerca di Avventura
 **I Proclami dell'Araldo**  
 News e aggiornamenti
 
+**I Reami Alleati**  
+Alleanze della community, in Italia e oltreconfine
+
 **La Camera delle Reliquie**  
 Guide, strumenti e risorse
 
@@ -345,6 +373,7 @@ Rules:
 - other competitive events remain `EVENT` without acquiring the Giostra label automatically;
 - a `Proclamo` remains editorial content mapped to `ARTICLE` with explicit News classification;
 - `Cronaca` and `Proclamo` must be distinguishable through editorial type, not inferred only from publication date;
+- an `Alleanza` remains an `ORGANIZATION`; `Reami d'Italia` / `Reami d'Oltreconfine` are geographic narrative groupings rather than new technical entities;
 - technical identifiers remain English uppercase singular unless the Content Model is formally revised.
 
 ---
@@ -395,26 +424,27 @@ Subject to Product Owner confirmation of this document:
 - `Cronaca` is a separate editorial form dedicated to record, account and preservation rather than the site's News classification;
 - **Giostra identifies a competitive event organized directly by In Cerca di Avventura**;
 - a competitive event organized by another entity is not automatically a Giostra;
+- **Alleanze identifies the network of Sorcery-related realities represented by ICA**;
+- **Reami d'Italia** and **Reami d'Oltreconfine** are the controlled geographic narrative groupings of those Alleanze, never default names for single organisations;
 - `Tesori` is preferred over `Artefatti` for durable ICA resources;
 - `Mercante` remains future/deferred until content readiness;
 - visible narrative terms do not force renaming of the technical content model.
 
 ---
 
-# 11. Open decisions for v0.4
+# 11. Open decisions for v0.5
 
 Product/UX decisions still requiring explicit resolution:
 
 - primary navigation architecture;
 - whether `Eventi` remains a top-level umbrella destination alongside the now-distinct `Giostre` destination;
 - whether `Proclami` appears in primary navigation, secondary navigation, or as a prominent editorial destination elsewhere in the experience;
-- whether `Reami d'Italia / Reami d'Oltreconfine` is retained after UX testing;
 - final Italian/English treatment of official Sorcery terms inside editorial content;
 - definitive label for physical venues (`Luoghi`, `Sedi`, other);
 - launch visibility of Tesori;
 - final opening criteria for Mercante.
 
-The meaning of `Proclami` itself is no longer open: it means **News**.
+The meanings of `Giostre`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
 
 ---
 
@@ -445,7 +475,7 @@ The Terminology Bible may move from DRAFT to APPROVED when:
 - `Proclami = News` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
 - the Cronache/Proclami editorial distinction remains unambiguous;
 - Avventurieri terminology is approved;
-- Alleanze/Reami wording is resolved;
+- Alleanze/Reami wording remains consistent with the Product Owner-locked hierarchy;
 - Tesori and Mercante launch roles are defined;
 - every Page Dossier can map narrative term -> UX label -> technical object without ambiguity;
 - downstream QA can detect terminology violations mechanically or through checklist review.
