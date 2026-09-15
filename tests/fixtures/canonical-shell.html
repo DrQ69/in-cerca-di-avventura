@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Fixture tecnica per la validazione della Canonical Shell v1 di In Cerca di Avventura.">
+  <title>ICA — Canonical Shell QA Fixture</title>
+  <link rel="stylesheet" href="../../assets/css/canonical-shell.css">
+</head>
+<body id="fixture-top">
+  <header class="ica-site-shell" data-component="CANONICAL-SHELL-V1">
+    <div class="ica-shell-container ica-shell-row">
+      <a class="ica-sigil" data-component="SIG-01" href="#fixture-top" aria-label="In Cerca di Avventura — Home">
+        <img src="../../assets/logo-emblem.webp" alt="" width="56" height="56">
+      </a>
+
+      <nav class="ica-desktop-nav" data-component="NAV-01" aria-label="Navigazione principale">
+        <ul class="ica-nav-list">
+          <li><a class="ica-nav-link" href="#imprese" aria-current="page">Imprese</a></li>
+          <li><a class="ica-nav-link" href="#campagne">Campagne</a></li>
+          <li><a class="ica-nav-link" href="#avventurieri">Avventurieri</a></li>
+          <li><a class="ica-nav-link" href="#cronache">Cronache</a></li>
+          <li><a class="ica-nav-link" href="#reame">Il Reame</a></li>
+          <li><a class="ica-nav-link" href="#archivio">Archivio</a></li>
+        </ul>
+      </nav>
+
+      <details class="ica-mobile-nav" data-component="NAV-02">
+        <summary>Menu</summary>
+        <nav class="ica-mobile-panel" aria-label="Navigazione principale mobile">
+          <ul class="ica-nav-list">
+            <li><a class="ica-nav-link" href="#imprese" aria-current="page">Imprese</a></li>
+            <li><a class="ica-nav-link" href="#campagne">Campagne</a></li>
+            <li><a class="ica-nav-link" href="#avventurieri">Avventurieri</a></li>
+            <li><a class="ica-nav-link" href="#cronache">Cronache</a></li>
+            <li><a class="ica-nav-link" href="#reame">Il Reame</a></li>
+            <li><a class="ica-nav-link" href="#archivio">Archivio</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="ica-fixture-main">
+    <div class="ica-shell-container">
+      <section class="ica-fixture-heading" aria-labelledby="fixture-title">
+        <p class="ica-fixture-kicker">Fixture tecnica · Canonical Implementation v1</p>
+        <h1 id="fixture-title">Shell, sigillo e navigazione P0</h1>
+        <p>Questa pagina contiene esclusivamente contenuto sintetico di test. Serve a verificare struttura, responsive behaviour, focus, target size e fit delle sei etichette canoniche senza promuovere l’attuale homepage legacy a riferimento.</p>
+      </section>
+
+      <section class="ica-fixture-section" id="imprese">
+        <h2>Imprese</h2>
+        <p>Sezione sintetica per verificare lo stato corrente della navigazione e il comportamento dello sticky header durante lo scorrimento.</p>
+      </section>
+      <section class="ica-fixture-section" id="campagne">
+        <h2>Campagne</h2>
+        <p>Contenuto di prova. Nessun dato reale di evento, classifica o campagna è rappresentato in questa fixture.</p>
+      </section>
+      <section class="ica-fixture-section" id="avventurieri">
+        <h2>Avventurieri</h2>
+        <p>Contenuto di prova per il percorso di tastiera e per la leggibilità delle destinazioni primarie.</p>
+      </section>
+      <section class="ica-fixture-section" id="cronache">
+        <h2>Cronache</h2>
+        <p>Contenuto di prova per controllare che la shell resti leggibile e stabile lungo una pagina verticale.</p>
+      </section>
+      <section class="ica-fixture-section" id="reame">
+        <h2>Il Reame</h2>
+        <p>Contenuto di prova. La sezione non rappresenta luoghi o organizzazioni reali.</p>
+      </section>
+      <section class="ica-fixture-section" id="archivio">
+        <h2>Archivio</h2>
+        <p>Contenuto di prova per completare il set delle sei destinazioni canoniche.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
