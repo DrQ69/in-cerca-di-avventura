@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-TERM-001  
 **Status:** DRAFT — Creative Canonical Lock  
-**Version:** 0.2  
+**Version:** 0.3  
 **Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
 **Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
 
@@ -149,7 +149,7 @@ The following matrix captures the current creative direction. Items marked `DECI
 | Real tournament/gathering | low | Convocazione / Evento depending role | Eventi | `EVENT` | DECISION REQUIRED |
 | ICA-organized competitive event | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + organiser=`ICA` + competitive subtype | PRODUCT OWNER LOCKED |
 | Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
-| Current announcement | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` or announcement type | STRONG CANDIDATE |
+| News item | low | Proclamo / Proclami dell'Araldo | Proclami | `ARTICLE` + editorial_type=`NEWS` | PRODUCT OWNER LOCKED |
 | Community/store/club relation | Realm caution | Alleanza / Reami Alleati | Alleanze | `ORGANIZATION` | STRONG CANDIDATE |
 | Geographic alliance grouping | Realm caution | Reami d'Italia / d'Oltreconfine | da validate | taxonomy over `ORGANIZATION` | DECISION REQUIRED |
 | Durable guides/tools/resources | Artifact conflict if called relic generically | Tesori / Camera delle Reliquie | Tesori | resource/content type | STRONG CANDIDATE |
@@ -202,21 +202,55 @@ The term `Giostre` may be used as a dedicated ICA-facing destination because it 
 
 **Status:** `PRODUCT OWNER LOCKED`.
 
-## 5.2 Cronache vs Proclami
+## 5.2 Proclami — Product Owner decision locked
 
-This distinction is strong and should be preserved.
+### Canonical semantic boundary
 
-**Proclamo** = present/future, actionable communication.  
-Examples: registration opens, schedule changes, announcement, invitation, update.
+**Proclami** is the ICA term for **News**.
 
-**Cronaca** = past/memory, durable editorial account.  
-Examples: tournament report, story, interview, retrospective, preserved account.
+A Proclamo is therefore a published news item concerning ICA, Sorcery activity, the community, events, initiatives, updates or other subjects considered newsworthy for the site.
 
-Rule:
+`Proclamo` is not limited to urgent announcements or future-facing notices. It is the narrative/editorial name of the site's News content type.
 
-> **Proclamo informs. Cronaca preserves.**
+### UX implication
 
-A Proclamo may later point to a Cronaca about the same real-world subject, but the two should not be duplicates.
+Where the user would conventionally expect a `News` section, ICA may present the visible label **Proclami**.
+
+A functional descriptor may be used where clarity benefits from it, for example:
+
+**I Proclami dell'Araldo**  
+News e aggiornamenti
+
+### TECH mapping
+
+A Proclamo should remain an editorial content object, currently mapped to `ARTICLE` with an explicit news/editorial classification.
+
+Suggested semantic mapping:
+
+- visible/narrative term = `Proclamo`;
+- conventional product meaning = `News`;
+- technical base object = `ARTICLE`;
+- editorial classification = `NEWS` or equivalent field to be defined in the Content Model.
+
+The exact schema field name remains a Content Model decision.
+
+### Relationship with Cronache
+
+The distinction is no longer temporal alone.
+
+- **Proclamo** = News content.
+- **Cronaca** = editorial record, account, report, retrospective or narrative preservation of something that happened.
+
+A Proclamo can concern past, present or future facts if it is being treated editorially as news.
+A Cronaca exists primarily to document, recount and preserve.
+
+Practical rule:
+
+> **Proclamo publishes news. Cronaca preserves and tells the record.**
+
+The same subject may legitimately generate both: for example, a Proclamo announcing or reporting a development and, separately, a later Cronaca that documents the event in depth.
+
+**Status:** `PRODUCT OWNER LOCKED`.
 
 ## 5.3 Reame / Reami
 
@@ -285,6 +319,9 @@ Avventurieri della community
 **Il Campo delle Prove**  
 Giostre — eventi competitivi organizzati da In Cerca di Avventura
 
+**I Proclami dell'Araldo**  
+News e aggiornamenti
+
 **La Camera delle Reliquie**  
 Guide, strumenti e risorse
 
@@ -306,7 +343,8 @@ Rules:
 - narrative terms should map to technical objects through Page Dossiers;
 - a `Giostra` remains an `EVENT` qualified by ICA organisation/ownership and competitive subtype;
 - other competitive events remain `EVENT` without acquiring the Giostra label automatically;
-- `ARTICLE` may support both Cronache and Proclami through explicit editorial type/status rather than ambiguous copy;
+- a `Proclamo` remains editorial content mapped to `ARTICLE` with explicit News classification;
+- `Cronaca` and `Proclamo` must be distinguishable through editorial type, not inferred only from publication date;
 - technical identifiers remain English uppercase singular unless the Content Model is formally revised.
 
 ---
@@ -353,7 +391,8 @@ Subject to Product Owner confirmation of this document:
 - `Avatar` is reserved for Sorcery game meaning;
 - `Avventuriero` is the preferred narrative/UX identity for a real community player;
 - `PLAYER` remains the technical identifier;
-- `Cronaca` and `Proclamo` are distinct editorial roles;
+- **Proclami is the ICA term for News**;
+- `Cronaca` is a separate editorial form dedicated to record, account and preservation rather than the site's News classification;
 - **Giostra identifies a competitive event organized directly by In Cerca di Avventura**;
 - a competitive event organized by another entity is not automatically a Giostra;
 - `Tesori` is preferred over `Artefatti` for durable ICA resources;
@@ -362,18 +401,20 @@ Subject to Product Owner confirmation of this document:
 
 ---
 
-# 11. Open decisions for v0.3
+# 11. Open decisions for v0.4
 
 Product/UX decisions still requiring explicit resolution:
 
 - primary navigation architecture;
 - whether `Eventi` remains a top-level umbrella destination alongside the now-distinct `Giostre` destination;
-- whether Proclami has its own destination or acts primarily as a cross-site current-information stream;
+- whether `Proclami` appears in primary navigation, secondary navigation, or as a prominent editorial destination elsewhere in the experience;
 - whether `Reami d'Italia / Reami d'Oltreconfine` is retained after UX testing;
 - final Italian/English treatment of official Sorcery terms inside editorial content;
 - definitive label for physical venues (`Luoghi`, `Sedi`, other);
 - launch visibility of Tesori;
 - final opening criteria for Mercante.
+
+The meaning of `Proclami` itself is no longer open: it means **News**.
 
 ---
 
@@ -401,7 +442,8 @@ The Terminology Bible may move from DRAFT to APPROVED when:
 - Product Owner approves the hard boundaries around Realm, Avatar, Site, Artifact, Storyline, Affinity and Threshold;
 - the Giostra semantic boundary is preserved as ICA-organized competitive events;
 - remaining Eventi/Giostre navigation architecture is resolved;
-- Cronache/Proclami distinction is approved;
+- `Proclami = News` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
+- the Cronache/Proclami editorial distinction remains unambiguous;
 - Avventurieri terminology is approved;
 - Alleanze/Reami wording is resolved;
 - Tesori and Mercante launch roles are defined;
