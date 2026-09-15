@@ -24,4 +24,6 @@ Critical / High / Medium / Low
 <!-- Link EXC-XXXX when an accepted exception exists; otherwise None. -->
 
 ## Status
-Open / In progress / Fixed / Verified
+Open / In Progress / Fixed / Closed
+
+> Defect status is not the object lifecycle. Verification evidence belongs in the relevant Verification Record.

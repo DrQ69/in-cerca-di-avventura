@@ -45,7 +45,7 @@ Completed/established:
 - M7.1 — Responsive Conformance gate defined; real implementation validation remains pending
 - M8 / M8.1 — Definition of Done and governance hardening
 - M9 / M9.1 — QA Checklist and QA Execution Model
-- M10 — GitHub Workflow
+- M10 — GitHub Workflow, hardened to v1.1 and Product Owner approved
 - M11 — Visual Regression system established; production baseline coverage pending canonical components/pages
 
 M10/M11 operational assets:
@@ -55,6 +55,7 @@ M10/M11 operational assets:
 - `.github/ISSUE_TEMPLATE/defect.md`
 - `.github/workflows/qa-baseline.yml`
 - `scripts/qa_baseline.py`
+- `docs/VERIFICATION_RECORD_TEMPLATE.md`
 - `docs/VISUAL_REGRESSION.md`
 - `qa/visual-baselines.json`
 - `qa/evidence/visual/README.md`
@@ -72,7 +73,8 @@ Next planned milestone:
 5. M12 is not yet implemented.
 6. Canonical component production has not yet begun in a systematic P0-first sequence.
 7. M11 has no production screenshots yet by design: the legacy/prototype homepage must not become the canonical baseline.
-8. Screenshot capture/pixel-diff automation is not yet made mandatory; M11 remains hybrid until a stable capture engine is justified by canonical implementation work.
+8. Screenshot capture/pixel-diff automation is not yet mandatory; M11 remains hybrid until a stable capture engine is justified by canonical implementation work.
+9. Minimal technical protection of `main` is not yet enforced; GitHub Issue #17 tracks the required admin settings (`ICA baseline QA` required, no force-push, no branch deletion).
 
 ## Current implementation objective
 

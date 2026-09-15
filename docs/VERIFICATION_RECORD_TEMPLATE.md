@@ -6,8 +6,12 @@ Use one record for each non-trivial verification claim. M9 check IDs from `docs/
 
 - **Verification ID:** VR-XXXX
 - **Object ID / Name:**
-- **Object type:** component / asset / page-template / content-data / code-change / release
-- **Version / Commit:**
+- **Object type:** component / asset / page-template / content-data / code-change / release / governance
+- **Version label:**
+- **Tested head SHA:**
+- **PR:**
+- **Merged main SHA:** pending / SHA
+- **Tested-head vs merged-tree/content equivalence confirmed:** yes / no / pending / N/A
 - **Lifecycle state before verification:**
 - **Requested target state:**
 - **Release readiness target:** NOT_READY / STAGING_READY / PRODUCTION_READY
@@ -15,6 +19,8 @@ Use one record for each non-trivial verification claim. M9 check IDs from `docs/
 - **Applicable QA families:** GEN / CMP / AST / PAG / DAT / TEC / A11Y / VIS / PERF / REL / other
 - **Tester / Agent:**
 - **Date:**
+
+A mutable branch name is useful context but is not sufficient immutable version evidence. Record commit SHAs whenever repository state is part of the claim.
 
 ## Environment
 
@@ -27,7 +33,7 @@ Use one record for each non-trivial verification claim. M9 check IDs from `docs/
 
 ## Checks
 
-Use only `PASS`, `FAIL`, `N/A`, or `BLOCKED`. Blocking `N/A` results require a rationale.
+Use only `PASS`, `FAIL`, `N/A`, or `BLOCKED`. Every `N/A` requires a rationale.
 
 | Check ID | Criterion | Result | Evidence | Defect / Exception | Notes / N/A rationale |
 |---|---|---|---|---|---|
@@ -72,6 +78,8 @@ State anything that was not fully verified or that depends on a future milestone
 - **High defects open:** 0 / count
 - **Medium defects open:** 0 / count
 - **Approval recommendation:** yes / no / not applicable
+- **Product Owner approval recorded:** yes / no / not applicable
+- **Approval date / reference:**
 
 `APPROVED` may be assigned only by the Product Owner unless a future written delegation explicitly says otherwise.
 
