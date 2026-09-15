@@ -4,9 +4,11 @@
 - **Object type:** P0 interactive component set + QA fixture
 - **Version label:** 1.0
 - **Tested implementation head SHA:** `d4cbc73d9eb25e548ce6fcb022b74a416f59bac0`
+- **Final PR head SHA:** `d9ec28f79154af0534e95292875a4fa41922c2e7`
 - **PR:** #21
-- **Merged main SHA:** pending at verification time
-- **Final PR tree / merged tree:** pending
+- **Merged implementation SHA:** `fc7014e1a29dd72477f357eec38590129e75c454`
+- **Final PR tree / merged implementation tree:** `2ededb1afcf536a56bb17d09534a72e77012198d`
+- **Final PR vs squash-merge tree/content equivalence confirmed:** yes
 - **Lifecycle state before verification:** SPECIFIED / IMPLEMENTED
 - **Requested target state:** IMPLEMENTED; do not promote to VERIFIED until M7.1 runtime/visual evidence passes
 - **Release readiness target:** NOT_READY / fixture-only implementation slice
@@ -42,7 +44,7 @@
 | QA-CMP-NAV-005 | Mobile menu keyboard/touch without focus loss/overflow | BLOCKED | runtime | M7.1 pending | — | Native details/summary reduces risk but does not replace testing. |
 | QA-TEC-001 | Smallest coherent change | PASS | manual | PR #21 | — | Production homepage intentionally untouched. |
 | QA-TEC-002 | No unapproved framework/build dependency | PASS | automated/manual | source + CI | — | HTML/CSS only; Google Fonts load is fixture typography support, not build dependency. |
-| QA-TEC-003 | Referenced files/assets exist | PASS | automated | `ICA baseline QA` run #21 | — | CI succeeded. |
+| QA-TEC-003 | Referenced files/assets exist | PASS | automated | `ICA baseline QA` runs #21 and #22 | — | CI succeeded before and after adding the Verification Record. |
 | QA-TEC-013 | Legacy assumptions not silently promoted | PASS | manual | isolated fixture + contract | — | Legacy CSS/IA not reused as canonical precedent. |
 | QA-A11Y-001 | Essential controls reachable by keyboard | BLOCKED | runtime | M7.1 pending | — | Requires observed traversal. |
 | QA-A11Y-003 | Focus indicator exists | PASS | source review | CSS focus rule | — | Visibility in all viewports pending. |
@@ -55,7 +57,9 @@
 
 ## Automated evidence
 
-GitHub Actions `ICA baseline QA` run #21 completed successfully on tested implementation head `d4cbc73d9eb25e548ce6fcb022b74a416f59bac0`.
+GitHub Actions `ICA baseline QA` runs #21 and #22 completed successfully. Run #22 passed on final PR head `d9ec28f79154af0534e95292875a4fa41922c2e7`.
+
+Final PR head and squash-merge implementation commit both resolve to tree `2ededb1afcf536a56bb17d09534a72e77012198d`, confirming content equivalence for the merged implementation.
 
 This confirms repository/HTML/path/M12 structural integrity for the work block. It does **not** prove browser responsive or visual conformance.
 
