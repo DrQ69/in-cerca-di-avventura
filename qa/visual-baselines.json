@@ -1,0 +1,7 @@
+{
+  "document_id": "ICA-VR-REG-001",
+  "version": 1,
+  "status": "baseline-pending-canonical-components",
+  "notes": "Legacy/prototype UI is not a canonical visual baseline. Add entries only for canonical verified objects selected as visual references.",
+  "baselines": []
+}

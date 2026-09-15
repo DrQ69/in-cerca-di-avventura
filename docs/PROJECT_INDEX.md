@@ -34,7 +34,7 @@ Use for product identity, locked IA/content/design/technical decisions, source i
 - `docs/DEFINITION_OF_DONE.md` + `docs/M8_1_DOD_GOVERNANCE_HARDENING.md` — completion, approval and readiness
 - `docs/QA_CHECKLIST.md` + `docs/M9_1_QA_EXECUTION_MODEL.md` — QA checks and execution model
 - `docs/GITHUB_WORKFLOW.md` — branch, PR, defect, CI and merge workflow
-- future M11 document — visual regression
+- `docs/VISUAL_REGRESSION.md` + `qa/visual-baselines.json` — visual baseline/regression system
 - future M12 document — technical baseline
 
 ### Layer 3 — Operational records
@@ -63,10 +63,12 @@ Operational records never override Layer 1 or Layer 2 rules.
 | Work on results/rankings | Canonical content/results rules + campaign scoring source + QAP-DAT |
 | Work on deck data/UI | Canonical Sorcery model + relevant component/page QA |
 | Modify code/technical implementation | Canonical technical constraints + QAP-CODE + affected specialist systems + GitHub Workflow |
+| Compare or update approved visual appearance | Visual Regression + relevant Design/Responsive rules + applicable QA profile |
+| Create/replace a visual baseline | Visual Regression + Verification Record + Product Owner baseline approval |
 | Claim VERIFIED | DoD + QA Checklist + QA Execution Model + Verification Record |
 | Claim APPROVED | Product Owner decision required; DoD/M8.1 applies |
 | Open/prepare/merge non-trivial PR | GitHub Workflow + relevant DoD/QA records |
-| Prepare release | DoD/M8.1 + QAP-REL + current Verification Records + GitHub Workflow |
+| Prepare release | DoD/M8.1 + QAP-REL + current Verification Records + GitHub Workflow + M11 if approved baselines are affected |
 | Check what exists now / what is legacy | Project Context |
 
 ## 4. Do not over-read
@@ -80,7 +82,8 @@ Examples:
 - editing a factual RESULT record does not require reading the full Asset Specification;
 - optimising an image does not require reading the complete Content Model discussion;
 - changing a responsive component does require Responsive + M7.1 and the relevant QA profile;
-- opening a routine PR does not require rereading every visual specification if the implementation QA already references them.
+- opening a routine PR does not require rereading every visual specification if the implementation QA already references them;
+- a non-visual data correction does not require Visual Regression unless it changes rendered layout covered by an approved baseline.
 
 ## 5. Core non-negotiables
 
@@ -99,7 +102,8 @@ Regardless of task:
 - static HTML/CSS/lightweight JS remains the technical baseline until a real requirement justifies change;
 - mobile is deliberately composed, not scaled desktop;
 - no Critical/High defect is acceptable for production readiness;
-- AI/developers may verify, but only the Product Owner may approve unless a future written delegation exists.
+- AI/developers may verify, but only the Product Owner may approve unless a future written delegation exists;
+- legacy/prototype UI must not be frozen into M11 production baselines.
 
 ## 6. Current milestone state
 
@@ -112,7 +116,8 @@ Current governance/foundation position:
 - M8/M8.1 DoD/governance is established;
 - M9/M9.1 QA system is established;
 - M10 GitHub Workflow is established;
-- next planned milestones are M11 Visual Regression and M12 Technical Baseline.
+- M11 Visual Regression system is established, while production baseline coverage waits for canonical components/pages;
+- next planned milestone is M12 Technical Baseline.
 
 ## 7. Lifecycle language
 
@@ -134,7 +139,7 @@ The target user experience is:
 
 **Product Owner states the desired outcome -> ChatGPT/agent selects the required rules automatically -> branch/implementation -> QA -> PR/merge when permitted -> concise report -> Product Owner approves only when appropriate.**
 
-The Product Owner should not have to remind agents to create branches, read responsive rules, update the manifest, run QA, open a PR or respect lifecycle terminology. Those are system responsibilities.
+The Product Owner should not have to remind agents to create branches, read responsive rules, update the manifest, run QA, compare affected visual baselines, open a PR or respect lifecycle terminology. Those are system responsibilities.
 
 ## 9. Update rule
 

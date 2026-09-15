@@ -41,6 +41,8 @@ Treat them as **legacy/prototype implementation**, not as design/IA/responsive p
 
 Do not copy legacy navigation labels, 620/900px media-query assumptions, prototype copy or rendered data into new canonical work merely because they exist.
 
+Do not create approved M11 visual baselines from legacy/prototype UI.
+
 Use `docs/PROJECT_CONTEXT.md` for current implementation status and next milestones.
 
 ## 4. Lifecycle and authority
@@ -96,7 +98,7 @@ Before creating or integrating a production binary, its role, component/entity r
 
 Generated reference sheets are not production assets and must not be sliced into production files.
 
-## 7. QA rules
+## 7. QA and visual regression rules
 
 For non-trivial verification, use:
 
@@ -104,6 +106,11 @@ For non-trivial verification, use:
 - `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`
 - `docs/QA_CHECKLIST.md`
 - `docs/M9_1_QA_EXECUTION_MODEL.md`
+
+For changes affecting approved visual appearance, also use:
+
+- `docs/VISUAL_REGRESSION.md`
+- `qa/visual-baselines.json`
 
 Select one primary QA Profile from M9.1 and only the applicable families/check IDs.
 
@@ -119,7 +126,9 @@ Apply **test once, reference many**: reuse evidence only while object version, d
 
 Classify evidence as `manual`, `automated` or `hybrid` where appropriate.
 
-Store non-sensitive evidence according to `qa/evidence/README.md`.
+Store non-sensitive evidence according to `qa/evidence/README.md` and M11 visual evidence rules.
+
+Agents may create candidate visual baselines but may not mark them approved. Product Owner acceptance is required for a production visual baseline.
 
 Record accepted exceptions in `docs/EXCEPTION_REGISTER.md`.
 
@@ -136,11 +145,12 @@ For a non-trivial task:
 7. make the smallest coherent change;
 8. preserve approved architecture, IDs, data ownership and terminology;
 9. run the applicable responsive/accessibility/QA checks;
-10. verify referenced assets and paths actually exist/render;
-11. create/attach structured verification evidence when claiming `VERIFIED`;
-12. record defects/exceptions and any `RECHECK_REQUIRED` impact;
-13. distinguish lifecycle state from release readiness;
-14. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
+10. when approved visual baselines are affected, capture/compare the relevant visual states and classify differences under M11;
+11. verify referenced assets and paths actually exist/render;
+12. create/attach structured verification evidence when claiming `VERIFIED`;
+13. record defects/exceptions and any `RECHECK_REQUIRED` impact;
+14. distinguish lifecycle state from release readiness;
+15. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
 
 ## 9. Git workflow
 
@@ -163,9 +173,9 @@ Agents should perform routine Git mechanics automatically when the requested tas
 
 ## 10. Product Owner interaction goal
 
-The Product Owner should state the desired outcome, not manually orchestrate internal governance.
+The Product Owner should state the desired outcome, not manually orchestrate internal governance or screenshot tooling.
 
-Agents are responsible for selecting the correct specifications, applying responsive/asset/QA/workflow rules and returning a concise result for review.
+Agents are responsible for selecting the correct specifications, applying responsive/asset/QA/workflow/visual-regression rules and returning a concise result for review.
 
 Do not ask the Product Owner to repeat rules that are already authoritative in the repository.
 
