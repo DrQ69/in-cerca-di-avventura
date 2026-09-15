@@ -4,9 +4,11 @@
 - **Object type:** governance + code-change
 - **Version label:** 1.1
 - **Tested implementation head SHA:** `89e543ffc3bbc0f91ba296272f351b128e8c63ea`
+- **Final PR head SHA:** `33e1b825add2129de6a66fe15c2d57942ba73fe2`
 - **PR:** #20
-- **Merged main SHA:** pending at verification time
-- **Final PR tree / merged tree:** pending
+- **Merged main SHA:** `3147deb9cb4584acc2550ce8df328cd791c5411a`
+- **Final PR tree / merged tree:** `05237d0be4226c584db451bbbaa2ca39a0b53f40`
+- **Final PR vs squash-merge tree/content equivalence confirmed:** yes
 - **Lifecycle state before verification:** VERIFIED v1.0
 - **Requested target state:** VERIFIED v1.1
 - **Release readiness target:** NOT_READY / governance-system object
@@ -26,8 +28,8 @@
 | QA-GEN-007 | Known uncertainty recorded | PASS | M12 runtime protocol + Context | — | Runtime/full WCAG evidence remains page-level hybrid work. |
 | QA-TEC-001 | Smallest coherent scope | PASS | PR #20 | — | Hardening limited to M12 spec, registry, checker and routing. |
 | QA-TEC-002 | No unapproved dependency | PASS | `scripts/technical_baseline.py` | — | Python standard library only. |
-| QA-TEC-003 | Referenced files exist | PASS | `ICA baseline QA` run #17 | — | Structural and M12 deterministic checks completed successfully. |
-| QA-TEC-005 | Internal paths/checks valid | PASS | `ICA baseline QA` run #17 | — | Schema v2, threshold contract and zero-page legacy transition pass. |
+| QA-TEC-003 | Referenced files exist | PASS | `ICA baseline QA` runs #17 and #18 | — | Structural and M12 deterministic checks completed successfully. |
+| QA-TEC-005 | Internal paths/checks valid | PASS | `ICA baseline QA` run #18 | — | Schema v2, threshold contract and zero-page legacy transition pass on final PR head. |
 | QA-A11Y-007 | Accessibility thresholds preserved | PASS | registry + M12 §4 | — | WCAG 2.2 AA / 4.5:1 / 3:1 unchanged and now CI-protected. |
 | QA-A11Y-010 | Touch target baseline preserved | PASS | registry + M12 §4 | — | 44×44 CSS px retained and CI-protected. |
 | QA-PERF-002 | No unnecessary blocking dependency | PASS | implementation review | — | No browser/package-manager dependency added. |
@@ -56,6 +58,18 @@ M12 v1.1 now:
 - Medium: 0 new M12 defects
 - Existing external governance gap: GitHub Issue #17 (`main` protection), not caused by M12
 - Exceptions: none
+
+## Evidence summary
+
+- `docs/TECHNICAL_BASELINE.md` v1.1
+- `qa/technical-baseline.json` schema v2
+- `scripts/technical_baseline.py`
+- `CLAUDE.md`
+- `docs/PROJECT_INDEX.md`
+- `docs/PROJECT_CONTEXT.md`
+- PR #20
+- GitHub Actions `ICA baseline QA` runs #17 and #18: success
+- final PR tree and squash-merge tree both `05237d0be4226c584db451bbbaa2ca39a0b53f40`
 
 ## Coverage state
 
