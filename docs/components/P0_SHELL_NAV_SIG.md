@@ -1,7 +1,7 @@
 # Canonical Shell v1 — SIG-01 / NAV-01 / NAV-02
 
 **Document ID:** ICA-P0-SHELL-001  
-**Status:** IMPLEMENTED — verification pending  
+**Status:** IMPLEMENTED — runtime validation partially passed; production-font/visual validation pending  
 **Version:** 1.0  
 **Scope:** first Canonical Implementation v1 work block  
 **Authority:** subordinate to `docs/ICA_CANONICAL_SPEC.md`, `docs/DESIGN_SYSTEM.md`, M7/M7.1, M8/M8.1, M9/M9.1, M10, M11 and M12
@@ -99,6 +99,8 @@ If 1024 fails, keep `NAV-02` active until the first measured passing width and d
 
 The fixture uses the approved **Cinzel-family working direction**, not a permanently locked production font. Font lock triggers `RECHECK_REQUIRED` for NAV fit.
 
+A first browser geometry run recorded in `qa/verification/VR-0007-m7-1-shell-runtime.md` showed the six labels fitting at 1024 / 1100 / 1180 / 1280 / 1440 with minimum separation of 8px at 1024–1180 and 12px at 1280–1440. Because the validation environment could not resolve the external Cinzel font, these are **conditional geometry results only** and do not close the production-font fit requirement.
+
 ## 5. NAV-02 contract — mobile/tablet
 
 **Activation:** `<1024px` unless NAV-01 fit validation later establishes a higher local breakpoint.
@@ -128,6 +130,25 @@ Reasons:
 - decorative complexity is reduced before control/text size.
 
 The panel intentionally has no large animation, so reduced-motion behaviour is satisfied without a separate animated path.
+
+### Runtime validation obtained
+
+`VR-0007` records PASS for:
+
+- 360×800;
+- 390×844;
+- 480×900;
+- 768×1024;
+- 844×390;
+- 667×375;
+- 915×412;
+- no page-level horizontal overflow;
+- menu panel contained within viewport;
+- repeated menu links meeting the 44px minimum;
+- keyboard sequence `SIG-01 -> Menu -> first navigation item`;
+- visible focus outline.
+
+These results validate NAV-02 mechanics but do not replace the pending final visual review with the real SIG-01 asset.
 
 ## 6. Shell/container contract
 
@@ -179,38 +200,34 @@ The fixture is intentionally **not** a canonical production page:
 
 It exists to validate the first P0 components before production integration.
 
-## 9. M7.1 validation still required
+## 9. M7.1 validation status
 
-Before these components may be recommended as `VERIFIED`, capture evidence for:
+Runtime mechanics have partially passed M7.1. Evidence: `qa/verification/VR-0007-m7-1-shell-runtime.md`.
 
-- 360×800;
-- 390×844;
-- 480×900;
-- 768×1024;
-- 1024×768;
-- 1100px NAV fit;
-- 1180px NAV fit;
-- 1280×800;
-- 1440×900;
-- 1920×1080;
-- 844×390;
-- 667×375;
-- 915×412;
-- keyboard traversal;
-- focus visibility;
-- target-size confirmation;
-- page overflow;
-- open mobile-menu short-landscape behaviour.
+Validated in-browser:
 
-Final production-font selection requires NAV fit re-verification.
+- mobile/tablet NAV-02 geometry and containment at mandatory standard widths;
+- mandatory short-landscape menu containment;
+- keyboard traversal for the shell/menu path;
+- visible focus;
+- 44px NAV-02 targets;
+- no page-level horizontal overflow across the tested matrix;
+- conditional NAV-01 geometry at 1024 / 1100 / 1180 / 1280 / 1440 and sanity at 1920.
+
+Still required before these components may be recommended as `VERIFIED`:
+
+- repeat NAV-01 fit with the actual current Cinzel-family production-font candidate;
+- render and review the real `SIG-01-CANDIDATE-ROOT` asset in the validation environment;
+- observable final ICA visual review, including `ICA essenziale` on mobile;
+- repeat NAV fit when final production typography is locked.
 
 ## 10. Lifecycle/readiness
 
-Current lifecycle after implementation:
+Current lifecycle after partial runtime validation:
 
-- `SIG-01`: `IMPLEMENTED`, visual/provenance approval pending;
-- `NAV-01`: `IMPLEMENTED`, M7.1 fit/visual validation pending;
-- `NAV-02`: `IMPLEMENTED`, M7.1 interaction/visual validation pending;
+- `SIG-01`: `IMPLEMENTED`, real-asset visual/provenance approval pending;
+- `NAV-01`: `IMPLEMENTED`, geometry conditionally passed but production-font fit/visual validation pending;
+- `NAV-02`: `IMPLEMENTED`, runtime interaction/containment checks passed; final visual validation pending;
 - Canonical Shell v1 fixture: `IMPLEMENTED`, validation fixture only.
 
-No object in this work block is automatically `APPROVED` or `PRODUCTION_READY` because the code has been merged.
+No object in this work block is automatically `VERIFIED`, `APPROVED` or `PRODUCTION_READY` because runtime mechanics passed. Final visual/font evidence remains required.
