@@ -3,10 +3,10 @@
 - **Object ID / Name:** ICA-WF-001 / M10 GitHub Workflow
 - **Object type:** governance + code-change
 - **Version label:** 1.1
-- **Tested head SHA:** `e5ca82c554f708576d772ed49c4d3d991cfb5872`
+- **Tested head SHA:** `b3ad9bac0fa5626fe3af34312359ae47fbbc2d74`
 - **PR:** #18
-- **Merged main SHA:** pending at verification time
-- **Tested-head vs merged-tree/content equivalence confirmed:** pending until squash merge
+- **Merged main SHA:** `78ecb475f50ead54ce04a81da0ddb5f635eac28d`
+- **Tested-head vs merged-tree/content equivalence confirmed:** yes — both commits reference tree `3ae2c0142f36c2200c88c0297a4618cc05b22cd9`
 - **Lifecycle state before verification:** APPROVED v1.0
 - **Requested target state:** VERIFIED changes while retaining Product Owner APPROVED status for M10
 - **Release readiness target:** NOT_READY / not applicable as a governance object
@@ -25,8 +25,8 @@
 | QA-GEN-008 | Exceptions/defects linked | PASS | Issue #17 | #17 | Branch-protection admin gap is durably tracked. |
 | QA-TEC-001 | Smallest coherent scope | PASS | PR #18 | — | Changes limited to workflow hardening, evidence format, CI and agent instructions. |
 | QA-TEC-002 | No unapproved framework/dependency | PASS | workflow/script diff | — | Python stdlib only; Python pinned to 3.12 in CI. |
-| QA-TEC-003 | Referenced files exist | PASS | `ICA baseline QA` run #9 | — | CI completed successfully. |
-| QA-TEC-005 | Internal paths/checks valid | PASS | `ICA baseline QA` run #9 | — | All-HTML local asset/script/stylesheet checks passed. |
+| QA-TEC-003 | Referenced files exist | PASS | `ICA baseline QA` run #10 | — | CI completed successfully on the final PR head. |
+| QA-TEC-005 | Internal paths/checks valid | PASS | `ICA baseline QA` run #10 | — | All-HTML local asset/script/stylesheet checks passed. |
 | QA-TEC-014 | Changed files/uncertainty documented | PASS | PR #18 + VR-0003 | #17 | Remaining admin-only enforcement gap is explicit. |
 
 ## Defects and exceptions
@@ -49,7 +49,9 @@ Issue #17 does not invalidate the workflow specification or CI implementation, b
 - `CLAUDE.md`
 - `docs/PROJECT_CONTEXT.md`
 - PR #18
-- GitHub Actions `ICA baseline QA` run #9: success
+- GitHub Actions `ICA baseline QA` run #10: success
+- tested head tree: `3ae2c0142f36c2200c88c0297a4618cc05b22cd9`
+- merged main tree: `3ae2c0142f36c2200c88c0297a4618cc05b22cd9`
 - GitHub Issue #17
 
 ## Dependency freshness
@@ -61,7 +63,6 @@ Issue #17 does not invalidate the workflow specification or CI implementation, b
 ## Residual uncertainty
 
 - Branch-protection enforcement cannot be changed through the active connector because no repository-admin branch-protection write action is exposed.
-- Post-merge SHA/tree equivalence must be recorded after squash merge if durable audit detail is required.
 
 ## Outcome
 
