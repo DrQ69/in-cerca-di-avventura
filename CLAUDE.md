@@ -41,7 +41,7 @@ Treat them as **legacy/prototype implementation**, not as design/IA/responsive p
 
 Do not copy legacy navigation labels, 620/900px media-query assumptions, prototype copy or rendered data into new canonical work merely because they exist.
 
-Do not create approved M11 visual baselines from legacy/prototype UI.
+Do not create approved M11 visual baselines or M12 canonical-page coverage from legacy/prototype UI merely because it is public.
 
 Use `docs/PROJECT_CONTEXT.md` for current implementation status and next milestones.
 
@@ -98,7 +98,7 @@ Before creating or integrating a production binary, its role, component/entity r
 
 Generated reference sheets are not production assets and must not be sliced into production files.
 
-## 7. QA and visual regression rules
+## 7. QA, visual regression and technical baseline
 
 For non-trivial verification, use:
 
@@ -111,6 +111,13 @@ For changes affecting approved visual appearance, also use:
 
 - `docs/VISUAL_REGRESSION.md`
 - `qa/visual-baselines.json`
+
+For canonical public pages, production technical claims or releases, also use:
+
+- `docs/TECHNICAL_BASELINE.md`
+- `qa/technical-baseline.json`
+
+Canonical production UI targets WCAG 2.2 AA and the measurable M12 thresholds. Deterministic M12 page checks apply to routes registered in `qa/technical-baseline.json`; do not omit a real canonical production candidate merely to bypass the checks.
 
 Select one primary QA Profile from M9.1 and only the applicable families/check IDs.
 
@@ -126,7 +133,7 @@ Apply **test once, reference many**: reuse evidence only while object version, d
 
 Classify evidence as `manual`, `automated` or `hybrid` where appropriate.
 
-Store non-sensitive evidence according to `qa/evidence/README.md` and M11 visual evidence rules.
+Store non-sensitive evidence according to `qa/evidence/README.md`, M11 visual evidence rules and M12 technical evidence rules.
 
 Agents may create candidate visual baselines but may not mark them approved. Product Owner acceptance is required for a production visual baseline.
 
@@ -146,11 +153,12 @@ For a non-trivial task:
 8. preserve approved architecture, IDs, data ownership and terminology;
 9. run the applicable responsive/accessibility/QA checks;
 10. when approved visual baselines are affected, capture/compare the relevant visual states and classify differences under M11;
-11. verify referenced assets and paths actually exist/render;
-12. create/attach structured verification evidence when claiming `VERIFIED`;
-13. record defects/exceptions and any `RECHECK_REQUIRED` impact;
-14. distinguish lifecycle state from release readiness;
-15. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
+11. when canonical pages or release technical behaviour are affected, apply M12 deterministic and runtime checks;
+12. verify referenced assets and paths actually exist/render;
+13. create/attach structured verification evidence when claiming `VERIFIED`;
+14. record defects/exceptions and any `RECHECK_REQUIRED` impact;
+15. distinguish lifecycle state from release readiness;
+16. summarise changed files, evidence, remaining risks and decisions needed from the Product Owner.
 
 ## 9. Git workflow
 
@@ -177,9 +185,9 @@ The target `main` protection is minimal: require `ICA baseline QA`, prohibit for
 
 ## 10. Product Owner interaction goal
 
-The Product Owner should state the desired outcome, not manually orchestrate internal governance or screenshot tooling.
+The Product Owner should state the desired outcome, not manually orchestrate internal governance, screenshot tooling, accessibility checks, SEO metadata or performance commands.
 
-Agents are responsible for selecting the correct specifications, applying responsive/asset/QA/workflow/visual-regression rules and returning a concise result for review.
+Agents are responsible for selecting the correct specifications, applying responsive/asset/QA/workflow/visual-regression/technical-baseline rules and returning a concise result for review.
 
 Do not ask the Product Owner to repeat rules that are already authoritative in the repository.
 
