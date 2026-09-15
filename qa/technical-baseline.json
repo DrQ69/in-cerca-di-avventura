@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "document_id": "ICA-TECH-001",
   "thresholds": {
     "wcag_target": "2.2-AA",
