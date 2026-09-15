@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-TERM-001  
 **Status:** DRAFT — Creative Canonical Lock  
-**Version:** 0.4  
+**Version:** 0.5  
 **Depends on:** `docs/NARRATIVE_ART_BIBLE.md`  
 **Primary external terminology source:** *Sorcery: Contested Realm Rulebook*, December 2025  
 
@@ -95,7 +95,7 @@ Official meaning: the card/entity representing the player and their connection t
 
 **ICA rule:** never use `Avatar` as the name for the real community member or user profile.
 
-**ICA real-person term:** `Avventuriero` may represent the community identity/person.
+**ICA real-person term:** `Avventuriero` represents the real community identity/person.
 
 **TECH mapping:** real person = `PLAYER`; game card = Avatar within deck/card data.
 
@@ -143,7 +143,7 @@ This does **not** prevent ICA from using the common-language word `evento` for r
 
 | Concept | Sorcery official conflict | ICA narrative term | Candidate UX label | TECH identifier | Status |
 |---|---|---|---|---|---|
-| Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | STRONG CANDIDATE |
+| Real community member | Avatar conflict if misnamed | Avventuriero / Il Libro dei Nomi | Avventurieri | `PLAYER` | PRODUCT OWNER LOCKED |
 | Real tournament/gathering | low | Convocazione / Evento depending role | Eventi | `EVENT` | DECISION REQUIRED |
 | ICA-organized competitive event | low | Giostra / Il Campo delle Prove | Giostre | `EVENT` + organiser=`ICA` + competitive subtype | PRODUCT OWNER LOCKED |
 | Historical/editorial account | Storyline must be avoided | Cronaca / Annali | Cronache | `ARTICLE` (+ relations) | STRONG CANDIDATE |
@@ -295,15 +295,81 @@ Within each grouping appear the individual allied organisations/entities.
 
 **Status:** `PRODUCT OWNER LOCKED`.
 
-## 5.4 Avventuriero / Avatar
+## 5.4 Avventurieri / Avatar — Product Owner decision locked
 
-Canonical semantic boundary proposed:
+### Canonical semantic boundary
 
-- **Avventuriero** = person/community identity;
-- **Avatar** = Sorcery card/game entity;
+**Avventuriero** is the ICA term used to identify a **real person belonging to, participating in, or represented within the Sorcery community covered by ICA**.
+
+An Avventuriero is therefore not a fictional role and is not the player's in-game Avatar.
+
+Hard boundary:
+
+- **Avventuriero** = real person / community identity;
+- **Avatar** = official Sorcery game/card entity;
 - `PLAYER` = technical person object.
 
-This boundary should be treated as hard unless the Product Owner explicitly changes it.
+`Avatar` must never be used as the ICA label for a real-person profile.
+
+### Identity rule
+
+The **nickname is the primary visible identity** of the Avventuriero.
+
+Rules:
+
+- the profile must not become a personal registry or civil-identity record;
+- real name or other personal details may appear only when intentionally public and appropriate to the site's content rules;
+- public presentation should privilege the Sorcery/community identity rather than personal-data completeness.
+
+The precise consent/privacy mechanics remain a Content Governance decision, but the terminology layer must preserve this identity principle.
+
+### Profile scope
+
+The Avventuriero profile may progressively connect verified public activity such as:
+
+- nickname;
+- community / Alleanza association where relevant;
+- Giostre and Eventi participated in;
+- results;
+- decks;
+- Cronache in which the person appears;
+- achievements / recognitions;
+- authorised images or galleries;
+- participation history.
+
+Availability of a field does not imply that every profile must contain it.
+
+### Reality / narrative rule
+
+An Avventuriero profile records real, supportable community activity.
+
+Narrative presentation may celebrate or contextualise that activity, but must not invent:
+
+- participations;
+- results;
+- titles;
+- achievements;
+- affiliations;
+- biographical facts.
+
+### UX implication
+
+The visible destination may use:
+
+**Il Libro dei Nomi**  
+Avventurieri della community
+
+At functional level, `Avventurieri` should remain sufficiently clear as the index/list label.
+
+### TECH mapping
+
+- visible/narrative singular = `Avventuriero`;
+- visible plural = `Avventurieri`;
+- place-level narrative title = `Il Libro dei Nomi`;
+- technical base entity = `PLAYER`;
+- in-game Sorcery Avatar = separate card/game concept, never a synonym for `PLAYER`.
+
+**Status:** `PRODUCT OWNER LOCKED`.
 
 ## 5.5 Tesori / Reliquie / Artifacts
 
@@ -374,6 +440,8 @@ Rules:
 - a `Proclamo` remains editorial content mapped to `ARTICLE` with explicit News classification;
 - `Cronaca` and `Proclamo` must be distinguishable through editorial type, not inferred only from publication date;
 - an `Alleanza` remains an `ORGANIZATION`; `Reami d'Italia` / `Reami d'Oltreconfine` are geographic narrative groupings rather than new technical entities;
+- an `Avventuriero` remains a `PLAYER`; the ICA narrative identity does not change the technical person entity;
+- Sorcery `Avatar` and ICA `PLAYER` must remain semantically separate;
 - technical identifiers remain English uppercase singular unless the Content Model is formally revised.
 
 ---
@@ -418,8 +486,9 @@ Subject to Product Owner confirmation of this document:
 
 - ICA itself is a **cittadella-crocevia**, not `Il Reame` as sole metaphor;
 - `Avatar` is reserved for Sorcery game meaning;
-- `Avventuriero` is the preferred narrative/UX identity for a real community player;
-- `PLAYER` remains the technical identifier;
+- **Avventuriero identifies the real person/community identity represented by ICA**;
+- the Avventuriero's nickname is the primary visible identity;
+- `PLAYER` remains the technical identifier for the real person;
 - **Proclami is the ICA term for News**;
 - `Cronaca` is a separate editorial form dedicated to record, account and preservation rather than the site's News classification;
 - **Giostra identifies a competitive event organized directly by In Cerca di Avventura**;
@@ -432,7 +501,7 @@ Subject to Product Owner confirmation of this document:
 
 ---
 
-# 11. Open decisions for v0.5
+# 11. Open decisions for v0.6
 
 Product/UX decisions still requiring explicit resolution:
 
@@ -444,7 +513,7 @@ Product/UX decisions still requiring explicit resolution:
 - launch visibility of Tesori;
 - final opening criteria for Mercante.
 
-The meanings of `Giostre`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
+The meanings of `Avventurieri`, `Giostre`, `Proclami`, `Alleanze`, `Reami d'Italia` and `Reami d'Oltreconfine` are no longer open.
 
 ---
 
@@ -474,7 +543,8 @@ The Terminology Bible may move from DRAFT to APPROVED when:
 - remaining Eventi/Giostre navigation architecture is resolved;
 - `Proclami = News` is preserved consistently across IA, Page Dossiers, Content Model and UX copy;
 - the Cronache/Proclami editorial distinction remains unambiguous;
-- Avventurieri terminology is approved;
+- `Avventuriero = real person/community identity` remains distinct from the official Sorcery Avatar concept;
+- nickname remains the primary visible Avventuriero identity unless a later explicit Product Owner decision changes that rule;
 - Alleanze/Reami wording remains consistent with the Product Owner-locked hierarchy;
 - Tesori and Mercante launch roles are defined;
 - every Page Dossier can map narrative term -> UX label -> technical object without ambiguity;
