@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-DOD-001  
 **Status:** Approved specialist specification  
-**Version:** 1.1  
+**Version:** 1.2  
 **Milestone:** M8 — Definition of Done  
 **Authority:** subordinate to `docs/ICA_CANONICAL_SPEC.md`  
 **Governance extension:** `docs/M8_1_DOD_GOVERNANCE_HARDENING.md`
@@ -13,14 +13,17 @@ This document defines when work in In Cerca di Avventura (ICA) may be considered
 
 ## 2. Completion states
 
-ICA distinguishes four object lifecycle states:
+ICA uses the formal object lifecycle:
 
-`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED`
+`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED -> DEPRECATED`
 
 - **SPECIFIED**: role, requirements, dependencies and acceptance criteria are documented.
 - **IMPLEMENTED**: the object exists in a usable form and can be tested.
 - **VERIFIED**: applicable checks have been performed and recorded.
 - **APPROVED**: the Product Owner accepts the object as canonical for production use, unless a future written delegation matrix explicitly grants approval authority for a defined object class.
+- **DEPRECATED**: the object remains part of project history but must not be selected for new canonical production use; a documented replacement/migration path should exist when relevant.
+
+`CONCEPT`, `DESIGNED` and `QA IN PROGRESS` may be used as workflow labels, but they are not additional lifecycle states.
 
 AI agents, automated checks and developers may reach and recommend `VERIFIED`; they may not self-assign `APPROVED`.
 
@@ -202,7 +205,7 @@ Approval is version- and dependency-sensitive. When a material dependency change
 
 Typical triggers include major font/typography, breakpoint, component contract, Design System, Content Model, required asset, accessibility baseline, scoring/rules or provenance/rights changes.
 
-`RECHECK_REQUIRED` is a verification flag, not a fifth lifecycle state. Current approval claims must not rely on stale evidence.
+`RECHECK_REQUIRED` is a verification flag, not a lifecycle state. Current approval claims must not rely on stale evidence.
 
 ## 14. Relationship to M7.1
 
