@@ -1,246 +1,257 @@
 # Design System — In Cerca di Avventura
 
+**Document role:** specialist design guidance subordinate to `docs/ICA_CANONICAL_SPEC.md`.
+
+This file consolidates the approved visual direction without duplicating the responsive, asset or QA specifications. When a topic is governed elsewhere, this document points to that system rather than redefining it.
+
 ## Visual north star
 
-The site should feel like an **old-school fantasy artefact brought to the web**: a meeting point between classic 1980s fantasy illustration, dark medieval atmosphere, engraved metal, carved stone and restrained heraldic ornament.
+ICA should feel like an **old-school fantasy artefact brought to the web**: traditional fantasy illustration, medieval heraldry, blackened metal, antique gold, deep blue, stone, parchment and restrained arcane accents.
 
-The target mood is closer to:
+The interface should feel handcrafted and physical while being implemented with systematic modern web discipline.
 
-- classic tabletop fantasy;
-- old-school Dungeons & Dragons atmosphere;
-- dark-fantasy adventure;
-- Diablo II-era materiality and lighting;
-- fantasy saga title treatments.
+Avoid:
 
-The site must **not** drift toward:
-
-- SaaS/dashboard UI;
+- SaaS/dashboard aesthetics;
 - glossy corporate landing pages;
-- generic beige parchment everywhere;
-- mobile-game fantasy UI;
-- neon/high-saturation game HUDs;
-- excessive ornamental clutter that hurts readability.
+- generic mobile-game fantasy UI;
+- neon/high-saturation HUD styling;
+- excessive rounded cards;
+- generic parchment everywhere;
+- decorative clutter that reduces legibility;
+- arbitrary per-page visual languages.
+
+## Core principle
+
+**Disciplined UI, expressive art.**
+
+UI structure, spacing, interaction and hierarchy must remain systematic and reusable. Illustration may be painterly, atmospheric and more visually expressive.
+
+Function and factual clarity always outrank ornament.
 
 ## Brand anchor
 
-The official **In Cerca di Avventura** emblem is the primary visual reference.
+The official ICA emblem is the primary identity anchor. Preserve it unless the Product Owner explicitly requests a change.
 
-Key characteristics to preserve in the broader interface:
+Do not distort, casually recolour, redraw or reinterpret it.
 
-- deep blue/black atmosphere;
-- cracked blue-stone feeling;
-- antique gold framing/details;
-- dark metal/armour;
-- small red accents;
-- blue gem accents;
-- heraldic/fantasy silhouette.
+The wider system should remain recognisably ICA even when the emblem is absent from a specific block.
 
-Do not redraw, recolour, distort or reinterpret the logo unless explicitly requested.
+## Material semantics
 
-## Core palette
+Use materials according to role:
 
-Current CSS tokens are a useful starting point, not an immutable final palette:
+- **Night / Void / deep blue:** primary atmosphere and page foundation;
+- **blackened iron / steel / dark stone:** structural frames, bars and support surfaces;
+- **antique gold / bronze:** hierarchy, precious detail, selected states and restrained emphasis;
+- **parchment / warm ivory:** reading surfaces where appropriate;
+- **Air / Earth / Fire / Water accents:** Sorcery-specific secondary markers, never the replacement for ICA’s foundation palette.
 
-```css
---bg: #08090a;
---panel: #111419;
---panel2: #161b20;
---gold: #d4a84f;
---gold2: #f0cb79;
---blue: #12628e;
---text: #efe7d4;
---muted: #b7aa90;
-```
+Gold should communicate hierarchy and value, not cover every surface.
 
-### Usage principles
+## Working colour direction
 
-- **Black / blue-black**: page background and depth.
-- **Deep stone blue**: secondary light, atmospheric gradients, subtle emphasis.
-- **Antique gold**: titles, borders, important controls and selected accents.
-- **Warm ivory**: main readable text.
-- **Muted parchment/beige**: secondary text only.
-- **Red**: very limited accent, used intentionally.
-- **Steel**: borders, metallic secondary details and neutral ornament.
+Exact final production token values remain subject to in-browser validation. Do not invent new palette systems casually.
 
-Avoid using gold on every element. Gold should communicate hierarchy and preciousness.
+The canonical direction is:
+
+- deep near-black / night background;
+- deep blue secondary surfaces;
+- dark panel surfaces;
+- antique gold with lighter/darker support tones;
+- bronze and steel structural neutrals;
+- restrained arcane blue;
+- warm parchment/ivory reading tones;
+- readable light primary/secondary text.
+
+Any implementation token change must preserve this semantic structure and pass contrast/accessibility checks.
 
 ## Typography
 
-Current families:
+Current approved direction:
 
-- **Cinzel Decorative** — major display headings;
-- **Cinzel** — navigation, labels, fantasy-flavoured secondary headings;
-- **Inter** — readable body/interface copy.
+- display/narrative: **Cinzel-family treatment**;
+- reading/interface: **a highly readable text face**.
 
-### Display headings
+The final production font pairing is intentionally **not permanently locked** until tested in real HTML across desktop/mobile, including navigation fit, headings, cards and long-form reading.
 
-Major titles should feel monumental and carved:
+Do not treat current prototype fonts as permanently canonical merely because they are already loaded by `index.html`.
 
-- uppercase where appropriate;
-- antique gold/metallic treatment;
-- subtle bevel/relief illusion;
-- dark outline/stroke;
-- deep shadow;
-- restrained ornament.
+Uppercase is appropriate for selected menu labels, small labels and heraldic headings, not for long reading text.
 
-The effect should evoke a fantasy saga title, not a glowing game logo.
+Body text must remain practical and readable.
 
-### Body text
+## Typography scale and reading behaviour
 
-Body copy must prioritise readability. Decorative serif/display fonts should not be used for long paragraphs.
+Use the responsive typography rules from `docs/RESPONSIVE_SPECIFICATION.md` rather than redefining breakpoint-specific sizes here.
 
-## Layout
+General principles:
 
-The interface should use strong, readable composition:
+- strong display hierarchy;
+- body text never reduced merely to force layout fit;
+- long-form reading width kept controlled;
+- readable line-height for editorial copy;
+- title treatment may be monumental, but not at the expense of scanability.
 
-- wide atmospheric sections;
-- clear vertical rhythm;
-- strong section titles;
-- contained content widths;
-- generous negative space around decorative elements;
-- symmetrical or heraldic framing where useful;
-- responsive behaviour that remains usable on narrow screens.
+## Layout and spacing
 
-Do not solve every section with identical rounded cards. The site can use variation: banners, stone panels, framed plaques, scroll-like strips, crests and character-sheet layouts, provided the system remains coherent.
+Use systematic spacing, contained widths and clear vertical rhythm.
 
-## Surfaces and materials
+Canonical responsive layout rules, breakpoint boundaries, grid progression, page padding, max widths and viewport test matrix live in:
 
-Preferred visual materials:
+- `docs/RESPONSIVE_SPECIFICATION.md`
+- `docs/M7_1_RESPONSIVE_CONFORMANCE.md`
 
-- dark stone;
-- cracked blue stone;
-- blackened iron;
-- aged steel;
-- antique bronze/gold;
-- engraved borders;
-- restrained leather/wood only when contextually useful;
-- smoke, night sky and warm torchlight as atmosphere.
+Do not use this file to invent alternate breakpoints.
 
-Use material cues as subtle texture and framing, not as heavy photographic backgrounds behind body text.
+## Responsive design principle
+
+Mobile is a deliberate composition, not a scaled desktop.
+
+When space decreases:
+
+1. remove non-essential flourishes;
+2. reduce decorative terminal/corner prominence;
+3. simplify frames;
+4. reduce decorative background contrast;
+5. remove secondary art;
+6. only then reduce spacing within approved limits.
+
+Do not sacrifice readable text, touch targets, focus visibility or factual clarity to preserve ornament.
+
+A major mobile block should preserve at least one strong ICA identity anchor so the result becomes **ICA essenziale**, not generic mobile UI.
+
+## Ornament density
+
+Use ornament according to hierarchy:
+
+- major hero/banner: high;
+- section heading: medium-high;
+- card: medium;
+- table/data: low;
+- body text: minimal.
+
+Prefer one strong focal decorative treatment to many competing flourishes.
+
+## Components
+
+Component IDs and ownership follow the canonical Component System.
+
+Visual variation is not automatically a new component. If purpose and semantic structure remain the same, prefer a documented variant.
+
+Do not define an alternative component lifecycle in this file; use the lifecycle and completion rules from the Canonical Spec and M8/M8.1.
+
+## Buttons and controls
+
+Primary actions should use ICA hierarchy without becoming image-only controls.
+
+Expected characteristics:
+
+- dark/deep-blue or restrained precious treatment depending on hierarchy;
+- clear border/contrast;
+- visible default, hover where relevant, focus-visible, active and disabled states;
+- no essential hover-only behaviour;
+- no pill treatment unless the control genuinely behaves like a tag/filter;
+- primary/repeated P0/P1 controls meet the M7.1 touch-target requirement unless an accepted exception exists.
+
+Important labels remain accessible HTML.
 
 ## Cards
 
-Event/result/alliance cards should eventually feel more like **fantasy plaques or artefacts** than generic web cards.
+Cards should feel like fantasy plaques/artefacts rather than generic rounded dashboard cards, while preserving information hierarchy.
 
-Recommended pattern:
+Use dark readable surfaces, restrained metal/gold framing and atmosphere appropriate to the component’s importance.
 
-- dark readable base;
-- thin gold/steel border;
-- small blue atmospheric highlight;
-- optional corner/crest detail;
-- clear hierarchy for date/title/metadata;
-- enough padding for mobile readability;
-- hover state that feels like light catching metal rather than a SaaS lift animation.
+Event cards must prioritise factual information such as title, date, venue, format and status before narrative decoration.
 
-## Buttons
+Player cards/profiles must preserve the distinction between **Avventuriero** (community player) and **Avatar** (Sorcery card).
 
-Primary buttons:
+Deck presentation follows **Avatar + Atlas + Spellbook**.
 
-- antique gold / bronze treatment;
-- dark text;
-- hard or lightly rounded corners;
-- subtle metallic highlight;
-- restrained hover brightening.
+## Results and data UI
 
-Secondary buttons:
+Tables and rankings prioritise readability over ornament.
 
-- dark surface;
-- gold/steel border;
-- gold/ivory text.
+- ranking/position must remain obvious;
+- labels and values remain associable;
+- horizontal scrolling is allowed only inside a deliberate semantic data container when necessary;
+- page-level horizontal scrolling is a defect;
+- element colours never become the sole carrier of meaning.
 
-Avoid pill-shaped controls unless the content genuinely behaves like a tag/filter.
+## Editorial / Cronache
 
-## Tags and metadata
+Editorial reading should feel atmospheric without becoming difficult to read.
 
-Tags may be compact and capsule-like, but should remain visually secondary. Formats, locations, times and rounds should be scan-friendly and should not compete with the event title.
+Use controlled reading width, restrained ornaments, strong image/caption treatment and narrative openings that do not obscure factual context.
 
-## Section ornaments
+## Imagery
 
-Preferred reusable assets/components:
+Preferred image direction:
 
-- heraldic dividers;
-- small sigils/crests;
-- thin engraved separators;
-- stone or metal header frames;
-- subtle corner ornaments;
-- banners/plaques for key section labels.
+- traditional/painterly fantasy illustration;
+- atmospheric fantasy worldbuilding;
+- authentic event photography for real community activity.
 
-Generated decorative graphics are welcome when they support the design system, but important text must remain HTML wherever possible.
+Do not transform authentic documentary photography into faux fantasy painting unless that treatment is explicitly intended and approved.
 
-## Hero area
+Hero and banner art must use deliberate focal points, safe areas and mobile art direction where needed.
 
-The hero should establish the world immediately:
+Asset path, format, provenance, safe-area and lifecycle rules live in `docs/ASSET_SPECIFICATION.md` and `assets/manifest.json`.
 
-- full-width fantasy artwork;
-- strong focal subject;
-- readable overlay controls;
-- dark gradient for text legibility;
-- preserve image composition across desktop/mobile using deliberate `object-position` adjustments.
+## Sorcery layer
 
-If a hero image fails, the section should still look intentional through a dark/blue atmospheric fallback rather than an empty white or broken-image state.
+Sorcery contributes a secondary design grammar:
 
-## Avventurieri visual language
+- Four Elements: Air, Earth, Fire, Water;
+- Realm 5×4 grid as a restrained compositional/metaphorical motif;
+- Avatar / Atlas / Spellbook hierarchy;
+- Sites, spells and appropriate category/icon language.
 
-The Avventuriero profile should resemble a fantasy character sheet rather than a social profile card.
-
-Possible structure:
-
-- portrait/caricature as the hero identity;
-- player name/nickname as character title;
-- Sorcery Avatar as a primary attribute;
-- record and event stats as compact attributes;
-- titles/achievements as badges/insignia;
-- result history as a readable table/list;
-- preferred archetypes/decks as secondary lore-like information.
-
-Keep real competitive data readable even when surrounded by decorative fantasy framing.
-
-## Results visual language
-
-Results should prioritise information clarity:
-
-- ranking number must be obvious;
-- player name clickable;
-- record/score aligned consistently;
-- podium positions may receive richer gold/silver/bronze treatment;
-- do not sacrifice table readability for ornament.
+The Sorcery layer enriches ICA; it does not replace ICA’s core material/brand system.
 
 ## Accessibility
 
-- Maintain readable contrast on dark surfaces.
-- Keep body text at practical sizes.
-- Use semantic HTML for titles, lists, tables and navigation.
-- Give meaningful images appropriate alt text.
-- Decorative images should use empty alt text or CSS backgrounds.
-- Do not encode essential information through colour alone.
-- Interactive targets must remain usable on mobile.
+Accessibility outranks ornament.
 
-## Responsive design
+At minimum preserve:
 
-Every significant visual change should be checked at least at:
+- semantic headings/landmarks/controls;
+- keyboard operability;
+- visible focus;
+- readable contrast;
+- useful alt text for informative imagery;
+- decorative image silence;
+- no colour-only essential meaning;
+- reduced-motion handling when motion exists;
+- logical DOM/focus order.
 
-- desktop around 1400px width;
-- tablet around 768–900px;
-- mobile around 390px width.
+Operational checks live in `docs/QA_CHECKLIST.md` and `docs/M9_1_QA_EXECUTION_MODEL.md`.
 
-When a desktop ornament does not scale cleanly, simplify or hide the ornament rather than shrinking important content.
+## Visual acceptance
 
-## Asset rules
+Before a visual result can be recommended as VERIFIED, QA must be able to explain observable reasons rather than only state that it “looks good”.
 
-- Prefer WebP/AVIF for large photographic/illustrative assets when supported by the workflow.
-- Keep source-quality originals outside the public bundle when practical.
-- Validate that binary assets are complete and actually render before merging.
-- Avoid enormous images when a correctly sized derivative can be used.
-- Do not place essential navigation or body copy only inside images.
+Evaluate at least:
 
-## Change control
+- hierarchy;
+- ICA identity;
+- ornament/function balance;
+- mobile identity preservation;
+- safe areas/overlap;
+- factual readability;
+- Sorcery-specific terminology and concept separation.
 
-Before introducing a new visual language, ask:
+M11 will later add approved visual baselines and repeatable regression comparison.
 
-1. Does it look like it belongs beside the official emblem?
-2. Does it reinforce old-school dark fantasy rather than generic fantasy UI?
-3. Is the information still easy to read?
-4. Does it work on mobile?
-5. Can the pattern be reused elsewhere?
+## Change-control rule
 
-If the answer to several of these is no, the component should be redesigned before merging.
+Before introducing a new visual treatment, ask:
+
+1. Does it belong beside the official ICA identity?
+2. Does it reinforce old-school fantasy without becoming generic game UI?
+3. Is information easier or equally easy to understand?
+4. Does it work under canonical responsive behaviour?
+5. Can it be represented as a reusable component/variant/token?
+6. Does it avoid duplicating a rule already owned by another specialist specification?
+
+If several answers are no, redesign before approval.
