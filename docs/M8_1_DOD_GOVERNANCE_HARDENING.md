@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-DOD-GOV-001  
 **Status:** Approved governance extension  
-**Version:** 1.0  
+**Version:** 1.1  
 **Milestone:** M8.1 — DoD Governance Hardening  
 **Authority:** subordinate to `docs/ICA_CANONICAL_SPEC.md` and complementary to `docs/DEFINITION_OF_DONE.md`
 
@@ -31,9 +31,13 @@ Until a delegation matrix exists, no delegated approval is assumed.
 
 ## 3. Lifecycle and release-readiness are separate
 
-Object lifecycle remains:
+Formal object lifecycle:
 
-`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED`
+`SPECIFIED -> IMPLEMENTED -> VERIFIED -> APPROVED -> DEPRECATED`
+
+`DEPRECATED` is a terminal governance state for an object that remains part of project history but is no longer valid for new canonical production use.
+
+Workflow labels such as `CONCEPT`, `DESIGNED` and `QA IN PROGRESS` are not additional lifecycle states.
 
 Release readiness is a separate property:
 
@@ -64,9 +68,11 @@ A deliverable may be PRODUCTION_READY only when:
 
 A `VERIFIED` object is not automatically PRODUCTION_READY.
 
+A `DEPRECATED` object cannot satisfy a production dependency unless the Product Owner explicitly reactivates/replaces its governance state through a documented change.
+
 ## 4. Dependency approval rule
 
-A page, template or production release may not be `PRODUCTION_READY` if a required P0 component or required production asset is only `SPECIFIED`, `IMPLEMENTED` or `VERIFIED`.
+A page, template or production release may not be `PRODUCTION_READY` if a required P0 component or required production asset is only `SPECIFIED`, `IMPLEMENTED`, `VERIFIED` or `DEPRECATED`.
 
 For preview/staging work, required P0 dependencies may be `VERIFIED` if the purpose is explicitly to validate them before approval.
 
@@ -178,7 +184,7 @@ Typical invalidators include:
 - major browser/platform implementation change;
 - provenance/rights status change.
 
-`RECHECK_REQUIRED` is a verification flag, not a fifth lifecycle state. The last approved version remains historical record, but the changed/current version cannot be represented as fully verified until affected checks rerun.
+`RECHECK_REQUIRED` is a verification flag, not a lifecycle state. The last approved version remains historical record, but the changed/current version cannot be represented as fully verified until affected checks rerun.
 
 ## 10. Verification scope after dependency change
 
