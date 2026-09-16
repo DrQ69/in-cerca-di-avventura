@@ -18,12 +18,20 @@ Visual assets for **In Cerca di Avventura** are governed by:
 - Use genuine SVG only for genuine vector geometry.
 - Respect component safe areas, file-size budgets, responsive behaviour, accessibility classification and provenance requirements from the asset specification.
 
+## Temporary Product Owner hold
+
+`assets/hero-fantasy.webp` is **ON HOLD** by Product Owner instruction dated 2026-09-16.
+
+- Do not use it in the active site, Home Beta, Open Graph metadata, new components or new page work.
+- The file may remain in the repository only for provenance/history until a later explicit decision is made.
+- Do not treat its continued presence in `assets/` as permission to reuse it.
+
 ## Current M6 state
 
 The repository currently contains three root-level visual assets registered as **candidates**:
 
 - `logo-emblem.webp`
-- `hero-fantasy.webp`
+- `hero-fantasy.webp` — **ON HOLD / DO NOT USE**
 - `favicon-32.png`
 
-They may continue to serve the existing implementation while M6 defines the canonical P0 asset families. Do not migrate paths merely for tidiness; migration must be deliberate, references must be updated, and rendering must be tested.
+`logo-emblem.webp` and `favicon-32.png` may continue to serve the existing implementation while M6 defines the canonical P0 asset families. `hero-fantasy.webp` is excluded from active use while the hold remains in force. Do not migrate paths merely for tidiness; migration must be deliberate, references must be updated, and rendering must be tested.
