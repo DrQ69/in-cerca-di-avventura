@@ -29,5 +29,11 @@ jobs:
       - name: Run structural baseline QA
         run: python scripts/qa_baseline.py
 
+      - name: Run creative canonical consistency
+        run: python scripts/creative_consistency_check.py
+
+      - name: Run CR1 vertical slice gate
+        run: python scripts/vertical_slice_check.py
+
       - name: Run M12 technical baseline
         run: python scripts/technical_baseline.py

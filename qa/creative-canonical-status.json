@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.5",
+  "updated": "2026-09-16",
+  "branch": "governance/narrative-art-bible-v0-1",
+  "framework_freeze": {
+    "enabled": true,
+    "rule": "Do not create new transversal framework documents unless a concrete vertical-slice gap cannot be resolved by an existing source of truth.",
+    "allowed_new_artifact_classes": [
+      "page_dossier",
+      "vertical_slice_fixture",
+      "qa_tooling",
+      "shared_component_registry",
+      "machine_schema",
+      "asset_dependency_map",
+      "required_canonical_propagation",
+      "qa_evidence"
+    ]
+  },
+  "canonical_status_rank": {
+    "RECHECK_REQUIRED": -1,
+    "DRAFT": 0,
+    "NON_CANONICAL_FIXTURE": 0,
+    "REVIEW_REQUIRED": 1,
+    "PRODUCT_OWNER_LOCKED_SCOPE": 2,
+    "APPROVED": 3
+  },
+  "artifacts": [
+    {"id":"NAB","path":"docs/NARRATIVE_ART_BIBLE.md","delivery_status":"COMPLETE","canonical_readiness":"PRODUCT_OWNER_LOCKED_SCOPE","gating_dependencies":[]},
+    {"id":"TERM","path":"docs/TERMINOLOGY_BIBLE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB"]},
+    {"id":"IA","path":"docs/PRIMARY_INFORMATION_ARCHITECTURE.md","delivery_status":"COMPLETE","canonical_readiness":"PRODUCT_OWNER_LOCKED_SCOPE","gating_dependencies":[]},
+    {"id":"CDL","path":"docs/CREATIVE_DECISION_LOG.md","delivery_status":"COMPLETE","canonical_readiness":"PRODUCT_OWNER_LOCKED_SCOPE","gating_dependencies":[]},
+    {"id":"EXP","path":"docs/EXPERIENCE_MAP.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB","IA"]},
+    {"id":"REL","path":"docs/RELATIONSHIP_MAP.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["EXP","IA"]},
+    {"id":"CG","path":"docs/CONTENT_GOVERNANCE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["REL"]},
+    {"id":"PSM","path":"docs/PAGE_STATE_MODEL.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["CG","REL"]},
+    {"id":"CRG","path":"docs/CONTENT_READINESS_GATE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["CG","PSM"]},
+    {"id":"VHM","path":"docs/VISUAL_HIERARCHY_MATRIX.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB"]},
+    {"id":"RAD","path":"docs/RESPONSIVE_ART_DIRECTION.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["VHM"]},
+    {"id":"NAQ","path":"docs/NARRATIVE_AESTHETIC_QA.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB","TERM","VHM","RAD"]},
+    {"id":"PDT","path":"docs/PAGE_DOSSIER_TEMPLATE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB","TERM","IA","EXP","REL","CG","PSM","CRG","VHM","RAD","NAQ"]},
+    {"id":"HOME","path":"docs/pages/PAGE_HOME.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB","TERM","IA","EXP","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
+    {"id":"ADU","path":"docs/pages/PAGE_ADUNANZE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","EXP","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
+    {"id":"GIO","path":"docs/pages/PAGE_GIOSTRE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","ADU","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
+    {"id":"CHR","path":"docs/pages/PAGE_CRONACHE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","RAD","NAQ","PDT"]},
+    {"id":"PLY","path":"docs/pages/PAGE_AVVENTURIERI.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","RAD","NAQ","PDT"]},
+    {"id":"ALLY","path":"docs/pages/PAGE_ALLEANZE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
+    {"id":"NEWS","path":"docs/pages/PAGE_PROCLAMI.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
+    {"id":"SCR","path":"docs/components/SHARED_COMPONENT_REGISTRY.md","delivery_status":"COMPLETE_FOR_ACTIVE_DOSSIERS","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","ALLY","NEWS"],"verification_status":"PASS_VERTICAL_SLICE"},
+    {"id":"CMPSCHEMA","path":"docs/schemas/COMPONENT_SPEC.schema.json","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["SCR","PDT"]},
+    {"id":"ASSETMAP","path":"docs/ASSET_DEPENDENCY_MAP.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["CMPSCHEMA","SCR","HOME","ADU","GIO","CHR","PLY","ALLY","NEWS"],"evidence_dependencies":["ASSETM6","ASSETMAN"]},
+    {"id":"ASSETSCHEMA","path":"docs/schemas/ASSET_SPEC.schema.json","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["ASSETMAP","RAD","NAQ"]},
+    {"id":"ASSETM6","path":"docs/ASSET_SPECIFICATION.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
+    {"id":"ASSETMAN","path":"assets/manifest.json","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
+    {"id":"FIX","path":"tests/fixtures/canonical-sample.json","delivery_status":"COMPLETE","canonical_readiness":"NON_CANONICAL_FIXTURE","gating_dependencies":[]},
+    {"id":"VSG","path":"scripts/vertical_slice_check.py","delivery_status":"VERIFIED","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","SCR"],"evidence_dependencies":["FIX"],"verification_status":"PASS","evidence_path":"qa/verification/CR1_VERTICAL_SLICE_2026-09-16.md","ci_run":40},
+    {"id":"CANON","path":"docs/ICA_CANONICAL_SPEC.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
+    {"id":"P0NAV","path":"docs/components/P0_SHELL_NAV_SIG.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
+    {"id":"M71","path":"docs/M7_1_RESPONSIVE_CONFORMANCE.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]}
+  ]
+}
