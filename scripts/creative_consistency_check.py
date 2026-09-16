@@ -17,6 +17,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STATUS_REGISTRY = ROOT / "qa" / "creative-canonical-status.json"
 SAMPLE_FIXTURE = ROOT / "tests" / "fixtures" / "canonical-sample.json"
+MACHINE_SCHEMAS = [
+    ROOT / "docs" / "schemas" / "COMPONENT_SPEC.schema.json",
+    ROOT / "docs" / "schemas" / "ASSET_SPEC.schema.json",
+]
+ASSET_DEPENDENCY_MAP = ROOT / "docs" / "ASSET_DEPENDENCY_MAP.md"
 
 ACTIVE_MARKDOWN_ROOTS = [ROOT / "docs"]
 
@@ -30,6 +35,7 @@ HISTORICAL_CONTEXT_PATHS = {
     "docs/CREATIVE_DECISION_LOG.md",
     "docs/NARRATIVE_ART_BIBLE.md",
     "docs/TERMINOLOGY_BIBLE.md",
+    "docs/ASSET_DEPENDENCY_MAP.md",
     "docs/creative-decisions/DECISION_TESORI_SCOPE.md",
     "docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md",
 }
@@ -42,7 +48,7 @@ SUPERSEDED_PATTERNS = {
 }
 
 PATH_REF_RE = re.compile(
-    r"`((?:docs|qa|tests|scripts)/[A-Za-z0-9_./-]+\.(?:md|json|py|yml|yaml))`"
+    r"`((?:docs|qa|tests|scripts|assets)/[A-Za-z0-9_./-]+\.(?:md|json|py|yml|yaml|webp|png|svg))`"
 )
 DECISION_DEF_RE = re.compile(
     r"^\|\s*`((?:CDL|PAG-[A-Z0-9-]+)-\d{3})`\s*\|"
@@ -92,7 +98,8 @@ def validate_registry(data: dict) -> list[str]:
         if canon not in ranks:
             errors.append(f"{aid}: unknown canonical_readiness {canon!r}")
 
-    # Canonical Dependency Gate.
+    # Canonical Dependency Gate. Evidence dependencies intentionally do not
+    # cap canonical readiness; they only prove tests/fixtures/evidence exist.
     for aid, item in by_id.items():
         downstream = item.get("canonical_readiness")
         if downstream not in ranks or ranks[downstream] < 0:
@@ -115,7 +122,54 @@ def validate_registry(data: dict) -> list[str]:
                     f"{aid}: canonical readiness {downstream} exceeds "
                     f"gating dependency {dep_id} ({dep_state})"
                 )
+        for dep_id in item.get("evidence_dependencies", []):
+            if dep_id not in by_id:
+                errors.append(f"{aid}: unknown evidence dependency {dep_id}")
     return errors
+
+
+def validate_machine_schemas() -> list[str]:
+    errors: list[str] = []
+    for path in MACHINE_SCHEMAS:
+        if not path.exists():
+            errors.append(f"Missing machine schema: {rel(path)}")
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"Invalid schema JSON {rel(path)}: {exc}")
+            continue
+        if data.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
+            errors.append(f"{rel(path)} must declare JSON Schema draft 2020-12")
+        if data.get("type") != "object":
+            errors.append(f"{rel(path)} root type must be object")
+        if not data.get("title"):
+            errors.append(f"{rel(path)} missing title")
+        if not isinstance(data.get("required"), list) or not data["required"]:
+            errors.append(f"{rel(path)} must define non-empty required fields")
+    return errors
+
+
+def validate_asset_dependency_map() -> list[str]:
+    if not ASSET_DEPENDENCY_MAP.exists():
+        return ["Missing docs/ASSET_DEPENDENCY_MAP.md"]
+    text = ASSET_DEPENDENCY_MAP.read_text(encoding="utf-8")
+    required_tokens = [
+        "Production asset authorization: `FROZEN`",
+        "LEGACY_RECHECK",
+        "CONTENT_GOVERNED",
+        "BNR-01-STRUCTURE",
+        "Le Adunanze",
+        "Cronache",
+        "Avventurieri",
+        "Alleanze",
+        "Proclami",
+    ]
+    return [
+        f"docs/ASSET_DEPENDENCY_MAP.md missing required contract token: {token}"
+        for token in required_tokens
+        if token not in text
+    ]
 
 
 def collect_markdown() -> list[Path]:
@@ -271,6 +325,8 @@ def main() -> int:
     hard_errors.extend(registry_load_errors)
     if registry:
         hard_errors.extend(validate_registry(registry))
+    hard_errors.extend(validate_machine_schemas())
+    hard_errors.extend(validate_asset_dependency_map())
     hard_errors.extend(validate_references(markdown))
     hard_errors.extend(validate_decision_ids(markdown))
     superseded_errors, superseded_warnings = validate_superseded_terms(markdown)
@@ -308,6 +364,8 @@ def main() -> int:
     print("- canonical dependency gate passed")
     print("- registered path references resolve")
     print("- decision definition IDs are unique")
+    print("- component/asset machine schemas parse and expose required contracts")
+    print("- asset dependency map preserves the production freeze and marks stale dependencies")
     print("- active docs contain no high-confidence superseded terminology misuse")
     print("- canonical vertical-slice fixture is structurally coherent")
     return 0
