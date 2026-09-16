@@ -43,7 +43,7 @@
     {"id":"PLY","path":"docs/pages/PAGE_AVVENTURIERI.md","delivery_status":"COMPLETE_FOR_VERTICAL_SLICE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","RAD","NAQ","PDT"]},
     {"id":"SCR","path":"docs/components/SHARED_COMPONENT_REGISTRY.md","delivery_status":"IN_PROGRESS","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY"]},
     {"id":"FIX","path":"tests/fixtures/canonical-sample.json","delivery_status":"COMPLETE","canonical_readiness":"NON_CANONICAL_FIXTURE","gating_dependencies":[]},
-    {"id":"VSG","path":"scripts/vertical_slice_check.py","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","SCR","FIX"]},
+    {"id":"VSG","path":"scripts/vertical_slice_check.py","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","SCR"],"evidence_dependencies":["FIX"]},
     {"id":"CANON","path":"docs/ICA_CANONICAL_SPEC.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
     {"id":"P0NAV","path":"docs/components/P0_SHELL_NAV_SIG.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
     {"id":"M71","path":"docs/M7_1_RESPONSIVE_CONFORMANCE.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]}
