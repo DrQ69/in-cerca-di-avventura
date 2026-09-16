@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://in-cerca-di-avventura.example/schemas/component-spec.schema.json",
+  "title": "ICA Component Specification",
+  "description": "Machine-readable derivative of the human Page Dossiers and Shared Component Registry. It encodes approved/reviewed semantics and must not invent narrative or product decisions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "component_id",
+    "role",
+    "scope",
+    "delivery_status",
+    "canonical_readiness",
+    "semantics",
+    "data_dependencies",
+    "states",
+    "responsive",
+    "accessibility",
+    "provenance",
+    "qa_refs"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "component_id": {"type": "string", "pattern": "^CMP-[A-Z0-9-]+$"},
+    "role": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "enum": ["shared", "local"]},
+    "visual_level": {"type": ["string", "null"], "enum": ["V1", "V2", "V3", "V4", "V5", "V6", null]},
+    "delivery_status": {"type": "string", "enum": ["DRAFT", "IN_PROGRESS", "COMPLETE", "COMPLETE_FOR_ACTIVE_DOSSIERS", "IMPLEMENTED", "VERIFIED"]},
+    "canonical_readiness": {"type": "string", "enum": ["RECHECK_REQUIRED", "DRAFT", "REVIEW_REQUIRED", "PRODUCT_OWNER_LOCKED_SCOPE", "APPROVED"]},
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose", "factual_boundary", "exclusions"],
+      "properties": {
+        "purpose": {"type": "string", "minLength": 1},
+        "factual_boundary": {"type": "string", "minLength": 1},
+        "exclusions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "data_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["object_type", "requirement"],
+        "properties": {
+          "object_type": {"type": "string", "enum": ["EVENT", "PLAYER", "ORGANIZATION", "VENUE", "ARTICLE", "RESULT", "DECK", "ACHIEVEMENT", "GALLERY", "IMAGE", "CONFIG", "STATE"]},
+          "requirement": {"type": "string", "enum": ["required", "conditional", "optional"]},
+          "required_fields": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "states": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "behavior"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "entry_criteria": {"type": "string"},
+          "behavior": {"type": "string", "minLength": 1},
+          "cta_rules": {"type": "array", "items": {"type": "string"}},
+          "empty_behavior": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "responsive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["desktop", "tablet", "mobile"],
+      "properties": {
+        "wide_desktop": {"$ref": "#/$defs/responsiveRule"},
+        "desktop": {"$ref": "#/$defs/responsiveRule"},
+        "tablet": {"$ref": "#/$defs/responsiveRule"},
+        "mobile": {"$ref": "#/$defs/responsiveRule"}
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["keyboard_operable", "visible_focus", "touch_target_min_px", "status_text_required", "hover_unique_info_forbidden"],
+      "properties": {
+        "keyboard_operable": {"type": "boolean"},
+        "visible_focus": {"type": "boolean"},
+        "touch_target_min_px": {"type": "integer", "minimum": 44},
+        "status_text_required": {"type": "boolean"},
+        "hover_unique_info_forbidden": {"type": "boolean"},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "primary_action": {"type": ["string", "null"]},
+        "external_link_behavior": {"type": ["string", "null"]}
+      }
+    },
+    "asset_dependencies": {
+      "type": "array",
+      "description": "Candidate dependencies only until the Asset Dependency Map and Creative Canonical Lock authorize production planning.",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_refs", "decision_ids", "status"],
+      "properties": {
+        "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+        "decision_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "status": {"type": "string", "enum": ["DRAFT", "REVIEW", "PRODUCT_OWNER_LOCKED", "APPROVED"]}
+      }
+    },
+    "qa_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "$defs": {
+    "responsiveRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actions", "must_preserve"],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["PRESERVE", "CROP", "RECOMPOSE", "SIMPLIFY", "SUBSTITUTE", "REMOVE_DECORATIVE_ONLY"]},
+          "uniqueItems": true
+        },
+        "must_preserve": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}
