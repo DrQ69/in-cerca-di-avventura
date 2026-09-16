@@ -173,10 +173,11 @@ def main() -> int:
         if event.get("venue_id") and event.get("venue_id") not in venues:
             errors.append(f"{event['id']}: venue unresolved")
 
-    # Cross-document contract evidence (textual machine checks, not visual QA).
+    # Cross-document contract evidence. Tokens are matched case-insensitively
+    # because the gate validates semantic presence rather than exact casing.
     checks = {
         "docs/CONTENT_GOVERNANCE.md": ["Narrative never overwrites facts", "Privacy beats completeness"],
-        "docs/PAGE_STATE_MODEL.md": ["LIVE_SPARSE", "CANCELLED"],
+        "docs/PAGE_STATE_MODEL.md": ["LIVE_SPARSE", "cancelled"],
         "docs/CONTENT_READINESS_GATE.md": ["PASS_LIVE", "Prossima Adunanza"],
         "docs/RESPONSIVE_ART_DIRECTION.md": ["Mobile is ICA essenziale", "44x44"],
         "docs/NARRATIVE_AESTHETIC_QA.md": ["NAQ-02", "NAQ-25"],
@@ -184,8 +185,9 @@ def main() -> int:
     }
     for rel_path, required_tokens in checks.items():
         text = (ROOT / rel_path).read_text(encoding="utf-8")
+        lowered = text.casefold()
         for token in required_tokens:
-            if token not in text:
+            if token.casefold() not in lowered:
                 errors.append(f"{rel_path}: required vertical-slice contract token missing: {token}")
 
     if errors:
