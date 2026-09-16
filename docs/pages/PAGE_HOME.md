@@ -2,10 +2,10 @@
 
 **Document ID:** ICA-PAG-HOME-001  
 **Page:** Home  
-**Narrative identity:** principal threshold of the cittadella-crocevia; poetic title optional and not locked  
+**Narrative identity:** principal threshold of the cittadella-crocevia; poetic page title optional and not locked  
 **Status:** `SPECIFIED (REVIEW_REQUIRED)`  
-**Version:** 0.3  
-**Phase:** Creative Canonical Lock — vertical-slice validation  
+**Version:** 0.4  
+**Phase:** Creative Canonical Lock — Product Owner composition lock recorded  
 **Delivery status:** `COMPLETE`  
 **Canonical readiness:** `REVIEW_REQUIRED`  
 **Readiness:** `NOT_READY`  
@@ -19,13 +19,13 @@
 
 # 1. Provenance summary
 
-- `source_type`: `DERIVED`
-- `source_ref`: `CDL-001`, `CDL-002`, `CDL-003`, `CDL-014`, `CDL-021`, `CDL-022`, `CDL-023`
-- `decision_status`: `REVIEW`
-- `approved_by`: n.a.
-- `approved_date`: n.a.
+- `source_type`: `DERIVED + DIRECT_PO_DECISION`
+- `source_ref`: `CDL-001`, `CDL-002`, `CDL-003`, `CDL-014`, `CDL-021`, `CDL-022`, `CDL-023`, `CDL-025`, `CDL-026`
+- `decision_status`: `PRODUCT OWNER LOCKED — composition/closing scope`
+- `approved_by`: Product Owner
+- `approved_date`: 2026-09-16
 
-This v0.3 is the working Home contract for the vertical slice. It does not by itself authorize production implementation.
+The Home macro-composition and default closing headline are Product Owner locked through `CDL-025` and `CDL-026`. The dossier as a whole remains `REVIEW_REQUIRED` because broader canonical dependencies, including the Narrative & Art Bible, are not yet fully locked.
 
 ---
 
@@ -39,9 +39,10 @@ The Home should quickly answer:
 
 - What is happening next?
 - Is there an upcoming Giostra?
-- What is new?
-- What happened recently?
 - Who and which communities form this scene?
+- What else is happening?
+- What is new?
+- What happened and what remains in memory?
 - Where should I continue?
 
 The Home is not a sitemap and is not a dashboard.
@@ -57,10 +58,13 @@ The Home communicates:
 1. arrival;
 2. orientation;
 3. current activity;
-4. invitation to participate/explore;
-5. continuity from present activity into memory.
+4. community presence;
+5. invitation to participate/explore;
+6. continuity from present activity into memory.
 
-A poetic Home title is **optional**. The page may launch without one. An older historical Home working title using `Reame` is non-canonical and must not return as the active page name.
+A poetic **Home page title** is optional. The page may launch without one. An older historical Home working title using `Reame` is non-canonical and must not return as the active page name.
+
+The H08 closing headline is separate from the optional Home page title and is governed by `CDL-026`.
 
 ---
 
@@ -71,8 +75,9 @@ A poetic Home title is **optional**. The page may launch without one. An older h
 | Arrival | “I entered a distinct place.” | expressive threshold, crest, environmental composition | Critical |
 | Orientation | “I understand this is Sorcery + Italian community.” | clear functional descriptor | Critical |
 | Activity | “Something is happening now or soon.” | featured Adunanza | Critical |
+| Community | “Real people and realities inhabit this place.” | Avventurieri + Alleanze chapter | High |
 | Invitation | “There is an obvious useful next step.” | single dominant CTA | Critical |
-| Memory | “Past events remain meaningful.” | Cronache / results route | High |
+| Memory | “Past events remain meaningful.” | Cronache / Gli Annali | High |
 
 Anti-goals:
 
@@ -80,7 +85,8 @@ Anti-goals:
 - SaaS dashboard;
 - fantasy theme that obscures purpose;
 - empty scenic rooms;
-- several competing Hero CTAs.
+- several competing Hero CTAs;
+- event-calendar dominance that hides the community identity.
 
 ---
 
@@ -90,10 +96,10 @@ Anti-goals:
 |---|---|---|---|
 | Find the next useful event | visitor reaches a verified Adunanza | `Scopri l'Adunanza` | current activity |
 | Find ICA competition | visitor recognizes and opens a Giostra | `Scopri la Giostra` | participation |
-| Catch up on news | recent Proclamo is visible or reachable | `Leggi il Proclamo` | current information |
-| Understand what happened | recent Cronaca/result route is visible | `Leggi la Cronaca` | memory |
 | Discover people | readiness-qualified player preview or destination is reachable | `Esplora gli Avventurieri` | community |
 | Discover communities | readiness-qualified alliance preview or destination is reachable | `Esplora le Alleanze` | network |
+| Catch up on news | recent Proclamo is visible or reachable | `Leggi il Proclamo` | current information |
+| Understand what happened | recent Cronaca/result route is visible | `Leggi la Cronaca` | memory |
 
 ---
 
@@ -126,24 +132,33 @@ Factual fields remain factual. Narrative copy may contextualize but not alter da
 
 ---
 
-# 7. Home module architecture
+# 7. Home module architecture — Product Owner locked community-first composition
 
-Working vertical sequence:
+The stable semantic module IDs remain `H01`–`H08`, but their display grouping/order is governed by the Product Owner-locked community-first composition in `CDL-025`.
 
-| Module | Role | Required | Visual level | Content |
-|---|---|---:|---|---|
-| `H01` | threshold / Hero | Yes | V6 | identity, descriptor, one CTA |
-| `H02` | Prossima Adunanza | Yes when eligible content exists | V4 | featured EVENT |
-| `H03` | Le Adunanze preview | Yes for normal launch | V3 | compact upcoming list |
-| `H04` | Proclami | Optional/readiness-driven | V3 | NEWS ARTICLE |
-| `H05` | Cronache / Gli Annali | Optional/readiness-driven | V3 | CRONACA ARTICLE |
-| `H06` | Avventurieri | Optional/readiness-driven | V2 | PLAYER |
-| `H07` | Alleanze | Optional/readiness-driven | V2 | ORGANIZATION |
-| `H08` | onward road / closing | Yes | V3→V2 | one contextual CTA |
+Canonical macro-sequence:
 
-`H06` and `H07` no longer require a separate launch yes/no Product Owner decision. Their visibility is controlled by Content Readiness.
+**Hero → Prossima Adunanza → Avventurieri + Alleanze → Adunanze + Proclami → Cronache / Gli Annali → Chiusura**
 
-Final canonical acceptance of the overall order remains part of Home review, but the order is sufficient for vertical-slice validation.
+| Display chapter | Module(s) | Role | Required | Visual level | Content |
+|---|---|---|---:|---|---|
+| 1 | `H01` | threshold / Hero | Yes | V6 | identity, descriptor, one CTA |
+| 2 | `H02` | Prossima Adunanza | Yes when eligible content exists | V4 | featured EVENT |
+| 3 | `H06 + H07` | community chapter | readiness-driven | V3 | PLAYER + ORGANIZATION |
+| 4 | `H03 + H04` | activity + current information | Adunanze required for normal launch; Proclami readiness-driven | V3 | EVENT + NEWS ARTICLE |
+| 5 | `H05` | Cronache / Gli Annali | readiness-driven | V3 | CRONACA ARTICLE |
+| 6 | `H08` | onward road / closing | Yes | V3→V2 | direct closing headline + functional CTA |
+
+Interpretation:
+
+- `H01` establishes place and identity;
+- `H02` proves the place is alive now;
+- `H06 + H07` make the community visible before the broader activity catalogue;
+- `H03 + H04` show what is happening and what is being announced;
+- `H05` closes the editorial arc through memory;
+- `H08` returns the visitor to participation.
+
+`H06` and `H07` remain readiness-driven. The Product Owner has locked their **relative placement** in the community-first composition, not an obligation to fabricate them when content is not ready.
 
 ---
 
@@ -175,17 +190,21 @@ Fixture expectation: `tests/fixtures/canonical-sample.json` selects `EVT-ADU-002
 
 ---
 
-# 9. Closing CTA rule
+# 9. Closing rule — Product Owner locked default
 
-`H08` uses one functional onward action.
+When Le Adunanze is at least `LIVE_SPARSE`, `H08` uses the Product Owner-locked closing headline:
 
-Priority:
+> **Trova la tua prossima Adunanza.**
 
-1. if Le Adunanze is at least `LIVE_SPARSE`: `Esplora le Adunanze`;
-2. otherwise if Cronache is at least `LIVE_SPARSE`: `Leggi le Cronache`;
-3. otherwise no invented CTA is shown; global navigation remains.
+The associated functional CTA remains direct and routes to Le Adunanze, e.g. `Esplora le Adunanze`.
 
-Atmosphere may use road/firelight/crossroads cues, but the action label remains direct.
+Truthful fallback:
+
+1. if Le Adunanze is at least `LIVE_SPARSE`, use the locked headline above and an Adunanze CTA;
+2. otherwise if Cronache is at least `LIVE_SPARSE`, suppress the Adunanza-specific headline and use a direct Cronache fallback such as `Leggi le Cronache`;
+3. otherwise no invented promise or CTA is shown; global navigation remains.
+
+Atmosphere may use road/firelight/crossroads cues. Non-canonical closing wording using `Reame` must not return.
 
 ---
 
@@ -194,7 +213,9 @@ Atmosphere may use road/firelight/crossroads cues, but the action label remains 
 Composition should be spatial and editorial, not a grid of equal cards.
 
 - strong threshold;
-- visible shift from current activity toward memory;
+- current activity visible immediately after arrival;
+- community presence appears before the broader event/news catalogue;
+- visible shift from present activity toward memory;
 - fewer, larger modules;
 - restrained repeated cards;
 - clear factual metadata;
@@ -210,13 +231,16 @@ Principle:
 
 - `H01`: V6, strongest painterly/environmental expression;
 - `H02`: V4, featured but factual metadata quiet;
-- `H03–H05`: V3;
-- `H06–H07`: V2;
+- `H06 + H07`: V3 community chapter;
+- `H03 + H04`: V3 activity/news chapter;
+- `H05`: V3 editorial-memory chapter, atmospheric but not louder than H02;
 - `H08`: V3 intro, V2 action.
 
 Primary material language: blackened iron, midnight blue, antique gold, selective fabric/parchment according to content role.
 
-No final production asset is authorized by this dossier.
+Home visual identity should survive without optional side guardians, decorative banners, player portraits, organization marks or event imagery. The ICA crest and environmental Hero remain identity-critical.
+
+No final production asset is authorized by this dossier while the broader Creative Canonical Lock remains open.
 
 ---
 
@@ -225,24 +249,29 @@ No final production asset is authorized by this dossier.
 Desktop:
 
 - broad Hero composition;
-- chapter rhythm may alternate spatial emphasis;
+- preserve the community-first chapter order;
+- `H06 + H07` may share a row;
+- `H03 + H04` may share a row;
 - factual blocks remain constrained/readable.
 
 Tablet:
 
-- reduce lateral ornament;
+- reduce/remove lateral ornament before compressing content;
 - recompose Hero;
-- preserve module hierarchy.
+- preserve chapter order;
+- paired chapters may become asymmetric stacks if required by content length.
 
 Mobile:
 
 - preserve crest, orientation, primary CTA and status;
-- simplify/crop environment before typography;
-- single content flow;
+- simplify/crop/substitute environment before typography;
+- single content flow in the same community-first order;
+- `H02` stacks image/facts/action;
+- `H06`, `H07`, `H03`, `H04`, `H05` stack as semantic sections;
 - no hover dependency;
 - no horizontal overflow;
 - targets >= 44x44;
-- optional preview modules can collapse/hide only through readiness rules, never because of arbitrary viewport semantics.
+- optional preview modules can collapse/hide only through readiness rules, never merely because the viewport is narrow.
 
 ---
 
@@ -259,7 +288,7 @@ Mobile:
 - optional modules may be hidden.
 
 `LIVE_NORMAL`:
-- Hero + featured/current Adunanza + broader Adunanze route + at least one current/memory editorial route.
+- Hero + featured/current Adunanza + broader Adunanze route + at least one community or editorial route.
 
 `LIVE_RICH`:
 - multiple useful modules pass readiness without becoming visually dense.
@@ -279,11 +308,12 @@ Mobile:
 - this dossier remains traceable;
 - fixture supports complete/sparse/cancelled paths;
 - `H01`, `H02/H03` logic validated;
+- community-first grouping can recompose without semantic loss;
 - no suspended/on-hold domain enters the page.
 
 `PASS_LIVE` additionally requires:
 
-- production event/news/memory sources verified;
+- production event/news/memory/community sources verified;
 - at least one useful Home route;
 - no synthetic fixture content rendered;
 - accessibility/technical QA passes;
@@ -297,6 +327,8 @@ Required routes for the vertical slice:
 
 - Home → Adunanza;
 - Home → Giostra when selected/listed;
+- Home → Avventuriero when readiness-qualified preview is shown;
+- Home → Alleanza when readiness-qualified preview is shown;
 - completed Giostra → Result;
 - completed Giostra → Cronaca;
 - Result/Cronaca → Avventuriero;
@@ -314,10 +346,10 @@ Home only aggregates; source-of-truth facts remain on underlying objects.
 | `CMP-EVT-FEATURED` | featured Adunanza | Shared candidate | V4 | upcoming/ongoing/cancelled not eligible |
 | `CMP-EVT-CARD` | event preview | Shared candidate | V2–V3 | upcoming/cancelled/completed |
 | `CMP-ARTICLE-TEASER` | Proclamo/Cronaca preview | Shared candidate | V2–V3 | normal/sparse |
-| `CMP-PLAYER-REF` | Avventuriero teaser/ref | Shared candidate | V2 | sparse/normal |
-| `CMP-ORG-REF` | Alleanza teaser/ref | Shared candidate | V2 | sparse/normal |
+| `CMP-PLAYER-REF` | Avventuriero teaser/ref | Shared candidate | V2–V3 | sparse/normal/no-image |
+| `CMP-ORG-REF` | Alleanza teaser/ref | Shared candidate | V2–V3 | sparse/normal/no-logo |
 | `CMP-EMPTY-STATE` | truthful empty state | Shared | V1 | empty/error distinct |
-| `HOME-END-01` | closing route | Local | V2–V3 | Adunanze/Cronache fallback |
+| `HOME-END-01` | closing route | Local | V2–V3 | Adunanze/default, Cronache fallback |
 
 Shared definitions are consolidated in `docs/components/SHARED_COMPONENT_REGISTRY.md`.
 
@@ -325,15 +357,36 @@ Shared definitions are consolidated in `docs/components/SHARED_COMPONENT_REGISTR
 
 # 17. Asset dependencies
 
-Asset production remains frozen.
+Asset production remains frozen pending broader Creative Canonical Lock.
 
-Candidates only:
+Identity-critical candidates:
 
-- Home environmental Hero artwork;
-- optional section identity imagery;
-- ICA crest already governed separately.
+- ICA crest, governed separately;
+- Home environmental Hero artwork.
 
-No candidate receives a final production ID until component/page review proves the need.
+Expected reusable structural families after final asset reconciliation:
+
+- modular frame/divider SVG primitives;
+- small seal/ornament SVG primitives.
+
+Home-specific candidates:
+
+- environmental Hero;
+- closing environment.
+
+Optional enhancements:
+
+- guardian pair;
+- hanging heraldic banners.
+
+Content-governed media, never generic invented production assets:
+
+- event media;
+- player portraits;
+- organization logos/marks;
+- editorial/article imagery.
+
+No candidate receives final production authorization from this dossier alone.
 
 ---
 
@@ -350,6 +403,7 @@ Required:
 - status text not icon/color-only;
 - reduced motion;
 - readable dates/locations;
+- text sizes must not copy tiny raster-reference proportions literally;
 - touch targets >= 44x44.
 
 ---
@@ -390,11 +444,12 @@ No page-local manual duplication of canonical factual fields.
 | `PAG-HOME-004` | Giostre is presented only inside Adunanze semantics. | DERIVED | `CDL-005` | PRODUCT OWNER LOCKED |
 | `PAG-HOME-005` | Tesori absent while suspended. | DERIVED | `CDL-012` | SUSPENDED |
 | `PAG-HOME-006` | Mercante absent while on hold. | DERIVED | `CDL-013` | ON HOLD |
-| `PAG-HOME-007` | H01–H08 is the working vertical-slice order. | DERIVED | Experience Map | REVIEW |
+| `PAG-HOME-007` | Community-first macro-composition: H01 → H02 → (H06+H07) → (H03+H04) → H05 → H08. | DIRECT_PO_DECISION | `CDL-025` | PRODUCT OWNER LOCKED |
 | `PAG-HOME-008` | Featured Adunanza uses deterministic selector. | DERIVED | `CDL-021` | REVIEW |
 | `PAG-HOME-009` | Avventurieri/Alleanze previews are readiness-driven optional modules. | DERIVED | `CDL-022` | REVIEW |
-| `PAG-HOME-010` | Poetic Home title is non-blocking. | DERIVED | `CDL-023` | REVIEW |
-| `PAG-HOME-011` | H08 CTA follows Adunanze→Cronache fallback. | DERIVED | Experience Map + readiness | REVIEW |
+| `PAG-HOME-010` | Poetic Home page title is non-blocking. | DERIVED | `CDL-023` | REVIEW |
+| `PAG-HOME-011` | H08 default headline is “Trova la tua prossima Adunanza.” when Le Adunanze is available, with truthful fallback otherwise. | DIRECT_PO_DECISION + DERIVED_FALLBACK | `CDL-026` + readiness rules | PRODUCT OWNER LOCKED |
+| `PAG-HOME-012` | Optional guardians/banners are not identity dependencies; crest and environmental Hero are identity-critical. | DERIVED | visual-reference risk review 2026-09-16 | REVIEW |
 
 ---
 
@@ -404,22 +459,30 @@ Apply the standard NAQ profile with emphasis on:
 
 - threshold identity without opacity;
 - current activity visible;
+- community identity appears before the broader activity/news chapter;
 - no dashboard feel;
 - correct Adunanza/Giostra relationship;
 - truthful sparse modules;
 - reduced fantasy density in repeated content;
-- no synthetic fixture leakage.
+- no synthetic fixture leakage;
+- Home identity survives without optional guardians, logos, portraits or event art;
+- non-canonical `Reame` closing wording is absent.
 
 ---
 
 # 23. Product Owner decisions still open
 
-Only genuine Product Owner decisions remain:
+For the Home composition itself, **no blocking Product Owner decision remains**:
 
-1. final canonical acceptance/revision of the Home module composition after vertical-slice evidence;
-2. optional poetic Home title if desired — **non-blocking**.
+- community-first macro-composition is locked by `CDL-025`;
+- default closing headline is locked by `CDL-026`.
 
-The featured-event rule, optional preview visibility, empty states, responsive behavior and CTA fallback are deterministic design rules and do not require repeated PO decisions.
+Still non-blocking/future:
+
+1. an optional poetic **Home page title**, if desired later;
+2. any explicit future change to the locked composition or closing headline.
+
+The broader project still requires final Product Owner review of `docs/NARRATIVE_ART_BIBLE.md` v0.4 before Creative Canonical Lock and production-asset authorization.
 
 ---
 
@@ -429,8 +492,9 @@ For vertical-slice implementation/spec validation:
 
 - Writer Intent documented;
 - user jobs resolved;
-- H01–H08 working order defined;
+- community-first composition Product Owner locked;
 - deterministic featured event rule defined;
+- closing headline Product Owner locked with truthful fallback;
 - content/state/readiness behavior defined;
 - relationships mapped;
 - components identified;
@@ -438,5 +502,6 @@ For vertical-slice implementation/spec validation:
 - no suspended/on-hold domain enters scope.
 
 **Vertical-slice specification state:** `READY_FOR_VALIDATION`  
+**Home composition scope:** `PRODUCT_OWNER_LOCKED`  
 **Canonical state:** `REVIEW_REQUIRED`  
 **Production readiness:** `NOT_READY`
