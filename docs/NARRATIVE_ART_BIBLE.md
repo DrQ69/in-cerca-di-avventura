@@ -1,22 +1,35 @@
 # In Cerca di Avventura — Narrative & Art Bible
 
 **Document ID:** ICA-NAB-001  
-**Status:** DRAFT — Creative Reconciliation  
-**Version:** 0.3  
+**Status:** DRAFT — Product Owner final review required  
+**Version:** 0.4  
 **Phase:** Creative Canonical Lock  
-**Authority:** creative source document proposed for Product Owner approval; once approved it will govern narrative/art direction and inform the revision of the Canonical Spec, Page Dossiers, Design System and implementation.  
+**Authority:** primary creative source for narrative and art direction; Product Owner-locked terminology and IA decisions recorded in `TERMINOLOGY_BIBLE.md` and `PRIMARY_INFORMATION_ARCHITECTURE.md` take precedence where they refine earlier reconstructed language.  
 
-> This document exists to preserve the creative intent of In Cerca di Avventura before it is translated into UX, visual design or technical implementation. It must not be reduced to a list of UI styles.
+> This document preserves the creative intent of In Cerca di Avventura before it is translated into UX, visual design or technical implementation. It must not be reduced to a list of UI styles.
 
-## 0. Editorial note
+---
 
-This document reconstructs the writer-led vision discussed for In Cerca di Avventura and separates it from later technical abstractions. It intentionally does **not** freeze navigation labels, page taxonomy or implementation details yet.
+# 0. Editorial and provenance rules
 
-The creative chain to preserve is:
+This Bible reconstructs and consolidates the writer-led vision of In Cerca di Avventura while explicitly separating creative intent from later technical abstraction.
+
+The creative chain is:
 
 `Writer Intent -> Art Direction -> UX / Web Design -> Component Specification -> Asset Specification -> Technical Implementation`
 
-No downstream discipline may silently redefine the meaning established upstream.
+No downstream discipline may silently redefine an upstream meaning.
+
+The project now also has Product Owner-locked terminology and primary information-architecture decisions. This Bible must remain compatible with those decisions rather than preserving older working names merely because they appeared earlier in the process.
+
+For creative decisions and derived artifacts, use the provenance fields:
+
+- `source_type`: `ORIGINAL_SOURCE`, `RECONSTRUCTED`, `PROPOSED`, `DERIVED`;
+- `source_ref`: source document, decision record or Product Owner instruction;
+- `status`: `DRAFT`, `REVIEW`, `PRODUCT OWNER LOCKED`, `APPROVED`, `SUSPENDED`, `ON HOLD`, `RECHECK_REQUIRED` as applicable;
+- `approved_by` and `approved_date` when a Product Owner decision is locked.
+
+A later Product Owner decision supersedes a conflicting reconstructed or proposed item. Superseded language may remain only when clearly marked as historical, never as current creative authority.
 
 ---
 
@@ -30,111 +43,102 @@ It is a **place to enter and traverse**: a persistent fantasy space that gives f
 
 Its function is not to invent a parallel fictional universe detached from the community. Instead, it transforms real participation into a coherent narrative experience without changing facts.
 
-Real players remain real players. Real tournaments remain real tournaments. Real results, dates, venues, decks and community relationships remain factual. The narrative layer gives them atmosphere, memory and continuity.
+Real people remain real people. Real tournaments, dates, venues, results, decks, organisations and community relationships remain factual. The narrative layer gives them atmosphere, memory and continuity.
 
-The core principle is:
+Core principle:
 
-**Reality is told as legend, but it is never falsified.**
+> **Reality is told as legend, but it is never falsified.**
 
-ICA should therefore feel less like opening a website and more like crossing a threshold into a place where the community's activities have acquired permanence.
+ICA should therefore feel less like opening a website and more like crossing a threshold into a place where community activity acquires permanence.
 
-## 1.2 Core metaphor — approved direction
-
-The Product Owner has approved the following foundational metaphor:
+## 1.2 Core metaphor — Product Owner locked
 
 > **In Cerca di Avventura is a cittadella-crocevia: a living centre of the Italian Sorcery community, from which adventures begin and in which their memory is preserved.**
 
-This metaphor intentionally combines four qualities without allowing any single one to dominate:
+The metaphor combines four qualities:
 
-- **cittadella** — gives the site a physical and spatial logic: thresholds, halls, towers, fields, workshops, archives and gathering places;
-- **crocevia** — keeps ICA open to the wider Sorcery world and frames the site as a point of departure, encounter and connection rather than a closed fortress;
-- **living community centre** — ensures that the world feels inhabited by real people and current activity;
-- **memory** — gives meaning to chronicles, player histories, results, resources and preserved material.
+- **cittadella** — physical and spatial logic: thresholds, halls, fields, archives, gathering places;
+- **crocevia** — openness, movement and connection with the wider Sorcery world;
+- **living community centre** — current activity, real people and inhabited spaces;
+- **memory** — chronicles, results, player histories and preserved community material.
 
-`Reame` may still appear in poetic or geographic language, but it is not the sole structural metaphor of the product and must be reconciled with official Sorcery terminology before canonical use.
+`Reame` is not the structural name of ICA. It may appear only in controlled poetic/geographic contexts already permitted by the Terminology Bible, notably `Reami d'Italia` and `Reami d'Oltreconfine` inside Alleanze.
 
-## 1.3 The emotional promise
+## 1.3 Emotional promise
 
-On first contact, the visitor should perceive:
+On first contact the visitor should perceive:
 
 - mystery without confusion;
 - age and continuity without decay;
 - solemnity without pomposity;
 - craftsmanship rather than digital gloss;
 - fantasy without caricature;
-- community warmth beneath an ancient, ceremonial exterior;
+- community warmth beneath an ancient ceremonial exterior;
 - the feeling that events, people and stories belong to a shared history.
 
-The site should invite discovery. It should make the visitor want to continue through another door, another record, another chronicle or another name.
-
-It should not feel hostile, oppressive or excessively grim. Darkness is used to create depth, contrast and mystery, not horror.
+Darkness creates depth, contrast and mystery, not horror. ICA must feel inviting, inhabited and worth exploring.
 
 ## 1.4 Relationship with Sorcery: Contested Realm
 
-ICA exists **for Sorcery: Contested Realm** and must remain recognisably connected to the sensibility that attracts people to the game: traditional fantasy illustration, exploratory imagination, old-game-book atmosphere, physicality, maps, places, artifacts and a sense of discovery.
+ICA exists **for Sorcery: Contested Realm** and should resonate with the qualities that attract people to the game: traditional fantasy illustration, exploratory imagination, old game-book atmosphere, physicality, maps, places, objects and discovery.
 
-ICA is not an official Sorcery product and must not blur the distinction between official game terminology and ICA's own narrative language.
+ICA is not an official Sorcery product and must not blur the distinction between official game terminology and ICA's narrative language.
 
-The site may interpret the community through its own mythology, but must not redefine official game concepts or use Sorcery terminology in a contradictory way.
-
-This requirement will be formalised in the separate Terminology Bible.
+Official terminology is governed by `TERMINOLOGY_BIBLE.md` and must not be redefined for flavour.
 
 ## 1.5 The world as a living record
 
 ICA is both **present tense** and **memory**.
 
-It must serve the visitor who asks:
+It should help visitors answer questions such as:
 
 - What is happening next?
 - Where can I play?
-- Who are these people?
-- What happened at that tournament?
-- Which communities and places form this scene?
-- What resources are worth preserving?
-- What stories deserve to remain accessible after the moment has passed?
+- Who are the people behind this community?
+- What happened at that event?
+- Which communities, stores and places form this scene?
+- What stories and results deserve to remain accessible?
 
-This dual role creates the site's narrative rhythm:
+The narrative rhythm remains:
 
-**call -> participation -> event -> account -> memory**
+`call -> participation -> event -> account -> memory`
 
-or, at product level:
+and, at product level:
 
-**play -> participate -> tell -> remember**
-
-The experience must allow current activity to become historical memory naturally.
+`play -> participate -> tell -> remember`
 
 ---
 
-# 2. The character of the world
+# 2. Character of the world
 
 ## 2.1 Temporal character
 
-The world should evoke an indeterminate pre-industrial fantasy age rather than a literal historical reconstruction.
+The world evokes an indeterminate pre-industrial fantasy age rather than literal historical reconstruction.
 
-It may draw from medieval and Renaissance visual grammar — heraldry, illuminated manuscripts, carved stone, metalwork, banners, seals, maps, codices — without becoming a museum replica.
+Medieval and Renaissance visual grammar may inspire heraldry, illuminated manuscripts, carved stone, metalwork, banners, seals, maps and codices without turning the product into historical cosplay.
 
-The objective is **believable fantasy material culture**, not historical cosplay.
+The objective is **believable fantasy material culture**.
 
 ## 2.2 Artistic ancestry
 
-Primary aesthetic ancestry:
+Primary references:
 
 - traditional fantasy painting of the 1980s and 1990s;
 - old fantasy role-playing manuals and campaign books;
 - early collectible-card-game sensibility;
 - painted fantasy landscapes and architecture;
 - heraldic and manuscript traditions;
-- physical artifacts that appear touched, carried, stored and used.
+- physical objects that appear touched, carried, stored and used.
 
-The site must avoid the visual language of:
+Avoid:
 
-- modern SaaS dashboards;
+- modern SaaS-dashboard language;
 - mobile-game fantasy UI;
-- neon/futuristic fantasy;
+- neon or futuristic fantasy;
 - cartoon fantasy;
 - glossy game-launch websites;
 - generic over-ornamented gothic interfaces;
-- excessive bevels, fake 3D chrome or videogame HUD conventions.
+- videogame-HUD conventions.
 
 ## 2.3 Materials
 
@@ -144,81 +148,52 @@ Recurring material vocabulary:
 - aged antique gold;
 - dark velvet and fabric;
 - deep midnight blue;
-- restrained crimson accents;
+- restrained crimson;
 - stone;
 - parchment and paper;
 - ink;
 - carved or embossed surfaces;
 - seals and heraldic marks.
 
-These materials are not decorative stickers. They should suggest that interfaces belong to the same physical world.
+Materials are part of the visual grammar, not decorative stickers.
 
 ## 2.4 Light
 
-Light should feel selective and atmospheric rather than uniformly bright.
-
-Possible visual behaviours include:
+Light should be selective and atmospheric:
 
 - warm highlights on gold or parchment;
 - cool blue atmospheric light;
 - soft directional illumination;
-- localised glow around important symbols;
-- shadow used to create depth between surfaces.
+- localised emphasis around important symbols;
+- shadow used to create depth.
 
 Avoid neon halos, aggressive bloom and permanently luminous UI.
 
 ## 2.5 Ornament principle
 
-Ornament is meaningful only when it reinforces hierarchy, identity or transition.
+> **Function before ornament; atmosphere through disciplined ornament.**
 
-The rule is:
+Major thresholds and chapter openings may be expressive. Repeated cards, controls, tables, rankings and metadata become progressively quieter.
 
-**function before ornament; atmosphere through disciplined ornament.**
-
-Major thresholds and chapter openings may be expressive. Tables, metadata, rankings and repeated controls should become progressively quieter.
-
-The user should experience fantasy in perception while retaining clarity in interaction.
+Fantasy should be strongest in perception, while interaction remains clear.
 
 ## 2.6 World condition — ancient, maintained, inhabited
 
 The cittadella-crocevia is not a ruin.
 
-Its age should be visible through patina, wear, repaired surfaces, softened edges and accumulated history, but the world remains maintained and in use.
+Age appears through patina, wear, repaired surfaces, softened edges and accumulated history, but the world remains maintained and in use.
 
-Preferred condition:
-
-- iron may be worn, not corroded into neglect;
-- stone may be weathered, not abandoned;
-- parchment may be aged, not filthy;
-- banners may carry use and history, not look destroyed;
-- gold may be dulled or burnished, not gaudy;
-- architecture may feel old, but still inhabited and purposeful.
-
-Avoid a default grimdark language of ruin, rot, skulls, chains, blood, permanent smoke or desolation unless a specific page narrative genuinely requires it.
+Avoid default grimdark language of ruin, rot, skulls, chains, blood, permanent smoke or desolation.
 
 ## 2.7 Atmosphere
 
-The atmospheric baseline is:
+Baseline:
 
-**solemn + mysterious + warm + inhabited + handcrafted.**
+> **solemn + mysterious + warm + inhabited + handcrafted**
 
-A visitor should feel that the site belongs to a world with history, but also that people are gathering there now.
-
-The environment may suggest:
-
-- distant firelight;
-- cool exterior twilight;
-- interior pools of warm light;
-- banners or cloth moving subtly;
-- maps, books or notices accumulated through use;
-- metal and stone catching selective highlights;
-- spaces designed for meeting, recording, announcing or preparing for departure.
-
-Atmosphere should support the page role rather than compete with it.
+Possible cues include distant firelight, cool exterior twilight, warm interior light, fabric in motion, accumulated maps or notices, selective metal highlights and spaces built for gathering, announcing, recording or preparing to depart.
 
 ## 2.8 Colour direction
-
-The creative palette is defined by relationships rather than final token values at this stage.
 
 Primary field:
 
@@ -232,30 +207,28 @@ Secondary support:
 - parchment ivory;
 - muted stone greys;
 - restrained crimson / oxblood;
-- occasional cool arcane blue accents where narratively justified.
+- occasional cool arcane blue when narratively justified.
 
 Rules:
 
-- gold is a hierarchy and identity signal, not a fill colour for everything;
+- gold signals hierarchy and identity;
 - blue creates depth and nocturnal atmosphere;
 - crimson is rare and meaningful;
-- parchment is used where the metaphor is truly documentary, archival or proclamatory;
-- high-saturation fantasy colour should usually come from artwork/content, not from the permanent UI frame.
+- parchment belongs primarily to documentary/editorial contexts;
+- high-saturation colour should usually come from content artwork, not the permanent UI frame.
 
 ## 2.9 Surface hierarchy
 
-Materials should correspond to semantic role.
+Indicative semantic mapping:
 
-Indicative mapping:
-
-- **stone / architecture** — environmental framing, major places, structural boundaries;
-- **iron / metalwork** — navigation structure, robust frames, durable controls;
-- **gold** — identity, hierarchy, active state, ceremonial emphasis;
-- **velvet / fabric** — banners, ceremonial headings, heraldic moments;
-- **parchment / paper** — chronicles, proclamations, records, letters, archival reading;
+- **stone / architecture** — environmental framing and structural boundaries;
+- **iron / metalwork** — navigation structure, durable frames and controls;
+- **gold** — identity, active state and ceremonial emphasis;
+- **velvet / fabric** — banners and major ceremonial headings;
+- **parchment / paper** — Cronache, Proclami, records and reading contexts;
 - **ink / seals** — authenticity, annotation, status and provenance.
 
-This is a grammar, not a mandatory material assignment. Page Dossiers may reinterpret it when the writer intent requires another treatment.
+This is a grammar, not a mandatory material assignment.
 
 ---
 
@@ -263,120 +236,108 @@ This is a grammar, not a mandatory material assignment. Page Dossiers may reinte
 
 ## 3.1 Geography principle
 
-The cittadella-crocevia is a **conceptual geography**, not a map that must be rendered literally in every page.
+The cittadella-crocevia is a **conceptual geography**, not a literal map that must be rendered on every page.
 
-Its purpose is to make different functions feel as though they belong to the same inhabited place.
+Different functions should feel as though they belong to the same inhabited place through page identity art, material emphasis, transitions, recurring symbols and environmental cues.
 
-The visitor may sense movement between spaces through:
-
-- page identity art;
-- changes in material emphasis;
-- transitional headings;
-- recurring heraldic language;
-- environmental cues;
-- carefully controlled page introductions.
-
-The product must not force users to navigate through a literal fantasy map when a direct link, search result or menu is more useful.
+Direct links, search and conventional navigation remain valid and preferable when they are clearer than a literal fantasy map.
 
 ## 3.2 Threshold
 
-Every meaningful journey begins at a threshold.
+Every major destination begins with a threshold that communicates:
 
-The Home experience may therefore act as the principal threshold into ICA, but the threshold principle also applies to major landing pages: the first screen should make clear both **where the user has arrived** and **what can be done there**.
-
-A threshold combines:
-
-- place identity;
-- mood;
-- immediate orientation;
+- where the visitor has arrived;
+- what the place is for;
+- its mood and identity;
 - one clear functional next step.
+
+The Home is the principal threshold of ICA. Its final poetic title remains a Page Dossier decision; older expressions such as `La Soglia del Reame` are not current canonical language.
 
 ## 3.3 Inner places and outward roads
 
-The cittadella is not self-contained.
+ICA functions both as destination and departure point.
 
-Some spaces preserve what belongs to ICA; other spaces point outward to the wider Sorcery world.
-
-This creates two complementary spatial roles:
-
-- **inner places** — memory, people, chronicles, records, resources, community identity;
-- **outward roads** — events, allies, stores, external communities, future gatherings, broader Sorcery activity.
-
-The site should therefore feel like both a destination and a departure point.
+- **inner places** preserve memory, people, stories, records and community identity;
+- **outward roads** point toward Adunanze, Alleanze, venues, stores, external communities and future activity.
 
 ## 3.4 Living routes
 
-Relationships between content should feel like routes through the place.
+Relationships between content should feel like routes through the place and will be formalised in the Experience/Relationship Maps.
 
-Examples to validate later in the Experience Map:
+Examples:
 
-- Event -> Venue -> Community -> Player -> Chronicle;
-- Giostra -> Result -> Player -> Deck -> Chronicle;
-- Player -> Events -> Achievements -> Chronicles;
-- Proclamation -> Event -> Registration / external destination;
-- Treasure -> Guide / document / tool -> related page.
+- Adunanza -> Venue -> Alleanza -> Avventuriero -> Cronaca;
+- Giostra -> Result -> Avventuriero -> Deck -> Cronaca;
+- Avventuriero -> Adunanze -> Results -> Achievements -> Cronache;
+- Proclamo -> Adunanza -> registration or external destination;
+- Alleanza -> Venue -> Adunanze -> related Cronache.
 
-These are product relationships, not merely decorative cross-links.
+These are product relationships, not decorative cross-links.
 
-## 3.5 Provisional places
+## 3.5 Current major destinations and narrative identities
 
-The following writer-led concepts are retained as candidate places within the cittadella-crocevia. They are **not yet final navigation labels**:
+The Product Owner-locked primary navigation is defined in `PRIMARY_INFORMATION_ARCHITECTURE.md`:
 
-- **La Soglia del Reame** — principal threshold / Home;
-- **Le Convocazioni del Reame** — calls, upcoming events and gatherings;
-- **Il Campo delle Prove** — competitive activity / Giostre;
-- **Gli Annali / Gli Annali delle Giostre** — preserved accounts and outcomes;
-- **Il Libro dei Nomi** — adventurers / player memory;
-- **I Reami Alleati** — communities, stores, clubs and relationships;
-- **Reami d'Italia** / **Reami d'Oltreconfine** — geographic/social alliance groupings;
-- **I Proclami dell'Araldo** — announcements and current communications;
-- **La Camera delle Reliquie** — durable resources, guides, tools and preserved material;
-- **La Bottega del Viandante** — future commercial/artisanal area.
+**[ICA crest = Home] -> Le Adunanze -> Cronache -> Avventurieri -> Alleanze -> Proclami**
 
-Each candidate place must later receive a Page Dossier containing Writer Intent, Art Direction, UX/Web Design, component breakdown, content rules, responsive behaviour and machine-readable specifications.
+Narrative identities and hierarchy currently recognised:
+
+- **Home** — principal threshold; final poetic title still under review;
+- **Le Adunanze** — umbrella for real Sorcery events and gatherings represented by ICA;
+  - **Giostre / Il Campo delle Prove** — competitive events organised directly by ICA; Giostre remains inside Le Adunanze;
+- **Cronache / Gli Annali** — editorial memory, accounts, interviews, retrospectives and preserved community stories;
+- **Avventurieri / Il Libro dei Nomi** — real people and community identities, with nickname as primary visible identity;
+- **Alleanze** — network of relevant Sorcery realities;
+  - **Reami d'Italia** and **Reami d'Oltreconfine** — geographic narrative groupings of Alleanze;
+  - **I Reami Alleati** may remain a page-level narrative expression where the Page Dossier confirms it, but is not a replacement technical taxonomy;
+- **Proclami / I Proclami dell'Araldo** — News and current editorial updates.
+
+### Suspended and on-hold concepts
+
+- **Tesori** — `SUSPENDED`; the recorded direction is collecting/rarity: valuable and rare Sorcery cards, Curio, Artist Proofs, original paintings/artworks and related collectible material. It must not default back to guides/tools/documents/resources. No Page Dossier or implementation should proceed until the Product Owner reopens and defines it.
+- **Mercante** — `ON HOLD`; exclude from active IA, Page Dossiers and implementation until explicitly reopened.
+
+Guides, documents, rules and reference materials have **no final destination yet**. Cronache is a possible future location or parent structure, but this remains unresolved and must not be inferred.
 
 ## 3.6 Environment-to-function rule
 
-Every page must explicitly distinguish four layers:
+Every Page Dossier must distinguish four layers:
 
 1. **Narrative environment** — where are we?
 2. **Real function** — what can the user do here?
 3. **Content** — what factual information is presented?
 4. **Interface** — how does the user operate it?
 
-Example pattern:
+Example:
 
 **Il Libro dei Nomi**  
-Narrative environment: a great record of the people who have left a trace in the cittadella.  
+Narrative environment: a record of people who have left a trace in the cittadella.  
 Real function: discover and inspect community members.  
-Content: public player identity, results, events, decks, appearances and achievements where available.  
-Interface: search, filters, list/index, profile pages and cross-links.
+Content: public nickname/identity, events, results, decks, appearances and achievements where available and permitted.  
+Interface: search, filters, index, profile pages and cross-links.
 
-No page should move into design implementation until all four layers are resolved.
+No page moves into production implementation until these four layers are resolved and its readiness gates are passed.
 
 ---
 
-# 4. The reality / diegesis contract
-
-ICA uses two layers simultaneously.
+# 4. Reality / diegesis contract
 
 ## 4.1 Factual layer
 
-The factual layer includes, where applicable:
+The factual layer may include:
 
 - names / nicknames;
 - dates;
 - event format;
 - location;
-- standings;
-- results;
+- standings and results;
 - deck information;
-- organisations;
+- organisations and venues;
 - verified announcements;
 - media provenance;
 - links and sources.
 
-These facts must never be changed for narrative effect.
+Facts must never be changed for narrative effect.
 
 ## 4.2 Diegetic layer
 
@@ -390,13 +351,13 @@ The diegetic layer may provide:
 - restrained titles or epithets;
 - atmosphere around factual content.
 
-It must never create false achievements, results, relationships, places or historical events.
+It must never create false achievements, results, relationships, affiliations, places or historical events.
 
 ## 4.3 Priority rule
 
-When narrative atmosphere conflicts with comprehension or factual accuracy:
+When narrative atmosphere conflicts with comprehension, accessibility or factual accuracy:
 
-**fact and usability win.**
+> **fact and usability win.**
 
 The correct solution is to simplify the narrative layer, not distort the information.
 
@@ -406,77 +367,71 @@ The correct solution is to simplify the narrative layer, not distort the informa
 
 ## 5.1 Voice character
 
-The ICA voice should be:
+ICA should be:
 
 - literary but concise;
 - evocative but understandable;
 - adult rather than juvenile;
-- ceremonial when opening a major section;
+- ceremonial at major thresholds;
 - direct when communicating facts;
 - warm toward the community;
 - curious rather than omniscient;
 - never self-important.
 
-The narrator does not pretend to be an all-powerful lore authority. ICA behaves more like a chronicler, herald, keeper of records and host of the cittadella.
+ICA behaves more like a chronicler, herald, keeper of records and host than an omniscient lore authority.
 
 ## 5.2 Register ladder
 
-The writing register changes with context.
-
 **Level A — Ceremonial / threshold**  
-Used for Home hero, major page openings, exceptional finals or major historical milestones. Most evocative register; shortest use.
+Home hero, major page openings, exceptional finals or major milestones.
 
 **Level B — Narrative editorial**  
-Used for page introductions, chronicles, player stories, event recaps and curated features. Atmospheric but still precise.
+Page introductions, Cronache, player stories, event recaps and curated features.
 
 **Level C — Functional editorial**  
-Used for cards, summaries, navigation support and explanatory microcopy. Plain enough to scan quickly.
+Cards, summaries, navigation support and explanatory microcopy.
 
 **Level D — Factual / system**  
-Used for dates, scores, standings, forms, errors, accessibility labels, technical states and instructions. Direct and unambiguous; no decorative phrasing when it would slow comprehension.
+Dates, scores, standings, forms, errors, accessibility labels, technical states and instructions.
 
-The further the user moves from threshold toward data or task completion, the less literary the language becomes.
+The further the visitor moves from threshold toward data or task completion, the less literary the language becomes.
 
 ## 5.3 Naming rule
 
-Narrative naming must create meaning, not require decoding.
+Narrative naming must create meaning rather than require decoding.
 
-Preferred pattern where useful:
+Preferred pattern when needed:
 
 **Narrative title**  
-Functional descriptor
+*Functional descriptor*
 
 Example:
 
 **Il Libro dei Nomi**  
 Avventurieri della community
 
-This allows the world to remain expressive without sacrificing orientation.
-
 ## 5.4 Microcopy rule
 
-Functional controls should normally use clear verbs and nouns rather than forced fantasy synonyms.
+Functional controls normally use clear Italian verbs and nouns.
 
-Prefer:
+Prefer labels such as:
 
 - Scopri
 - Leggi la cronaca
 - Vedi risultati
 - Esplora il profilo
 - Iscriviti
-- Consulta la guida
+- Scopri l'Adunanza
 
-Avoid inventing ceremonial language for every button if the action becomes less obvious.
+Avoid ceremonial synonyms when they obscure an ordinary action.
 
 ## 5.5 Narrative restraint
 
-Not every paragraph needs to sound like a fantasy novel.
+Not every paragraph should sound like a fantasy novel.
 
-A page earns narrative intensity at transitions, introductions and memorable moments. Repeated explanatory text should remain natural Italian.
+Narrative intensity belongs primarily to transitions, introductions and memorable moments. Repeated explanatory text should remain natural Italian.
 
-The editorial test is:
-
-> **If removing the fantasy phrasing makes the content clearer without damaging identity, the phrasing was probably too heavy.**
+> **If removing fantasy phrasing makes the content clearer without damaging identity, the phrasing was probably too heavy.**
 
 ---
 
@@ -484,11 +439,7 @@ The editorial test is:
 
 ## 6.1 Purpose of symbols
 
-Symbols exist to create **recognition, hierarchy and continuity** across the cittadella-crocevia.
-
-They are not decoration quotas.
-
-A symbol should normally communicate at least one of the following:
+Symbols exist to create recognition, hierarchy and continuity. A symbol should normally communicate at least one of:
 
 - identity;
 - place;
@@ -498,66 +449,44 @@ A symbol should normally communicate at least one of the following:
 - provenance;
 - achievement.
 
-If it communicates none of these, it should probably not exist.
+If it communicates none of these, it probably should not exist.
 
 ## 6.2 Heraldic principle
 
-ICA heraldry should feel inherited, crafted and coherent, but not pseudo-historical to the point of becoming unreadable or academically rigid.
+ICA heraldry should feel inherited, crafted and coherent without becoming academically rigid or unreadable.
 
-The visual language may use:
+Potential forms include shields, standards, seals, medallions, insignia, monograms, beasts, tools, celestial/geographic motifs and framed emblems.
 
-- shields and escutcheon-like fields;
-- banners and pennants;
-- seals;
-- medallions;
-- insignia;
-- monograms;
-- simple beasts, tools, celestial or geographic motifs;
-- framed emblems tied to specific places or roles.
+Prefer strong silhouettes and low-detail recognition at small sizes.
 
-Heraldry should favour **strong silhouettes and low-detail recognition** at small sizes.
+## 6.3 ICA crest
 
-## 6.3 The ICA crest
+The crest is the primary institutional mark and an identity anchor, not a universal ornament.
 
-The ICA crest is the primary institutional mark and should act as an identity anchor rather than a universal ornament.
+It may appear in primary identity, Home navigation, major thresholds, official ICA Proclami, provenance marks and selected ceremonial assets.
 
-It may appear in:
+Do not repeat it on every card, divider or micro-component.
 
-- primary site identity;
-- threshold moments;
-- official ICA proclamations;
-- provenance marks;
-- selected ceremonial assets.
+## 6.4 Place-symbol logic
 
-It should not be repeated on every card, divider or micro-component.
-
-## 6.4 Place symbols
-
-Each major place may eventually receive a symbolic mark, but only after its Page Dossier resolves the writer intent.
-
-A place symbol should be derived from what happens there rather than from a generic medieval icon library.
+Major destinations may eventually receive symbolic marks only after their Page Dossiers resolve Writer Intent and function.
 
 Examples of symbolic logic, not final designs:
 
-- records / names -> book, ledger, quill, seal, indexed leaves;
-- trials / competition -> field marker, crossed standards, ring, lance-like geometry;
-- proclamations -> horn, notice, seal, hanging notice or heraldic device;
-- alliances -> linked standards, joined emblems, road or bridge motif;
-- treasures / resources -> reliquary, chest, cabinet, key or carefully stored object.
-
-These motifs must be translated by the Art Director and Web Designer before asset production.
+- names / memory -> book, ledger, indexed leaves, seal;
+- Giostre / competition -> field marker, standards, ring, lance-like geometry;
+- Proclami -> horn, notice, seal, heraldic notice device;
+- Alleanze -> linked standards, joined emblems, road or bridge motif;
+- Cronache / Annali -> codex, archive mark, quill, bound leaves;
+- Tesori, if reopened -> reliquary, cabinet, key or carefully stored collectible; this does **not** imply a guides/resources meaning.
 
 ## 6.5 Status symbols
 
-Status marks must never be ambiguous.
-
-Decorative badges may support narrative identity, but factual statuses such as winner, upcoming, cancelled, archived, verified or external must remain understandable in text and not depend on iconography alone.
+Status marks must never be ambiguous. Factual states such as winner, upcoming, cancelled, archived, verified or external remain understandable in text and may not depend on iconography alone.
 
 ## 6.6 Achievement heraldry
 
-Player achievements may eventually use badges, seals or insignia, but every achievement must correspond to a verifiable rule or fact.
-
-No heraldic title or insignia may imply a factual achievement that the data does not support.
+Achievement insignia may exist only when backed by verifiable rules or facts. No heraldic title may imply an unsupported achievement.
 
 ---
 
@@ -565,152 +494,97 @@ No heraldic title or insignia may imply a factual achievement that the data does
 
 ## 7.1 Icon roles
 
-Icons belong to three classes:
+Three classes:
 
-1. **Functional icons** — search, menu, external link, calendar, filters, expand/collapse. Clarity dominates style.
-2. **Semantic icons** — event type, article type, resource type, status. Style and meaning must remain consistent.
-3. **Narrative emblems** — major places, community identity, achievements, ceremonial moments. Most expressive class.
+1. **Functional icons** — search, menu, external link, calendar, filter, expand/collapse;
+2. **Semantic icons** — event type, article type, status and other repeatable meanings;
+3. **Narrative emblems** — major places, identity, achievements and ceremonial moments.
 
-These classes must not be visually conflated.
+These classes must not be conflated.
 
 ## 7.2 Functional icon rule
 
-A functional icon must be recognisable without knowledge of ICA lore.
-
-It may adopt line weight, terminals or framing compatible with ICA, but it must not sacrifice established interaction meaning.
+Functional icons must remain recognisable without knowledge of ICA lore.
 
 ## 7.3 Semantic icon rule
 
-Semantic icons require a controlled dictionary. One meaning must not receive several unrelated icons across different pages.
-
-Every semantic icon should later receive:
-
-- stable ID;
-- meaning;
-- usage contexts;
-- accessible label where needed;
-- allowed variants;
-- prohibited alternate meanings.
+Semantic icons require a controlled dictionary with stable ID, meaning, usage contexts, accessibility label where needed, allowed variants and prohibited alternate meanings.
 
 ## 7.4 Narrative emblem rule
 
-Narrative emblems can be richer and more distinctive, but they must remain subordinate to the information architecture.
-
-They may identify a place; they may not become the only way to navigate to it.
+Narrative emblems may be richer, but they remain subordinate to information architecture and may not become the only navigation mechanism.
 
 ## 7.5 Image and icon distinction
 
-Illustration creates atmosphere and narrative space. Icons communicate repeatable meaning.
-
-Do not use miniature paintings where a functional icon is needed, and do not use generic icons as substitutes for page identity artwork.
+Illustration creates atmosphere and narrative space. Icons communicate repeatable meaning. Do not substitute one for the other.
 
 ---
 
 # 8. Visual coherence rules
 
-## 8.1 One world, not eight themes
+## 8.1 One world, not multiple themes
 
-Every page must feel like a distinct place within the same cittadella-crocevia.
+> **one design system, multiple places**
 
-Therefore:
-
-**one design system, multiple places.**
-
-Pages may change environmental emphasis, iconography and material balance, but should not invent independent typography, spacing logic, control styles or unrelated decorative systems.
+Pages may vary environmental emphasis, iconography and material balance but must not invent independent typography, spacing logic, control styles or decorative systems.
 
 ## 8.2 Identity anchors
 
-A page should normally preserve several recurring ICA anchors, such as:
-
-- shared typographic hierarchy;
-- common structural spacing;
-- consistent gold / iron / blue relationships;
-- shared frame logic;
-- recurring crest or navigation treatment where appropriate;
-- consistent interaction states;
-- shared editorial rhythm.
-
-Not every anchor must be visually loud.
+Pages should preserve recurring ICA anchors such as shared typography hierarchy, structural spacing, gold/iron/blue relationships, frame logic, interaction states and editorial rhythm.
 
 ## 8.3 Variation budget
 
-Each Page Dossier must explicitly state what may vary and what must remain shared.
+Every Page Dossier must state what may vary and what remains shared.
 
-Permitted variation may include:
+Permitted variation may include hero artwork, environmental setting, secondary material emphasis, local emblem, narrative introduction and page-specific content modules.
 
-- hero artwork;
-- environmental setting;
-- secondary material emphasis;
-- local emblem;
-- narrative intro style;
-- page-specific content components.
-
-Shared system elements should normally include:
-
-- typography rules;
-- grid;
-- focus treatment;
-- base controls;
-- accessibility behaviour;
-- core spacing logic;
-- factual/data presentation conventions.
+Shared system elements normally include typography rules, grid, focus treatment, base controls, accessibility behaviour, spacing and factual/data presentation conventions.
 
 ## 8.4 Fantasy density
 
-Fantasy density must decrease as repetition increases.
-
-A one-time hero can support rich art direction. A card repeated thirty times cannot carry the same ornamental weight.
-
-This protects both usability and the perceived value of major moments.
+Fantasy density decreases as repetition increases. A one-time hero may be richly expressive; a repeated list item should be restrained.
 
 ## 8.5 Authenticity over spectacle
 
-ICA should prefer believable materials, restrained ornament and strong composition over visual effects.
+Prefer believable materials, restrained ornament and composition over glow, particles, gratuitous parallax or game-like effects.
 
-Avoid using glow, particles, animated magic, excessive parallax or motion merely to make a page feel "fantasy".
+## 8.6 Content remains protagonist
 
-When motion exists, it should suggest life, material or transition — not a videogame HUD.
-
-## 8.6 Content remains the protagonist
-
-Artwork frames the community; it does not replace it.
-
-Player portraits, event photographs, cards, results, stories and real community material must remain able to take visual priority when they are the reason the user is on the page.
+Artwork frames the community; it does not replace it. Real player imagery, event photographs, cards, results, stories and community material may take visual priority when they are the reason for the page.
 
 ---
 
 # 9. Visual intensity hierarchy
 
-The world should not render every surface with equal dramatic intensity.
-
 Initial hierarchy:
 
-1. **Threshold / Hero** — maximum narrative and painterly expression.
-2. **Major place / page identity** — strong environmental or heraldic identity.
-3. **Section header** — recognisable but subordinate.
-4. **Feature card / highlighted object** — moderate identity.
-5. **Repeated card / list item** — restrained visual grammar.
-6. **Data / tables / metadata** — clarity first, minimal ornament.
-7. **System / utility states** — quiet, accessible, unmistakable.
+1. **Threshold / Hero** — maximum narrative and painterly expression;
+2. **Major page identity** — strong environmental or heraldic identity;
+3. **Section header** — recognisable but subordinate;
+4. **Feature card / highlighted object** — moderate identity;
+5. **Repeated card / list item** — restrained;
+6. **Data / tables / metadata** — clarity first;
+7. **System / utility states** — quiet, accessible and unmistakable.
 
-This hierarchy will later become a formal Visual Hierarchy Matrix.
+This hierarchy will be formalised in the Visual Hierarchy Matrix.
 
 ---
 
 # 10. Responsive art-direction principle
 
-Mobile is not a compressed painting of the desktop experience.
+Mobile is not a compressed desktop painting.
 
 On smaller screens:
 
-- preserve identity anchors;
-- preserve hierarchy;
-- preserve legibility;
+- preserve identity anchors and hierarchy;
+- preserve legibility and touch targets;
 - reduce decorative density before reducing text or target size;
-- crop or replace environmental art when the original composition stops working;
-- allow the interface to become more essential without becoming generic.
+- crop or replace environmental art when the composition stops working;
+- let the interface become more essential without becoming generic.
 
-The goal is **ICA essenziale**, not ICA miniaturised.
+Goal:
+
+> **ICA essenziale, not ICA miniaturised.**
 
 ---
 
@@ -719,76 +593,98 @@ The goal is **ICA essenziale**, not ICA miniaturised.
 Do not:
 
 - invent community facts for atmosphere;
-- use official Sorcery terminology with a contradictory ICA meaning;
+- use official Sorcery terminology with contradictory ICA meaning;
 - bake important functional text into image assets when HTML can carry it;
-- create a fantasy skin over an otherwise generic dashboard and consider the task complete;
+- create a fantasy skin over a generic dashboard and call the work complete;
 - overload every component with heraldry;
 - introduce decorative assets merely because empty space exists;
-- make the user understand the fiction before understanding the function;
+- make the user understand fiction before function;
 - treat legacy/prototype UI as artistic precedent;
 - revive historical asset kits as creative authority;
 - use generic fantasy icon packs as place identity;
 - assign symbols arbitrary meanings page by page;
-- make visual effects substitute for composition;
+- substitute visual effects for composition;
 - create page-specific mini design systems;
-- let narrative microcopy obscure an ordinary action.
+- let narrative microcopy obscure ordinary actions;
+- reintroduce suspended or on-hold sections through design assumptions.
 
 ---
 
-# 12. Documents that must derive from this Bible
+# 12. Downstream documents and sequence
 
-After Product Owner approval of the relevant sections, the following documents must derive from this source rather than reinterpret it independently:
+The current effective derivation chain is:
 
-1. `TERMINOLOGY_BIBLE.md`
-2. `EXPERIENCE_MAP.md`
-3. Page Dossiers for every major page/place
-4. Visual Hierarchy Matrix
-5. Responsive Art Direction rules
-6. Shared Component Registry
-7. Component JSON specifications
-8. Asset JSON specifications
-9. Narrative QA checklist
-10. revised Canonical Spec / Information Architecture
-11. revised Design System where necessary
-12. iconographic dictionary / symbol registry as soon as symbols enter production
+1. Narrative & Art Bible;
+2. Terminology Bible;
+3. Primary Information Architecture;
+4. Creative Decision Log / provenance register;
+5. Experience Map and Relationship Map;
+6. Content Governance, Page State Model and Content Readiness Gate;
+7. Visual Hierarchy Matrix and Responsive Art Direction;
+8. Page Dossier Template;
+9. active Page Dossiers: Home, Le Adunanze, Giostre, Cronache, Avventurieri, Alleanze, Proclami;
+10. Shared Component Registry;
+11. component JSON specifications;
+12. Asset Dependency Map and asset JSON specifications;
+13. Narrative / Aesthetic QA;
+14. revised Canonical Spec and affected specialist documents;
+15. responsive shell/navigation revalidation;
+16. Creative Canonical Lock.
+
+`Tesori` and `Mercante` are outside the current critical path while suspended/on hold.
 
 ---
 
-# 13. Open creative questions for v0.4+
+# 13. Open creative/product questions after reconciliation
 
-The following are intentionally **not** frozen yet:
+The following remain open and must be resolved deliberately rather than inferred:
 
-- final primary-navigation labels;
-- whether Giostre is a primary destination or a subtype of Eventi;
-- whether Proclami is a primary destination or a cross-site editorial stream;
-- launch status of Tesori and Mercante;
-- final relationship between `Reame` as ICA language and official Sorcery `Realm` terminology;
-- definitive page-by-page art direction;
+- final poetic identity/title of the Home, if any;
+- detailed internal taxonomy of Le Adunanze beyond Giostre;
+- final place-level treatment of Giostre inside Le Adunanze;
+- internal archive/taxonomy behaviour of Cronache;
+- final destination of guides, documents, rules and reference materials;
+- exact browsing/filter behaviour of Alleanze;
+- final physical-venue UX label (`Luoghi`, `Sedi`, other);
+- final Italian/English editorial treatment of official Sorcery terminology;
+- final Page Dossier art direction for each active destination;
 - final place emblems and iconographic dictionary;
-- final typography;
-- final colour token values;
-- final asset inventory.
+- final typography, colour-token values and asset inventory;
+- exact launch content-readiness thresholds for each page/module.
 
-The **cittadella-crocevia** metaphor is no longer an open question: it is the approved foundational direction for this reconciliation phase.
+The following are **no longer open**:
 
-These remaining decisions must be resolved deliberately through the Creative Canonical Lock rather than inferred by implementation.
+- cittadella-crocevia as foundational metaphor;
+- primary IA: crest/Home, Le Adunanze, Cronache, Avventurieri, Alleanze, Proclami;
+- Giostre as a subset of Le Adunanze and reserved for ICA-organised competitive events;
+- Proclami = News;
+- Cronache = editorial memory / Gli Annali;
+- Avventurieri = real people/community identity, distinct from Sorcery Avatar;
+- Alleanze with Reami d'Italia / Reami d'Oltreconfine as controlled geographic groupings;
+- Tesori suspended with collecting-oriented direction;
+- Mercante on hold.
 
 ---
 
 # 14. Acceptance criteria for the Narrative & Art Bible
 
-This document can move from DRAFT to APPROVED only when:
+This document may move from DRAFT to APPROVED only when:
 
-- the Product Owner confirms the reconstructed writer vision is faithful;
-- the approved cittadella-crocevia metaphor is consistently reflected throughout the document;
-- the emotional and aesthetic principles are unambiguous;
+- Product Owner confirms the writer vision remains faithful after reconciliation;
+- the cittadella-crocevia metaphor is consistently reflected throughout the document;
+- current locked terminology and Primary IA no longer conflict with the Bible;
+- superseded names are removed or explicitly marked historical/non-canonical;
+- emotional, aesthetic and material principles are unambiguous;
 - reality/diegesis boundaries are explicit;
-- the artistic ancestry and prohibitions are agreed;
-- the editorial register and narrative-restraint rules are agreed;
-- heraldic and iconographic principles are sufficient to prevent arbitrary visual invention;
-- visual-coherence rules make clear which aspects are shared and which may vary by page;
-- the narrative architecture concepts are preserved without prematurely forcing navigation;
-- downstream roles can distinguish Writer Intent, Art Direction, UX Design and Technical Implementation;
-- no known later creative decision remains only in chat and outside the project source of truth.
+- editorial register and narrative-restraint rules are accepted;
+- heraldic and iconographic principles prevent arbitrary visual invention;
+- visual-coherence rules clearly distinguish shared system from page variation;
+- provenance rules are adopted across new creative artifacts;
+- suspended/on-hold concepts cannot silently re-enter active scope;
+- no known later creative decision remains only in chat and outside project source of truth.
 
-Until then, implementation work that depends on page taxonomy, visible terminology or new visual assets remains paused.
+**Current lifecycle:** `SPECIFIED (DRAFT)`  
+**Readiness:** `NOT_READY`  
+**Next gate:** Product Owner review of v0.4, followed by central Creative Decision Log / provenance work.
+
+Until this gate is closed, production implementation dependent on final page art direction or new canonical assets remains paused.
