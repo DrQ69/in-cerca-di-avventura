@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4",
+  "schema_version": "1.5",
   "updated": "2026-09-16",
   "branch": "governance/narrative-art-bible-v0-1",
   "framework_freeze": {
@@ -10,6 +10,8 @@
       "vertical_slice_fixture",
       "qa_tooling",
       "shared_component_registry",
+      "machine_schema",
+      "asset_dependency_map",
       "required_canonical_propagation",
       "qa_evidence"
     ]
@@ -44,6 +46,11 @@
     {"id":"ALLY","path":"docs/pages/PAGE_ALLEANZE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
     {"id":"NEWS","path":"docs/pages/PAGE_PROCLAMI.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
     {"id":"SCR","path":"docs/components/SHARED_COMPONENT_REGISTRY.md","delivery_status":"COMPLETE_FOR_ACTIVE_DOSSIERS","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","ALLY","NEWS"],"verification_status":"PASS_VERTICAL_SLICE"},
+    {"id":"CMPSCHEMA","path":"docs/schemas/COMPONENT_SPEC.schema.json","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["SCR","PDT"]},
+    {"id":"ASSETMAP","path":"docs/ASSET_DEPENDENCY_MAP.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["CMPSCHEMA","SCR","HOME","ADU","GIO","CHR","PLY","ALLY","NEWS"],"evidence_dependencies":["ASSETM6","ASSETMAN"]},
+    {"id":"ASSETSCHEMA","path":"docs/schemas/ASSET_SPEC.schema.json","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["ASSETMAP","RAD","NAQ"]},
+    {"id":"ASSETM6","path":"docs/ASSET_SPECIFICATION.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
+    {"id":"ASSETMAN","path":"assets/manifest.json","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
     {"id":"FIX","path":"tests/fixtures/canonical-sample.json","delivery_status":"COMPLETE","canonical_readiness":"NON_CANONICAL_FIXTURE","gating_dependencies":[]},
     {"id":"VSG","path":"scripts/vertical_slice_check.py","delivery_status":"VERIFIED","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","SCR"],"evidence_dependencies":["FIX"],"verification_status":"PASS","evidence_path":"qa/verification/CR1_VERTICAL_SLICE_2026-09-16.md","ci_run":40},
     {"id":"CANON","path":"docs/ICA_CANONICAL_SPEC.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
