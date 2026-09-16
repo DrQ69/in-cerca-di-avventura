@@ -1,10 +1,13 @@
 # In Cerca di Avventura — Narrative & Art Bible
 
 **Document ID:** ICA-NAB-001  
-**Status:** DRAFT — Product Owner final review required  
-**Version:** 0.4  
+**Status:** PRODUCT OWNER LOCKED — creative direction; page-level candidate labels retain their own review status  
+**Version:** 0.5  
 **Phase:** Creative Canonical Lock  
-**Authority:** primary creative source for narrative and art direction; Product Owner-locked terminology and IA decisions recorded in `TERMINOLOGY_BIBLE.md` and `PRIMARY_INFORMATION_ARCHITECTURE.md` take precedence where they refine earlier reconstructed language.  
+**Canonical readiness:** `PRODUCT_OWNER_LOCKED_SCOPE`  
+**Approved by:** Product Owner  
+**Approved date:** 2026-09-16  
+**Authority:** primary creative source for narrative and art direction; Product Owner-locked terminology and IA decisions recorded in `TERMINOLOGY_BIBLE.md`, `PRIMARY_INFORMATION_ARCHITECTURE.md` and `CREATIVE_DECISION_LOG.md` take precedence where they refine earlier reconstructed language.  
 
 > This document preserves the creative intent of In Cerca di Avventura before it is translated into UX, visual design or technical implementation. It must not be reduced to a list of UI styles.
 
@@ -21,6 +24,8 @@ The creative chain is:
 No downstream discipline may silently redefine an upstream meaning.
 
 The project now also has Product Owner-locked terminology and primary information-architecture decisions. This Bible must remain compatible with those decisions rather than preserving older working names merely because they appeared earlier in the process.
+
+The Product Owner accepted the creative direction of v0.4 on 2026-09-16. This v0.5 is a provenance/status reconciliation only: it records that lock and clarifies that candidate page-level expressive labels are **not** silently promoted by the broader creative approval. See `CDL-027` and `docs/creative-decisions/DECISION_NARRATIVE_ART_BIBLE_LOCK.md`.
 
 For creative decisions and derived artifacts, use the provenance fields:
 
@@ -280,17 +285,20 @@ The Product Owner-locked primary navigation is defined in `PRIMARY_INFORMATION_A
 
 **[ICA crest = Home] -> Le Adunanze -> Cronache -> Avventurieri -> Alleanze -> Proclami**
 
-Narrative identities and hierarchy currently recognised:
+Current functional destinations and expressive-label status:
 
-- **Home** — principal threshold; final poetic title still under review;
+- **Home** — principal threshold; poetic page title remains optional and not locked;
 - **Le Adunanze** — umbrella for real Sorcery events and gatherings represented by ICA;
-  - **Giostre / Il Campo delle Prove** — competitive events organised directly by ICA; Giostre remains inside Le Adunanze;
-- **Cronache / Gli Annali** — editorial memory, accounts, interviews, retrospectives and preserved community stories;
-- **Avventurieri / Il Libro dei Nomi** — real people and community identities, with nickname as primary visible identity;
+  - **Giostre** — competitive events organised directly by ICA; Giostre remains inside Le Adunanze;
+  - `Il Campo delle Prove` — candidate page-level expressive identity only; not canonized by the Bible lock;
+- **Cronache / Gli Annali** — editorial memory, accounts, interviews, retrospectives and preserved community stories; `Gli Annali` is Product Owner locked;
+- **Avventurieri** — real people and community identities, with nickname as primary visible identity;
+  - `Il Libro dei Nomi` — candidate expressive identity only, non-blocking and not canonized by the Bible lock;
 - **Alleanze** — network of relevant Sorcery realities;
-  - **Reami d'Italia** and **Reami d'Oltreconfine** — geographic narrative groupings of Alleanze;
-  - **I Reami Alleati** may remain a page-level narrative expression where the Page Dossier confirms it, but is not a replacement technical taxonomy;
-- **Proclami / I Proclami dell'Araldo** — News and current editorial updates.
+  - **Reami d'Italia** and **Reami d'Oltreconfine** — Product Owner-locked geographic narrative groupings of Alleanze;
+  - `I Reami Alleati` — optional/conditional page-level expression only where a Page Dossier confirms it; not a replacement technical taxonomy;
+- **Proclami** — News and current editorial updates;
+  - `I Proclami dell'Araldo` — optional/conditional narrative expression only; not the mandatory functional destination name.
 
 ### Suspended and on-hold concepts
 
@@ -308,9 +316,9 @@ Every Page Dossier must distinguish four layers:
 3. **Content** — what factual information is presented?
 4. **Interface** — how does the user operate it?
 
-Example:
+Example using a candidate expressive label:
 
-**Il Libro dei Nomi**  
+**Il Libro dei Nomi** *(candidate, not locked)*  
 Narrative environment: a record of people who have left a trace in the cittadella.  
 Real function: discover and inspect community members.  
 Content: public nickname/identity, events, results, decks, appearances and achievements where available and permitted.  
@@ -405,9 +413,9 @@ Preferred pattern when needed:
 **Narrative title**  
 *Functional descriptor*
 
-Example:
+Example using a candidate label:
 
-**Il Libro dei Nomi**  
+**Il Libro dei Nomi** *(candidate)*  
 Avventurieri della community
 
 ## 5.4 Microcopy rule
@@ -641,19 +649,20 @@ The following remain open and must be resolved deliberately rather than inferred
 
 - final poetic identity/title of the Home, if any;
 - detailed internal taxonomy of Le Adunanze beyond Giostre;
-- final place-level treatment of Giostre inside Le Adunanze;
+- whether `Il Campo delle Prove` should become a canonized expressive identity for Giostre;
 - internal archive/taxonomy behaviour of Cronache;
+- whether `Il Libro dei Nomi` should become a canonized expressive identity for Avventurieri;
 - final destination of guides, documents, rules and reference materials;
 - exact browsing/filter behaviour of Alleanze;
 - final physical-venue UX label (`Luoghi`, `Sedi`, other);
 - final Italian/English editorial treatment of official Sorcery terminology;
-- final Page Dossier art direction for each active destination;
 - final place emblems and iconographic dictionary;
 - final typography, colour-token values and asset inventory;
 - exact launch content-readiness thresholds for each page/module.
 
 The following are **no longer open**:
 
+- the Narrative & Art Bible v0.4 creative direction accepted through `CDL-027`;
 - cittadella-crocevia as foundational metaphor;
 - primary IA: crest/Home, Le Adunanze, Cronache, Avventurieri, Alleanze, Proclami;
 - Giostre as a subset of Le Adunanze and reserved for ICA-organised competitive events;
@@ -661,30 +670,21 @@ The following are **no longer open**:
 - Cronache = editorial memory / Gli Annali;
 - Avventurieri = real people/community identity, distinct from Sorcery Avatar;
 - Alleanze with Reami d'Italia / Reami d'Oltreconfine as controlled geographic groupings;
+- Home community-first macro-composition and H08 default closing headline;
 - Tesori suspended with collecting-oriented direction;
 - Mercante on hold.
 
 ---
 
-# 14. Acceptance criteria for the Narrative & Art Bible
+# 14. Acceptance state for the Narrative & Art Bible
 
-This document may move from DRAFT to APPROVED only when:
+The Product Owner confirmed the reconciled writer vision and creative direction on 2026-09-16. The acceptance is recorded in `CDL-027` and `docs/creative-decisions/DECISION_NARRATIVE_ART_BIBLE_LOCK.md`.
 
-- Product Owner confirms the writer vision remains faithful after reconciliation;
-- the cittadella-crocevia metaphor is consistently reflected throughout the document;
-- current locked terminology and Primary IA no longer conflict with the Bible;
-- superseded names are removed or explicitly marked historical/non-canonical;
-- emotional, aesthetic and material principles are unambiguous;
-- reality/diegesis boundaries are explicit;
-- editorial register and narrative-restraint rules are accepted;
-- heraldic and iconographic principles prevent arbitrary visual invention;
-- visual-coherence rules clearly distinguish shared system from page variation;
-- provenance rules are adopted across new creative artifacts;
-- suspended/on-hold concepts cannot silently re-enter active scope;
-- no known later creative decision remains only in chat and outside project source of truth.
+The lock covers the document's governing creative direction and does not silently promote candidate page-level expressive labels. Those retain their individual status until separately accepted.
 
-**Current lifecycle:** `SPECIFIED (DRAFT)`  
-**Readiness:** `NOT_READY`  
-**Next gate:** Product Owner review of v0.4, followed by central Creative Decision Log / provenance work.
+**Current lifecycle:** `PRODUCT OWNER LOCKED — creative direction`  
+**Canonical readiness:** `PRODUCT_OWNER_LOCKED_SCOPE`  
+**Production readiness:** `NOT_READY`  
+**Next gate:** canonical propagation into affected downstream documents, then specialist/asset-manifest reconciliation and responsive shell revalidation before Creative Canonical Lock.
 
-Until this gate is closed, production implementation dependent on final page art direction or new canonical assets remains paused.
+Production implementation dependent on final page art direction or new canonical assets remains paused until the broader Creative Canonical Lock sequence is completed.
