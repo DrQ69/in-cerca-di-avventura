@@ -2,9 +2,11 @@
 
 **Document ID:** ICA-IA-001  
 **Status:** DRAFT — Product Owner direction locked, pending Creative Canonical Lock  
-**Version:** 1.0  
+**Version:** 1.1  
 **Branch:** `governance/narrative-art-bible-v0-1`  
-**Depends on:** `docs/NARRATIVE_ART_BIBLE.md`, `docs/TERMINOLOGY_BIBLE.md`  
+**Delivery status:** `COMPLETE`  
+**Canonical readiness:** `PRODUCT_OWNER_LOCKED_SCOPE`  
+**Depends on:** `docs/NARRATIVE_ART_BIBLE.md`, `docs/TERMINOLOGY_BIBLE.md`
 
 > This document records the Product Owner-approved primary navigation direction emerging from the creative and terminology reconciliation. It does not yet update the legacy Canonical Spec or authorize production implementation.
 
@@ -25,7 +27,7 @@ Rules:
 - `Mercante` is excluded while on hold;
 - the legacy P0 shell navigation remains `RECHECK_REQUIRED` until downstream canonical and responsive documents are reconciled.
 
-**Status:** `PRODUCT OWNER LOCKED — PRIMARY IA v1`.
+**Scope status:** `PRODUCT OWNER LOCKED — PRIMARY IA v1`.
 
 ---
 
@@ -40,7 +42,7 @@ Primary event/gathering destination for the Sorcery ecosystem represented by ICA
 - **Giostre** — competitive events organized directly by In Cerca di Avventura;
 - other competitive Sorcery events organized by external stores, communities, partners or organizers;
 - conventions, meetups and other relevant gatherings;
-- future event taxonomies to be defined in the Page Dossier and Content Model.
+- future event taxonomies refined by the Page Dossier and Content Model.
 
 Canonical relationship:
 
@@ -93,7 +95,7 @@ Desktop conceptual order:
 
 `[ICA CREST]  LE ADUNANZE  ·  CRONACHE  ·  AVVENTURIERI  ·  ALLEANZE  ·  PROCLAMI`
 
-This sequence is semantic, not yet a final visual specification. Responsive behavior remains subject to M7/M7.1 reconciliation after final label-fit validation.
+This sequence is semantic, not a final visual specification. Responsive behavior remains subject to M7/M7.1 reconciliation after label-fit revalidation.
 
 ---
 
@@ -101,13 +103,13 @@ This sequence is semantic, not yet a final visual specification. Responsive beha
 
 ## Tesori
 
-`Tesori` is suspended. A collecting-oriented direction has been recorded separately, but it is not part of active IA until explicitly reopened and defined.
+`Tesori` is `SUSPENDED`. A collecting-oriented direction is recorded separately, but it is not part of active IA until explicitly reopened and defined.
 
 See `docs/creative-decisions/DECISION_TESORI_SCOPE.md`.
 
 ## Mercante
 
-`Mercante` is on hold and must not appear in active navigation planning or implementation.
+`Mercante` is `ON HOLD` and must not appear in active navigation planning or implementation.
 
 See `docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md`.
 
@@ -115,41 +117,57 @@ See `docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md`.
 
 # 5. Downstream consequences
 
-This Primary IA v1 creates deliberate conflicts with legacy documents that still encode the old navigation taxonomy.
+This Primary IA v1 deliberately conflicts with legacy documents that still encode the old navigation taxonomy.
 
-Before implementation resumes, the project must reconcile at minimum:
+Before production implementation resumes, reconcile at minimum:
 
 - `docs/ICA_CANONICAL_SPEC.md`;
-- P0 shell/navigation component specification;
-- M7/M7.1 label-fit and responsive evidence;
-- Page Dossiers;
+- `docs/components/P0_SHELL_NAV_SIG.md`;
+- `docs/M7_1_RESPONSIVE_CONFORMANCE.md`;
+- active Page Dossiers;
 - Content Model mappings where visible taxonomy has changed;
-- future visual regression baselines after canonical pages exist.
+- future visual-regression baselines after canonical pages exist.
 
-No legacy label set should be treated as final canonical truth while this reconciliation is in progress.
+No legacy label set is final canonical truth while reconciliation is in progress.
 
 ---
 
-# 6. Remaining IA decisions
+# 6. Vertical-slice rule
 
-Primary-level structure is now locked, but the following remain open for later Page Dossiers / Content Model work:
+The current validation strategy does **not** change Primary IA.
 
-- detailed internal taxonomy of Le Adunanze beyond the Giostre subset;
+The first end-to-end slice is intentionally narrower:
+
+`Home → Le Adunanze / Giostra → Result → Cronaca → Avventuriero`
+
+Its purpose is to test the information architecture, data relationships, page states, readiness rules, responsive behavior, component reuse and Narrative/Aesthetic QA before every remaining Page Dossier is fully developed.
+
+A successful vertical slice validates the architecture; it does not promote unreviewed documents to `APPROVED`.
+
+---
+
+# 7. Remaining IA decisions
+
+Primary-level structure is locked. The following can remain open while the vertical slice is validated:
+
+- detailed internal taxonomy of Le Adunanze beyond the Giostre invariant;
 - internal taxonomy and archive behavior of Cronache;
 - final destination of guides, documents, rules and reference materials;
 - exact Alleanze browsing/filtering behavior;
-- Proclami archive/filtering and relationship with Home editorial modules;
+- Proclami archive/filtering behavior;
 - final mobile presentation pattern;
 - page URLs/slugs after Canonical Spec reconciliation.
 
+These are not blockers for the current vertical-slice work unless a tested journey requires them.
+
 ---
 
-# 7. Approval record
+# 8. Approval record
 
 **Decision:** Primary IA v1  
 **Source type:** `PROPOSED` → explicitly accepted by Product Owner  
-**Status:** `APPROVED DIRECTION / PRODUCT OWNER LOCKED`  
+**Status:** `PRODUCT OWNER LOCKED` for the scope recorded here  
 **Approved by:** Product Owner  
-**Approval date:** 2026-09-15  
+**Approval date:** 2026-09-16
 
-This approval locks the direction recorded here but does not by itself move the overall Creative Canonical Lock or legacy Canonical Spec to `APPROVED`.
+This approval locks the direction recorded here but does not move the overall Creative Canonical Lock or legacy Canonical Spec to `APPROVED`.

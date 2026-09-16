@@ -2,109 +2,184 @@
 
 **Document ID:** ICA-CDL-001  
 **Status:** ACTIVE — Creative Canonical Lock support document  
-**Version:** 1.0  
+**Version:** 1.1  
 **Branch:** `governance/narrative-art-bible-v0-1`  
-**Purpose:** central provenance and Product Owner decision register for creative, terminology, IA and page-direction choices.
+**Delivery status:** `COMPLETE`  
+**Canonical readiness:** `PRODUCT_OWNER_LOCKED_SCOPE`  
+**Purpose:** central provenance, Product Owner decision and operating-rule register for creative, terminology, IA and validation work.
 
-> This log does not replace the source documents. It records where a decision came from, what status it has, and which downstream documents must respect it.
+> This log does not replace source documents. It records where a decision came from, what status it has, what it governs and when downstream material must be rechecked.
 
 ---
 
 # 1. Provenance model
 
-Every creative/product decision must use one of these source types:
+Allowed source types:
 
 - `ORIGINAL_SOURCE` — directly supported by an original writer/source artifact.
 - `RECONSTRUCTED` — recovered from prior project discussions when the original source artifact is not available.
 - `PROPOSED` — newly proposed during the current design/reconciliation process.
-- `DERIVED` — logically derived from one or more already approved/locked project decisions.
+- `DERIVED` — logically derived from one or more already locked project decisions or explicit governance rules.
 
 Decision status values:
 
-- `DRAFT` — working material, not accepted.
-- `REVIEW` — ready for Product Owner review.
-- `PRODUCT OWNER LOCKED` — explicitly accepted by the Product Owner for the stated scope.
-- `SUSPENDED` — direction recorded but intentionally not active.
-- `ON HOLD` — no further work until explicitly reopened by the Product Owner.
-- `SUPERSEDED` — retained for history but replaced by a later decision.
-- `RECHECK_REQUIRED` — previously valid downstream material invalidated by a later upstream change.
+- `DRAFT`
+- `REVIEW`
+- `PRODUCT OWNER LOCKED`
+- `SUSPENDED`
+- `ON HOLD`
+- `SUPERSEDED`
+- `RECHECK_REQUIRED`
 
-Required fields for every new entry:
+Required fields for a material entry:
 
 `decision_id`, `decision`, `source_type`, `source_ref`, `status`, `approved_by`, `approved_date`, `downstream_impact`.
 
 ---
 
-# 2. Current decision register
+# 2. Two independent progress dimensions
+
+From 2026-09-16 onward the project must report two separate dimensions.
+
+## Delivery Progress
+
+Measures whether the planned artifact/work product exists at the required level of completeness.
+
+Examples:
+
+- document drafted;
+- Page Dossier structurally complete;
+- fixture produced;
+- QA check implemented.
+
+Delivery Progress does **not** imply canonical approval.
+
+## Canonical Readiness
+
+Measures how far an artifact may be trusted as canonical downstream authority.
+
+Working states:
+
+`RECHECK_REQUIRED < DRAFT < REVIEW_REQUIRED < PRODUCT_OWNER_LOCKED_SCOPE < APPROVED`
+
+A deliverable may therefore be:
+
+> `Delivery status = COMPLETE`  
+> `Canonical readiness = REVIEW_REQUIRED`
+
+This distinction is mandatory in the Master Roadmap and machine registry.
+
+Machine source: `qa/creative-canonical-status.json`.
+
+---
+
+# 3. Canonical Dependency Gate
+
+A downstream artifact may not be promoted above an explicit **gating dependency**.
+
+Rules:
+
+1. a dependency is gating only when listed as such in `qa/creative-canonical-status.json`;
+2. a downstream artifact can be fully written while still remaining `REVIEW_REQUIRED`;
+3. `RECHECK_REQUIRED` upstream material blocks downstream canonical promotion until reconciled;
+4. a Product Owner-locked **scope decision** may legitimately coexist with a broader parent document still in review, provided the locked decision is separately recorded in this log;
+5. implementation status, content runtime state and canonical readiness remain separate dimensions.
+
+The automated check is `scripts/creative_consistency_check.py`.
+
+---
+
+# 4. Framework freeze
+
+**Product Owner instruction — 2026-09-16**
+
+New transversal framework documents are frozen unless a concrete vertical-slice problem demonstrates a real missing control that cannot be added to an existing source of truth.
+
+Allowed work during the freeze:
+
+- Page Dossiers required by the active vertical slice;
+- canonical sample fixtures;
+- QA tooling/checks;
+- Shared Component Registry entries derived from real Page Dossiers;
+- required canonical propagation/fixes.
+
+Do not create theoretical governance layers merely because they may be useful later.
+
+---
+
+# 5. Current decision register
 
 | ID | Decision | Source type | Source ref | Status | Approved by | Date | Downstream impact |
 |---|---|---|---|---|---|---|---|
 | `CDL-001` | ICA is a **cittadella-crocevia**, living centre of the Italian Sorcery community, place of departure, encounter and preserved memory. | RECONSTRUCTED + PO confirmation | `docs/NARRATIVE_ART_BIBLE.md` §1.2 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Governs narrative geography, page identity, art direction and experience design. |
 | `CDL-002` | Narrative may transform presentation but must never alter factual truth. | RECONSTRUCTED / DERIVED | `docs/NARRATIVE_ART_BIBLE.md` §§1,4 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Applies to all content, page dossiers, copy and data presentation. |
-| `CDL-003` | Primary IA: **[ICA crest=Home] → Le Adunanze → Cronache → Avventurieri → Alleanze → Proclami**. | PROPOSED → PO accepted | `docs/PRIMARY_INFORMATION_ARCHITECTURE.md` | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Supersedes legacy primary navigation; downstream shell/canonical docs are RECHECK_REQUIRED. |
-| `CDL-004` | **Le Adunanze** is the umbrella for real-world Sorcery events/gatherings represented by ICA. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.1 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Visible UX/event taxonomy and Page Dossier naming. |
+| `CDL-003` | Primary IA: **[ICA crest=Home] → Le Adunanze → Cronache → Avventurieri → Alleanze → Proclami**. | PROPOSED → PO accepted | `docs/PRIMARY_INFORMATION_ARCHITECTURE.md` | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Supersedes legacy primary navigation; shell/canonical docs are RECHECK_REQUIRED. |
+| `CDL-004` | **Le Adunanze** is the umbrella for real-world Sorcery events/gatherings represented by ICA. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.1 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Event taxonomy and Page Dossier naming. |
 | `CDL-005` | **Giostre** sits inside Le Adunanze and means only competitive events organized directly by ICA. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.1 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `EVENT` subtype semantics, filtering, badges and page structure. |
-| `CDL-006` | **Proclami = News**. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.2 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `ARTICLE` + News classification; Home/news modules. |
-| `CDL-007` | **Cronache = editorial memory**; narrative place identity **Gli Annali**. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.5 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Editorial taxonomy, Page Dossier and Home module. |
-| `CDL-008` | Guides, regulations, documents and reference materials are **not yet assigned** to Cronache or Tesori. | DERIVED from PO suspension | `docs/creative-decisions/DECISION_TESORI_SCOPE.md` + Terminology Bible | REVIEW / UNRESOLVED | — | — | Content architecture remains open; no implementation assumption allowed. |
-| `CDL-009` | **Avventuriero** identifies the real community person; never Sorcery Avatar. Nickname is primary visible identity. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.4 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `PLAYER` entity presentation, privacy/content governance and profiles. |
-| `CDL-010` | **Alleanze** is the network of Sorcery realities represented/connected by ICA. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.3 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `ORGANIZATION` presentation and alliance browsing. |
-| `CDL-011` | **Reami d'Italia** and **Reami d'Oltreconfine** are geographic narrative groupings of Alleanze, not individual organisations. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.3 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Geography/taxonomy only; `Reame` remains constrained by Sorcery terminology. |
-| `CDL-012` | **Tesori** direction is collecting/rarity oriented; prior resources/guides interpretation is superseded. | PROPOSED by PO | `docs/creative-decisions/DECISION_TESORI_SCOPE.md` | SUSPENDED | Product Owner | 2026-09-15 | No active IA, data model, Page Dossier or assets until reopened. |
-| `CDL-013` | **Mercante** is on hold. | Direct PO decision | `docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md` | ON HOLD | Product Owner | 2026-09-15 | Excluded from active IA, Page Dossiers, visual design, content model and implementation. |
-| `CDL-014` | Home is the principal threshold into the cittadella-crocevia. | DERIVED | `docs/NARRATIVE_ART_BIBLE.md` §3.2 + `docs/pages/PAGE_HOME.md` | REVIEW | — | — | Page role accepted conceptually; detailed H01–H08 sequence still needs PO review. |
-| `CDL-015` | Current Home sequence H01–H08 is a proposal, not canonical. | PROPOSED | `docs/pages/PAGE_HOME.md` §5 | REVIEW | — | — | Must not drive implementation until PO accepts/revises it. |
-| `CDL-016` | Legacy navigation labels and P0 shell taxonomy are no longer canonical truth. | DERIVED | `docs/PRIMARY_INFORMATION_ARCHITECTURE.md` §5 | RECHECK_REQUIRED | — | 2026-09-15 | Canonical Spec, component specs and M7.1 label-fit evidence require propagation/revalidation. |
-| `CDL-017` | UI/asset production remains frozen until Creative Canonical Lock. | Direct project governance decision | Roadmap T237 / current CR1 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Prevents visual work from hardening stale terminology/art direction. |
+| `CDL-006` | **Proclami = News**. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.2 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `ARTICLE` + News classification. |
+| `CDL-007` | **Cronache = editorial memory**; narrative place identity **Gli Annali**. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.5 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Editorial taxonomy and Home module. |
+| `CDL-008` | Guides, regulations, documents and reference materials are not yet assigned to Cronache or Tesori. | DERIVED | `docs/creative-decisions/DECISION_TESORI_SCOPE.md` | REVIEW | — | — | No implementation assumption allowed. |
+| `CDL-009` | **Avventuriero** identifies the real community person; never Sorcery Avatar. Nickname is primary visible identity. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.4 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `PLAYER` presentation and privacy/content governance. |
+| `CDL-010` | **Alleanze** is the network of Sorcery realities represented/connected by ICA. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.3 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | `ORGANIZATION` presentation. |
+| `CDL-011` | **Reami d'Italia** and **Reami d'Oltreconfine** are geographic narrative groupings of Alleanze, not individual organisations. | PROPOSED → PO accepted | `docs/TERMINOLOGY_BIBLE.md` §5.3 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-15 | Geography/taxonomy only. |
+| `CDL-012` | **Tesori** direction is collecting/rarity oriented; prior resources/guides interpretation is superseded. | Direct PO direction | `docs/creative-decisions/DECISION_TESORI_SCOPE.md` | SUSPENDED | Product Owner | 2026-09-15 | No active IA, data model, dossier or assets until reopened. |
+| `CDL-013` | **Mercante** is on hold. | Direct PO decision | `docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md` | ON HOLD | Product Owner | 2026-09-15 | Excluded from active work until reopened. |
+| `CDL-014` | Home is the principal threshold into the cittadella-crocevia. | DERIVED | `docs/NARRATIVE_ART_BIBLE.md` + `docs/pages/PAGE_HOME.md` | REVIEW | — | — | Page role is stable; final canonical acceptance remains pending. |
+| `CDL-015` | UI/asset production remains frozen until Creative Canonical Lock; vertical-slice work is specification/data/component validation only. | Direct PO instruction | current CR1 | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Prevents premature visual production. |
+| `CDL-016` | Legacy primary navigation and associated shell label-fit evidence are `RECHECK_REQUIRED`. | DERIVED | `docs/PRIMARY_INFORMATION_ARCHITECTURE.md` | RECHECK_REQUIRED | — | 2026-09-16 | Canonical Spec, shell spec and M7.1 must be propagated/revalidated later. |
+| `CDL-017` | New transversal framework creation is frozen unless a concrete vertical-slice gap proves it necessary. | Direct PO instruction | current validation prompt | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Prevents over-engineering. |
+| `CDL-018` | Delivery Progress and Canonical Readiness are reported separately. | Direct PO instruction | current validation prompt | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Roadmap/status reporting and dependency checks. |
+| `CDL-019` | Canonical Dependency Gate blocks downstream canonical promotion above explicit gating dependencies. | Direct PO instruction | current validation prompt | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | QA and status registry. |
+| `CDL-020` | Validate a vertical slice before completing all remaining Page Dossiers. | Direct PO instruction | current validation prompt | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Sequence becomes Home → Adunanze → Giostre → fixture → relationships/components. |
+| `CDL-021` | `Prossima Adunanza` uses a deterministic selector: a verified explicit editorial Home override wins; otherwise select the nearest eligible upcoming event, using Giostra then ICA-organized status only as tie-breakers. | DERIVED | Experience Map + usability + current validation prompt | REVIEW | — | — | Removes repeated PO selection decisions and is testable against fixture data. |
+| `CDL-022` | Home Avventurieri/Alleanze previews are readiness-driven optional modules rather than a launch yes/no Product Owner decision. | DERIVED | Page State Model + Content Readiness Gate | REVIEW | — | — | Modules hide truthfully when not ready. |
+| `CDL-023` | Home may launch without a poetic page title; a future poetic title is non-blocking and cannot replace functional orientation. | DERIVED | Narrative Bible naming rule + usability | REVIEW | — | — | Removes poetic naming from the implementation critical path. |
+| `CDL-024` | The canonical sample dataset is explicitly synthetic and can validate structure/states only; it may never be presented as real community fact. | DERIVED | Content Governance + factual/diegetic contract | REVIEW | — | — | Allows realistic testing without fabricating production facts. |
 
 ---
 
-# 3. Superseded / historical directions
+# 6. Superseded / historical directions
 
-The following directions may remain visible in historical files for provenance but must not be treated as active:
+Historical wording may remain only for provenance:
 
-- `Convocazioni` / `Le Convocazioni del Reame` as event umbrella → **SUPERSEDED by Le Adunanze**.
-- `La Soglia del Reame` as current Home name → **SUPERSEDED / non-canonical working history**; `Reame` remains controlled terminology.
-- `Tesori = guides/tools/documents/resources` → **SUPERSEDED** by suspended collecting-oriented direction.
-- `Mercante = DEFERRED/P2 active future page` → **SUPERSEDED by ON HOLD**.
+- `Le Convocazioni del Reame` → **SUPERSEDED by Le Adunanze**.
+- `La Soglia del Reame` → historical working title, non-canonical.
+- `Tesori = guides/tools/documents/resources` → **SUPERSEDED**.
+- `Mercante` as an active planned destination → **SUPERSEDED by ON HOLD**.
 - legacy primary IA `IMPRESE / CAMPAGNE / AVVENTURIERI / CRONACHE / IL REAME / ARCHIVIO` → **RECHECK_REQUIRED / superseded for navigation purposes**.
 
 ---
 
-# 4. Open Product Owner decisions
+# 7. Product Owner decisions still genuinely necessary
 
-These remain unresolved and must stay visible instead of being inferred downstream:
+The current vertical slice does **not** require the Product Owner to decide routine ranking, empty-state, responsive or component behavior when existing rules can derive them.
 
-- final PO approval of `NARRATIVE_ART_BIBLE.md` v0.4;
-- Home H01–H08 sequence and Home poetic title, if any;
-- rule for selecting the featured `Prossima Adunanza`;
-- exact internal taxonomy of Le Adunanze beyond Giostre;
-- exact internal taxonomy/archive behavior of Cronache;
-- final destination of guides, regulations, documents and reference material;
-- final `Luoghi` / `Sedi` label for physical venues;
-- launch content-readiness thresholds for each major page/module;
-- final Italian/English treatment of official Sorcery terminology in editorial content;
-- Tesori reopening criteria and final scope;
-- Mercante reopening only after explicit PO decision.
+Still genuinely Product Owner-level:
+
+1. final acceptance of `docs/NARRATIVE_ART_BIBLE.md` v0.4;
+2. final canonical acceptance/revision of the Home narrative/module composition after the vertical-slice evidence is available;
+3. any future poetic Home title if the Product Owner wants one — non-blocking;
+4. any change to the locked semantic boundary of Le Adunanze/Giostre;
+5. any reopening of Tesori or Mercante;
+6. any final placement decision for guides/regulations/reference material when that area enters scope.
+
+Everything else should be derived by the responsible design/technical rules unless a concrete ambiguity is discovered.
 
 ---
 
-# 5. Traceability rule
-
-Every Page Dossier and later Component/Asset specification must reference applicable `CDL-*` decisions.
+# 8. Traceability and recheck rule
 
 Required chain:
 
-`CDL decision → Narrative/Terminology/IA source → Page Dossier decision → Component ID → Asset ID → implementation → QA/evidence`
+`CDL decision → source document → Page Dossier decision → Component ID → Asset ID if any → implementation → QA/evidence`
 
-A downstream object must be marked `RECHECK_REQUIRED` when an upstream `CDL-*` decision it depends on is superseded, suspended or materially changed.
+A downstream object becomes `RECHECK_REQUIRED` when a governing locked decision is superseded, suspended or materially changed.
 
 ---
 
-# 6. Governance rule
+# 9. Governance rule
 
-- Only explicit Product Owner acceptance may create `PRODUCT OWNER LOCKED` status.
-- Agent/model proposals stay `DRAFT` or `REVIEW` until accepted.
-- Historical wording is preserved when useful for provenance, but must be clearly marked `SUPERSEDED`.
-- Suspended/on-hold concepts cannot silently re-enter IA, components or assets.
-- This log should be updated in the same workstream whenever a material creative/product decision changes.
+- Only explicit Product Owner acceptance creates `PRODUCT OWNER LOCKED`.
+- Agent/model proposals remain `DRAFT` or `REVIEW` unless they are direct deterministic consequences of locked rules; even then they do not become `APPROVED`.
+- Suspended/on-hold concepts cannot silently re-enter IA, components, fixtures or assets.
+- Update this log in the same workstream whenever a material creative/product decision changes.

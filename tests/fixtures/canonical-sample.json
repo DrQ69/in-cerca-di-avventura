@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "synthetic_fixture": true,
+  "purpose": "Canonical vertical-slice fixture for ICA UX/content/QA validation. Synthetic only; never publish as real community fact.",
+  "coverage": ["complete", "sparse", "missing_optional", "cancelled"],
+  "objects": {
+    "organizations": [
+      {"id":"ORG-ICA","name":"In Cerca di Avventura","organization_type":"COMMUNITY_ORGANIZER","country":"IT","verification_status":"SYNTHETIC_FIXTURE"},
+      {"id":"ORG-EXT-01","name":"Compagnia del Ponte — Fixture","organization_type":"STORE_COMMUNITY","country":"IT","verification_status":"SYNTHETIC_FIXTURE"}
+    ],
+    "venues": [
+      {"id":"VEN-01","name":"Sala del Crocevia — Fixture","city":"Milano","region":"Lombardia","country":"IT","address":"Via Esempio 1","verification_status":"SYNTHETIC_FIXTURE"},
+      {"id":"VEN-02","name":"Bottega del Ponte — Fixture","city":"Bergamo","region":"Lombardia","country":"IT","address":null,"verification_status":"SYNTHETIC_FIXTURE","data_quality_note":"address intentionally missing to exercise missing-optional behavior"}
+    ],
+    "players": [
+      {"id":"PLY-001","nickname":"FalcoGrigio","public_name":null,"organization_id":"ORG-ICA","profile_visibility":"PUBLIC","verification_status":"SYNTHETIC_FIXTURE"},
+      {"id":"PLY-002","nickname":"LunaDiRame","public_name":null,"organization_id":"ORG-EXT-01","profile_visibility":"PUBLIC","verification_status":"SYNTHETIC_FIXTURE"},
+      {"id":"PLY-003","nickname":"ViandanteBlu","public_name":null,"organization_id":null,"profile_visibility":"PUBLIC","verification_status":"SYNTHETIC_FIXTURE","data_quality_note":"sparse profile used to validate limited-but-truthful presentation"}
+    ],
+    "events": [
+      {"id":"EVT-GIO-001","title":"Giostra del Crocevia — Fixture","status":"UPCOMING","start_at":"2026-10-02T21:00:00+02:00","end_at":"2026-10-03T00:30:00+02:00","organizer_id":"ORG-ICA","venue_id":"VEN-01","competitive":true,"is_giostra":true,"event_class":"COMPETITIVE","format":"Constructed","registration_url":"https://example.invalid/fixture-registration","home_featured":false,"verification_status":"SYNTHETIC_FIXTURE"},
+      {"id":"EVT-ADU-002","title":"Adunanza del Ponte — Fixture","status":"UPCOMING","start_at":"2026-09-25T20:30:00+02:00","end_at":null,"organizer_id":"ORG-EXT-01","venue_id":"VEN-02","competitive":true,"is_giostra":false,"event_class":"COMPETITIVE_EXTERNAL","format":null,"registration_url":null,"home_featured":false,"verification_status":"SYNTHETIC_FIXTURE","data_quality_note":"sparse event: format, registration URL and venue street address intentionally absent"},
+      {"id":"EVT-CAN-003","title":"Adunanza Annullata — Fixture","status":"CANCELLED","start_at":"2026-09-20T15:00:00+02:00","end_at":null,"organizer_id":"ORG-EXT-01","venue_id":"VEN-02","competitive":false,"is_giostra":false,"event_class":"COMMUNITY","format":null,"registration_url":null,"home_featured":false,"verification_status":"SYNTHETIC_FIXTURE","cancellation_reason":"Fixture cancellation for status/CTA validation"},
+      {"id":"EVT-GIO-000","title":"Giostra d'Archivio — Fixture","status":"COMPLETED","start_at":"2026-08-28T21:00:00+02:00","end_at":"2026-08-29T00:20:00+02:00","organizer_id":"ORG-ICA","venue_id":"VEN-01","competitive":true,"is_giostra":true,"event_class":"COMPETITIVE","format":"Constructed","registration_url":null,"home_featured":false,"verification_status":"SYNTHETIC_FIXTURE"}
+    ],
+    "results": [
+      {"id":"RES-001","event_id":"EVT-GIO-000","status":"FINAL","player_ids":["PLY-001","PLY-002","PLY-003"],"standings":[{"position":1,"player_id":"PLY-001","record":"4-0"},{"position":2,"player_id":"PLY-002","record":"3-1"},{"position":3,"player_id":"PLY-003","record":"2-2"}],"verification_status":"SYNTHETIC_FIXTURE"}
+    ],
+    "decks": [
+      {"id":"DECK-001","event_id":"EVT-GIO-000","player_id":"PLY-001","title":"Deck del Falco — Fixture","avatar":"Synthetic Avatar Card","atlas":[{"card":"Synthetic Site A","count":4}],"spellbook":[{"card":"Synthetic Spell A","count":4}],"verification_status":"SYNTHETIC_FIXTURE","data_quality_note":"card names are explicitly synthetic; fixture validates Atlas/Spellbook structure only"}
+    ],
+    "articles": [
+      {"id":"ART-NEWS-001","editorial_type":"NEWS","ica_label":"Proclamo","title":"Annunciata la Giostra del Crocevia — Fixture","published_at":"2026-09-16T10:00:00+02:00","related_event_ids":["EVT-GIO-001"],"status":"PUBLISHED_FIXTURE","verification_status":"SYNTHETIC_FIXTURE"},
+      {"id":"ART-CHR-001","editorial_type":"CRONACA","ica_label":"Cronaca","title":"Memoria della Giostra d'Archivio — Fixture","published_at":"2026-08-30T12:00:00+02:00","related_event_ids":["EVT-GIO-000"],"related_player_ids":["PLY-001","PLY-002","PLY-003"],"status":"PUBLISHED_FIXTURE","verification_status":"SYNTHETIC_FIXTURE"}
+    ]
+  },
+  "expected_vertical_slice": [
+    "HOME selects EVT-ADU-002 as nearest eligible upcoming Adunanza unless a verified editorial home_featured override exists",
+    "Le Adunanze shows EVT-ADU-002 and EVT-GIO-001, while EVT-CAN-003 is visibly cancelled with no registration CTA",
+    "Giostre contains EVT-GIO-001 and archived EVT-GIO-000 only",
+    "EVT-GIO-000 links to RES-001, ART-CHR-001, PLY-001/002/003 and DECK-001",
+    "PLAYER PLY-003 remains useful despite sparse optional fields",
+    "NEWS ART-NEWS-001 routes to EVT-GIO-001; CRONACA ART-CHR-001 preserves the completed event"
+  ]
+}
