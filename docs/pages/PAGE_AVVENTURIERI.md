@@ -116,7 +116,7 @@ No portrait or ornamental frame may displace critical identity/activity. Relatio
 Critical checks:
 
 - `NAQ-02` no invented facts;
-- `NAQ-03` Avatar protected;
+- `NAQ-03` protects the official Sorcery `Avatar` game/card meaning and forbids using it for a real-person profile;
 - `NAQ-04` Avventurieri terminology respected;
 - `NAQ-22` factual/editorial/narrative separation;
 - `NAQ-23` missing content honest;
