@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-CDL-001  
 **Status:** ACTIVE — Creative Canonical Lock support document  
-**Version:** 1.1  
+**Version:** 1.2  
 **Branch:** `governance/narrative-art-bible-v0-1`  
 **Delivery status:** `COMPLETE`  
 **Canonical readiness:** `PRODUCT_OWNER_LOCKED_SCOPE`  
@@ -135,6 +135,8 @@ Do not create theoretical governance layers merely because they may be useful la
 | `CDL-022` | Home Avventurieri/Alleanze previews are readiness-driven optional modules rather than a launch yes/no Product Owner decision. | DERIVED | Page State Model + Content Readiness Gate | REVIEW | — | — | Modules hide truthfully when not ready. |
 | `CDL-023` | Home may launch without a poetic page title; a future poetic title is non-blocking and cannot replace functional orientation. | DERIVED | Narrative Bible naming rule + usability | REVIEW | — | — | Removes poetic naming from the implementation critical path. |
 | `CDL-024` | The canonical sample dataset is explicitly synthetic and can validate structure/states only; it may never be presented as real community fact. | DERIVED | Content Governance + factual/diegetic contract | REVIEW | — | — | Allows realistic testing without fabricating production facts. |
+| `CDL-025` | Home adopts the **community-first composition**: **Hero → Prossima Adunanza → Avventurieri + Alleanze → Adunanze + Proclami → Cronache / Gli Annali → Chiusura**. Existing Home module IDs remain stable semantic identifiers; display grouping/order is governed by this composition. | Direct PO decision | Product Owner visual-reference review 2026-09-16 + `docs/pages/PAGE_HOME.md` | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Locks Home macro-composition; Page Dossier and later implementation must follow this grouping unless explicitly superseded. |
+| `CDL-026` | Home closing uses **“Trova la tua prossima Adunanza.”** as the default closing headline when the Adunanze route is available; the functional CTA remains direct and routes to Le Adunanze. Non-canonical `Reame` closing wording must not return. | Direct PO decision | Product Owner visual-reference review 2026-09-16 + `docs/pages/PAGE_HOME.md` | PRODUCT OWNER LOCKED | Product Owner | 2026-09-16 | Locks the default H08 closing message and removes the visible terminology conflict from the visual reference. |
 
 ---
 
@@ -147,6 +149,7 @@ Historical wording may remain only for provenance:
 - `Tesori = guides/tools/documents/resources` → **SUPERSEDED**.
 - `Mercante` as an active planned destination → **SUPERSEDED by ON HOLD**.
 - legacy primary IA `IMPRESE / CAMPAGNE / AVVENTURIERI / CRONACHE / IL REAME / ARCHIVIO` → **RECHECK_REQUIRED / superseded for navigation purposes**.
+- visual-reference closing copy using `Reame` → **SUPERSEDED by CDL-026**.
 
 ---
 
@@ -157,11 +160,13 @@ The current vertical slice does **not** require the Product Owner to decide rout
 Still genuinely Product Owner-level:
 
 1. final acceptance of `docs/NARRATIVE_ART_BIBLE.md` v0.4;
-2. final canonical acceptance/revision of the Home narrative/module composition after the vertical-slice evidence is available;
-3. any future poetic Home title if the Product Owner wants one — non-blocking;
+2. any future poetic **Home page title** if the Product Owner wants one — non-blocking and separate from the locked H08 closing headline;
+3. any change to the locked Home community-first composition in `CDL-025`;
 4. any change to the locked semantic boundary of Le Adunanze/Giostre;
 5. any reopening of Tesori or Mercante;
 6. any final placement decision for guides/regulations/reference material when that area enters scope.
+
+The Home macro-composition and default closing headline are no longer open Product Owner decisions.
 
 Everything else should be derived by the responsible design/technical rules unless a concrete ambiguity is discovered.
 
