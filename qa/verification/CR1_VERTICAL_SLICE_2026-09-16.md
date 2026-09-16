@@ -4,7 +4,7 @@
 **Journey:** `Home → Adunanza/Giostra → Result → Cronaca → Avventuriero`  
 **Status:** `PASS`  
 **Evidence class:** specification/data/relationship QA; not production UI verification  
-**CI:** ICA baseline QA run #37  
+**CI:** initial gate PASS on ICA baseline QA run #37; final branch confirmation PASS on run #40  
 **Branch:** `governance/narrative-art-bible-v0-1`
 
 ---
@@ -31,7 +31,7 @@ The fixture is synthetic and must never be published as real community fact.
 `python scripts/creative_consistency_check.py` → PASS  
 `python scripts/vertical_slice_check.py` → PASS  
 `python scripts/technical_baseline.py` → PASS  
-Full workflow `ICA baseline QA` → PASS on run #37.
+Full workflow `ICA baseline QA` → PASS on run #37 and final confirmation run #40.
 
 ---
 
