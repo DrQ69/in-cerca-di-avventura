@@ -29,6 +29,7 @@ KNOWN_LEGACY_PATHS = {
 HISTORICAL_CONTEXT_PATHS = {
     "docs/CREATIVE_DECISION_LOG.md",
     "docs/NARRATIVE_ART_BIBLE.md",
+    "docs/TERMINOLOGY_BIBLE.md",
     "docs/creative-decisions/DECISION_TESORI_SCOPE.md",
     "docs/creative-decisions/DECISION_MERCANTE_ON_HOLD.md",
 }
