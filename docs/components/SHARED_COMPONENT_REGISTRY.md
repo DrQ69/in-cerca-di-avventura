@@ -1,138 +1,190 @@
 # In Cerca di Avventura — Shared Component Registry
 
 **Document ID:** ICA-CMP-REG-001  
-**Status:** `VERTICAL_SLICE_CONSOLIDATED — REVIEW_REQUIRED`  
-**Version:** 0.2  
-**Delivery status:** `COMPLETE_FOR_VERTICAL_SLICE`  
+**Status:** `ACTIVE_DOSSIERS_CONSOLIDATED — REVIEW_REQUIRED`  
+**Version:** 0.3  
+**Delivery status:** `COMPLETE_FOR_ACTIVE_DOSSIERS`  
 **Canonical readiness:** `REVIEW_REQUIRED`  
-**Scope:** components proven necessary by Home + Adunanze + Giostre + minimum Cronache/Avventurieri slice and the canonical sample fixture.
+**Scope:** components proven necessary by Home, Le Adunanze, Giostre, Cronache, Avventurieri, Alleanze and Proclami.
 
-> This registry remains deliberately narrow. The vertical-slice gate passed without requiring speculative component families. New shared components are added only when at least two real Page Dossiers need the same semantics/state behavior. Cosmetic similarity alone is insufficient.
+> The registry is evidence-driven. A shared component exists only when multiple page dossiers need the same semantics and state behavior. Cosmetic similarity alone does not justify a shared family.
 
 ---
 
 # 1. Component rules
 
 - shared semantics before shared styling;
-- state behavior is part of the component contract;
-- page-specific atmosphere may wrap a shared component without changing factual meaning;
+- state behavior is part of the contract;
+- factual meaning cannot change between pages;
+- page-specific atmosphere may wrap a shared component without changing semantics;
 - no production artwork is authorized here;
-- components remain `SPECIFIED (REVIEW_REQUIRED)` until later implementation and verification;
-- page-local threshold/body/profile compositions remain local unless reuse evidence appears.
+- local compositions remain local until reuse evidence appears;
+- responsive simplification cannot remove required factual meaning or actions.
 
 ---
 
-# 2. Vertical-slice registry — consolidated
+# 2. Consolidated active-destination registry
 
 | ID | Role | Proven by | Core states | Required data |
 |---|---|---|---|---|
-| `CMP-EVT-FEATURED` | featured event presentation | Home + Giostre | upcoming, ongoing, unavailable | EVENT |
-| `CMP-EVT-CARD` | repeated event preview | Home + Adunanze + Giostre | upcoming, cancelled, completed, sparse | EVENT |
-| `CMP-EVT-STATUS` | explicit event status label | Adunanze + Giostre | upcoming, ongoing, cancelled, completed | status |
-| `CMP-EVT-META` | date/venue/organizer/format block | Home + Adunanze + Giostre | complete, missing-optional | EVENT/VENUE/ORG |
-| `CMP-FILTER-BAR` | conditional filtering control | Adunanze | collapsed, expanded, inactive | taxonomy/filter config |
-| `CMP-RESULT-SUMMARY` | factual result/standing teaser | Giostre + Cronache + Avventurieri context | final, partial/not-published | RESULT |
-| `CMP-ARTICLE-TEASER` | Proclamo/Cronaca teaser | Home + Giostre + Avventurieri | normal, sparse | ARTICLE |
+| `CMP-EVT-FEATURED` | featured/current event presentation | Home + Giostre | upcoming, ongoing, unavailable | EVENT |
+| `CMP-EVT-CARD` | repeated event preview | Home + Adunanze + Giostre + Alleanze related activity | upcoming, cancelled, completed, sparse | EVENT |
+| `CMP-EVT-STATUS` | explicit event status label | Adunanze + Giostre + Proclami related-event context | upcoming, ongoing, cancelled, completed | status |
+| `CMP-EVT-META` | date/venue/organizer/format block | Home + Adunanze + Giostre + Proclami related-event context | complete, missing-optional | EVENT/VENUE/ORG |
+| `CMP-FILTER-BAR` | conditional filter/search/sort controls | Adunanze + Avventurieri + Alleanze when volume justifies it | collapsed, expanded, inactive | taxonomy/filter config |
+| `CMP-RESULT-SUMMARY` | factual result/standing teaser | Giostre + Cronache + Avventurieri | final, partial/not-published | RESULT |
+| `CMP-ARTICLE-TEASER` | Proclamo/Cronaca preview | Home + Giostre + Cronache/Avventurieri relations + Proclami | normal, sparse | ARTICLE |
 | `CMP-PLAYER-REF` | compact Avventuriero reference | Home + Giostre + Cronache | sparse, normal | PLAYER |
-| `CMP-ORG-REF` | compact Alleanza/organizer reference | Home + Adunanze | sparse, normal | ORGANIZATION |
-| `CMP-EMPTY-STATE` | truthful empty/error messaging | all vertical-slice pages | empty, error | state/recovery action |
-| `CMP-CTA-LINK` | primary/secondary functional action | all vertical-slice pages | enabled, unavailable/external | label + destination |
-
-No additional shared component was justified by the minimum Cronache or Avventurieri dossiers. Their article body/threshold and profile identity compositions remain page-local until another page proves reuse.
+| `CMP-ORG-REF` | compact organisation/Alleanza reference | Home + Adunanze + Alleanze | sparse, normal | ORGANIZATION |
+| `CMP-EMPTY-STATE` | truthful empty/error messaging | all active destinations | empty, error, not-ready | state/recovery action |
+| `CMP-CTA-LINK` | primary/secondary functional action | all active destinations | enabled, unavailable, external | label + destination |
 
 ---
 
-# 3. Validated behavioral rules
+# 3. Consolidation findings
 
-## Event status
+No additional generic component family is justified by Alleanze or Proclami.
 
-Status must always be readable as text. Color/icon may support it but never replace it.
+Keep local for now:
+
+- Home threshold/closing compositions;
+- Cronaca article threshold/body;
+- Avventuriero profile identity and index framing;
+- Alleanze geographic group header and organisation-detail identity;
+- Proclami latest-news feature and article header/body;
+- any map/cartographic presentation;
+- any decorative heraldic/banner treatment.
+
+Reason: their semantics are page-specific or reuse is not yet proven.
+
+---
+
+# 4. Validated behavioral contracts
+
+## 4.1 Event status
+
+Status is always readable as text. Color/icon may support but never replace it.
 
 Cancelled:
 
 - no active registration CTA;
-- status visible before action;
-- factual record may remain.
+- cancellation visible before action;
+- record may remain for history/context.
 
 Completed:
 
 - registration removed;
-- result/Cronaca routes may replace it.
+- result/Cronaca routes may replace action emphasis.
 
-## Missing optional data
+## 4.2 Missing optional data
 
-`CMP-EVT-META` does not invent replacements.
+Do not invent replacements.
 
 Examples:
 
-- missing street address → show city/venue name if verified;
-- missing format → omit format row;
-- missing registration URL → show detail/info route only if one exists.
+- missing street address → show verified venue/city if useful;
+- missing format → omit format;
+- missing registration → show detail route only if valid;
+- missing organisation logo → show text identity;
+- missing player portrait/real name → nickname and verified activity remain valid.
 
-## Sparse person/org
+## 4.3 Editorial classification
 
-A sparse `PLAYER` or `ORGANIZATION` is allowed only when visible fields are truthful and useful. Do not manufacture biography/affiliation.
+`CMP-ARTICLE-TEASER` can represent NEWS/Proclamo or CRONACA only when classification remains explicit in context. The component may share structure but cannot erase semantic distinction.
 
-## Editorial-memory boundary
+## 4.4 Organisation/geography
 
-`CMP-ARTICLE-TEASER` may represent either News/Proclamo or Cronaca, but the editorial classification and visible context must remain explicit. The component cannot collapse the semantic distinction.
+`CMP-ORG-REF` represents the factual organisation. `Reami d'Italia` / `Reami d'Oltreconfine` are grouping context, not a property that renames the organisation itself.
 
-## Result relationship
+## 4.5 Filtering controls
 
-`CMP-RESULT-SUMMARY` exposes factual result data and may link toward related players/Cronaca; it does not turn editorial memory into result authority.
+`CMP-FILTER-BAR` appears only when real content volume makes filtering/search/sort useful. It must not be rendered as decorative complexity on sparse content.
+
+## 4.6 External links
+
+`CMP-CTA-LINK` distinguishes external routes accessibly where needed. Broken or stale official links are removed/reviewed rather than left as primary actions.
 
 ---
 
-# 4. Responsive contract — validated at specification level
+# 5. Responsive contract
 
-Repeated vertical-slice components follow:
+Shared components follow:
 
+- mobile stacking before shrink-to-fit;
 - semantic priority before ornament;
-- mobile stacking, not shrink-to-fit;
-- no horizontal overflow for basic event/result understanding;
+- no horizontal overflow for basic understanding;
 - controls >= 44x44;
-- status/date/action remain visible;
+- status/date/title/action remain legible;
 - hover never carries unique information;
-- article/profile local compositions may simplify decorative treatment before content hierarchy.
+- images/logos/maps are never the sole carrier of identity or navigation;
+- page-local atmosphere may simplify before shared factual content.
 
-This is contract validation, not visual/runtime verification. M7/M7.1 implementation remains RECHECK_REQUIRED until canonical propagation and real UI revalidation.
-
----
-
-# 5. Fixture coverage and gate evidence
-
-`tests/fixtures/canonical-sample.json` validates:
-
-- complete upcoming Giostra;
-- sparse external Adunanza;
-- cancelled Adunanza;
-- completed Giostra with Result;
-- sparse Avventuriero;
-- Proclamo and Cronaca;
-- Atlas/Spellbook deck structure;
-- Home deterministic featured-event selection;
-- event/result/article/player relationship integrity.
-
-Automated gate: `scripts/vertical_slice_check.py`.
-
-CI result: **PASS** on ICA baseline QA run **#37** (2026-09-16).
-
-The fixture validates component semantics/state behavior only and is not production content.
+This remains specification-level validation; runtime/visual verification is still pending canonical propagation and M7/M7.1 revalidation.
 
 ---
 
-# 6. Consolidation decision
+# 6. Accessibility contract
 
-The vertical slice did **not** prove a need for new generic components beyond the v0.1 registry.
+All shared components must support:
 
-Therefore:
+- semantic text identity independent of imagery;
+- visible focus;
+- keyboard navigation;
+- status not communicated by color alone;
+- explicit labels for icon-only controls;
+- external-link indication where appropriate;
+- readable dates, locations, results and metadata;
+- reduced-motion compatibility.
 
-- keep the current shared set;
-- keep Cronaca body/threshold local;
-- keep Avventuriero profile identity local;
-- defer component JSON schema until these contracts survive later real implementation;
-- do not add decorative shared components or asset families at this stage.
+---
 
-**Vertical-slice registry delivery:** `COMPLETE_FOR_VERTICAL_SLICE`  
+# 7. Data/provenance boundary
+
+Shared components consume structured objects but do not become sources of truth.
+
+Examples:
+
+- event card reads `EVENT`;
+- result summary reads `RESULT`;
+- player reference reads `PLAYER`;
+- organisation reference reads `ORGANIZATION`;
+- article teaser reads `ARTICLE`.
+
+Selection/order may be editorial or derived, but source facts remain governed upstream.
+
+---
+
+# 8. Evidence base
+
+Vertical-slice evidence:
+
+- `tests/fixtures/canonical-sample.json`;
+- `scripts/vertical_slice_check.py`;
+- `qa/verification/CR1_VERTICAL_SLICE_2026-09-16.md`;
+- ICA baseline QA run #40 PASS.
+
+Additional dossier evidence:
+
+- `docs/pages/PAGE_CRONACHE.md` v0.2;
+- `docs/pages/PAGE_AVVENTURIERI.md` v0.2;
+- `docs/pages/PAGE_ALLEANZE.md` v0.1;
+- `docs/pages/PAGE_PROCLAMI.md` v0.1.
+
+---
+
+# 9. Next step
+
+The shared semantic inventory is sufficiently stable to proceed to the next CR1 layer without inventing new component families.
+
+Next work:
+
+1. define the machine-readable Component Specification schema from this registry;
+2. create Asset Dependency Map only after component semantics are encoded;
+3. define Asset Specification schema from proven component/asset needs;
+4. then propagate locked decisions to Canonical Spec and specialist documents.
+
+No production UI or definitive artwork is authorized by this registry.
+
+**Delivery:** `COMPLETE_FOR_ACTIVE_DOSSIERS`  
 **Canonical readiness:** `REVIEW_REQUIRED`  
 **Production implementation:** not authorized.
