@@ -25,7 +25,7 @@
     "APPROVED": 3
   },
   "artifacts": [
-    {"id":"NAB","path":"docs/NARRATIVE_ART_BIBLE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":[]},
+    {"id":"NAB","path":"docs/NARRATIVE_ART_BIBLE.md","delivery_status":"COMPLETE","canonical_readiness":"PRODUCT_OWNER_LOCKED_SCOPE","gating_dependencies":[]},
     {"id":"TERM","path":"docs/TERMINOLOGY_BIBLE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB"]},
     {"id":"IA","path":"docs/PRIMARY_INFORMATION_ARCHITECTURE.md","delivery_status":"COMPLETE","canonical_readiness":"PRODUCT_OWNER_LOCKED_SCOPE","gating_dependencies":[]},
     {"id":"CDL","path":"docs/CREATIVE_DECISION_LOG.md","delivery_status":"COMPLETE","canonical_readiness":"PRODUCT_OWNER_LOCKED_SCOPE","gating_dependencies":[]},
