@@ -15,15 +15,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* TEMPORARY ART DIRECTION HOLD: assets/hero-fantasy.webp must not be used. */
-    .hero-scene{background:radial-gradient(circle at 50% 34%,rgba(28,66,87,.34),transparent 27%),linear-gradient(180deg,#132735 0%,#0b151c 47%,#080b0d 100%)!important;filter:none!important}
-    .closing-band{background:radial-gradient(circle at 50% 0,rgba(35,66,82,.22),transparent 42%),linear-gradient(180deg,#0d151a,#07090b)!important}
-  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="world-frame">
+  <div class="outer-rail rail-left" aria-hidden="true"><span></span></div>
+  <div class="outer-rail rail-right" aria-hidden="true"><span></span></div>
+
   <header class="citadel-nav">
     <nav class="nav-side nav-left" aria-label="Navigazione principale sinistra">
       <a href="#adunanze">Le Adunanze</a>
@@ -46,9 +44,9 @@
 
   <main id="main">
     <section class="hero-stage" id="home" aria-labelledby="hero-title">
-      <div class="vertical-banner banner-left" aria-hidden="true"></div>
-      <div class="vertical-banner banner-right" aria-hidden="true"></div>
       <div class="hero-scene" aria-hidden="true"></div>
+      <div class="vertical-banner banner-left" aria-hidden="true"><span>ICA</span></div>
+      <div class="vertical-banner banner-right" aria-hidden="true"><span>ICA</span></div>
       <div class="hero-copy">
         <p class="kicker">Comunità italiana di</p>
         <h1 id="hero-title"><span>In Cerca di</span> Avventura</h1>
@@ -66,7 +64,7 @@
         <p class="section-kicker">Prossima Adunanza</p>
         <h2 id="next-title">Il Rituale — Gothic Draft</h2>
         <ul class="event-facts">
-          <li>16 settembre 2026</li>
+          <li><strong>16 settembre 2026</strong></li>
           <li>Game Lover · Crema</li>
           <li>Gothic Draft · check-in 20:30</li>
         </ul>
@@ -74,7 +72,7 @@
       </div>
       <aside class="featured-message">
         <p>Qui si incontrano coloro che cercano più di una semplice partita.</p>
-        <span>La community prende forma attorno a persone, luoghi e storie reali.</span>
+        <span>Persone, luoghi e storie reali costruiscono la memoria della community.</span>
       </aside>
     </section>
 
@@ -91,11 +89,11 @@
       </article>
 
       <article class="panel allies-panel" id="alleanze">
-        <header class="panel-heading"><h2>Alleanze</h2><span>Botteghe, club e confraternite reali</span></header>
+        <header class="panel-heading"><h2>Alleanze</h2><span>La rete della community</span></header>
         <div class="parchment">
           <div><strong>Reami d'Italia</strong><small>community, negozi, organizzatori e luoghi</small></div>
           <div><strong>Reami d'Oltreconfine</strong><small>connessioni internazionali documentate</small></div>
-          <div><strong>Identità reali</strong><small>nessuno stemma inventato per sostituire un logo assente</small></div>
+          <div><strong>Identità reali</strong><small>nessuno stemma inventato in sostituzione di un logo assente</small></div>
         </div>
         <a class="panel-link" href="#">Vedi tutte le Alleanze →</a>
       </article>
@@ -105,9 +103,9 @@
       <article class="panel events-panel" id="adunanze">
         <header class="panel-heading"><h2>Le Adunanze</h2><span>I prossimi eventi in programma</span></header>
         <div class="event-grid">
-          <article class="event-tile"><span class="event-image image-a"></span><b>Il Rituale</b><small>Crema · 16 settembre</small><em>Gothic Draft</em></article>
-          <article class="event-tile"><span class="event-image image-b"></span><b>La Giostra</b><small>Milano · 2 ottobre</small><em>Constructed</em></article>
-          <article class="event-tile"><span class="event-image image-c"></span><b>Tappa III</b><small>Crema · 14 ottobre</small><em>Chaos Draft</em></article>
+          <article class="event-tile"><span class="event-image image-a" aria-hidden="true"></span><b>Il Rituale</b><small>Crema · 16 settembre</small><em>Gothic Draft</em></article>
+          <article class="event-tile"><span class="event-image image-b" aria-hidden="true"></span><b>La Giostra</b><small>Milano · 2 ottobre</small><em>Constructed</em></article>
+          <article class="event-tile"><span class="event-image image-c" aria-hidden="true"></span><b>Tappa III</b><small>Crema · 14 ottobre</small><em>Chaos Draft</em></article>
         </div>
         <a class="panel-link" href="#">Vedi tutte le Adunanze →</a>
       </article>
