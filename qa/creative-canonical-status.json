@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "updated": "2026-09-16",
   "branch": "governance/narrative-art-bible-v0-1",
   "framework_freeze": {
@@ -10,7 +10,8 @@
       "vertical_slice_fixture",
       "qa_tooling",
       "shared_component_registry",
-      "required_canonical_propagation"
+      "required_canonical_propagation",
+      "qa_evidence"
     ]
   },
   "canonical_status_rank": {
@@ -38,8 +39,11 @@
     {"id":"HOME","path":"docs/pages/PAGE_HOME.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["NAB","TERM","IA","EXP","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
     {"id":"ADU","path":"docs/pages/PAGE_ADUNANZE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","EXP","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
     {"id":"GIO","path":"docs/pages/PAGE_GIOSTRE.md","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","ADU","REL","CG","PSM","CRG","VHM","RAD","NAQ","PDT"]},
-    {"id":"SCR","path":"docs/components/SHARED_COMPONENT_REGISTRY.md","delivery_status":"IN_PROGRESS","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO"]},
+    {"id":"CHR","path":"docs/pages/PAGE_CRONACHE.md","delivery_status":"COMPLETE_FOR_VERTICAL_SLICE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","RAD","NAQ","PDT"]},
+    {"id":"PLY","path":"docs/pages/PAGE_AVVENTURIERI.md","delivery_status":"COMPLETE_FOR_VERTICAL_SLICE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["TERM","IA","REL","CG","PSM","CRG","RAD","NAQ","PDT"]},
+    {"id":"SCR","path":"docs/components/SHARED_COMPONENT_REGISTRY.md","delivery_status":"IN_PROGRESS","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY"]},
     {"id":"FIX","path":"tests/fixtures/canonical-sample.json","delivery_status":"COMPLETE","canonical_readiness":"NON_CANONICAL_FIXTURE","gating_dependencies":[]},
+    {"id":"VSG","path":"scripts/vertical_slice_check.py","delivery_status":"COMPLETE","canonical_readiness":"REVIEW_REQUIRED","gating_dependencies":["HOME","ADU","GIO","CHR","PLY","SCR","FIX"]},
     {"id":"CANON","path":"docs/ICA_CANONICAL_SPEC.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
     {"id":"P0NAV","path":"docs/components/P0_SHELL_NAV_SIG.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]},
     {"id":"M71","path":"docs/M7_1_RESPONSIVE_CONFORMANCE.md","delivery_status":"COMPLETE","canonical_readiness":"RECHECK_REQUIRED","gating_dependencies":[]}
