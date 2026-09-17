@@ -14,6 +14,8 @@ const loading=document.getElementById('loading');
 const error=document.getElementById('error');
 const empty=document.getElementById('empty');
 const search=document.getElementById('search');
+const resultCount=document.getElementById('result-count');
+const resetFilters=document.getElementById('reset-filters');
 const controls={season:document.getElementById('season'),status:document.getElementById('status'),place:document.getElementById('place'),league:document.getElementById('league'),format:document.getElementById('format')};
 let events=[];
 
@@ -82,6 +84,14 @@ function render(){
   applyFilters();
 }
 
+function updateFilterFeedback(shown){
+  if(!resultCount)return;
+  const total=events.length;
+  const active=Boolean(norm(search?.value))||norm(controls.season?.value)!=='tutte'||norm(controls.status?.value)!=='tutti'||norm(controls.place?.value)!=='tutti'||norm(controls.league?.value)!=='tutte'||norm(controls.format?.value)!=='tutti';
+  if(!active){resultCount.textContent=`${total} ${total===1?'evento registrato':'eventi registrati'}`;return;}
+  resultCount.textContent=`${shown} ${shown===1?'evento mostrato':'eventi mostrati'} su ${total}`;
+}
+
 function applyFilters(){
   const q=norm(search?.value);
   const selected={
@@ -107,11 +117,25 @@ function applyFilters(){
   });
   document.querySelectorAll('[data-season-section]').forEach(section=>{const visible=[...section.querySelectorAll('.event-record')].filter(r=>!r.hidden);section.hidden=visible.length===0;const count=section.querySelector('.season-count');if(count)count.textContent=visible.length;});
   empty.hidden=shown!==0;
+  updateFilterFeedback(shown);
 }
 
-search?.addEventListener('input',applyFilters);Object.values(controls).forEach(c=>c?.addEventListener('change',applyFilters));
+function clearFilters(){
+  if(search)search.value='';
+  if(controls.season)controls.season.value='tutte';
+  if(controls.status)controls.status.value='tutti';
+  if(controls.place)controls.place.value='tutti';
+  if(controls.league)controls.league.value='tutte';
+  if(controls.format)controls.format.value='tutti';
+  applyFilters();
+  search?.focus();
+}
+
+search?.addEventListener('input',applyFilters);
+Object.values(controls).forEach(c=>c?.addEventListener('change',applyFilters));
+resetFilters?.addEventListener('click',clearFilters);
 
 fetch('../../data/cronache-events.json',{cache:'no-store'})
   .then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();})
   .then(data=>{events=Array.isArray(data.events)?data.events:[];buildFilters();computeMetrics();render();loading.hidden=true;})
-  .catch(err=>{console.error('Cronache data load failed',err);loading.hidden=true;error.hidden=false;});
+  .catch(err=>{console.error('Cronache data load failed',err);loading.hidden=true;error.hidden=false;if(resultCount)resultCount.textContent='Archivio non disponibile';});
