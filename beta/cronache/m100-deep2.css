@@ -1,0 +1,121 @@
+/* Cronache — Aesthetic Deep Pass 2
+   Targeted refinement after rendered QA. No new ornament families; no data or interaction changes. */
+
+/* DESKTOP: improve proportion, hierarchy and action legibility */
+@media(min-width:1081px){
+  .archive-main{padding-top:40px}
+  .season{margin-bottom:76px}
+  .season-heading{margin-bottom:20px}
+  .season-heading h2{font-size:clamp(1.8rem,2.6vw,2.45rem);line-height:1.05}
+  .season-heading p{margin-top:7px;letter-spacing:.14em}
+
+  .event-record{
+    grid-template-columns:132px minmax(260px,1.45fr) minmax(245px,1.05fr) minmax(205px,.9fr) 122px;
+    min-height:166px;
+  }
+  .record-cell{padding:20px 18px}
+  .status-cell img{width:66px;height:66px}
+  .identity-cell h3{font-size:clamp(1.08rem,1.75vw,1.42rem);line-height:1.12}
+  .action-cell{
+    position:relative;
+    padding-inline:15px;
+    text-align:center;
+    background:linear-gradient(180deg,rgba(110,79,34,.035),rgba(110,79,34,.075));
+  }
+  .action-cell::before{
+    content:"";
+    position:absolute;
+    top:18px;bottom:18px;left:0;width:1px;
+    background:linear-gradient(transparent,rgba(113,79,34,.28),transparent);
+  }
+  .detail-link{line-height:1.35;letter-spacing:.035em}
+  .detail-pending{font-size:.54rem!important;line-height:1.22!important;max-width:100%!important;letter-spacing:.025em!important}
+}
+
+/* TABLET: convert the action from a narrow vertical cell into a calmer horizontal footer row */
+@media(min-width:701px) and (max-width:1080px){
+  .archive-main{padding-top:34px}
+  .season{margin-bottom:62px}
+  .season-heading{margin-bottom:18px;padding-bottom:14px}
+  .season-heading img{width:168px}
+  .season-heading h2{font-size:1.9rem}
+
+  .event-record{
+    grid-template-columns:112px minmax(250px,1.2fr) minmax(235px,1fr);
+    min-height:0;
+  }
+  .record-cell{padding:18px 16px}
+  .status-cell img{width:62px;height:62px}
+  .results-cell{grid-column:2/3}
+  .action-cell{
+    grid-column:3/4;
+    min-height:58px;
+    padding:14px 16px;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:rgba(94,66,29,.045);
+  }
+  .detail-pending{font-size:.56rem!important;line-height:1.25!important;max-width:100%!important}
+}
+
+/* MOBILE: preserve atmosphere while removing visual crowding */
+@media(max-width:700px){
+  .archive-threshold{padding-bottom:30px}
+  .archive-threshold::after{opacity:.26}
+  .threshold-copy::after{height:24px;margin-top:12px;opacity:.58}
+  .archive-metrics{margin-top:4px}
+  .metric{min-width:132px;padding:8px 10px}
+  .metric strong{font-size:1.18rem}
+  .metric span{font-size:.59rem;letter-spacing:.1em}
+
+  .ledger{outline-offset:2px}
+  .ledger::after{opacity:.24!important;background-size:28px 28px!important}
+  .search-row{padding:12px 14px 7px}
+  .filter{padding:10px 12px}
+  .filter-summary{padding-left:16px!important;padding-right:14px!important;gap:8px}
+  .reset-filters{padding-inline:13px;font-size:.64rem}
+
+  .season{margin-bottom:46px}
+  .season-heading{margin-bottom:16px;padding:0 10px 12px 30px}
+  .season-heading::before{width:24px;height:24px;opacity:.58}
+  .season-heading img{width:128px;margin-left:-7px}
+  .season-heading h2{font-size:1.55rem;letter-spacing:.075em}
+  .season-heading p{font-size:.62rem;letter-spacing:.1em}
+  .season-heading::after{left:28px!important;opacity:.72}
+
+  .event-record{margin-inline:0;box-shadow:0 9px 22px rgba(0,0,0,.26),inset 0 0 22px rgba(83,52,20,.055)}
+  .event-record::before{inset:6px!important;opacity:.42;background-size:22px 22px!important}
+  .event-record::after{height:2px!important;opacity:.68!important}
+  .record-cell{padding:14px 15px}
+  .status-cell{padding-block:16px 12px}
+  .status-cell img{width:56px;height:56px}
+  .status-cell::after{width:44px;height:11px;margin-top:4px;opacity:.28}
+  .status-label{font-size:.64rem}
+  .identity-cell h3{font-size:1.05rem;line-height:1.15}
+  .series{font-size:.65rem;line-height:1.35}
+  .meta{gap:7px}
+  .meta-item b,.result-item b{font-size:.58rem}
+  .meta-item small,.result-item small{font-size:.69rem}
+  .format{font-size:.6rem;margin-bottom:7px}
+  .action-cell{
+    min-height:50px;
+    align-items:center;
+    text-align:center;
+    background:rgba(93,60,26,.045);
+  }
+  .detail-link{font-size:.66rem;letter-spacing:.035em}
+  .detail-pending{font-size:.55rem!important;line-height:1.24!important;max-width:100%!important;letter-spacing:.02em!important}
+}
+
+/* Very small screens: remove decorative pressure before reducing readable content. */
+@media(max-width:420px){
+  .archive-threshold::after{display:none}
+  .threshold-copy h1{font-size:2.35rem;letter-spacing:.035em}
+  .threshold-copy .subtitle{font-size:.72rem;line-height:1.45}
+  .season-heading img{display:none}
+  .season-heading{padding-left:12px}
+  .season-heading::before{display:none}
+  .season-heading::after{left:12px!important}
+  .event-record::before{opacity:.28}
+}
