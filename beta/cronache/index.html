@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="m75.css">
+  <link rel="stylesheet" href="m100.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -61,9 +62,9 @@
           <div class="filter"><label for="league">Lega</label><select id="league"><option value="tutte">Tutte</option></select></div>
           <div class="filter"><label for="format">Formato</label><select id="format"><option value="tutti">Tutti</option></select></div>
         </div>
-        <div class="filter-feedback" aria-live="polite">
-          <span id="result-count">Caricamento delle registrazioni…</span>
-          <button type="button" id="reset-filters">Azzera filtri</button>
+        <div class="filter-summary" aria-live="polite">
+          <p id="result-count">—</p>
+          <button id="reset-filters" class="reset-filters" type="button">Azzera filtri</button>
         </div>
       </div>
     </section>
