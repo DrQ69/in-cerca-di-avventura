@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="m75.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -41,8 +42,8 @@
         <h1 id="page-title">Cronache</h1>
         <p class="subtitle">Archivio di Adunanze, Leghe, Duelli e Giostre</p>
         <div class="archive-metrics" aria-label="Metriche dell'archivio">
-          <div class="metric"><strong>0</strong><span>Leghe Completate</span></div>
-          <div class="metric"><strong>1</strong><span>Giostre Completate</span></div>
+          <div class="metric"><strong id="metric-leagues">—</strong><span>Leghe Completate</span></div>
+          <div class="metric"><strong id="metric-jousts">—</strong><span>Giostre Completate</span></div>
         </div>
       </div>
     </section>
@@ -54,86 +55,21 @@
           <input id="search" type="search" placeholder="Cerca Adunanze, Leghe, luoghi o formati…" autocomplete="off">
         </div>
         <div class="filters">
-          <div class="filter"><label for="season">Stagione</label><select id="season"><option value="tutte">Tutte</option><option value="2026" selected>2026</option></select></div>
-          <div class="filter"><label for="status">Stato</label><select id="status"><option>Tutti</option><option>Futura</option><option>In corso</option><option>Conclusa</option></select></div>
-          <div class="filter"><label for="place">Luogo</label><select id="place"><option>Tutti</option><option>GameLover — Crema</option><option>Joker's — Milano</option></select></div>
-          <div class="filter"><label for="league">Lega</label><select id="league"><option>Tutte</option><option>Blaze of Glory — La Lega di Cremos</option><option>Nessuna — Giostra autonoma</option></select></div>
-          <div class="filter"><label for="format">Formato</label><select id="format"><option>Tutti</option><option>Constructed</option><option>Gothic Draft</option></select></div>
+          <div class="filter"><label for="season">Stagione</label><select id="season"><option value="tutte">Tutte</option></select></div>
+          <div class="filter"><label for="status">Stato</label><select id="status"><option value="tutti">Tutti</option><option value="futura">Futura</option><option value="in corso">In corso</option><option value="conclusa">Conclusa</option></select></div>
+          <div class="filter"><label for="place">Luogo</label><select id="place"><option value="tutti">Tutti</option></select></div>
+          <div class="filter"><label for="league">Lega</label><select id="league"><option value="tutte">Tutte</option></select></div>
+          <div class="filter"><label for="format">Formato</label><select id="format"><option value="tutti">Tutti</option></select></div>
         </div>
       </div>
     </section>
 
     <div class="archive-main">
-      <section class="season" aria-labelledby="season-2026">
-        <header class="season-heading">
-          <img src="../../assets/ui/cronache/season-ornament.svg" alt="">
-          <h2 id="season-2026">Stagione 2026</h2>
-          <p>3 eventi registrati</p>
-        </header>
-
-        <div class="records" id="records">
-          <article class="event-record status-completed" data-season="2026" data-status="conclusa" data-place="gamelover crema" data-league="blaze of glory la lega di cremos" data-format="gothic draft" data-search="gothic draft blaze of glory duello i crema gamelover">
-            <div class="record-cell status-cell"><img src="../../assets/ui/cronache/status/skull-conclusa.svg" alt=""><span class="status-label">Conclusa</span></div>
-            <div class="record-cell identity-cell"><h3>Gothic Draft</h3><p class="series">Blaze of Glory — La Lega di Cremos</p><span class="stage">Duello I</span></div>
-            <div class="record-cell record-meta">
-              <div class="meta">
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/date.svg" alt=""><span><b>Data</b><small>16 settembre 2026</small></span></span>
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/place.svg" alt=""><span><b>Luogo</b><small>GameLover, Crema</small></span></span>
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/format.svg" alt=""><span><b>Tipo</b><small>Duello di Lega</small></span></span>
-              </div>
-            </div>
-            <div class="record-cell results-cell">
-              <span class="format">Gothic Draft</span>
-              <div class="results">
-                <span class="result-item"><img src="../../assets/ui/cronache/icons/players.svg" alt=""><span><b>19</b><small>giocatori</small></span></span>
-                <span class="result-item winner"><img src="../../assets/ui/cronache/icons/winner.svg" alt=""><span><b>Vincitore</b><small>Niccolò C</small></span></span>
-              </div>
-            </div>
-            <div class="record-cell action-cell"><a class="detail-link" href="#" aria-label="Dettagli Gothic Draft Blaze of Glory Duello I">Dettagli →</a></div>
-          </article>
-
-          <article class="event-record status-future" data-season="2026" data-status="futura" data-place="jokers milano" data-league="blaze of glory la lega di cremos" data-format="constructed" data-search="blaze of glory duello ii milano jokers constructed">
-            <div class="record-cell status-cell"><img src="../../assets/ui/cronache/status/skull-futura.svg" alt=""><span class="status-label">Futura</span></div>
-            <div class="record-cell identity-cell"><h3>Duello II</h3><p class="series">Blaze of Glory — La Lega di Cremos</p><span class="stage">Seconda tappa</span></div>
-            <div class="record-cell record-meta">
-              <div class="meta">
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/date.svg" alt=""><span><b>Data</b><small>2 ottobre 2026</small></span></span>
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/place.svg" alt=""><span><b>Luogo</b><small>Joker's, Milano</small></span></span>
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/format.svg" alt=""><span><b>Tipo</b><small>Duello di Lega</small></span></span>
-              </div>
-            </div>
-            <div class="record-cell results-cell"><span class="format">Constructed</span><div class="results"><span class="pending-result">Nessun risultato prima della conclusione</span></div></div>
-            <div class="record-cell action-cell"><a class="detail-link" href="#" aria-label="Dettagli Blaze of Glory Duello II">Dettagli →</a></div>
-          </article>
-
-          <article class="event-record status-completed" data-season="2026" data-status="conclusa" data-place="gamelover crema" data-league="nessuna" data-format="constructed" data-search="la giostra gamelover crema constructed giostra autonoma">
-            <div class="record-cell status-cell"><img src="../../assets/ui/cronache/status/skull-conclusa.svg" alt=""><span class="status-label">Conclusa</span></div>
-            <div class="record-cell identity-cell"><h3>La Giostra</h3><p class="series">Giostra ICA autonoma</p><span class="stage">Evento Constructed</span></div>
-            <div class="record-cell record-meta">
-              <div class="meta">
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/date.svg" alt=""><span><b>Data</b><small>da verificare nella fonte ufficiale</small></span></span>
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/place.svg" alt=""><span><b>Luogo</b><small>GameLover, Crema</small></span></span>
-                <span class="meta-item"><img src="../../assets/ui/cronache/icons/format.svg" alt=""><span><b>Struttura</b><small>Swiss 5 round + Top 8</small></span></span>
-              </div>
-              <span class="truth-note">La data non viene inferita dall'indicazione relativa presente nell'export.</span>
-            </div>
-            <div class="record-cell results-cell">
-              <span class="format">Constructed</span>
-              <div class="results">
-                <span class="result-item"><img src="../../assets/ui/cronache/icons/players.svg" alt=""><span><b>18</b><small>giocatori</small></span></span>
-                <span class="result-item winner"><img src="../../assets/ui/cronache/icons/winner.svg" alt=""><span><b>Vincitore</b><small>Matteo M</small></span></span>
-              </div>
-            </div>
-            <div class="record-cell action-cell"><a class="detail-link" href="#" aria-label="Dettagli La Giostra">Dettagli →</a></div>
-          </article>
-        </div>
-
-        <p id="empty" class="empty-state" hidden aria-live="polite">Nessuna registrazione corrisponde ai filtri selezionati.</p>
-      </section>
-
-      <div class="closing" aria-label="Chiusura archivio">
-        <img src="../../assets/ui/cronache/archive-divider.svg" alt="">
-      </div>
+      <p id="loading" class="system-state" aria-live="polite">Consultazione dell'archivio…</p>
+      <p id="error" class="system-state system-error" hidden aria-live="assertive">Le registrazioni non sono disponibili in questo momento.</p>
+      <div id="seasons-root"></div>
+      <p id="empty" class="empty-state" hidden aria-live="polite">Nessuna registrazione corrisponde ai filtri selezionati.</p>
+      <div class="closing" aria-label="Chiusura archivio"><img src="../../assets/ui/cronache/archive-divider.svg" alt=""></div>
     </div>
   </main>
 
