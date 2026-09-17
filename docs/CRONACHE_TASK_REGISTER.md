@@ -38,7 +38,7 @@
 | CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Rendered PO-facing comparison remains final visual gate |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
 | CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values |
-| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | **Aesthetic Deep Pass 1 implemented**; rendered review next |
+| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | Aesthetic Deep Pass 1 implemented; PO visual corrections applied |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
 | CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages later scope |
 | CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata |
@@ -50,13 +50,14 @@
 | CRN-100-10 | 100% | Production-readiness audit | COMPLETED | 0 | `docs/CRONACHE_M100_PRODUCTION_READINESS.md` |
 | CRN-100-11 | 100% | Visual collision cleanup before Aesthetic Deep Pass | COMPLETED | 0 | Safe areas and reset-control restyle complete |
 | CRN-100-12 | 100% | Aesthetic Deep Pass 1 — frame/sigils/records/ledger | COMPLETED | 0–1 | `beta/cronache/m100-aesthetic.css` + new SVG assets |
+| CRN-100-13 | 100% | PO visual adjustments — logo diamond / filter offset / pending-detail fit | COMPLETED | 0 | Diamond reduced; filter summary shifted +0.5 cm; pending-detail font reduced |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
 - **75% functional implementation:** COMPLETED.
-- **100%:** Aesthetic Deep Pass 1 implemented. Remaining blockers are exact Logo ICA installation, rendered visual acceptance and final PO approval.
+- **100%:** Aesthetic Deep Pass 1 implemented and first PO visual correction pass applied. Remaining blockers are exact Logo ICA installation, rendered visual acceptance and final PO approval.
 
 Current page outputs:
 - `beta/cronache/index.html`
@@ -69,7 +70,7 @@ Current page outputs:
 
 ## PO interaction budget
 
-- Aesthetic Deep Pass rendered review: **0–1** interaction.
+- Deep-pass rendered review: **0–1** interaction.
 - Final visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
@@ -82,9 +83,9 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-001-PNG | Logo ICA lossless working representation | PNG | PROVIDED / IMMUTABLE_WORKING_COPY | Conversation source `logo_ica_lossless.png` | Do not redraw logo |
 | CRN-AST-001-R | Existing emblem proxy | WEBP | TEMPORARY_LAYOUT_PROXY | `assets/logo-emblem.webp` | Retire when original Logo ICA is installed |
 | CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` + `m100-aesthetic.css` | Deepened rails / shell |
-| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Architectural niche; logo artwork untouched |
+| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Architectural niche; diamond reduced after PO review |
 | CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Framed ceremonial doorway |
-| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Parchment + ornamental corners |
+| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Parchment + ornamental corners; summary shifted +0.5 cm right |
 | CRN-AST-014 | Season ornament | SVG | GENERATED / INSTALLED | `assets/ui/cronache/season-ornament.svg` | Reusable |
 | CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Preserved archival plate treatment |
 | CRN-AST-016 | Skull FUTURA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-futura.svg` | Icon + text |
