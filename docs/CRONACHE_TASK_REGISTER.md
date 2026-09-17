@@ -21,7 +21,7 @@
 | CRN-25-06 | 25% | Closing inscription | WAITING_PO | 1 | Candidate ON HOLD; non-blocking |
 | CRN-50-01 | 50% | Architectural frame / threshold / archive ledger | COMPLETED | 0 | Installed in Beta |
 | CRN-50-02 | 50% | Logo ICA architectural host | COMPLETED | 0 | Host only; artwork untouched |
-| CRN-50-03 | 50% | Exact Logo ICA production-source transfer | IN_DEVELOPMENT | 0–1 | Original SVG recovered from conversation files; repo transfer still pending due binary-source handling |
+| CRN-50-03 | 50% | Exact Logo ICA production-source transfer | IN_DEVELOPMENT | 0–1 | Original SVG recovered from conversation files; repo transfer still pending due source-file handling |
 | CRN-50-04 | 50% | Season header + Event Record visual anatomy | COMPLETED | 0 | Responsive archival pattern |
 | CRN-50-05 | 50% | Status icon family | COMPLETED | 0–1 | FUTURA / IN CORSO / CONCLUSA |
 | CRN-50-06 | 50% | Metadata icon family | COMPLETED | 0 | Date/place/type/players/winner |
@@ -35,24 +35,25 @@
 | CRN-75-06 | 75% | Conditional FUTURA / IN CORSO / CONCLUSA states | COMPLETED | 0 | Renderer supports all; no invented ongoing event |
 | CRN-75-07 | 75% | Desktop/tablet/mobile implementation | COMPLETED | 0 | Responsive system inherited/refined from M50 |
 | CRN-75-08 | 75% | Accessibility / keyboard / focus / reduced-motion QA | COMPLETED | 0 | Code-level gate documented in M75 QA |
-| CRN-75-09 | 75% | Runtime visual QA at target widths | NOT_STARTED | 0–1 | Requires rendered comparison; major subjective differences only escalate |
+| CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Source/runtime preflight complete; rendered PO-facing comparison remains final visual gate |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
-| CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized control values; `Gothic Draft`, `GameLover — Crema` and combined filters now apply correctly; see `docs/CRONACHE_FILTER_BUG_2026-09-17.md` |
-| CRN-100-01 | 100% | Final ornamental / illustrative refinement | NOT_STARTED | 0–1 | After runtime visual review |
+| CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values; see `docs/CRONACHE_FILTER_BUG_2026-09-17.md` |
+| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | Hold material changes until runtime visual gate; small UX polish allowed |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
 | CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist for concluded events; native detail pages later |
 | CRN-100-04 | 100% | SEO / metadata / social preview QA | NOT_STARTED | 0 | Production gate |
 | CRN-100-05 | 100% | Performance / asset-weight optimization | NOT_STARTED | 0 | Preserve fidelity |
-| CRN-100-06 | 100% | Final visual regression | NOT_STARTED | 0 | Cross-width/states |
+| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Runtime feedback and reset affordance added; full cross-width rendered review still open |
 | CRN-100-07 | 100% | Final content-truth audit | IN_DEVELOPMENT | 0 | M75 truth checks passed; final audit later |
 | CRN-100-08 | 100% | PO final visual review | NOT_STARTED | 1 | Final approval gate |
+| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Azzera filtri`; improves verifiability of search/filter behavior |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source transfer remains open.
-- **75% functional implementation:** COMPLETED; search/filter regression identified by PO and corrected in `feature/cronache-filter-fix`; runtime visual comparison remains the only M75 visual gate not yet executed.
-- **100%:** partial groundwork only.
+- **75% functional implementation:** COMPLETED; regression corrected; rendered visual gate is active.
+- **100%:** preflight active. Filter feedback/reset completed; visual regression, logo-source transfer, SEO/performance and final PO review remain.
 
 Current page outputs:
 - `beta/cronache/index.html`
@@ -63,10 +64,10 @@ Current page outputs:
 
 ## PO interaction budget
 
-- Remaining M75 visual gate: **0–1** interaction.
-- M75 → M100: **1–2** interactions including final visual review.
+- Remaining rendered visual gate: **0–1** interaction.
+- Final M100 / approval: **1** interaction.
 
-Estimated remaining PO interactions under normal execution: **1–3**, excluding optional reviews requested by PO.
+Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
 
 ## Aesthetic asset register
 
