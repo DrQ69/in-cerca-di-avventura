@@ -82,6 +82,7 @@
 }
 .filter-summary p{margin:0;color:#4d4233;font-weight:600}
 .reset-filters{min-height:40px}
+.reset-filters:disabled{opacity:.42;cursor:default;filter:saturate(.55)}
 
 /* Chapter openings need more authority than individual records. */
 .season-heading{

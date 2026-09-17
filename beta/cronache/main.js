@@ -84,12 +84,23 @@ function render(){
   applyFilters();
 }
 
+function filtersAreActive(){
+  return Boolean(norm(search?.value))||
+    norm(controls.season?.value)!=='tutte'||
+    norm(controls.status?.value)!=='tutti'||
+    norm(controls.place?.value)!=='tutti'||
+    norm(controls.league?.value)!=='tutte'||
+    norm(controls.format?.value)!=='tutti';
+}
+
 function updateFilterFeedback(shown){
   if(!resultCount)return;
   const total=events.length;
-  const active=Boolean(norm(search?.value))||norm(controls.season?.value)!=='tutte'||norm(controls.status?.value)!=='tutti'||norm(controls.place?.value)!=='tutti'||norm(controls.league?.value)!=='tutte'||norm(controls.format?.value)!=='tutti';
-  if(!active){resultCount.textContent=`${total} ${total===1?'evento registrato':'eventi registrati'}`;return;}
-  resultCount.textContent=`${shown} ${shown===1?'evento mostrato':'eventi mostrati'} su ${total}`;
+  const active=filtersAreActive();
+  resultCount.textContent=active
+    ? `${shown} ${shown===1?'evento mostrato':'eventi mostrati'} su ${total}`
+    : `${total} ${total===1?'evento registrato':'eventi registrati'}`;
+  if(resetFilters)resetFilters.disabled=!active;
 }
 
 function applyFilters(){
@@ -138,4 +149,4 @@ resetFilters?.addEventListener('click',clearFilters);
 fetch('../../data/cronache-events.json',{cache:'no-store'})
   .then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();})
   .then(data=>{events=Array.isArray(data.events)?data.events:[];buildFilters();computeMetrics();render();loading.hidden=true;})
-  .catch(err=>{console.error('Cronache data load failed',err);loading.hidden=true;error.hidden=false;if(resultCount)resultCount.textContent='Archivio non disponibile';});
+  .catch(err=>{console.error('Cronache data load failed',err);loading.hidden=true;error.hidden=false;if(resultCount)resultCount.textContent='Archivio non disponibile';if(resetFilters)resetFilters.disabled=true;});

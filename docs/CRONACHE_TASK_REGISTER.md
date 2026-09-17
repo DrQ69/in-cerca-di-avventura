@@ -21,7 +21,7 @@
 | CRN-25-06 | 25% | Closing inscription | WAITING_PO | 1 | Candidate ON HOLD; non-blocking |
 | CRN-50-01 | 50% | Architectural frame / threshold / archive ledger | COMPLETED | 0 | Installed in Beta |
 | CRN-50-02 | 50% | Logo ICA architectural host | COMPLETED | 0 | Host only; artwork untouched |
-| CRN-50-03 | 50% | Exact Logo ICA production-source transfer | IN_DEVELOPMENT | 0–1 | Original SVG recovered from conversation files; repo transfer still pending due source-file handling |
+| CRN-50-03 | 50% | Exact Logo ICA production-source transfer | IN_DEVELOPMENT | 0–1 | Original SVG source recovered exactly; repository installation still open |
 | CRN-50-04 | 50% | Season header + Event Record visual anatomy | COMPLETED | 0 | Responsive archival pattern |
 | CRN-50-05 | 50% | Status icon family | COMPLETED | 0–1 | FUTURA / IN CORSO / CONCLUSA |
 | CRN-50-06 | 50% | Metadata icon family | COMPLETED | 0 | Date/place/type/players/winner |
@@ -38,34 +38,36 @@
 | CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Source/runtime preflight complete; rendered PO-facing comparison remains final visual gate |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
 | CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values; see `docs/CRONACHE_FILTER_BUG_2026-09-17.md` |
-| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | Hold material changes until runtime visual gate; small UX polish allowed |
+| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | M100 visual layer installed; hold major material changes until rendered gate |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
-| CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist for concluded events; native detail pages later |
-| CRN-100-04 | 100% | SEO / metadata / social preview QA | NOT_STARTED | 0 | Production gate |
-| CRN-100-05 | 100% | Performance / asset-weight optimization | NOT_STARTED | 0 | Preserve fidelity |
-| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Runtime feedback and reset affordance added; full cross-width rendered review still open |
-| CRN-100-07 | 100% | Final content-truth audit | IN_DEVELOPMENT | 0 | M75 truth checks passed; final audit later |
+| CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages remain later scope |
+| CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata; social image intentionally withheld until Logo ICA dependency closes |
+| CRN-100-05 | 100% | Performance / asset-weight optimization | COMPLETED | 0 | CSS/SVG-first; no new large raster; fonts retain swap/preconnect |
+| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Cross-width rendered review still open |
+| CRN-100-07 | 100% | Final content-truth audit | COMPLETED | 0 | Real-data handling audited; undefined facts remain undefined |
 | CRN-100-08 | 100% | PO final visual review | NOT_STARTED | 1 | Final approval gate |
-| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Azzera filtri`; improves verifiability of search/filter behavior |
+| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Azzera filtri`; reset disabled when no criteria active |
+| CRN-100-10 | 100% | Production-readiness audit | COMPLETED | 0 | `docs/CRONACHE_M100_PRODUCTION_READINESS.md` |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
-- **50%:** visual baseline completed; exact Logo ICA production-source transfer remains open.
-- **75% functional implementation:** COMPLETED; regression corrected; rendered visual gate is active.
-- **100%:** preflight active. Filter feedback/reset completed; visual regression, logo-source transfer, SEO/performance and final PO review remain.
+- **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
+- **75% functional implementation:** COMPLETED; regression corrected; rendered visual gate remains active.
+- **100%:** functional/data/SEO/performance readiness substantially complete. Remaining blockers are rendered visual acceptance, exact Logo ICA installation and final PO visual approval.
 
 Current page outputs:
 - `beta/cronache/index.html`
 - `beta/cronache/style.css`
 - `beta/cronache/m75.css`
+- `beta/cronache/m100.css`
 - `beta/cronache/main.js`
 - `data/cronache-events.json`
 
 ## PO interaction budget
 
 - Remaining rendered visual gate: **0–1** interaction.
-- Final M100 / approval: **1** interaction.
+- Final visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
 
@@ -73,12 +75,13 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 
 | Asset ID | Asset | Type | Status | Storage / location | Notes |
 |---|---|---|---|---|---|
-| CRN-AST-001 | Logo ICA original | SVG | PROVIDED / IMMUTABLE | Conversation source `Logo di in Cerca di Avventura.svg` | Recovered; never alter artwork |
-| CRN-AST-001-R | Existing emblem proxy | WEBP | TEMPORARY_LAYOUT_PROXY | `assets/logo-emblem.webp` | Host/layout only |
-| CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` | Shell / rails |
-| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` `.logo-host` | No logo alteration |
-| CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` | Reference-led |
-| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` | Semantic controls |
+| CRN-AST-001 | Logo ICA original | SVG | PROVIDED / IMMUTABLE | Conversation source `Logo di in Cerca di Avventura.svg` | Exact source recovered; never alter artwork |
+| CRN-AST-001-PNG | Logo ICA lossless working representation | PNG | PROVIDED / IMMUTABLE_WORKING_COPY | Conversation source `logo_ica_lossless.png` | 1254×1254 RGBA; do not use as excuse to redraw the logo |
+| CRN-AST-001-R | Existing emblem proxy | WEBP | TEMPORARY_LAYOUT_PROXY | `assets/logo-emblem.webp` | Must be retired when production Logo ICA source is installed |
+| CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` | Shell / rails / depth |
+| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` `.logo-host` | Host only; no logo alteration |
+| CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` | Reference-led |
+| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` | Semantic controls |
 | CRN-AST-014 | Season ornament | SVG | GENERATED / INSTALLED | `assets/ui/cronache/season-ornament.svg` | Reusable |
 | CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` `.event-record` | Data stays HTML |
 | CRN-AST-016 | Skull FUTURA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-futura.svg` | Icon + text |
