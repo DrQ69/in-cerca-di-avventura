@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cronache — In Cerca di Avventura</title>
+  <meta name="description" content="Cronache di In Cerca di Avventura: archivio di Adunanze, Leghe, Duelli e Giostre della community italiana di Sorcery: Contested Realm.">
+  <meta name="theme-color" content="#0b141d">
+  <link rel="icon" href="../../assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="cronache-shell">
+  <header class="site-nav">
+    <nav class="nav-side" aria-label="Navigazione principale sinistra">
+      <a href="../#adunanze">Le Adunanze</a>
+      <a href="./" aria-current="page">Cronache</a>
+    </nav>
+    <a class="logo-host" href="../" aria-label="In Cerca di Avventura — Home">
+      <img src="../../assets/logo-emblem.webp" alt="In Cerca di Avventura">
+    </a>
+    <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
+      <a href="../#avventurieri">Avventurieri</a>
+      <a href="../#alleanze">Alleanze</a>
+      <a href="../#proclami">Proclami</a>
+    </nav>
+    <button class="menu-toggle" id="menu" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile">
+      <a href="../#adunanze">Le Adunanze</a><a href="./" aria-current="page">Cronache</a><a href="../#avventurieri">Avventurieri</a><a href="../#alleanze">Alleanze</a><a href="../#proclami">Proclami</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="archive-threshold" aria-labelledby="page-title">
+      <div class="threshold-copy">
+        <p class="eyebrow">Il registro della community</p>
+        <h1 id="page-title">Cronache</h1>
+        <p class="subtitle">Archivio di Adunanze, Leghe, Duelli e Giostre</p>
+        <div class="archive-metrics" aria-label="Metriche dell'archivio">
+          <div class="metric"><strong>0</strong><span>Leghe Completate</span></div>
+          <div class="metric"><strong>1</strong><span>Giostre Completate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="archive-tools" aria-label="Ricerca e filtri Cronache">
+      <div class="ledger">
+        <div class="search-row">
+          <label for="search">Cerca</label>
+          <input id="search" type="search" placeholder="Cerca Adunanze, Leghe, luoghi o formati…" autocomplete="off">
+        </div>
+        <div class="filters">
+          <div class="filter"><label for="season">Stagione</label><select id="season"><option>Tutte</option><option selected>2026</option></select></div>
+          <div class="filter"><label for="status">Stato</label><select id="status"><option>Tutti</option><option>Futura</option><option>In corso</option><option>Conclusa</option></select></div>
+          <div class="filter"><label for="place">Luogo</label><select id="place"><option>Tutti</option><option>GameLover — Crema</option><option>Joker's — Milano</option></select></div>
+          <div class="filter"><label for="league">Lega</label><select id="league"><option>Tutte</option><option>Blaze of Glory — La Lega di Cremos</option><option>Nessuna — Giostra autonoma</option></select></div>
+          <div class="filter"><label for="format">Formato</label><select id="format"><option>Tutti</option><option>Constructed</option><option>Gothic Draft</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="archive-main">
+      <section class="season" aria-labelledby="season-2026">
+        <header class="season-heading">
+          <img src="../../assets/ui/cronache/season-ornament.svg" alt="">
+          <h2 id="season-2026">Stagione 2026</h2>
+          <p>3 registrazioni nel prototipo corrente</p>
+        </header>
+
+        <div class="records" id="records">
+          <article class="event-record status-completed" data-status="conclusa" data-place="gamelover crema" data-league="blaze of glory la lega di cremos" data-format="gothic draft" data-search="gothic draft blaze of glory crema gamelover">
+            <div class="record-cell status-cell"><img src="../../assets/ui/cronache/status/skull-conclusa.svg" alt=""><span class="status-label">Conclusa</span></div>
+            <div class="record-cell identity-cell"><h3>Gothic Draft</h3><p class="series">Blaze of Glory — La Lega di Cremos</p><span class="stage">Duello I</span></div>
+            <div class="record-cell"><div class="meta"><span><b>Data</b> · 16 settembre 2026</span><span><b>Luogo</b> · GameLover, Crema</span><span><b>Tipo</b> · Duello di Lega</span></div></div>
+            <div class="record-cell results-cell"><span class="format">Gothic Draft</span><div class="results"><span><b>19</b> giocatori</span><span class="winner"><b>Vincitore</b><br>Niccolò C</span></div></div>
+            <div class="record-cell action-cell"><a class="detail-link" href="#" aria-label="Dettagli Gothic Draft Blaze of Glory Duello I">Dettagli →</a></div>
+          </article>
+
+          <article class="event-record status-future" data-status="futura" data-place="jokers milano" data-league="blaze of glory la lega di cremos" data-format="constructed" data-search="blaze of glory duello ii milano jokers constructed">
+            <div class="record-cell status-cell"><img src="../../assets/ui/cronache/status/skull-futura.svg" alt=""><span class="status-label">Futura</span></div>
+            <div class="record-cell identity-cell"><h3>Duello II</h3><p class="series">Blaze of Glory — La Lega di Cremos</p><span class="stage">Seconda tappa</span></div>
+            <div class="record-cell"><div class="meta"><span><b>Data</b> · 2 ottobre 2026</span><span><b>Luogo</b> · Joker's, Milano</span><span><b>Tipo</b> · Duello di Lega</span></div></div>
+            <div class="record-cell results-cell"><span class="format">Constructed</span><div class="results"><span>Nessun risultato prima della conclusione</span></div></div>
+            <div class="record-cell action-cell"><a class="detail-link" href="#" aria-label="Dettagli Blaze of Glory Duello II">Dettagli →</a></div>
+          </article>
+
+          <article class="event-record status-completed" data-status="conclusa" data-place="gamelover crema" data-league="nessuna" data-format="constructed" data-search="la giostra gamelover crema constructed">
+            <div class="record-cell status-cell"><img src="../../assets/ui/cronache/status/skull-conclusa.svg" alt=""><span class="status-label">Conclusa</span></div>
+            <div class="record-cell identity-cell"><h3>La Giostra</h3><p class="series">Giostra ICA autonoma</p><span class="stage">Evento Constructed</span></div>
+            <div class="record-cell"><div class="meta"><span><b>Data</b> · da verificare nella fonte ufficiale</span><span><b>Luogo</b> · GameLover, Crema</span><span><b>Struttura</b> · Swiss 5 round + Top 8</span></div><span class="truth-note">La data non viene inferita dall'indicazione relativa presente nell'export.</span></div>
+            <div class="record-cell results-cell"><span class="format">Constructed</span><div class="results"><span><b>18</b> giocatori</span><span class="winner"><b>Vincitore</b><br>Matteo M</span></div></div>
+            <div class="record-cell action-cell"><a class="detail-link" href="#" aria-label="Dettagli La Giostra">Dettagli →</a></div>
+          </article>
+        </div>
+
+        <p id="empty" hidden style="text-align:center;color:#a9a08d;font-family:Cinzel,serif">Nessuna registrazione corrisponde ai filtri selezionati.</p>
+      </section>
+
+      <div class="closing" aria-label="Chiusura archivio">
+        <img src="../../assets/ui/cronache/archive-divider.svg" alt="">
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><span>In Cerca di Avventura · Cronache Beta</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
