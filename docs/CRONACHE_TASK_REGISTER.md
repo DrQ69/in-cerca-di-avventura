@@ -35,39 +35,41 @@
 | CRN-75-06 | 75% | Conditional FUTURA / IN CORSO / CONCLUSA states | COMPLETED | 0 | Renderer supports all; no invented ongoing event |
 | CRN-75-07 | 75% | Desktop/tablet/mobile implementation | COMPLETED | 0 | Responsive system inherited/refined from M50 |
 | CRN-75-08 | 75% | Accessibility / keyboard / focus / reduced-motion QA | COMPLETED | 0 | Code-level gate documented in M75 QA |
-| CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Source/runtime preflight complete; rendered PO-facing comparison remains final visual gate |
+| CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Rendered PO-facing comparison remains final visual gate |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
-| CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values; see `docs/CRONACHE_FILTER_BUG_2026-09-17.md` |
-| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | M100 visual layer installed; Aesthetic Deep Pass follows collision cleanup |
+| CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values |
+| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | **Aesthetic Deep Pass 1 implemented**; rendered review next |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
-| CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages remain later scope |
-| CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata; social image intentionally withheld until Logo ICA dependency closes |
-| CRN-100-05 | 100% | Performance / asset-weight optimization | COMPLETED | 0 | CSS/SVG-first; no new large raster; fonts retain swap/preconnect |
-| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Cross-width rendered review still open |
-| CRN-100-07 | 100% | Final content-truth audit | COMPLETED | 0 | Real-data handling audited; undefined facts remain undefined |
+| CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages later scope |
+| CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata |
+| CRN-100-05 | 100% | Performance / asset-weight optimization | COMPLETED | 0 | CSS/SVG-first |
+| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Deep-pass cross-width review pending |
+| CRN-100-07 | 100% | Final content-truth audit | COMPLETED | 0 | Undefined facts remain undefined |
 | CRN-100-08 | 100% | PO final visual review | NOT_STARTED | 1 | Final approval gate |
-| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Ripristina i filtri`; reset disabled when no criteria active |
+| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Ripristina i filtri` |
 | CRN-100-10 | 100% | Production-readiness audit | COMPLETED | 0 | `docs/CRONACHE_M100_PRODUCTION_READINESS.md` |
-| CRN-100-11 | 100% | Visual collision cleanup before Aesthetic Deep Pass | COMPLETED | 0 | Season count safe area, pending-detail containment, reset-control restyle; `docs/CRONACHE_VISUAL_COLLISION_FIX_2026-09-17.md` |
+| CRN-100-11 | 100% | Visual collision cleanup before Aesthetic Deep Pass | COMPLETED | 0 | Safe areas and reset-control restyle complete |
+| CRN-100-12 | 100% | Aesthetic Deep Pass 1 — frame/sigils/records/ledger | COMPLETED | 0–1 | `beta/cronache/m100-aesthetic.css` + new SVG assets |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
-- **75% functional implementation:** COMPLETED; regression corrected; rendered visual gate remains active.
-- **100%:** functional/data/SEO/performance readiness substantially complete. Collision cleanup is complete; Aesthetic Deep Pass, exact Logo ICA installation and final PO visual approval remain.
+- **75% functional implementation:** COMPLETED.
+- **100%:** Aesthetic Deep Pass 1 implemented. Remaining blockers are exact Logo ICA installation, rendered visual acceptance and final PO approval.
 
 Current page outputs:
 - `beta/cronache/index.html`
 - `beta/cronache/style.css`
 - `beta/cronache/m75.css`
 - `beta/cronache/m100.css`
+- `beta/cronache/m100-aesthetic.css`
 - `beta/cronache/main.js`
 - `data/cronache-events.json`
 
 ## PO interaction budget
 
-- Aesthetic Deep Pass review: **0–1** interaction.
+- Aesthetic Deep Pass rendered review: **0–1** interaction.
 - Final visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
@@ -77,14 +79,14 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | Asset ID | Asset | Type | Status | Storage / location | Notes |
 |---|---|---|---|---|---|
 | CRN-AST-001 | Logo ICA original | SVG | PROVIDED / IMMUTABLE | Conversation source `Logo di in Cerca di Avventura.svg` | Exact source recovered; never alter artwork |
-| CRN-AST-001-PNG | Logo ICA lossless working representation | PNG | PROVIDED / IMMUTABLE_WORKING_COPY | Conversation source `logo_ica_lossless.png` | 1254×1254 RGBA; do not use as excuse to redraw the logo |
-| CRN-AST-001-R | Existing emblem proxy | WEBP | TEMPORARY_LAYOUT_PROXY | `assets/logo-emblem.webp` | Must be retired when production Logo ICA source is installed |
-| CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` | Shell / rails / depth |
-| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` `.logo-host` | Host only; no logo alteration |
-| CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` | Reference-led |
-| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` | Semantic controls |
+| CRN-AST-001-PNG | Logo ICA lossless working representation | PNG | PROVIDED / IMMUTABLE_WORKING_COPY | Conversation source `logo_ica_lossless.png` | Do not redraw logo |
+| CRN-AST-001-R | Existing emblem proxy | WEBP | TEMPORARY_LAYOUT_PROXY | `assets/logo-emblem.webp` | Retire when original Logo ICA is installed |
+| CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` + `m100-aesthetic.css` | Deepened rails / shell |
+| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Architectural niche; logo artwork untouched |
+| CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Framed ceremonial doorway |
+| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Parchment + ornamental corners |
 | CRN-AST-014 | Season ornament | SVG | GENERATED / INSTALLED | `assets/ui/cronache/season-ornament.svg` | Reusable |
-| CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` `.event-record` | Data stays HTML |
+| CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Preserved archival plate treatment |
 | CRN-AST-016 | Skull FUTURA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-futura.svg` | Icon + text |
 | CRN-AST-017 | Skull IN CORSO | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-in-corso.svg` | Ember treatment |
 | CRN-AST-018 | Skull CONCLUSA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-conclusa.svg` | Flaming eyes |
@@ -94,7 +96,11 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-019D | Metadata players | SVG | GENERATED / INSTALLED | `assets/ui/cronache/icons/players.svg` | Completed results |
 | CRN-AST-019E | Metadata winner | SVG | GENERATED / INSTALLED | `assets/ui/cronache/icons/winner.svg` | Completed results |
 | CRN-AST-020 | Archive divider | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-divider.svg` | Closing copy still ON HOLD |
-| CRN-AST-021 | Reset-filter control styling | CSS | GENERATED / INSTALLED | `beta/cronache/m100.css` `.reset-filters` | Parchment/gold/iron; no white default browser button |
+| CRN-AST-021 | Reset-filter control styling | CSS | GENERATED / INSTALLED | `beta/cronache/m100.css` `.reset-filters` | Parchment/gold/iron |
+| CRN-AST-022 | Architectural frame corner | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner.svg` | Page / threshold / logo-host ornament |
+| CRN-AST-023 | Archival record corner | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner.svg` | Ledger / season / event-record ornament |
+| CRN-AST-024 | Archive sigil | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-sigil.svg` | Nav / threshold / status / footer accent |
+| CRN-AST-025 | Aesthetic Deep Pass layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-aesthetic.css` | Isolated final-art layer |
 
 ## Current constraints
 
