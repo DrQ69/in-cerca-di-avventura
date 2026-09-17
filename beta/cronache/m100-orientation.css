@@ -1,0 +1,43 @@
+/* Cronache — Ornamental Orientation Cleanup
+   Explicitly maps a master corner to correctly oriented variants.
+   Loaded after m100-aesthetic.css so it corrects orientation without changing function. */
+
+.logo-host::after{
+  background:
+    url('../../assets/ui/cronache/frame-corner.svg') left top/44px 44px no-repeat,
+    url('../../assets/ui/cronache/frame-corner-tr.svg') right top/44px 44px no-repeat!important;
+}
+
+.archive-threshold::after{
+  background:
+    url('../../assets/ui/cronache/frame-corner.svg') left top/72px 72px no-repeat,
+    url('../../assets/ui/cronache/frame-corner-tr.svg') right top/72px 72px no-repeat,
+    url('../../assets/ui/cronache/frame-corner-bl.svg') left bottom/72px 72px no-repeat,
+    url('../../assets/ui/cronache/frame-corner-br.svg') right bottom/72px 72px no-repeat!important;
+}
+
+.ledger::after{
+  background:
+    url('../../assets/ui/cronache/record-corner.svg') left top/46px 46px no-repeat,
+    url('../../assets/ui/cronache/record-corner-tr.svg') right top/46px 46px no-repeat,
+    url('../../assets/ui/cronache/record-corner-bl.svg') left bottom/46px 46px no-repeat,
+    url('../../assets/ui/cronache/record-corner-br.svg') right bottom/46px 46px no-repeat!important;
+}
+
+.event-record::before{
+  background:
+    url('../../assets/ui/cronache/record-corner.svg') left top/34px 34px no-repeat,
+    url('../../assets/ui/cronache/record-corner-tr.svg') right top/34px 34px no-repeat,
+    url('../../assets/ui/cronache/record-corner-bl.svg') left bottom/34px 34px no-repeat,
+    url('../../assets/ui/cronache/record-corner-br.svg') right bottom/34px 34px no-repeat!important;
+}
+
+@media(max-width:1080px){
+  .archive-threshold::after{background-size:54px 54px!important}
+}
+
+@media(max-width:700px){
+  .archive-threshold::after{background-size:42px 42px!important}
+  .ledger::after{background-size:34px 34px!important}
+  .event-record::before{background-size:28px 28px!important}
+}
