@@ -268,6 +268,30 @@
   opacity:.5;
 }
 
+/* PO VISUAL ADJUSTMENTS — 2026-09-17 */
+/* 1) Reduce the logo-host diamond so it no longer overlaps the eyebrow text. */
+.logo-host::before{
+  inset:-6px -8px!important;
+  clip-path:polygon(10% 0,90% 0,100% 16%,100% 84%,90% 100%,10% 100%,0 84%,0 16%)!important;
+}
+.logo-host::after{
+  inset:-15px -19px;
+  background-size:44px 44px,44px 44px;
+}
+
+/* 2) Shift result count and reset control 0.5 cm to the right, away from the left rule. */
+.filter-summary{
+  padding-left:calc(18px + .5cm)!important;
+}
+
+/* 3) Keep pending-detail wording inside its action cell. */
+.detail-pending{
+  font-size:.52rem!important;
+  line-height:1.28!important;
+  letter-spacing:.035em!important;
+  max-width:86%!important;
+}
+
 @media(max-width:1080px){
   .cronache-shell::before,.cronache-shell::after{width:16px}
   .archive-threshold::after{inset:14px 16px 18px;background-size:54px 54px}
@@ -285,6 +309,8 @@
   .season-heading img{width:150px}
   .season-heading::after{left:32px!important}
   .event-record::before{background-size:28px 28px}
+  .filter-summary{padding-left:calc(16px + .5cm)!important}
+  .detail-pending{font-size:.5rem!important;max-width:82%!important}
 }
 
 @media(prefers-reduced-motion:reduce){
