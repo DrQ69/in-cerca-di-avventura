@@ -38,30 +38,33 @@
 | CRN-75-09 | 75% | Runtime visual QA at target widths | COMPLETED | 0 | 1440/1024/768/390 rendered; no horizontal overflow or console errors |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
 | CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values |
-| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | Targeted Deep Pass 2 allowed; avoid global ornament increase |
+| CRN-100-01 | 100% | Final ornamental / illustrative refinement | COMPLETED | 0 | Deep Pass 1 + targeted Deep Pass 2 complete; no further ornament inflation recommended |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
 | CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages later scope |
 | CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata |
 | CRN-100-05 | 100% | Performance / asset-weight optimization | COMPLETED | 0 | CSS/SVG-first |
-| CRN-100-06 | 100% | Final visual regression | COMPLETED | 0 | PASS WITH FOLLOW-UP; see rendered QA report |
+| CRN-100-06 | 100% | Final visual regression | COMPLETED | 0 | First rendered gate + Deep Pass 2 rendered gate both passed |
 | CRN-100-07 | 100% | Final content-truth audit | COMPLETED | 0 | Undefined facts remain undefined |
 | CRN-100-08 | 100% | PO final visual review | NOT_STARTED | 1 | Final approval gate |
 | CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Ripristina i filtri` |
 | CRN-100-10 | 100% | Production-readiness audit | COMPLETED | 0 | `docs/CRONACHE_M100_PRODUCTION_READINESS.md` |
 | CRN-100-11 | 100% | Visual collision cleanup before Aesthetic Deep Pass | COMPLETED | 0 | Safe areas and reset-control restyle complete |
-| CRN-100-12 | 100% | Aesthetic Deep Pass 1 — frame/sigils/records/ledger | COMPLETED | 0–1 | `beta/cronache/m100-aesthetic.css` + new SVG assets |
+| CRN-100-12 | 100% | Aesthetic Deep Pass 1 — frame/sigils/records/ledger | COMPLETED | 0 | `beta/cronache/m100-aesthetic.css` + SVG assets |
 | CRN-100-13 | 100% | PO visual adjustments — logo diamond / filter offset / pending-detail fit | COMPLETED | 0 | Diamond reduced; filter summary shifted +0.5 cm; pending-detail font reduced |
-| CRN-100-14 | 100% | Ornamental Orientation Cleanup | COMPLETED | 0 | Explicit TL/TR/BL/BR variants for frame and record corners; `m100-orientation.css` |
+| CRN-100-14 | 100% | Ornamental Orientation Cleanup | COMPLETED | 0 | Explicit TL/TR/BL/BR variants; `m100-orientation.css` |
 | CRN-100-15 | 100% | Daily review + risk analysis | COMPLETED | 0 | `docs/CRONACHE_DAILY_REVIEW_2026-09-17.md` |
-| CRN-100-16 | 100% | Automated rendered visual-regression harness | COMPLETED | 0 | Playwright CI capture + artifact works and passed first production run |
+| CRN-100-16 | 100% | Automated rendered visual-regression harness | COMPLETED | 0 | Playwright CI capture + artifact active |
 | CRN-100-17 | 100% | Rendered visual QA report | COMPLETED | 0 | `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md` |
+| CRN-100-18 | 100% | Targeted Aesthetic Deep Pass 2 | COMPLETED | 0 | Proportion, legibility, tablet/mobile simplification; `m100-deep2.css` |
+| CRN-100-19 | 100% | Deep Pass 2 rendered QA | COMPLETED | 0 | `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`; 1440/1024/768/390 PASS |
+| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | NOT_STARTED | 0 | Do after exact Logo ICA installation / final visual approval |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
 - **75% functional implementation + rendered runtime QA:** COMPLETED.
-- **100%:** Aesthetic Deep Pass 1, PO correction pass, ornament-orientation cleanup and rendered regression are complete. Rendered gate result: **PASS WITH FOLLOW-UP**. Remaining blockers are exact Logo ICA installation, one targeted refinement cycle, CSS consolidation and final PO approval.
+- **100% visual system:** Deep Pass 1, PO corrections, orientation cleanup and targeted Deep Pass 2 are complete and render-tested. Remaining blockers: exact Logo ICA installation, CSS consolidation, event-detail scope and final PO approval.
 
 Current page outputs:
 - `beta/cronache/index.html`
@@ -70,16 +73,18 @@ Current page outputs:
 - `beta/cronache/m100.css`
 - `beta/cronache/m100-aesthetic.css`
 - `beta/cronache/m100-orientation.css`
+- `beta/cronache/m100-deep2.css`
 - `beta/cronache/main.js`
 - `data/cronache-events.json`
 - `docs/CRONACHE_DAILY_REVIEW_2026-09-17.md`
 - `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md`
+- `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`
 - `scripts/cronache_visual_regression.mjs`
 - `.github/workflows/cronache-visual-qa.yml`
 
 ## PO interaction budget
 
-- Targeted Deep Pass 2 review: **0–1** interaction.
+- Exact Logo ICA / final identity review: **0–1** interaction.
 - Final visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
@@ -96,7 +101,7 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` | Four corners explicitly oriented |
 | CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` | Oriented corners; summary shifted +0.5 cm right |
 | CRN-AST-014 | Season ornament | SVG | GENERATED / INSTALLED | `assets/ui/cronache/season-ornament.svg` | Reusable |
-| CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` | Oriented archival corner system |
+| CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` + `m100-deep2.css` | Final proportional refinement applied |
 | CRN-AST-016 | Skull FUTURA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-futura.svg` | Icon + text |
 | CRN-AST-017 | Skull IN CORSO | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-in-corso.svg` | Ember treatment |
 | CRN-AST-018 | Skull CONCLUSA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-conclusa.svg` | Flaming eyes |
@@ -108,24 +113,26 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-020 | Archive divider | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-divider.svg` | Closing copy still ON HOLD |
 | CRN-AST-021 | Reset-filter control styling | CSS | GENERATED / INSTALLED | `beta/cronache/m100.css` `.reset-filters` | Parchment/gold/iron |
 | CRN-AST-022 | Architectural frame corner master TL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner.svg` | Master top-left ornament |
-| CRN-AST-022TR | Architectural frame corner TR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-tr.svg` | Horizontal mirror of master |
-| CRN-AST-022BL | Architectural frame corner BL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-bl.svg` | Vertical mirror of master |
+| CRN-AST-022TR | Architectural frame corner TR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-tr.svg` | Horizontal mirror |
+| CRN-AST-022BL | Architectural frame corner BL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-bl.svg` | Vertical mirror |
 | CRN-AST-022BR | Architectural frame corner BR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-br.svg` | Horizontal + vertical mirror |
 | CRN-AST-023 | Archival record corner master TL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner.svg` | Master top-left ornament |
-| CRN-AST-023TR | Archival record corner TR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-tr.svg` | Horizontal mirror of master |
-| CRN-AST-023BL | Archival record corner BL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-bl.svg` | Vertical mirror of master |
+| CRN-AST-023TR | Archival record corner TR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-tr.svg` | Horizontal mirror |
+| CRN-AST-023BL | Archival record corner BL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-bl.svg` | Vertical mirror |
 | CRN-AST-023BR | Archival record corner BR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-br.svg` | Horizontal + vertical mirror |
 | CRN-AST-024 | Archive sigil | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-sigil.svg` | Nav / threshold / status / footer accent |
-| CRN-AST-025 | Aesthetic Deep Pass layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-aesthetic.css` | Isolated final-art layer |
-| CRN-AST-026 | Ornament orientation layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-orientation.css` | Explicit orientation mapping; loaded last |
+| CRN-AST-025 | Aesthetic Deep Pass layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-aesthetic.css` | Final-art layer 1 |
+| CRN-AST-026 | Ornament orientation layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-orientation.css` | Explicit orientation mapping |
+| CRN-AST-027 | Targeted Deep Pass 2 layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-deep2.css` | Proportion / legibility / responsive simplification only |
 
 ## QA asset register
 
 | QA ID | Asset | Type | Status | Storage / location | Notes |
 |---|---|---|---|---|---|
 | CRN-QA-001 | Visual regression capture script | JS / Playwright | COMPLETED / ACTIVE | `scripts/cronache_visual_regression.mjs` | Captures full-page screenshots + JSON diagnostics |
-| CRN-QA-002 | Cronache visual QA workflow | GitHub Actions | COMPLETED / ACTIVE | `.github/workflows/cronache-visual-qa.yml` | Uploads 1440/1024/768/390 artifact for review |
+| CRN-QA-002 | Cronache visual QA workflow | GitHub Actions | COMPLETED / ACTIVE | `.github/workflows/cronache-visual-qa.yml` | Uploads 1440/1024/768/390 artifact |
 | CRN-QA-003 | First rendered QA report | Markdown | COMPLETED | `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md` | PASS WITH FOLLOW-UP |
+| CRN-QA-004 | Deep Pass 2 rendered QA report | Markdown | COMPLETED | `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md` | PASS |
 
 ## Current constraints
 
@@ -142,8 +149,8 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 11. `assets/hero-fantasy.webp` remains ON HOLD / DO NOT USE.
 12. Visual quality remains a milestone gate.
 13. Reset-control wording is `Ripristina i filtri`.
-14. Corner families must use explicit orientation variants; do not repeat a TL master unchanged in other corners.
-15. Deep Pass 2 must be targeted: identity, proportion, legibility and responsive simplification only; no ornamental inflation.
+14. Corner families must use explicit orientation variants.
+15. No further ornamental expansion before exact Logo ICA installation and CSS consolidation.
 
 ## Update discipline
 
