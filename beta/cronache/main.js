@@ -83,9 +83,28 @@ function render(){
 }
 
 function applyFilters(){
-  const q=norm(search?.value);let shown=0;
+  const q=norm(search?.value);
+  const selected={
+    season:norm(controls.season?.value),
+    status:norm(controls.status?.value),
+    place:norm(controls.place?.value),
+    league:norm(controls.league?.value),
+    format:norm(controls.format?.value)
+  };
+  let shown=0;
   const records=[...document.querySelectorAll('.event-record')];
-  records.forEach(el=>{const okSearch=!q||norm(el.dataset.search+' '+el.textContent).includes(q);const okSeason=controls.season.value==='tutte'||el.dataset.season===controls.season.value;const okStatus=controls.status.value==='tutti'||el.dataset.status===norm(controls.status.value);const okPlace=controls.place.value==='tutti'||el.dataset.place===controls.place.value;const okLeague=controls.league.value==='tutte'||el.dataset.league===controls.league.value;const okFormat=controls.format.value==='tutti'||el.dataset.format===controls.format.value;const show=okSearch&&okSeason&&okStatus&&okPlace&&okLeague&&okFormat;el.hidden=!show;if(show)shown++;});
+  records.forEach(el=>{
+    const searchable=norm(`${el.dataset.search||''} ${el.textContent||''}`);
+    const okSearch=!q||searchable.includes(q);
+    const okSeason=selected.season==='tutte'||norm(el.dataset.season)===selected.season;
+    const okStatus=selected.status==='tutti'||norm(el.dataset.status)===selected.status;
+    const okPlace=selected.place==='tutti'||norm(el.dataset.place)===selected.place;
+    const okLeague=selected.league==='tutte'||norm(el.dataset.league)===selected.league;
+    const okFormat=selected.format==='tutti'||norm(el.dataset.format)===selected.format;
+    const show=okSearch&&okSeason&&okStatus&&okPlace&&okLeague&&okFormat;
+    el.hidden=!show;
+    if(show)shown++;
+  });
   document.querySelectorAll('[data-season-section]').forEach(section=>{const visible=[...section.querySelectorAll('.event-record')].filter(r=>!r.hidden);section.hidden=visible.length===0;const count=section.querySelector('.season-count');if(count)count.textContent=visible.length;});
   empty.hidden=shown!==0;
 }
