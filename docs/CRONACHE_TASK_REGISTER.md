@@ -35,7 +35,7 @@
 | CRN-75-06 | 75% | Conditional FUTURA / IN CORSO / CONCLUSA states | COMPLETED | 0 | Renderer supports all; no invented ongoing event |
 | CRN-75-07 | 75% | Desktop/tablet/mobile implementation | COMPLETED | 0 | Responsive system inherited/refined from M50 |
 | CRN-75-08 | 75% | Accessibility / keyboard / focus / reduced-motion QA | COMPLETED | 0 | Code-level gate documented in M75 QA |
-| CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Rendered PO-facing comparison remains final visual gate |
+| CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Automated rendered capture harness added; artifact review pending |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
 | CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values |
 | CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | Aesthetic Deep Pass 1 implemented; orientation cleanup complete |
@@ -43,7 +43,7 @@
 | CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages later scope |
 | CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata |
 | CRN-100-05 | 100% | Performance / asset-weight optimization | COMPLETED | 0 | CSS/SVG-first |
-| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Deep-pass cross-width review pending |
+| CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | CI now captures 1440/1024/768/390 screenshots and runtime diagnostics |
 | CRN-100-07 | 100% | Final content-truth audit | COMPLETED | 0 | Undefined facts remain undefined |
 | CRN-100-08 | 100% | PO final visual review | NOT_STARTED | 1 | Final approval gate |
 | CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Ripristina i filtri` |
@@ -53,13 +53,14 @@
 | CRN-100-13 | 100% | PO visual adjustments — logo diamond / filter offset / pending-detail fit | COMPLETED | 0 | Diamond reduced; filter summary shifted +0.5 cm; pending-detail font reduced |
 | CRN-100-14 | 100% | Ornamental Orientation Cleanup | COMPLETED | 0 | Explicit TL/TR/BL/BR variants for frame and record corners; `m100-orientation.css` |
 | CRN-100-15 | 100% | Daily review + risk analysis | COMPLETED | 0 | `docs/CRONACHE_DAILY_REVIEW_2026-09-17.md` |
+| CRN-100-16 | 100% | Automated rendered visual-regression harness | IN_DEVELOPMENT | 0 | Playwright CI capture at 1440/1024/768/390; artifact-based review |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
 - **75% functional implementation:** COMPLETED.
-- **100%:** Aesthetic Deep Pass 1, first PO correction pass and ornamental-orientation cleanup completed. Remaining blockers are exact Logo ICA installation, rendered visual acceptance, CSS consolidation and final PO approval.
+- **100%:** Aesthetic Deep Pass 1, first PO correction pass and ornamental-orientation cleanup completed. Automated rendered regression is being introduced before any Deep Pass 2. Remaining blockers are exact Logo ICA installation, rendered visual acceptance, CSS consolidation and final PO approval.
 
 Current page outputs:
 - `beta/cronache/index.html`
@@ -71,10 +72,12 @@ Current page outputs:
 - `beta/cronache/main.js`
 - `data/cronache-events.json`
 - `docs/CRONACHE_DAILY_REVIEW_2026-09-17.md`
+- `scripts/cronache_visual_regression.mjs`
+- `.github/workflows/cronache-visual-qa.yml`
 
 ## PO interaction budget
 
-- Deep-pass rendered review: **0–1** interaction.
+- Rendered regression review / Deep Pass 2 decision: **0–1** interaction.
 - Final visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
@@ -114,6 +117,13 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-025 | Aesthetic Deep Pass layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-aesthetic.css` | Isolated final-art layer |
 | CRN-AST-026 | Ornament orientation layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-orientation.css` | Explicit orientation mapping; loaded last |
 
+## QA asset register
+
+| QA ID | Asset | Type | Status | Storage / location | Notes |
+|---|---|---|---|---|---|
+| CRN-QA-001 | Visual regression capture script | JS / Playwright | IN_DEVELOPMENT | `scripts/cronache_visual_regression.mjs` | Captures full-page screenshots + JSON diagnostics |
+| CRN-QA-002 | Cronache visual QA workflow | GitHub Actions | IN_DEVELOPMENT | `.github/workflows/cronache-visual-qa.yml` | Uploads 1440/1024/768/390 artifact for review |
+
 ## Current constraints
 
 1. Logo ICA immutable; Copilot fictional crest never recreated.
@@ -130,6 +140,7 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 12. Visual quality remains a milestone gate.
 13. Reset-control wording is `Ripristina i filtri`.
 14. Corner families must use explicit orientation variants; do not repeat a TL master unchanged in other corners.
+15. No additional deep ornamentation before rendered cross-width regression has been reviewed.
 
 ## Update discipline
 
