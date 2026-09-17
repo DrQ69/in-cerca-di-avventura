@@ -38,7 +38,7 @@
 | CRN-75-09 | 75% | Runtime visual QA at target widths | IN_DEVELOPMENT | 0–1 | Source/runtime preflight complete; rendered PO-facing comparison remains final visual gate |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
 | CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized selected values; see `docs/CRONACHE_FILTER_BUG_2026-09-17.md` |
-| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | M100 visual layer installed; hold major material changes until rendered gate |
+| CRN-100-01 | 100% | Final ornamental / illustrative refinement | IN_DEVELOPMENT | 0–1 | M100 visual layer installed; Aesthetic Deep Pass follows collision cleanup |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
 | CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist; native detail pages remain later scope |
 | CRN-100-04 | 100% | SEO / metadata / social preview QA | COMPLETED | 0 | Canonical + OG/Twitter metadata; social image intentionally withheld until Logo ICA dependency closes |
@@ -46,15 +46,16 @@
 | CRN-100-06 | 100% | Final visual regression | IN_DEVELOPMENT | 0–1 | Cross-width rendered review still open |
 | CRN-100-07 | 100% | Final content-truth audit | COMPLETED | 0 | Real-data handling audited; undefined facts remain undefined |
 | CRN-100-08 | 100% | PO final visual review | NOT_STARTED | 1 | Final approval gate |
-| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Azzera filtri`; reset disabled when no criteria active |
+| CRN-100-09 | 100% | Visible filter-result feedback + reset | COMPLETED | 0 | Result count + `Ripristina i filtri`; reset disabled when no criteria active |
 | CRN-100-10 | 100% | Production-readiness audit | COMPLETED | 0 | `docs/CRONACHE_M100_PRODUCTION_READINESS.md` |
+| CRN-100-11 | 100% | Visual collision cleanup before Aesthetic Deep Pass | COMPLETED | 0 | Season count safe area, pending-detail containment, reset-control restyle; `docs/CRONACHE_VISUAL_COLLISION_FIX_2026-09-17.md` |
 
 ## Milestone snapshot
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
 - **75% functional implementation:** COMPLETED; regression corrected; rendered visual gate remains active.
-- **100%:** functional/data/SEO/performance readiness substantially complete. Remaining blockers are rendered visual acceptance, exact Logo ICA installation and final PO visual approval.
+- **100%:** functional/data/SEO/performance readiness substantially complete. Collision cleanup is complete; Aesthetic Deep Pass, exact Logo ICA installation and final PO visual approval remain.
 
 Current page outputs:
 - `beta/cronache/index.html`
@@ -66,7 +67,7 @@ Current page outputs:
 
 ## PO interaction budget
 
-- Remaining rendered visual gate: **0–1** interaction.
+- Aesthetic Deep Pass review: **0–1** interaction.
 - Final visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
@@ -93,6 +94,7 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-019D | Metadata players | SVG | GENERATED / INSTALLED | `assets/ui/cronache/icons/players.svg` | Completed results |
 | CRN-AST-019E | Metadata winner | SVG | GENERATED / INSTALLED | `assets/ui/cronache/icons/winner.svg` | Completed results |
 | CRN-AST-020 | Archive divider | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-divider.svg` | Closing copy still ON HOLD |
+| CRN-AST-021 | Reset-filter control styling | CSS | GENERATED / INSTALLED | `beta/cronache/m100.css` `.reset-filters` | Parchment/gold/iron; no white default browser button |
 
 ## Current constraints
 
@@ -108,6 +110,7 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 10. No fictional facts may appear as real.
 11. `assets/hero-fantasy.webp` remains ON HOLD / DO NOT USE.
 12. Visual quality remains a milestone gate.
+13. Reset-control wording is `Ripristina i filtri`.
 
 ## Update discipline
 
