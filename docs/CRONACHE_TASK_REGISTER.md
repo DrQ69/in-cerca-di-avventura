@@ -37,6 +37,7 @@
 | CRN-75-08 | 75% | Accessibility / keyboard / focus / reduced-motion QA | COMPLETED | 0 | Code-level gate documented in M75 QA |
 | CRN-75-09 | 75% | Runtime visual QA at target widths | NOT_STARTED | 0–1 | Requires rendered comparison; major subjective differences only escalate |
 | CRN-75-10 | 75% | Functional QA register | COMPLETED | 0 | `docs/CRONACHE_M75_FUNCTIONAL_QA.md` |
+| CRN-75-11 | 75% | Search/filter regression fix | COMPLETED | 0 | Normalized control values; `Gothic Draft`, `GameLover — Crema` and combined filters now apply correctly; see `docs/CRONACHE_FILTER_BUG_2026-09-17.md` |
 | CRN-100-01 | 100% | Final ornamental / illustrative refinement | NOT_STARTED | 0–1 | After runtime visual review |
 | CRN-100-02 | 100% | Empty / loading / error states | COMPLETED | 0 | Implemented in M75 |
 | CRN-100-03 | 100% | Event-detail routing hooks / contract | IN_DEVELOPMENT | 0 | Official-result links exist for concluded events; native detail pages later |
@@ -50,7 +51,7 @@
 
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source transfer remains open.
-- **75% functional implementation:** COMPLETED in branch `feature/cronache-m75-functional-beta`; runtime visual comparison remains the only M75 visual gate not yet executed.
+- **75% functional implementation:** COMPLETED; search/filter regression identified by PO and corrected in `feature/cronache-filter-fix`; runtime visual comparison remains the only M75 visual gate not yet executed.
 - **100%:** partial groundwork only.
 
 Current page outputs:
