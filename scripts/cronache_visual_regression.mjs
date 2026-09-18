@@ -29,11 +29,11 @@ try {
     page.on('pageerror', error => consoleErrors.push(String(error)));
 
     await page.goto(baseURL, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForSelector('#seasons-root .event-record', { timeout: 15000 });
+    await page.waitForSelector('#chronicles-root .chronicle-record', { timeout: 15000 });
 
-    const resultCount = (await page.locator('#result-count').textContent())?.trim() || '';
-    if (!resultCount || resultCount === '—') {
-      throw new Error(`${viewport.name}: result count did not resolve`);
+    const completedCards = await page.locator('#chronicles-root .chronicle-record').count();
+    if (!completedCards) {
+      throw new Error(`${viewport.name}: no concluded-event records rendered`);
     }
 
     const overflow = await page.evaluate(() => {
@@ -54,11 +54,10 @@ try {
         return { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height };
       };
       return {
-        eyebrow: rect('.eyebrow'),
         logo: rect('.logo-host'),
-        resultCount: rect('#result-count'),
-        reset: rect('#reset-filters'),
-        firstPending: rect('.detail-pending'),
+        title: rect('#page-title'),
+        firstRecord: rect('.chronicle-record'),
+        firstDeckSlot: rect('.winner-deck-pending,.winner-deck-link'),
       };
     });
 
@@ -70,7 +69,7 @@ try {
 
     await fs.writeFile(
       `${outDir}/${viewport.name}.json`,
-      JSON.stringify({ viewport, resultCount, overflow, collisionChecks, consoleErrors }, null, 2),
+      JSON.stringify({ viewport, completedCards, overflow, collisionChecks, consoleErrors }, null, 2),
       'utf8'
     );
 
