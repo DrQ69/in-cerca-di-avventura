@@ -1,6 +1,6 @@
 /* Cronache — generated archive background visual test
-   Corrected visibility pass: the artwork lives on the page canvas, while
-   the central shell and sections stay translucent enough to reveal it. */
+   Visibility pass 2: use the brighter archive artwork and keep the page
+   chrome translucent enough that the environment is clearly perceptible. */
 
 html,
 body{
@@ -12,9 +12,9 @@ body{
   background-image:
     linear-gradient(
       180deg,
-      rgba(3,8,16,.18) 0%,
-      rgba(3,8,16,.28) 44%,
-      rgba(3,8,16,.42) 100%
+      rgba(3,8,16,.04) 0%,
+      rgba(3,8,16,.10) 46%,
+      rgba(3,8,16,.18) 100%
     ),
     url('../../assets/backgrounds/cronache-background-dark-site.webp');
   background-size:cover,cover;
@@ -23,48 +23,42 @@ body{
   background-attachment:fixed,fixed;
 }
 
-/* The shell must no longer paint an opaque dark canvas over the artwork. */
+/* The illustration must remain visible across the page canvas. */
 .cronache-shell{
-  background:
-    linear-gradient(
-      180deg,
-      rgba(5,10,15,.36) 0%,
-      rgba(4,8,13,.48) 50%,
-      rgba(3,7,11,.58) 100%
-    )!important;
+  background:rgba(4,8,12,.16)!important;
 }
 
-/* Preserve title contrast without hiding the background architecture. */
+/* Preserve title contrast without hiding the central architecture. */
 .archive-threshold{
   background:
-    radial-gradient(circle at 50% 14%,rgba(25,48,67,.26),transparent 43%),
-    linear-gradient(180deg,rgba(4,10,16,.26),rgba(3,8,13,.44))!important;
+    radial-gradient(circle at 50% 14%,rgba(22,45,64,.18),transparent 44%),
+    linear-gradient(180deg,rgba(3,8,13,.12),rgba(3,8,13,.22))!important;
 }
 
-/* Dense interactive controls need stronger protection. */
+/* Dense interactive controls receive the strongest veil. */
 .archive-tools{
   background:
     linear-gradient(
       180deg,
-      rgba(6,10,14,.82),
-      rgba(5,8,12,.78)
+      rgba(5,9,13,.66),
+      rgba(4,8,12,.58)
     )!important;
 }
 
-/* Event archive: translucent veil only, so pillars/shelves remain visible
-   in the negative space around the parchment records. */
+/* Event archive remains largely transparent so the background reads in the
+   negative space between parchment records. */
 .archive-main{
   background:
     linear-gradient(
       180deg,
-      rgba(4,8,13,.14),
-      rgba(4,8,13,.26) 48%,
-      rgba(4,8,13,.38)
+      rgba(3,7,11,.04),
+      rgba(3,7,11,.10) 50%,
+      rgba(3,7,11,.16)
     )!important;
 }
 
 .site-footer{
-  background:rgba(5,7,9,.78)!important;
+  background:rgba(4,6,8,.70)!important;
 }
 
 @media(max-width:1080px){
@@ -78,9 +72,9 @@ body{
     background-image:
       linear-gradient(
         180deg,
-        rgba(3,8,16,.44) 0%,
-        rgba(3,8,16,.58) 50%,
-        rgba(3,8,16,.70) 100%
+        rgba(3,8,16,.26) 0%,
+        rgba(3,8,16,.38) 52%,
+        rgba(3,8,16,.50) 100%
       ),
       url('../../assets/backgrounds/cronache-background-dark-site.webp');
     background-position:center top,50% top;
@@ -88,26 +82,21 @@ body{
   }
 
   .cronache-shell{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(5,10,15,.42),
-        rgba(4,8,13,.58)
-      )!important;
+    background:rgba(4,8,12,.24)!important;
   }
 
   .archive-threshold{
     background:
-      radial-gradient(circle at 50% 12%,rgba(25,48,67,.22),transparent 42%),
-      linear-gradient(180deg,rgba(5,11,17,.34),rgba(4,8,13,.56))!important;
+      radial-gradient(circle at 50% 12%,rgba(22,45,64,.16),transparent 42%),
+      linear-gradient(180deg,rgba(4,9,14,.20),rgba(4,8,13,.34))!important;
   }
 
   .archive-main{
     background:
       linear-gradient(
         180deg,
-        rgba(4,8,13,.34),
-        rgba(4,8,13,.54)
+        rgba(3,7,11,.18),
+        rgba(3,7,11,.34)
       )!important;
   }
 }
