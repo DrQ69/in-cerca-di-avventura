@@ -1,18 +1,20 @@
 /* Cronache — generated archive background visual test
-   Experimental preview layer. Loaded last so it can be removed without
-   changing the underlying visual system. */
+   Corrected visibility pass: the artwork lives on the page canvas, while
+   the central shell and sections stay translucent enough to reveal it. */
+
+html,
 body{
+  min-height:100%;
   background-color:#03070b;
 }
 
-.cronache-shell{
-  background-color:#071019;
+body{
   background-image:
     linear-gradient(
       180deg,
-      rgba(3,8,16,.36) 0%,
-      rgba(3,8,16,.48) 46%,
-      rgba(3,8,16,.58) 100%
+      rgba(3,8,16,.18) 0%,
+      rgba(3,8,16,.28) 44%,
+      rgba(3,8,16,.42) 100%
     ),
     url('../../assets/backgrounds/cronache-background-dark-site.webp');
   background-size:cover,cover;
@@ -21,78 +23,97 @@ body{
   background-attachment:fixed,fixed;
 }
 
-/* The central area of the generated archive is intentionally dark, so the
-   title remains legible while shelves, pillars and candlelight can read at
-   the page edges. */
-.archive-threshold{
-  background:
-    radial-gradient(circle at 50% 16%,rgba(25,48,67,.36),transparent 42%),
-    linear-gradient(180deg,rgba(7,14,21,.22),rgba(4,9,14,.48));
-}
-
-/* Keep event records readable while exposing the archive environment in the
-   negative space around them. */
-.archive-main{
+/* The shell must no longer paint an opaque dark canvas over the artwork. */
+.cronache-shell{
   background:
     linear-gradient(
       180deg,
-      rgba(4,8,13,.24),
-      rgba(4,8,13,.38) 46%,
-      rgba(4,8,13,.50)
-    );
+      rgba(5,10,15,.36) 0%,
+      rgba(4,8,13,.48) 50%,
+      rgba(3,7,11,.58) 100%
+    )!important;
 }
 
-/* Dense controls remain deliberately protected from the illustration. */
+/* Preserve title contrast without hiding the background architecture. */
+.archive-threshold{
+  background:
+    radial-gradient(circle at 50% 14%,rgba(25,48,67,.26),transparent 43%),
+    linear-gradient(180deg,rgba(4,10,16,.26),rgba(3,8,13,.44))!important;
+}
+
+/* Dense interactive controls need stronger protection. */
 .archive-tools{
   background:
     linear-gradient(
       180deg,
-      rgba(6,10,14,.86),
-      rgba(5,8,12,.82)
-    );
+      rgba(6,10,14,.82),
+      rgba(5,8,12,.78)
+    )!important;
 }
 
-.season{
-  position:relative;
+/* Event archive: translucent veil only, so pillars/shelves remain visible
+   in the negative space around the parchment records. */
+.archive-main{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4,8,13,.14),
+      rgba(4,8,13,.26) 48%,
+      rgba(4,8,13,.38)
+    )!important;
+}
+
+.site-footer{
+  background:rgba(5,7,9,.78)!important;
 }
 
 @media(max-width:1080px){
-  .cronache-shell{
+  body{
     background-position:center top,58% top;
   }
 }
 
 @media(max-width:700px){
-  .cronache-shell{
+  body{
     background-image:
       linear-gradient(
         180deg,
-        rgba(3,8,16,.58) 0%,
-        rgba(3,8,16,.68) 50%,
-        rgba(3,8,16,.76) 100%
+        rgba(3,8,16,.44) 0%,
+        rgba(3,8,16,.58) 50%,
+        rgba(3,8,16,.70) 100%
       ),
       url('../../assets/backgrounds/cronache-background-dark-site.webp');
     background-position:center top,50% top;
     background-attachment:scroll,scroll;
   }
 
+  .cronache-shell{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5,10,15,.42),
+        rgba(4,8,13,.58)
+      )!important;
+  }
+
   .archive-threshold{
     background:
-      radial-gradient(circle at 50% 12%,rgba(25,48,67,.30),transparent 40%),
-      linear-gradient(180deg,rgba(5,11,17,.40),rgba(4,8,13,.64));
+      radial-gradient(circle at 50% 12%,rgba(25,48,67,.22),transparent 42%),
+      linear-gradient(180deg,rgba(5,11,17,.34),rgba(4,8,13,.56))!important;
   }
 
   .archive-main{
-    background:linear-gradient(
-      180deg,
-      rgba(4,8,13,.46),
-      rgba(4,8,13,.66)
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgba(4,8,13,.34),
+        rgba(4,8,13,.54)
+      )!important;
   }
 }
 
 @media(prefers-reduced-motion:reduce){
-  .cronache-shell{
+  body{
     background-attachment:scroll,scroll;
   }
 }
