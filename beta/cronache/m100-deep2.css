@@ -246,3 +246,15 @@
 @media(prefers-reduced-motion:reduce){
   .logo-host img{transition:none!important}
 }
+
+
+/* HEADER CLEARANCE PASS — move the Cronache threshold down by exactly 2 cm
+   on desktop while increasing the section height by the same amount.
+   This shifts the title and every following section down together, avoiding
+   overlap with the enlarged hero crest without creating downstream collisions. */
+@media(min-width:1081px){
+  .archive-threshold{
+    min-height:calc(300px + 2cm)!important;
+    padding-top:calc(54px + 2cm)!important;
+  }
+}
