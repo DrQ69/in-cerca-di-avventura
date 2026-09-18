@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Cronache — In Cerca di Avventura</title>
-  <meta name="description" content="Cronache di In Cerca di Avventura: archivio di Adunanze, Leghe, Duelli e Giostre della community italiana di Sorcery: Contested Realm.">
+  <meta name="description" content="Cronache di In Cerca di Avventura: archivio essenziale degli eventi conclusi della community italiana di Sorcery: Contested Realm.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0b141d">
   <link rel="canonical" href="https://drq69.github.io/in-cerca-di-avventura/beta/cronache/">
@@ -12,11 +12,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="In Cerca di Avventura">
   <meta property="og:title" content="Cronache — In Cerca di Avventura">
-  <meta property="og:description" content="Archivio di Adunanze, Leghe, Duelli e Giostre della community italiana di Sorcery: Contested Realm.">
+  <meta property="og:description" content="Archivio essenziale degli eventi conclusi della community italiana di Sorcery: Contested Realm.">
   <meta property="og:url" content="https://drq69.github.io/in-cerca-di-avventura/beta/cronache/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Cronache — In Cerca di Avventura">
-  <meta name="twitter:description" content="Archivio di Adunanze, Leghe, Duelli e Giostre della community italiana di Sorcery: Contested Realm.">
+  <meta name="twitter:description" content="Archivio essenziale degli eventi conclusi della community italiana di Sorcery: Contested Realm.">
   <link rel="icon" href="../../assets/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="m100-orientation.css">
   <link rel="stylesheet" href="m100-deep2.css">
   <link rel="stylesheet" href="m100-background-test.css">
+  <link rel="stylesheet" href="cronache-summary.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -39,12 +40,25 @@
     <button class="menu-toggle" id="menu" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile"><a href="../#adunanze">Le Adunanze</a><a href="./" aria-current="page">Cronache</a><a href="../#avventurieri">Avventurieri</a><a href="../#alleanze">Alleanze</a><a href="../#proclami">Proclami</a></nav>
   </header>
+
   <main id="main">
-    <section class="archive-threshold" aria-labelledby="page-title"><div class="threshold-copy"><h1 id="page-title">Cronache</h1><p class="subtitle">Archivio di Adunanze, Leghe, Duelli e Giostre</p><div class="archive-metrics" aria-label="Metriche dell'archivio"><div class="metric"><strong id="metric-leagues">—</strong><span>Leghe Completate</span></div><div class="metric"><strong id="metric-jousts">—</strong><span>Giostre Completate</span></div></div></div></section>
-    <section class="archive-tools" aria-label="Ricerca e filtri Cronache"><div class="ledger"><div class="search-row"><label for="search">Cerca</label><input id="search" type="search" placeholder="Cerca Adunanze, Leghe, luoghi o formati…" autocomplete="off"></div><div class="filters"><div class="filter"><label for="season">Stagione</label><select id="season"><option value="tutte">Tutte</option></select></div><div class="filter"><label for="status">Stato</label><select id="status"><option value="tutti">Tutti</option><option value="futura">Futura</option><option value="in corso">In corso</option><option value="conclusa">Conclusa</option></select></div><div class="filter"><label for="place">Luogo</label><select id="place"><option value="tutti">Tutti</option></select></div><div class="filter"><label for="league">Lega</label><select id="league"><option value="tutte">Tutte</option></select></div><div class="filter"><label for="format">Formato</label><select id="format"><option value="tutti">Tutti</option></select></div></div><div class="filter-summary" aria-live="polite"><p id="result-count">—</p><button id="reset-filters" class="reset-filters" type="button" disabled>Ripristina i filtri</button></div></div></section>
-    <div class="archive-main"><p id="loading" class="system-state" aria-live="polite">Consultazione dell'archivio…</p><p id="error" class="system-state system-error" hidden aria-live="assertive">Le registrazioni non sono disponibili in questo momento.</p><div id="seasons-root"></div><p id="empty" class="empty-state" hidden aria-live="polite">Nessuna registrazione corrisponde ai filtri selezionati.</p><div class="closing" aria-label="Chiusura archivio"><img src="../../assets/ui/cronache/archive-divider.svg" alt=""></div></div>
+    <section class="archive-threshold" aria-labelledby="page-title">
+      <div class="threshold-copy">
+        <h1 id="page-title">Cronache</h1>
+        <p class="subtitle">Gli eventi conclusi della community</p>
+      </div>
+    </section>
+
+    <div class="chronicles-archive">
+      <p id="loading" class="system-state" aria-live="polite">Consultazione delle Cronache…</p>
+      <p id="error" class="system-state system-error" hidden aria-live="assertive">Le Cronache non sono disponibili in questo momento.</p>
+      <div id="chronicles-root"></div>
+      <p id="empty" class="empty-state" hidden aria-live="polite">Nessun evento concluso registrato.</p>
+      <div class="closing" aria-label="Chiusura archivio"><img src="../../assets/ui/cronache/archive-divider.svg" alt=""></div>
+    </div>
   </main>
-  <footer class="site-footer"><span>In Cerca di Avventura · Cronache Beta</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
+
+  <footer class="site-footer"><span>In Cerca di Avventura · Cronache</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
 </div>
 <script src="main.js"></script>
 </body>
