@@ -1,0 +1,112 @@
+/* Cronache — generated archive background visual test
+   Quality pass 3: expose the archive artwork more clearly while preserving
+   contrast only where controls and text require it.
+
+   NOTE: the currently installed artwork is a lightweight 1024×576 test asset.
+   CSS can correct darkness, but final sharpness requires a higher-resolution
+   replacement of the same artwork. */
+
+html,
+body{
+  min-height:100%;
+  background-color:#03070b;
+}
+
+body{
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(3,8,16,.00) 0%,
+      rgba(3,8,16,.035) 46%,
+      rgba(3,8,16,.08) 100%
+    ),
+    url('../../../assets/backgrounds/cronache-background-dark-site.webp');
+  background-size:cover,cover;
+  background-position:center top,center top;
+  background-repeat:no-repeat,no-repeat;
+  background-attachment:fixed,fixed;
+}
+
+/* Keep the page canvas almost transparent: the environment should read as
+   artwork, not as a dark texture behind the interface. */
+.cronache-shell{
+  background:rgba(4,8,12,.06)!important;
+}
+
+/* Preserve title legibility without obscuring the central architecture. */
+.archive-threshold{
+  background:
+    radial-gradient(circle at 50% 14%,rgba(22,45,64,.11),transparent 44%),
+    linear-gradient(180deg,rgba(3,8,13,.04),rgba(3,8,13,.10))!important;
+}
+
+/* Dense interactive controls remain protected locally. */
+.archive-tools{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,9,13,.62),
+      rgba(4,8,12,.54)
+    )!important;
+}
+
+/* Let the illustration remain visible between parchment records. */
+.archive-main{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3,7,11,.00),
+      rgba(3,7,11,.035) 50%,
+      rgba(3,7,11,.08)
+    )!important;
+}
+
+.site-footer{
+  background:rgba(4,6,8,.64)!important;
+}
+
+@media(max-width:1080px){
+  body{
+    background-position:center top,58% top;
+  }
+}
+
+@media(max-width:700px){
+  body{
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3,8,16,.14) 0%,
+        rgba(3,8,16,.22) 52%,
+        rgba(3,8,16,.30) 100%
+      ),
+      url('../../../assets/backgrounds/cronache-background-dark-site.webp');
+    background-position:center top,50% top;
+    background-attachment:scroll,scroll;
+  }
+
+  .cronache-shell{
+    background:rgba(4,8,12,.13)!important;
+  }
+
+  .archive-threshold{
+    background:
+      radial-gradient(circle at 50% 12%,rgba(22,45,64,.12),transparent 42%),
+      linear-gradient(180deg,rgba(4,9,14,.10),rgba(4,8,13,.20))!important;
+  }
+
+  .archive-main{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,7,11,.08),
+        rgba(3,7,11,.20)
+      )!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  body{
+    background-attachment:scroll,scroll;
+  }
+}

@@ -1,0 +1,208 @@
+/* Cronache — completed-event archive
+   Intentionally minimal: Cronache is a historical register, not the operational
+   event browser. Only completed events and the approved essential facts appear. */
+
+.chronicles-archive{
+  padding:46px clamp(18px,5vw,64px) 82px;
+}
+
+.chronicle-season{
+  max-width:1180px;
+  margin:0 auto 64px;
+}
+
+.chronicle-season-head{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin:0 0 20px;
+}
+
+.chronicle-season-head::before,
+.chronicle-season-head::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,rgba(205,166,88,.58));
+}
+
+.chronicle-season-head::after{
+  transform:scaleX(-1);
+}
+
+.chronicle-season-head h2{
+  margin:0;
+  color:#dcc27e;
+  font:700 clamp(1.35rem,2.5vw,2rem) Cinzel,serif;
+  letter-spacing:.12em;
+}
+
+.chronicle-records{
+  display:grid;
+  gap:18px;
+}
+
+.chronicle-record{
+  position:relative;
+  overflow:hidden;
+  border:1px solid #5c431d;
+  background:
+    linear-gradient(90deg,#b4a27e,#eee3c9 7%,#eee5d0 50%,#e7dcc3 93%,#b3a07b);
+  color:#2f291f;
+  box-shadow:
+    inset 0 0 34px rgba(74,49,16,.15),
+    0 12px 25px rgba(0,0,0,.28);
+}
+
+.chronicle-record::before{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(94,69,33,.30);
+  pointer-events:none;
+}
+
+.chronicle-record::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:3px;
+  background:linear-gradient(90deg,#352714,#b58c4c,#e4ca88,#b58c4c,#352714);
+  opacity:.78;
+}
+
+.chronicle-record-head{
+  position:relative;
+  z-index:1;
+  padding:22px 24px 14px;
+  border-bottom:1px solid rgba(83,60,28,.20);
+  text-align:center;
+}
+
+.chronicle-record-head h3{
+  margin:0;
+  font:700 clamp(1.1rem,2vw,1.5rem) Cinzel,serif;
+  color:#302719;
+  letter-spacing:.035em;
+}
+
+.chronicle-facts{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr .72fr 1.35fr;
+  align-items:stretch;
+}
+
+.chronicle-fact{
+  min-width:0;
+  padding:18px 20px;
+  border-right:1px solid rgba(83,60,28,.18);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:4px;
+}
+
+.chronicle-fact:last-child{
+  border-right:0;
+}
+
+.chronicle-fact span{
+  font:700 .58rem Cinzel,serif;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#715a35;
+}
+
+.chronicle-fact strong{
+  font:600 .83rem Inter,sans-serif;
+  color:#2d281f;
+  line-height:1.35;
+}
+
+.chronicle-deck{
+  align-items:center;
+  text-align:center;
+}
+
+.winner-deck-link{
+  color:#684b20;
+  font:700 .64rem Cinzel,serif;
+  text-transform:uppercase;
+  letter-spacing:.045em;
+  text-decoration:none;
+}
+
+.winner-deck-link:hover,
+.winner-deck-link:focus-visible{
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+.winner-deck-pending{
+  font:700 .6rem Cinzel,serif!important;
+  letter-spacing:.035em!important;
+  line-height:1.35!important;
+  color:#80745f!important;
+  text-transform:uppercase;
+}
+
+.chronicles-archive .empty-state,
+.chronicles-archive .system-state{
+  max-width:1180px;
+  margin:0 auto 24px;
+}
+
+@media(max-width:980px){
+  .chronicle-facts{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .chronicle-fact{
+    border-bottom:1px solid rgba(83,60,28,.18);
+  }
+
+  .chronicle-fact:nth-child(even){
+    border-right:0;
+  }
+
+  .chronicle-deck{
+    grid-column:1/-1;
+    border-right:0;
+    border-bottom:0;
+    min-height:58px;
+  }
+}
+
+@media(max-width:620px){
+  .chronicles-archive{
+    padding:34px 10px 58px;
+  }
+
+  .chronicle-season{
+    margin-bottom:48px;
+  }
+
+  .chronicle-record-head{
+    padding:18px 16px 12px;
+  }
+
+  .chronicle-facts{
+    display:block;
+  }
+
+  .chronicle-fact{
+    padding:14px 16px;
+    border-right:0;
+    border-bottom:1px solid rgba(83,60,28,.18);
+  }
+
+  .chronicle-deck{
+    min-height:0;
+    align-items:flex-start;
+    text-align:left;
+  }
+}
