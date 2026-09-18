@@ -10,9 +10,9 @@ body{
   background-image:
     linear-gradient(
       180deg,
-      rgba(3,8,16,.76) 0%,
-      rgba(3,8,16,.82) 42%,
-      rgba(3,8,16,.88) 100%
+      rgba(3,8,16,.36) 0%,
+      rgba(3,8,16,.48) 46%,
+      rgba(3,8,16,.58) 100%
     ),
     url('../../assets/backgrounds/cronache-background-dark-site.webp');
   background-size:cover,cover;
@@ -21,30 +21,37 @@ body{
   background-attachment:fixed,fixed;
 }
 
-/* Keep the event archive readable while allowing the environment to remain
-   visible between parchment records. */
+/* The central area of the generated archive is intentionally dark, so the
+   title remains legible while shelves, pillars and candlelight can read at
+   the page edges. */
+.archive-threshold{
+  background:
+    radial-gradient(circle at 50% 16%,rgba(25,48,67,.36),transparent 42%),
+    linear-gradient(180deg,rgba(7,14,21,.22),rgba(4,9,14,.48));
+}
+
+/* Keep event records readable while exposing the archive environment in the
+   negative space around them. */
 .archive-main{
   background:
     linear-gradient(
       180deg,
-      rgba(4,8,13,.42),
-      rgba(4,8,13,.58) 44%,
-      rgba(4,8,13,.70)
+      rgba(4,8,13,.24),
+      rgba(4,8,13,.38) 46%,
+      rgba(4,8,13,.50)
     );
 }
 
-/* Tools remain more protected because they contain dense interactive UI. */
+/* Dense controls remain deliberately protected from the illustration. */
 .archive-tools{
   background:
     linear-gradient(
       180deg,
-      rgba(6,10,14,.90),
-      rgba(5,8,12,.86)
+      rgba(6,10,14,.86),
+      rgba(5,8,12,.82)
     );
 }
 
-/* Let the background breathe around season chapters without compromising
-   parchment record contrast. */
 .season{
   position:relative;
 }
@@ -60,20 +67,26 @@ body{
     background-image:
       linear-gradient(
         180deg,
-        rgba(3,8,16,.84) 0%,
-        rgba(3,8,16,.89) 48%,
-        rgba(3,8,16,.93) 100%
+        rgba(3,8,16,.58) 0%,
+        rgba(3,8,16,.68) 50%,
+        rgba(3,8,16,.76) 100%
       ),
       url('../../assets/backgrounds/cronache-background-dark-site.webp');
     background-position:center top,50% top;
     background-attachment:scroll,scroll;
   }
 
+  .archive-threshold{
+    background:
+      radial-gradient(circle at 50% 12%,rgba(25,48,67,.30),transparent 40%),
+      linear-gradient(180deg,rgba(5,11,17,.40),rgba(4,8,13,.64));
+  }
+
   .archive-main{
     background:linear-gradient(
       180deg,
-      rgba(4,8,13,.66),
-      rgba(4,8,13,.78)
+      rgba(4,8,13,.46),
+      rgba(4,8,13,.66)
     );
   }
 }
