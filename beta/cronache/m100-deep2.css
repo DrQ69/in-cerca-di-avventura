@@ -119,3 +119,130 @@
   .season-heading::after{left:12px!important}
   .event-record::before{opacity:.28}
 }
+
+
+/* HERO CREST PASS — PO approved proposal 3
+   The ICA emblem becomes the architectural centre of the navigation:
+   larger, unframed and visually connected to two interrupted gold rules. */
+@media(min-width:1081px){
+  .site-nav{
+    height:84px;
+    grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr);
+    border-bottom:0!important;
+    overflow:visible;
+  }
+
+  /* Split the navigation rule so it terminates before the crest. */
+  .site-nav::after{
+    left:6.5%!important;
+    right:6.5%!important;
+    bottom:9px!important;
+    height:1px!important;
+    opacity:.9!important;
+    background:linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201,163,95,.28) 4%,
+      rgba(224,190,116,.82) 34%,
+      transparent 43%,
+      transparent 57%,
+      rgba(224,190,116,.82) 66%,
+      rgba(201,163,95,.28) 96%,
+      transparent 100%
+    )!important;
+  }
+
+  /* A single restrained pendant replaces the former framed niche. */
+  .site-nav::before{
+    display:block!important;
+    content:""!important;
+    position:absolute!important;
+    left:50%!important;
+    bottom:-39px!important;
+    width:18px!important;
+    height:48px!important;
+    transform:translateX(-50%)!important;
+    background:linear-gradient(
+      90deg,
+      rgba(105,72,29,.05),
+      rgba(230,197,123,.95) 48%,
+      rgba(255,225,150,.95) 52%,
+      rgba(105,72,29,.05)
+    )!important;
+    clip-path:polygon(50% 0,72% 28%,58% 28%,58% 74%,50% 100%,42% 74%,42% 28%,28% 28%)!important;
+    opacity:.72!important;
+    filter:drop-shadow(0 3px 4px rgba(0,0,0,.72));
+    pointer-events:none;
+    z-index:5;
+  }
+
+  .logo-host{
+    width:166px!important;
+    height:166px!important;
+    align-self:start!important;
+    justify-self:center!important;
+    margin-top:2px!important;
+    z-index:8!important;
+    background:none!important;
+  }
+
+  /* Remove every geometric frame around the emblem. */
+  .logo-host::before,
+  .logo-host::after{
+    display:none!important;
+    content:none!important;
+  }
+
+  .logo-host img{
+    width:150px!important;
+    height:150px!important;
+    object-fit:contain;
+    transform:none;
+    filter:
+      drop-shadow(0 7px 10px rgba(0,0,0,.82))
+      drop-shadow(0 0 8px rgba(55,113,145,.12))!important;
+    transition:transform .2s ease,filter .2s ease;
+  }
+
+  .logo-host:hover img,
+  .logo-host:focus-visible img{
+    transform:scale(1.025);
+    filter:
+      drop-shadow(0 8px 12px rgba(0,0,0,.84))
+      drop-shadow(0 0 10px rgba(68,136,171,.20))!important;
+  }
+
+  .nav-side{
+    position:relative;
+    z-index:6;
+  }
+}
+
+/* Tablet/mobile keeps the functional compact header but loses the old frames. */
+@media(max-width:1080px){
+  .logo-host::before,
+  .logo-host::after{
+    display:none!important;
+    content:none!important;
+  }
+
+  .site-nav::before{
+    display:none!important;
+  }
+
+  .logo-host{
+    width:88px!important;
+    height:88px!important;
+    background:none!important;
+  }
+
+  .logo-host img{
+    width:78px!important;
+    height:78px!important;
+    filter:drop-shadow(0 5px 9px rgba(0,0,0,.8))!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .logo-host img{transition:none!important}
+}
