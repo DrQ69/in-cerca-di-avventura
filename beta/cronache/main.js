@@ -20,7 +20,7 @@ const controls={season:document.getElementById('season'),status:document.getElem
 let events=[];
 
 const icons={date:'../../assets/ui/cronache/icons/date.svg',place:'../../assets/ui/cronache/icons/place.svg',format:'../../assets/ui/cronache/icons/format.svg',players:'../../assets/ui/cronache/icons/players.svg',winner:'../../assets/ui/cronache/icons/winner.svg'};
-const statusIcon={futura:'../../assets/ui/cronache/status/skull-futura.svg','in corso':'../../assets/ui/cronache/status/skull-in-corso.svg',conclusa:'../../assets/ui/cronache/status/skull-conclusa.svg'};
+const statusIcon={futura:'../../assets/ui/cronache/status/skull-futura.webp','in corso':'../../assets/ui/cronache/status/skull-in-corso.webp',conclusa:'../../assets/ui/cronache/status/skull-conclusa.webp'};
 const statusLabel={futura:'Futura','in corso':'In corso',conclusa:'Conclusa'};
 
 function norm(v){return String(v||'').toLocaleLowerCase('it').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();}
