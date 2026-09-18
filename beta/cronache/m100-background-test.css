@@ -1,0 +1,85 @@
+/* Cronache — generated archive background visual test
+   Experimental preview layer. Loaded last so it can be removed without
+   changing the underlying visual system. */
+body{
+  background-color:#03070b;
+}
+
+.cronache-shell{
+  background-color:#071019;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(3,8,16,.76) 0%,
+      rgba(3,8,16,.82) 42%,
+      rgba(3,8,16,.88) 100%
+    ),
+    url('../../assets/backgrounds/cronache-background-dark-site.webp');
+  background-size:cover,cover;
+  background-position:center top,center top;
+  background-repeat:no-repeat,no-repeat;
+  background-attachment:fixed,fixed;
+}
+
+/* Keep the event archive readable while allowing the environment to remain
+   visible between parchment records. */
+.archive-main{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4,8,13,.42),
+      rgba(4,8,13,.58) 44%,
+      rgba(4,8,13,.70)
+    );
+}
+
+/* Tools remain more protected because they contain dense interactive UI. */
+.archive-tools{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6,10,14,.90),
+      rgba(5,8,12,.86)
+    );
+}
+
+/* Let the background breathe around season chapters without compromising
+   parchment record contrast. */
+.season{
+  position:relative;
+}
+
+@media(max-width:1080px){
+  .cronache-shell{
+    background-position:center top,58% top;
+  }
+}
+
+@media(max-width:700px){
+  .cronache-shell{
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3,8,16,.84) 0%,
+        rgba(3,8,16,.89) 48%,
+        rgba(3,8,16,.93) 100%
+      ),
+      url('../../assets/backgrounds/cronache-background-dark-site.webp');
+    background-position:center top,50% top;
+    background-attachment:scroll,scroll;
+  }
+
+  .archive-main{
+    background:linear-gradient(
+      180deg,
+      rgba(4,8,13,.66),
+      rgba(4,8,13,.78)
+    );
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cronache-shell{
+    background-attachment:scroll,scroll;
+  }
+}
