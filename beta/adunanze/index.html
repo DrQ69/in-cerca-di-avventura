@@ -4,32 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Adunanze — In Cerca di Avventura</title>
-  <meta name="description" content="Adunanze di In Cerca di Avventura: accesso agli eventi nazionali e internazionali della community italiana di Sorcery: Contested Realm.">
+  <meta name="description" content="Adunanze di In Cerca di Avventura: il portale verso gli eventi nazionali e, in futuro, internazionali della community di Sorcery: Contested Realm.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0b141d">
   <link rel="canonical" href="https://drq69.github.io/in-cerca-di-avventura/beta/adunanze/">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="In Cerca di Avventura">
+  <meta property="og:title" content="Adunanze — In Cerca di Avventura">
+  <meta property="og:description" content="Il portale verso le Adunanze nazionali e internazionali di In Cerca di Avventura.">
+  <meta property="og:url" content="https://drq69.github.io/in-cerca-di-avventura/beta/adunanze/">
+  <meta property="og:image" content="https://drq69.github.io/in-cerca-di-avventura/assets/adunanze/adunanze-battlefield.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Adunanze — In Cerca di Avventura">
+  <meta name="twitter:description" content="Il portale verso le Adunanze nazionali e internazionali di In Cerca di Avventura.">
   <link rel="icon" href="../../assets/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../cronache/style.css">
-  <link rel="stylesheet" href="../cronache/m75.css">
-  <link rel="stylesheet" href="../cronache/m100.css">
-  <link rel="stylesheet" href="../cronache/m100-aesthetic.css">
-  <link rel="stylesheet" href="../cronache/m100-orientation.css">
-  <link rel="stylesheet" href="../cronache/m100-deep2.css">
+  <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="adunanze-portal.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Vai al contenuto</a>
-<div class="cronache-shell adunanze-shell">
+<div class="site-shell adunanze-shell">
   <header class="site-nav">
     <nav class="nav-side" aria-label="Navigazione principale sinistra">
       <a href="./" aria-current="page">Le Adunanze</a>
       <a href="../cronache/">Cronache</a>
     </nav>
     <a class="logo-host" href="../" aria-label="In Cerca di Avventura — Home">
-      <img src="../../assets/logo-emblem.webp" alt="In Cerca di Avventura">
+      <img src="../../assets/logo-emblem.webp" alt="">
     </a>
     <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
       <a href="../#avventurieri">Avventurieri</a>
@@ -47,6 +52,8 @@
   </header>
 
   <main id="main" class="adunanze-main">
+    <h1 class="sr-only">Adunanze</h1>
+
     <section class="battlefield-panel" aria-label="Campo di battaglia">
       <img
         src="../../assets/adunanze/adunanze-battlefield.webp"
@@ -58,22 +65,27 @@
     </section>
 
     <section class="gate-grid" aria-label="Accessi alle Adunanze">
-      <div class="gate-panel gate-international" aria-label="Adunanze internazionali">
+      <article class="gate-panel gate-international" aria-labelledby="international-title" aria-describedby="international-status">
+        <h2 id="international-title" class="sr-only">Adunanze Internazionali — Oltre i Confini Noti</h2>
+        <p id="international-status" class="sr-only">Sezione in sviluppo, non ancora disponibile.</p>
         <img
           src="../../assets/adunanze/adunanze-gate-international.webp"
           width="1122"
           height="1402"
           alt=""
+          loading="lazy"
           decoding="async">
-      </div>
-      <div class="gate-panel gate-national" aria-label="Adunanze nazionali">
+      </article>
+
+      <a class="gate-panel gate-national" href="./nazionale/" aria-label="Entra nelle Adunanze Nazionali — Il Regno di Cremos">
         <img
           src="../../assets/adunanze/adunanze-gate-national.webp"
           width="1122"
           height="1402"
           alt=""
+          loading="lazy"
           decoding="async">
-      </div>
+      </a>
     </section>
   </main>
 </div>
