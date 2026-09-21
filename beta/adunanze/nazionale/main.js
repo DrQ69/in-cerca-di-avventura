@@ -23,12 +23,13 @@ function esc(value){
   return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 }
 
-const dateFormatter=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+const mesi=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
 
 function fmtDate(value){
   if(!value)return 'Data da verificare';
-  const date=new Date(value+'T12:00:00');
-  return dateFormatter.format(date);
+  const [year,month,day]=String(value).split('-').map(Number);
+  if(!year||!month||!day||month<1||month>12)return 'Data da verificare';
+  return `${day} ${mesi[month-1]} ${year}`;
 }
 
 function place(event){
