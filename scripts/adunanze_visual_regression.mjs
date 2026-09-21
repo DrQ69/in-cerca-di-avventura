@@ -209,3 +209,5 @@ try {
 } finally {
   await browser.close();
 }
+
+// VR-0010 final verification trigger.

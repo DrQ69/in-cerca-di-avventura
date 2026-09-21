@@ -16,15 +16,19 @@ const empty=document.getElementById('empty');
 const ongoingSection=document.getElementById('ongoing-section');
 const ongoingRoot=document.getElementById('ongoing-root');
 const upcomingRoot=document.getElementById('upcoming-root');
+const nationalMain=document.getElementById('national-main');
+const nationalShell=document.getElementById('national-shell');
 
 function esc(value){
   return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 }
 
+const dateFormatter=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+
 function fmtDate(value){
   if(!value)return 'Data da verificare';
   const date=new Date(value+'T12:00:00');
-  return new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'}).format(date);
+  return dateFormatter.format(date);
 }
 
 function place(event){
@@ -89,9 +93,13 @@ fetch('../../../data/events.json',{cache:'no-store'})
     const events=Array.isArray(data.events)?data.events:[];
     render(events);
     loading.hidden=true;
+    nationalMain?.classList.remove('is-loading');
+    nationalShell?.classList.remove('is-loading');
   })
   .catch(reason=>{
     console.error('Adunanze data load failed',reason);
     loading.hidden=true;
     error.hidden=false;
+    nationalMain?.classList.remove('is-loading');
+    nationalShell?.classList.remove('is-loading');
   });

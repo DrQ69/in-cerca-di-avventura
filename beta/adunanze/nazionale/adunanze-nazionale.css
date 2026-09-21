@@ -1,4 +1,23 @@
-.national-shell{background:#080b0e}
+.national-shell{
+  background:#080b0e;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.national-shell .nav-side a,
+.national-shell .menu-toggle,
+.national-shell .mobile-nav a,
+.national-kicker,
+.national-hero h1,
+.national-subtitle,
+.group-heading p,
+.group-heading h2,
+.card-status,
+.card-head h3,
+.card-series,
+.fact span,
+.card-action{
+  font-family:Georgia,"Times New Roman",serif;
+}
+.national-shell.is-loading .site-footer{display:none}
 .national-hero{
   min-height:300px;
   display:grid;
@@ -22,14 +41,14 @@
 .national-kicker{
   margin:0 0 10px;
   color:#bfa46b;
-  font:600 .72rem Cinzel,serif;
+  font:600 .72rem Georgia,"Times New Roman",serif;
   letter-spacing:.24em;
   text-transform:uppercase;
 }
 .national-hero h1{
   margin:0;
   color:var(--gold-300);
-  font:800 clamp(2.8rem,7vw,5.2rem) Cinzel Decorative,serif;
+  font:800 clamp(2.8rem,7vw,5.2rem) Georgia,"Times New Roman",serif;
   line-height:.95;
   text-transform:uppercase;
   letter-spacing:.05em;
@@ -38,10 +57,18 @@
 .national-subtitle{
   margin:14px 0 0;
   color:#d1c5ad;
-  font:600 clamp(.8rem,1.6vw,1rem) Cinzel,serif;
+  font:600 clamp(.8rem,1.6vw,1rem) Georgia,"Times New Roman",serif;
   letter-spacing:.06em;
 }
-.national-main{padding:40px 16px 80px}
+.national-main{position:relative;padding:40px 16px 80px}
+.national-main.is-loading .event-group{visibility:hidden}
+.national-main > .system-state{
+  position:absolute;
+  top:18px;
+  left:16px;
+  right:16px;
+  z-index:3;
+}
 .system-state,.empty-state{
   max-width:1180px;
   margin:0 auto 28px;
@@ -57,14 +84,14 @@
 .group-heading p{
   margin:0 0 5px;
   color:#8f8676;
-  font:600 .66rem Cinzel,serif;
+  font:600 .66rem Georgia,"Times New Roman",serif;
   letter-spacing:.18em;
   text-transform:uppercase;
 }
 .group-heading h2{
   margin:0;
   color:var(--gold-300);
-  font:700 clamp(1.65rem,4vw,2.45rem) Cinzel,serif;
+  font:700 clamp(1.65rem,4vw,2.45rem) Georgia,"Times New Roman",serif;
   letter-spacing:.08em;
 }
 .event-list{display:grid;gap:18px}
@@ -99,19 +126,19 @@
   display:inline-block;
   margin-bottom:7px;
   color:#705a33;
-  font:800 .62rem Cinzel,serif;
+  font:800 .62rem Georgia,"Times New Roman",serif;
   text-transform:uppercase;
   letter-spacing:.12em;
 }
 .card-head h3{
   margin:0;
   color:#302719;
-  font:700 clamp(1.12rem,2.8vw,1.55rem) Cinzel,serif;
+  font:700 clamp(1.12rem,2.8vw,1.55rem) Georgia,"Times New Roman",serif;
 }
 .card-series{
   margin:5px 0 0;
   color:#49606d;
-  font:600 .7rem Cinzel,serif;
+  font:600 .7rem Georgia,"Times New Roman",serif;
 }
 .card-body{
   display:grid;
@@ -122,7 +149,7 @@
 .fact span{
   display:block;
   color:#78623d;
-  font:700 .58rem Cinzel,serif;
+  font:700 .58rem Georgia,"Times New Roman",serif;
   text-transform:uppercase;
   letter-spacing:.08em;
 }
@@ -130,7 +157,7 @@
   display:block;
   margin-top:3px;
   color:#2d281f;
-  font:600 .82rem Inter,sans-serif;
+  font:600 .82rem system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   line-height:1.4;
 }
 .card-action{
@@ -142,7 +169,7 @@
   width:max-content;
   max-width:100%;
   color:#684b20;
-  font:700 .68rem Cinzel,serif;
+  font:700 .68rem Georgia,"Times New Roman",serif;
   text-transform:uppercase;
   letter-spacing:.04em;
   text-decoration:none;
@@ -150,6 +177,8 @@
 .card-action:hover,.card-action:focus-visible{text-decoration:underline;text-underline-offset:4px}
 @media(min-width:768px){
   .national-main{padding-inline:24px}
+  .national-main > .system-state{left:24px;right:24px}
+
   .adunanza-card{
     grid-template-columns:minmax(220px,.95fr) minmax(0,1.65fr) auto;
     align-items:center;
@@ -161,7 +190,9 @@
 @media(min-width:1024px){
   .national-hero{min-height:372px;padding-top:126px}
   .national-main{padding:52px 32px 96px}
+  .national-main > .system-state{left:32px;right:32px;top:22px}
 }
 @media(min-width:1536px){
   .national-main{padding-inline:40px}
+  .national-main > .system-state{left:40px;right:40px}
 }

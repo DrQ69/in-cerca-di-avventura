@@ -1,0 +1,77 @@
+name: Adunanze performance QA
+
+on:
+  pull_request:
+    paths:
+      - 'beta/adunanze/**'
+      - 'beta/index.html'
+      - 'beta/main.js'
+      - 'assets/adunanze/**'
+      - 'assets/css/ica-shared-shell.css'
+      - 'data/events.json'
+      - 'scripts/adunanze_lighthouse_gate.mjs'
+      - '.github/workflows/adunanze-performance-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'beta/adunanze/**'
+      - 'beta/index.html'
+      - 'beta/main.js'
+      - 'assets/adunanze/**'
+      - 'assets/css/ica-shared-shell.css'
+      - 'data/events.json'
+      - 'scripts/adunanze_lighthouse_gate.mjs'
+      - '.github/workflows/adunanze-performance-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: adunanze-performance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          echo $! > /tmp/ica-http.pid
+          sleep 2
+
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@12.8.2
+
+      - name: Capture Lighthouse reports
+        run: |
+          mkdir -p artifacts/adunanze-lighthouse
+          npx lighthouse http://127.0.0.1:8000/beta/adunanze/             --quiet --chrome-flags="--headless --no-sandbox"             --only-categories=performance,accessibility,seo             --output=json --output-path=artifacts/adunanze-lighthouse/portal-mobile.json
+
+          npx lighthouse http://127.0.0.1:8000/beta/adunanze/nazionale/             --quiet --chrome-flags="--headless --no-sandbox"             --only-categories=performance,accessibility,seo             --output=json --output-path=artifacts/adunanze-lighthouse/national-mobile.json
+
+          npx lighthouse http://127.0.0.1:8000/beta/adunanze/             --quiet --preset=desktop --chrome-flags="--headless --no-sandbox"             --only-categories=performance,accessibility,seo             --output=json --output-path=artifacts/adunanze-lighthouse/portal-desktop.json
+
+          npx lighthouse http://127.0.0.1:8000/beta/adunanze/nazionale/             --quiet --preset=desktop --chrome-flags="--headless --no-sandbox"             --only-categories=performance,accessibility,seo             --output=json --output-path=artifacts/adunanze-lighthouse/national-desktop.json
+
+      - name: Enforce M12 performance thresholds
+        run: node scripts/adunanze_lighthouse_gate.mjs artifacts/adunanze-lighthouse
+
+      - name: Upload performance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adunanze-lighthouse-${{ github.sha }}
+          path: artifacts/adunanze-lighthouse/
+          if-no-files-found: error
+          retention-days: 14

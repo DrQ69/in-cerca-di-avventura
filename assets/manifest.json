@@ -333,7 +333,7 @@
         "desktop": true,
         "tablet": true,
         "mobile": true,
-        "dedicated_mobile_derivative_required": "to-be-validated"
+        "dedicated_mobile_derivative_required": false
       },
       "accessibility": {
         "classification": "decorative",
@@ -371,7 +371,7 @@
         "desktop": true,
         "tablet": true,
         "mobile": true,
-        "dedicated_mobile_derivative_required": "to-be-validated"
+        "dedicated_mobile_derivative_required": false
       },
       "accessibility": {
         "classification": "decorative",
@@ -409,7 +409,7 @@
         "desktop": true,
         "tablet": true,
         "mobile": true,
-        "dedicated_mobile_derivative_required": "to-be-validated"
+        "dedicated_mobile_derivative_required": false
       },
       "accessibility": {
         "classification": "decorative",
@@ -425,6 +425,114 @@
       "constraints": [
         "Do not regenerate or materially alter without Product Owner decision.",
         "The full gate area may act as the National navigation target."
+      ]
+    },
+    {
+      "id": "MED-ADU-01-BATTLEFIELD-512",
+      "component": "MED-ADU-01",
+      "path": "assets/adunanze/adunanze-battlefield-512.webp",
+      "planned_path": null,
+      "role": "Mobile derivative of Adunanze battlefield panorama",
+      "category": "background-derivative",
+      "format": "webp",
+      "dimensions": {
+        "width": 512,
+        "height": 219
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": false,
+        "tablet": false,
+        "mobile": true,
+        "parent_asset": "MED-ADU-01-BATTLEFIELD"
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "derived-project-asset",
+        "creator": "automated derivative",
+        "licence_or_permission": "inherits-parent",
+        "generation_method": "Lanczos resize, WebP quality 72"
+      },
+      "budget": "mobile-hero",
+      "constraints": [
+        "Derived from MED-ADU-01-BATTLEFIELD; do not treat as independent artwork."
+      ]
+    },
+    {
+      "id": "MED-ADU-02-GATE-INTERNATIONAL-512",
+      "component": "MED-ADU-02",
+      "path": "assets/adunanze/adunanze-gate-international-512.webp",
+      "planned_path": null,
+      "role": "Mobile derivative of International gate artwork",
+      "category": "content-art-derivative",
+      "format": "webp",
+      "dimensions": {
+        "width": 512,
+        "height": 640
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": false,
+        "tablet": false,
+        "mobile": true,
+        "parent_asset": "MED-ADU-02-GATE-INTERNATIONAL"
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "derived-project-asset",
+        "creator": "automated derivative",
+        "licence_or_permission": "inherits-parent",
+        "generation_method": "Lanczos resize, WebP quality 72"
+      },
+      "budget": "mobile-section-art",
+      "constraints": [
+        "Derived from MED-ADU-02-GATE-INTERNATIONAL; do not treat as independent artwork."
+      ]
+    },
+    {
+      "id": "MED-ADU-03-GATE-NATIONAL-512",
+      "component": "MED-ADU-03",
+      "path": "assets/adunanze/adunanze-gate-national-512.webp",
+      "planned_path": null,
+      "role": "Mobile derivative of National gate artwork",
+      "category": "content-art-derivative",
+      "format": "webp",
+      "dimensions": {
+        "width": 512,
+        "height": 640
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": false,
+        "tablet": false,
+        "mobile": true,
+        "parent_asset": "MED-ADU-03-GATE-NATIONAL"
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "derived-project-asset",
+        "creator": "automated derivative",
+        "licence_or_permission": "inherits-parent",
+        "generation_method": "Lanczos resize, WebP quality 72"
+      },
+      "budget": "mobile-section-art",
+      "constraints": [
+        "Derived from MED-ADU-03-GATE-NATIONAL; do not treat as independent artwork."
       ]
     }
   ]

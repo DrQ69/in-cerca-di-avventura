@@ -19,15 +19,12 @@
   <meta name="twitter:title" content="Adunanze Nazionali — In Cerca di Avventura">
   <meta name="twitter:description" content="Eventi nazionali di Sorcery: Contested Realm in corso e in programma.">
   <link rel="icon" href="../../../assets/favicon-32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="adunanze-nazionale.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Vai al contenuto</a>
-<div class="site-shell national-shell">
+<div class="site-shell national-shell is-loading" id="national-shell">
   <header class="site-nav">
     <nav class="nav-side" aria-label="Navigazione principale sinistra">
       <a href="../" aria-current="page">Le Adunanze</a>
@@ -60,7 +57,7 @@
       </div>
     </section>
 
-    <div class="national-main">
+    <div class="national-main is-loading" id="national-main">
       <p id="loading" class="system-state" aria-live="polite">Consultazione delle Adunanze…</p>
       <p id="error" class="system-state system-error" hidden aria-live="assertive">Le Adunanze non sono disponibili in questo momento.</p>
 
