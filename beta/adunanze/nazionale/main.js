@@ -67,46 +67,43 @@ function byDateAscending(a,b){
   return (a.date||'9999-12-31').localeCompare(b.date||'9999-12-31');
 }
 
-function nextFrame(){
-  return new Promise(resolve=>requestAnimationFrame(()=>resolve()));
-}
-
-async function appendCards(root,events){
-  root.innerHTML='';
-  for(const event of events){
-    const template=document.createElement('template');
-    template.innerHTML=card(event).trim();
-    root.append(template.content.firstElementChild);
-    await nextFrame();
+function replaceCards(root,events){
+  if(!events.length){
+    root.replaceChildren();
+    return;
   }
+
+  const range=document.createRange();
+  const fragment=range.createContextualFragment(events.map(card).join(''));
+  root.replaceChildren(fragment);
 }
 
-async function render(events){
+function render(events){
   const ongoing=events.filter(event=>event.status==='in corso').sort(byDateAscending);
   const upcoming=events.filter(event=>event.status==='futura').sort(byDateAscending);
 
   if(ongoing.length){
     ongoingSection.hidden=false;
-    await appendCards(ongoingRoot,ongoing);
+    replaceCards(ongoingRoot,ongoing);
   }else{
     ongoingSection.hidden=true;
-    ongoingRoot.innerHTML='';
+    ongoingRoot.replaceChildren();
   }
 
   if(upcoming.length){
     empty.hidden=true;
-    await appendCards(upcomingRoot,upcoming);
+    replaceCards(upcomingRoot,upcoming);
   }else{
-    upcomingRoot.innerHTML='';
+    upcomingRoot.replaceChildren();
     empty.hidden=false;
   }
 }
 
 fetch('../../../data/events.json',{cache:'no-store'})
   .then(response=>{if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();})
-  .then(async data=>{
+  .then(data=>{
     const events=Array.isArray(data.events)?data.events:[];
-    await render(events);
+    render(events);
     loading.hidden=true;
     nationalMain?.classList.remove('is-loading');
     nationalShell?.classList.remove('is-loading');

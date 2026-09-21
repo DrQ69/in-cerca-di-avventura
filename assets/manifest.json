@@ -534,6 +534,46 @@
       "constraints": [
         "Derived from MED-ADU-03-GATE-NATIONAL; do not treat as independent artwork."
       ]
+    },
+    {
+      "id": "MED-ADU-04-GATE-FRAME",
+      "component": "MED-ADU-04",
+      "path": "assets/adunanze/adunanze-gates-frame.webp",
+      "planned_path": null,
+      "role": "Combined decorative overlay frame for the side-by-side International and National gates",
+      "category": "ornament",
+      "format": "webp",
+      "dimensions": {
+        "width": 600,
+        "height": 375
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": false,
+        "usage_note": "Displayed only from 768px upward when the two gates are side by side."
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "Empty alt and aria-hidden; must never carry navigation meaning or intercept pointer input."
+      },
+      "source": {
+        "type": "project-original-ai-assisted-derived",
+        "creator": "Product Owner directed / AI-assisted",
+        "licence_or_permission": "to-be-confirmed",
+        "generation_method": "User-selected transparent PNG converted to transparent WebP and resized to 600×375 for web overlay."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Use only as a non-interactive overlay above the paired gate images.",
+        "Must use pointer-events:none so the National gate remains fully interactive.",
+        "Do not display on the stacked mobile gate layout.",
+        "Do not distort the underlying gate images."
+      ]
     }
   ]
 }
