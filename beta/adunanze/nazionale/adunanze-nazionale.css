@@ -41,7 +41,15 @@
   font:600 clamp(.8rem,1.6vw,1rem) Cinzel,serif;
   letter-spacing:.06em;
 }
-.national-main{padding:40px 16px 80px}
+.national-main{position:relative;padding:40px 16px 80px}
+.national-main.is-loading .event-group{visibility:hidden}
+.national-main > .system-state{
+  position:absolute;
+  top:18px;
+  left:16px;
+  right:16px;
+  z-index:3;
+}
 .system-state,.empty-state{
   max-width:1180px;
   margin:0 auto 28px;
@@ -150,6 +158,8 @@
 .card-action:hover,.card-action:focus-visible{text-decoration:underline;text-underline-offset:4px}
 @media(min-width:768px){
   .national-main{padding-inline:24px}
+  .national-main > .system-state{left:24px;right:24px}
+
   .adunanza-card{
     grid-template-columns:minmax(220px,.95fr) minmax(0,1.65fr) auto;
     align-items:center;
@@ -161,7 +171,9 @@
 @media(min-width:1024px){
   .national-hero{min-height:372px;padding-top:126px}
   .national-main{padding:52px 32px 96px}
+  .national-main > .system-state{left:32px;right:32px;top:22px}
 }
 @media(min-width:1536px){
   .national-main{padding-inline:40px}
+  .national-main > .system-state{left:40px;right:40px}
 }
