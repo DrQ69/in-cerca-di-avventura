@@ -44,7 +44,7 @@ function card(event){
   const action=registration
     ? `<a class="card-action" href="${esc(registration)}" target="_blank" rel="noopener">Informazioni / iscrizione →</a>`
     : '';
-  return `<article class="adunanza-card" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}">
+  return `<article class="adunanza-card" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}" data-date="${esc(event.date||'')}">
     <header class="card-head">
       <span class="card-status">${esc(statusLabel)}</span>
       <h3>${esc(event.title)}</h3>
