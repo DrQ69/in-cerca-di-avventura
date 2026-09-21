@@ -60,15 +60,13 @@
 
     <section class="featured-strip" id="next-event" aria-labelledby="next-title">
       <div class="featured-art" aria-hidden="true"><span class="rune">I</span></div>
-      <div class="featured-core">
+      <div class="featured-core" id="next-event-card" aria-live="polite">
         <p class="section-kicker">Prossima Adunanza</p>
-        <h2 id="next-title">Il Rituale — Gothic Draft</h2>
-        <ul class="event-facts">
-          <li><strong>16 settembre 2026</strong></li>
-          <li>Game Lover · Crema</li>
-          <li>Gothic Draft · check-in 20:30</li>
+        <h2 id="next-title">Consultazione del calendario…</h2>
+        <ul class="event-facts" id="next-event-facts">
+          <li>Caricamento dell'evento in programma.</li>
         </ul>
-        <a class="small-button" href="#adunanze">Scopri l'Adunanza →</a>
+        <a class="small-button" id="next-event-link" href="./adunanze/">Esplora le Adunanze →</a>
       </div>
       <aside class="featured-message">
         <p>Qui si incontrano coloro che cercano più di una semplice partita.</p>
@@ -102,10 +100,8 @@
     <section class="activity-row" aria-label="Attività e aggiornamenti">
       <article class="panel events-panel" id="adunanze">
         <header class="panel-heading"><h2>Le Adunanze</h2><span>I prossimi eventi in programma</span></header>
-        <div class="event-grid">
-          <article class="event-tile"><span class="event-image image-a" aria-hidden="true"></span><b>Il Rituale</b><small>Crema · 16 settembre</small><em>Gothic Draft</em></article>
-          <article class="event-tile"><span class="event-image image-b" aria-hidden="true"></span><b>La Giostra</b><small>Milano · 2 ottobre</small><em>Constructed</em></article>
-          <article class="event-tile"><span class="event-image image-c" aria-hidden="true"></span><b>Tappa III</b><small>Crema · 14 ottobre</small><em>Chaos Draft</em></article>
+        <div class="event-grid" id="upcoming-event-grid" aria-live="polite">
+          <p>Consultazione del calendario…</p>
         </div>
         <a class="panel-link" href="./adunanze/">Vedi tutte le Adunanze →</a>
       </article>
@@ -139,7 +135,7 @@
       <div class="closing-copy">
         <p>La strada continua.</p>
         <h2 id="closing-title">Trova la tua prossima Adunanza.</h2>
-        <a class="hero-cta" href="#adunanze">Esplora le Adunanze →</a>
+        <a class="hero-cta" href="./adunanze/">Esplora le Adunanze →</a>
       </div>
     </section>
   </main>
