@@ -22,10 +22,12 @@ function esc(value){
   return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 }
 
+const dateFormatter=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+
 function fmtDate(value){
   if(!value)return 'Data da verificare';
   const date=new Date(value+'T12:00:00');
-  return new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'}).format(date);
+  return dateFormatter.format(date);
 }
 
 function place(event){
