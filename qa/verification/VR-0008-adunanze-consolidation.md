@@ -8,8 +8,8 @@
 - **Version label:** consolidation pass 1
 - **Tested head SHA:** `8b5c969d9b3a9b3948673d1ad329036baf03700b`
 - **PR:** #56
-- **Merged main SHA:** pending
-- **Tested-head vs merged-tree/content equivalence confirmed:** pending
+- **Merged main SHA:** `be81df71f7c3ae140fd2745744a956b480c8178b`
+- **Tested-head vs merged-tree/content equivalence confirmed:** yes
 - **Lifecycle state before verification:** IMPLEMENTED
 - **Requested target state:** VERIFIED
 - **Release readiness target:** STAGING_READY
@@ -31,8 +31,8 @@
 
 | Check ID | Criterion | Result | Evidence | Defect / Exception | Notes / N/A rationale |
 |---|---|---|---|---|---|
-| QA-GEN-001 | Repository structural baseline remains valid | PASS | GitHub Actions run 35593715088 — ICA baseline QA | — | Required JSON and local references resolved |
-| QA-PAG-ADU-001 | Portal keeps approved battlefield + International-left + National-right composition | PASS | GitHub Actions run 35593715165 screenshots/artifact | — | Desktop composition verified across required widths |
+| QA-GEN-001 | Repository structural baseline remains valid | PASS | GitHub Actions run 35593867364 — ICA baseline QA | — | Required JSON and local references resolved |
+| QA-PAG-ADU-001 | Portal keeps approved battlefield + International-left + National-right composition | PASS | GitHub Actions run 35593867363 screenshots/artifact | — | Desktop composition verified across required widths |
 | QA-A11Y-ADU-001 | National gate is a keyboard-focusable link with visible focus | PASS | Adunanze visual QA, all viewport JSON evidence | — | Full gate is the target |
 | QA-PAG-ADU-002 | International gate is not an active link | PASS | Adunanze visual QA | — | In-development state remains non-interactive |
 | QA-DAT-ADU-001 | Adunanze Nazionale excludes completed events | PASS | Adunanze visual QA | — | Only `futura` and `in corso` are rendered |
@@ -57,7 +57,7 @@ No exception is being used to claim APPROVED or PRODUCTION_READY status.
 - GitHub Actions run **35593715165** — Adunanze visual QA — PASS
 - GitHub Actions run **35593714850** — Cronache visual QA — PASS
 - GitHub Actions run **35593715088** — ICA baseline QA — PASS
-- workflow artifact: `adunanze-visual-qa-8b5c969d9b3a9b3948673d1ad329036baf03700b`
+- workflow artifact: `adunanze-visual-qa-cffbe2a4b6f857e5dd6858e76f29f3728afefd35`
 - shared source: `data/events.json`
 - portal: `beta/adunanze/`
 - National: `beta/adunanze/nazionale/`
@@ -86,7 +86,7 @@ No exception is being used to claim APPROVED or PRODUCTION_READY status.
 - **High defects open:** 0
 - **Medium defects open:** 0 known from automated scope
 - **Approval recommendation:** yes, for Product Owner visual review
-- **Product Owner approval recorded:** no
+- **Product Owner approval recorded:** no (implementation merged; visual/canonical approval remains pending)
 - **Approval date / reference:** pending
 
 This record supports VERIFIED/STAGING_READY for the tested consolidation scope. It does not self-assign APPROVED or PRODUCTION_READY.
