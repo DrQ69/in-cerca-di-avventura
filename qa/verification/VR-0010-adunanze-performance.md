@@ -7,7 +7,7 @@
 - **Version label:** performance consolidation pass
 - **Tested runtime SHA:** `cae14f47e34a41d096d5cd3540bc220e99847f41`
 - **PR:** #59
-- **Merged main SHA:** pending
+- **Merged main SHA:** `7a2200825f83f9360c9c7173bdf6df93d69f36ec`
 - **Lifecycle state before verification:** VERIFIED / STAGING_READY
 - **Applicable specifications:** ICA-RSP-001; M7.1; M8; M9; M12 thresholds
 - **Tester / Agent:** ChatGPT / GitHub Actions
@@ -45,4 +45,4 @@ These are technical derivatives only; the approved artwork composition is unchan
 - **M12 canonical page registration changed:** no
 - **Exceptions used:** none
 
-The manifest update, removal of the temporary generator workflow and this verification record are governance-only deltas after the tested runtime and do not alter page rendering.
+The final PR head `ea8b8d5f2c5ffdc400460900bdd4301e29a6cdbe` reran baseline, visual and performance QA successfully. The squash-merged tree is equivalent to that verified PR content for this scope. The manifest update, removal of the temporary generator workflow and this verification record do not alter page rendering.
