@@ -72,7 +72,7 @@ function render(events){
   }).join('');
 }
 
-fetch('../../data/cronache-events.json',{cache:'no-store'})
+fetch('../../data/events.json',{cache:'no-store'})
   .then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();})
   .then(data=>{
     const events=Array.isArray(data.events)?data.events:[];
