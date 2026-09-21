@@ -1,0 +1,70 @@
+name: Adunanze visual QA
+
+on:
+  pull_request:
+    paths:
+      - 'beta/adunanze/**'
+      - 'beta/cronache/**'
+      - 'beta/index.html'
+      - 'beta/main.js'
+      - 'assets/adunanze/**'
+      - 'assets/css/ica-shared-shell.css'
+      - 'data/events.json'
+      - 'scripts/adunanze_visual_regression.mjs'
+      - '.github/workflows/adunanze-visual-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'beta/adunanze/**'
+      - 'beta/cronache/**'
+      - 'beta/index.html'
+      - 'beta/main.js'
+      - 'assets/adunanze/**'
+      - 'assets/css/ica-shared-shell.css'
+      - 'data/events.json'
+      - 'scripts/adunanze_visual_regression.mjs'
+      - '.github/workflows/adunanze-visual-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: adunanze-visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rendered-visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          echo $! > /tmp/ica-http.pid
+          sleep 2
+
+      - name: Capture and verify Adunanze
+        run: node scripts/adunanze_visual_regression.mjs
+
+      - name: Upload visual QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adunanze-visual-qa-${{ github.sha }}
+          path: artifacts/adunanze-visual/
+          if-no-files-found: error
+          retention-days: 14
