@@ -23,12 +23,13 @@ function esc(value){
   return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 }
 
-const dateFormatter=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+const mesi=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
 
 function fmtDate(value){
   if(!value)return 'Data da verificare';
-  const date=new Date(value+'T12:00:00');
-  return dateFormatter.format(date);
+  const [year,month,day]=String(value).split('-').map(Number);
+  if(!year||!month||!day||month<1||month>12)return 'Data da verificare';
+  return `${day} ${mesi[month-1]} ${year}`;
 }
 
 function place(event){
@@ -67,43 +68,46 @@ function byDateAscending(a,b){
   return (a.date||'9999-12-31').localeCompare(b.date||'9999-12-31');
 }
 
-function replaceCards(root,events){
-  if(!events.length){
-    root.replaceChildren();
-    return;
-  }
-
-  const range=document.createRange();
-  const fragment=range.createContextualFragment(events.map(card).join(''));
-  root.replaceChildren(fragment);
+function nextFrame(){
+  return new Promise(resolve=>requestAnimationFrame(()=>resolve()));
 }
 
-function render(events){
+async function appendCards(root,events){
+  root.innerHTML='';
+  for(const event of events){
+    const template=document.createElement('template');
+    template.innerHTML=card(event).trim();
+    root.append(template.content.firstElementChild);
+    await nextFrame();
+  }
+}
+
+async function render(events){
   const ongoing=events.filter(event=>event.status==='in corso').sort(byDateAscending);
   const upcoming=events.filter(event=>event.status==='futura').sort(byDateAscending);
 
   if(ongoing.length){
     ongoingSection.hidden=false;
-    replaceCards(ongoingRoot,ongoing);
+    await appendCards(ongoingRoot,ongoing);
   }else{
     ongoingSection.hidden=true;
-    ongoingRoot.replaceChildren();
+    ongoingRoot.innerHTML='';
   }
 
   if(upcoming.length){
     empty.hidden=true;
-    replaceCards(upcomingRoot,upcoming);
+    await appendCards(upcomingRoot,upcoming);
   }else{
-    upcomingRoot.replaceChildren();
+    upcomingRoot.innerHTML='';
     empty.hidden=false;
   }
 }
 
 fetch('../../../data/events.json',{cache:'no-store'})
   .then(response=>{if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();})
-  .then(data=>{
+  .then(async data=>{
     const events=Array.isArray(data.events)?data.events:[];
-    render(events);
+    await render(events);
     loading.hidden=true;
     nationalMain?.classList.remove('is-loading');
     nationalShell?.classList.remove('is-loading');
