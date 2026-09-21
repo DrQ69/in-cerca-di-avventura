@@ -35,17 +35,23 @@ try {
     await page.waitForSelector('.battlefield-panel img');
     await page.waitForSelector('.gate-international img');
     await page.waitForSelector('a.gate-national');
+    await page.waitForSelector('.gate-frame-overlay');
 
     const portal = await page.evaluate(() => {
       const imgs = [...document.querySelectorAll('.battlefield-panel img,.gate-panel img')];
       const national = document.querySelector('a.gate-national');
       const international = document.querySelector('.gate-international');
+      const gateGrid = document.querySelector('.gate-grid');
+      const gateFrame = document.querySelector('.gate-frame-overlay');
       const skip = document.querySelector('.skip-link');
       const html = document.documentElement;
       const body = document.body;
       const scrollWidth = Math.max(html.scrollWidth, body.scrollWidth);
       const nr = national?.getBoundingClientRect();
       const ir = international?.getBoundingClientRect();
+      const gr = gateGrid?.getBoundingClientRect();
+      const fr = gateFrame?.getBoundingClientRect();
+      const frameStyle = gateFrame ? getComputedStyle(gateFrame) : null;
       const sr = skip?.getBoundingClientRect();
       return {
         imageCount: imgs.length,
@@ -54,6 +60,13 @@ try {
         internationalIsLink: Boolean(international?.closest('a') || international?.querySelector('a')),
         nationalRect: nr ? { top:nr.top, left:nr.left, width:nr.width, height:nr.height } : null,
         internationalRect: ir ? { top:ir.top, left:ir.left, width:ir.width, height:ir.height } : null,
+        gateGridRect: gr ? { top:gr.top, left:gr.left, width:gr.width, height:gr.height } : null,
+        gateFrame: gateFrame ? {
+          loaded: gateFrame.complete && gateFrame.naturalWidth > 0,
+          display: frameStyle?.display || '',
+          pointerEvents: frameStyle?.pointerEvents || '',
+          rect: fr ? { top:fr.top, left:fr.left, width:fr.width, height:fr.height } : null,
+        } : null,
         skipConcealed: skip ? (getComputedStyle(skip).clipPath !== 'none' || getComputedStyle(skip).clip !== 'auto') : false,
         overflow: {
           horizontal: scrollWidth > window.innerWidth + 2,
@@ -92,7 +105,18 @@ try {
     if (!skipFocus.active || skipFocus.clipPath !== 'none' || skipFocus.width < 44 || skipFocus.height < 30) {
       throw new Error(`${viewport.name}: skip link does not become visibly focusable`);
     }
-    if (!portal.nationalRect || !portal.internationalRect) throw new Error(`${viewport.name}: gate geometry unavailable`);
+    if (!portal.nationalRect || !portal.internationalRect || !portal.gateGridRect || !portal.gateFrame) throw new Error(`${viewport.name}: gate geometry/frame unavailable`);
+    if (!portal.gateFrame.loaded) throw new Error(`${viewport.name}: decorative gate frame failed to load`);
+    if (portal.gateFrame.pointerEvents !== 'none' && viewport.width >= 768) throw new Error(`${viewport.name}: decorative gate frame must not intercept pointer input`);
+    if (viewport.width < 768 && portal.gateFrame.display !== 'none') throw new Error(`${viewport.name}: combined gate frame must be hidden on stacked mobile layout`);
+    if (viewport.width >= 768) {
+      if (portal.gateFrame.display === 'none') throw new Error(`${viewport.name}: combined gate frame must be visible on paired layout`);
+      const f = portal.gateFrame.rect;
+      const g = portal.gateGridRect;
+      if (!f || Math.abs(f.width-g.width) > 2 || Math.abs(f.height-g.height) > 2 || Math.abs(f.left-g.left) > 2 || Math.abs(f.top-g.top) > 2) {
+        throw new Error(`${viewport.name}: decorative gate frame must cover the complete gate grid`);
+      }
+    }
     if (viewport.width < 768 && portal.nationalRect.top >= portal.internationalRect.top) {
       throw new Error(`${viewport.name}: National gate must precede International on mobile`);
     }
