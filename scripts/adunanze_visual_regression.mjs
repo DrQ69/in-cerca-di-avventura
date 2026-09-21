@@ -35,7 +35,7 @@ try {
     await page.waitForSelector('.battlefield-panel img');
     await page.waitForSelector('.gate-international img');
     await page.waitForSelector('a.gate-national');
-    await page.waitForSelector('.gate-frame-overlay');
+    await page.waitForSelector('.gate-frame-overlay', { state: 'attached' });
 
     const portal = await page.evaluate(() => {
       const imgs = [...document.querySelectorAll('.battlefield-panel img,.gate-panel img')];
