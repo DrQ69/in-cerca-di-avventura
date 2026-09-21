@@ -1,0 +1,167 @@
+.national-shell{background:#080b0e}
+.national-hero{
+  min-height:300px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:88px 20px 52px;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 18%,rgba(55,100,130,.30),transparent 32%),
+    linear-gradient(180deg,#111c26,#0b1219 58%,#090c0f);
+  position:relative;
+  overflow:hidden;
+}
+.national-hero::after{
+  content:"";
+  position:absolute;
+  left:12%;right:12%;bottom:24px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-500),transparent);
+}
+.national-kicker{
+  margin:0 0 10px;
+  color:#bfa46b;
+  font:600 .72rem Cinzel,serif;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+.national-hero h1{
+  margin:0;
+  color:var(--gold-300);
+  font:800 clamp(2.8rem,7vw,5.2rem) Cinzel Decorative,serif;
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  text-shadow:0 3px #3f2910,0 10px 28px #000;
+}
+.national-subtitle{
+  margin:14px 0 0;
+  color:#d1c5ad;
+  font:600 clamp(.8rem,1.6vw,1rem) Cinzel,serif;
+  letter-spacing:.06em;
+}
+.national-main{padding:40px 16px 80px}
+.system-state,.empty-state{
+  max-width:1180px;
+  margin:0 auto 28px;
+  padding:18px;
+  border:1px solid var(--line-soft);
+  background:rgba(14,18,21,.55);
+  color:#b8b0a0;
+  text-align:center;
+}
+.system-error{color:#e8c5b8}
+.event-group{max-width:1180px;margin:0 auto 72px}
+.group-heading{text-align:center;margin-bottom:24px}
+.group-heading p{
+  margin:0 0 5px;
+  color:#8f8676;
+  font:600 .66rem Cinzel,serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.group-heading h2{
+  margin:0;
+  color:var(--gold-300);
+  font:700 clamp(1.65rem,4vw,2.45rem) Cinzel,serif;
+  letter-spacing:.08em;
+}
+.event-list{display:grid;gap:18px}
+.adunanza-card{
+  position:relative;
+  display:grid;
+  gap:16px;
+  padding:22px;
+  border:1px solid #5c431d;
+  background:linear-gradient(90deg,#b5a37f,#eee5d0 10%,#eee5d0 90%,#b4a17c);
+  color:#2e281f;
+  box-shadow:inset 0 0 28px rgba(74,49,16,.12),0 12px 24px rgba(0,0,0,.25);
+}
+.adunanza-card::before{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border:1px solid rgba(94,69,33,.28);
+  pointer-events:none;
+}
+.adunanza-card[data-status="in corso"]::after,
+.adunanza-card[data-status="futura"]::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:4px;
+}
+.adunanza-card[data-status="in corso"]::after{background:linear-gradient(90deg,#372612,#c57932,#efcb72,#c57932,#372612)}
+.adunanza-card[data-status="futura"]::after{background:linear-gradient(90deg,#1d3040,#5d8fab,#b5d5e4,#5d8fab,#1d3040)}
+.card-head,.card-body{position:relative;z-index:1}
+.card-status{
+  display:inline-block;
+  margin-bottom:7px;
+  color:#705a33;
+  font:800 .62rem Cinzel,serif;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.card-head h3{
+  margin:0;
+  color:#302719;
+  font:700 clamp(1.12rem,2.8vw,1.55rem) Cinzel,serif;
+}
+.card-series{
+  margin:5px 0 0;
+  color:#49606d;
+  font:600 .7rem Cinzel,serif;
+}
+.card-body{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px 18px;
+}
+.fact{min-width:0}
+.fact span{
+  display:block;
+  color:#78623d;
+  font:700 .58rem Cinzel,serif;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.fact strong{
+  display:block;
+  margin-top:3px;
+  color:#2d281f;
+  font:600 .82rem Inter,sans-serif;
+  line-height:1.4;
+}
+.card-action{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  min-height:44px;
+  width:max-content;
+  max-width:100%;
+  color:#684b20;
+  font:700 .68rem Cinzel,serif;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  text-decoration:none;
+}
+.card-action:hover,.card-action:focus-visible{text-decoration:underline;text-underline-offset:4px}
+@media(min-width:768px){
+  .national-main{padding-inline:24px}
+  .adunanza-card{
+    grid-template-columns:minmax(220px,.95fr) minmax(0,1.65fr) auto;
+    align-items:center;
+    gap:24px;
+    padding:24px 28px;
+  }
+  .card-body{grid-template-columns:repeat(3,minmax(120px,1fr))}
+}
+@media(min-width:1024px){
+  .national-hero{min-height:372px;padding-top:126px}
+  .national-main{padding:52px 32px 96px}
+}
+@media(min-width:1536px){
+  .national-main{padding-inline:40px}
+}

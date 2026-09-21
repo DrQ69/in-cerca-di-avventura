@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "In Cerca di Avventura",
   "document_id": "ICA-ASSET-MANIFEST-001",
-  "updated_at": "2026-09-14",
+  "updated_at": "2026-09-21",
   "authority": "docs/ICA_CANONICAL_SPEC.md",
   "specialist_spec": "docs/ASSET_SPECIFICATION.md",
   "notes": [
@@ -311,6 +311,120 @@
         "Default/hover/active/focus states must not change layout footprint.",
         "Prefer CSS/material treatment before adding bitmap state assets.",
         "Interactive hit area is defined by HTML/CSS, not image transparency."
+      ]
+    },
+    {
+      "id": "MED-ADU-01-BATTLEFIELD",
+      "component": "MED-ADU-01",
+      "path": "assets/adunanze/adunanze-battlefield.webp",
+      "planned_path": null,
+      "role": "Adunanze portal battlefield panorama",
+      "category": "background",
+      "format": "webp",
+      "dimensions": {
+        "width": 1916,
+        "height": 821
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true,
+        "dedicated_mobile_derivative_required": "to-be-validated"
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "Atmospheric portal artwork; functional meaning must remain available in HTML."
+      },
+      "source": {
+        "type": "project-original-ai-assisted",
+        "creator": "Product Owner directed / AI-assisted",
+        "licence_or_permission": "to-be-confirmed",
+        "generation_method": "OpenAI image generation, Product Owner selection, WebP optimisation"
+      },
+      "budget": "desktop-hero",
+      "constraints": [
+        "Do not regenerate or materially alter without Product Owner decision.",
+        "Preserve focal composition; create derivatives only when responsive/performance evidence justifies them."
+      ]
+    },
+    {
+      "id": "MED-ADU-02-GATE-INTERNATIONAL",
+      "component": "MED-ADU-02",
+      "path": "assets/adunanze/adunanze-gate-international.webp",
+      "planned_path": null,
+      "role": "Adunanze portal International gate artwork — Oltre i Confini Noti",
+      "category": "content-art",
+      "format": "webp",
+      "dimensions": {
+        "width": 1122,
+        "height": 1402
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true,
+        "dedicated_mobile_derivative_required": "to-be-validated"
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "Section name and unavailable/in-development state must be expressed in HTML; do not rely on raster text alone."
+      },
+      "source": {
+        "type": "project-original-ai-assisted",
+        "creator": "Product Owner directed / AI-assisted",
+        "licence_or_permission": "to-be-confirmed",
+        "generation_method": "OpenAI image generation, Product Owner selection, WebP optimisation"
+      },
+      "budget": "section-banner",
+      "constraints": [
+        "International remains unavailable until explicitly activated.",
+        "Do not present the artwork as an active link while the section is in development."
+      ]
+    },
+    {
+      "id": "MED-ADU-03-GATE-NATIONAL",
+      "component": "MED-ADU-03",
+      "path": "assets/adunanze/adunanze-gate-national.webp",
+      "planned_path": null,
+      "role": "Adunanze portal National gate artwork — Il Regno di Cremos",
+      "category": "content-art",
+      "format": "webp",
+      "dimensions": {
+        "width": 1122,
+        "height": 1402
+      },
+      "exists": true,
+      "status": "candidate",
+      "version": "0.9",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true,
+        "dedicated_mobile_derivative_required": "to-be-validated"
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "The enclosing HTML link owns the accessible action name; raster text is not the sole functional label."
+      },
+      "source": {
+        "type": "project-original-ai-assisted",
+        "creator": "Product Owner directed / AI-assisted",
+        "licence_or_permission": "to-be-confirmed",
+        "generation_method": "OpenAI image generation, Product Owner selection, WebP optimisation"
+      },
+      "budget": "section-banner",
+      "constraints": [
+        "Do not regenerate or materially alter without Product Owner decision.",
+        "The full gate area may act as the National navigation target."
       ]
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "schema_version": "0.2",
-  "generated_for": "Cronache M75 functional beta",
+  "schema_version": "1.0",
+  "generated_for": "ICA shared event source — Home / Adunanze / Cronache",
   "events": [
     {
       "event_id": "giostra-001",
@@ -49,7 +49,10 @@
       "winner_display_name": "Niccolò C",
       "winner_rank": 1,
       "dropped_count": 2,
-      "dropped_display_names": ["Rohit", "Matteo Z"],
+      "dropped_display_names": [
+        "Rohit",
+        "Matteo Z"
+      ],
       "official_results_url": "https://sorcerytcg.com/events/cmtjasbs500090ajbrs2tytxq",
       "source_note": "Official result export supplied by Product Owner, combined with PO-confirmed Blaze of Glory schedule and classification.",
       "truth_status": "verified"

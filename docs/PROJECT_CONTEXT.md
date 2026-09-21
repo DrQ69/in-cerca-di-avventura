@@ -73,6 +73,21 @@ Operational assets now include:
 - `qa/technical-baseline.json`
 - `scripts/technical_baseline.py`
 
+## Adunanze consolidation status — 2026-09-21
+
+The Product Owner has approved the current Adunanze access architecture for the beta implementation:
+
+- `/beta/adunanze/` is the portal;
+- International remains unavailable/in development;
+- National is the active branch;
+- `/beta/adunanze/nazionale/` is the operational view for ongoing/future events;
+- `/beta/cronache/` is the historical view for completed events;
+- Home, National and Cronache are being consolidated onto a shared `data/events.json` source.
+
+The three portal artworks under `assets/adunanze/` are selected production candidates, not formally APPROVED assets yet.
+
+This consolidation is implementation work inside the broader canonical programme; it does not by itself mark the beta pages PRODUCTION_READY or M12 canonical.
+
 ## Current known gaps
 
 1. The legacy homepage does not yet implement the canonical primary navigation: Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.

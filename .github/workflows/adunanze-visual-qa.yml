@@ -1,28 +1,36 @@
-name: Cronache visual QA
+name: Adunanze visual QA
 
 on:
   pull_request:
     paths:
+      - 'beta/adunanze/**'
       - 'beta/cronache/**'
-      - 'assets/ui/cronache/**'
+      - 'beta/index.html'
+      - 'beta/main.js'
+      - 'assets/adunanze/**'
+      - 'assets/css/ica-shared-shell.css'
       - 'data/events.json'
-      - 'scripts/cronache_visual_regression.mjs'
-      - '.github/workflows/cronache-visual-qa.yml'
+      - 'scripts/adunanze_visual_regression.mjs'
+      - '.github/workflows/adunanze-visual-qa.yml'
   push:
     branches:
       - main
     paths:
+      - 'beta/adunanze/**'
       - 'beta/cronache/**'
-      - 'assets/ui/cronache/**'
+      - 'beta/index.html'
+      - 'beta/main.js'
+      - 'assets/adunanze/**'
+      - 'assets/css/ica-shared-shell.css'
       - 'data/events.json'
-      - 'scripts/cronache_visual_regression.mjs'
-      - '.github/workflows/cronache-visual-qa.yml'
+      - 'scripts/adunanze_visual_regression.mjs'
+      - '.github/workflows/adunanze-visual-qa.yml'
 
 permissions:
   contents: read
 
 concurrency:
-  group: cronache-visual-${{ github.workflow }}-${{ github.ref }}
+  group: adunanze-visual-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -49,14 +57,14 @@ jobs:
           echo $! > /tmp/ica-http.pid
           sleep 2
 
-      - name: Capture Cronache at target widths
-        run: node scripts/cronache_visual_regression.mjs
+      - name: Capture and verify Adunanze
+        run: node scripts/adunanze_visual_regression.mjs
 
       - name: Upload visual QA artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cronache-visual-qa-${{ github.sha }}
-          path: artifacts/cronache-visual/
+          name: adunanze-visual-qa-${{ github.sha }}
+          path: artifacts/adunanze-visual/
           if-no-files-found: error
           retention-days: 14

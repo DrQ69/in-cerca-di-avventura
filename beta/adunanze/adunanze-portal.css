@@ -1,89 +1,37 @@
-/* ADU-01 — Adunanze visual portal
-   Phase 1 is intentionally image-led: shared Cronache navigation, battlefield
-   panorama, then the International and National gates. No overlay copy, CTA,
-   hover state or door interaction is introduced in this pass. */
-
-html,
-body{
-  background:#030608;
-}
-
-.adunanze-shell{
-  min-height:100vh;
-  background:#05080b!important;
-}
-
-.adunanze-main{
-  position:relative;
-  z-index:1;
-  background:#05080b;
-}
-
-.battlefield-panel,
-.gate-panel{
-  position:relative;
-  overflow:hidden;
-  background:#050709;
-}
-
+html,body{background:#030608}
+.adunanze-shell{background:#05080b}
+.adunanze-main{position:relative;z-index:1;background:#05080b}
+.battlefield-panel,.gate-panel{position:relative;overflow:hidden;background:#050709}
 .battlefield-panel{
   width:100%;
   aspect-ratio:1916 / 821;
   border-bottom:1px solid rgba(181,140,76,.48);
-  box-shadow:
-    inset 0 -1px 0 rgba(232,205,139,.08),
-    0 10px 28px rgba(0,0,0,.34);
+  box-shadow:inset 0 -1px 0 rgba(232,205,139,.08),0 10px 28px rgba(0,0,0,.34);
 }
-
-.battlefield-panel img,
-.gate-panel img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
+.battlefield-panel img,.gate-panel img{display:block;width:100%;height:100%;object-fit:cover}
 .gate-grid{
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:1px;
+  grid-template-columns:1fr;
   width:100%;
+  gap:1px;
   background:rgba(181,140,76,.42);
   border-bottom:1px solid rgba(181,140,76,.42);
 }
-
 .gate-panel{
+  display:block;
+  width:100%;
   aspect-ratio:1122 / 1402;
+  text-decoration:none;
+  border:0;
 }
-
-.gate-panel img{
-  object-position:center center;
+.gate-panel img{object-position:center center}
+.gate-national{cursor:pointer}
+.gate-national:focus-visible{
+  outline:3px solid #9bd7f4;
+  outline-offset:-6px;
+  box-shadow:inset 0 0 0 8px rgba(8,20,29,.74);
 }
-
-/* Keep the shared navigation visually identical to Cronache while the portal
-   imagery begins immediately below it. */
-@media(min-width:1081px){
-  .adunanze-main{
-    padding-top:0;
-  }
+@media(min-width:768px){
+  .gate-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
-
-@media(max-width:1080px){
-  .battlefield-panel{
-    aspect-ratio:1916 / 821;
-  }
-}
-
-@media(max-width:700px){
-  .gate-grid{
-    grid-template-columns:1fr;
-  }
-
-  .gate-panel{
-    width:100%;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
