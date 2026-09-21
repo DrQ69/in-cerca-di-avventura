@@ -12,6 +12,9 @@ html,body{background:#030608}
 .gate-grid{
   display:grid;
   grid-template-columns:1fr;
+  grid-template-areas:
+    "national"
+    "international";
   width:100%;
   gap:1px;
   background:rgba(181,140,76,.42);
@@ -25,13 +28,17 @@ html,body{background:#030608}
   border:0;
 }
 .gate-panel img{object-position:center center}
-.gate-national{cursor:pointer}
+.gate-national{grid-area:national;cursor:pointer}
+.gate-international{grid-area:international}
 .gate-national:focus-visible{
   outline:3px solid #9bd7f4;
   outline-offset:-6px;
   box-shadow:inset 0 0 0 8px rgba(8,20,29,.74);
 }
 @media(min-width:768px){
-  .gate-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .gate-grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:"international national";
+  }
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
