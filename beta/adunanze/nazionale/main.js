@@ -67,20 +67,35 @@ function byDateAscending(a,b){
   return (a.date||'9999-12-31').localeCompare(b.date||'9999-12-31');
 }
 
-function render(events){
+function nextFrame(){
+  return new Promise(resolve=>requestAnimationFrame(()=>resolve()));
+}
+
+async function appendCards(root,events){
+  root.innerHTML='';
+  for(const event of events){
+    const template=document.createElement('template');
+    template.innerHTML=card(event).trim();
+    root.append(template.content.firstElementChild);
+    await nextFrame();
+  }
+}
+
+async function render(events){
   const ongoing=events.filter(event=>event.status==='in corso').sort(byDateAscending);
   const upcoming=events.filter(event=>event.status==='futura').sort(byDateAscending);
 
   if(ongoing.length){
-    ongoingRoot.innerHTML=ongoing.map(card).join('');
     ongoingSection.hidden=false;
+    await appendCards(ongoingRoot,ongoing);
   }else{
     ongoingSection.hidden=true;
+    ongoingRoot.innerHTML='';
   }
 
   if(upcoming.length){
-    upcomingRoot.innerHTML=upcoming.map(card).join('');
     empty.hidden=true;
+    await appendCards(upcomingRoot,upcoming);
   }else{
     upcomingRoot.innerHTML='';
     empty.hidden=false;
@@ -89,9 +104,9 @@ function render(events){
 
 fetch('../../../data/events.json',{cache:'no-store'})
   .then(response=>{if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();})
-  .then(data=>{
+  .then(async data=>{
     const events=Array.isArray(data.events)?data.events:[];
-    render(events);
+    await render(events);
     loading.hidden=true;
     nationalMain?.classList.remove('is-loading');
     nationalShell?.classList.remove('is-loading');
