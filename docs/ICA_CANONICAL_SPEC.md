@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-CANON-001  
 **Status:** Canonical  
-**Version:** 1.1  
+**Version:** 1.2  
 **Purpose:** single source of truth for product, content, design, asset and implementation decisions.
 
 > If another repository document, prototype, screenshot, generated image, placeholder, previous asset kit or AI conversation conflicts with this file, this file wins unless the Product Owner explicitly approves a newer decision and this file is updated.
