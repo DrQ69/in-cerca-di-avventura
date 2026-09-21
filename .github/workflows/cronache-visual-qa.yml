@@ -5,7 +5,7 @@ on:
     paths:
       - 'beta/cronache/**'
       - 'assets/ui/cronache/**'
-      - 'data/cronache-events.json'
+      - 'data/events.json'
       - 'scripts/cronache_visual_regression.mjs'
       - '.github/workflows/cronache-visual-qa.yml'
   push:
@@ -14,7 +14,7 @@ on:
     paths:
       - 'beta/cronache/**'
       - 'assets/ui/cronache/**'
-      - 'data/cronache-events.json'
+      - 'data/events.json'
       - 'scripts/cronache_visual_regression.mjs'
       - '.github/workflows/cronache-visual-qa.yml'
 
