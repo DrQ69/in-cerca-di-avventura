@@ -40,14 +40,21 @@ try {
       const imgs = [...document.querySelectorAll('.battlefield-panel img,.gate-panel img')];
       const national = document.querySelector('a.gate-national');
       const international = document.querySelector('.gate-international');
+      const skip = document.querySelector('.skip-link');
       const html = document.documentElement;
       const body = document.body;
       const scrollWidth = Math.max(html.scrollWidth, body.scrollWidth);
+      const nr = national?.getBoundingClientRect();
+      const ir = international?.getBoundingClientRect();
+      const sr = skip?.getBoundingClientRect();
       return {
         imageCount: imgs.length,
         imagesLoaded: imgs.every(img => img instanceof HTMLImageElement && img.complete && img.naturalWidth > 0),
         nationalHref: national?.getAttribute('href') || '',
         internationalIsLink: Boolean(international?.closest('a') || international?.querySelector('a')),
+        nationalRect: nr ? { top:nr.top, left:nr.left, width:nr.width, height:nr.height } : null,
+        internationalRect: ir ? { top:ir.top, left:ir.left, width:ir.width, height:ir.height } : null,
+        skipVisible: sr ? sr.bottom > 0 && sr.top < window.innerHeight && sr.right > 0 && sr.left < window.innerWidth : false,
         overflow: {
           horizontal: scrollWidth > window.innerWidth + 2,
           scrollWidth,
@@ -69,6 +76,14 @@ try {
     if (portal.imageCount !== 3 || !portal.imagesLoaded) throw new Error(`${viewport.name}: portal images missing/not loaded`);
     if (!portal.nationalHref.endsWith('/nazionale/')) throw new Error(`${viewport.name}: national gate href is incorrect: ${portal.nationalHref}`);
     if (portal.internationalIsLink) throw new Error(`${viewport.name}: International gate must not be active`);
+    if (portal.skipVisible) throw new Error(`${viewport.name}: skip link is visible without focus`);
+    if (!portal.nationalRect || !portal.internationalRect) throw new Error(`${viewport.name}: gate geometry unavailable`);
+    if (viewport.width < 768 && portal.nationalRect.top >= portal.internationalRect.top) {
+      throw new Error(`${viewport.name}: National gate must precede International on mobile`);
+    }
+    if (viewport.width >= 768 && portal.internationalRect.left >= portal.nationalRect.left) {
+      throw new Error(`${viewport.name}: International must remain left of National on tablet/desktop`);
+    }
     if (!focus.active || focus.outlineStyle === 'none' || focus.outlineWidth === '0px') throw new Error(`${viewport.name}: national gate focus is not visibly testable`);
     if (portal.overflow.horizontal) throw new Error(`${viewport.name}: portal horizontal overflow`);
 
