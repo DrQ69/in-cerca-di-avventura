@@ -114,6 +114,33 @@ Primary navigation:
 
 The ICA emblem/logo links to Home.
 
+### Adunanze access layer — Product Owner decision 2026-09-21
+
+The current beta/product implementation uses **Le Adunanze** as the public access portal for the event domain. This is an explicitly approved access layer and must not be removed merely because the broader canonical taxonomy also uses **Imprese** for persistent Event entities.
+
+The portal route is:
+
+- `/beta/adunanze/`
+
+Its approved visual hierarchy is:
+
+1. shared ICA navigation;
+2. battlefield panorama;
+3. International gate on the left;
+4. National gate on the right.
+
+The two branches are:
+
+- **Internazionale — Oltre i Confini Noti:** future area, not yet available;
+- **Nazionale — Il Regno di Cremos:** active access to Italian events.
+
+Current functional separation:
+
+- **Adunanze Nazionale** = events that are ongoing or scheduled for the future;
+- **Cronache** = factual memory of completed events.
+
+Both views derive from the same EVENT source of truth; records must not be manually duplicated between them.
+
 Institutional/legal content belongs in secondary navigation/footer unless there is a specific reason otherwise.
 
 ### Home
@@ -159,7 +186,20 @@ An Avventuriero profile may aggregate results, events, decks, achievements, chro
 
 ### Cronache
 
-Cronache are editorial/narrative content and should link bidirectionally to relevant entities when useful.
+For the current implementation phase, Cronache are the factual historical view of **completed events**.
+
+The first public record format is intentionally concise and may contain only:
+
+- event title as record identifier;
+- place;
+- date;
+- winner;
+- number of players;
+- winner deck link when available.
+
+Future editorial or narrative Cronache may be associated with these facts, but narrative content is not required for the current archive and must never replace or alter the verified event record.
+
+Cronache must not display future or ongoing events.
 
 ### Il Reame
 
