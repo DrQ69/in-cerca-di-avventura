@@ -12,7 +12,7 @@
   --frame-shadow:0 24px 70px rgba(0,0,0,.58);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
 body{margin:0;background:#050709;color:var(--ivory);font-family:Inter,system-ui,sans-serif;line-height:1.45}
 a{color:inherit}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
