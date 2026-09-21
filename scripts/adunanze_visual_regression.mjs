@@ -155,15 +155,21 @@ try {
     const data = await response.json();
     const now = new Date();
     const key = [now.getFullYear(), String(now.getMonth()+1).padStart(2,'0'), String(now.getDate()).padStart(2,'0')].join('-');
-    const expected = (data.events || [])
+    const events = data.events || [];
+    const staleFuture = events.filter(event => event.status === 'futura' && event.date && event.date <= key);
+    const expected = events
       .filter(event => event.status === 'futura' && event.date && event.date > key)
       .sort((a,b) => a.date.localeCompare(b.date))[0] || null;
     return {
       rendered: document.querySelector('#next-event-card')?.getAttribute('data-event-id') || null,
       expected: expected?.event_id || null,
+      staleFuture: staleFuture.map(event => ({ event_id:event.event_id, date:event.date })),
     };
   });
 
+  if (homeResult.staleFuture.length) {
+    throw new Error(`Shared event data contains past dates still marked futura: ${JSON.stringify(homeResult.staleFuture)}`);
+  }
   if (homeResult.rendered !== homeResult.expected) {
     throw new Error(`Homepage next event mismatch: rendered=${homeResult.rendered} expected=${homeResult.expected}`);
   }
