@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Canonical public player registry for Avventurieri. Profiles are nickname-based only; previous imported display-name seed lists are superseded and must not be used.",
+  "source_of_truth": "Product Owner supplied nickname list",
+  "updated_at": "2026-09-21",
+  "players": [
+    {
+      "id": "PLY-0001",
+      "slug": "nick-the-wizard",
+      "nickname": "Nick the Wizard"
+    },
+    {
+      "id": "PLY-0002",
+      "slug": "dr-q",
+      "nickname": "Dr. Q"
+    },
+    {
+      "id": "PLY-0003",
+      "slug": "metalgrave",
+      "nickname": "Metalgrave"
+    },
+    {
+      "id": "PLY-0004",
+      "slug": "dragonlord",
+      "nickname": "Dragonlord"
+    },
+    {
+      "id": "PLY-0005",
+      "slug": "dagon",
+      "nickname": "Dagon"
+    },
+    {
+      "id": "PLY-0006",
+      "slug": "the-northman",
+      "nickname": "The Northman 🔪"
+    },
+    {
+      "id": "PLY-0007",
+      "slug": "demigod",
+      "nickname": "Demigod"
+    },
+    {
+      "id": "PLY-0008",
+      "slug": "ilpresidente",
+      "nickname": "IlPresidente"
+    },
+    {
+      "id": "PLY-0009",
+      "slug": "sazerac",
+      "nickname": "Sazerac"
+    },
+    {
+      "id": "PLY-0010",
+      "slug": "curjo",
+      "nickname": "Curjo"
+    },
+    {
+      "id": "PLY-0011",
+      "slug": "luiginico",
+      "nickname": "Luiginico"
+    },
+    {
+      "id": "PLY-0012",
+      "slug": "achamoh",
+      "nickname": "AchaMoh"
+    },
+    {
+      "id": "PLY-0013",
+      "slug": "urge-the-void",
+      "nickname": "Urge the Void"
+    },
+    {
+      "id": "PLY-0014",
+      "slug": "bbrn",
+      "nickname": "BBRN"
+    },
+    {
+      "id": "PLY-0015",
+      "slug": "sorcerymeth",
+      "nickname": "SorceryMeth"
+    },
+    {
+      "id": "PLY-0016",
+      "slug": "jokerquinn",
+      "nickname": "JokerQuinn"
+    },
+    {
+      "id": "PLY-0017",
+      "slug": "mikininja",
+      "nickname": "Mikininja"
+    },
+    {
+      "id": "PLY-0018",
+      "slug": "sir-bes",
+      "nickname": "Sir Bes"
+    },
+    {
+      "id": "PLY-0019",
+      "slug": "roccoddio",
+      "nickname": "ROCCODDIO"
+    },
+    {
+      "id": "PLY-0020",
+      "slug": "freddy097",
+      "nickname": "Freddy097"
+    },
+    {
+      "id": "PLY-0021",
+      "slug": "terronator",
+      "nickname": "TERRONATOR"
+    },
+    {
+      "id": "PLY-0022",
+      "slug": "limitbreaker",
+      "nickname": "Limitbreaker"
+    },
+    {
+      "id": "PLY-0023",
+      "slug": "fredinvader",
+      "nickname": "FredInvader"
+    },
+    {
+      "id": "PLY-0024",
+      "slug": "siummir",
+      "nickname": "Siummir"
+    },
+    {
+      "id": "PLY-0025",
+      "slug": "sir-pinola",
+      "nickname": "Sir Pinola"
+    },
+    {
+      "id": "PLY-0026",
+      "slug": "stormbringer",
+      "nickname": "Stormbringer"
+    },
+    {
+      "id": "PLY-0027",
+      "slug": "ashashin",
+      "nickname": "Ashashin"
+    },
+    {
+      "id": "PLY-0028",
+      "slug": "losfondaculi",
+      "nickname": "LoSfondaCuli"
+    },
+    {
+      "id": "PLY-0029",
+      "slug": "xathirid",
+      "nickname": "Xathirid"
+    },
+    {
+      "id": "PLY-0030",
+      "slug": "loca",
+      "nickname": "Loca"
+    },
+    {
+      "id": "PLY-0031",
+      "slug": "daniele-carlo-giuseppe-s",
+      "nickname": "Daniele Carlo Giuseppe S"
+    },
+    {
+      "id": "PLY-0032",
+      "slug": "andrea-p",
+      "nickname": "Andrea P"
+    }
+  ]
+}
