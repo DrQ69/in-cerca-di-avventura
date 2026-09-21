@@ -56,3 +56,5 @@ if (failed) {
   console.error('Adunanze Lighthouse gate failed one or more M12 performance thresholds.');
   process.exit(1);
 }
+
+// VR-0010 final verification trigger.
