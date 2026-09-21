@@ -54,12 +54,24 @@ try {
         internationalIsLink: Boolean(international?.closest('a') || international?.querySelector('a')),
         nationalRect: nr ? { top:nr.top, left:nr.left, width:nr.width, height:nr.height } : null,
         internationalRect: ir ? { top:ir.top, left:ir.left, width:ir.width, height:ir.height } : null,
-        skipVisible: sr ? sr.bottom > 0 && sr.top < window.innerHeight && sr.right > 0 && sr.left < window.innerWidth : false,
+        skipConcealed: skip ? (getComputedStyle(skip).clipPath !== 'none' || getComputedStyle(skip).clip !== 'auto') : false,
         overflow: {
           horizontal: scrollWidth > window.innerWidth + 2,
           scrollWidth,
           viewportWidth: window.innerWidth,
         },
+      };
+    });
+
+    const skipFocus = await page.locator('.skip-link').evaluate(el => {
+      el.focus();
+      const style = getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      return {
+        active: document.activeElement === el,
+        clipPath: style.clipPath,
+        width: rect.width,
+        height: rect.height,
       };
     });
 
@@ -76,7 +88,10 @@ try {
     if (portal.imageCount !== 3 || !portal.imagesLoaded) throw new Error(`${viewport.name}: portal images missing/not loaded`);
     if (!portal.nationalHref.endsWith('/nazionale/')) throw new Error(`${viewport.name}: national gate href is incorrect: ${portal.nationalHref}`);
     if (portal.internationalIsLink) throw new Error(`${viewport.name}: International gate must not be active`);
-    if (portal.skipVisible) throw new Error(`${viewport.name}: skip link is visible without focus`);
+    if (!portal.skipConcealed) throw new Error(`${viewport.name}: skip link is not concealed outside focus`);
+    if (!skipFocus.active || skipFocus.clipPath !== 'none' || skipFocus.width < 44 || skipFocus.height < 30) {
+      throw new Error(`${viewport.name}: skip link does not become visibly focusable`);
+    }
     if (!portal.nationalRect || !portal.internationalRect) throw new Error(`${viewport.name}: gate geometry unavailable`);
     if (viewport.width < 768 && portal.nationalRect.top >= portal.internationalRect.top) {
       throw new Error(`${viewport.name}: National gate must precede International on mobile`);
@@ -135,7 +150,7 @@ try {
 
     await fs.writeFile(
       `${outDir}/${viewport.name}.json`,
-      JSON.stringify({ viewport, portal, focus, national, consoleErrors }, null, 2),
+      JSON.stringify({ viewport, portal, skipFocus, focus, national, consoleErrors }, null, 2),
       'utf8'
     );
 
