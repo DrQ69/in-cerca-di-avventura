@@ -21,7 +21,8 @@
   <link rel="icon" href="../../../assets/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="../../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="adunanze-nazionale.css">
 </head>
@@ -60,7 +61,7 @@
       </div>
     </section>
 
-    <div class="national-main">
+    <div class="national-main is-loading" id="national-main">
       <p id="loading" class="system-state" aria-live="polite">Consultazione delle Adunanze…</p>
       <p id="error" class="system-state system-error" hidden aria-live="assertive">Le Adunanze non sono disponibili in questo momento.</p>
 
