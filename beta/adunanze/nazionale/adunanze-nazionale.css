@@ -97,6 +97,8 @@
 .event-list{display:grid;gap:18px}
 .adunanza-card{
   position:relative;
+  content-visibility:auto;
+  contain-intrinsic-size:auto 220px;
   display:grid;
   gap:16px;
   padding:22px;
