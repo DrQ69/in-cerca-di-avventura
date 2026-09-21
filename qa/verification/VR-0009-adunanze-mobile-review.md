@@ -8,7 +8,8 @@
 - **Version label:** visual review follow-up 1
 - **Tested runtime SHA:** `bfac6dad2b89bde82f15da8ee12f5f0c56d8a9c3`
 - **PR:** #58
-- **Merged main SHA:** pending
+- **Merged main SHA:** `4bedcc0eb247d88da84c6fcb524a990cd328922b`
+- **Tested-head vs merged-tree/content equivalence confirmed:** yes
 - **Lifecycle state before verification:** IMPLEMENTED
 - **Requested target state:** VERIFIED
 - **Release readiness target:** STAGING_READY
@@ -58,7 +59,7 @@ No exception is used.
 - Cronache data rendering unchanged.
 - Shared navigation visuals unchanged except skip-link accessibility treatment.
 
-The runtime tested SHA differs from the final PR head only if this Verification Record itself is added after the test. That documentation-only delta does not alter runtime output.
+The final PR head reran both baseline and Adunanze visual QA successfully. The squash-merged tree is equivalent to the verified PR content for this scope.
 
 ## Outcome
 
