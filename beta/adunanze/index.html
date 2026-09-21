@@ -21,7 +21,8 @@
   <link rel="icon" href="../../assets/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="adunanze-portal.css">
 </head>
@@ -55,36 +56,45 @@
     <h1 class="sr-only">Adunanze</h1>
 
     <section class="battlefield-panel" aria-label="Campo di battaglia">
-      <img
-        src="../../assets/adunanze/adunanze-battlefield.webp"
-        width="1916"
-        height="821"
-        alt=""
-        fetchpriority="high"
-        decoding="async">
+      <picture>
+        <source media="(max-width: 767px)" srcset="../../assets/adunanze/adunanze-battlefield-512.webp">
+        <img
+          src="../../assets/adunanze/adunanze-battlefield.webp"
+          width="1916"
+          height="821"
+          alt=""
+          fetchpriority="high"
+          decoding="async">
+      </picture>
     </section>
 
     <section class="gate-grid" aria-label="Accessi alle Adunanze">
       <a class="gate-panel gate-national" href="./nazionale/" aria-label="Entra nelle Adunanze Nazionali — Il Regno di Cremos">
-        <img
-          src="../../assets/adunanze/adunanze-gate-national.webp"
-          width="1122"
-          height="1402"
-          alt=""
-          loading="lazy"
-          decoding="async">
+        <picture>
+          <source media="(max-width: 767px)" srcset="../../assets/adunanze/adunanze-gate-national-512.webp">
+          <img
+            src="../../assets/adunanze/adunanze-gate-national.webp"
+            width="1122"
+            height="1402"
+            alt=""
+            loading="lazy"
+            decoding="async">
+        </picture>
       </a>
 
       <article class="gate-panel gate-international" aria-labelledby="international-title" aria-describedby="international-status">
         <h2 id="international-title" class="sr-only">Adunanze Internazionali — Oltre i Confini Noti</h2>
         <p id="international-status" class="sr-only">Sezione in sviluppo, non ancora disponibile.</p>
-        <img
-          src="../../assets/adunanze/adunanze-gate-international.webp"
-          width="1122"
-          height="1402"
-          alt=""
-          loading="lazy"
-          decoding="async">
+        <picture>
+          <source media="(max-width: 767px)" srcset="../../assets/adunanze/adunanze-gate-international-512.webp">
+          <img
+            src="../../assets/adunanze/adunanze-gate-international.webp"
+            width="1122"
+            height="1402"
+            alt=""
+            loading="lazy"
+            decoding="async">
+        </picture>
       </article>
     </section>
   </main>
