@@ -16,6 +16,7 @@ const empty=document.getElementById('empty');
 const ongoingSection=document.getElementById('ongoing-section');
 const ongoingRoot=document.getElementById('ongoing-root');
 const upcomingRoot=document.getElementById('upcoming-root');
+const nationalMain=document.getElementById('national-main');
 
 function esc(value){
   return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
@@ -89,9 +90,11 @@ fetch('../../../data/events.json',{cache:'no-store'})
     const events=Array.isArray(data.events)?data.events:[];
     render(events);
     loading.hidden=true;
+    nationalMain?.classList.remove('is-loading');
   })
   .catch(reason=>{
     console.error('Adunanze data load failed',reason);
     loading.hidden=true;
     error.hidden=false;
+    nationalMain?.classList.remove('is-loading');
   });
