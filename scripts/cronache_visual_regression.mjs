@@ -36,6 +36,17 @@ try {
       throw new Error(`${viewport.name}: no concluded-event records rendered`);
     }
 
+    const maps = await page.evaluate(() => {
+      const links=[...document.querySelectorAll('#chronicles-root .chronicle-record .map-link')];
+      return {
+        count:links.length,
+        valid:links.every(link=>link.href.startsWith('https://www.google.com/maps/search/?api=1&query=')&&link.target==='_blank')
+      };
+    });
+    if(maps.count!==completedCards||!maps.valid){
+      throw new Error(`${viewport.name}: not every Chronicle event location links to Google Maps`);
+    }
+
     const overflow = await page.evaluate(() => {
       const html = document.documentElement;
       const body = document.body;
@@ -69,7 +80,7 @@ try {
 
     await fs.writeFile(
       `${outDir}/${viewport.name}.json`,
-      JSON.stringify({ viewport, completedCards, overflow, collisionChecks, consoleErrors }, null, 2),
+      JSON.stringify({ viewport, completedCards, maps, overflow, collisionChecks, consoleErrors }, null, 2),
       'utf8'
     );
 
