@@ -1,169 +1,233 @@
 {
   "schema_version": "1.0",
   "purpose": "Canonical public player registry for Avventurieri. Profiles are nickname-based only; previous imported display-name seed lists are superseded and must not be used.",
-  "source_of_truth": "Product Owner supplied nickname list",
+  "source_of_truth": "Product Owner supplied nickname / real-name / city mapping",
   "updated_at": "2026-09-22",
   "players": [
     {
       "id": "PLY-0001",
       "slug": "nick-the-wizard",
       "nickname": "Nick the Wizard",
-      "avatar_url": "assets/avventurieri/nick-the-wizard.webp"
+      "avatar_url": "assets/avventurieri/nick-the-wizard.webp",
+      "real_name": "Nick",
+      "city": "Crema"
     },
     {
       "id": "PLY-0002",
       "slug": "dr-q",
-      "nickname": "Dr. Q"
+      "nickname": "Dr. Q",
+      "real_name": "Alessandro",
+      "city": "Milano"
     },
     {
       "id": "PLY-0003",
       "slug": "metalgrave",
-      "nickname": "Metalgrave"
+      "nickname": "Metalgrave",
+      "real_name": "Tommy",
+      "city": "Crema"
     },
     {
       "id": "PLY-0004",
       "slug": "dragonlord",
-      "nickname": "Dragonlord"
+      "nickname": "Dragonlord",
+      "real_name": "Matteo (Drago)",
+      "city": "Codogno"
     },
     {
       "id": "PLY-0005",
       "slug": "dagon",
-      "nickname": "Dagon"
+      "nickname": "Dagon",
+      "real_name": "Beppe",
+      "city": "Bergamo"
     },
     {
       "id": "PLY-0006",
       "slug": "the-northman",
-      "nickname": "The Northman 🔪"
+      "nickname": "The Northman 🔪",
+      "real_name": "Yannik",
+      "city": "Crema"
     },
     {
       "id": "PLY-0007",
       "slug": "demigod",
-      "nickname": "Demigod"
+      "nickname": "Demigod",
+      "real_name": "Anto",
+      "city": "Bergamo"
     },
     {
       "id": "PLY-0008",
       "slug": "ilpresidente",
-      "nickname": "IlPresidente"
+      "nickname": "IlPresidente",
+      "real_name": "Alberto",
+      "city": "Pavia"
     },
     {
       "id": "PLY-0009",
       "slug": "sazerac",
-      "nickname": "Sazerac"
+      "nickname": "Sazerac",
+      "real_name": "Alessandro",
+      "city": "Monza"
     },
     {
       "id": "PLY-0010",
       "slug": "curjo",
-      "nickname": "Curjo"
+      "nickname": "Curjo",
+      "real_name": "Jonni",
+      "city": "Crema"
     },
     {
       "id": "PLY-0011",
       "slug": "luiginico",
-      "nickname": "Luiginico"
+      "nickname": "Luiginico",
+      "real_name": "Nicolò",
+      "city": "Lentate"
     },
     {
       "id": "PLY-0012",
       "slug": "achamoh",
-      "nickname": "AchaMoh"
+      "nickname": "AchaMoh",
+      "real_name": "Mohamed",
+      "city": "Crespiatica"
     },
     {
       "id": "PLY-0013",
       "slug": "urge-the-void",
-      "nickname": "Urge the Void"
+      "nickname": "Urge the Void",
+      "real_name": "Ale Urge",
+      "city": "Crema"
     },
     {
       "id": "PLY-0014",
       "slug": "bbrn",
-      "nickname": "BBRN"
+      "nickname": "BBRN",
+      "real_name": "Fabio",
+      "city": "Varese"
     },
     {
       "id": "PLY-0015",
       "slug": "sorcerymeth",
-      "nickname": "SorceryMeth"
+      "nickname": "SorceryMeth",
+      "real_name": "Mattia",
+      "city": "Crema"
     },
     {
       "id": "PLY-0016",
       "slug": "jokerquinn",
-      "nickname": "JokerQuinn"
+      "nickname": "JokerQuinn",
+      "real_name": "Matteo",
+      "city": "Milano/Pavia"
     },
     {
       "id": "PLY-0017",
       "slug": "mikininja",
-      "nickname": "Mikininja"
+      "nickname": "Mikininja",
+      "real_name": "Michele",
+      "city": "Crema"
     },
     {
       "id": "PLY-0018",
       "slug": "sir-bes",
-      "nickname": "Sir Bes"
+      "nickname": "Sir Bes",
+      "real_name": "Andrea",
+      "city": "Crema"
     },
     {
       "id": "PLY-0019",
       "slug": "roccoddio",
-      "nickname": "ROCCODDIO"
+      "nickname": "ROCCODDIO",
+      "real_name": "Rocco",
+      "city": "Crema"
     },
     {
       "id": "PLY-0020",
       "slug": "freddy097",
-      "nickname": "Freddy097"
+      "nickname": "Freddy097",
+      "real_name": "Federico",
+      "city": "Roma"
     },
     {
       "id": "PLY-0021",
       "slug": "terronator",
-      "nickname": "TERRONATOR"
+      "nickname": "TERRONATOR",
+      "real_name": "Simone",
+      "city": "Crema"
     },
     {
       "id": "PLY-0022",
       "slug": "limitbreaker",
-      "nickname": "Limitbreaker"
+      "nickname": "Limitbreaker",
+      "real_name": "Matteo",
+      "city": "Crema"
     },
     {
       "id": "PLY-0023",
       "slug": "fredinvader",
-      "nickname": "FredInvader"
+      "nickname": "FredInvader",
+      "real_name": "Federico",
+      "city": "Milano"
     },
     {
       "id": "PLY-0024",
       "slug": "siummir",
-      "nickname": "Siummir"
+      "nickname": "Siummir",
+      "real_name": "samir",
+      "city": "Milano"
     },
     {
       "id": "PLY-0025",
       "slug": "sir-pinola",
-      "nickname": "Sir Pinola"
+      "nickname": "Sir Pinola",
+      "real_name": "Angelo",
+      "city": "Milano"
     },
     {
       "id": "PLY-0026",
       "slug": "stormbringer",
-      "nickname": "Stormbringer"
+      "nickname": "Stormbringer",
+      "real_name": "Paolo Urgesi",
+      "city": "Crema"
     },
     {
       "id": "PLY-0027",
       "slug": "ashashin",
-      "nickname": "Ashashin"
+      "nickname": "Ashashin",
+      "real_name": "Matteo",
+      "city": "Trento"
     },
     {
       "id": "PLY-0028",
       "slug": "losfondaculi",
-      "nickname": "LoSfondaCuli"
+      "nickname": "LoSfondaCuli",
+      "real_name": "Mattia C.",
+      "city": "Crema"
     },
     {
       "id": "PLY-0029",
       "slug": "xathirid",
-      "nickname": "Xathirid"
+      "nickname": "Xathirid",
+      "real_name": "Matteo Z.",
+      "city": "Crema"
     },
     {
       "id": "PLY-0030",
       "slug": "loca",
-      "nickname": "Loca"
+      "nickname": "Loca",
+      "real_name": "Davide L.",
+      "city": "Crema"
     },
     {
       "id": "PLY-0031",
       "slug": "daniele-carlo-giuseppe-s",
-      "nickname": "Daniele Carlo Giuseppe S"
+      "nickname": "Daniele Carlo Giuseppe S",
+      "real_name": "Daniele Carlo Giuseppe S",
+      "city": "Milano"
     },
     {
       "id": "PLY-0032",
       "slug": "andrea-p",
-      "nickname": "Andrea P"
+      "nickname": "Andrea P",
+      "real_name": "Andrea P",
+      "city": null
     }
   ]
 }
