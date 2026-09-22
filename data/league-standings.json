@@ -2,8 +2,130 @@
   "schema_version": "1.0",
   "series_id": "blaze-of-glory-2026-2027",
   "series_name": "Blaze of Glory — La Lega di Cremos",
-  "status": "awaiting_official_points",
+  "status": "current",
   "source_of_truth": "Product Owner supplied league standings",
-  "updated_at": null,
-  "entries": []
+  "updated_at": "2026-09-22",
+  "after_stage": 1,
+  "entries": [
+    {
+      "rank": 1,
+      "player_id": "PLY-0001",
+      "points": 25,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 2,
+      "player_id": "PLY-0022",
+      "points": 22,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 3,
+      "player_id": "PLY-0017",
+      "points": 20,
+      "stages_completed": 1,
+      "fair_play_wins": 1,
+      "fair_play_bonus_points": 3
+    },
+    {
+      "rank": 4,
+      "player_id": "PLY-0009",
+      "points": 20,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 5,
+      "player_id": "PLY-0028",
+      "points": 18,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 6,
+      "player_id": "PLY-0012",
+      "points": 16,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 7,
+      "player_id": "PLY-0031",
+      "points": 15,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 8,
+      "player_id": "PLY-0010",
+      "points": 14,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 9,
+      "player_id": "PLY-0019",
+      "points": 13,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 10,
+      "player_id": "PLY-0015",
+      "points": 12,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 11,
+      "player_id": "PLY-0007",
+      "points": 11,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 12,
+      "player_id": "PLY-0003",
+      "points": 10,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 13,
+      "player_id": "PLY-0032",
+      "points": 9,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 14,
+      "player_id": "PLY-0002",
+      "points": 8,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 15,
+      "player_id": "PLY-0021",
+      "points": 7,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 16,
+      "player_id": "PLY-0005",
+      "points": 6,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    },
+    {
+      "rank": 17,
+      "player_id": "PLY-0018",
+      "points": 5,
+      "stages_completed": 1,
+      "fair_play_wins": 0
+    }
+  ]
 }

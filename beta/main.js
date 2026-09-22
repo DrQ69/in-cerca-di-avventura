@@ -117,7 +117,11 @@ function renderStandings(standings,players){
   const byId=new Map((Array.isArray(players)?players:[]).map(player=>[player.id,player]));
   const top=entries
     .filter(entry=>entry&&entry.player_id&&Number.isFinite(entry.points))
-    .sort((a,b)=>b.points-a.points||String(a.player_id).localeCompare(String(b.player_id)))
+    .sort((a,b)=>{
+      const ar=Number.isFinite(a.rank)?a.rank:Number.POSITIVE_INFINITY;
+      const br=Number.isFinite(b.rank)?b.rank:Number.POSITIVE_INFINITY;
+      return ar-br||b.points-a.points||String(a.player_id).localeCompare(String(b.player_id));
+    })
     .slice(0,3);
 
   if(!top.length){
