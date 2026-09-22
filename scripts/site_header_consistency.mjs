@@ -36,13 +36,14 @@ try{
         const header=document.querySelector('.site-nav');
         const host=document.querySelector('.logo-host');
         const logo=document.querySelector('.logo-host img');
-        const navLink=document.querySelector('.nav-side a');
-        const mobileLink=document.querySelector('.mobile-nav a');
+        const navLink=window.innerWidth>=1024
+          ? document.querySelector('.nav-side a')
+          : document.querySelector('.mobile-nav a');
         const hr=header.getBoundingClientRect();
         const lr=logo.getBoundingClientRect();
         const hs=getComputedStyle(header);
         const ls=getComputedStyle(logo);
-        const ns=getComputedStyle(navLink||mobileLink);
+        const ns=getComputedStyle(navLink);
         return {
           header:{x:hr.x,y:hr.y,width:hr.width,height:hr.height,background:hs.backgroundImage},
           logo:{x:lr.x,y:lr.y,width:lr.width,height:lr.height,src:logo.getAttribute('src'),filter:ls.filter},
