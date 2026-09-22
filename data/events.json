@@ -24,8 +24,209 @@
       "winner_display_name": "Matteo M",
       "winner_rank": 1,
       "official_results_url": "https://sorcerytcg.com/events/cmt8daz3y29f792cy1jnulrwa",
-      "source_note": "Official result export supplied by Product Owner. Winner follows official final standing, not point-total inference.",
-      "truth_status": "verified_except_date"
+      "source_note": "Full La Giostra result table supplied by Product Owner on 2026-09-22, including final rank, points, W-L-D record, OMW% breakers and CMP. Top 8 cut is explicitly indicated between ranks 8 and 9.",
+      "truth_status": "po_results_confirmed",
+      "top_cut": 8,
+      "standings": [
+        {
+          "rank": 1,
+          "display_name": "Matteo M",
+          "points": 21,
+          "wins": 7,
+          "losses": 1,
+          "draws": 0,
+          "omw_percent": 56.05,
+          "cmp": 90,
+          "top8": true
+        },
+        {
+          "rank": 2,
+          "display_name": "Alessandro Q",
+          "points": 21,
+          "wins": 7,
+          "losses": 1,
+          "draws": 0,
+          "omw_percent": 56.47,
+          "cmp": 105,
+          "top8": true
+        },
+        {
+          "rank": 3,
+          "display_name": "Matteo T",
+          "points": 12,
+          "wins": 4,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 64.64,
+          "cmp": 57,
+          "top8": true
+        },
+        {
+          "rank": 4,
+          "display_name": "Davide F",
+          "points": 12,
+          "wins": 4,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 56.3,
+          "cmp": 48,
+          "top8": true
+        },
+        {
+          "rank": 5,
+          "display_name": "Jacopo N",
+          "points": 12,
+          "wins": 4,
+          "losses": 2,
+          "draws": 0,
+          "omw_percent": 62.1,
+          "cmp": 51,
+          "top8": true
+        },
+        {
+          "rank": 6,
+          "display_name": "Jonni R",
+          "points": 9,
+          "wins": 3,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 63.19,
+          "cmp": 36,
+          "top8": true
+        },
+        {
+          "rank": 7,
+          "display_name": "Mohamed A",
+          "points": 9,
+          "wins": 3,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 55.77,
+          "cmp": 39,
+          "top8": true
+        },
+        {
+          "rank": 8,
+          "display_name": "Amedeo B",
+          "points": 9,
+          "wins": 3,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 51.25,
+          "cmp": 30,
+          "top8": true
+        },
+        {
+          "rank": 9,
+          "display_name": "Michele S",
+          "points": 9,
+          "wins": 3,
+          "losses": 2,
+          "draws": 0,
+          "omw_percent": 47.52,
+          "cmp": 24,
+          "top8": false
+        },
+        {
+          "rank": 10,
+          "display_name": "Yannik F",
+          "points": 6,
+          "wins": 2,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 57.02,
+          "cmp": 21,
+          "top8": false
+        },
+        {
+          "rank": 11,
+          "display_name": "Tommaso M",
+          "points": 6,
+          "wins": 2,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 49.42,
+          "cmp": 24,
+          "top8": false
+        },
+        {
+          "rank": 12,
+          "display_name": "Fabio B",
+          "points": 6,
+          "wins": 2,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 48.83,
+          "cmp": 18,
+          "top8": false
+        },
+        {
+          "rank": 13,
+          "display_name": "Simone C",
+          "points": 6,
+          "wins": 2,
+          "losses": 3,
+          "draws": 0,
+          "omw_percent": 46.09,
+          "cmp": 15,
+          "top8": false
+        },
+        {
+          "rank": 14,
+          "display_name": "Andrea R",
+          "points": 6,
+          "wins": 2,
+          "losses": 2,
+          "draws": 1,
+          "omw_percent": 40,
+          "cmp": 9,
+          "top8": false
+        },
+        {
+          "rank": 15,
+          "display_name": "Giuseppe B",
+          "points": 3,
+          "wins": 1,
+          "losses": 4,
+          "draws": 0,
+          "omw_percent": 53.59,
+          "cmp": 9,
+          "top8": false
+        },
+        {
+          "rank": 16,
+          "display_name": "Niccolò C",
+          "points": 3,
+          "wins": 1,
+          "losses": 3,
+          "draws": 1,
+          "omw_percent": 46.66,
+          "cmp": 12,
+          "top8": false
+        },
+        {
+          "rank": 17,
+          "display_name": "Francesco F",
+          "points": 3,
+          "wins": 1,
+          "losses": 4,
+          "draws": 0,
+          "omw_percent": 44.66,
+          "cmp": 3,
+          "top8": false
+        },
+        {
+          "rank": 18,
+          "display_name": "Antonio B",
+          "points": 0,
+          "wins": 0,
+          "losses": 5,
+          "draws": 0,
+          "omw_percent": 41.33,
+          "cmp": 0,
+          "top8": false
+        }
+      ]
     },
     {
       "event_id": "bog-2026-duello-01",
