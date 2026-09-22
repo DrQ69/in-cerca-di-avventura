@@ -1,0 +1,56 @@
+name: Shared banner consistency QA
+
+on:
+  pull_request:
+    paths:
+      - 'beta/**'
+      - 'assets/css/ica-shared-shell.css'
+      - 'assets/logo-emblem.webp'
+      - 'scripts/site_header_consistency.mjs'
+      - '.github/workflows/shared-banner-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'beta/**'
+      - 'assets/css/ica-shared-shell.css'
+      - 'assets/logo-emblem.webp'
+      - 'scripts/site_header_consistency.mjs'
+      - '.github/workflows/shared-banner-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shared-banner-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          sleep 2
+      - name: Verify shared banner and logo
+        run: node scripts/site_header_consistency.mjs
+      - name: Upload QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shared-banner-qa-${{ github.sha }}
+          path: artifacts/header-consistency/
+          if-no-files-found: error
+          retention-days: 14
