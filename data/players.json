@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "purpose": "Canonical public player registry for Avventurieri. Profiles are nickname-based only; previous imported display-name seed lists are superseded and must not be used.",
-  "source_of_truth": "Product Owner supplied nickname / real-name / city mapping",
+  "source_of_truth": "Product Owner supplied nickname ↔ event display-name ↔ city mapping",
   "updated_at": "2026-09-22",
   "players": [
     {
@@ -9,22 +9,25 @@
       "slug": "nick-the-wizard",
       "nickname": "Nick the Wizard",
       "avatar_url": "assets/avventurieri/nick-the-wizard.webp",
-      "real_name": "Nick",
-      "city": "Crema"
+      "real_name": "Niccolò C",
+      "city": "Crema",
+      "event_display_name": "Niccolò C"
     },
     {
       "id": "PLY-0002",
       "slug": "dr-q",
       "nickname": "Dr. Q",
-      "real_name": "Alessandro",
-      "city": "Milano"
+      "real_name": "Alessandro Q",
+      "city": "Milano",
+      "event_display_name": "Alessandro Q"
     },
     {
       "id": "PLY-0003",
       "slug": "metalgrave",
       "nickname": "Metalgrave",
-      "real_name": "Tommy",
-      "city": "Crema"
+      "real_name": "Tommaso M",
+      "city": "Crema",
+      "event_display_name": "Tommaso M"
     },
     {
       "id": "PLY-0004",
@@ -37,8 +40,9 @@
       "id": "PLY-0005",
       "slug": "dagon",
       "nickname": "Dagon",
-      "real_name": "Beppe",
-      "city": "Bergamo"
+      "real_name": "Giuseppe B",
+      "city": "Bergamo",
+      "event_display_name": "Giuseppe B"
     },
     {
       "id": "PLY-0006",
@@ -51,8 +55,9 @@
       "id": "PLY-0007",
       "slug": "demigod",
       "nickname": "Demigod",
-      "real_name": "Anto",
-      "city": "Bergamo"
+      "real_name": "Antonio B",
+      "city": "Bergamo",
+      "event_display_name": "Antonio B"
     },
     {
       "id": "PLY-0008",
@@ -65,15 +70,17 @@
       "id": "PLY-0009",
       "slug": "sazerac",
       "nickname": "Sazerac",
-      "real_name": "Alessandro",
-      "city": "Monza"
+      "real_name": "Alessandro S",
+      "city": "Monza",
+      "event_display_name": "Alessandro S"
     },
     {
       "id": "PLY-0010",
       "slug": "curjo",
       "nickname": "Curjo",
-      "real_name": "Jonni",
-      "city": "Crema"
+      "real_name": "Jonni R",
+      "city": "Crema",
+      "event_display_name": "Jonni R"
     },
     {
       "id": "PLY-0011",
@@ -86,8 +93,9 @@
       "id": "PLY-0012",
       "slug": "achamoh",
       "nickname": "AchaMoh",
-      "real_name": "Mohamed",
-      "city": "Crespiatica"
+      "real_name": "Mohamed A",
+      "city": "Crespiatica",
+      "event_display_name": "Mohamed A"
     },
     {
       "id": "PLY-0013",
@@ -107,8 +115,9 @@
       "id": "PLY-0015",
       "slug": "sorcerymeth",
       "nickname": "SorceryMeth",
-      "real_name": "Mattia",
-      "city": "Crema"
+      "real_name": "Mattia F",
+      "city": "Crema",
+      "event_display_name": "Mattia F"
     },
     {
       "id": "PLY-0016",
@@ -121,22 +130,25 @@
       "id": "PLY-0017",
       "slug": "mikininja",
       "nickname": "Mikininja",
-      "real_name": "Michele",
-      "city": "Crema"
+      "real_name": "Michele S",
+      "city": "Crema",
+      "event_display_name": "Michele S"
     },
     {
       "id": "PLY-0018",
       "slug": "sir-bes",
       "nickname": "Sir Bes",
-      "real_name": "Andrea",
-      "city": "Crema"
+      "real_name": "Andrea R",
+      "city": "Crema",
+      "event_display_name": "Andrea R"
     },
     {
       "id": "PLY-0019",
       "slug": "roccoddio",
       "nickname": "ROCCODDIO",
-      "real_name": "Rocco",
-      "city": "Crema"
+      "real_name": "Rocco G",
+      "city": "Crema",
+      "event_display_name": "Rocco G"
     },
     {
       "id": "PLY-0020",
@@ -149,15 +161,17 @@
       "id": "PLY-0021",
       "slug": "terronator",
       "nickname": "TERRONATOR",
-      "real_name": "Simone",
-      "city": "Crema"
+      "real_name": "Simone C",
+      "city": "Crema",
+      "event_display_name": "Simone C"
     },
     {
       "id": "PLY-0022",
       "slug": "limitbreaker",
       "nickname": "Limitbreaker",
-      "real_name": "Matteo",
-      "city": "Crema"
+      "real_name": "Matteo M",
+      "city": "Crema",
+      "event_display_name": "Matteo M"
     },
     {
       "id": "PLY-0023",
@@ -198,8 +212,9 @@
       "id": "PLY-0028",
       "slug": "losfondaculi",
       "nickname": "LoSfondaCuli",
-      "real_name": "Mattia C.",
-      "city": "Crema"
+      "real_name": "Mattia C",
+      "city": "Crema",
+      "event_display_name": "Mattia C"
     },
     {
       "id": "PLY-0029",
@@ -219,15 +234,17 @@
       "id": "PLY-0031",
       "slug": "daniele-carlo-giuseppe-s",
       "nickname": "Daniele Carlo Giuseppe S",
-      "real_name": "Daniele Carlo Giuseppe S",
-      "city": "Milano"
+      "real_name": "Daniele C",
+      "city": "Milano",
+      "event_display_name": "Daniele C"
     },
     {
       "id": "PLY-0032",
       "slug": "andrea-p",
       "nickname": "Andrea P",
       "real_name": "Andrea P",
-      "city": null
+      "city": null,
+      "event_display_name": "Andrea P"
     }
   ]
 }
