@@ -59,3 +59,4 @@ if (failed) {
 
 // VR-0010 final verification trigger.
 // Re-run after gate-frame removal.
+// Re-run after navigation-only Avventurieri link update.
