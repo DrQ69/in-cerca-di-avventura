@@ -37,6 +37,22 @@ function fmtDate(value,short=false){
   return d.day+' '+(short?mesiBrevi[d.month-1]:mesi[d.month-1])+' '+d.year;
 }
 
+function mapsUrl(event){
+  const query=event?.address||[event?.venue,event?.city,event?.province,event?.country].filter(Boolean).join(', ');
+  return query?'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query):'';
+}
+
+function placeText(event,fallback){
+  return [event?.venue,event?.city].filter(Boolean).join(' · ')||fallback;
+}
+
+function placeLink(event,fallback){
+  const label=placeText(event,fallback);
+  const url=mapsUrl(event);
+  if(!url)return esc(label);
+  return '<a class="map-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" aria-label="Apri '+esc(label)+' in Google Maps">'+esc(label)+'</a>';
+}
+
 function avatarSrc(value){
   if(!value)return '';
   if(/^https?:\/\//i.test(value)||value.startsWith('/'))return value;
@@ -82,11 +98,10 @@ function renderNextEvent(events){
   card.setAttribute('data-event-id',next.event_id||'');
   series.textContent=next.series_name||'In Cerca di Avventura';
   title.textContent=next.title;
-  const place=[next.venue,next.city].filter(Boolean).join(' · ')||'Luogo da definire';
   const format=next.format||'Formato da definire';
   facts.innerHTML=
     '<div><dt>Data</dt><dd>'+esc(fmtDate(next.date))+'</dd></div>'+
-    '<div><dt>Luogo</dt><dd>'+esc(place)+'</dd></div>'+
+    '<div><dt>Luogo</dt><dd>'+placeLink(next,'Luogo da definire')+'</dd></div>'+
     '<div><dt>Formato</dt><dd>'+esc(format)+'</dd></div>';
 }
 
@@ -106,14 +121,11 @@ function renderChronicle(events){
 
   card.setAttribute('data-event-id',latest.event_id||'');
   title.textContent=latest.title;
-  const place=[latest.venue,latest.city].filter(Boolean).join(' · ')||'Luogo da verificare';
-  const values=[
-    ['Data',fmtDate(latest.date)],
-    ['Luogo',place],
-    ['Formato',latest.format||'Da verificare'],
-    ['Giocatori',Number.isFinite(latest.player_count)?String(latest.player_count):'Da verificare']
-  ];
-  facts.innerHTML=values.map(([label,value])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(value)+'</dd></div>').join('');
+  facts.innerHTML=
+    '<div><dt>Data</dt><dd>'+esc(fmtDate(latest.date))+'</dd></div>'+
+    '<div><dt>Luogo</dt><dd>'+placeLink(latest,'Luogo da verificare')+'</dd></div>'+
+    '<div><dt>Formato</dt><dd>'+esc(latest.format||'Da verificare')+'</dd></div>'+
+    '<div><dt>Giocatori</dt><dd>'+esc(Number.isFinite(latest.player_count)?String(latest.player_count):'Da verificare')+'</dd></div>';
 }
 
 function renderStandings(standings,players){
