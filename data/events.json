@@ -37,7 +37,9 @@
           "draws": 0,
           "omw_percent": 56.05,
           "cmp": 90,
-          "top8": true
+          "top8": true,
+          "player_id": "PLY-0022",
+          "nickname": "Limitbreaker"
         },
         {
           "rank": 2,
@@ -48,7 +50,9 @@
           "draws": 0,
           "omw_percent": 56.47,
           "cmp": 105,
-          "top8": true
+          "top8": true,
+          "player_id": "PLY-0002",
+          "nickname": "Dr. Q"
         },
         {
           "rank": 3,
@@ -92,7 +96,9 @@
           "draws": 0,
           "omw_percent": 63.19,
           "cmp": 36,
-          "top8": true
+          "top8": true,
+          "player_id": "PLY-0010",
+          "nickname": "Curjo"
         },
         {
           "rank": 7,
@@ -103,7 +109,9 @@
           "draws": 0,
           "omw_percent": 55.77,
           "cmp": 39,
-          "top8": true
+          "top8": true,
+          "player_id": "PLY-0012",
+          "nickname": "AchaMoh"
         },
         {
           "rank": 8,
@@ -125,7 +133,9 @@
           "draws": 0,
           "omw_percent": 47.52,
           "cmp": 24,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0017",
+          "nickname": "Mikininja"
         },
         {
           "rank": 10,
@@ -147,7 +157,9 @@
           "draws": 0,
           "omw_percent": 49.42,
           "cmp": 24,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0003",
+          "nickname": "Metalgrave"
         },
         {
           "rank": 12,
@@ -169,7 +181,9 @@
           "draws": 0,
           "omw_percent": 46.09,
           "cmp": 15,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0021",
+          "nickname": "TERRONATOR"
         },
         {
           "rank": 14,
@@ -180,7 +194,9 @@
           "draws": 1,
           "omw_percent": 40,
           "cmp": 9,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0018",
+          "nickname": "Sir Bes"
         },
         {
           "rank": 15,
@@ -191,7 +207,9 @@
           "draws": 0,
           "omw_percent": 53.59,
           "cmp": 9,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0005",
+          "nickname": "Dagon"
         },
         {
           "rank": 16,
@@ -202,7 +220,9 @@
           "draws": 1,
           "omw_percent": 46.66,
           "cmp": 12,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0001",
+          "nickname": "Nick the Wizard"
         },
         {
           "rank": 17,
@@ -224,7 +244,9 @@
           "draws": 0,
           "omw_percent": 41.33,
           "cmp": 0,
-          "top8": false
+          "top8": false,
+          "player_id": "PLY-0007",
+          "nickname": "Demigod"
         }
       ]
     },
@@ -273,7 +295,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 18,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0001",
+          "nickname": "Nick the Wizard"
         },
         {
           "rank": 2,
@@ -284,7 +308,9 @@
           "draws": 0,
           "omw_percent": 44.44,
           "cmp": 18,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0022",
+          "nickname": "Limitbreaker"
         },
         {
           "rank": 3,
@@ -295,7 +321,9 @@
           "draws": 0,
           "omw_percent": 33.33,
           "cmp": 18,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0009",
+          "nickname": "Sazerac"
         },
         {
           "rank": 4,
@@ -306,7 +334,9 @@
           "draws": 0,
           "omw_percent": 66.66,
           "cmp": 15,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0028",
+          "nickname": "LoSfondaCuli"
         },
         {
           "rank": 5,
@@ -317,7 +347,9 @@
           "draws": 0,
           "omw_percent": 66.66,
           "cmp": 15,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0017",
+          "nickname": "Mikininja"
         },
         {
           "rank": 6,
@@ -328,7 +360,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 12,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0012",
+          "nickname": "AchaMoh"
         },
         {
           "rank": 7,
@@ -350,7 +384,9 @@
           "draws": 0,
           "omw_percent": 44.44,
           "cmp": 9,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0010",
+          "nickname": "Curjo"
         },
         {
           "rank": 9,
@@ -361,7 +397,9 @@
           "draws": 0,
           "omw_percent": 83.33,
           "cmp": 6,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0019",
+          "nickname": "ROCCODDIO"
         },
         {
           "rank": 10,
@@ -372,7 +410,9 @@
           "draws": 0,
           "omw_percent": 66.66,
           "cmp": 9,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0015",
+          "nickname": "SorceryMeth"
         },
         {
           "rank": 11,
@@ -383,7 +423,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 9,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0007",
+          "nickname": "Demigod"
         },
         {
           "rank": 12,
@@ -394,7 +436,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 6,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0003",
+          "nickname": "Metalgrave"
         },
         {
           "rank": 13,
@@ -405,7 +449,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 3,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0032",
+          "nickname": "Andrea P"
         },
         {
           "rank": 14,
@@ -416,7 +462,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 3,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0002",
+          "nickname": "Dr. Q"
         },
         {
           "rank": 15,
@@ -427,7 +475,9 @@
           "draws": 0,
           "omw_percent": 50,
           "cmp": 3,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0021",
+          "nickname": "TERRONATOR"
         },
         {
           "rank": 16,
@@ -438,7 +488,9 @@
           "draws": 0,
           "omw_percent": 44.44,
           "cmp": 6,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0005",
+          "nickname": "Dagon"
         },
         {
           "rank": 17,
@@ -449,7 +501,9 @@
           "draws": 0,
           "omw_percent": 55.55,
           "cmp": 0,
-          "dropped": false
+          "dropped": false,
+          "player_id": "PLY-0018",
+          "nickname": "Sir Bes"
         },
         {
           "rank": 18,
