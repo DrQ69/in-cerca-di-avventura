@@ -119,12 +119,15 @@ try {
       const html = document.documentElement;
       const body = document.body;
       const scrollWidth = Math.max(html.scrollWidth, body.scrollWidth);
+      const mapLinks=[...document.querySelectorAll('.adunanza-card .map-link')];
       return {
         count: cards.length,
         statuses,
         upcomingDates,
         chronological: JSON.stringify(upcomingDates) === JSON.stringify(sorted),
         hasCompleted: statuses.includes('conclusa'),
+        mapLinkCount:mapLinks.length,
+        mapsValid:mapLinks.every(link=>link.href.startsWith('https://www.google.com/maps/search/?api=1&query=')&&link.target==='_blank'),
         overflow: {
           horizontal: scrollWidth > window.innerWidth + 2,
           scrollWidth,
@@ -136,6 +139,7 @@ try {
     if (!national.count) throw new Error(`${viewport.name}: no national events rendered`);
     if (national.hasCompleted) throw new Error(`${viewport.name}: completed event leaked into Adunanze Nazionale`);
     if (!national.chronological) throw new Error(`${viewport.name}: upcoming events are not chronological`);
+    if (national.mapLinkCount!==national.count||!national.mapsValid) throw new Error(`${viewport.name}: not every national event location links to Google Maps`);
     if (national.overflow.horizontal) throw new Error(`${viewport.name}: national page horizontal overflow`);
 
     await page.screenshot({

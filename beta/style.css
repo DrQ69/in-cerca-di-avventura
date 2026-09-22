@@ -179,6 +179,8 @@ main{position:relative;z-index:8;margin:0 9.8%}
   letter-spacing:.10em;
 }
 .event-facts dd,.chronicle-facts dd{margin:0;color:#d9c9a8;font-size:.78rem;font-weight:600}
+.map-link{color:inherit;text-decoration:underline;text-decoration-color:rgba(183,138,62,.55);text-underline-offset:3px}
+.map-link:hover,.map-link:focus-visible{color:var(--gold-hi);text-decoration-color:currentColor}
 
 .home-button{
   display:inline-flex;

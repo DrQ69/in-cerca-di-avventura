@@ -36,6 +36,18 @@ function place(event){
   return [event.venue,event.city].filter(Boolean).join(', ')||'Luogo da definire';
 }
 
+function mapsUrl(event){
+  const query=event?.address||[event?.venue,event?.city,event?.province,event?.country].filter(Boolean).join(', ');
+  return query?'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query):'';
+}
+
+function placeLink(event){
+  const label=place(event);
+  const url=mapsUrl(event);
+  if(!url)return esc(label);
+  return '<a class="map-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" aria-label="Apri '+esc(label)+' in Google Maps">'+esc(label)+'</a>';
+}
+
 function stage(event){
   if(!event.stage_number)return '';
   const roman=['','I','II','III','IV','V','VI','VII','VIII','IX','X'][event.stage_number]||String(event.stage_number);
@@ -57,7 +69,7 @@ function card(event){
     </header>
     <div class="card-body" data-ica-id="AN-CARD-BODY-${esc(event.event_id)}">
       <div class="fact"><span>Data</span><strong>${esc(fmtDate(event.date))}</strong></div>
-      <div class="fact"><span>Luogo</span><strong>${esc(place(event))}</strong></div>
+      <div class="fact"><span>Luogo</span><strong>${placeLink(event)}</strong></div>
       <div class="fact"><span>Formato</span><strong>${esc(event.format||'Da definire')}</strong></div>
     </div>
     ${action? action.replace('class="card-action"','class="card-action" data-ica-id="AN-CARD-ACTION-'+esc(event.event_id)+'"'):''}

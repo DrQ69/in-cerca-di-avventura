@@ -28,6 +28,18 @@ function placeName(e){
   return [e.venue,e.city].filter(Boolean).join(', ')||'Da verificare';
 }
 
+function mapsUrl(e){
+  const query=e?.address||[e?.venue,e?.city,e?.province,e?.country].filter(Boolean).join(', ');
+  return query?'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query):'';
+}
+
+function placeLink(e){
+  const label=placeName(e);
+  const url=mapsUrl(e);
+  if(!url)return esc(label);
+  return '<a class="map-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" aria-label="Apri '+esc(label)+' in Google Maps">'+esc(label)+'</a>';
+}
+
 function deckLink(e){
   if(e.winner_deck_url){
     return `<a class="winner-deck-link" href="${esc(e.winner_deck_url)}" target="_blank" rel="noopener">Mazzo del vincitore →</a>`;
@@ -41,7 +53,7 @@ function eventCard(e){
       <h3>${esc(e.title)}</h3>
     </header>
     <div class="chronicle-facts">
-      <div class="chronicle-fact" data-ica-id="CRO-REC-PLACE-${esc(e.event_id||'unknown')}"><span>Luogo</span><strong>${esc(placeName(e))}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-PLACE-${esc(e.event_id||'unknown')}"><span>Luogo</span><strong>${placeLink(e)}</strong></div>
       <div class="chronicle-fact" data-ica-id="CRO-REC-DATE-${esc(e.event_id||'unknown')}"><span>Data</span><strong>${esc(fmtDate(e.date))}</strong></div>
       <div class="chronicle-fact" data-ica-id="CRO-REC-WINNER-${esc(e.event_id||'unknown')}"><span>Vincitore</span><strong>${esc(e.winner_display_name||'Da verificare')}</strong></div>
       <div class="chronicle-fact" data-ica-id="CRO-REC-PLAYERS-${esc(e.event_id||'unknown')}"><span>Giocatori</span><strong>${esc(e.player_count??'—')}</strong></div>
