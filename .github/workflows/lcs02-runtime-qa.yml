@@ -1,0 +1,54 @@
+name: LCS-02 runtime QA
+
+on:
+  pull_request:
+    paths:
+      - 'beta/**'
+      - 'assets/js/lcs02-inspector.js'
+      - 'scripts/lcs02_runtime_qa.mjs'
+      - '.github/workflows/lcs02-runtime-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'beta/**'
+      - 'assets/js/lcs02-inspector.js'
+      - 'scripts/lcs02_runtime_qa.mjs'
+      - '.github/workflows/lcs02-runtime-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lcs02-runtime-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          sleep 2
+      - name: Verify LCS-02 IDs and inspector
+        run: node scripts/lcs02_runtime_qa.mjs
+      - name: Upload LCS-02 artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lcs02-runtime-${{ github.sha }}
+          path: artifacts/lcs02-runtime/
+          if-no-files-found: error
+          retention-days: 14

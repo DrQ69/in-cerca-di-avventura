@@ -49,18 +49,18 @@ function card(event){
   const action=registration
     ? `<a class="card-action" href="${esc(registration)}" target="_blank" rel="noopener">Informazioni / iscrizione →</a>`
     : '';
-  return `<article class="adunanza-card" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}" data-date="${esc(event.date||'')}">
-    <header class="card-head">
+  return `<article class="adunanza-card" data-ica-id="AN-CARD-${esc(event.event_id)}" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}" data-date="${esc(event.date||'')}">
+    <header class="card-head" data-ica-id="AN-CARD-HEAD-${esc(event.event_id)}">
       <span class="card-status">${esc(statusLabel)}</span>
       <h3>${esc(event.title)}</h3>
       ${series?`<p class="card-series">${esc(series)}</p>`:''}
     </header>
-    <div class="card-body">
+    <div class="card-body" data-ica-id="AN-CARD-BODY-${esc(event.event_id)}">
       <div class="fact"><span>Data</span><strong>${esc(fmtDate(event.date))}</strong></div>
       <div class="fact"><span>Luogo</span><strong>${esc(place(event))}</strong></div>
       <div class="fact"><span>Formato</span><strong>${esc(event.format||'Da definire')}</strong></div>
     </div>
-    ${action}
+    ${action? action.replace('class="card-action"','class="card-action" data-ica-id="AN-CARD-ACTION-'+esc(event.event_id)+'"'):''}
   </article>`;
 }
 

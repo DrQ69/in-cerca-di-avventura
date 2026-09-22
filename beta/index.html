@@ -17,18 +17,18 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../assets/css/ica-shared-shell.css">
 </head>
-<body>
+<body data-ica-page="HOME">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="world-frame">
   <div class="outer-rail rail-left" aria-hidden="true"><span></span></div>
   <div class="outer-rail rail-right" aria-hidden="true"><span></span></div>
 
-  <header class="site-nav">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="HOME-NAV-01">
     <nav class="nav-side" aria-label="Navigazione principale sinistra">
       <a href="./adunanze/">Le Adunanze</a>
       <a href="./cronache/">Cronache</a>
     </nav>
-    <a class="logo-host" href="#home" aria-label="In Cerca di Avventura — Home">
+    <a class="logo-host" data-ica-id="HOME-NAV-02" href="#home" aria-label="In Cerca di Avventura — Home">
       <img src="../assets/logo-emblem.webp" alt="">
     </a>
     <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
@@ -47,59 +47,59 @@
   </header>
 
   <main id="main">
-    <section class="identity-block" id="home" aria-labelledby="home-title">
+    <section class="identity-block" id="home" data-ica-section="IDENTITY" data-ica-id="HOME-ID-01" aria-labelledby="home-title">
       <div class="identity-glow" aria-hidden="true"></div>
       <div class="identity-copy">
-        <p class="section-kicker">Comunità italiana di</p>
-        <h1 id="home-title">In Cerca di Avventura</h1>
-        <p class="identity-subtitle">Sorcery: Contested Realm</p>
+        <p class="section-kicker" data-ica-id="HOME-ID-02">Comunità italiana di</p>
+        <h1 id="home-title" data-ica-id="HOME-ID-03">In Cerca di Avventura</h1>
+        <p class="identity-subtitle" data-ica-id="HOME-ID-04">Sorcery: Contested Realm</p>
       </div>
     </section>
 
-    <section class="home-section next-event-section" id="next-event" aria-labelledby="next-event-heading">
-      <header class="section-heading">
+    <section class="home-section next-event-section" id="next-event" data-ica-section="NEXT" aria-labelledby="next-event-heading">
+      <header class="section-heading" data-ica-id="HOME-NXT-01">
         <p class="section-kicker">Calendario</p>
         <h2 id="next-event-heading">Prossima Adunanza</h2>
       </header>
-      <article class="next-event-card" id="next-event-card" aria-live="polite">
-        <div class="next-event-mark" aria-hidden="true">I</div>
-        <div class="next-event-body">
+      <article class="next-event-card" id="next-event-card" data-ica-id="HOME-NXT-02" aria-live="polite">
+        <div class="next-event-mark" data-ica-id="HOME-NXT-03" aria-hidden="true">I</div>
+        <div class="next-event-body" data-ica-id="HOME-NXT-04">
           <p class="next-event-series" id="next-event-series">Consultazione del calendario…</p>
           <h3 id="next-title">Prossima Adunanza</h3>
-          <dl class="event-facts" id="next-event-facts">
+          <dl class="event-facts" id="next-event-facts" data-ica-id="HOME-NXT-05">
             <div><dt>Data</dt><dd>—</dd></div>
             <div><dt>Luogo</dt><dd>—</dd></div>
             <div><dt>Formato</dt><dd>—</dd></div>
           </dl>
-          <a class="home-button" id="next-event-link" href="./adunanze/">Vai alle Adunanze →</a>
+          <a class="home-button" id="next-event-link" data-ica-id="HOME-NXT-06" href="./adunanze/">Vai alle Adunanze →</a>
         </div>
       </article>
     </section>
 
-    <section class="home-section standings-section" id="classifica" aria-labelledby="standings-title">
-      <header class="section-heading centered-heading">
+    <section class="home-section standings-section" id="classifica" data-ica-section="STANDINGS" aria-labelledby="standings-title">
+      <header class="section-heading centered-heading" data-ica-id="HOME-STD-01">
         <p class="section-kicker">Blaze of Glory</p>
         <h2 id="standings-title">Classifica Lega</h2>
         <p>Top 3 Avventurieri della lega corrente</p>
       </header>
-      <div id="league-standings" class="league-podium" aria-live="polite">
-        <article class="standing-card standing-loading"><span class="standing-rank">I</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
-        <article class="standing-card standing-loading"><span class="standing-rank">II</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
-        <article class="standing-card standing-loading"><span class="standing-rank">III</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
+      <div id="league-standings" class="league-podium" data-ica-id="HOME-STD-02" aria-live="polite">
+        <article class="standing-card standing-loading" data-ica-id="HOME-STD-03"><span class="standing-rank">I</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
+        <article class="standing-card standing-loading" data-ica-id="HOME-STD-04"><span class="standing-rank">II</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
+        <article class="standing-card standing-loading" data-ica-id="HOME-STD-05"><span class="standing-rank">III</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
       </div>
       <div class="section-action">
-        <a class="home-button home-button-secondary" href="./avventurieri/">Scopri gli Avventurieri →</a>
+        <a class="home-button home-button-secondary" data-ica-id="HOME-STD-06" href="./avventurieri/">Scopri gli Avventurieri →</a>
       </div>
     </section>
 
-    <section class="home-section chronicles-section" id="cronache-home" aria-labelledby="chronicles-title">
-      <header class="section-heading">
+    <section class="home-section chronicles-section" id="cronache-home" data-ica-section="CRONACHE" aria-labelledby="chronicles-title">
+      <header class="section-heading" data-ica-id="HOME-CRN-01">
         <p class="section-kicker">Memoria del Reame</p>
         <h2 id="chronicles-title">Cronache</h2>
       </header>
-      <article class="chronicle-card" id="latest-chronicle" aria-live="polite">
-        <div class="chronicle-status">Ultimo evento concluso</div>
-        <div class="chronicle-body">
+      <article class="chronicle-card" id="latest-chronicle" data-ica-id="HOME-CRN-02" aria-live="polite">
+        <div class="chronicle-status" data-ica-id="HOME-CRN-03">Ultimo evento concluso</div>
+        <div class="chronicle-body" data-ica-id="HOME-CRN-04">
           <h3 id="chronicle-title">Consultazione delle Cronache…</h3>
           <dl class="chronicle-facts" id="chronicle-facts"></dl>
           <a class="home-button home-button-secondary" href="./cronache/">Leggi le Cronache →</a>
@@ -107,14 +107,14 @@
       </article>
     </section>
 
-    <section class="home-section proclamations-section" id="proclami" aria-labelledby="proclamations-title">
-      <header class="section-heading">
+    <section class="home-section proclamations-section" id="proclami" data-ica-section="PROCLAMI" aria-labelledby="proclamations-title">
+      <header class="section-heading" data-ica-id="HOME-PRC-01">
         <p class="section-kicker">Notizie dal Reame</p>
         <h2 id="proclamations-title">Proclami</h2>
       </header>
-      <article class="proclamation-card" id="latest-proclamation" aria-live="polite">
-        <time id="proclamation-date" datetime="">—</time>
-        <div>
+      <article class="proclamation-card" id="latest-proclamation" data-ica-id="HOME-PRC-02" aria-live="polite">
+        <time id="proclamation-date" data-ica-id="HOME-PRC-03" datetime="">—</time>
+        <div data-ica-id="HOME-PRC-04">
           <h3 id="proclamation-title">Nessun Proclama pubblicato</h3>
           <p id="proclamation-summary">Le comunicazioni ufficiali della community appariranno qui.</p>
         </div>
@@ -122,12 +122,13 @@
     </section>
   </main>
 
-  <footer class="site-footer" id="alleanze">
+  <footer class="site-footer" id="alleanze" data-ica-section="FOOTER">
     <span>In Cerca di Avventura · Home</span>
     <span>Community italiana di Sorcery: Contested Realm</span>
     <span>© <span id="year"></span></span>
   </footer>
 </div>
 <script src="main.js"></script>
+<script src="../assets/js/lcs02-inspector.js"></script>
 </body>
 </html>

@@ -123,7 +123,7 @@ function renderStandings(standings,players){
   if(!top.length){
     root.innerHTML=[1,2,3].map((rank,index)=>{
       const roman=['I','II','III'][index];
-      return '<article class="standing-card standing-loading"><span class="standing-rank">'+roman+'</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>';
+      return '<article class="standing-card standing-loading" data-ica-id="HOME-STD-0'+(index+3)+'"><span class="standing-rank">'+roman+'</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>';
     }).join('');
     return;
   }
@@ -135,7 +135,7 @@ function renderStandings(standings,players){
       ? '<img src="'+esc(player.avatar_url)+'" alt="">'
       : '<span aria-hidden="true">'+esc(initials(nickname))+'</span>';
     const roman=['I','II','III'][index]||String(index+1);
-    return '<article class="standing-card" data-player-id="'+esc(entry.player_id)+'">'+
+    return '<article class="standing-card" data-ica-id="HOME-STD-0'+(index+3)+'" data-player-id="'+esc(entry.player_id)+'">'+
       '<span class="standing-rank">'+roman+'</span>'+
       '<div class="standing-avatar">'+avatar+'</div>'+
       '<strong>'+esc(nickname)+'</strong>'+

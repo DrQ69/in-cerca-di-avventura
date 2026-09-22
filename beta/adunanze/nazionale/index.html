@@ -26,15 +26,15 @@
   <link rel="stylesheet" href="../../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="adunanze-nazionale.css">
 </head>
-<body>
+<body data-ica-page="ADU-NAT">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="site-shell national-shell is-loading" id="national-shell">
-  <header class="site-nav">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="ADU-NAT-NAV-01">
     <nav class="nav-side" aria-label="Navigazione principale sinistra">
       <a href="../" aria-current="page">Le Adunanze</a>
       <a href="../../cronache/">Cronache</a>
     </nav>
-    <a class="logo-host" href="../../" aria-label="In Cerca di Avventura — Home">
+    <a class="logo-host" data-ica-id="ADU-NAT-NAV-02" href="../../" aria-label="In Cerca di Avventura — Home">
       <img src="../../../assets/logo-emblem.webp" alt="">
     </a>
     <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
@@ -53,28 +53,28 @@
   </header>
 
   <main id="main">
-    <section class="national-hero" aria-labelledby="page-title">
+    <section class="national-hero" data-ica-section="HERO" data-ica-id="AN-HERO-01" aria-labelledby="page-title">
       <div>
-        <p class="national-kicker">Nazionale</p>
-        <h1 id="page-title">Adunanze</h1>
-        <p class="national-subtitle">Eventi in corso e in programma</p>
+        <p class="national-kicker" data-ica-id="AN-HERO-02">Nazionale</p>
+        <h1 id="page-title" data-ica-id="AN-HERO-03">Adunanze</h1>
+        <p class="national-subtitle" data-ica-id="AN-HERO-04">Eventi in corso e in programma</p>
       </div>
     </section>
 
-    <div class="national-main is-loading" id="national-main">
-      <p id="loading" class="system-state" aria-live="polite">Consultazione delle Adunanze…</p>
+    <div class="national-main is-loading" id="national-main" data-ica-section="MAIN">
+      <p id="loading" class="system-state" data-ica-id="AN-SYS-01" aria-live="polite">Consultazione delle Adunanze…</p>
       <p id="error" class="system-state system-error" hidden aria-live="assertive">Le Adunanze non sono disponibili in questo momento.</p>
 
-      <section id="ongoing-section" class="event-group" hidden aria-labelledby="ongoing-title">
-        <header class="group-heading">
+      <section id="ongoing-section" class="event-group" data-ica-section="ONGOING" hidden aria-labelledby="ongoing-title">
+        <header class="group-heading" data-ica-id="AN-GRP-01">
           <p>Ora</p>
           <h2 id="ongoing-title">In corso</h2>
         </header>
         <div id="ongoing-root" class="event-list"></div>
       </section>
 
-      <section id="upcoming-section" class="event-group" aria-labelledby="upcoming-title">
-        <header class="group-heading">
+      <section id="upcoming-section" class="event-group" data-ica-section="UPCOMING" aria-labelledby="upcoming-title">
+        <header class="group-heading" data-ica-id="AN-GRP-02">
           <p>Calendario</p>
           <h2 id="upcoming-title">Prossime Adunanze</h2>
         </header>
@@ -84,12 +84,13 @@
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" data-ica-section="FOOTER">
     <span>In Cerca di Avventura · Adunanze Nazionali</span>
     <span>Sorcery: Contested Realm · Italia</span>
     <span>© <span id="year"></span></span>
   </footer>
 </div>
 <script src="main.js"></script>
+<script src="../../../assets/js/lcs02-inspector.js"></script>
 </body>
 </html>

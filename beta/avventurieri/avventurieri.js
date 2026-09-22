@@ -57,9 +57,9 @@ function card(player){
   const avatar=player.avatar_url ? '<img src="'+esc(player.avatar_url)+'" alt="">' : '<span aria-hidden="true">'+esc(initials(player.nickname))+'</span>';
   const recordAvailable=[stats.wins,stats.draws,stats.losses].some(v=>Number.isFinite(v));
   const record=recordAvailable ? (Number.isFinite(stats.wins)?stats.wins:'–')+' V · '+(Number.isFinite(stats.draws)?stats.draws:'–')+' P · '+(Number.isFinite(stats.losses)?stats.losses:'–')+' S' : null;
-  return '<article class="player-card" data-player-id="'+esc(player.id)+'">'+
-    '<header class="player-card-header"><div class="player-avatar">'+avatar+'</div><div class="player-card-title"><h3>'+esc(player.nickname)+'</h3><span class="player-id">'+esc(player.id)+'</span></div></header>'+
-    '<div class="player-details">'+
+  return '<article class="player-card" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
+    '<header class="player-card-header" data-ica-id="AVV-CARD-HEAD-'+esc(player.id)+'"><div class="player-avatar" data-ica-id="AVV-CARD-AVATAR-'+esc(player.id)+'">'+avatar+'</div><div class="player-card-title" data-ica-id="AVV-CARD-NAME-'+esc(player.id)+'"><h3>'+esc(player.nickname)+'</h3><span class="player-id">'+esc(player.id)+'</span></div></header>'+
+    '<div class="player-details" data-ica-id="AVV-CARD-DETAILS-'+esc(player.id)+'">'+
       detail('Vittorie',Number.isFinite(stats.wins)?stats.wins:null,false)+
       detail('Leghe vinte',Number.isFinite(stats.leagues_won)?stats.leagues_won:null,false)+
       detail('Partite V / P / S',record,true)+

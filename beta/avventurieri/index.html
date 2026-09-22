@@ -16,15 +16,15 @@
   <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="avventurieri.css">
 </head>
-<body>
+<body data-ica-page="AVV">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="site-shell avventurieri-shell">
-  <header class="site-nav">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="AVV-NAV-01">
     <nav class="nav-side" aria-label="Navigazione principale sinistra">
       <a href="../adunanze/">Le Adunanze</a>
       <a href="../cronache/">Cronache</a>
     </nav>
-    <a class="logo-host" href="../" aria-label="In Cerca di Avventura — Home"><img src="../../assets/logo-emblem.webp" alt=""></a>
+    <a class="logo-host" data-ica-id="AVV-NAV-02" href="../" aria-label="In Cerca di Avventura — Home"><img src="../../assets/logo-emblem.webp" alt=""></a>
     <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
       <a href="./" aria-current="page">Avventurieri</a>
       <a href="../#alleanze">Alleanze</a>
@@ -41,45 +41,46 @@
   </header>
 
   <main id="main" class="avventurieri-main">
-    <section class="avventurieri-intro" aria-labelledby="page-title">
-      <p class="section-kicker">Il Registro degli Avventurieri</p>
-      <h1 id="page-title">Avventurieri</h1>
-      <p>I profili della community. I dati non ancora disponibili vengono lasciati volutamente incompleti fino alla loro verifica.</p>
+    <section class="avventurieri-intro" data-ica-section="INTRO" data-ica-id="AVV-INT-01" aria-labelledby="page-title">
+      <p class="section-kicker" data-ica-id="AVV-INT-02">Il Registro degli Avventurieri</p>
+      <h1 id="page-title" data-ica-id="AVV-INT-03">Avventurieri</h1>
+      <p data-ica-id="AVV-INT-04">I profili della community. I dati non ancora disponibili vengono lasciati volutamente incompleti fino alla loro verifica.</p>
     </section>
 
-    <section class="finder-panel" aria-labelledby="finder-title">
-      <div class="finder-heading"><div><p class="section-kicker">Ricerca e filtri</p><h2 id="finder-title">Trova un Avventuriero</h2></div></div>
+    <section class="finder-panel" data-ica-section="FINDER" data-ica-id="AVV-FND-01" aria-labelledby="finder-title">
+      <div class="finder-heading" data-ica-id="AVV-FND-02"><div><p class="section-kicker">Ricerca e filtri</p><h2 id="finder-title">Trova un Avventuriero</h2></div></div>
       <div class="finder-controls">
-        <label class="search-field"><span>Nickname</span><input id="player-search" type="search" autocomplete="off" placeholder="Cerca per nickname…" aria-controls="player-track"></label>
-        <label><span>Risultati</span><select id="filter-results"><option value="all">Tutti</option><option value="available">Disponibili</option><option value="missing">Da completare</option></select></label>
-        <label><span>Avatar</span><select id="filter-avatar"><option value="all">Tutti</option><option value="available">Disponibile</option><option value="missing">Da completare</option></select></label>
-        <label><span>Stile di gioco</span><select id="filter-style"><option value="all">Tutti</option><option value="available">Disponibile</option><option value="missing">Da completare</option></select></label>
-        <button id="clear-filters" class="clear-button" type="button">Azzera filtri</button>
+        <label class="search-field" data-ica-id="AVV-FND-03"><span>Nickname</span><input id="player-search" type="search" autocomplete="off" placeholder="Cerca per nickname…" aria-controls="player-track"></label>
+        <label data-ica-id="AVV-FND-04"><span>Risultati</span><select id="filter-results"><option value="all">Tutti</option><option value="available">Disponibili</option><option value="missing">Da completare</option></select></label>
+        <label data-ica-id="AVV-FND-05"><span>Avatar</span><select id="filter-avatar"><option value="all">Tutti</option><option value="available">Disponibile</option><option value="missing">Da completare</option></select></label>
+        <label data-ica-id="AVV-FND-06"><span>Stile di gioco</span><select id="filter-style"><option value="all">Tutti</option><option value="available">Disponibile</option><option value="missing">Da completare</option></select></label>
+        <button id="clear-filters" class="clear-button" data-ica-id="AVV-FND-07" type="button">Azzera filtri</button>
       </div>
     </section>
 
-    <section class="roster-section" aria-labelledby="roster-title">
-      <div class="roster-heading">
+    <section class="roster-section" data-ica-section="ROSTER" aria-labelledby="roster-title">
+      <div class="roster-heading" data-ica-id="AVV-ROS-01">
         <div><p class="section-kicker">Profili</p><h2 id="roster-title">Compagni d'Avventura</h2></div>
         <p id="player-count" class="player-count" aria-live="polite">Caricamento…</p>
       </div>
-      <div id="player-status" class="system-state" role="status">Consultazione del registro…</div>
+      <div id="player-status" class="system-state" data-ica-id="AVV-ROS-02" role="status">Consultazione del registro…</div>
       <div id="player-empty" class="system-state" hidden>Nessun Avventuriero corrisponde ai filtri selezionati.</div>
       <div class="carousel-shell">
-        <button class="carousel-arrow carousel-prev" id="prev-page" type="button" aria-label="Profili precedenti">←</button>
-        <div class="player-viewport"><div id="player-track" class="player-track" aria-live="polite"></div></div>
-        <button class="carousel-arrow carousel-next" id="next-page" type="button" aria-label="Profili successivi">→</button>
+        <button class="carousel-arrow carousel-prev" id="prev-page" data-ica-id="AVV-ROS-03" type="button" aria-label="Profili precedenti">←</button>
+        <div class="player-viewport" data-ica-id="AVV-ROS-04"><div id="player-track" class="player-track" aria-live="polite"></div></div>
+        <button class="carousel-arrow carousel-next" id="next-page" data-ica-id="AVV-ROS-05" type="button" aria-label="Profili successivi">→</button>
       </div>
-      <div class="carousel-meta"><span id="page-indicator">Pagina 1 di 1</span></div>
+      <div class="carousel-meta" data-ica-id="AVV-ROS-06"><span id="page-indicator">Pagina 1 di 1</span></div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" data-ica-section="FOOTER">
     <span>In Cerca di Avventura · Avventurieri</span>
     <span>Community italiana di Sorcery: Contested Realm</span>
     <span>© <span id="year"></span></span>
   </footer>
 </div>
 <script src="avventurieri.js"></script>
+<script src="../../assets/js/lcs02-inspector.js"></script>
 </body>
 </html>
