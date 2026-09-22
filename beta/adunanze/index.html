@@ -27,15 +27,15 @@
   <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="adunanze-portal.css">
 </head>
-<body>
+<body data-ica-page="ADU">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="site-shell adunanze-shell">
-  <header class="site-nav">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="ADU-NAV-01">
     <nav class="nav-side" aria-label="Navigazione principale sinistra">
       <a href="./" aria-current="page">Le Adunanze</a>
       <a href="../cronache/">Cronache</a>
     </nav>
-    <a class="logo-host" href="../" aria-label="In Cerca di Avventura — Home">
+    <a class="logo-host" data-ica-id="ADU-NAV-02" href="../" aria-label="In Cerca di Avventura — Home">
       <img src="../../assets/logo-emblem.webp" alt="">
     </a>
     <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
@@ -53,14 +53,15 @@
     </nav>
   </header>
 
-  <main id="main" class="adunanze-main">
+  <main id="main" class="adunanze-main" data-ica-section="MAIN">
     <h1 class="sr-only">Adunanze</h1>
 
-    <section class="battlefield-panel" aria-label="Campo di battaglia">
+    <section class="battlefield-panel" data-ica-section="BATTLEFIELD" data-ica-id="ADU-BAT-01" aria-label="Campo di battaglia">
       <picture>
         <source media="(max-width: 767px)" srcset="../../assets/adunanze/adunanze-battlefield-512.webp">
         <img
           src="../../assets/adunanze/adunanze-battlefield.webp"
+          data-ica-id="ADU-BAT-02"
           width="1916"
           height="821"
           alt=""
@@ -69,12 +70,13 @@
       </picture>
     </section>
 
-    <section class="gate-grid" aria-label="Accessi alle Adunanze">
-      <a class="gate-panel gate-national" href="./nazionale/" aria-label="Entra nelle Adunanze Nazionali — Il Regno di Cremos">
+    <section class="gate-grid" data-ica-section="GATES" aria-label="Accessi alle Adunanze">
+      <a class="gate-panel gate-national" data-ica-id="ADU-GAT-02" href="./nazionale/" aria-label="Entra nelle Adunanze Nazionali — Il Regno di Cremos">
         <picture>
           <source media="(max-width: 767px)" srcset="../../assets/adunanze/adunanze-gate-national-512.webp">
           <img
             src="../../assets/adunanze/adunanze-gate-national.webp"
+            data-ica-id="ADU-GAT-04"
             width="1122"
             height="1402"
             alt=""
@@ -83,13 +85,14 @@
         </picture>
       </a>
 
-      <article class="gate-panel gate-international" aria-labelledby="international-title" aria-describedby="international-status">
+      <article class="gate-panel gate-international" data-ica-id="ADU-GAT-01" aria-labelledby="international-title" aria-describedby="international-status">
         <h2 id="international-title" class="sr-only">Adunanze Internazionali — Oltre i Confini Noti</h2>
         <p id="international-status" class="sr-only">Sezione in sviluppo, non ancora disponibile.</p>
         <picture>
           <source media="(max-width: 767px)" srcset="../../assets/adunanze/adunanze-gate-international-512.webp">
           <img
             src="../../assets/adunanze/adunanze-gate-international.webp"
+            data-ica-id="ADU-GAT-03"
             width="1122"
             height="1402"
             alt=""
@@ -101,5 +104,6 @@
   </main>
 </div>
 <script src="adunanze-portal.js"></script>
+<script src="../../assets/js/lcs02-inspector.js"></script>
 </body>
 </html>
