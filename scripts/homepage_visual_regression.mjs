@@ -42,6 +42,8 @@ try{
         standingsNames:standingCards.map(card=>card.querySelector('strong')?.textContent?.trim()||''),
         standingsPoints:standingCards.map(card=>card.querySelector('small')?.textContent?.trim()||''),
         proclamationTitle:document.querySelector('#proclamation-title')?.textContent?.trim()||'',
+        nextMapHref:document.querySelector('#next-event-facts .map-link')?.getAttribute('href')||'',
+        chronicleMapHref:document.querySelector('#chronicle-facts .map-link')?.getAttribute('href')||'',
         overflow:Math.max(body.scrollWidth,html.scrollWidth)>window.innerWidth+2,
       };
     });
@@ -58,6 +60,8 @@ try{
     if(JSON.stringify(result.standingsNames)!==JSON.stringify(['Nick the Wizard','Limitbreaker','Mikininja'])) throw new Error(viewport.name+': top-3 ranking mismatch '+JSON.stringify(result.standingsNames));
     if(JSON.stringify(result.standingsPoints)!==JSON.stringify(['25 punti lega','22 punti lega','20 punti lega'])) throw new Error(viewport.name+': top-3 points mismatch '+JSON.stringify(result.standingsPoints));
     if(result.proclamationTitle!=='Nessun Proclama pubblicato') throw new Error(viewport.name+': empty Proclami state mismatch');
+    if(!result.nextMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': next event location is not linked to Google Maps');
+    if(!result.chronicleMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': chronicle location is not linked to Google Maps');
     if(result.overflow) throw new Error(viewport.name+': horizontal overflow');
     if(errors.length) throw new Error(viewport.name+': console errors: '+errors.join(' | '));
 
