@@ -36,16 +36,16 @@ function deckLink(e){
 }
 
 function eventCard(e){
-  return `<article class="chronicle-record">
-    <header class="chronicle-record-head">
+  return `<article class="chronicle-record" data-ica-id="CRO-REC-${esc(e.event_id||'unknown')}">
+    <header class="chronicle-record-head" data-ica-id="CRO-REC-TITLE-${esc(e.event_id||'unknown')}">
       <h3>${esc(e.title)}</h3>
     </header>
     <div class="chronicle-facts">
-      <div class="chronicle-fact"><span>Luogo</span><strong>${esc(placeName(e))}</strong></div>
-      <div class="chronicle-fact"><span>Data</span><strong>${esc(fmtDate(e.date))}</strong></div>
-      <div class="chronicle-fact"><span>Vincitore</span><strong>${esc(e.winner_display_name||'Da verificare')}</strong></div>
-      <div class="chronicle-fact"><span>Giocatori</span><strong>${esc(e.player_count??'—')}</strong></div>
-      <div class="chronicle-fact chronicle-deck">${deckLink(e)}</div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-PLACE-${esc(e.event_id||'unknown')}"><span>Luogo</span><strong>${esc(placeName(e))}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-DATE-${esc(e.event_id||'unknown')}"><span>Data</span><strong>${esc(fmtDate(e.date))}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-WINNER-${esc(e.event_id||'unknown')}"><span>Vincitore</span><strong>${esc(e.winner_display_name||'Da verificare')}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-PLAYERS-${esc(e.event_id||'unknown')}"><span>Giocatori</span><strong>${esc(e.player_count??'—')}</strong></div>
+      <div class="chronicle-fact chronicle-deck" data-ica-id="CRO-REC-DECK-${esc(e.event_id||'unknown')}">${deckLink(e)}</div>
     </div>
   </article>`;
 }
@@ -63,8 +63,8 @@ function render(events){
   const seasons=[...new Set(completed.map(e=>e.season).filter(Boolean))].sort().reverse();
   root.innerHTML=seasons.map(season=>{
     const list=completed.filter(e=>e.season===season);
-    return `<section class="chronicle-season" aria-labelledby="chronicle-season-${esc(season)}">
-      <header class="chronicle-season-head">
+    return `<section class="chronicle-season" data-ica-id="CRO-SEA-${esc(season)}" aria-labelledby="chronicle-season-${esc(season)}">
+      <header class="chronicle-season-head" data-ica-id="CRO-SEA-HEAD-${esc(season)}">
         <h2 id="chronicle-season-${esc(season)}">${esc(season)}</h2>
       </header>
       <div class="chronicle-records">${list.map(eventCard).join('')}</div>
