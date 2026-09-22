@@ -160,6 +160,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{
   outline-offset:3px;
 }
 @media(max-width:767px){
+  .site-shell{border-inline:0}
   .site-shell::before,.site-shell::after{display:none}
   .site-footer{flex-direction:column;text-align:center;padding:14px}
 }
