@@ -31,36 +31,37 @@
   <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
   <link rel="stylesheet" href="cronache-summary.css">
 </head>
-<body>
+<body data-ica-page="CRO">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="site-shell cronache-shell">
-  <header class="site-nav">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="CRO-NAV-01">
     <nav class="nav-side" aria-label="Navigazione principale sinistra"><a href="../adunanze/">Le Adunanze</a><a href="./" aria-current="page">Cronache</a></nav>
-    <a class="logo-host" href="../" aria-label="In Cerca di Avventura — Home"><img src="../../assets/logo-emblem.webp" alt="In Cerca di Avventura"></a>
+    <a class="logo-host" data-ica-id="CRO-NAV-02" href="../" aria-label="In Cerca di Avventura — Home"><img src="../../assets/logo-emblem.webp" alt="In Cerca di Avventura"></a>
     <nav class="nav-side nav-right" aria-label="Navigazione principale destra"><a href="../avventurieri/">Avventurieri</a><a href="../#alleanze">Alleanze</a><a href="../#proclami">Proclami</a></nav>
     <button class="menu-toggle" id="menu" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile"><a href="../adunanze/">Le Adunanze</a><a href="./" aria-current="page">Cronache</a><a href="../avventurieri/">Avventurieri</a><a href="../#alleanze">Alleanze</a><a href="../#proclami">Proclami</a></nav>
   </header>
 
   <main id="main">
-    <section class="archive-threshold" aria-labelledby="page-title">
+    <section class="archive-threshold" data-ica-section="THRESHOLD" data-ica-id="CRO-THR-01" aria-labelledby="page-title">
       <div class="threshold-copy">
-        <h1 id="page-title">Cronache</h1>
-        <p class="subtitle">Gli eventi conclusi della community</p>
+        <h1 id="page-title" data-ica-id="CRO-THR-02">Cronache</h1>
+        <p class="subtitle" data-ica-id="CRO-THR-03">Gli eventi conclusi della community</p>
       </div>
     </section>
 
-    <div class="chronicles-archive">
-      <p id="loading" class="system-state" aria-live="polite">Consultazione delle Cronache…</p>
-      <p id="error" class="system-state system-error" hidden aria-live="assertive">Le Cronache non sono disponibili in questo momento.</p>
+    <div class="chronicles-archive" data-ica-section="ARCHIVE">
+      <p id="loading" class="system-state" data-ica-id="CRO-SYS-LOAD" aria-live="polite">Consultazione delle Cronache…</p>
+      <p id="error" class="system-state system-error" data-ica-id="CRO-SYS-ERR" hidden aria-live="assertive">Le Cronache non sono disponibili in questo momento.</p>
       <div id="chronicles-root"></div>
-      <p id="empty" class="empty-state" hidden aria-live="polite">Nessun evento concluso registrato.</p>
-      <div class="closing" aria-label="Chiusura archivio"><img src="../../assets/ui/cronache/archive-divider.svg" alt=""></div>
+      <p id="empty" class="empty-state" data-ica-id="CRO-SYS-EMPTY" hidden aria-live="polite">Nessun evento concluso registrato.</p>
+      <div class="closing" data-ica-section="CLOSING" data-ica-id="CRO-CLS-01" aria-label="Chiusura archivio"><img src="../../assets/ui/cronache/archive-divider.svg" alt=""></div>
     </div>
   </main>
 
-  <footer class="site-footer"><span>In Cerca di Avventura · Cronache</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
+  <footer class="site-footer" data-ica-section="FOOTER"><span>In Cerca di Avventura · Cronache</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
 </div>
 <script src="main.js"></script>
+<script src="../../assets/js/lcs02-inspector.js"></script>
 </body>
 </html>
