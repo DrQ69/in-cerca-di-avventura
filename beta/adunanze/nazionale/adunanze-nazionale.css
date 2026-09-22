@@ -159,6 +159,8 @@
   font:600 .82rem system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   line-height:1.4;
 }
+.map-link{color:inherit;text-decoration:underline;text-decoration-color:rgba(104,75,32,.45);text-underline-offset:3px}
+.map-link:hover,.map-link:focus-visible{color:#684b20;text-decoration-color:currentColor}
 .card-action{
   position:relative;
   z-index:1;
