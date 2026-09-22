@@ -37,6 +37,12 @@ function fmtDate(value,short=false){
   return d.day+' '+(short?mesiBrevi[d.month-1]:mesi[d.month-1])+' '+d.year;
 }
 
+function avatarSrc(value){
+  if(!value)return '';
+  if(/^https?:\/\//i.test(value)||value.startsWith('/'))return value;
+  return '../'+value.replace(/^\.\//,'');
+}
+
 function initials(nickname){
   return String(nickname||'?')
     .replace(/[^\p{L}\p{N}\s]/gu,' ')
@@ -136,7 +142,7 @@ function renderStandings(standings,players){
     const player=byId.get(entry.player_id);
     const nickname=player?.nickname||'Avventuriero da verificare';
     const avatar=player?.avatar_url
-      ? '<img src="'+esc(player.avatar_url)+'" alt="">'
+      ? '<img src="'+esc(avatarSrc(player.avatar_url))+'" alt="">'
       : '<span aria-hidden="true">'+esc(initials(nickname))+'</span>';
     const roman=['I','II','III'][index]||String(index+1);
     return '<article class="standing-card" data-ica-id="HOME-STD-0'+(index+3)+'" data-player-id="'+esc(entry.player_id)+'">'+
