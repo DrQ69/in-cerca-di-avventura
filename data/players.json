@@ -2,12 +2,13 @@
   "schema_version": "1.0",
   "purpose": "Canonical public player registry for Avventurieri. Profiles are nickname-based only; previous imported display-name seed lists are superseded and must not be used.",
   "source_of_truth": "Product Owner supplied nickname list",
-  "updated_at": "2026-09-21",
+  "updated_at": "2026-09-22",
   "players": [
     {
       "id": "PLY-0001",
       "slug": "nick-the-wizard",
-      "nickname": "Nick the Wizard"
+      "nickname": "Nick the Wizard",
+      "avatar_url": "assets/avventurieri/nick-the-wizard.webp"
     },
     {
       "id": "PLY-0002",

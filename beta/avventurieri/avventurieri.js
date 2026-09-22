@@ -35,6 +35,12 @@ function valueOrMissing(value){
   return value===null||value===undefined||value===''?'Da completare':String(value);
 }
 
+function avatarSrc(value){
+  if(!value)return '';
+  if(/^https?:\/\//i.test(value)||value.startsWith('/'))return value;
+  return '../../'+value.replace(/^\.\//,'');
+}
+
 function initials(nickname){
   return String(nickname||'?').replace(/[^\p{L}\p{N}\s]/gu,' ').trim().split(/\s+/).filter(Boolean).slice(0,2).map(part=>part[0]?.toUpperCase()||'').join('')||'?';
 }
@@ -54,7 +60,7 @@ function detail(label,value,wide){
 
 function card(player){
   const stats=player.stats||{};
-  const avatar=player.avatar_url ? '<img src="'+esc(player.avatar_url)+'" alt="">' : '<span aria-hidden="true">'+esc(initials(player.nickname))+'</span>';
+  const avatar=player.avatar_url ? '<img src="'+esc(avatarSrc(player.avatar_url))+'" alt="">' : '<span aria-hidden="true">'+esc(initials(player.nickname))+'</span>';
   const recordAvailable=[stats.wins,stats.draws,stats.losses].some(v=>Number.isFinite(v));
   const record=recordAvailable ? (Number.isFinite(stats.wins)?stats.wins:'–')+' V · '+(Number.isFinite(stats.draws)?stats.draws:'–')+' P · '+(Number.isFinite(stats.losses)?stats.losses:'–')+' S' : null;
   return '<article class="player-card" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
