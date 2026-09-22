@@ -30,12 +30,20 @@ try{
       const cards=[...document.querySelectorAll('.player-card')];
       const nicknames=cards.map(card=>card.querySelector('h3')?.textContent?.trim()||'');
       const body=document.body,html=document.documentElement;
+      const nickCard=document.querySelector('[data-player-id="PLY-0001"]');
+      const nickText=nickCard?.textContent||'';
       return {
         visibleCards:cards.length,
         nicknames,
         countText:document.querySelector('#player-count')?.textContent||'',
         nextDisabled:document.querySelector('#next-page')?.disabled ?? true,
         overflow:Math.max(body.scrollWidth,html.scrollWidth)>window.innerWidth+2,
+        nickStats:{
+          hasTwoEvents:nickText.includes('Eventi registrati')&&nickText.includes('2'),
+          hasRecord:nickText.includes('4 V · 1 P · 3 S'),
+          hasLeaguePoints:nickText.includes('25'),
+          hasLeagueRank:nickText.includes('#1')
+        }
       };
     });
 
@@ -43,15 +51,26 @@ try{
     if(!initial.countText.includes('32')) throw new Error(`${viewport.name}: canonical 32-player count not rendered`);
     if(initial.overflow) throw new Error(`${viewport.name}: horizontal overflow`);
     if(initial.nextDisabled) throw new Error(`${viewport.name}: next arrow unexpectedly disabled on first page`);
+    if(!initial.nickStats.hasTwoEvents||!initial.nickStats.hasRecord||!initial.nickStats.hasLeaguePoints||!initial.nickStats.hasLeagueRank){
+      throw new Error(`${viewport.name}: Nick the Wizard derived statistics mismatch ${JSON.stringify(initial.nickStats)}`);
+    }
 
     await page.fill('#player-search','Dr. Q');
     await page.waitForTimeout(50);
-    const searchResult=await page.evaluate(()=>({
-      count:document.querySelectorAll('.player-card').length,
-      nickname:document.querySelector('.player-card h3')?.textContent?.trim()||'',
-      countText:document.querySelector('#player-count')?.textContent||''
-    }));
+    const searchResult=await page.evaluate(()=>{
+      const card=document.querySelector('.player-card');
+      const text=card?.textContent||'';
+      return {
+        count:document.querySelectorAll('.player-card').length,
+        nickname:card?.querySelector('h3')?.textContent?.trim()||'',
+        countText:document.querySelector('#player-count')?.textContent||'',
+        hasRecord:text.includes('8 V · 0 P · 3 S'),
+        hasLeaguePoints:text.includes('8'),
+        hasLeagueRank:text.includes('#14')
+      };
+    });
     if(searchResult.count!==1||searchResult.nickname!=='Dr. Q') throw new Error(`${viewport.name}: nickname search failed`);
+    if(!searchResult.hasRecord||!searchResult.hasLeaguePoints||!searchResult.hasLeagueRank) throw new Error(`${viewport.name}: Dr. Q derived statistics mismatch ${JSON.stringify(searchResult)}`);
 
     await page.click('#clear-filters');
     await page.waitForFunction(()=>document.querySelectorAll('.player-card').length>0);

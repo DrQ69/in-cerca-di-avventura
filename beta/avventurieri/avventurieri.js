@@ -47,7 +47,7 @@ function initials(nickname){
 
 function hasResults(player){
   const stats=player.stats||{};
-  return [stats.wins,stats.draws,stats.losses,stats.leagues_won].some(v=>Number.isFinite(v));
+  return Number.isFinite(stats.events_played)&&stats.events_played>0;
 }
 function hasAvatar(player){return Boolean(player.avatar_url);}
 function hasStyle(player){return Boolean(player.play_style);}
@@ -60,18 +60,25 @@ function detail(label,value,wide){
 
 function card(player){
   const stats=player.stats||{};
+  const league=player.league||{};
   const avatar=player.avatar_url ? '<img src="'+esc(avatarSrc(player.avatar_url))+'" alt="">' : '<span aria-hidden="true">'+esc(initials(player.nickname))+'</span>';
-  const recordAvailable=[stats.wins,stats.draws,stats.losses].some(v=>Number.isFinite(v));
-  const record=recordAvailable ? (Number.isFinite(stats.wins)?stats.wins:'–')+' V · '+(Number.isFinite(stats.draws)?stats.draws:'–')+' P · '+(Number.isFinite(stats.losses)?stats.losses:'–')+' S' : null;
+  const hasRecorded=Number.isFinite(stats.events_played)&&stats.events_played>0;
+  const record=hasRecorded ? stats.wins+' V · '+stats.draws+' P · '+stats.losses+' S' : 'Nessun risultato registrato';
+  const leagueRank=Number.isFinite(league.rank)?'#'+league.rank:null;
+  const leaguePoints=Number.isFinite(league.points)?league.points:null;
   return '<article class="player-card" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
     '<header class="player-card-header" data-ica-id="AVV-CARD-HEAD-'+esc(player.id)+'"><div class="player-avatar" data-ica-id="AVV-CARD-AVATAR-'+esc(player.id)+'">'+avatar+'</div><div class="player-card-title" data-ica-id="AVV-CARD-NAME-'+esc(player.id)+'"><h3>'+esc(player.nickname)+'</h3><span class="player-id">'+esc(player.id)+'</span></div></header>'+
     '<div class="player-details" data-ica-id="AVV-CARD-DETAILS-'+esc(player.id)+'">'+
-      detail('Vittorie',Number.isFinite(stats.wins)?stats.wins:null,false)+
-      detail('Leghe vinte',Number.isFinite(stats.leagues_won)?stats.leagues_won:null,false)+
-      detail('Partite V / P / S',record,true)+
-      detail('Last Deck',player.last_deck,false)+
-      detail('Avatar preferito',player.preferred_avatar,false)+
-      detail('Tratto distintivo',player.distinctive_trait,false)+
+      detail('Eventi registrati',hasRecorded?stats.events_played:0,false)+
+      detail('Vittorie evento',hasRecorded?stats.event_wins:0,false)+
+      detail('Record V / P / S',record,true)+
+      detail('Top 8',hasRecorded?stats.top8:0,false)+
+      detail('Partite giocate',hasRecorded?stats.matches_played:0,false)+
+      detail('Punti Lega',leaguePoints,false)+
+      detail('Classifica Lega',leagueRank,false)+
+      detail('Fair Play',Number.isFinite(league.fair_play_wins)?league.fair_play_wins:null,false)+
+      detail('Città',player.city,false)+
+      detail('Ultimo deck',player.last_deck,false)+
       detail('Stile di gioco',player.play_style,true)+
     '</div></article>';
 }
@@ -113,7 +120,46 @@ clear.addEventListener('click',()=>{search.value='';filterResults.value='all';fi
 let lastSize=perPage();
 window.addEventListener('resize',()=>{const size=perPage();if(size!==lastSize){lastSize=size;page=0;render();}});
 
-fetch('../../data/players.json',{cache:'no-store'})
-  .then(response=>{if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
-  .then(data=>{players=Array.isArray(data.players)?data.players:[];filtered=[...players];statusEl.hidden=true;applyFilters(false);})
+function aggregatePlayerStats(playerId,events){
+  const rows=[];
+  for(const event of events){
+    if(event.status!=='conclusa'||!Array.isArray(event.standings))continue;
+    const row=event.standings.find(item=>item.player_id===playerId);
+    if(row)rows.push({event,row});
+  }
+  return rows.reduce((acc,item)=>{
+    const row=item.row;
+    acc.events_played+=1;
+    acc.wins+=Number(row.wins)||0;
+    acc.draws+=Number(row.draws)||0;
+    acc.losses+=Number(row.losses)||0;
+    acc.matches_played+=(Number(row.wins)||0)+(Number(row.draws)||0)+(Number(row.losses)||0);
+    if(row.rank===1)acc.event_wins+=1;
+    if(row.top8===true)acc.top8+=1;
+    return acc;
+  },{events_played:0,wins:0,draws:0,losses:0,matches_played:0,event_wins:0,top8:0});
+}
+
+Promise.all([
+  fetch('../../data/players.json',{cache:'no-store'}),
+  fetch('../../data/events.json',{cache:'no-store'}),
+  fetch('../../data/league-standings.json',{cache:'no-store'})
+])
+  .then(async responses=>{
+    for(const response of responses)if(!response.ok)throw new Error('HTTP '+response.status);
+    return Promise.all(responses.map(response=>response.json()));
+  })
+  .then(([playerData,eventData,leagueData])=>{
+    const events=Array.isArray(eventData.events)?eventData.events:[];
+    const leagueEntries=Array.isArray(leagueData.entries)?leagueData.entries:[];
+    const leagueByPlayer=new Map(leagueEntries.map(entry=>[entry.player_id,entry]));
+    players=(Array.isArray(playerData.players)?playerData.players:[]).map(player=>({
+      ...player,
+      stats:aggregatePlayerStats(player.id,events),
+      league:leagueByPlayer.get(player.id)||{}
+    }));
+    filtered=[...players];
+    statusEl.hidden=true;
+    applyFilters(false);
+  })
   .catch(reason=>{console.error('Avventurieri data load failed',reason);statusEl.textContent='Il registro degli Avventurieri non è disponibile in questo momento.';countEl.textContent='Registro non disponibile';prev.disabled=true;next.disabled=true;});
