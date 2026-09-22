@@ -1,0 +1,66 @@
+name: Homepage visual QA
+
+on:
+  pull_request:
+    paths:
+      - 'beta/index.html'
+      - 'beta/style.css'
+      - 'beta/main.js'
+      - 'data/events.json'
+      - 'data/players.json'
+      - 'data/league-standings.json'
+      - 'data/proclami.json'
+      - 'assets/css/ica-shared-shell.css'
+      - 'scripts/homepage_visual_regression.mjs'
+      - '.github/workflows/homepage-visual-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'beta/index.html'
+      - 'beta/style.css'
+      - 'beta/main.js'
+      - 'data/events.json'
+      - 'data/players.json'
+      - 'data/league-standings.json'
+      - 'data/proclami.json'
+      - 'assets/css/ica-shared-shell.css'
+      - 'scripts/homepage_visual_regression.mjs'
+      - '.github/workflows/homepage-visual-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homepage-visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rendered-visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          sleep 2
+      - name: Capture and verify Homepage
+        run: node scripts/homepage_visual_regression.mjs
+      - name: Upload visual QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-visual-qa-${{ github.sha }}
+          path: artifacts/homepage-visual/
+          if-no-files-found: error
+          retention-days: 14
