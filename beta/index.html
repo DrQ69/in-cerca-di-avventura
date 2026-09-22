@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>In Cerca di Avventura — Home Beta</title>
-  <meta name="description" content="In Cerca di Avventura: community italiana di Sorcery: Contested Realm. Adunanze, Avventurieri, Alleanze, Proclami e Cronache.">
+  <title>In Cerca di Avventura — Sorcery Italia</title>
+  <meta name="description" content="In Cerca di Avventura: community italiana di Sorcery: Contested Realm. Prossime Adunanze, classifica di lega, Cronache e Proclami.">
   <meta name="theme-color" content="#090b0d">
   <meta property="og:title" content="In Cerca di Avventura — Sorcery Italia">
-  <meta property="og:description" content="La cittadella-crocevia della community italiana di Sorcery: Contested Realm.">
+  <meta property="og:description" content="Community italiana di Sorcery: Contested Realm. Prossime Adunanze, classifica di lega, Cronache e Proclami.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://drq69.github.io/in-cerca-di-avventura/beta/">
   <link rel="icon" href="../assets/favicon-32.png">
@@ -47,105 +47,83 @@
   </header>
 
   <main id="main">
-    <section class="hero-stage" id="home" aria-labelledby="hero-title">
-      <div class="hero-scene" aria-hidden="true"></div>
-      <div class="vertical-banner banner-left" aria-hidden="true"><span>ICA</span></div>
-      <div class="vertical-banner banner-right" aria-hidden="true"><span>ICA</span></div>
-      <div class="hero-copy">
-        <p class="kicker">Comunità italiana di</p>
-        <h1 id="hero-title"><span>In Cerca di</span> Avventura</h1>
-        <p class="sorcery-line">Sorcery: Contested Realm</p>
-        <a class="hero-cta" href="#next-event">Entra nella cittadella</a>
+    <section class="identity-block" id="home" aria-labelledby="home-title">
+      <div class="identity-glow" aria-hidden="true"></div>
+      <div class="identity-copy">
+        <p class="section-kicker">Comunità italiana di</p>
+        <h1 id="home-title">In Cerca di Avventura</h1>
+        <p class="identity-subtitle">Sorcery: Contested Realm</p>
       </div>
-      <aside class="motto" aria-label="Motto di In Cerca di Avventura">
-        <span>Per gloria.</span><span>Per conoscenza.</span><span>Per avventura.</span>
-      </aside>
     </section>
 
-    <section class="featured-strip" id="next-event" aria-labelledby="next-title">
-      <div class="featured-art" aria-hidden="true"><span class="rune">I</span></div>
-      <div class="featured-core" id="next-event-card" aria-live="polite">
-        <p class="section-kicker">Prossima Adunanza</p>
-        <h2 id="next-title">Consultazione del calendario…</h2>
-        <ul class="event-facts" id="next-event-facts">
-          <li>Caricamento dell'evento in programma.</li>
-        </ul>
-        <a class="small-button" id="next-event-link" href="./adunanze/">Esplora le Adunanze →</a>
-      </div>
-      <aside class="featured-message">
-        <p>Qui si incontrano coloro che cercano più di una semplice partita.</p>
-        <span>Persone, luoghi e storie reali costruiscono la memoria della community.</span>
-      </aside>
-    </section>
-
-    <section class="community-row" aria-label="Community">
-      <article class="panel players-panel" id="avventurieri">
-        <header class="panel-heading"><h2>Avventurieri</h2><span>I membri della community</span></header>
-        <div class="portrait-rail" aria-label="Anteprima Avventurieri">
-          <div class="portrait-placeholder"><span></span><b>Profili</b><small>solo quando verificati</small></div>
-          <div class="portrait-placeholder"><span></span><b>Partecipazioni</b><small>pubbliche e tracciabili</small></div>
-          <div class="portrait-placeholder"><span></span><b>Deck</b><small>quando disponibili</small></div>
-          <div class="portrait-placeholder"><span></span><b>Cronache</b><small>collegate ai fatti</small></div>
+    <section class="home-section next-event-section" id="next-event" aria-labelledby="next-event-heading">
+      <header class="section-heading">
+        <p class="section-kicker">Calendario</p>
+        <h2 id="next-event-heading">Prossima Adunanza</h2>
+      </header>
+      <article class="next-event-card" id="next-event-card" aria-live="polite">
+        <div class="next-event-mark" aria-hidden="true">I</div>
+        <div class="next-event-body">
+          <p class="next-event-series" id="next-event-series">Consultazione del calendario…</p>
+          <h3 id="next-title">Prossima Adunanza</h3>
+          <dl class="event-facts" id="next-event-facts">
+            <div><dt>Data</dt><dd>—</dd></div>
+            <div><dt>Luogo</dt><dd>—</dd></div>
+            <div><dt>Formato</dt><dd>—</dd></div>
+          </dl>
+          <a class="home-button" id="next-event-link" href="./adunanze/">Vai alle Adunanze →</a>
         </div>
-        <a class="panel-link" href="./avventurieri/">Tutti gli Avventurieri →</a>
-      </article>
-
-      <article class="panel allies-panel" id="alleanze">
-        <header class="panel-heading"><h2>Alleanze</h2><span>La rete della community</span></header>
-        <div class="parchment">
-          <div><strong>Reami d'Italia</strong><small>community, negozi, organizzatori e luoghi</small></div>
-          <div><strong>Reami d'Oltreconfine</strong><small>connessioni internazionali documentate</small></div>
-          <div><strong>Identità reali</strong><small>nessuno stemma inventato in sostituzione di un logo assente</small></div>
-        </div>
-        <a class="panel-link" href="#">Vedi tutte le Alleanze →</a>
       </article>
     </section>
 
-    <section class="activity-row" aria-label="Attività e aggiornamenti">
-      <article class="panel events-panel" id="adunanze">
-        <header class="panel-heading"><h2>Le Adunanze</h2><span>I prossimi eventi in programma</span></header>
-        <div class="event-grid" id="upcoming-event-grid" aria-live="polite">
-          <p>Consultazione del calendario…</p>
-        </div>
-        <a class="panel-link" href="./adunanze/">Vedi tutte le Adunanze →</a>
-      </article>
-
-      <article class="panel proclamations-panel" id="proclami">
-        <header class="panel-heading"><h2>Proclami</h2><span>Le ultime novità</span></header>
-        <div class="proclamation-list">
-          <article><time>16 SET</time><p><b>Blaze of Glory: prende il via la Prima Era</b><span>Informazioni e calendario della stagione 2026/2027.</span></p></article>
-          <article><time>02 OTT</time><p><b>La seconda tappa approda a Milano</b><span>Constructed al Joker's.</span></p></article>
-          <article><time>14 OTT</time><p><b>Chaos Draft</b><span>Tre espansioni per la terza Adunanza.</span></p></article>
-        </div>
-        <a class="panel-link" href="#">Tutti i Proclami →</a>
-      </article>
-    </section>
-
-    <section class="chronicles-panel" id="cronache" aria-labelledby="chronicles-title">
-      <div class="chronicle-main">
-        <p class="section-kicker">Cronache / Gli Annali</p>
-        <h2 id="chronicles-title">Ciò che accade merita di restare.</h2>
-        <p>Resoconti, interviste e memoria della community. La Beta non inventa storie: la struttura è pronta ad accogliere quelle documentate.</p>
-        <a class="small-button" href="./cronache/">Leggi le Cronache →</a>
+    <section class="home-section standings-section" id="classifica" aria-labelledby="standings-title">
+      <header class="section-heading centered-heading">
+        <p class="section-kicker">Blaze of Glory</p>
+        <h2 id="standings-title">Classifica Lega</h2>
+        <p>Top 3 Avventurieri della lega corrente</p>
+      </header>
+      <div id="league-standings" class="league-podium" aria-live="polite">
+        <article class="standing-card standing-loading"><span class="standing-rank">I</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
+        <article class="standing-card standing-loading"><span class="standing-rank">II</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
+        <article class="standing-card standing-loading"><span class="standing-rank">III</span><div class="standing-avatar">—</div><strong>Classifica in aggiornamento</strong><small>— punti</small></article>
       </div>
-      <div class="chronicle-index">
-        <div><span>Archivio</span><strong>Eventi e resoconti</strong></div>
-        <div><span>Voci</span><strong>Interviste e protagonisti</strong></div>
-        <div><span>Memoria</span><strong>Luoghi, immagini e risultati</strong></div>
+      <div class="section-action">
+        <a class="home-button home-button-secondary" href="./avventurieri/">Scopri gli Avventurieri →</a>
       </div>
     </section>
 
-    <section class="closing-band" aria-labelledby="closing-title">
-      <div class="closing-copy">
-        <p>La strada continua.</p>
-        <h2 id="closing-title">Trova la tua prossima Adunanza.</h2>
-        <a class="hero-cta" href="./adunanze/">Esplora le Adunanze →</a>
-      </div>
+    <section class="home-section chronicles-section" id="cronache-home" aria-labelledby="chronicles-title">
+      <header class="section-heading">
+        <p class="section-kicker">Memoria del Reame</p>
+        <h2 id="chronicles-title">Cronache</h2>
+      </header>
+      <article class="chronicle-card" id="latest-chronicle" aria-live="polite">
+        <div class="chronicle-status">Ultimo evento concluso</div>
+        <div class="chronicle-body">
+          <h3 id="chronicle-title">Consultazione delle Cronache…</h3>
+          <dl class="chronicle-facts" id="chronicle-facts"></dl>
+          <a class="home-button home-button-secondary" href="./cronache/">Leggi le Cronache →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="home-section proclamations-section" id="proclami" aria-labelledby="proclamations-title">
+      <header class="section-heading">
+        <p class="section-kicker">Notizie dal Reame</p>
+        <h2 id="proclamations-title">Proclami</h2>
+      </header>
+      <article class="proclamation-card" id="latest-proclamation" aria-live="polite">
+        <time id="proclamation-date" datetime="">—</time>
+        <div>
+          <h3 id="proclamation-title">Nessun Proclama pubblicato</h3>
+          <p id="proclamation-summary">Le comunicazioni ufficiali della community appariranno qui.</p>
+        </div>
+      </article>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>In Cerca di Avventura · Home Beta</span>
+  <footer class="site-footer" id="alleanze">
+    <span>In Cerca di Avventura · Home</span>
     <span>Community italiana di Sorcery: Contested Realm</span>
     <span>© <span id="year"></span></span>
   </footer>
