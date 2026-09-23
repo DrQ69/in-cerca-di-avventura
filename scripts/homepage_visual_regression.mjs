@@ -53,7 +53,7 @@ try{
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
     if(result.nextId!=='bog-2026-duello-02') throw new Error(viewport.name+': next event mismatch '+result.nextId);
-    if(result.nextTitle!=='PAESANT') throw new Error(viewport.name+': next event title mismatch');
+    if(result.nextTitle!=='Peasant') throw new Error(viewport.name+': next event title mismatch');
     if(result.chronicleId!=='bog-2026-duello-01') throw new Error(viewport.name+': latest chronicle mismatch '+result.chronicleId);
     if(result.standingsCount!==3) throw new Error(viewport.name+': top-3 visual structure missing');
     if(result.standingsLoading) throw new Error(viewport.name+': official standings should not be in loading state');
