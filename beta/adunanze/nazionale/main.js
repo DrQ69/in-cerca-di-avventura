@@ -4,7 +4,19 @@ if(menu&&mobile){
   const closeMenu=()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');};
   menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
   mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-  document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
+  document.addEventListener('pointerover',event=>{
+  const control=event.target.closest('.info-control');
+  if(control)positionPopover(control);
+});
+document.addEventListener('focusin',event=>{
+  const control=event.target.closest('.info-control');
+  if(control)positionPopover(control);
+});
+window.addEventListener('resize',()=>{
+  document.querySelectorAll('.info-control.is-open').forEach(positionPopover);
+});
+
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
 }
 
 const year=document.getElementById('year');
@@ -204,10 +216,35 @@ fetch('../../../data/events.json',{cache:'no-store'})
   });
 
 
+function positionPopover(control){
+  if(!control)return;
+  control.classList.remove('align-right','open-down');
+  const popover=control.querySelector('.event-popover');
+  if(!popover)return;
+
+  const wasOpen=control.classList.contains('is-open');
+  control.classList.add('is-open');
+  popover.style.visibility='hidden';
+  const triggerRect=control.getBoundingClientRect();
+  const popRect=popover.getBoundingClientRect();
+  const margin=12;
+
+  if(triggerRect.left+popRect.width>window.innerWidth-margin){
+    control.classList.add('align-right');
+  }
+  if(triggerRect.top-popRect.height-margin<0 && triggerRect.bottom+popRect.height+margin<=window.innerHeight){
+    control.classList.add('open-down');
+  }
+
+  popover.style.visibility='';
+  if(!wasOpen)control.classList.remove('is-open');
+}
+
 document.addEventListener('click',event=>{
   const trigger=event.target.closest('.info-trigger');
   if(trigger){
     const control=trigger.closest('.info-control');
+    positionPopover(control);
     const open=control?.classList.toggle('is-open');
     document.querySelectorAll('.info-control.is-open').forEach(item=>{if(item!==control)item.classList.remove('is-open');});
     trigger.setAttribute('aria-expanded',String(Boolean(open)));
