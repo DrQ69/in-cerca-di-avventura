@@ -281,3 +281,18 @@
   .event-popover{left:0;right:auto;width:min(420px,calc(100vw - 24px));max-height:min(70vh,560px)}
   .info-control.align-right .event-popover{left:auto;right:0}
 }
+
+@media(max-width:700px){
+  .event-popover{
+    position:fixed;
+    left:12px!important;
+    right:12px!important;
+    top:auto!important;
+    bottom:12px!important;
+    width:auto!important;
+    max-width:none;
+    max-height:calc(100vh - 24px);
+    z-index:10000;
+  }
+  .event-popover::after{display:none}
+}
