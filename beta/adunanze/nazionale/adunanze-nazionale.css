@@ -197,18 +197,22 @@
 .info-control:hover .event-popover,
 .info-control:focus-within .event-popover,
 .info-control.is-open .event-popover{display:block}
-.event-popover p{margin:0}
+.event-popover p{margin:0 0 9px}
+.event-popover p:last-child{margin-bottom:0}
 .popover-note{color:#5f5544}
+.popover-heading{font-weight:700;color:#684b20}
+.popover-list{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
 .prize-grid{display:grid;gap:8px}
 .prize-grid>div{
   display:grid;
-  grid-template-columns:1fr auto;
+  grid-template-columns:38px 1fr;
   gap:3px 10px;
+  align-items:start;
   padding-bottom:7px;
   border-bottom:1px solid rgba(104,75,32,.18);
 }
 .prize-grid>div:last-child{border-bottom:0;padding-bottom:0}
-.prize-grid strong{grid-column:1/-1}
+.prize-grid strong{grid-column:auto;color:#684b20}
 
 .fact{min-width:0}
 .fact span{
