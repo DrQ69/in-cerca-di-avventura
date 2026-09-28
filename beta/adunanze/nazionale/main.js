@@ -73,6 +73,20 @@ function prizeGrid(event){
 }
 
 function rulesContent(event){
+  const pop=event.rules_popover;
+  if(pop){
+    const deck=Array.isArray(pop.deckbuilding)?'<ul class="popover-list">'+pop.deckbuilding.map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul>':'';
+    const avatars=Array.isArray(pop.avatars)?'<ul class="popover-list">'+pop.avatars.map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul>':'';
+    return '<div class="rules-copy">'+
+      (pop.title?'<h4>'+esc(pop.title)+'</h4>':'')+
+      (pop.intro?'<p>'+esc(pop.intro)+'</p>':'')+
+      deck+
+      (pop.avatars_title?'<h5>'+esc(pop.avatars_title)+'</h5>':'')+
+      avatars+
+      (pop.decklist_title?'<h5>'+esc(pop.decklist_title)+'</h5>':'')+
+      (pop.decklist?'<p>'+esc(pop.decklist)+'</p>':'')+
+    '</div>';
+  }
   const blocks=[];
   if(event.rules_details) blocks.push('<p>'+esc(event.rules_details)+'</p>');
   if(event.rounds) blocks.push('<p><strong>Struttura:</strong> '+esc(event.rounds)+'</p>');
