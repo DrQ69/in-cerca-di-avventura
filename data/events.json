@@ -615,7 +615,24 @@
         "La Flaming Skull (Promo NF - Alternate Art by Brom) è sempre garantita indipendentemente dal numero di partecipanti."
       ],
       "official_event_url": "https://sorcerytcg.com/events/cmua2gkxc00090agm7qvfrh45",
-      "source_note": "Detailed Stage II Peasant event information supplied by Product Owner on 2026-09-28."
+      "source_note": "Detailed Stage II Peasant event information supplied by Product Owner on 2026-09-28.",
+      "rules_popover": {
+        "title": "LE LEGGI DEL TORNEO",
+        "intro": "Spellbook e Atlas potranno contenere soltanto:",
+        "deckbuilding": [
+          "Ordinary: massimo 4 copie per carta.",
+          "Exceptional: massimo 3 copie per carta.",
+          "Elite e Unique: bandite."
+        ],
+        "avatars_title": "AVATAR AMMESSI",
+        "avatars": [
+          "Beta: Sorcerer, Flamecaller, Geomancer, Sparkmage, Waveshaper.",
+          "Gothic: Harbinger, Necromancer, Persecutor, Savior.",
+          "Arthurian Legends: Druid, Templar."
+        ],
+        "decklist_title": "DECKLIST OBBLIGATORIA",
+        "decklist": "Create il mazzo 60/30/10 con il vostro account su sorcerytcg.com e caricate la decklist al link dell’evento (NB: entro il 01 ottobre)."
+      }
     },
     {
       "event_id": "bog-2026-duello-03",
