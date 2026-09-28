@@ -153,15 +153,33 @@ try {
     }
     if (national.overflow.horizontal) throw new Error(`${viewport.name}: national page horizontal overflow`);
 
+    const assertPopoverFits=async(locator,label)=>{
+      await locator.hover();
+      const pop=locator.locator('.event-popover');
+      if(!await pop.isVisible()) throw new Error(`${viewport.name}: ${label} popover does not open on hover`);
+      const bounds=await pop.evaluate(el=>{
+        const r=el.getBoundingClientRect();
+        return {
+          left:r.left,right:r.right,top:r.top,bottom:r.bottom,
+          viewportWidth:window.innerWidth,viewportHeight:window.innerHeight,
+          scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,
+          overflowY:getComputedStyle(el).overflowY
+        };
+      });
+      if(bounds.left<-1||bounds.right>bounds.viewportWidth+1||bounds.top<-1||bounds.bottom>bounds.viewportHeight+1){
+        throw new Error(`${viewport.name}: ${label} popover is clipped/outside viewport ${JSON.stringify(bounds)}`);
+      }
+      if(bounds.scrollHeight>bounds.clientHeight && !['auto','scroll'].includes(bounds.overflowY)){
+        throw new Error(`${viewport.name}: ${label} long content cannot be scrolled`);
+      }
+      return bounds;
+    };
+
     const firstRules=page.locator('#upcoming-root .adunanza-card .rules-control').first();
-    await firstRules.hover();
-    const popoverVisible=await firstRules.locator('.event-popover').isVisible();
-    if(!popoverVisible) throw new Error(`${viewport.name}: Regolamento popover does not open on hover`);
+    const rulesBounds=await assertPopoverFits(firstRules,'Regolamento');
 
     const firstPrizes=page.locator('#upcoming-root .adunanza-card .prizes-control').first();
-    await firstPrizes.hover();
-    const prizesVisible=await firstPrizes.locator('.event-popover').isVisible();
-    if(!prizesVisible) throw new Error(`${viewport.name}: Premi popover does not open on hover`);
+    const prizesBounds=await assertPopoverFits(firstPrizes,'Premi');
 
     await page.screenshot({
       path: `${outDir}/national-${viewport.name}.png`,
@@ -175,7 +193,7 @@ try {
 
     await fs.writeFile(
       `${outDir}/${viewport.name}.json`,
-      JSON.stringify({ viewport, portal, skipFocus, focus, national, consoleErrors }, null, 2),
+      JSON.stringify({ viewport, portal, skipFocus, focus, national, rulesBounds, prizesBounds, consoleErrors }, null, 2),
       'utf8'
     );
 
