@@ -59,6 +59,17 @@ function timeValue(value){
 }
 
 function prizeGrid(event){
+  const pop=event.prize_popover;
+  if(pop){
+    const prizes=Array.isArray(pop.prizes)?'<ol class="prize-copy-list">'+pop.prizes.map(item=>'<li>'+esc(item.replace(/^\\d+\\s*-\\s*/,''))+'</li>').join('')+'</ol>':'';
+    const notes=Array.isArray(pop.notes)?pop.notes.map((note,index)=>'<p class="prize-note prize-note-'+(index+1)+'">'+esc(note)+'</p>').join(''):'';
+    return '<div class="prize-copy">'+
+      (pop.title?'<h4>'+esc(pop.title)+'</h4>':'')+
+      (pop.subtitle?'<p class="popover-heading">'+esc(pop.subtitle)+'</p>':'')+
+      prizes+
+      notes+
+    '</div>';
+  }
   const rows=Array.isArray(event.prize_grid)?event.prize_grid:[];
   const notes=Array.isArray(event.prize_notes)?event.prize_notes:[];
   if(rows.length){

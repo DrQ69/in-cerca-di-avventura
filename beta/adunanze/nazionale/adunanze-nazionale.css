@@ -205,6 +205,11 @@
 .rules-copy h4{margin:0 0 10px;color:#684b20;font:700 .82rem Georgia,"Times New Roman",serif;letter-spacing:.05em}
 .rules-copy h5{margin:14px 0 6px;color:#684b20;font:700 .72rem Georgia,"Times New Roman",serif;letter-spacing:.04em}
 .rules-copy .popover-list{margin-top:6px}
+.prize-copy h4{margin:0 0 8px;color:#684b20;font:700 .82rem Georgia,"Times New Roman",serif;letter-spacing:.05em}
+.prize-copy-list{margin:10px 0 12px;padding-left:22px;display:grid;gap:6px}
+.prize-copy-list li{padding-left:2px}
+.prize-note{margin-top:9px!important;color:#5f5544}
+.prize-note-2,.prize-note-3{font-style:italic}
 .prize-grid{display:grid;gap:8px}
 .prize-grid>div{
   display:grid;

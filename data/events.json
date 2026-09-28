@@ -632,6 +632,25 @@
         ],
         "decklist_title": "DECKLIST OBBLIGATORIA",
         "decklist": "Create il mazzo 60/30/10 con il vostro account su sorcerytcg.com e caricate la decklist al link dell’evento (NB: entro il 01 ottobre)."
+      },
+      "prize_popover": {
+        "title": "PREMI",
+        "subtitle": "Proiezioni con 20 stregoni partecipanti",
+        "prizes": [
+          "1 - Flaming Skull (Promo NF - Alternate Art by Brom) + Alpha Ordinary Set x1 (compreso Frazetta Vile Imp e Sorcerer)",
+          "2 - Askelon Phoenix (foil β) El.",
+          "3 - Sir Tom Thumb (foil AL) Un.",
+          "4 - East-West Dragon (foil β) El.",
+          "5 - Battlefield (foil β) El.",
+          "6 - Bull Demons of Adum (foil β) El.",
+          "7 - Bridge Troll (foil β) Exc.",
+          "8 - Highland Clansmen (foil β) Ord."
+        ],
+        "notes": [
+          "NB: i premi possono variare in base al numero di partecipanti.",
+          "I premi del Joker’s verranno distribuiti tra tutti i partecipanti con modalità ISTRIONICHE!",
+          "La Flaming Skull (Promo NF - Alternate Art by Brom) è generosamente offerta dalla congrega dei NECROMANTI del Reame ed è sempre garantita indipendentemente dal numero di stregoni partecipanti."
+        ]
       }
     },
     {
