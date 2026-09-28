@@ -60,10 +60,29 @@ function timeValue(value){
 
 function prizeGrid(event){
   const rows=Array.isArray(event.prize_grid)?event.prize_grid:[];
+  const notes=Array.isArray(event.prize_notes)?event.prize_notes:[];
   if(rows.length){
-    return '<div class="prize-grid">'+rows.map(row=>'<div><strong>'+esc(row.players_label||'Giocatori')+'</strong><span>'+esc(row.top_label||'Top')+'</span><span>'+esc(row.prize||'Premio da definire')+'</span></div>').join('')+'</div>';
+    const heading=event.prize_grid_status==='projected_20_players'
+      ? '<p class="popover-heading">Proiezione con 20 partecipanti</p>'
+      : '';
+    const grid='<div class="prize-grid">'+rows.map(row=>'<div><strong>'+esc(row.top_label||'Top')+'</strong><span>'+esc(row.prize||'Premio da definire')+'</span></div>').join('')+'</div>';
+    const noteHtml=notes.length?'<ul class="popover-list">'+notes.map(note=>'<li>'+esc(note)+'</li>').join('')+'</ul>':'';
+    return heading+grid+noteHtml;
   }
   return '<p class="popover-note">Griglia premi in aggiornamento. Verrà pubblicata per fasce di partecipazione (X Giocatori → Top X).</p>';
+}
+
+function rulesContent(event){
+  const blocks=[];
+  if(event.rules_details) blocks.push('<p>'+esc(event.rules_details)+'</p>');
+  if(event.rounds) blocks.push('<p><strong>Struttura:</strong> '+esc(event.rounds)+'</p>');
+  if(event.match_format) blocks.push('<p><strong>Partite:</strong> '+esc(event.match_format)+'</p>');
+  if(event.league_valid) blocks.push('<p><strong>Lega:</strong> tappa valida per la classifica Blaze of Glory.</p>');
+  if(Number.isFinite(event.entry_fee_eur)) blocks.push('<p><strong>Ingresso:</strong> '+esc(event.entry_fee_eur)+' €</p>');
+  if(Array.isArray(event.fee_details)&&event.fee_details.length){
+    blocks.push('<ul class="popover-list">'+event.fee_details.map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul>');
+  }
+  return blocks.join('')||'<p>Regolamento in aggiornamento.</p>';
 }
 
 function infoPopover(label,content,kind,eventId){
@@ -77,7 +96,7 @@ function card(event){
   const statusLabel=event.status==='in corso'?'In corso':'In programma';
   const series=[event.series_name,stage(event)].filter(Boolean).join(' · ');
   const registration=event.registration_url||event.official_event_url||'';
-  const rules=infoPopover('Regolamento','<p>'+esc(event.rules_details||event.structure||'Regolamento in aggiornamento.')+'</p>','rules-control',event.event_id);
+  const rules=infoPopover('Regolamento',rulesContent(event),'rules-control',event.event_id);
   const prizes=infoPopover('Premi',prizeGrid(event),'prizes-control',event.event_id);
   const signup=registration
     ? `<a class="card-action signup-action" href="${esc(registration)}" target="_blank" rel="noopener noreferrer">Iscriviti</a>`
