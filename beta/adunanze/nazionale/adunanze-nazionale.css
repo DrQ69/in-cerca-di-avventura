@@ -202,6 +202,9 @@
 .popover-note{color:#5f5544}
 .popover-heading{font-weight:700;color:#684b20}
 .popover-list{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
+.rules-copy h4{margin:0 0 10px;color:#684b20;font:700 .82rem Georgia,"Times New Roman",serif;letter-spacing:.05em}
+.rules-copy h5{margin:14px 0 6px;color:#684b20;font:700 .72rem Georgia,"Times New Roman",serif;letter-spacing:.04em}
+.rules-copy .popover-list{margin-top:6px}
 .prize-grid{display:grid;gap:8px}
 .prize-grid>div{
   display:grid;
