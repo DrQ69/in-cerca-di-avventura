@@ -551,12 +551,71 @@
       "structure": "Ordinary & Exceptional only",
       "notes": "Ordinary & Exceptional only; +5€ Joker's",
       "truth_status": "po_schedule_confirmed",
-      "check_in_time": "20:30",
-      "start_time": "21:00",
-      "rules_details": "Peasant: sono ammesse esclusivamente carte Ordinary ed Exceptional.",
-      "prize_grid_status": "pending",
-      "prize_grid": [],
-      "registration_url": null
+      "check_in_time": "20:30–21:00",
+      "start_time": "21:15",
+      "rules_details": "Spellbook e Atlas potranno contenere soltanto carte Ordinary ed Exceptional. Ordinary: massimo 4 copie per carta. Exceptional: massimo 3 copie per carta. Elite e Unique: bandite. Avatar ammessi — Beta: Sorcerer, Flamecaller, Geomancer, Sparkmage, Waveshaper. Gothic: Harbinger, Necromancer, Persecutor, Savior. Arthurian Legends: Druid, Templar. Decklist obbligatoria: mazzo 60/30/10 creato con account sorcerytcg.com e caricato al link dell’evento entro il 01 ottobre.",
+      "prize_grid_status": "projected_20_players",
+      "prize_grid": [
+        {
+          "players_label": "20 giocatori",
+          "top_label": "1°",
+          "prize": "Flaming Skull (Promo NF - Alternate Art by Brom) + Alpha Ordinary Set x1 (compreso Frazetta Vile Imp e Sorcerer)"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "2°",
+          "prize": "Askelon Phoenix (foil β) — Elite"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "3°",
+          "prize": "Sir Tom Thumb (foil AL) — Unique"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "4°",
+          "prize": "East-West Dragon (foil β) — Elite"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "5°",
+          "prize": "Battlefield (foil β) — Elite"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "6°",
+          "prize": "Bull Demons of Adum (foil β) — Elite"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "7°",
+          "prize": "Bridge Troll (foil β) — Exceptional"
+        },
+        {
+          "players_label": "20 giocatori",
+          "top_label": "8°",
+          "prize": "Highland Clansmen (foil β) — Ordinary"
+        }
+      ],
+      "registration_url": "https://sorcerytcg.com/events/cmua2gkxc00090agm7qvfrh45",
+      "province": "MI",
+      "address": "Via Giuseppe Gianella, 21, 20152 Milano MI, Italia",
+      "rounds": "3/4 turni di Svizzera",
+      "match_format": "BO1 · 45 minuti · Nessuna Top 8",
+      "league_valid": true,
+      "entry_fee_eur": 10,
+      "fee_details": [
+        "5 € al negozio Joker - comics&games, convertiti interamente in premi in base ai partecipanti tra Box Pre-Con, Binders e Sleeves.",
+        "4 € a Dr. Q, convertiti interamente nei premi della Top 8.",
+        "1 € alla Tesoreria della Lega BOG per il fondo premi della Giostra Finale."
+      ],
+      "prize_notes": [
+        "I premi possono variare in base al numero di partecipanti.",
+        "I premi del Joker - comics&games verranno distribuiti tra tutti i partecipanti con modalità istrioniche.",
+        "La Flaming Skull (Promo NF - Alternate Art by Brom) è sempre garantita indipendentemente dal numero di partecipanti."
+      ],
+      "official_event_url": "https://sorcerytcg.com/events/cmua2gkxc00090agm7qvfrh45",
+      "source_note": "Detailed Stage II Peasant event information supplied by Product Owner on 2026-09-28."
     },
     {
       "event_id": "bog-2026-duello-03",
