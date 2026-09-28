@@ -54,13 +54,34 @@ function stage(event){
   return `Duello ${roman}`;
 }
 
+function timeValue(value){
+  return value||'Da definire';
+}
+
+function prizeGrid(event){
+  const rows=Array.isArray(event.prize_grid)?event.prize_grid:[];
+  if(rows.length){
+    return '<div class="prize-grid">'+rows.map(row=>'<div><strong>'+esc(row.players_label||'Giocatori')+'</strong><span>'+esc(row.top_label||'Top')+'</span><span>'+esc(row.prize||'Premio da definire')+'</span></div>').join('')+'</div>';
+  }
+  return '<p class="popover-note">Griglia premi in aggiornamento. Verrà pubblicata per fasce di partecipazione (X Giocatori → Top X).</p>';
+}
+
+function infoPopover(label,content,kind,eventId){
+  return '<span class="info-control '+kind+'">'+
+    '<button type="button" class="info-trigger" aria-haspopup="dialog" aria-expanded="false">'+esc(label)+'</button>'+
+    '<span class="event-popover" role="dialog" aria-label="'+esc(label)+' '+esc(eventId)+'">'+content+'</span>'+
+  '</span>';
+}
+
 function card(event){
   const statusLabel=event.status==='in corso'?'In corso':'In programma';
   const series=[event.series_name,stage(event)].filter(Boolean).join(' · ');
   const registration=event.registration_url||event.official_event_url||'';
-  const action=registration
-    ? `<a class="card-action" href="${esc(registration)}" target="_blank" rel="noopener">Informazioni / iscrizione →</a>`
-    : '';
+  const rules=infoPopover('Regolamento','<p>'+esc(event.rules_details||event.structure||'Regolamento in aggiornamento.')+'</p>','rules-control',event.event_id);
+  const prizes=infoPopover('Premi',prizeGrid(event),'prizes-control',event.event_id);
+  const signup=registration
+    ? `<a class="card-action signup-action" href="${esc(registration)}" target="_blank" rel="noopener noreferrer">Iscriviti</a>`
+    : '<span class="card-action signup-action is-disabled" aria-disabled="true" title="Link evento Sorcery non ancora disponibile">Iscriviti</span>';
   return `<article class="adunanza-card" data-ica-id="AN-CARD-${esc(event.event_id)}" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}" data-date="${esc(event.date||'')}">
     <header class="card-head" data-ica-id="AN-CARD-HEAD-${esc(event.event_id)}">
       <span class="card-status">${esc(statusLabel)}</span>
@@ -71,8 +92,14 @@ function card(event){
       <div class="fact"><span>Data</span><strong>${esc(fmtDate(event.date))}</strong></div>
       <div class="fact"><span>Luogo</span><strong>${placeLink(event)}</strong></div>
       <div class="fact"><span>Formato</span><strong>${esc(event.format||'Da definire')}</strong></div>
+      <div class="fact"><span>Check-in</span><strong>${esc(timeValue(event.check_in_time))}</strong></div>
+      <div class="fact"><span>Inizio</span><strong>${esc(timeValue(event.start_time))}</strong></div>
     </div>
-    ${action? action.replace('class="card-action"','class="card-action" data-ica-id="AN-CARD-ACTION-'+esc(event.event_id)+'"'):''}
+    <div class="card-tools" data-ica-id="AN-CARD-TOOLS-${esc(event.event_id)}">
+      ${rules}
+      ${prizes}
+      ${signup}
+    </div>
   </article>`;
 }
 
@@ -131,3 +158,29 @@ fetch('../../../data/events.json',{cache:'no-store'})
     nationalMain?.classList.remove('is-loading');
     nationalShell?.classList.remove('is-loading');
   });
+
+
+document.addEventListener('click',event=>{
+  const trigger=event.target.closest('.info-trigger');
+  if(trigger){
+    const control=trigger.closest('.info-control');
+    const open=control?.classList.toggle('is-open');
+    document.querySelectorAll('.info-control.is-open').forEach(item=>{if(item!==control)item.classList.remove('is-open');});
+    trigger.setAttribute('aria-expanded',String(Boolean(open)));
+    return;
+  }
+  if(!event.target.closest('.info-control')){
+    document.querySelectorAll('.info-control.is-open').forEach(item=>{
+      item.classList.remove('is-open');
+      item.querySelector('.info-trigger')?.setAttribute('aria-expanded','false');
+    });
+  }
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+    document.querySelectorAll('.info-control.is-open').forEach(item=>{
+      item.classList.remove('is-open');
+      item.querySelector('.info-trigger')?.setAttribute('aria-expanded','false');
+    });
+  }
+});

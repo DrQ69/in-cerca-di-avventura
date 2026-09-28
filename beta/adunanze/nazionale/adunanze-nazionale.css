@@ -120,7 +120,7 @@
 }
 .adunanza-card[data-status="in corso"]::after{background:linear-gradient(90deg,#372612,#c57932,#efcb72,#c57932,#372612)}
 .adunanza-card[data-status="futura"]::after{background:linear-gradient(90deg,#1d3040,#5d8fab,#b5d5e4,#5d8fab,#1d3040)}
-.card-head,.card-body{position:relative;z-index:1}
+.card-head,.card-body,.card-tools{position:relative;z-index:1}
 .card-status{
   display:inline-block;
   margin-bottom:7px;
@@ -144,6 +144,72 @@
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:12px 18px;
 }
+.card-tools{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+}
+.info-control{position:relative;display:inline-flex}
+.info-trigger,.signup-action{
+  min-height:38px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+  border:1px solid rgba(104,75,32,.48);
+  background:rgba(255,255,255,.14);
+  color:#684b20;
+  font:700 .67rem Georgia,"Times New Roman",serif;
+  text-transform:uppercase;
+  letter-spacing:.045em;
+  text-decoration:none;
+}
+.info-trigger{cursor:pointer}
+.info-trigger:hover,.info-trigger:focus-visible,.signup-action:hover,.signup-action:focus-visible{
+  background:rgba(255,255,255,.32);
+  border-color:#684b20;
+}
+.signup-action.is-disabled{opacity:.48;cursor:not-allowed;pointer-events:none}
+.event-popover{
+  display:none;
+  position:absolute;
+  left:0;
+  bottom:calc(100% + 10px);
+  z-index:20;
+  width:min(360px,calc(100vw - 48px));
+  padding:14px 16px;
+  border:1px solid #765a2c;
+  background:#f0e5cc;
+  color:#2d281f;
+  box-shadow:0 14px 34px rgba(0,0,0,.32);
+  font-size:.78rem;
+  line-height:1.45;
+}
+.event-popover::after{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:100%;
+  border:7px solid transparent;
+  border-top-color:#765a2c;
+}
+.info-control:hover .event-popover,
+.info-control:focus-within .event-popover,
+.info-control.is-open .event-popover{display:block}
+.event-popover p{margin:0}
+.popover-note{color:#5f5544}
+.prize-grid{display:grid;gap:8px}
+.prize-grid>div{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:3px 10px;
+  padding-bottom:7px;
+  border-bottom:1px solid rgba(104,75,32,.18);
+}
+.prize-grid>div:last-child{border-bottom:0;padding-bottom:0}
+.prize-grid strong{grid-column:1/-1}
+
 .fact{min-width:0}
 .fact span{
   display:block;
@@ -164,29 +230,21 @@
 .card-action{
   position:relative;
   z-index:1;
-  display:flex;
-  align-items:center;
-  min-height:44px;
   width:max-content;
   max-width:100%;
-  color:#684b20;
-  font:700 .68rem Georgia,"Times New Roman",serif;
-  text-transform:uppercase;
-  letter-spacing:.04em;
-  text-decoration:none;
 }
-.card-action:hover,.card-action:focus-visible{text-decoration:underline;text-underline-offset:4px}
 @media(min-width:768px){
   .national-main{padding-inline:24px}
   .national-main > .system-state{left:24px;right:24px}
 
   .adunanza-card{
-    grid-template-columns:minmax(220px,.95fr) minmax(0,1.65fr) auto;
+    grid-template-columns:minmax(220px,.95fr) minmax(0,1.65fr);
     align-items:center;
     gap:24px;
     padding:24px 28px;
   }
   .card-body{grid-template-columns:repeat(3,minmax(120px,1fr))}
+  .card-tools{grid-column:1/-1;border-top:1px solid rgba(104,75,32,.18);padding-top:14px}
 }
 @media(min-width:1024px){
   .national-hero{min-height:372px;padding-top:126px}
@@ -196,4 +254,11 @@
 @media(min-width:1536px){
   .national-main{padding-inline:40px}
   .national-main > .system-state{left:40px;right:40px}
+}
+
+@media(max-width:520px){
+  .card-tools{display:grid;grid-template-columns:1fr 1fr}
+  .signup-action{grid-column:1/-1}
+  .info-trigger,.signup-action{width:100%}
+  .event-popover{left:0;right:auto}
 }

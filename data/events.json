@@ -550,7 +550,13 @@
       "format_family": "Constructed",
       "structure": "Ordinary & Exceptional only",
       "notes": "Ordinary & Exceptional only; +5€ Joker's",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "Peasant: sono ammesse esclusivamente carte Ordinary ed Exceptional.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2026-duello-03",
@@ -574,7 +580,13 @@
       "structure": "1 Beta + 1 Arthurian Legends + 1 Gothic",
       "player_count": 15,
       "notes": "Una busta Beta, una AL e una Gothic",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "Chaos Draft: 1 busta Beta + 1 Arthurian Legends + 1 Gothic per giocatore.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2026-duello-04",
@@ -597,7 +609,13 @@
       "format_family": "Constructed",
       "structure": "Constructed",
       "notes": "+5€ Joker's in PX/credito negozio",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "Constructed Full: formato Constructed completo.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2026-duello-05",
@@ -621,7 +639,13 @@
       "structure": "Draft standard",
       "player_count": 15,
       "notes": "Draft standard",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "Arthurian Legends Draft: draft standard con buste Arthurian Legends.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2026-duello-06",
@@ -644,7 +668,13 @@
       "format_family": "Constructed",
       "structure": "La Battaglia degli Elementi",
       "notes": "La Battaglia degli Elementi; +5€ Joker's",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "La Battaglia degli Elementi: Frostmage vs Lavamancer, formato Constructed.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2026-duello-07",
@@ -668,7 +698,13 @@
       "structure": "Draft standard",
       "player_count": 15,
       "notes": "Draft standard",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "Beta Draft: draft standard con buste Beta.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2027-duello-08",
@@ -691,7 +727,13 @@
       "format_family": "Constructed",
       "structure": "Regole a squadre",
       "notes": "Regole a squadre; +5€ Joker's",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": "20:30",
+      "start_time": "21:00",
+      "rules_details": "Death Match 2vs2: evento a squadre con regole dedicate.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     },
     {
       "event_id": "bog-2027-finale",
@@ -714,7 +756,13 @@
       "format_family": "Constructed",
       "structure": "Swiss pomeriggio + Cena del Reame + Top 8 serale",
       "notes": "Swiss pomeriggio + Cena del Reame + Top 8 serale",
-      "truth_status": "po_schedule_confirmed"
+      "truth_status": "po_schedule_confirmed",
+      "check_in_time": null,
+      "start_time": null,
+      "rules_details": "La Giostra II: Swiss pomeriggio, Cena del Reame e Top 8 serale.",
+      "prize_grid_status": "pending",
+      "prize_grid": [],
+      "registration_url": null
     }
   ]
 }
