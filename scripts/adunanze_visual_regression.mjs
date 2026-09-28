@@ -120,6 +120,13 @@ try {
       const body = document.body;
       const scrollWidth = Math.max(html.scrollWidth, body.scrollWidth);
       const mapLinks=[...document.querySelectorAll('.adunanza-card .map-link')];
+      const details=cards.map(card=>({
+        checkIn:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Check-in'),
+        start:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Inizio'),
+        rules:[...card.querySelectorAll('.info-trigger')].some(el=>el.textContent.trim()==='Regolamento'),
+        prizes:[...card.querySelectorAll('.info-trigger')].some(el=>el.textContent.trim()==='Premi'),
+        signup:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Iscriviti')
+      }));
       return {
         count: cards.length,
         statuses,
@@ -128,6 +135,7 @@ try {
         hasCompleted: statuses.includes('conclusa'),
         mapLinkCount:mapLinks.length,
         mapsValid:mapLinks.every(link=>link.href.startsWith('https://www.google.com/maps/search/?api=1&query=')&&link.target==='_blank'),
+        details,
         overflow: {
           horizontal: scrollWidth > window.innerWidth + 2,
           scrollWidth,
@@ -140,7 +148,20 @@ try {
     if (national.hasCompleted) throw new Error(`${viewport.name}: completed event leaked into Adunanze Nazionale`);
     if (!national.chronological) throw new Error(`${viewport.name}: upcoming events are not chronological`);
     if (national.mapLinkCount!==national.count||!national.mapsValid) throw new Error(`${viewport.name}: not every national event location links to Google Maps`);
+    if (national.details.some(item=>!item.checkIn||!item.start||!item.rules||!item.prizes||!item.signup)) {
+      throw new Error(`${viewport.name}: an upcoming event is missing check-in/start/rules/prizes/signup controls`);
+    }
     if (national.overflow.horizontal) throw new Error(`${viewport.name}: national page horizontal overflow`);
+
+    const firstRules=page.locator('#upcoming-root .adunanza-card .rules-control').first();
+    await firstRules.hover();
+    const popoverVisible=await firstRules.locator('.event-popover').isVisible();
+    if(!popoverVisible) throw new Error(`${viewport.name}: Regolamento popover does not open on hover`);
+
+    const firstPrizes=page.locator('#upcoming-root .adunanza-card .prizes-control').first();
+    await firstPrizes.hover();
+    const prizesVisible=await firstPrizes.locator('.event-popover').isVisible();
+    if(!prizesVisible) throw new Error(`${viewport.name}: Premi popover does not open on hover`);
 
     await page.screenshot({
       path: `${outDir}/national-${viewport.name}.png`,
