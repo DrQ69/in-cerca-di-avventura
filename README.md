@@ -1,65 +1,67 @@
 # In Cerca di Avventura
 
-## Obiettivo del progetto
+Community hub italiano dedicato esclusivamente a **Sorcery: Contested Realm**.
 
-Community hub italiano dedicato a **Sorcery: Contested Realm**: eventi, lega,
-alleanze dinastiche, risultati, profili degli Avventurieri (i giocatori) e
-community. Direzione visiva dark fantasy anni '80 — niente estetica da SaaS,
-dashboard aziendale o mobile game.
+## Stato del repository — 2026-09-29
 
-## Struttura attuale
+Il repository contiene due livelli distinti:
 
-```
-in-cerca-di-avventura/
-├── index.html            Pagina unica del sito (tutte le sezioni)
-├── CLAUDE.md             Istruzioni persistenti per Claude Code
-├── docs/
-│   ├── PROJECT_CONTEXT.md Contesto prodotto, architettura e roadmap
-│   └── DESIGN_SYSTEM.md   Direzione visiva e regole UI
-├── assets/
-│   ├── css/style.css     Stili del sito
-│   ├── js/main.js        Interazioni (menu mobile, anno in footer)
-│   ├── favicon-32.png
-│   ├── hero-fantasy.webp Immagine hero
-│   └── logo-emblem.webp  Logo/emblema, usato in header e come sigillo decorativo
-└── README.md
-```
+1. **legacy root** — `index.html`, `assets/css/style.css`, `assets/js/main.js`; non è il precedente canonico per il nuovo sistema;
+2. **beta operativa** — pagine statiche sotto `beta/`, alimentate da fonti JSON condivise e da uno shell visuale comune.
 
-Sezioni presenti in `index.html`: Home, Eventi, Lega, Alleanze Dinastiche,
-Risultati, Avventurieri, Community — ciascuna una `<section>` a sé stante,
-ancorata dal menu di navigazione.
+Pagine beta attive:
+- `/beta/` — homepage beta;
+- `/beta/adunanze/nazionale/` — eventi nazionali futuri/in corso;
+- `/beta/cronache/` — archivio degli eventi conclusi;
+- `/beta/avventurieri/` — directory giocatori;
+- `/beta/alleanze/` — mappa community/mercanti.
 
-## Convenzioni principali
+Il portale visuale `/beta/adunanze/` con le due porte esiste nel repository ma, per decisione operativa corrente, la navigazione beta porta direttamente agli eventi nazionali.
 
-- Nessun framework, build tool o dipendenza da installare: solo HTML, CSS e
-  JavaScript semplice, più Google Fonts caricato via CDN (Cinzel, Cinzel
-  Decorative, Inter).
-- CSS e JS vivono in `assets/css/style.css` e `assets/js/main.js`, non
-  inline in `index.html`.
-- Non si inventano eventi, risultati, partner o contenuti editoriali: tutto
-  ciò che appare nel sito deve corrispondere a informazioni reali fornite dal
-  team.
-- Palette e materiali: blu notte/pietra, nero, oro antico, acciaio, accenti
-  rossi, pietra screpolata, metallo brunito, elementi araldici. I titoli
-  principali usano un trattamento oro inciso (gradiente + contorno scuro).
-- Un backend si introduce solo quando diventa necessario (es. gestione
-  eventi/risultati/profili a volume); finché il contenuto resta gestibile a
-  mano, si resta su HTML statico.
+## Fonti dati principali
 
-## Documentazione progetto
+- `data/events.json` — fonte condivisa per Home / Adunanze / Cronache;
+- `data/players.json` — registro Avventurieri;
+- `data/league-standings.json` — classifica Blaze of Glory;
+- `data/alliances.json` — community, coordinate, prestigio e influenza;
+- `data/proclami.json` — contenuti Proclami.
 
-- [`CLAUDE.md`](CLAUDE.md) — regole operative per Claude Code.
-- [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md) — obiettivi, sezioni, relazioni dati, contenuti e roadmap.
-- [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md) — identità dark-fantasy, tipografia, palette, componenti e criteri visuali.
+Non inventare dati mancanti. Le informazioni pubblicate devono derivare da fonti verificate o decisioni esplicite del Product Owner.
 
-## Modalità di sviluppo
+## Stack
 
-Nessuna build richiesta. Per lavorare in locale è sufficiente aprire
-`index.html` nel browser, oppure servirlo con un server statico qualsiasi,
-ad esempio:
+- HTML statico;
+- CSS condiviso + CSS pagina;
+- JavaScript leggero;
+- GitHub Pages;
+- nessun framework, CMS, backend, database o autenticazione.
 
-```
+## Governance
+
+Prima di modifiche non banali:
+1. leggere `docs/PROJECT_INDEX.md`;
+2. seguire `docs/ICA_CANONICAL_SPEC.md` e gli specialisti applicabili;
+3. trattare `main` come production-facing;
+4. usare branch → QA → PR → squash merge per lavoro non banale;
+5. non equiparare automaticamente beta pubblica a UI canonica APPROVED/PRODUCTION_READY.
+
+Documenti principali:
+- `docs/PROJECT_INDEX.md` — routing documentale;
+- `docs/PROJECT_CONTEXT.md` — stato operativo corrente;
+- `docs/PROJECT_RISK_REGISTER.md` — rischi trasversali correnti;
+- `docs/ACTIVITY_REVIEW_2026-09-29.md` — review delle attività 15–29 settembre 2026;
+- `docs/ICA_CANONICAL_SPEC.md` — specifica autorevole;
+- `docs/DESIGN_SYSTEM.md`, `docs/RESPONSIVE_SPECIFICATION.md`, `docs/ASSET_SPECIFICATION.md`;
+- `docs/GITHUB_WORKFLOW.md`, `docs/QA_CHECKLIST.md`, `docs/DEFINITION_OF_DONE.md`.
+
+## Nota sull'architettura canonica
+
+La beta corrente usa una navigazione operativa (`Le Adunanze / Cronache / Avventurieri / Alleanze / Proclami`) che **non coincide ancora** con la navigazione canonica definita nella specifica (`Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio`). La beta non deve essere promossa a canonical/production-ready senza una decisione esplicita e il relativo riallineamento.
+
+## Sviluppo locale
+
+```bash
 python3 -m http.server 8000
 ```
 
-e visitare `http://localhost:8000`.
+Aprire `http://localhost:8000/beta/` per la beta operativa.
