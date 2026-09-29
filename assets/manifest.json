@@ -8,7 +8,10 @@
   "notes": [
     "Historical Heraldry Kit is out of scope.",
     "Only status=approved denotes a canonical production asset.",
-    "Planned entries may exist before their binary file is created."
+    "Planned entries may exist before their binary file is created.",
+    "Asset approval decisions recorded on 2026-09-29 are Product Owner decisions and do not by themselves promote any beta page to canonical/PRODUCTION_READY.",
+    "External community logos remain candidate until production-use permission evidence is documented.",
+    "The current root ICA emblem/favicon remain candidate dependencies pending exact canonical source installation/identity closure."
   ],
   "assets": [
     {
@@ -42,7 +45,8 @@
       "constraints": [
         "Do not redraw, distort, rotate arbitrarily or recolour outside an approved variant.",
         "Must be reviewed as the source for the canonical SIG-01 derivative family."
-      ]
+      ],
+      "approval_blocker": "Exact canonical ICA logo source/identity installation remains open; current WebP is a layout/runtime proxy and is not promoted by this cleanup."
     },
     {
       "id": "MED-HERO-01-CANDIDATE-ROOT",
@@ -53,8 +57,8 @@
       "category": "background",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "archived",
+      "version": "0.9-archived",
       "priority": "P0",
       "responsive": {
         "desktop": true,
@@ -77,7 +81,8 @@
         "Must pass crop/focal-point review at desktop, tablet and mobile.",
         "Must retain text-safe area via overlay/gradient or composition.",
         "Current file weight should remain within the desktop hero maximum budget."
-      ]
+      ],
+      "archive_note": "Explicitly on hold / do not use in current beta; not a production dependency."
     },
     {
       "id": "SYS-FAVICON-01-32",
@@ -108,7 +113,8 @@
       "budget": "icon",
       "constraints": [
         "Complete favicon family may require additional sizes/formats later."
-      ]
+      ],
+      "approval_blocker": "Canonical favicon approval depends on final canonical ICA brand source/derivative family."
     },
     {
       "id": "BNR-01-STRUCTURE",
@@ -326,8 +332,8 @@
         "height": 821
       },
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": true,
@@ -342,14 +348,20 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed",
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded.",
         "generation_method": "OpenAI image generation, Product Owner selection, WebP optimisation"
       },
       "budget": "desktop-hero",
       "constraints": [
         "Do not regenerate or materially alter without Product Owner decision.",
         "Preserve focal composition; create derivatives only when responsive/performance evidence justifies them."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
     },
     {
       "id": "MED-ADU-02-GATE-INTERNATIONAL",
@@ -364,8 +376,8 @@
         "height": 1402
       },
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": true,
@@ -380,14 +392,20 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed",
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded.",
         "generation_method": "OpenAI image generation, Product Owner selection, WebP optimisation"
       },
       "budget": "section-banner",
       "constraints": [
         "International remains unavailable until explicitly activated.",
         "Do not present the artwork as an active link while the section is in development."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
     },
     {
       "id": "MED-ADU-03-GATE-NATIONAL",
@@ -402,8 +420,8 @@
         "height": 1402
       },
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": true,
@@ -418,14 +436,21 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed",
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded.",
         "generation_method": "OpenAI image generation, Product Owner selection, WebP optimisation"
       },
       "budget": "section-banner",
       "constraints": [
         "Do not regenerate or materially alter without Product Owner decision.",
         "The full gate area may act as the National navigation target."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      },
+      "exception_ref": "EXC-0001"
     },
     {
       "id": "MED-ADU-01-BATTLEFIELD-512",
@@ -440,8 +465,8 @@
         "height": 219
       },
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": false,
@@ -455,13 +480,19 @@
       "source": {
         "type": "derived-project-asset",
         "creator": "automated derivative",
-        "licence_or_permission": "inherits-parent",
+        "licence_or_permission": "inherits approved parent MED-ADU-01-BATTLEFIELD",
         "generation_method": "Lanczos resize, WebP quality 72"
       },
       "budget": "mobile-hero",
       "constraints": [
         "Derived from MED-ADU-01-BATTLEFIELD; do not treat as independent artwork."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
     },
     {
       "id": "MED-ADU-02-GATE-INTERNATIONAL-512",
@@ -476,8 +507,8 @@
         "height": 640
       },
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": false,
@@ -491,13 +522,19 @@
       "source": {
         "type": "derived-project-asset",
         "creator": "automated derivative",
-        "licence_or_permission": "inherits-parent",
+        "licence_or_permission": "inherits approved parent MED-ADU-02-GATE-INTERNATIONAL",
         "generation_method": "Lanczos resize, WebP quality 72"
       },
       "budget": "mobile-section-art",
       "constraints": [
         "Derived from MED-ADU-02-GATE-INTERNATIONAL; do not treat as independent artwork."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
     },
     {
       "id": "MED-ADU-03-GATE-NATIONAL-512",
@@ -512,8 +549,8 @@
         "height": 640
       },
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": false,
@@ -527,13 +564,19 @@
       "source": {
         "type": "derived-project-asset",
         "creator": "automated derivative",
-        "licence_or_permission": "inherits-parent",
+        "licence_or_permission": "inherits approved parent MED-ADU-03-GATE-NATIONAL",
         "generation_method": "Lanczos resize, WebP quality 72"
       },
       "budget": "mobile-section-art",
       "constraints": [
         "Derived from MED-ADU-03-GATE-NATIONAL; do not treat as independent artwork."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
     },
     {
       "id": "MED-CRN-01-BACKGROUND",
@@ -544,8 +587,8 @@
       "category": "background",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -558,13 +601,20 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed",
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded.",
         "generation_method": "OpenAI image generation / selected WebP"
       },
       "constraints": [
         "Used as atmospheric archive background; content remains HTML.",
         "Do not treat as an approved M11 baseline asset without Product Owner approval."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      },
+      "budget": "section-banner"
     },
     {
       "id": "ICO-CRN-STATUS-FUTURA",
@@ -575,8 +625,8 @@
       "category": "ui-status",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "archived",
+      "version": "0.9-archived",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -592,7 +642,8 @@
       },
       "constraints": [
         "Status meaning must also be present in HTML text."
-      ]
+      ],
+      "archive_note": "Not referenced by the current Cronache beta rendering; retained as historical asset, not a production dependency."
     },
     {
       "id": "ICO-CRN-STATUS-IN-CORSO",
@@ -603,8 +654,8 @@
       "category": "ui-status",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "archived",
+      "version": "0.9-archived",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -620,7 +671,8 @@
       },
       "constraints": [
         "Status meaning must also be present in HTML text."
-      ]
+      ],
+      "archive_note": "Not referenced by the current Cronache beta rendering; retained as historical asset, not a production dependency."
     },
     {
       "id": "ICO-CRN-STATUS-CONCLUSA",
@@ -631,8 +683,8 @@
       "category": "ui-status",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "archived",
+      "version": "0.9-archived",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -648,7 +700,8 @@
       },
       "constraints": [
         "Status meaning must also be present in HTML text."
-      ]
+      ],
+      "archive_note": "Not referenced by the current Cronache beta rendering; retained as historical asset, not a production dependency."
     },
     {
       "id": "POR-AVV-NICK-01",
@@ -659,8 +712,8 @@
       "category": "profile-art",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -673,11 +726,18 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed"
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded."
       },
       "constraints": [
         "Profile identity remains nickname-based."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      },
+      "budget": "card-content-art"
     },
     {
       "id": "MAP-ALL-ITA-01",
@@ -688,8 +748,8 @@
       "category": "map-background",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.1",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -702,12 +762,19 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed"
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded."
       },
       "constraints": [
         "Must remain the base map asset; merchant artwork must never substitute it.",
         "Coordinate system is defined by data/alliances.json."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      },
+      "budget": "card-content-art"
     },
     {
       "id": "MED-ALL-BRONZE-01",
@@ -718,8 +785,8 @@
       "category": "ui-frame",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.1",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P1",
       "responsive": {
         "desktop": true,
@@ -732,12 +799,19 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner directed / AI-assisted",
-        "licence_or_permission": "to-be-confirmed"
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; project-original AI-assisted generation recorded."
       },
       "constraints": [
         "All pilot communities currently start at Bronze.",
         "Community logo must render inside this frame, not replace it."
-      ]
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      },
+      "budget": "ornament"
     },
     {
       "id": "LOGO-ALL-VOID-01",
@@ -765,7 +839,8 @@
       },
       "constraints": [
         "Do not substitute or redraw without Product Owner/community source decision."
-      ]
+      ],
+      "approval_blocker": "External community logo: production-use permission evidence/owner confirmation is not documented in the repository."
     },
     {
       "id": "LOGO-ALL-MORTALS-01",
@@ -793,7 +868,378 @@
       },
       "constraints": [
         "Use the exact approved supplied logo; do not substitute a placeholder or alternate version."
-      ]
+      ],
+      "approval_blocker": "External community logo: production-use permission evidence/owner confirmation is not documented in the repository."
+    },
+    {
+      "id": "ORN-CRN-ARCHIVE-SIGIL",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/archive-sigil.svg",
+      "planned_path": null,
+      "role": "Cronache archive sigil",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-FRAME-TL",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/frame-corner.svg",
+      "planned_path": null,
+      "role": "Cronache frame corner TL",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-FRAME-TR",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/frame-corner-tr.svg",
+      "planned_path": null,
+      "role": "Cronache frame corner TR",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-FRAME-BL",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/frame-corner-bl.svg",
+      "planned_path": null,
+      "role": "Cronache frame corner BL",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-FRAME-BR",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/frame-corner-br.svg",
+      "planned_path": null,
+      "role": "Cronache frame corner BR",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-RECORD-TL",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/record-corner.svg",
+      "planned_path": null,
+      "role": "Cronache record corner TL",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-RECORD-TR",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/record-corner-tr.svg",
+      "planned_path": null,
+      "role": "Cronache record corner TR",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-RECORD-BL",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/record-corner-bl.svg",
+      "planned_path": null,
+      "role": "Cronache record corner BL",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-RECORD-BR",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/record-corner-br.svg",
+      "planned_path": null,
+      "role": "Cronache record corner BR",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
+    },
+    {
+      "id": "ORN-CRN-ARCHIVE-DIVIDER",
+      "component": "CRONACHE",
+      "path": "assets/ui/cronache/archive-divider.svg",
+      "planned_path": null,
+      "role": "Cronache archive divider",
+      "category": "ornament",
+      "format": "svg",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P1",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative"
+      },
+      "source": {
+        "type": "project-generated-asset",
+        "creator": null,
+        "licence_or_permission": "Product Owner approved for ICA project use on 2026-09-29; no external source is recorded for this project-generated ornamental asset.",
+        "generation_method": "Exact generation tool not recorded in repository history."
+      },
+      "budget": "ornament",
+      "constraints": [
+        "Decorative only; functional meaning must remain in HTML."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-09-29",
+        "scope": "ICA project use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
+      }
     }
   ]
 }
