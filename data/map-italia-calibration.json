@@ -76,5 +76,37 @@
       "new_map_y": 144.6,
       "reason": "Previous anchor was visually outside Lombardy on the actual map asset. Recalibrated against real-map landmarks rather than marker-to-marker interpolation."
     }
-  ]
+  ],
+  "landmark_calibration": {
+    "method": "affine_from_independent_geographic_landmarks_v1",
+    "purpose": "Independent check against identifiable geographic landmarks on the actual map asset; avoids circular validation from community markers.",
+    "landmarks": [
+      {
+        "name": "Genova",
+        "latitude": 44.4056,
+        "longitude": 8.9463,
+        "map_x": 308.89,
+        "map_y": 200.93,
+        "status": "reviewed_visual_landmark"
+      },
+      {
+        "name": "Venezia",
+        "latitude": 45.4408,
+        "longitude": 12.3155,
+        "map_x": 498.89,
+        "map_y": 133.21,
+        "status": "reviewed_visual_landmark"
+      },
+      {
+        "name": "Napoli",
+        "latitude": 40.8518,
+        "longitude": 14.2681,
+        "map_x": 651.11,
+        "map_y": 388.55,
+        "status": "reviewed_visual_landmark"
+      }
+    ],
+    "current_scope": "Independent validation is required for ALY-CREMOS; other legacy pilot anchors remain scheduled for separate geographic re-review.",
+    "tolerance_logical_units": 24
+  }
 }
