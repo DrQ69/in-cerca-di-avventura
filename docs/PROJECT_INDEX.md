@@ -36,6 +36,7 @@ Use for product identity, locked IA/content/design/technical decisions, source i
 - `docs/GITHUB_WORKFLOW.md` — branch, PR, defect, CI and merge workflow
 - `docs/VISUAL_REGRESSION.md` + `qa/visual-baselines.json` — visual baseline/regression system
 - `docs/TECHNICAL_BASELINE.md` + `qa/technical-baseline.json` — measurable accessibility/performance/SEO baseline
+- `docs/MAP_GEO_001.md` + `data/map-italia-calibration.json` — geographic placement/calibration standard for Alleanze
 
 ### Layer 3 — Operational records
 
@@ -63,6 +64,7 @@ Operational records never override Layer 1 or Layer 2 rules.
 | Create/edit production asset | Canonical Spec + Asset Spec + Manifest + relevant Design guidance + QAP-AST-P |
 | Build/edit page/template | Canonical Spec + Design + Responsive + M7.1 + QAP-PAG + Technical Baseline |
 | Add/edit factual content or data | Canonical content rules + QAP-DAT + verified source data |
+| Add/move an Alleanze map marker | MAP-GEO-001 + verified geographic source + Alleanze QA |
 | Work on results/rankings | Canonical content/results rules + campaign scoring source + QAP-DAT |
 | Work on deck data/UI | Canonical Sorcery model + relevant component/page QA |
 | Modify code/technical implementation | Canonical technical constraints + QAP-CODE + affected specialist systems + GitHub Workflow + Technical Baseline when applicable |
