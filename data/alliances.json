@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1",
+  "map_asset": "assets/alleanze/map-italia.webp",
+  "coordinate_system": {
+    "viewBox": [
+      0,
+      0,
+      1000,
+      625
+    ],
+    "origin": "top-left"
+  },
+  "prestige_system": {
+    "basis": "community cumulative wins",
+    "current_default": "bronze",
+    "future_levels": [
+      "silver",
+      "gold",
+      "higher tiers to be defined"
+    ]
+  },
+  "influence_system": {
+    "basis": "community size / territorial presence",
+    "independent_from_prestige": true
+  },
+  "influence_tiers": {
+    "1": {
+      "label": "Presenza locale",
+      "radius": 32
+    },
+    "2": {
+      "label": "Community consolidata",
+      "radius": 48
+    },
+    "3": {
+      "label": "Polo territoriale",
+      "radius": 66
+    },
+    "4": {
+      "label": "Grande community",
+      "radius": 86
+    }
+  },
+  "entities": [
+    {
+      "id": "ALY-CREMOS",
+      "name": "Il Regno di Cremos",
+      "type": "community",
+      "city": "Crema",
+      "region": "Lombardia",
+      "x": 412.99,
+      "y": 179.56,
+      "logo": "assets/logo-emblem.webp",
+      "influence_tier": 1,
+      "prestige": "bronze",
+      "prestige_label": "Bronzo",
+      "status": "pilot"
+    },
+    {
+      "id": "ALY-VOID",
+      "name": "Team Void",
+      "type": "community",
+      "city": "Prato",
+      "region": "Toscana",
+      "x": 416.14,
+      "y": 255.17,
+      "logo": "assets/alleanze/team-void.webp",
+      "influence_tier": 1,
+      "prestige": "bronze",
+      "prestige_label": "Bronzo",
+      "status": "pilot"
+    },
+    {
+      "id": "ALY-MORTALS",
+      "name": "Ordinary Mortals",
+      "type": "community",
+      "city": "Roma",
+      "region": "Lazio",
+      "x": 460.28,
+      "y": 318.17,
+      "logo": "assets/alleanze/ordinary-mortals.webp",
+      "influence_tier": 1,
+      "prestige": "bronze",
+      "prestige_label": "Bronzo",
+      "status": "pilot"
+    }
+  ],
+  "categories": [
+    {
+      "id": "merchant",
+      "label": "Mercanti",
+      "icon": "assets/alleanze/merchant-category.webp",
+      "placement_status": "awaiting verified location"
+    }
+  ]
+}
