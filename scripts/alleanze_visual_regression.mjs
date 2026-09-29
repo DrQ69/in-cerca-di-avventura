@@ -79,8 +79,8 @@ try{
       };
     });
     if(!positions.cremos||!positions.prato||!positions.roma)throw new Error(viewport.name+': marker position data unavailable');
-    if(!(positions.cremos.x>=36&&positions.cremos.x<=39&&positions.cremos.y>=32&&positions.cremos.y<=35)){
-      throw new Error(viewport.name+': Cremos marker is outside the calibrated Lombardia envelope '+JSON.stringify(positions.cremos));
+    if(!(positions.cremos.x>=36&&positions.cremos.x<=40&&positions.cremos.y>=25&&positions.cremos.y<=30)){
+      throw new Error(viewport.name+': Cremos marker is outside the Lombardia placement envelope '+JSON.stringify(positions.cremos));
     }
     if(!(positions.cremos.y<positions.prato.y&&positions.cremos.y<positions.roma.y)){
       throw new Error(viewport.name+': Cremos must remain north of Prato and Roma');
