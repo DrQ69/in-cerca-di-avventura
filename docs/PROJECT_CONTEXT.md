@@ -117,6 +117,7 @@ These beta pages remain implementation/prototype surfaces. They are not automati
 10. Browser/runtime performance and accessibility evidence will be generated progressively with canonical pages; static M12 CI does not pretend to measure Core Web Vitals or full WCAG conformance by itself.
 11. Minimal technical protection of `main` is not yet enforced; GitHub Issue #17 tracks the required admin settings (`ICA baseline QA` required, no force-push, no branch deletion).
 12. External Alleanze community logos remain candidate until production-use permission evidence is recorded; GitHub Issue #94 tracks this closure.
+13. Exact canonical ICA brand-source installation and SIG-01/favicon approval remain separate from this governance cleanup; GitHub Issue #95 tracks the visually reviewed replacement path.
 
 ## Current implementation objective
 
