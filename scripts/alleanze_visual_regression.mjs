@@ -2,6 +2,8 @@ import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 
 const baseURL=process.env.ICA_BASE_URL||'http://127.0.0.1:8000';
+const calibration=JSON.parse(await fs.readFile('data/map-italia-calibration.json','utf8'));
+const anchorById=new Map((calibration.anchors||[]).map(anchor=>[anchor.entity_id,anchor]));
 const outDir=process.env.ALLEANZE_SCREENSHOT_DIR||'artifacts/alleanze-visual';
 const viewports=[
   {name:'mobile-390',width:390,height:844},
@@ -79,14 +81,23 @@ try{
       };
     });
     if(!positions.cremos||!positions.prato||!positions.roma)throw new Error(viewport.name+': marker position data unavailable');
-    if(!(positions.cremos.x>=36&&positions.cremos.x<=40&&positions.cremos.y>=25&&positions.cremos.y<=30)){
-      throw new Error(viewport.name+': Cremos marker is outside the Lombardia placement envelope '+JSON.stringify(positions.cremos));
+
+    const toPct=anchor=>({x:anchor.map_x/calibration.logical_view.width*100,y:anchor.map_y/calibration.logical_view.height*100});
+    const expected={
+      cremos:toPct(anchorById.get('ALY-CREMOS')),
+      prato:toPct(anchorById.get('ALY-VOID')),
+      roma:toPct(anchorById.get('ALY-MORTALS'))
+    };
+    for(const key of ['cremos','prato','roma']){
+      if(Math.abs(positions[key].x-expected[key].x)>0.02||Math.abs(positions[key].y-expected[key].y)>0.02){
+        throw new Error(viewport.name+': '+key+' marker differs from MAP-GEO-001 anchor. actual='+JSON.stringify(positions[key])+' expected='+JSON.stringify(expected[key]));
+      }
     }
-    if(!(positions.cremos.y<positions.prato.y&&positions.cremos.y<positions.roma.y)){
-      throw new Error(viewport.name+': Cremos must remain north of Prato and Roma');
+    if(!(positions.cremos.y<positions.prato.y&&positions.prato.y<positions.roma.y)){
+      throw new Error(viewport.name+': map latitude order Crema -> Prato -> Roma is wrong');
     }
-    if(!(positions.cremos.x<positions.prato.x)){
-      throw new Error(viewport.name+': Crema must remain west of Prato on this map calibration');
+    if(!(positions.cremos.x<positions.prato.x&&positions.prato.x<positions.roma.x)){
+      throw new Error(viewport.name+': map longitude order Crema -> Prato -> Roma is wrong');
     }
     if(result.bodyOverflow)throw new Error(viewport.name+': horizontal body overflow');
     if(!result.allFilter)throw new Error(viewport.name+': default filter is not Tutti');
@@ -109,6 +120,33 @@ try{
     if(!await first.locator('.marker-popover').isVisible())throw new Error(viewport.name+': marker popover does not open on click');
 
     await page.screenshot({path:outDir+'/alleanze-'+viewport.name+'.png',fullPage:true,animations:'disabled'});
+
+    if(viewport.name==='desktop-1280'){
+      await page.evaluate(cal=>{
+        const root=document.querySelector('.map-frame');
+        if(!root)return;
+        for(const anchor of cal.anchors||[]){
+          const el=document.createElement('span');
+          el.className='geo-debug-label';
+          el.textContent=anchor.city+' · '+anchor.region+' ['+anchor.map_x.toFixed(1)+','+anchor.map_y.toFixed(1)+']';
+          Object.assign(el.style,{
+            position:'absolute',
+            left:(anchor.map_x/cal.logical_view.width*100)+'%',
+            top:(anchor.map_y/cal.logical_view.height*100)+'%',
+            transform:'translate(12px,-16px)',
+            zIndex:'99',
+            padding:'2px 5px',
+            font:'12px monospace',
+            color:'#fff',
+            background:'rgba(0,0,0,.78)',
+            border:'1px solid #fff',
+            pointerEvents:'none'
+          });
+          root.append(el);
+        }
+      },calibration);
+      await page.screenshot({path:outDir+'/alleanze-geo-debug.png',fullPage:true,animations:'disabled'});
+    }
     await fs.writeFile(outDir+'/'+viewport.name+'.json',JSON.stringify({viewport,result,merchantFilter,communityVisible,errors},null,2),'utf8');
 
     if(errors.length)throw new Error(viewport.name+': browser console errors: '+errors.join(' | '));

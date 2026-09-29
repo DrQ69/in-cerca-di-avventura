@@ -5,10 +5,12 @@ on:
     paths:
       - 'beta/alleanze/**'
       - 'data/alliances.json'
+      - 'data/map-italia-calibration.json'
       - 'assets/alleanze/**'
       - 'assets/logo-emblem.webp'
       - 'assets/css/ica-shared-shell.css'
       - 'scripts/alleanze_visual_regression.mjs'
+      - 'scripts/alliances_geo_audit.mjs'
       - '.github/workflows/alleanze-visual-qa.yml'
   push:
     branches:
@@ -44,6 +46,8 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
+      - name: Audit geographic calibration
+        run: node scripts/alliances_geo_audit.mjs
       - name: Start local site
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &

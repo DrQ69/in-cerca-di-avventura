@@ -16,6 +16,7 @@ JSON_FILES = [
     ROOT / "tests" / "fixtures" / "responsive-stress.json",
     ROOT / "qa" / "visual-baselines.json",
     ROOT / "data" / "players.json",
+    ROOT / "data" / "map-italia-calibration.json",
 ]
 
 VISUAL_REGISTRY = ROOT / "qa" / "visual-baselines.json"

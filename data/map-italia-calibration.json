@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "calibration_id": "MAP-GEO-001",
+  "updated_at": "2026-09-29",
+  "map_asset": "assets/alleanze/map-italia.webp",
+  "map_image_size": {
+    "width": 900,
+    "height": 563
+  },
+  "logical_view": {
+    "width": 1000,
+    "height": 625,
+    "origin": "top-left"
+  },
+  "purpose": "Prevent freehand placement of community markers by requiring real geographic metadata, reviewed map anchors and automated relational checks.",
+  "rules": {
+    "published_entities_require_geo": true,
+    "published_entities_require_region_verified": true,
+    "published_entities_require_calibration_id": "MAP-GEO-001",
+    "minimum_anchor_count": 3,
+    "minimum_marker_center_distance_logical": 62,
+    "longitude_should_increase_map_x_for_current_italy_extent": true,
+    "latitude_should_decrease_map_y_for_current_italy_extent": true,
+    "auto_estimates_must_not_be_published_without_review": true
+  },
+  "anchors": [
+    {
+      "entity_id": "ALY-CREMOS",
+      "city": "Crema",
+      "region": "Lombardia",
+      "latitude": 45.36264,
+      "longitude": 9.68176,
+      "map_x": 380,
+      "map_y": 195,
+      "status": "reviewed",
+      "source_note": "Crema coordinates verified against GeoNames/OpenStreetMap; map placement reviewed against the actual stylized Italy map."
+    },
+    {
+      "entity_id": "ALY-VOID",
+      "city": "Prato",
+      "region": "Toscana",
+      "latitude": 43.8805,
+      "longitude": 11.09699,
+      "map_x": 416.14,
+      "map_y": 255.17,
+      "status": "reviewed",
+      "source_note": "Existing pilot anchor retained; geographic coordinates from GeoNames."
+    },
+    {
+      "entity_id": "ALY-MORTALS",
+      "city": "Roma",
+      "region": "Lazio",
+      "latitude": 41.891934,
+      "longitude": 12.511326,
+      "map_x": 460.28,
+      "map_y": 318.17,
+      "status": "reviewed",
+      "source_note": "Existing pilot anchor retained; geographic coordinates from GeoNames."
+    }
+  ],
+  "process": [
+    "Verify city, region, latitude and longitude from an authoritative or approved geographic source.",
+    "Estimate map position only after at least three reviewed anchors exist.",
+    "Render a QA overlay with city/region labels and coordinates.",
+    "Require relational geography checks and minimum marker separation.",
+    "Require human visual review before changing an anchor from estimated to reviewed.",
+    "Never define a QA envelope from an unverified position."
+  ]
+}
