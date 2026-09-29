@@ -22,7 +22,7 @@
 | PRJ-R12 | Asset provenance/licensing remains unresolved for selected AI-assisted or legacy assets | 3 | 3 | 9 | Medium | Project-directed generated assets were approved with a dated PO record; canonical brand proxy/favicon remain candidate under Issue #95; external Team Void and Ordinary Mortals permission evidence is tracked in Issue #94 | Partially mitigated; external/brand blockers explicit |
 | PRJ-R13 | Only some pages have performance gates equivalent to Adunanze | 3 | 3 | 9 | Medium | Extend runtime/Lighthouse checks when pages become production candidates, especially image-heavy Home/Alleanze/Avventurieri | Open |
 | PRJ-R14 | Merchant/Alliance data model grows before governance fields are defined | 2 | 3 | 6 | Medium | Keep merchant placement pending until verified location/category data exists; version schema before expansion | Controlled |
-| PRJ-R15 | Alleanze marker is placed in the wrong Italian region because coordinates are guessed visually | 4 | 4 | 16 | Critical | MAP-GEO-001 now requires independent geographic landmarks on the actual map asset, not only community-to-community anchors; Crema is rechecked against a landmark-affine estimate plus rendered QA | Reopened after false-positive VR-0016; corrective verification in progress |
+| PRJ-R15 | Alleanze marker is placed in the wrong Italian region because coordinates are guessed visually | 4 | 4 | 16 | Critical | MAP-GEO-001 now requires independent geographic landmarks on the actual map asset, not only community-to-community anchors; Crema is rechecked against a landmark-affine estimate plus rendered QA | Corrected and VERIFIED by VR-0017; VR-0016 superseded |
 
 ## Review rules
 
