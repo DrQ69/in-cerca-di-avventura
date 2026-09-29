@@ -62,6 +62,32 @@ try{
     for(const expected of ['Il Regno di Cremos — Crema','Team Void — Prato','Ordinary Mortals — Roma']){
       if(!result.labels.includes(expected))throw new Error(viewport.name+': missing marker '+expected);
     }
+
+    const positions=await page.evaluate(()=>{
+      const byLabel=label=>{
+        const el=[...document.querySelectorAll('.map-marker')].find(node=>node.getAttribute('aria-label')===label);
+        if(!el)return null;
+        return {
+          x:parseFloat(el.style.getPropertyValue('--x')),
+          y:parseFloat(el.style.getPropertyValue('--y'))
+        };
+      };
+      return {
+        cremos:byLabel('Il Regno di Cremos — Crema'),
+        prato:byLabel('Team Void — Prato'),
+        roma:byLabel('Ordinary Mortals — Roma')
+      };
+    });
+    if(!positions.cremos||!positions.prato||!positions.roma)throw new Error(viewport.name+': marker position data unavailable');
+    if(!(positions.cremos.x>=36&&positions.cremos.x<=40&&positions.cremos.y>=25&&positions.cremos.y<=30)){
+      throw new Error(viewport.name+': Cremos marker is outside the Lombardia placement envelope '+JSON.stringify(positions.cremos));
+    }
+    if(!(positions.cremos.y<positions.prato.y&&positions.cremos.y<positions.roma.y)){
+      throw new Error(viewport.name+': Cremos must remain north of Prato and Roma');
+    }
+    if(!(positions.cremos.x<positions.prato.x)){
+      throw new Error(viewport.name+': Crema must remain west of Prato on this map calibration');
+    }
     if(result.bodyOverflow)throw new Error(viewport.name+': horizontal body overflow');
     if(!result.allFilter)throw new Error(viewport.name+': default filter is not Tutti');
 

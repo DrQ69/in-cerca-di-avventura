@@ -48,14 +48,14 @@
       "type": "community",
       "city": "Crema",
       "region": "Lombardia",
-      "x": 485,
-      "y": 182,
+      "x": 378,
+      "y": 170,
       "logo": "assets/logo-emblem.webp",
       "influence_tier": 1,
       "prestige": "bronze",
       "prestige_label": "Bronzo",
       "status": "pilot",
-      "placement_note": "Product Owner correction 2026-09-29: marker positioned in Lombardia, corresponding to Il Regno di Cremos / Crema."
+      "placement_note": "Product Owner correction 2026-09-29: marker placed within Lombardia on the stylized map, with enough separation from the Prato marker for clear interaction."
     },
     {
       "id": "ALY-VOID",
