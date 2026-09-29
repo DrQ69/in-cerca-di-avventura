@@ -13,6 +13,8 @@ const influenceLayer=document.getElementById('influence-layer');
 const statusEl=document.getElementById('map-status');
 const filters=[...document.querySelectorAll('.map-filter')];
 const VIEW_W=1000,VIEW_H=625;
+const ASSET_VERSION='20260929-2';
+function versionedAsset(path){return '../../'+String(path||'').replace(/^\.\.\//,'')+'?v='+ASSET_VERSION;}
 
 function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
 function pctX(x){return (Number(x)/VIEW_W*100).toFixed(3)+'%';}
@@ -44,8 +46,8 @@ function render(data){
     button.style.setProperty('--y',pctY(entity.y));
     button.setAttribute('aria-label',entity.name+' — '+entity.city);
     button.innerHTML=
-      '<img class="marker-logo" src="../../'+esc(entity.logo)+'" alt="">'+
-      '<img class="marker-frame" src="../../assets/alleanze/medallion-bronze.webp" alt="">'+
+      '<img class="marker-logo" src="'+esc(versionedAsset(entity.logo))+'" alt="">'+
+      '<img class="marker-frame" src="../../assets/alleanze/medallion-bronze.webp?v='+ASSET_VERSION+'" alt="">'+
       '<span class="marker-popover"><strong>'+esc(entity.name)+'</strong>'+
       '<span>'+esc(entity.city)+(entity.region?' · '+esc(entity.region):'')+'</span>'+
       '<small>Prestigio: '+esc(entity.prestige_label||'Bronzo')+' · Influenza: '+esc(tier.label||'Presenza locale')+'</small></span>';
