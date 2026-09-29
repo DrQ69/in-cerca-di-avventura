@@ -175,6 +175,29 @@ try {
       return bounds;
     };
 
+    const peasant=page.locator('[data-event-id="bog-2026-duello-02"]');
+    if(await peasant.count()!==1)throw new Error(`${viewport.name}: Stage II Peasant card missing`);
+    const peasantSnapshot=await peasant.evaluate(card=>({
+      title:card.querySelector('h3')?.textContent?.trim()||'',
+      text:card.textContent||'',
+      rules:card.querySelector('.rules-control .event-popover')?.textContent||'',
+      prizes:card.querySelector('.prizes-control .event-popover')?.textContent||'',
+      signup:card.querySelector('.signup-action')?.getAttribute('href')||''
+    }));
+    if(peasantSnapshot.title!=='Peasant')throw new Error(`${viewport.name}: Stage II title mismatch`);
+    for(const expected of ['20:30–21:00','21:15','Joker - comics&games']){
+      if(!peasantSnapshot.text.includes(expected))throw new Error(`${viewport.name}: Stage II missing ${expected}`);
+    }
+    for(const expected of ['Ordinary: massimo 4 copie per carta.','Exceptional: massimo 3 copie per carta.','Elite e Unique: bandite.','DECKLIST OBBLIGATORIA']){
+      if(!peasantSnapshot.rules.includes(expected))throw new Error(`${viewport.name}: Stage II rules missing ${expected}`);
+    }
+    for(const expected of ['Flaming Skull','Askelon Phoenix','Sir Tom Thumb','Highland Clansmen']){
+      if(!peasantSnapshot.prizes.includes(expected))throw new Error(`${viewport.name}: Stage II prizes missing ${expected}`);
+    }
+    if(!peasantSnapshot.signup.includes('sorcerytcg.com/events/cmua2gkxc00090agm7qvfrh45')){
+      throw new Error(`${viewport.name}: Stage II signup link mismatch`);
+    }
+
     const firstRules=page.locator('#upcoming-root .adunanza-card .rules-control').first();
     const rulesBounds=await assertPopoverFits(firstRules,'Regolamento');
 
