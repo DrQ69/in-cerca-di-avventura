@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Alleanze — In Cerca di Avventura</title>
+  <meta name="description" content="La mappa delle community, dei mercanti e dei presidi italiani di Sorcery: Contested Realm.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b141d">
+  <link rel="canonical" href="https://drq69.github.io/in-cerca-di-avventura/beta/alleanze/">
+  <link rel="icon" href="../../assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
+  <link rel="stylesheet" href="alleanze.css?v=20260929-1">
+</head>
+<body data-ica-page="ALL">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="site-shell alleanze-shell">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="ALL-NAV-01">
+    <nav class="nav-side" aria-label="Navigazione principale sinistra">
+      <a href="../adunanze/nazionale/">Le Adunanze</a>
+      <a href="../cronache/">Cronache</a>
+    </nav>
+    <a class="logo-host" data-ica-id="ALL-NAV-02" href="../" aria-label="In Cerca di Avventura — Home"><img src="../../assets/logo-emblem.webp" alt=""></a>
+    <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
+      <a href="../avventurieri/">Avventurieri</a>
+      <a href="./" aria-current="page">Alleanze</a>
+      <a href="../#proclami">Proclami</a>
+    </nav>
+    <button class="menu-toggle" id="menu" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile">
+      <a href="../adunanze/nazionale/">Le Adunanze</a>
+      <a href="../cronache/">Cronache</a>
+      <a href="../avventurieri/">Avventurieri</a>
+      <a href="./" aria-current="page">Alleanze</a>
+      <a href="../#proclami">Proclami</a>
+    </nav>
+  </header>
+
+  <main id="main" class="alliances-main">
+    <section class="alliances-hero" data-ica-section="HERO" data-ica-id="ALL-HERO-01" aria-labelledby="page-title">
+      <p class="alliances-kicker" data-ica-id="ALL-HERO-02">Cartografia del Reame</p>
+      <h1 id="page-title" data-ica-id="ALL-HERO-03">Alleanze</h1>
+      <p class="alliances-subtitle" data-ica-id="ALL-HERO-04">Community, presidi e mercanti di Sorcery in Italia</p>
+    </section>
+
+    <section class="map-section" data-ica-section="MAP" aria-labelledby="map-title">
+      <header class="map-heading" data-ica-id="ALL-MAP-01">
+        <div>
+          <p class="section-kicker">Il Reame</p>
+          <h2 id="map-title">La Mappa delle Alleanze</h2>
+        </div>
+        <div class="map-filters" data-ica-id="ALL-MAP-02" role="group" aria-label="Filtra la mappa">
+          <button type="button" class="map-filter is-active" data-filter="all">Tutti</button>
+          <button type="button" class="map-filter" data-filter="community">Community</button>
+          <button type="button" class="map-filter" data-filter="merchant">Mercanti</button>
+        </div>
+      </header>
+
+      <div class="map-frame" data-ica-id="ALL-MAP-03">
+        <img class="italy-map" src="../../assets/alleanze/map-italia.webp" alt="Mappa fantasy dell'Italia">
+        <div id="influence-layer" class="influence-layer" aria-hidden="true"></div>
+        <div id="marker-layer" class="marker-layer" aria-label="Presidi sulla mappa"></div>
+      </div>
+
+      <p id="map-status" class="map-status" data-ica-id="ALL-MAP-04" aria-live="polite">Caricamento delle Alleanze…</p>
+    </section>
+
+    <section class="map-legend" data-ica-section="LEGEND" data-ica-id="ALL-LEG-01" aria-labelledby="legend-title">
+      <header>
+        <p class="section-kicker">Legenda</p>
+        <h2 id="legend-title">Segni del Reame</h2>
+      </header>
+      <div class="legend-grid">
+        <article class="legend-card">
+          <img src="../../assets/alleanze/medallion-bronze.webp" alt="">
+          <div><strong>Community</strong><p>Il bordo del medaglione esprime il prestigio competitivo. Tutte le community iniziano dal Bronzo.</p></div>
+        </article>
+        <article class="legend-card">
+          <img src="../../assets/alleanze/merchant-category.webp" alt="">
+          <div><strong>Mercanti</strong><p>Categoria già predisposta. I mercanti verranno collocati sulla mappa quando ne saranno forniti luogo e coordinate.</p></div>
+        </article>
+        <article class="legend-card influence-legend">
+          <span class="influence-swatch" aria-hidden="true"></span>
+          <div><strong>Area di influenza</strong><p>La dimensione rappresenta la presenza della community e resterà indipendente dal grado del medaglione.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-ica-section="FOOTER">
+    <span>In Cerca di Avventura · Alleanze</span>
+    <span>Community italiana di Sorcery: Contested Realm</span>
+    <span>© <span id="year"></span></span>
+  </footer>
+</div>
+<script src="alleanze.js?v=20260929-1"></script>
+<script src="../../assets/js/lcs02-inspector.js"></script>
+</body>
+</html>
