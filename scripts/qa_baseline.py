@@ -15,10 +15,14 @@ JSON_FILES = [
     ROOT / "assets" / "manifest.json",
     ROOT / "tests" / "fixtures" / "responsive-stress.json",
     ROOT / "qa" / "visual-baselines.json",
+    ROOT / "data" / "players.json",
 ]
 
 VISUAL_REGISTRY = ROOT / "qa" / "visual-baselines.json"
 VISUAL_STATUSES = {"candidate", "approved", "deprecated"}
+ASSET_MANIFEST = ROOT / "assets" / "manifest.json"
+PUBLIC_PLAYERS = ROOT / "data" / "players.json"
+FORBIDDEN_PUBLIC_PLAYER_FIELDS = {"real_name", "event_display_name"}
 
 
 class LocalRefParser(HTMLParser):
@@ -106,6 +110,59 @@ def validate_visual_registry() -> list[str]:
     return errors
 
 
+
+def validate_manifest_assets() -> list[str]:
+    errors: list[str] = []
+    if not ASSET_MANIFEST.exists():
+        return ["Missing assets/manifest.json"]
+    try:
+        data = json.loads(ASSET_MANIFEST.read_text(encoding="utf-8"))
+    except Exception:
+        return errors
+
+    assets = data.get("assets", [])
+    if not isinstance(assets, list):
+        return ["assets/manifest.json: 'assets' must be a list"]
+
+    for index, entry in enumerate(assets, start=1):
+        if not isinstance(entry, dict):
+            errors.append(f"Asset manifest entry {index} must be an object")
+            continue
+        if entry.get("exists") is True:
+            path = entry.get("path")
+            if not isinstance(path, str) or not path.strip():
+                errors.append(f"Asset manifest entry {index} is marked exists=true but has no path")
+                continue
+            if not resolve_repo_path(path).exists():
+                errors.append(f"Asset manifest entry {index} references missing file: {path}")
+    return errors
+
+
+def validate_public_player_registry() -> list[str]:
+    errors: list[str] = []
+    if not PUBLIC_PLAYERS.exists():
+        return ["Missing data/players.json"]
+    try:
+        data = json.loads(PUBLIC_PLAYERS.read_text(encoding="utf-8"))
+    except Exception:
+        return errors
+
+    players = data.get("players", [])
+    if not isinstance(players, list):
+        return ["data/players.json: 'players' must be a list"]
+
+    for index, player in enumerate(players, start=1):
+        if not isinstance(player, dict):
+            errors.append(f"Public player entry {index} must be an object")
+            continue
+        forbidden = sorted(FORBIDDEN_PUBLIC_PLAYER_FIELDS.intersection(player))
+        if forbidden:
+            errors.append(
+                f"Public player entry {index} contains forbidden reconciliation field(s): "
+                + ", ".join(forbidden)
+            )
+    return errors
+
 def validate_html_references() -> list[str]:
     errors: list[str] = []
     html_files = sorted(ROOT.rglob("*.html"))
@@ -133,7 +190,7 @@ def validate_html_references() -> list[str]:
 
 
 def main() -> int:
-    errors = validate_json() + validate_visual_registry() + validate_html_references()
+    errors = validate_json() + validate_visual_registry() + validate_manifest_assets() + validate_public_player_registry() + validate_html_references()
     if errors:
         print("ICA baseline QA: FAIL")
         for error in errors:
@@ -144,6 +201,8 @@ def main() -> int:
     print("- required JSON parses")
     print("- visual baseline registry is structurally valid")
     print("- registered visual baseline files resolve")
+    print("- manifest entries marked exists=true resolve to files")
+    print("- public player registry contains no forbidden reconciliation fields")
     print("- local asset/script/stylesheet references resolve across all HTML pages")
     return 0
 
