@@ -66,7 +66,7 @@ function card(player){
   const record=hasRecorded ? stats.wins+' V · '+stats.draws+' P · '+stats.losses+' S' : 'Nessun risultato registrato';
   const leagueRank=Number.isFinite(league.rank)?'#'+league.rank:null;
   const leaguePoints=Number.isFinite(league.points)?league.points:null;
-  return '<article class="player-card" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
+  return '<article class="player-card" id="player-'+esc(player.id)+'" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
     '<header class="player-card-header" data-ica-id="AVV-CARD-HEAD-'+esc(player.id)+'"><div class="player-avatar" data-ica-id="AVV-CARD-AVATAR-'+esc(player.id)+'">'+avatar+'</div><div class="player-card-title" data-ica-id="AVV-CARD-NAME-'+esc(player.id)+'"><h3>'+esc(player.nickname)+'</h3><span class="player-id">'+esc(player.id)+'</span></div></header>'+
     '<div class="player-details" data-ica-id="AVV-CARD-DETAILS-'+esc(player.id)+'">'+
       detail('Eventi registrati',hasRecorded?stats.events_played:0,false)+
@@ -158,8 +158,20 @@ Promise.all([
       stats:aggregatePlayerStats(player.id,events),
       league:leagueByPlayer.get(player.id)||{}
     }));
-    filtered=[...players];
+    const requestedPlayerId=new URLSearchParams(window.location.search).get('player');
+    const requestedPlayer=requestedPlayerId?players.find(player=>player.id===requestedPlayerId):null;
+    if(requestedPlayer){
+      search.value=requestedPlayer.nickname;
+      filtered=[requestedPlayer];
+      page=0;
+      render();
+      requestAnimationFrame(()=>{
+        document.getElementById('player-'+requestedPlayer.id)?.scrollIntoView({block:'center'});
+      });
+    }else{
+      filtered=[...players];
+      applyFilters(false);
+    }
     statusEl.hidden=true;
-    applyFilters(false);
   })
   .catch(reason=>{console.error('Avventurieri data load failed',reason);statusEl.textContent='Il registro degli Avventurieri non è disponibile in questo momento.';countEl.textContent='Registro non disponibile';prev.disabled=true;next.disabled=true;});
