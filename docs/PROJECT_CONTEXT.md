@@ -84,7 +84,7 @@ The Product Owner has approved the current Adunanze access architecture for the 
 - `/beta/cronache/` is the historical view for completed events;
 - Home, National and Cronache are being consolidated onto a shared `data/events.json` source.
 
-The three portal artworks under `assets/adunanze/` are selected production candidates, not formally APPROVED assets yet.
+The three portal artworks under `assets/adunanze/` are APPROVED for ICA project use as of 2026-09-29 under `docs/ASSET_APPROVAL_RECORD_2026-09-29.md`; the National gate carries the documented asset-budget exception `EXC-0001`. This does not promote the beta page itself to canonical/PRODUCTION_READY.
 
 This consolidation is implementation work inside the broader canonical programme; it does not by itself mark the beta pages PRODUCTION_READY or M12 canonical.
 
@@ -110,12 +110,14 @@ These beta pages remain implementation/prototype surfaces. They are not automati
 3. M7.1 is not fully verified yet: NAV-02 runtime mechanics have passed the tested matrix, while NAV-01 still needs fit verification with the actual Cinzel-family production candidate and final visual evidence.
 4. Final production typography remains intentionally open pending real HTML fit/readability testing and therefore triggers NAV fit recheck.
 5. `SIG-01`, `NAV-01` and `NAV-02` remain formally IMPLEMENTED, not VERIFIED or APPROVED.
-6. `SIG-01` currently uses the registered candidate emblem asset; asset provenance/approval and real-asset visual review remain pending.
+6. `SIG-01` currently uses the registered candidate emblem asset; exact canonical ICA brand-source installation/identity closure remains pending. The current proxy was intentionally not promoted by the 2026-09-29 asset cleanup.
 7. M11 has no production screenshots yet by design: the legacy/prototype homepage must not become the canonical baseline.
 8. M12 `canonical_pages` starts empty by design: legacy/prototype pages and QA fixtures must not be counted as canonical technical compliance.
 9. M12 v1.1 guards against future registry omission: a page carrying `<meta name="ica-status" content="canonical">` must be registered or CI fails.
 10. Browser/runtime performance and accessibility evidence will be generated progressively with canonical pages; static M12 CI does not pretend to measure Core Web Vitals or full WCAG conformance by itself.
 11. Minimal technical protection of `main` is not yet enforced; GitHub Issue #17 tracks the required admin settings (`ICA baseline QA` required, no force-push, no branch deletion).
+12. External Alleanze community logos remain candidate until production-use permission evidence is recorded; GitHub Issue #94 tracks this closure.
+13. Exact canonical ICA brand-source installation and SIG-01/favicon approval remain separate from this governance cleanup; GitHub Issue #95 tracks the visually reviewed replacement path.
 
 ## Current implementation objective
 
@@ -134,7 +136,7 @@ As canonical components/pages become VERIFIED and are accepted visually, populat
 
 ## Documentation freshness note — 2026-09-29
 
-The beta implementation moved faster than several operational records between 2026-09-22 and 2026-09-29. The review in `docs/ACTIVITY_REVIEW_2026-09-29.md` and the cross-project `docs/PROJECT_RISK_REGISTER.md` now track the resulting gaps. In particular, README, asset registration, Cronache references, Adunanze routing and verification coverage require ongoing synchronisation.
+The beta implementation moved faster than several operational records between 2026-09-22 and 2026-09-29. The review in `docs/ACTIVITY_REVIEW_2026-09-29.md` and the cross-project `docs/PROJECT_RISK_REGISTER.md` track the resulting gaps. README, asset registration, Cronache references, Adunanze routing and verification coverage have since been synchronised; remaining governance blockers are now explicit rather than silent.
 
 ## Operational rule
 

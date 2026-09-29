@@ -23,6 +23,7 @@ VISUAL_STATUSES = {"candidate", "approved", "deprecated"}
 ASSET_MANIFEST = ROOT / "assets" / "manifest.json"
 PUBLIC_PLAYERS = ROOT / "data" / "players.json"
 FORBIDDEN_PUBLIC_PLAYER_FIELDS = {"real_name", "event_display_name"}
+ASSET_STATUSES = {"planned", "concept", "candidate", "approved", "deprecated", "archived"}
 
 
 class LocalRefParser(HTMLParser):
@@ -128,6 +129,14 @@ def validate_manifest_assets() -> list[str]:
         if not isinstance(entry, dict):
             errors.append(f"Asset manifest entry {index} must be an object")
             continue
+
+        status = entry.get("status")
+        if status not in ASSET_STATUSES:
+            errors.append(
+                f"Asset manifest entry {index} has invalid status {status!r}; "
+                f"expected one of {sorted(ASSET_STATUSES)}"
+            )
+
         if entry.get("exists") is True:
             path = entry.get("path")
             if not isinstance(path, str) or not path.strip():
@@ -135,6 +144,21 @@ def validate_manifest_assets() -> list[str]:
                 continue
             if not resolve_repo_path(path).exists():
                 errors.append(f"Asset manifest entry {index} references missing file: {path}")
+
+        if status == "approved":
+            approval = entry.get("approval")
+            if not isinstance(approval, dict):
+                errors.append(f"Approved asset entry {index} is missing approval metadata")
+            else:
+                for key in ("authority", "date", "record"):
+                    if not approval.get(key):
+                        errors.append(f"Approved asset entry {index} approval metadata is missing {key!r}")
+            source = entry.get("source")
+            permission = source.get("licence_or_permission") if isinstance(source, dict) else None
+            if not isinstance(permission, str) or not permission.strip():
+                errors.append(f"Approved asset entry {index} is missing licence/permission basis")
+            elif "to-be-confirmed" in permission.lower():
+                errors.append(f"Approved asset entry {index} still has unconfirmed licence/permission basis")
     return errors
 
 
@@ -202,6 +226,7 @@ def main() -> int:
     print("- visual baseline registry is structurally valid")
     print("- registered visual baseline files resolve")
     print("- manifest entries marked exists=true resolve to files")
+    print("- approved assets carry approval metadata and a non-pending permission basis")
     print("- public player registry contains no forbidden reconciliation fields")
     print("- local asset/script/stylesheet references resolve across all HTML pages")
     return 0

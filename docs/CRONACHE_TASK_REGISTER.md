@@ -57,7 +57,8 @@
 | CRN-100-17 | 100% | Rendered visual QA report | COMPLETED | 0 | `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md` |
 | CRN-100-18 | 100% | Targeted Aesthetic Deep Pass 2 | COMPLETED | 0 | Proportion, legibility, tablet/mobile simplification; `m100-deep2.css` |
 | CRN-100-19 | 100% | Deep Pass 2 rendered QA | COMPLETED | 0 | `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`; 1440/1024/768/390 PASS |
-| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | COMPLETED | 0 | 2026-09-29: former style/M75/M100/deep-pass/background layers merged into `beta/cronache/cronache-consolidated.css`; VR-0015 rendered/runtime QA PASS |\n| CRN-100-21 | 100% | Generated archive background visual test | WAITING_PO | 1 | Dark WebP installed in Beta with responsive overlay; visual acceptance pending |
+| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | COMPLETED | 0 | 2026-09-29: former style/M75/M100/deep-pass/background layers merged into `beta/cronache/cronache-consolidated.css`; VR-0015 rendered/runtime QA PASS |
+| CRN-100-21 | 100% | Generated archive background visual test | COMPLETED | 0 | Background asset approved for ICA project use on 2026-09-29; page-level canonical approval remains separate |
 | CRN-100-22 | 100% | Migrate Cronache to shared event source | COMPLETED | 0 | `data/events.json` is shared with Home / Adunanze |
 | CRN-100-23 | 100% | Link known winners to Avventurieri profiles | COMPLETED | 0 | Implemented 2026-09-29 where player mapping is known |
 | CRN-100-24 | 100% | Post-consolidation tracking alignment | COMPLETED | 0 | Register updated 2026-09-29; later changes still require fresh VR coverage |
@@ -67,7 +68,7 @@
 - **25%:** COMPLETED and merged.
 - **50%:** visual baseline completed; exact Logo ICA production-source installation remains open.
 - **75% functional implementation + rendered runtime QA:** COMPLETED.
-- **100% visual system:** Deep Pass 1, PO corrections, orientation cleanup and targeted Deep Pass 2 are complete and render-tested. A generated archive-environment background is now in Beta test. Remaining blockers: background visual acceptance, exact Logo ICA installation, CSS consolidation, event-detail scope and final PO approval.
+- **100% visual system:** Deep Pass 1, PO corrections, orientation cleanup, targeted Deep Pass 2 and CSS consolidation are complete and render-tested. The archive-environment background asset is approved for ICA project use. Remaining page-level blockers: exact Logo ICA installation, event-detail scope and final PO page approval.
 
 Current page outputs:
 - `beta/cronache/index.html`
@@ -83,7 +84,7 @@ Current page outputs:
 ## PO interaction budget
 
 - Exact Logo ICA / final identity review: **0–1** interaction.
-- Final visual approval: **1** interaction.
+- Final page-level visual approval: **1** interaction.
 
 Estimated remaining PO interactions under normal execution: **1–2**, excluding optional reviews requested by PO.
 
@@ -121,7 +122,9 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-024 | Archive sigil | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-sigil.svg` | Nav / threshold / status / footer accent |
 | CRN-AST-025 | Aesthetic Deep Pass rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Former layer retained in-order inside consolidated file |
 | CRN-AST-026 | Ornament orientation rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Explicit orientation mapping retained |
-| CRN-AST-027 | Targeted Deep Pass 2 rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Proportion / legibility / responsive simplification retained |\n| CRN-AST-028 | Cronache archive environment background | WEBP | GENERATED / INSTALLED_TEST | `assets/backgrounds/cronache-background-dark-site.webp` | 1024×576 lightweight dark WebP derived from generated archive artwork; test-only until PO acceptance |\n| CRN-AST-029 | Background integration test rules | CSS | CONSOLIDATED / INSTALLED_TEST | `beta/cronache/cronache-consolidated.css` | Responsive overlays retained; fixed desktop / scroll mobile |
+| CRN-AST-027 | Targeted Deep Pass 2 rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Proportion / legibility / responsive simplification retained |
+| CRN-AST-028 | Cronache archive environment background | WEBP | APPROVED / INSTALLED | `assets/backgrounds/cronache-background-dark-site.webp` | Approved for ICA project use on 2026-09-29; page-level canonical approval remains separate |
+| CRN-AST-029 | Background integration test rules | CSS | CONSOLIDATED / INSTALLED_TEST | `beta/cronache/cronache-consolidated.css` | Responsive overlays retained; fixed desktop / scroll mobile |
 
 ## QA asset register
 
@@ -148,7 +151,8 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 12. Visual quality remains a milestone gate.
 13. Reset-control wording is `Ripristina i filtri`.
 14. Corner families must use explicit orientation variants.
-15. No further ornamental expansion before exact Logo ICA installation and CSS consolidation.\n16. Generated Cronache background remains a Beta visual test until explicit PO acceptance; it must stay removable as an isolated layer.
+15. No further ornamental expansion before exact Logo ICA installation and CSS consolidation.
+16. Generated Cronache background is approved for ICA project use as of 2026-09-29; it remains removable and does not by itself make the page canonical or PRODUCTION_READY.
 
 ## Update discipline
 

@@ -42,6 +42,7 @@ Use for product identity, locked IA/content/design/technical decisions, source i
 - `docs/PROJECT_CONTEXT.md` — current state / legacy / next step
 - `docs/PROJECT_RISK_REGISTER.md` — current cross-project operational risks
 - `docs/ACTIVITY_REVIEW_2026-09-29.md` — two-week implementation/documentation alignment review
+- `docs/ASSET_APPROVAL_RECORD_2026-09-29.md` — dated Product Owner asset approval/blocked-state record
 - `docs/M7_RISK_REGISTER.md` — responsive risk history
 - `docs/EXCEPTION_REGISTER.md` — accepted exceptions
 - `docs/VERIFICATION_RECORD_TEMPLATE.md` — verification record format
