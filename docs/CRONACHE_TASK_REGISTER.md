@@ -57,7 +57,7 @@
 | CRN-100-17 | 100% | Rendered visual QA report | COMPLETED | 0 | `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md` |
 | CRN-100-18 | 100% | Targeted Aesthetic Deep Pass 2 | COMPLETED | 0 | Proportion, legibility, tablet/mobile simplification; `m100-deep2.css` |
 | CRN-100-19 | 100% | Deep Pass 2 rendered QA | COMPLETED | 0 | `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`; 1440/1024/768/390 PASS |
-| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | COMPLETED | 0 | 2026-09-29: former style/M75/M100/deep-pass/background layers merged into `beta/cronache/cronache-consolidated.css`; rendered QA required before merge |\n| CRN-100-21 | 100% | Generated archive background visual test | WAITING_PO | 1 | Dark WebP installed in Beta with responsive overlay; visual acceptance pending |
+| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | COMPLETED | 0 | 2026-09-29: former style/M75/M100/deep-pass/background layers merged into `beta/cronache/cronache-consolidated.css`; VR-0015 rendered/runtime QA PASS |\n| CRN-100-21 | 100% | Generated archive background visual test | WAITING_PO | 1 | Dark WebP installed in Beta with responsive overlay; visual acceptance pending |
 | CRN-100-22 | 100% | Migrate Cronache to shared event source | COMPLETED | 0 | `data/events.json` is shared with Home / Adunanze |
 | CRN-100-23 | 100% | Link known winners to Avventurieri profiles | COMPLETED | 0 | Implemented 2026-09-29 where player mapping is known |
 | CRN-100-24 | 100% | Post-consolidation tracking alignment | COMPLETED | 0 | Register updated 2026-09-29; later changes still require fresh VR coverage |
