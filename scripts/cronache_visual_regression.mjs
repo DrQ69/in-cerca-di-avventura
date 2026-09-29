@@ -47,6 +47,33 @@ try {
       throw new Error(`${viewport.name}: not every Chronicle event location links to Google Maps`);
     }
 
+    const winners=await page.evaluate(async()=>{
+      const response=await fetch('../../data/events.json',{cache:'no-store'});
+      const data=await response.json();
+      const completed=(data.events||[]).filter(event=>event.status==='conclusa');
+      return completed.map(event=>{
+        const row=Array.isArray(event.standings)?event.standings.find(item=>item.rank===1):null;
+        const fact=document.querySelector('[data-ica-id="CRO-REC-WINNER-'+event.event_id+'"]');
+        const link=fact?.querySelector('.winner-player-link');
+        return {
+          eventId:event.event_id,
+          expectedNickname:row?.nickname||null,
+          expectedPlayerId:row?.player_id||null,
+          renderedText:fact?.querySelector('strong')?.textContent?.trim()||'',
+          href:link?.getAttribute('href')||''
+        };
+      });
+    });
+
+    for(const winner of winners){
+      if(winner.expectedNickname&&winner.expectedPlayerId){
+        if(winner.renderedText!==winner.expectedNickname) throw new Error(`${viewport.name}: winner nickname mismatch for ${winner.eventId}`);
+        if(!winner.href.includes('../avventurieri/?player='+encodeURIComponent(winner.expectedPlayerId))){
+          throw new Error(`${viewport.name}: winner profile link missing/incorrect for ${winner.eventId}: ${winner.href}`);
+        }
+      }
+    }
+
     const overflow = await page.evaluate(() => {
       const html = document.documentElement;
       const body = document.body;
@@ -80,7 +107,7 @@ try {
 
     await fs.writeFile(
       `${outDir}/${viewport.name}.json`,
-      JSON.stringify({ viewport, completedCards, maps, overflow, collisionChecks, consoleErrors }, null, 2),
+      JSON.stringify({ viewport, completedCards, maps, winners, overflow, collisionChecks, consoleErrors }, null, 2),
       'utf8'
     );
 
