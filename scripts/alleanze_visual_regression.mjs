@@ -56,8 +56,8 @@ try{
     if(result.markerCount!==3)throw new Error(viewport.name+': expected 3 pilot community markers, got '+result.markerCount);
     if(result.influenceCount!==3)throw new Error(viewport.name+': expected 3 influence zones, got '+result.influenceCount);
     if(!result.imagesLoaded||!result.mapLoaded)throw new Error(viewport.name+': map or marker asset failed to load');
-    if(result.mapGeometry.width<600||result.mapGeometry.width/result.mapGeometry.height<1.5)throw new Error(viewport.name+': Italy map asset has unexpected geometry '+JSON.stringify(result.mapGeometry));
-    if(result.bronzeGeometry.width<300||result.bronzeGeometry.height<300)throw new Error(viewport.name+': bronze medallion asset is not the approved frame '+JSON.stringify(result.bronzeGeometry));
+    if(result.mapGeometry.width!==900||result.mapGeometry.height!==563)throw new Error(viewport.name+': Italy map asset is not the approved source '+JSON.stringify(result.mapGeometry));
+    if(result.bronzeGeometry.width!==360||result.bronzeGeometry.height!==351)throw new Error(viewport.name+': bronze medallion asset is not the approved frame '+JSON.stringify(result.bronzeGeometry));
     if(result.ordinaryGeometry.width!==320||result.ordinaryGeometry.height!==320)throw new Error(viewport.name+': Ordinary Mortals logo is not the approved source asset '+JSON.stringify(result.ordinaryGeometry));
     for(const expected of ['Il Regno di Cremos — Crema','Team Void — Prato','Ordinary Mortals — Roma']){
       if(!result.labels.includes(expected))throw new Error(viewport.name+': missing marker '+expected);
