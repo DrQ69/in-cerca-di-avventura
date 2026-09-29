@@ -48,14 +48,24 @@
       "type": "community",
       "city": "Crema",
       "region": "Lombardia",
-      "x": 378,
-      "y": 170,
+      "x": 380,
+      "y": 195,
       "logo": "assets/logo-emblem.webp",
       "influence_tier": 1,
       "prestige": "bronze",
       "prestige_label": "Bronzo",
       "status": "pilot",
-      "placement_note": "Product Owner correction 2026-09-29: marker placed within Lombardia on the stylized map, with enough separation from the Prato marker for clear interaction."
+      "placement_note": "MAP-GEO-001 calibration 2026-09-29: Crema verified in Lombardia and placed on the stylized map using the current reviewed geographic anchors; no image asset changed.",
+      "geo": {
+        "latitude": 45.36264,
+        "longitude": 9.68176,
+        "region_verified": "Lombardia",
+        "source": "GeoNames / OpenStreetMap"
+      },
+      "map_placement": {
+        "calibration_id": "MAP-GEO-001",
+        "status": "reviewed_manual_calibration"
+      }
     },
     {
       "id": "ALY-VOID",
@@ -69,7 +79,17 @@
       "influence_tier": 1,
       "prestige": "bronze",
       "prestige_label": "Bronzo",
-      "status": "pilot"
+      "status": "pilot",
+      "geo": {
+        "latitude": 43.8805,
+        "longitude": 11.09699,
+        "region_verified": "Toscana",
+        "source": "GeoNames"
+      },
+      "map_placement": {
+        "calibration_id": "MAP-GEO-001",
+        "status": "existing_reviewed_anchor"
+      }
     },
     {
       "id": "ALY-MORTALS",
@@ -83,7 +103,17 @@
       "influence_tier": 1,
       "prestige": "bronze",
       "prestige_label": "Bronzo",
-      "status": "pilot"
+      "status": "pilot",
+      "geo": {
+        "latitude": 41.891934,
+        "longitude": 12.511326,
+        "region_verified": "Lazio",
+        "source": "GeoNames"
+      },
+      "map_placement": {
+        "calibration_id": "MAP-GEO-001",
+        "status": "existing_reviewed_anchor"
+      }
     }
   ],
   "categories": [
