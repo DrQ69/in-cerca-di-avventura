@@ -48,13 +48,14 @@
       "type": "community",
       "city": "Crema",
       "region": "Lombardia",
-      "x": 412.99,
-      "y": 179.56,
+      "x": 485,
+      "y": 182,
       "logo": "assets/logo-emblem.webp",
       "influence_tier": 1,
       "prestige": "bronze",
       "prestige_label": "Bronzo",
-      "status": "pilot"
+      "status": "pilot",
+      "placement_note": "Product Owner correction 2026-09-29: marker positioned in Lombardia, corresponding to Il Regno di Cremos / Crema."
     },
     {
       "id": "ALY-VOID",
