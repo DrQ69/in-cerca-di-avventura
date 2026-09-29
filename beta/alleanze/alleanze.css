@@ -38,6 +38,7 @@
 .legend-card strong{color:#e3ca86;font:700 .78rem Cinzel,serif}
 .legend-card p{margin:5px 0 0;color:#aaa18f;font-size:.74rem;line-height:1.5}
 .influence-swatch{width:68px;height:68px;border-radius:50%;background:radial-gradient(circle,rgba(182,125,52,.32),rgba(182,125,52,.08) 62%,transparent 72%);border:1px solid rgba(222,180,94,.22)}
+.merchant-glyph{width:68px;height:68px;display:grid;place-items:center;border-radius:50%;border:4px double #9c7136;background:radial-gradient(circle,#d2a85f 0 8%,#46311a 9% 42%,#17120c 43%);color:#e7c77d;font:700 2rem Georgia,serif;box-shadow:inset 0 0 15px rgba(0,0,0,.6)}
 @media(min-width:760px){.map-section,.map-legend{padding-inline:28px}.legend-grid{grid-template-columns:repeat(3,1fr)}.legend-card{grid-template-columns:64px 1fr}}
 @media(min-width:1024px){.alliances-hero{min-height:372px;padding-top:126px}.map-section{padding-top:54px}}
 @media(max-width:700px){.map-heading{align-items:flex-start;flex-direction:column}.map-filters{justify-content:flex-start}.map-frame{overflow:auto;aspect-ratio:auto}.italy-map{width:980px;max-width:none;height:auto}.influence-layer,.marker-layer{width:980px;height:613px}.map-marker{width:68px}.marker-popover{position:fixed;left:12px!important;right:12px;bottom:12px;transform:none;width:auto;max-height:70vh;overflow:auto}.legend-grid{grid-template-columns:1fr}}
