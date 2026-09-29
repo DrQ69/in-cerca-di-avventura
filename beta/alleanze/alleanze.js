@@ -42,6 +42,7 @@ function render(data){
     button.type='button';
     button.className='map-marker';
     button.dataset.category=entity.type||'community';
+    button.dataset.entityId=entity.id||'';
     button.style.setProperty('--x',pctX(entity.x));
     button.style.setProperty('--y',pctY(entity.y));
     button.setAttribute('aria-label',entity.name+' — '+entity.city);
