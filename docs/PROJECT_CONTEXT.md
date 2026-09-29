@@ -88,6 +88,21 @@ The three portal artworks under `assets/adunanze/` are selected production candi
 
 This consolidation is implementation work inside the broader canonical programme; it does not by itself mark the beta pages PRODUCTION_READY or M12 canonical.
 
+## Beta implementation status — 2026-09-29
+
+Since the 2026-09-21 Adunanze consolidation, the beta implementation has advanced materially:
+
+- beta navigation now routes **Le Adunanze** directly to `/beta/adunanze/nazionale/`; the two-gate portal remains in the repository but is operationally on hold;
+- `data/events.json` is the shared event source for Home / Adunanze / Cronache;
+- `/beta/avventurieri/` and `data/players.json` provide the current Avventurieri directory and event-name mapping;
+- `data/league-standings.json` provides the current Blaze of Glory standings snapshot;
+- `/beta/alleanze/` and `data/alliances.json` provide the pilot Alleanze map with Cremos, Team Void and Ordinary Mortals;
+- Alleanze map, medallion and community logo assets are stored under `assets/alleanze/`;
+- the shared beta shell is `assets/css/ica-shared-shell.css`;
+- dedicated visual-QA workflows exist for Homepage, Adunanze, Cronache, Avventurieri and Alleanze.
+
+These beta pages remain implementation/prototype surfaces. They are not automatically canonical, APPROVED or PRODUCTION_READY.
+
 ## Current known gaps
 
 1. The legacy homepage does not yet implement the canonical primary navigation: Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.
@@ -104,7 +119,10 @@ This consolidation is implementation work inside the broader canonical programme
 
 ## Current implementation objective
 
-Continue **Canonical Implementation v1**, P0-first.
+Two workstreams now coexist and must be kept explicit:
+
+1. **stabilise the current beta surfaces and factual data** without promoting them implicitly to canonical status;
+2. continue **Canonical Implementation v1**, P0-first, and deliberately decide when beta structures are migrated, replaced or retired.
 
 The first shell runtime pass now confirms NAV-02 keyboard path, visible focus, 44px targets, mobile/short-landscape containment and no page-level horizontal overflow across the tested matrix. Conditional NAV-01 geometry also fits at the tested desktop widths, but final fit closure requires the real production-font candidate.
 
@@ -113,6 +131,10 @@ Immediate next work should therefore focus on closing the remaining shell eviden
 After shell closure, proceed to the next P0 visual/structural components such as `BNR-01`/`BNR-02`, buttons and headers, then core cards/entity/table/system components.
 
 As canonical components/pages become VERIFIED and are accepted visually, populate `qa/visual-baselines.json`. As canonical public pages become real production candidates, add the M12 canonical marker and the corresponding `qa/technical-baseline.json` entry in the same coherent change.
+
+## Documentation freshness note — 2026-09-29
+
+The beta implementation moved faster than several operational records between 2026-09-22 and 2026-09-29. The review in `docs/ACTIVITY_REVIEW_2026-09-29.md` and the cross-project `docs/PROJECT_RISK_REGISTER.md` now track the resulting gaps. In particular, README, asset registration, Cronache references, Adunanze routing and verification coverage require ongoing synchronisation.
 
 ## Operational rule
 

@@ -2,7 +2,7 @@
 
 **Purpose:** persistent execution register for the Cronache page. Tracks work state, expected PO interactions, milestone gates and aesthetic assets with exact storage paths.
 
-**Current product rule:** **Cronache = Events / Stages page** for the current phase.
+**Current product rule:** **Cronache = archivio degli eventi conclusi**. Eventi futuri/in corso sono gestiti dalla vista Adunanze Nazionale; entrambe le viste derivano dalla fonte condivisa `data/events.json`.
 
 **Visual priority:** visual quality has equal weight to functional correctness.
 
@@ -15,8 +15,8 @@
 |---|---|---|---|---:|---|
 | CRN-25-01 | 25% | Purpose / terminology / canonical navigation | COMPLETED | 0 | Cronache = Eventi/Tappe |
 | CRN-25-02 | 25% | Grouping / filters / metrics / status semantics | COMPLETED | 0 | Year/season; locked filter set |
-| CRN-25-03 | 25% | Real La Giostra + BOG#1 data mapping | COMPLETED | 0 | `data/cronache-events.json` |
-| CRN-25-04 | 25% | Avventurieri display-name seed | COMPLETED | 0 | `data/avventurieri-seed.json` |
+| CRN-25-03 | 25% | Real La Giostra + BOG#1 data mapping | COMPLETED | 0 | `data/events.json` |
+| CRN-25-04 | 25% | Avventurieri display-name seed | COMPLETED | 0 | `data/players.json` |
 | CRN-25-05 | 25% | Implementation specification | COMPLETED | 0 | `docs/CRONACHE_IMPLEMENTATION_SPEC.md` |
 | CRN-25-06 | 25% | Closing inscription | WAITING_PO | 1 | Candidate ON HOLD; non-blocking |
 | CRN-50-01 | 50% | Architectural frame / threshold / archive ledger | COMPLETED | 0 | Installed in Beta |
@@ -32,7 +32,7 @@
 | CRN-75-03 | 75% | Populate BOG#1 real data | COMPLETED | 0 | Concluded Duello I |
 | CRN-75-04 | 75% | Add verified future Blaze of Glory schedule | COMPLETED | 0 | Duelli II–VIII added; unknown formats stay undefined |
 | CRN-75-05 | 75% | Functional search + 5 filters | COMPLETED | 0 | Stagione/Stato/Luogo/Lega/Formato + free search |
-| CRN-75-06 | 75% | Conditional FUTURA / IN CORSO / CONCLUSA states | COMPLETED | 0 | Renderer supports all; no invented ongoing event |
+| CRN-75-06 | 75% | Conditional FUTURA / IN CORSO / CONCLUSA states | COMPLETED | 0 | Shared event model supports all states; Cronache renderer exposes only `conclusa` |
 | CRN-75-07 | 75% | Desktop/tablet/mobile implementation | COMPLETED | 0 | Responsive system inherited/refined from M50 |
 | CRN-75-08 | 75% | Accessibility / keyboard / focus / reduced-motion QA | COMPLETED | 0 | Code-level gate documented in M75 QA |
 | CRN-75-09 | 75% | Runtime visual QA at target widths | COMPLETED | 0 | 1440/1024/768/390 rendered; no horizontal overflow or console errors |
@@ -58,6 +58,9 @@
 | CRN-100-18 | 100% | Targeted Aesthetic Deep Pass 2 | COMPLETED | 0 | Proportion, legibility, tablet/mobile simplification; `m100-deep2.css` |
 | CRN-100-19 | 100% | Deep Pass 2 rendered QA | COMPLETED | 0 | `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`; 1440/1024/768/390 PASS |
 | CRN-100-20 | 100% | Consolidate layered Beta CSS for production | NOT_STARTED | 0 | Do after exact Logo ICA installation / final visual approval |\n| CRN-100-21 | 100% | Generated archive background visual test | WAITING_PO | 1 | Dark WebP installed in Beta with responsive overlay; visual acceptance pending |
+| CRN-100-22 | 100% | Migrate Cronache to shared event source | COMPLETED | 0 | `data/events.json` is shared with Home / Adunanze |
+| CRN-100-23 | 100% | Link known winners to Avventurieri profiles | COMPLETED | 0 | Implemented 2026-09-29 where player mapping is known |
+| CRN-100-24 | 100% | Post-consolidation tracking alignment | COMPLETED | 0 | Register updated 2026-09-29; later changes still require fresh VR coverage |
 
 ## Milestone snapshot
 
@@ -75,7 +78,7 @@ Current page outputs:
 - `beta/cronache/m100-orientation.css`
 - `beta/cronache/m100-deep2.css`
 - `beta/cronache/main.js`
-- `data/cronache-events.json`
+- `data/events.json`
 - `docs/CRONACHE_DAILY_REVIEW_2026-09-17.md`
 - `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md`
 - `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`
