@@ -9,6 +9,7 @@ const pages=[
   ['nazionale','/beta/adunanze/nazionale/'],
   ['cronache','/beta/cronache/'],
   ['avventurieri','/beta/avventurieri/'],
+  ['alleanze','/beta/alleanze/'],
 ];
 const viewports=[
   {name:'mobile-390',width:390,height:844},

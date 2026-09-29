@@ -9,6 +9,7 @@ const pages=[
   {code:'ADU-NAT',path:'/beta/adunanze/nazionale/',min:10},
   {code:'CRO',path:'/beta/cronache/',min:12},
   {code:'AVV',path:'/beta/avventurieri/',min:18},
+  {code:'ALL',path:'/beta/alleanze/',min:8},
 ];
 
 await fs.mkdir(outDir,{recursive:true});
