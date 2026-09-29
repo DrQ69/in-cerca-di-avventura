@@ -89,8 +89,9 @@
     {
       "id": "merchant",
       "label": "Mercanti",
-      "icon": "assets/alleanze/merchant-category.webp",
-      "placement_status": "awaiting verified location"
+      "icon": null,
+      "placement_status": "awaiting verified location",
+      "symbol_source_status": "archived_reference_pending_web_asset"
     }
   ]
 }
