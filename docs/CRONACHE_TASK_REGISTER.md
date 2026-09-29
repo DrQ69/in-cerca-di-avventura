@@ -57,7 +57,7 @@
 | CRN-100-17 | 100% | Rendered visual QA report | COMPLETED | 0 | `docs/CRONACHE_RENDERED_VISUAL_QA_2026-09-17.md` |
 | CRN-100-18 | 100% | Targeted Aesthetic Deep Pass 2 | COMPLETED | 0 | Proportion, legibility, tablet/mobile simplification; `m100-deep2.css` |
 | CRN-100-19 | 100% | Deep Pass 2 rendered QA | COMPLETED | 0 | `docs/CRONACHE_DEEP_PASS_2_QA_2026-09-17.md`; 1440/1024/768/390 PASS |
-| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | NOT_STARTED | 0 | Do after exact Logo ICA installation / final visual approval |\n| CRN-100-21 | 100% | Generated archive background visual test | WAITING_PO | 1 | Dark WebP installed in Beta with responsive overlay; visual acceptance pending |
+| CRN-100-20 | 100% | Consolidate layered Beta CSS for production | COMPLETED | 0 | 2026-09-29: former style/M75/M100/deep-pass/background layers merged into `beta/cronache/cronache-consolidated.css`; VR-0015 rendered/runtime QA PASS |\n| CRN-100-21 | 100% | Generated archive background visual test | WAITING_PO | 1 | Dark WebP installed in Beta with responsive overlay; visual acceptance pending |
 | CRN-100-22 | 100% | Migrate Cronache to shared event source | COMPLETED | 0 | `data/events.json` is shared with Home / Adunanze |
 | CRN-100-23 | 100% | Link known winners to Avventurieri profiles | COMPLETED | 0 | Implemented 2026-09-29 where player mapping is known |
 | CRN-100-24 | 100% | Post-consolidation tracking alignment | COMPLETED | 0 | Register updated 2026-09-29; later changes still require fresh VR coverage |
@@ -71,12 +71,7 @@
 
 Current page outputs:
 - `beta/cronache/index.html`
-- `beta/cronache/style.css`
-- `beta/cronache/m75.css`
-- `beta/cronache/m100.css`
-- `beta/cronache/m100-aesthetic.css`
-- `beta/cronache/m100-orientation.css`
-- `beta/cronache/m100-deep2.css`
+- `beta/cronache/cronache-consolidated.css`
 - `beta/cronache/main.js`
 - `data/events.json`
 - `docs/CRONACHE_DAILY_REVIEW_2026-09-17.md`
@@ -99,12 +94,12 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-001 | Logo ICA original | SVG | PROVIDED / IMMUTABLE | Conversation source `Logo di in Cerca di Avventura.svg` | Exact source recovered; never alter artwork |
 | CRN-AST-001-PNG | Logo ICA lossless working representation | PNG | PROVIDED / IMMUTABLE_WORKING_COPY | Conversation source `logo_ica_lossless.png` | Do not redraw logo |
 | CRN-AST-001-R | Existing emblem proxy | WEBP | TEMPORARY_LAYOUT_PROXY | `assets/logo-emblem.webp` | Retire when original Logo ICA is installed |
-| CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/style.css` + `m100.css` + `m100-aesthetic.css` | Deepened rails / shell |
-| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` | Architectural niche; diamond reduced after PO review |
-| CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` | Four corners explicitly oriented |
-| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` | Oriented corners; summary shifted +0.5 cm right |
+| CRN-AST-010 | Architectural frame | CSS | INSTALLED_PREVIEW | `beta/cronache/cronache-consolidated.css` | Consolidated from former base/M100 layers |
+| CRN-AST-011 | Logo host | CSS | INSTALLED_PREVIEW | `beta/cronache/cronache-consolidated.css` | Architectural niche; diamond reduced after PO review |
+| CRN-AST-012 | Archive threshold | CSS | INSTALLED_PREVIEW | `beta/cronache/cronache-consolidated.css` | Four corners explicitly oriented |
+| CRN-AST-013 | Search/filter ledger | CSS | INSTALLED_PREVIEW | `beta/cronache/cronache-consolidated.css` | Oriented corners; summary shifted +0.5 cm right |
 | CRN-AST-014 | Season ornament | SVG | GENERATED / INSTALLED | `assets/ui/cronache/season-ornament.svg` | Reusable |
-| CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/m100-aesthetic.css` + `m100-orientation.css` + `m100-deep2.css` | Final proportional refinement applied |
+| CRN-AST-015 | Event record frame | CSS | INSTALLED_PREVIEW | `beta/cronache/cronache-consolidated.css` | Final proportional refinement applied |
 | CRN-AST-016 | Skull FUTURA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-futura.svg` | Icon + text |
 | CRN-AST-017 | Skull IN CORSO | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-in-corso.svg` | Ember treatment |
 | CRN-AST-018 | Skull CONCLUSA | SVG | GENERATED / INSTALLED | `assets/ui/cronache/status/skull-conclusa.svg` | Flaming eyes |
@@ -114,7 +109,7 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-019D | Metadata players | SVG | GENERATED / INSTALLED | `assets/ui/cronache/icons/players.svg` | Completed results |
 | CRN-AST-019E | Metadata winner | SVG | GENERATED / INSTALLED | `assets/ui/cronache/icons/winner.svg` | Completed results |
 | CRN-AST-020 | Archive divider | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-divider.svg` | Closing copy still ON HOLD |
-| CRN-AST-021 | Reset-filter control styling | CSS | GENERATED / INSTALLED | `beta/cronache/m100.css` `.reset-filters` | Parchment/gold/iron |
+| CRN-AST-021 | Reset-filter control styling | CSS | GENERATED / INSTALLED | `beta/cronache/cronache-consolidated.css` | Parchment/gold/iron |
 | CRN-AST-022 | Architectural frame corner master TL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner.svg` | Master top-left ornament |
 | CRN-AST-022TR | Architectural frame corner TR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-tr.svg` | Horizontal mirror |
 | CRN-AST-022BL | Architectural frame corner BL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/frame-corner-bl.svg` | Vertical mirror |
@@ -124,9 +119,9 @@ Estimated remaining PO interactions under normal execution: **1–2**, excluding
 | CRN-AST-023BL | Archival record corner BL | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-bl.svg` | Vertical mirror |
 | CRN-AST-023BR | Archival record corner BR | SVG | GENERATED / INSTALLED | `assets/ui/cronache/record-corner-br.svg` | Horizontal + vertical mirror |
 | CRN-AST-024 | Archive sigil | SVG | GENERATED / INSTALLED | `assets/ui/cronache/archive-sigil.svg` | Nav / threshold / status / footer accent |
-| CRN-AST-025 | Aesthetic Deep Pass layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-aesthetic.css` | Final-art layer 1 |
-| CRN-AST-026 | Ornament orientation layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-orientation.css` | Explicit orientation mapping |
-| CRN-AST-027 | Targeted Deep Pass 2 layer | CSS | GENERATED / INSTALLED | `beta/cronache/m100-deep2.css` | Proportion / legibility / responsive simplification only |\n| CRN-AST-028 | Cronache archive environment background | WEBP | GENERATED / INSTALLED_TEST | `assets/backgrounds/cronache-background-dark-site.webp` | 1024×576 lightweight dark WebP derived from generated archive artwork; test-only until PO acceptance |\n| CRN-AST-029 | Background integration test layer | CSS | GENERATED / INSTALLED_TEST | `beta/cronache/m100-background-test.css` | Responsive overlays; fixed desktop / scroll mobile |
+| CRN-AST-025 | Aesthetic Deep Pass rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Former layer retained in-order inside consolidated file |
+| CRN-AST-026 | Ornament orientation rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Explicit orientation mapping retained |
+| CRN-AST-027 | Targeted Deep Pass 2 rules | CSS | CONSOLIDATED | `beta/cronache/cronache-consolidated.css` | Proportion / legibility / responsive simplification retained |\n| CRN-AST-028 | Cronache archive environment background | WEBP | GENERATED / INSTALLED_TEST | `assets/backgrounds/cronache-background-dark-site.webp` | 1024×576 lightweight dark WebP derived from generated archive artwork; test-only until PO acceptance |\n| CRN-AST-029 | Background integration test rules | CSS | CONSOLIDATED / INSTALLED_TEST | `beta/cronache/cronache-consolidated.css` | Responsive overlays retained; fixed desktop / scroll mobile |
 
 ## QA asset register
 
