@@ -49,7 +49,7 @@ The registry records:
 - publication rules;
 - calibration procedure.
 
-At least three reviewed anchors are required before using geographic interpolation for a new marker.
+At least three reviewed anchors are required before using geographic interpolation for a new marker. For region-sensitive placement, at least three **independent geographic landmarks on the actual map asset** must also be available so a community marker is not validated only against other community markers.
 
 ## Placement procedure
 
@@ -57,12 +57,17 @@ For a new community:
 
 1. verify city and region from an approved geographic source;
 2. record latitude/longitude;
-3. estimate a logical map position from reviewed anchors;
-4. render the marker on the actual `map-italia.webp`;
-5. inspect the QA overlay, not a different reference map;
-6. confirm the marker is inside the intended geographic area and visually separated from neighboring markers;
-7. only then change placement status to reviewed;
-8. run MAP-GEO-001 audit and Alleanze visual QA.
+3. estimate a logical map position from independent reviewed landmarks on the actual `map-italia.webp`;
+4. compare that estimate with existing community anchors only as a secondary consistency check;
+5. render the marker on the actual `map-italia.webp`;
+6. inspect the QA overlay, not a different reference map;
+7. confirm the marker is inside the intended geographic area and visually separated from neighboring markers;
+8. only then change placement status to reviewed;
+9. run MAP-GEO-001 audit and Alleanze visual QA.
+
+## Independent-landmark rule
+
+A community marker must not be used as the sole geographic reference for another community marker. The current independent landmark calibration uses recognizable locations on the underlying map (Genova, Venezia and Napoli) to produce an affine estimate. The published community position may differ slightly because the map is stylized, but the difference must remain within the configured tolerance and must be visually reviewed.
 
 ## QA principles
 
