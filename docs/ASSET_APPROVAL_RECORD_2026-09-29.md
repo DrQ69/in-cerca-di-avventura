@@ -72,4 +72,10 @@ Canonical production promotion remains blocked by issues outside this approval r
 - canonical beta-to-IA promotion decision;
 - repository branch protection administration.
 
+Tracking references:
+
+- GitHub Issue #94 — external community logo production-use permission evidence;
+- GitHub Issue #95 — exact canonical ICA brand-source installation/verification;
+- GitHub Issue #17 — minimal protection of `main`.
+
 Those items must not be silently interpreted as approved by this record.
