@@ -49,6 +49,11 @@ try{
           const img=marker?.querySelector('.marker-logo');
           return {width:img?.naturalWidth||0,height:img?.naturalHeight||0};
         })(),
+        ordinaryScale:(()=>{
+          const marker=markers.find(el=>el.dataset.entityId==='ALY-MORTALS');
+          const img=marker?.querySelector('.marker-logo');
+          return img?getComputedStyle(img).transform:'';
+        })(),
         status:document.querySelector('#map-status')?.textContent||'',
         bodyOverflow:Math.max(body.scrollWidth,html.scrollWidth)>window.innerWidth+2,
         allFilter:document.querySelector('[data-filter="all"]')?.classList.contains('is-active')||false
@@ -61,6 +66,7 @@ try{
     if(result.mapGeometry.width!==900||result.mapGeometry.height!==563)throw new Error(viewport.name+': Italy map asset is not the approved source '+JSON.stringify(result.mapGeometry));
     if(result.bronzeGeometry.width!==360||result.bronzeGeometry.height!==351)throw new Error(viewport.name+': bronze medallion asset is not the approved frame '+JSON.stringify(result.bronzeGeometry));
     if(result.ordinaryGeometry.width!==320||result.ordinaryGeometry.height!==320)throw new Error(viewport.name+': Ordinary Mortals logo is not the approved source asset '+JSON.stringify(result.ordinaryGeometry));
+    if(!result.ordinaryScale||result.ordinaryScale==='none')throw new Error(viewport.name+': Ordinary Mortals marker-specific logo scaling is missing');
     for(const expected of ['Il Regno di Cremos — Crema','Team Void — Prato','Ordinary Mortals — Roma']){
       if(!result.labels.includes(expected))throw new Error(viewport.name+': missing marker '+expected);
     }
