@@ -84,6 +84,20 @@ try{
     await fs.writeFile(`${outDir}/${viewport.name}.json`,JSON.stringify({viewport,initial,searchResult,nextPage,errors},null,2),'utf8');
     await page.close();
   }
+
+  const direct=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,reducedMotion:'reduce'});
+  await direct.goto(`${baseURL}/beta/avventurieri/?player=PLY-0001#player-PLY-0001`,{waitUntil:'networkidle',timeout:30000});
+  await direct.waitForSelector('#player-PLY-0001',{timeout:10000});
+  const directResult=await direct.evaluate(()=>({
+    count:document.querySelectorAll('.player-card').length,
+    nickname:document.querySelector('#player-PLY-0001 h3')?.textContent?.trim()||'',
+    search:document.querySelector('#player-search')?.value||'',
+    hash:location.hash
+  }));
+  if(directResult.count!==1||directResult.nickname!=='Nick the Wizard'||directResult.search!=='Nick the Wizard'){
+    throw new Error(`direct player profile link failed: ${JSON.stringify(directResult)}`);
+  }
+  await direct.close();
 }finally{
   await browser.close();
 }
