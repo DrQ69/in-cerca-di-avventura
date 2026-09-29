@@ -48,14 +48,14 @@
       "type": "community",
       "city": "Crema",
       "region": "Lombardia",
-      "x": 371.3,
-      "y": 207.8,
+      "x": 378,
+      "y": 170,
       "logo": "assets/logo-emblem.webp",
       "influence_tier": 1,
       "prestige": "bronze",
       "prestige_label": "Bronzo",
       "status": "pilot",
-      "placement_note": "Product Owner correction 2026-09-29: marker calibrated to Crema/Lombardia using the existing Prato and Roma markers as geographic anchors on the stylized map."
+      "placement_note": "Product Owner correction 2026-09-29: marker placed within Lombardia on the stylized map, with enough separation from the Prato marker for clear interaction."
     },
     {
       "id": "ALY-VOID",
