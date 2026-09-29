@@ -50,3 +50,7 @@ Against tested implementation SHA:
 - **Exceptions used:** none
 
 Documentation-only commits after the tested SHA do not alter the tested map rendering or calibration logic.
+
+## Invalidation note — 2026-09-29
+
+This verification record is **superseded / invalid for geographic correctness of the Crema anchor**. The Product Owner identified that the marker still did not visually fall in Lombardia on the actual map asset. The failure mode was circular validation: the reviewed community anchor and the QA registry agreed with each other, but both were derived from an incorrect placement. Corrective work requires an independent-landmark calibration and a new verification record.

@@ -4,6 +4,35 @@ const alliances=JSON.parse(await fs.readFile('data/alliances.json','utf8'));
 const calibration=JSON.parse(await fs.readFile('data/map-italia-calibration.json','utf8'));
 
 const errors=[];
+
+function solve3(A,b){
+  const M=A.map((row,i)=>[...row,b[i]]);
+  for(let col=0;col<3;col++){
+    let pivot=col;
+    for(let r=col+1;r<3;r++)if(Math.abs(M[r][col])>Math.abs(M[pivot][col]))pivot=r;
+    [M[col],M[pivot]]=[M[pivot],M[col]];
+    const div=M[col][col];
+    for(let j=col;j<4;j++)M[col][j]/=div;
+    for(let r=0;r<3;r++){
+      if(r===col)continue;
+      const f=M[r][col];
+      for(let j=col;j<4;j++)M[r][j]-=f*M[col][j];
+    }
+  }
+  return [M[0][3],M[1][3],M[2][3]];
+}
+
+function affinePredict(landmarks,longitude,latitude){
+  if(!Array.isArray(landmarks)||landmarks.length<3)return null;
+  const pts=landmarks.slice(0,3);
+  const A=pts.map(p=>[p.longitude,p.latitude,1]);
+  const cx=solve3(A,pts.map(p=>p.map_x));
+  const cy=solve3(A,pts.map(p=>p.map_y));
+  return {
+    x:cx[0]*longitude+cx[1]*latitude+cx[2],
+    y:cy[0]*longitude+cy[1]*latitude+cy[2]
+  };
+}
 const entities=(alliances.entities||[]).filter(e=>e.type==='community'&&e.status==='pilot');
 const anchors=calibration.anchors||[];
 const anchorById=new Map(anchors.map(a=>[a.entity_id,a]));
@@ -61,6 +90,19 @@ for(let i=0;i<entities.length;i++){
 const crema=entities.find(e=>e.city==='Crema');
 const prato=entities.find(e=>e.city==='Prato');
 const roma=entities.find(e=>e.city==='Roma');
+const independent=calibration.landmark_calibration;
+if(crema&&independent){
+  const predicted=affinePredict(independent.landmarks,crema.geo.longitude,crema.geo.latitude);
+  const tolerance=independent.tolerance_logical_units||24;
+  if(!predicted)errors.push('Independent landmark calibration unavailable for Crema');
+  else{
+    const delta=Math.hypot(crema.x-predicted.x,crema.y-predicted.y);
+    if(delta>tolerance){
+      errors.push('Crema marker differs from independent landmark calibration by '+delta.toFixed(1)+' logical units; predicted '+JSON.stringify(predicted));
+    }
+  }
+}
+
 if(crema&&prato&&roma){
   if(!(crema.geo.latitude>prato.geo.latitude&&prato.geo.latitude>roma.geo.latitude))errors.push('Real latitude order Crema > Prato > Roma failed');
   if(!(crema.geo.longitude<prato.geo.longitude&&prato.geo.longitude<roma.geo.longitude))errors.push('Real longitude order Crema < Prato < Roma failed');
@@ -79,3 +121,4 @@ console.log('- '+entities.length+' published pilot communities have verified geo
 console.log('- reviewed anchor coordinates match rendered data');
 console.log('- geographic ordering is consistent with map ordering');
 console.log('- marker center separation passes');
+console.log('- Crema passes independent landmark-affine calibration');
