@@ -21,16 +21,16 @@ Versione 1.0 · 30/09/2026 · Responsabile decisioni: Alessandro (Dottor Q)
 Visione da rendere esplicita: In cerca d'avventura è il progetto di contenuti di Nick e Dottor Q e un portale aperto alle **community italiane aderenti** di Sorcery: Contested Realm. CREMOS è una realtà territoriale con cui i fondatori sono direttamente coinvolti, non il sinonimo dell'intero portale.
 Preservare: mappa fantasy d'Italia, logo e identità blu/nero/oro, filtri Tutti/Community/Mercanti, dati pilot Il Regno di Cremos / Team Void / Ordinary Mortals, card Adunanze con Google Maps e pannelli Regolamento/Premi, archivio Cronache e collegamenti ai profili, registro 32 Avventurieri (conteggio da riverificare), ricerca e paginazione, classifica Top 3 dinamica, sezioni Proclami, dati verificati esistenti. Non inventare dati mancanti o trasformare l'assenza in zero. Pagina di riferimento: \`/beta/\`; l'URL radice storico non è la homepage beta.
 
-### Proposta testuale corrente per DEC-01 (30/09/2026)
-- **Nome principale — scelta del brief da confermare nell'implementazione:** “In cerca d'avventura”.
-- **Sottotitolo — scelta del brief da confermare nell'implementazione:** “Il reame delle community italiane di Sorcery: Contested Realm”.
-- **Descrizione introduttiva — formulazione corrente ripristinata da Dottor Q, in attesa di conferma dell'intero blocco DEC-01:** “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.”
+### DEC-01 — TESTI APPROVATI DA DOTTOR Q (30/09/2026)
+- **Nome principale — APPROVATO:** “In cerca d'avventura”.
+- **Sottotitolo — APPROVATO:** “Il reame delle community italiane di Sorcery: Contested Realm”.
+- **Descrizione introduttiva — APPROVATA:** “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.”
 - La proposta intermedia di usare “giostre” è stata ritirata da Dottor Q il 30/09/2026: mantenere **eventi** come nel brief originale. Il glossario complessivo rimane oggetto di DEC-02.
 
 ## 2. GATE DECISIONALI (nessuna PR funzionale prima delle decisioni pertinenti)
 | ID | Scelta da compiere | Stato | Referente | Output richiesto / blocca |
 |---|---|---|---|---|
-| DEC-01 | Confermare nome e sottotitolo del brief: “In cerca d'avventura” / “Il reame delle community italiane di Sorcery: Contested Realm”; mantenere “eventi e leghe” nella descrizione introduttiva, come nel brief di Nick; distinguere grafia del logo grafico | DECISION (proposta “giostre” ritirata il 30/09; approvazione complessiva ancora da confermare) | Dottor Q + Nick | Copy finale; blocca T-01 |
+| DEC-01 | Nome APPROVATO: “In cerca d'avventura”. Sottotitolo APPROVATO: “Il reame delle community italiane di Sorcery: Contested Realm”. Descrizione APPROVATA: “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.” La grafia del logo fisico è una verifica separata, senza rielaborare il banner sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-01 sbloccata sul copy; applicazione alle pagine ancora non eseguita |
 | DEC-02 | Confermare lessico Reame/Alleanza/Community/Mercante/Adunanza/Tappa/Lega/Cronaca/Proclama/Patto e preferenza “Tappa” su “Duello” | DECISION | Dottor Q + Nick | Glossario; blocca T-02, T-12 |
 | DEC-03 | Approva o modifica menu proposto: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; Cronache e Leghe dentro Adunanze? | DECISION (P, non approvata) | Dottor Q + Nick | Sitemap e routing; blocca T-03, T-04, T-10 |
 | DEC-04 | Homepage: una o più “Prossime adunanze”; ordine/moduli/CTA; presenza anteprima Alleanze e classifica completa | DECISION (P) | Dottor Q + Nick | Wireframe e comportamento senza dati; blocca T-05–T-08 |
@@ -64,7 +64,7 @@ Colonne abbreviate: tipo R/P/V/D (come sopra); criterio = evidenza minima per ch
 | ID | Priorità | Tipo | Attività | Dipendenza | Stato iniziale | Criterio di accettazione / evidenza |
 |---|---|---|---|---|---|---|
 | T-00 | P0 | V | Inventario baseline \`/beta/\`, link e screenshot delle pagine | — | READY | commit/tree, 5 URL e funzioni protette registrati |
-| T-01 | P0 | R | Nome, sottotitolo, descrizione nazionale e copy iniziale | DEC-01 | BLOCKED | testo approvato presente, nessuna falsa rappresentatività nazionale |
+| T-01 | P0 | R | Nome, sottotitolo, descrizione nazionale e copy iniziale | DEC-01 | READY | testo approvato presente, nessuna falsa rappresentatività nazionale |
 | T-02 | P0 | R/P | Glossario, plurali “alleanze aderenti”, Adunanza ≠ Lega, “Tappa” | DEC-02 | BLOCKED | test di coerenza in tutte le sezioni |
 | T-03 | P0 | P | Sitemap/menu e orientamento/sezione attiva | DEC-03 | BLOCKED | navigazione e link legacy verificati da ogni pagina |
 | T-04 | P1 | P | Tre ingressi Adunanze: In programma / Cronache / Leghe (se approvati) | DEC-03,DEC-06 | BLOCKED | accessi e deep-link stabili |
@@ -124,14 +124,18 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | DEC-10 | **Banner artwork V2 PAUSED**; non toccare asset e hover | richiesto rollback PR #106/#107 | fuori scope di questa roadmap | Dottor Q |
 | 2026-09-30 | DEC-01…DEC-09 | APERTE (rispettare le scelte R già presenti nel brief) | serve ratifica del piano attuativo | vedi dipendenze | Dottor Q + Nick |
 | 2026-09-30 | DEC-01 — aggiornamento descrizione introduttiva | PROPOSTA DOTTOR Q: “Trova una community vicino a te, partecipa a giostre e leghe e segui le storie dei giocatori italiani.”; ratifica finale DEC-01 ancora aperta | Sostituisce solo “eventi” con “giostre” nel testo proposto da Nick | T-01; coordinare significato con DEC-02 | Dottor Q |
-| 2026-09-30 | DEC-01 — ritiro modifica intermedia | FORMULAZIONE CORRENTE: “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.” | Dottor Q ha ritirato “giostre” e ripristinato “eventi”; conferma integrale DEC-01 ancora aperta | T-01 | Dottor Q |
+| 2026-09-30 | DEC-01 — ritiro modifica intermedia | FORMULAZIONE CORRENTE: “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.” | Dottor Q ha ritirato “giostre” e ripristinato “eventi”; approvazione definitiva registrata alla riga successiva | T-01 | Dottor Q |
+
+| 2026-09-30 | DEC-01 — approvazione definitiva | APPROVATI nome, sottotitolo e descrizione introduttiva con “eventi e leghe” (testi esatti nella sezione 2) | Conferma esplicita di Dottor Q (“ok”) dopo ripristino eventi | T-01 READY, ma nessuna implementazione al sito ancora autorizzata | Dottor Q |
 
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
-| 2026-09-30 | Creato master di roadmap/tracking dai requisiti di Nick. Nessuna modifica al sito. | Documento docs/ICA_NICK_ROADMAP_MASTER.md | sito non alterato dall'introduzione del documento | DEC-01…09 aperte; DEC-10 paused | affrontare DEC-01, DEC-02 e DEC-03, poi DEC-04/05 |
+| 2026-09-30 | Creato master di roadmap/tracking dai requisiti di Nick. Nessuna modifica al sito. | Documento docs/ICA_NICK_ROADMAP_MASTER.md | sito non alterato dall'introduzione del documento | DEC-01…09 aperte alla creazione; DEC-10 paused | affrontare DEC-01, DEC-02 e DEC-03, poi DEC-04/05 |
 | 2026-09-30 | Registrata proposta DEC-01 di Dottor Q: descrizione con “giostre e leghe” anziché “eventi e leghe”. Solo aggiornamento roadmap. | docs/ICA_NICK_ROADMAP_MASTER.md | sito invariato; nessun test applicativo richiesto | DEC-01 attende conferma globale | Confermare nome, sottotitolo e frase, poi aprire DEC-02 |
 | 2026-09-30 | Ritirata variante “giostre”: ripristinato “eventi e leghe” nella proposta corrente DEC-01. Solo documentazione. | docs/ICA_NICK_ROADMAP_MASTER.md | sito invariato | DEC-01 da confermare globalmente | Concludere DEC-01, poi DEC-02 |
+
+| 2026-09-30 | DEC-01 approvata integralmente da Dottor Q: nome, sottotitolo e frase introduttiva con “eventi e leghe”. T-01 passa a READY; nessun file applicativo modificato. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01 APPROVED | Affrontare DEC-02 lessico comune |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**
