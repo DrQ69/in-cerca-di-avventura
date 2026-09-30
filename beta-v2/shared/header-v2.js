@@ -3,7 +3,7 @@
    nesting level (Home, Cronache, Adunanze, Nazionale...). */
 const root=new URL('../',import.meta.url);
 const art=new URL('../../assets/header-v2/',import.meta.url);
-const urls={youtube:'',instagram:'',contatti:''}; // configure ONLY verified destinations
+const urls={youtube:'https://www.youtube.com/@incercadiavventura',instagram:'https://www.instagram.com/incercadavventura/',contatti:''}; // official social destinations supplied by Product Owner
 const route=(path)=>new URL(path,root).href;
 const asset=(file)=>new URL(file,art).href;
 const page=document.body.getAttribute('data-ica-page')||'HOME';
