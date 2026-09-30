@@ -1,3 +1,4 @@
+// Sprint 2 QA sync marker: no runtime effect; keeps final PR checks on the normalized head.
 const menu=document.getElementById('menu');
 const nav=document.getElementById('mobile-nav');
 if(menu&&nav){
