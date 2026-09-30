@@ -327,7 +327,7 @@ import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundl
 
 function positionPopover(control){
   if(!control)return;
-  control.classList.remove('align-right','open-down');
+  control.classList.remove('align-right','open-down','fit-viewport');
   const popover=control.querySelector('.event-popover');
   if(!popover)return;
 
@@ -341,8 +341,12 @@ function positionPopover(control){
   if(triggerRect.left+popRect.width>window.innerWidth-margin){
     control.classList.add('align-right');
   }
-  if(triggerRect.top-popRect.height-margin<0 && triggerRect.bottom+popRect.height+margin<=window.innerHeight){
+  const fitsAbove=triggerRect.top-popRect.height-margin>=0;
+  const fitsBelow=triggerRect.bottom+popRect.height+margin<=window.innerHeight;
+  if(!fitsAbove&&fitsBelow){
     control.classList.add('open-down');
+  }else if(!fitsAbove&&!fitsBelow){
+    control.classList.add('fit-viewport');
   }
 
   popover.style.visibility='';

@@ -337,3 +337,15 @@
  .league-toggle,.league-panel{padding-left:14px;padding-right:14px}
  .league-history li{display:grid}
 }
+
+.info-control.fit-viewport .event-popover{
+  position:fixed;
+  left:50%!important;
+  right:auto!important;
+  top:12px!important;
+  bottom:12px!important;
+  transform:translateX(-50%);
+  width:min(440px,calc(100vw - 24px));
+  max-height:none;
+}
+.info-control.fit-viewport .event-popover::after{display:none}
