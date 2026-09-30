@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { validatePublicManifest,readPublicRelease } from '../beta/shared/release-reader.mjs';
+import { validatePublicManifest,readPublicRelease,readSiteBundle } from '../beta/shared/release-reader.mjs';
 import {buildReleaseFiles} from '../scripts/league-release-core.mjs';
 const base=()=>({
  players:{players:[{id:'PLY-0000',nickname:'Dr. Q'},{id:'PLY-0001',nickname:'Nick the Wizard'}]},
@@ -60,4 +60,26 @@ test('dry run exits non-zero if the source snapshot changes E02/II or omits E04'
   assert.equal(pass.status,0);
   assert.equal(JSON.parse(pass.stdout).status,'STRUCTURAL_CHECK_PASSED_NOT_APPROVED_FOR_RELEASE');
  }finally{await rm(tmp,{recursive:true,force:true});}
+});
+
+test('404 on manifest alone permits a coherent legacy fallback; other errors are fatal',async()=>{
+ const unique='https://example.org/'+Math.random().toString(36).slice(2)+'/data/current-release.json';
+ const old=base(),seen=[];
+ const legacy={players:'https://example.org/old/players.json',
+               events:'https://example.org/old/events.json',
+               standings:'https://example.org/old/league-standings.json'};
+ const map={ [legacy.players]:old.players,[legacy.events]:old.events,[legacy.standings]:old.standings };
+ const fetcher=async url=>{
+  seen.push(url);
+  if(url===unique)return {ok:false,status:404};
+  return {ok:!!map[url],json:async()=>map[url]};
+ };
+ const [one,two]=await Promise.all([readSiteBundle(unique,legacy,{fetcher}),
+                                  readSiteBundle(unique,legacy,{fetcher})]);
+ assert.equal(one,two);assert.equal(one.source,'legacy-no-manifest');
+ assert.equal(seen.filter(u=>u===unique).length,1);
+ assert.equal(seen.length,4);
+ const broken=unique.replace('current-release','broken-release');
+ const bad=async()=>({ok:false,status:500});
+ await assert.rejects(readSiteBundle(broken,legacy,{fetcher:bad}),/RELEASE_FETCH_FAILED/);
 });

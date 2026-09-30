@@ -37,3 +37,6 @@
 ## Terzo incremento: rapporto sicuro e checklist
 - `changedFieldNames` riporta per ID soltanto i nomi dei campi cambiati, senza valori stringa potenzialmente riservati nei log CI.
 - `docs/ICA_SPRINT1_RELEASE_CHECKLIST.md` definisce l'ordine completo di verifiche, conferme e rollback. Tutti i check sono inizialmente non spuntati e nessuna pubblicazione viene dichiarata.
+
+## Quarto incremento (solo in PR DRAFT)
+Le quattro pagine che consumano il registro giocatori/eventi/classifica sono state predisposte a leggere lo stesso manifest `data/current-release.json`. **Compatibilità transitoria**: esclusivamente se tale manifest è 404 (non ancora attivato), tutte leggono i JSON legacy, condividendo una promessa per pagina; manifesto invalido/hash errato/rete non disponibile NON fanno ripiego silenzioso sul legacy. Prima di qualsiasi merge è comunque obbligatorio il collaudo reale delle pagine desktop/mobile e la successiva attivazione controllata di un release valido. Nessun manifest live o dato di rilascio è stato creato in questa PR.

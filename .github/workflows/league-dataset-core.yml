@@ -11,6 +11,10 @@ on:
       - 'data/league-standings.json'
       - 'scripts/league-release-dry-run.mjs'
       - 'beta/shared/release-reader.mjs'
+      - 'beta/main.js'
+      - 'beta/avventurieri/avventurieri.js'
+      - 'beta/adunanze/nazionale/main.js'
+      - 'beta/cronache/main.js'
       - '.github/workflows/league-dataset-core.yml'
   workflow_dispatch:
 jobs:
