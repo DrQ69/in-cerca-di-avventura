@@ -49,3 +49,6 @@ Not verified / intentionally not fabricated:
 3. Re-run rendered QA against actual GitHub Pages preview, including hover/focus and asset loading at 390, 768, 1280 and 1920 px.
 4. Product Owner reviews typography and hotspot alignment.
 5. Only then plan separate shared-shell replacement. No current page header is modified by this PR.
+
+## Parallel preview deployment update (2026-09-30)
+This earlier handoff described a draft without binary assets. Subsequent branch feature/ica-beta-v2-parallel-preview (PR #103) now contains all five SHA-verified WebP binaries and six mirrored /beta-v2/ pages. Follow docs/BETA_V2_PARALLEL_PREVIEW.md for the current deployment status. Instagram glow is a distinct approved alpha overlay; official external URLs and Contatti destination remain unconfigured. The original /beta/ shared header is unchanged.
