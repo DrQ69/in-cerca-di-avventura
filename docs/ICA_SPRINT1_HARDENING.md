@@ -1,0 +1,14 @@
+# Sprint 1 hardening — activation simulation and technical audit log
+
+This branch continues Sprint 1 after PR #109 was merged code-only. It does **not** activate the manifest or modify competitive datasets.
+
+## Synthetic activation E2E
+`tests/league-release-network.test.mjs` creates a temporary local HTTP server from synthetic public data, publishes a generated manifest and three immutable files, then exercises the real `readSiteBundle(..., {useManifest:true})` path. It verifies successful coherent loading and hard failure on a tampered file. No real Blaze of Glory data are written.
+
+## Public technical audit log
+`scripts/league-release-audit.mjs` defines an allowlisted entry shape for release and rollback traceability. `docs/ICA_RELEASE_AUDIT_LOG.schema.json` is a documentation/template object with an empty `entries` array. It is **not** evidence that any release occurred.
+
+Allowed fields are version IDs, timestamp, commit SHA, previous version, four QA verdicts, action, a non-sensitive authorization reference, and rollback source/target when applicable. Unknown fields are rejected. Never store workbook paths, real names, Excel/private IDs, notes, raw diffs or source document identifiers.
+
+## Remaining release gates
+A real activation still requires a new XLSX export in chat, freshness/cache checks, private reconciliation, officiality decisions, private visual preview, desktop/mobile QA, final owner authorization, immutable file upload + manifest activation, and post-release smoke test. Fair Play DEC-09.7 remains unresolved.
