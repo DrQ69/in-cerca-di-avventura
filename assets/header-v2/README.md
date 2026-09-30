@@ -2,7 +2,7 @@
 
 The standalone implementation at /beta/header-v2/ references the following exact paths.
 These three **binary** files are available inside the user handoff ZIP: ICA_Header_V2_Preview_Package.zip.
-The GitHub text-file connector cannot push the local binary assets directly; upload the files to this directory before considering the PR complete.
+All five approved binary assets have now been transferred to this feature branch as verified Git blobs. PR #103 includes them directly; no manual upload is needed.
 
 | Name | WebP size | SHA-256 |
 |---|---:|---|
@@ -12,7 +12,7 @@ The GitHub text-file connector cannot push the local binary assets directly; upl
 
 **Important:** the third image supplied as Instagram hover is byte-identical to the base image. The source needs replacing to make the intended Instagram glow visibly distinct; the hover CSS and event handling are already prepared.
 
-Do not claim the experimental route is deployed or promote the V2 component to shared shell without its assets, destinations and visual approval.
+The standalone /beta/header-v2/ and mirrored /beta-v2/ now have their complete binary assets on feature/ica-beta-v2-parallel-preview. Publishing remains subject to QA; do not promote V2 into the original /beta/ shared header before visual approval.
 
 
 ## Instagram glow asset replacement (2026-09-30)
@@ -26,4 +26,4 @@ The previous banner-instagram-hover.webp had SHA-256 identical to the base and d
 - This transparent WebP changes only the orb region; original base and YouTube asset remain unchanged.
 - The CSS clip is now `ellipse(8.5% 27% at 69.0% 55%)` to avoid cutting off the glow.
 
-A fully functional and browser-tested self-contained preview is available as `ICA_Header_V2_Instagram_Glow_Funzionante.html` in the conversation, and the ready-to-upload binaries as `ICA_Header_V2_Instagram_Glow_Fix.zip`. The binary file has not yet been committed by the GitHub text connector. Keep this PR Draft until it is present along with the other required assets and official external URLs.
+A fully functional and browser-tested self-contained preview is available as `ICA_Header_V2_Instagram_Glow_Funzionante.html` in the conversation, and the ready-to-upload binaries as `ICA_Header_V2_Instagram_Glow_Fix.zip`. The Instagram binary was committed via its SHA-verified Git blob on feature/ica-beta-v2-parallel-preview. Social URL and Contatti configuration still await official destinations.
