@@ -112,10 +112,14 @@ export function previewPublicChange(current,candidate){
   for(const k of ['players','events'])
     if(changes[k].missing.length)qa.errors.push({code:'UNAUTHORIZED_OMISSION',where:k+': '+changes[k].missing.join(', ')});
   qa.ok=qa.errors.length===0;
-  return {qa,changes,changedFieldNames,blocked:!qa.ok,
-    requiredGates:['owner_confirms_source_freshness','owner_confirms_formula_caches',
+  const requiredGates=['owner_confirms_source_freshness','owner_confirms_formula_caches',
     'owner_confirms_officiality','private_desktop_and_mobile_preview',
-    'functional_qa_desktop_and_mobile','explicit_final_publication_approval']};
+    'functional_qa_desktop_and_mobile','explicit_final_publication_approval'];
+  if(changes.players.added.length)requiredGates.push('owner_approves_new_player_ids');
+  if(changes.players.changed.some(id=>changedFieldNames.players[id]?.includes('nickname')))
+    requiredGates.push('owner_approves_nickname_changes');
+  if(changes.events.added.length)requiredGates.push('owner_approves_new_event_entries');
+  return {qa,changes,changedFieldNames,blocked:!qa.ok,requiredGates};
 }
 export const stableJSONStringify = x => JSON.stringify(x,null,2)+'\n';
 export const sha256 = text => createHash('sha256').update(text,'utf8').digest('hex');

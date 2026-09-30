@@ -61,3 +61,14 @@ test('field-level preview lists public changed keys without publishing field val
  assert.deepEqual(result.changedFieldNames.standings['PLY-0000'],['points']);
  assert.equal(JSON.stringify(result.changedFieldNames).includes('new nickname'),false);
 });
+
+test('special owner gates are triggered by proposed new profiles, nickname changes and events',()=>{
+ const before=base(),after=base();
+ after.players.players.push({id:'PLY-0033',nickname:'New Adventurer'});
+ after.players.players[0].nickname='Dr. Q Revised';
+ after.events.events.push({event_id:'bog-new-event',title:'New event'});
+ const result=previewPublicChange(before,after);
+ for(const gate of ['owner_approves_new_player_ids','owner_approves_nickname_changes','owner_approves_new_event_entries'])
+   assert.ok(result.requiredGates.includes(gate),gate);
+ assert.deepEqual(result.changes.players.added,['PLY-0033']);
+});
