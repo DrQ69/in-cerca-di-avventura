@@ -1,0 +1,25 @@
+name: ICA Beta V2 Header QA
+on:
+  pull_request:
+    paths:
+      - 'beta-v2/**'
+      - 'assets/header-v2/**'
+      - 'scripts/beta_v2_header_qa.py'
+      - '.github/workflows/beta-v2-header-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'beta-v2/**'
+      - 'assets/header-v2/**'
+      - 'scripts/beta_v2_header_qa.py'
+      - '.github/workflows/beta-v2-header-qa.yml'
+jobs:
+  preview-header-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate routes, locked positions and all binary assets
+        run: python scripts/beta_v2_header_qa.py

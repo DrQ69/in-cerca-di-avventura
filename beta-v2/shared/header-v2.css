@@ -1,0 +1,31 @@
+/* ICA BETA-V2 — parallel preview. Shared source: beta/header-v2/header-v2.css.
+   Do not change the live beta site's navigation. */
+@import url("../../beta/header-v2/header-v2.css");
+body{background:#090e15}
+.ica-v2-shell{position:relative;isolation:isolate;z-index:60;width:100%;background:linear-gradient(180deg,#0d121a,#111c28 65%,transparent)}
+.ica-v2-notice{padding:8px 16px;text-align:center;background:#111b25;border-bottom:1px solid #765b36;color:#e5c782;font:600 .67rem Cinzel,Georgia,serif;letter-spacing:.025em}
+.ica-v2-notice a{margin-left:12px;color:#fff2cb}
+.ica-v2-component{position:relative;width:100%;max-width:1536px;margin:0 auto}
+.ica-v2-component .ica-header-v2{width:100%;margin:0}
+.ica-v2-component .ica-banner{background:transparent;overflow:hidden}
+.ica-v2-component .ica-banner__image{object-fit:contain}
+.ica-v2-component .ica-banner__link{font-size:clamp(9px,1.25vw,20px)}
+.ica-v2-component .ica-mobile-nav{position:relative;z-index:6}
+.ica-v2-status{margin:0;padding:8px 14px;text-align:center;color:#e5cfaa;font-size:.75rem;min-height:0}
+.ica-v2-status:empty{display:none}
+.ica-v2-component .ica-banner__image--ig{clip-path:ellipse(8.5% 27% at 69% 55%)}
+.ica-v2-component .ica-banner__hitboxes{container-type:inline-size}
+.ica-v2-component .ica-nav-label{display:inline-block;pointer-events:none;white-space:nowrap;transform:translate(var(--label-x,0px),var(--label-y,0px))}
+.ica-v2-component .ica-banner__link--adunanza{--label-x:1.6045cqw;--label-y:.3705cqw}
+.ica-v2-component .ica-banner__link--cronache{--label-x:1.3515cqw}
+.ica-v2-component .ica-banner__link--alleanze{--label-x:-.738cqw}
+.ica-v2-component .ica-banner__link--proclami{--label-x:-.369cqw}
+/* Existing page-frame decorations remain below the header. */
+.world-frame>.ica-v2-shell,.site-shell>.ica-v2-shell{z-index:70}
+@media(max-width:900px){
+ .ica-v2-component .ica-mobile-nav{display:grid}
+ .ica-v2-component .ica-banner__hitboxes{display:none}
+ .ica-v2-component .ica-banner__image--yt,.ica-v2-component .ica-banner__image--ig{display:none}
+ .ica-v2-notice{font-size:.62rem}
+}
+@media(prefers-reduced-motion:reduce){.ica-v2-component .ica-banner__image{transition:none}}
