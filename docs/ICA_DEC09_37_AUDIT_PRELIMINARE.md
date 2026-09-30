@@ -1,5 +1,5 @@
 # ICA — DEC-09.37 | Audit tecnico preliminare Blaze of Glory
-**Data:** 2026-09-30 · **Stato:** eseguito READ-ONLY · **Ambito:** snapshot esportato `BLAZE OF GLORY.xlsx` disponibile nella Libreria privata; branch `main` del repo; specifiche DEC-09.1–.36. **Non è una pubblicazione né una certificazione runtime.**
+**ERRATA CORRIGE VINCOLANTE (precisazione Dottor Q successiva a DEC-09.38):** E02 — Peasant è la **SECONDA TAPPA (II)**. Il record `data/events.json` E02 riporta correttamente `stage_number=2` e `stage_label=II` e NON deve essere cambiato. Le affermazioni E02→IV/«mismatch E02» conservate più sotto riflettono soltanto lo stato delle ipotesi precedenti e sono SUPERATE dalla rettifica. DEC-09.39 sospesa. E04 è attualmente IV nel sito, ma la nuova precisazione non la conferma da sola: chiedere decisione espressa Dottor Q su E04, non applicare uno scambio automatico. Nessuna modifica al sito eseguita.\n\n**Data:** 2026-09-30 · **Stato:** eseguito READ-ONLY · **Ambito:** snapshot esportato `BLAZE OF GLORY.xlsx` disponibile nella Libreria privata; branch `main` del repo; specifiche DEC-09.1–.36. **Non è una pubblicazione né una certificazione runtime.**
 
 ## 1. Fonti e perimetro
 - Lettura non distruttiva dell'XLSX mediante artifact_tool, limitatamente a struttura, intestazioni, esempi di campi pubblicabili e presenza di valori numerici nelle tre classifiche. Il workbook originale NON è stato caricato nel repository.
@@ -24,7 +24,7 @@
 
 ## 3. Riscontro e distinzione delle anomalie
 **P0 prima di qualunque nuovo rilascio dataset:**
-1. Risolvere il contrasto tra `stage_number` online ed E02→IV / E04→II approvati, presentando diff, non cambiando gli identificativi tecnici permanenti `event_id` o i deep-link.
+1. **RETTIFICATO:** non cambiare E02 (Peasant II corretta). Chiedere invece conferma specifica su E04, attualmente IV nel sito e II nel vecchio export; solo dopo tale chiarimento valutare l'esistenza di un vero mismatch. Preservare sempre `event_id` e deep-link.
 2. DEC-09.7 Fair Play resta DIFFERITA: richiedere riscontro ufficiale separato; il bonus 3 già presente nel pubblico è un dato ESISTENTE, non una nuova scelta validata dal presente audit.
 3. Progettare un rilascio atomico/versionato dei dataset e un audit trail pubblico privo di dati riservati; definire fallback e recuperabilità della precedente versione coerente.
 4. Per un futuro XLSX reale completare verifica obbligatoria dei valori formula e della freschezza/versione (DEC-09.26/.27), rapportino unico, preview privata e test desktop/mobile prima della conferma. Non dichiarare PASS per test non eseguiti.
