@@ -62,24 +62,26 @@ test('dry run exits non-zero if the source snapshot changes E02/II or omits E04'
  }finally{await rm(tmp,{recursive:true,force:true});}
 });
 
-test('404 on manifest alone permits a coherent legacy fallback; other errors are fatal',async()=>{
- const unique='https://example.org/'+Math.random().toString(36).slice(2)+'/data/current-release.json';
+test('default reader makes no missing-manifest request and reuses one legacy bundle',async()=>{
+ const unique='https://example.org/test-disabled/data/current-release.json';
  const old=base(),seen=[];
  const legacy={players:'https://example.org/old/players.json',
                events:'https://example.org/old/events.json',
                standings:'https://example.org/old/league-standings.json'};
  const map={ [legacy.players]:old.players,[legacy.events]:old.events,[legacy.standings]:old.standings };
- const fetcher=async url=>{
-  seen.push(url);
-  if(url===unique)return {ok:false,status:404};
-  return {ok:!!map[url],json:async()=>map[url]};
- };
+ const fetcher=async url=>{seen.push(url);return {ok:!!map[url],json:async()=>map[url]};};
  const [one,two]=await Promise.all([readSiteBundle(unique,legacy,{fetcher}),
                                   readSiteBundle(unique,legacy,{fetcher})]);
- assert.equal(one,two);assert.equal(one.source,'legacy-no-manifest');
- assert.equal(seen.filter(u=>u===unique).length,1);
- assert.equal(seen.length,4);
- const broken=unique.replace('current-release','broken-release');
- const bad=async()=>({ok:false,status:500});
- await assert.rejects(readSiteBundle(broken,legacy,{fetcher:bad}),/RELEASE_FETCH_FAILED/);
+ assert.equal(one,two);assert.equal(one.source,'legacy-pointer-disabled');
+ assert.equal(seen.includes(unique),false);assert.equal(seen.length,3);
+});
+test('explicit manifest activation never falls back on missing or broken pointer',async()=>{
+ const unique='https://example.org/test-active/data/current-release.json';
+ const legacy={players:'https://example.org/old/players.json',
+               events:'https://example.org/old/events.json',
+               standings:'https://example.org/old/league-standings.json'};
+ const seen=[];
+ const fetcher=async url=>{seen.push(url);return {ok:false,status:404};};
+ await assert.rejects(readSiteBundle(unique,legacy,{fetcher,useManifest:true}),/RELEASE_POINTER_NOT_FOUND/);
+ assert.deepEqual(seen,[unique]);
 });
