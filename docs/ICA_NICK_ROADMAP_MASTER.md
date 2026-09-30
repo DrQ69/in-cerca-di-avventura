@@ -25,13 +25,29 @@ Preservare: mappa fantasy d'Italia, logo e identità blu/nero/oro, filtri Tutti/
 - **Nome principale — APPROVATO:** “In cerca d'avventura”.
 - **Sottotitolo — APPROVATO:** “Il reame delle community italiane di Sorcery: Contested Realm”.
 - **Descrizione introduttiva — APPROVATA:** “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.”
-- La proposta intermedia di usare “giostre” è stata ritirata da Dottor Q il 30/09/2026: mantenere **eventi** come nel brief originale. Il glossario complessivo rimane oggetto di DEC-02.
+- La proposta intermedia di usare “giostre” è stata ritirata da Dottor Q il 30/09/2026: mantenere **eventi** come nel brief originale. Il glossario complessivo è stato APPROVATO in DEC-02 il 30/09/2026.
+
+### DEC-02 — GLOSSARIO E REGOLE APPROVATE (30/09/2026)
+| Voce | Definizione approvata |
+|---|---|
+| REAME | L'intero progetto e la rete italiana aderente. |
+| AVVENTURIERO | Un giocatore del registro. |
+| ALLEANZA | Una realtà aderente al progetto: community o mercante. |
+| COMMUNITY | Gruppo locale o territoriale di giocatori, categoria delle alleanze. |
+| MERCANTE | Negozio fisico oppure e-commerce aderente, altra categoria delle alleanze. |
+| ADUNANZA | Un singolo evento, incontro o torneo con data e luogo: autonomo o tappa di lega. |
+| LEGA | Un percorso di più eventi con stagione, regolamento e classifica propri. |
+| TAPPA | Un evento appartenente a una lega. |
+| CRONACA | Memoria di un'adunanza conclusa: risultati e, quando disponibili, racconti, immagini, video. |
+| PROCLAMA | Notizia, annuncio o aggiornamento del portale o delle alleanze. |
+| PATTO | Espressione narrativa dell'adesione, sempre con modalità pratiche spiegate in modo semplice. |
+Regole approvate: “Adunanza” non è sinonimo di “Lega”; evitare “Duello” come termine generale per una tappa e accompagnare eventuali denominazioni narrative con “Tappa II/III…” dopo verifica dei dati; stile fantasy per titoli e racconti ma date, costi, sedi, regolamenti, iscrizioni, classifiche e pulsanti operativi chiari e letterali. Decisione **editoriale**, non autorizzazione a modificare dati o percorsi prima delle altre decisioni.
 
 ## 2. GATE DECISIONALI (nessuna PR funzionale prima delle decisioni pertinenti)
 | ID | Scelta da compiere | Stato | Referente | Output richiesto / blocca |
 |---|---|---|---|---|
 | DEC-01 | Nome APPROVATO: “In cerca d'avventura”. Sottotitolo APPROVATO: “Il reame delle community italiane di Sorcery: Contested Realm”. Descrizione APPROVATA: “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.” La grafia del logo fisico è una verifica separata, senza rielaborare il banner sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-01 sbloccata sul copy; applicazione alle pagine ancora non eseguita |
-| DEC-02 | Confermare lessico Reame/Alleanza/Community/Mercante/Adunanza/Tappa/Lega/Cronaca/Proclama/Patto e preferenza “Tappa” su “Duello” | DECISION | Dottor Q + Nick | Glossario; blocca T-02, T-12 |
+| DEC-02 | APPROVATO integralmente il vocabolario del brief: Reame, Avventuriero, Alleanza, Community, Mercante, Adunanza, Lega, Tappa, Cronaca, Proclama, Patto; per le tappe privilegiare “Tappa II” anziché “Duello II” (ferme eventuali denominazioni narrative proprie, accompagnate dall'indicazione Tappa); mantenere esplicite le informazioni operative. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-02 READY; T-12 ancora BLOCKED da DEC-09 e fonti evento; nessuna modifica al sito |
 | DEC-03 | Approva o modifica menu proposto: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; Cronache e Leghe dentro Adunanze? | DECISION (P, non approvata) | Dottor Q + Nick | Sitemap e routing; blocca T-03, T-04, T-10 |
 | DEC-04 | Homepage: una o più “Prossime adunanze”; ordine/moduli/CTA; presenza anteprima Alleanze e classifica completa | DECISION (P) | Dottor Q + Nick | Wireframe e comportamento senza dati; blocca T-05–T-08 |
 | DEC-05 | Mappa: dimensione marker e comportamento tooltip/click, se e quando prevedere cluster/elenco geografico | DECISION (riduzione R; interazione P) | Dottor Q + Nick | Specifica UI + mock; blocca T-09–T-11 |
@@ -65,7 +81,7 @@ Colonne abbreviate: tipo R/P/V/D (come sopra); criterio = evidenza minima per ch
 |---|---|---|---|---|---|---|
 | T-00 | P0 | V | Inventario baseline \`/beta/\`, link e screenshot delle pagine | — | READY | commit/tree, 5 URL e funzioni protette registrati |
 | T-01 | P0 | R | Nome, sottotitolo, descrizione nazionale e copy iniziale | DEC-01 | READY | testo approvato presente, nessuna falsa rappresentatività nazionale |
-| T-02 | P0 | R/P | Glossario, plurali “alleanze aderenti”, Adunanza ≠ Lega, “Tappa” | DEC-02 | BLOCKED | test di coerenza in tutte le sezioni |
+| T-02 | P0 | R/P | Glossario, plurali “alleanze aderenti”, Adunanza ≠ Lega, “Tappa” | DEC-02 | READY | test di coerenza in tutte le sezioni |
 | T-03 | P0 | P | Sitemap/menu e orientamento/sezione attiva | DEC-03 | BLOCKED | navigazione e link legacy verificati da ogni pagina |
 | T-04 | P1 | P | Tre ingressi Adunanze: In programma / Cronache / Leghe (se approvati) | DEC-03,DEC-06 | BLOCKED | accessi e deep-link stabili |
 | T-05 | P1 | P | Hero compatto + 2 CTA Community/Eventi | DEC-04,T-01 | BLOCKED | CTA con destinazioni vere e prime schede visibili |
@@ -128,6 +144,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 
 | 2026-09-30 | DEC-01 — approvazione definitiva | APPROVATI nome, sottotitolo e descrizione introduttiva con “eventi e leghe” (testi esatti nella sezione 2) | Conferma esplicita di Dottor Q (“ok”) dopo ripristino eventi | T-01 READY, ma nessuna implementazione al sito ancora autorizzata | Dottor Q |
 
+| 2026-09-30 | DEC-02 — approvazione definitiva | APPROVATI integralmente il vocabolario del brief e le precisazioni su Tappa/Duello e chiarezza operativa; testo completo nella sezione 2 | Conferma esplicita di Dottor Q | T-02 READY; T-12 resta vincolato a DEC-09 | Dottor Q |
+
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
@@ -136,6 +154,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | Ritirata variante “giostre”: ripristinato “eventi e leghe” nella proposta corrente DEC-01. Solo documentazione. | docs/ICA_NICK_ROADMAP_MASTER.md | sito invariato | DEC-01 da confermare globalmente | Concludere DEC-01, poi DEC-02 |
 
 | 2026-09-30 | DEC-01 approvata integralmente da Dottor Q: nome, sottotitolo e frase introduttiva con “eventi e leghe”. T-01 passa a READY; nessun file applicativo modificato. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01 APPROVED | Affrontare DEC-02 lessico comune |
+
+| 2026-09-30 | DEC-02 approvata integralmente; aggiunto glossario canonico. T-02 passa a READY; non applicata alcuna modifica alle pagine. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01 e DEC-02 APPROVED; DEC-03 aperta | Discutere menu e organizzazione di Adunanze, Cronache, Leghe in DEC-03 |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**
