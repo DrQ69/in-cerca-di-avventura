@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "description": "Public technical release/rollback audit log. Never store workbook paths, real names, Excel/private IDs, admin notes or raw diffs.",
+  "entry_fields": {
+    "action": "publish|rollback",
+    "release_id": "public version id",
+    "published_at": "ISO-8601 timestamp",
+    "commit_sha": "40-char git SHA",
+    "previous_release_id": "previous valid public release id or null",
+    "qa_desktop": "PASS|FAIL|NOT_VERIFIED",
+    "qa_mobile": "PASS|FAIL|NOT_VERIFIED",
+    "functional_qa": "PASS|FAIL|NOT_VERIFIED",
+    "post_publish_smoke": "PASS|FAIL|NOT_VERIFIED",
+    "authorization_ref": "non-sensitive reference to explicit owner authorization",
+    "rollback_from_release_id": "required only for rollback",
+    "rollback_to_release_id": "required only for rollback"
+  },
+  "entries": []
+}

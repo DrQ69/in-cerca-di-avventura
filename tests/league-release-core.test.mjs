@@ -78,3 +78,25 @@ test('Node manifest validation rejects swapped file paths even if both hashes ex
  const m=structuredClone(out.manifest),tmp=m.paths.players;m.paths.players=m.paths.events;m.paths.events=tmp;
  assert.equal(validateManifest(m),false);
 });
+
+test('XLSX workflow cannot silently overwrite public fields outside the approved update categories',()=>{
+ const before=base(),after=base();
+ before.players.players[0].city='Milano';after.players.players[0].city='Roma';
+ before.events.events[0].registration_url='https://example.org/a';
+ after.events.events[0].registration_url='https://example.org/b';
+ const r=previewPublicChange(before,after);
+ assert.equal(r.blocked,true);
+ const paths=r.qa.errors.filter(x=>x.code==='UNAPPROVED_XLSX_FIELD_CHANGE').map(x=>x.where);
+ assert.ok(paths.includes('players:PLY-0000.city'));
+ assert.ok(paths.includes('events:bog-2026-duello-02.registration_url'));
+});
+test('approved XLSX-facing fields can be proposed but still require the normal owner gates',()=>{
+ const before=base(),after=base();
+ after.players.players[0].nickname='Dr. Q Revised';
+ after.events.events[0].date='2026-10-02';after.events.events[0].venue='Joker';
+ after.standings.entries[0].points=9;
+ const r=previewPublicChange(before,after);
+ assert.equal(r.qa.errors.some(x=>x.code==='UNAPPROVED_XLSX_FIELD_CHANGE'),false);
+ assert.ok(r.requiredGates.includes('owner_approves_nickname_changes'));
+ assert.ok(r.requiredGates.includes('explicit_final_publication_approval'));
+});

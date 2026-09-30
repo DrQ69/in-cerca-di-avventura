@@ -83,6 +83,29 @@ function delta(before,after,key){
     missing:[...a.keys()].filter(k=>!b.has(k))
   };
 }
+
+// Fields the manual XLSX workflow may propose changing under DEC-09.4/.21.
+// Existing public fields outside these sets are preserved, not overwritten from the workbook.
+const xlsxMutableFields={
+  players:new Set(['nickname']),
+  events:new Set(['title','date','weekday','venue','format','format_family','status','date_status',
+    'classification','series_id','series_name','season','stage_number','stage_label','league_valid']),
+  standings:new Set(['rank','points','stages_completed','fair_play_wins','fair_play_bonus_points'])
+};
+function rejectUnapprovedChanges(changes,fieldNames,qa){
+  for(const group of ['players','events','standings']){
+    const allowed=xlsxMutableFields[group];
+    for(const id of changes[group]?.changed||[]){
+      for(const field of fieldNames[group]?.[id]||[]){
+        if(!allowed.has(field))qa.errors.push({
+          code:'UNAPPROVED_XLSX_FIELD_CHANGE',
+          where:group+':'+id+'.'+field
+        });
+      }
+    }
+  }
+}
+
 // Report keys only; never insert unreviewed raw values into public CI logs.
 // The owner-facing chat preview may add the authorized old/new values privately.
 function changedFields(before,after,key){
@@ -108,6 +131,7 @@ export function previewPublicChange(current,candidate){
     events:changedFields(current.events?.events,candidate.events?.events,'event_id'),
     standings:changedFields(current.standings?.entries,candidate.standings?.entries,'player_id')
   };
+  rejectUnapprovedChanges(changes,changedFieldNames,qa);
   // Missing public entities must be preserved, unless separately authorized.
   for(const k of ['players','events'])
     if(changes[k].missing.length)qa.errors.push({code:'UNAUTHORIZED_OMISSION',where:k+': '+changes[k].missing.join(', ')});
