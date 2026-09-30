@@ -29,13 +29,3 @@ body{background:#090e15}
  .ica-v2-notice{font-size:.62rem}
 }
 @media(prefers-reduced-motion:reduce){.ica-v2-component .ica-banner__image{transition:none}}
-
-/* Approved artwork: localized RGBA hover layers on the identical 1536 x 512 base. */
-.ica-v2-component .ica-banner__image--yt{clip-path:ellipse(8.5% 26% at 32.2% 47.7%)}
-.ica-v2-component .ica-banner__image--ig{clip-path:ellipse(9.3% 29% at 65.4% 47.7%)}
-.ica-v2-component .ica-banner__social{top:47.7%}
-.ica-v2-component .ica-banner__social--yt{left:32.2%}
-.ica-v2-component .ica-banner__social--ig{left:65.4%}
-/* Approved 1536x512 base has EMPTY parchment plaques. Render accessible HTML label visibly. */
-.ica-v2-component .ica-nav-label{visibility:visible;color:#362216;text-shadow:0 1px 1px rgba(255,255,255,.45)}
-.ica-v2-component .ica-banner__link:hover,.ica-v2-component .ica-banner__link:focus-visible{filter:brightness(1.08)}
