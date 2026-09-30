@@ -208,13 +208,6 @@ siteBundlePromise
     if(chronicle)chronicle.textContent='Cronache non disponibili';
   });
 
-siteBundlePromise
-  .then(({standings,players})=>renderStandings(standings,players.players))
-  .catch(reason=>{
-    console.error('Homepage standings load failed',reason);
-    renderStandings({entries:[]},[]);
-  });
-
 fetch('../data/proclami.json',{cache:'no-store'})
   .then(response=>{if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
   .then(renderProclamation)

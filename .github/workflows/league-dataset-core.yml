@@ -5,6 +5,8 @@ on:
       - 'scripts/league-release-core.mjs'
       - 'scripts/league-xlsx-intake-core.mjs'
       - 'tests/league-xlsx-intake-core.test.mjs'
+      - 'tests/sprint2-league-model.test.mjs'
+      - 'beta/adunanze/nazionale/league-model.mjs'
       - 'scripts/league-release-dry-run.mjs'
       - 'scripts/league-release-audit.mjs'
       - 'scripts/league-build-private-candidate.mjs'
@@ -48,3 +50,4 @@ jobs:
           tests/league-release-audit.test.mjs
           tests/league-private-candidate.test.mjs
           tests/league-xlsx-intake-core.test.mjs
+          tests/sprint2-league-model.test.mjs
