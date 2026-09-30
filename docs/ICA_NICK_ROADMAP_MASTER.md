@@ -53,13 +53,18 @@ Menu principale, in quest'ordine:
 
 Dentro **Adunanze** (tre accessi): **In programma** (eventi futuri e in corso), **Cronache** (eventi conclusi e risultati), **Leghe** (competizioni e relative stagioni, calendari e classifiche). La voce Cronache non compare più al primo livello della futura navigazione, ma **l'URL storico `/beta/cronache/` resta valido**. Preservare ugualmente gli URL profondi di Adunanze, Alleanze e Avventurieri. Proclami può mantenere inizialmente l'ancoraggio alla homepage in attesa delle decisioni editoriali; la modalità esatta della voce Chi siamo verrà definita nel suo task. **Non toccare il nuovo artwork/header `/beta-v2/`: DEC-10 PAUSED.** La scelta è approvazione architetturale; nessun file del sito è stato ancora modificato. L'esecuzione di Leghe richiede DEC-06 (modello dati/pagine).
 
+### DEC-04 — PRIMA SCELTA APPROVATA, DETTAGLI APERTI (30/09/2026)
+Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli nell'ordine di riferimento del brief (ancora da precisare nei dettagli): intestazione/menu/social; presentazione del progetto con testi DEC-01 e CTA; prossime Adunanze; trova una Community/anteprima Alleanze; Leghe in corso (quando ci sono dati adeguati); Proclami e selezione Cronache; eventuale anteprima secondaria Avventurieri; Chi siamo/invito adesione; newsletter soltanto se attiva; footer.
+**Scelta specifica approvata:** la Top 3 Blaze of Glory NON resta come blocco autonomo della homepage: va nella **sezione Leghe**, dove deve essere etichettata per la lega CREMOS pertinente, senza attribuzione nazionale impropria. Conservare feed/dati funzionanti; non cancellare la logica solo per spostare il punto di visualizzazione. La realizzazione della sezione Leghe dipende da DEC-06 e la semantica della classifica da DEC-09.
+**Questioni DEC-04 ancora da risolvere:** quante Prossime Adunanze esporre e come adattarsi quando ne esistono meno; dettaglio dell'anteprima Alleanze; formato finale degli altri moduli/CTA e dei loro stati vuoti. Fino alla chiusura non segnare DEC-04 come APPROVED integrale e non alterare le pagine.
+
 ## 2. GATE DECISIONALI (nessuna PR funzionale prima delle decisioni pertinenti)
 | ID | Scelta da compiere | Stato | Referente | Output richiesto / blocca |
 |---|---|---|---|---|
 | DEC-01 | Nome APPROVATO: “In cerca d'avventura”. Sottotitolo APPROVATO: “Il reame delle community italiane di Sorcery: Contested Realm”. Descrizione APPROVATA: “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.” La grafia del logo fisico è una verifica separata, senza rielaborare il banner sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-01 sbloccata sul copy; applicazione alle pagine ancora non eseguita |
 | DEC-02 | APPROVATO integralmente il vocabolario del brief: Reame, Avventuriero, Alleanza, Community, Mercante, Adunanza, Lega, Tappa, Cronaca, Proclama, Patto; per le tappe privilegiare “Tappa II” anziché “Duello II” (ferme eventuali denominazioni narrative proprie, accompagnate dall'indicazione Tappa); mantenere esplicite le informazioni operative. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-02 READY; T-12 ancora BLOCKED da DEC-09 e fonti evento; nessuna modifica al sito |
 | DEC-03 | APPROVATO menu principale: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; dentro Adunanze: In programma / Cronache / Leghe. Gli URL esistenti devono restare funzionanti. Questo approva l'architettura, non riapre l'artwork/banner V2 sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-03 READY; T-04 dipende ancora da DEC-06 per dati e struttura della sezione Leghe; T-10 appartiene alla mappa e non è dipendente da DEC-03 |
-| DEC-04 | Homepage: una o più “Prossime adunanze”; ordine/moduli/CTA; presenza anteprima Alleanze e classifica completa | DECISION (P) | Dottor Q + Nick | Wireframe e comportamento senza dati; blocca T-05–T-08 |
+| DEC-04 | APPROVAZIONE PARZIALE: adottare la struttura di homepage nazionale proposta da Nick; rimuovere la Top 3 Blaze of Glory dalla homepage e collocarla nella sezione Leghe, identificata come classifica della specifica lega CREMOS. Restano aperti: numero di Adunanze in anteprima, formato anteprima Alleanze, dettaglio dei moduli e stato senza dati. | **DECISION — parzialmente approvata** (Dottor Q, 30/09/2026) | Dottor Q | Struttura scelta; completare DEC-04 prima di sbloccare T-05–T-08; DEC-06 per dettaglio Leghe |
 | DEC-05 | Mappa: dimensione marker e comportamento tooltip/click, se e quando prevedere cluster/elenco geografico | DECISION (riduzione R; interazione P) | Dottor Q + Nick | Specifica UI + mock; blocca T-09–T-11 |
 | DEC-06 | Schede Lega: dati minimi, URL/struttura, stagione, classifica, differenza evento autonomo/tappa | DECISION (P) | Dottor Q + Nick | Data model + routing; blocca T-13, T-15 |
 | DEC-07 | Pubblicazione e moderazione: chi inserisce/valida eventi, Proclami, Cronache e profili | DECISION (D) | Dottor Q + Nick | Workflow editoriale; blocca T-19, T-25 |
@@ -96,7 +101,7 @@ Colonne abbreviate: tipo R/P/V/D (come sopra); criterio = evidenza minima per ch
 | T-04 | P1 | P | Tre ingressi Adunanze APPROVATI: In programma / Cronache / Leghe; dati e pagine Leghe da definire | DEC-03 approvata; DEC-06 aperta per Leghe | BLOCKED (parziale) | accessi e deep-link stabili |
 | T-05 | P1 | P | Hero compatto + 2 CTA Community/Eventi | DEC-04,T-01 | BLOCKED | CTA con destinazioni vere e prime schede visibili |
 | T-06 | P1 | P | Prossime adunanze multi-community, ordinamento per data e organizzatore | DEC-04,DEC-09 | BLOCKED | dati e stati veritieri, link al calendario |
-| T-07 | P0 | P | Etichettare classifica Top 3 con lega/community/stagione, eventuale link completa | DEC-09 | BLOCKED | no classifica nazionale fittizia, Top 3 esistente intatta |
+| T-07 | P0 | P | Trasferire Top 3 Blaze of Glory dalla homepage alla sezione Leghe, etichettando lega/community/stagione e valutando accesso alla classifica completa | DEC-04 scelta struttura APPROVED; DEC-06 e DEC-09 ancora aperte | BLOCKED | no classifica nazionale fittizia, dati Top 3 esistenti preservati |
 | T-08 | P1 | P | Anteprima Alleanze in home, attribuzione ultima Cronaca e moduli | DEC-04 | BLOCKED | anteprime non inventate e accesso a sezioni |
 | T-09 | P0 | R/V | Ridurre ingombro medaglioni e preservare mappa e filtri | DEC-05 | BLOCKED | punti selezionabili anche vicini, filtri tutti funzionali |
 | T-10 | P1 | P | Hover sintetico + click stabile, tastiera/ESC e focus | DEC-05 | BLOCKED | tooltip non si chiude involontariamente; touch senza hover |
@@ -158,6 +163,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 
 | 2026-09-30 | DEC-03 — approvazione definitiva | Menu principale: Adunanze, Avventurieri, Alleanze, Proclami, Chi siamo; Adunanze: In programma / Cronache / Leghe; mantenere gli URL esistenti e il banner V2 sospeso | Conferma esplicita di Dottor Q | T-03 READY; T-04 parzialmente BLOCKED su DEC-06 | Dottor Q |
 
+| 2026-09-30 | DEC-04 — struttura nazionale e ricollocazione Top 3 | APPROVATO: usare la struttura nazionale di Nick; Top 3 Blaze of Glory nella sezione Leghe, non più in homepage. Dettagli ancora aperti: numero eventi, anteprima Alleanze e moduli | Conferma esplicita di Dottor Q | T-05–T-08 ancora BLOCKED finché si conclude DEC-04; T-07 dipende anche da DEC-06 e DEC-09 | Dottor Q |
+
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
@@ -170,6 +177,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | DEC-02 approvata integralmente; aggiunto glossario canonico. T-02 passa a READY; non applicata alcuna modifica alle pagine. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01 e DEC-02 APPROVED; DEC-03 aperta | Discutere menu e organizzazione di Adunanze, Cronache, Leghe in DEC-03 |
 
 | 2026-09-30 | DEC-03 approvata integralmente; registrata la nuova sitemap e il vincolo sui deep-link. T-03 READY; T-04 resta vincolata alla definizione delle Leghe. Nessuna modifica al sito. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01, DEC-02, DEC-03 APPROVED; DEC-10 PAUSED | Aprire DEC-04: moduli e struttura della homepage nazionale |
+
+| 2026-09-30 | DEC-04 approvata parzialmente: scelta struttura nazionale di Nick e trasferimento Top 3 Blaze of Glory in Leghe, senza alterare i dati. Nessuna modifica al sito. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessun QA applicativo necessario | DEC-01,02,03 approvate; DEC-04 PARZIALE; DEC-10 PAUSED | DEC-04: decidere numero di prossime Adunanze in homepage |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**
