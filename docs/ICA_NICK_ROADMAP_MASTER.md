@@ -163,7 +163,7 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | Sprint / area | Stato | Output corrente / prossimo |
 |---|---|---|
 | Sprint 1 — Fondamenta dati | **DONE** | Report: `docs/ICA_SPRINT1_COMPLETION_REPORT.md`; primo XLSX reale e manifest live restano fuori scope di chiusura |
-| Sprint 2 — Adunanze & Leghe | **IN_PROGRESS** | Implementazione visibile su dataset pubblici correnti, senza attendere import XLSX |
+| Sprint 2 — Adunanze & Leghe | **REVIEW / PO-LIVE** | PR #112 pronta e QA verde; merge sospeso perché main alimenta GitHub Pages e richiede gate PO-LIVE |
 | Sprint 3 — Homepage & Avventurieri | PLANNED | Applicare struttura approvata, profili/ID e moduli homepage |
 | Sprint 4 — QA integrato & rilascio | PLANNED | QA completo, UAT, gate pubblicazione live |
 | Alleanze / mappa | **PAUSED** | Nessun intervento finché DEC-05 non viene riaperta |
@@ -178,19 +178,19 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | T-01 | Applicare identità/copy approvati | dati/link reali | READY | copy coerente nelle pagine | nessuna falsa rappresentatività, CI/regressione PASS | DEC-01, Current Rules §1 |
 | T-02 | Applicare glossario coerente | T-01 | READY | terminologia uniforme | Adunanza/Lega/Tappa usate correttamente | DEC-02 |
 | T-03 | Navigazione principale approvata | URL esistenti | READY | menu + deep-link preservati | desktop/mobile/keyboard PASS | DEC-03 |
-| T-04 | Tre accessi Adunanze + area Leghe | Sprint 2 | IN_PROGRESS | In programma/Cronache/Leghe | URL storici preservati; area Leghe raggiungibile | DEC-03, DEC-06 |
+| T-04 | Tre accessi Adunanze + area Leghe | Sprint 2 | REVIEW | In programma/Cronache/Leghe | URL storici preservati; area Leghe raggiungibile | DEC-03, DEC-06 |
 | T-05 | Hero homepage + CTA | T-01,T-03 | PLANNED | hero compatto | CTA reali e accessibili | DEC-04 |
 | T-06 | Prossime Adunanze homepage | eventi correnti | PLANNED | max 3 eventi reali | ordinamento corretto, niente placeholder fittizi | DEC-04.2 |
-| T-07 | Top 3 dentro Blaze of Glory | Sprint 2 | IN_PROGRESS | podio/classifica nella Lega | assente dalla homepage, nessun ricalcolo GP | DEC-04, DEC-06, DEC-09 vigenti |
+| T-07 | Top 3 dentro Blaze of Glory | Sprint 2 | REVIEW | podio/classifica nella Lega | assente dalla homepage, nessun ricalcolo GP | DEC-04, DEC-06, DEC-09 vigenti |
 | T-08 | Moduli restanti homepage | dati/link verificati | PLANNED | Leghe/Proclami/Cronache/Avventurieri/Chi siamo/footer | tutti i moduli rispettano Current Rules | DEC-04 |
 | T-09 | Mappa Alleanze marker | DEC-05 | PAUSED | — | — | DEC-05 |
 | T-10 | Interazione mappa Alleanze | DEC-05 | PAUSED | — | — | DEC-05 |
 | T-11 | Schede Alleanze | DEC-05,DEC-08 | PAUSED | — | — | DEC-05,DEC-08 |
-| T-12 | Card Adunanza operativa | eventi correnti | IN_PROGRESS | card evento preservate/normalizzate | CTA/Maps/popup reali; no regressioni | Current Rules §4 |
-| T-13 | Accordion Leghe | Sprint 2 | IN_PROGRESS | area Leghe esclusiva | auto-open deep-link, keyboard/mobile PASS | DEC-06.1–.8 |
-| T-14 | Calendario unico Adunanze/Tappe | eventi correnti | IN_PROGRESS | singola vista dati eventi | autonomi ≠ Tappe, URL/ID preservati | Current Rules §4–5 |
-| T-15 | Collegamenti Cronache | dati cronache esistenti | IN_PROGRESS | archivio Lega senza duplicati | nessuna Cronaca inventata | Current Rules §6 |
-| T-16 | Audit CTA/Maps/deep-link | T-12–15 | IN_PROGRESS | test funzionali | link reali PASS o NON_VERIFICATO esplicito | Current Rules §10 |
+| T-12 | Card Adunanza operativa | eventi correnti | REVIEW | card evento preservate/normalizzate | CTA/Maps/popup reali; no regressioni | Current Rules §4 |
+| T-13 | Accordion Leghe | Sprint 2 | REVIEW | area Leghe esclusiva | auto-open deep-link, keyboard/mobile PASS | DEC-06.1–.8 |
+| T-14 | Calendario unico Adunanze/Tappe | eventi correnti | REVIEW | singola vista dati eventi | autonomi ≠ Tappe, URL/ID preservati | Current Rules §4–5 |
+| T-15 | Collegamenti Cronache | dati cronache esistenti | REVIEW | archivio Lega senza duplicati | nessuna Cronaca inventata | Current Rules §6 |
+| T-16 | Audit CTA/Maps/deep-link | T-12–15 | REVIEW | test funzionali | link reali PASS o NON_VERIFICATO esplicito | Current Rules §10 |
 | T-17 | Preservare Avventurieri/ID/deep-link | mapping ratificato | READY | profili stabili | PLY-0000 corretto; PLY-0002 reserved | Current Rules §7 |
 | T-18 | Stati dati Avventurieri | dati reali | PLANNED | 0/—/NP/In verifica coerenti | nessuna inferenza falsa | DEC-09 vigente |
 | T-19 | Filtri Avventurieri futuri | dati community | BACKLOG | filtri solo se supportati | nessun filtro fittizio | DEC-07/08 |
@@ -199,10 +199,10 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | T-22 | Footer comune | URL/contatti verificati | BLOCKED | footer 3 aree | link reali e accessibili | DEC-04.4f,DEC-08 |
 | T-23 | Unisciti al Reame | canale adesione | BLOCKED | percorso operativo | nessun form/recapito inventato | DEC-04.4e,DEC-08 |
 | T-24 | Newsletter | provider/privacy | BLOCKED | eventuale iscrizione | solo se workflow reale approvato | DEC-08 |
-| T-25 | Regression test | modifiche Sprint | IN_PROGRESS | report CI/regressione | nessuna regressione critica | Current Rules §10 |
-| T-26 | QA desktop/mobile | modifiche Sprint | IN_PROGRESS | prove viewport | layout leggibile senza overlap | Current Rules §10 |
-| T-27 | QA accessibilità | modifiche Sprint | IN_PROGRESS | keyboard/focus/semantica | flussi pertinenti eseguibili da tastiera | Current Rules §10 |
-| T-28 | QA dati/provenienza | dataset corrente/futuro XLSX | IN_PROGRESS | audit dati | nessun dato privato o valore inventato | Current Rules §8–10 |
+| T-25 | Regression test | modifiche Sprint | REVIEW | report CI/regressione | nessuna regressione critica | Current Rules §10 |
+| T-26 | QA desktop/mobile | modifiche Sprint | REVIEW | prove viewport | layout leggibile senza overlap | Current Rules §10 |
+| T-27 | QA accessibilità | modifiche Sprint | REVIEW | keyboard/focus/semantica | flussi pertinenti eseguibili da tastiera | Current Rules §10 |
+| T-28 | QA dati/provenienza | dataset corrente/futuro XLSX | REVIEW | audit dati | nessun dato privato o valore inventato | Current Rules §8–10 |
 | T-29 | UAT e release live | T-25–28 | BLOCKED | release candidate | richiede PO-LIVE; rollback pronto | Current Rules §10 |
 
 ## 5. TEMPLATE DI SCHEDA TASK (duplicare per task attivo)
@@ -376,6 +376,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 
 | 2026-09-30 | NORMALIZZAZIONE ROADMAP + CHIUSURA SPRINT 1 | Creati Current Rules, Completion Report e Sprint 2 Plan; PR #111 integrata code-only (merge ef43339a). DEC-09 congelata, quattro soli gate PO formalizzati, task operative semplificate, vecchio swap E02/E04 marcato SUPERSEDED. Primo XLSX reale e manifest live NON eseguiti ma non bloccano Sprint 2 | Mandato esplicito Dottor Q | SPRINT 1 DONE / SPRINT 2 IN_PROGRESS | Nick + Dottor Q |
 
+| 2026-09-30 | S2 — PR #112 pronta al gate live | Implementati calendario unificato, Leghe/Blaze, accordion, deep-link, Top3 spostata dalla home, QA keyboard/deep-link e fix popover 1024. Nessun data/* modificato. 7/7 workflow finali SUCCESS; performance Adunanze SUCCESS al retry senza riduzione soglie. GitHub Pages attivo: merge di #112 è trattato come PO-LIVE e NON eseguito | PR #112 head 2ed6241 | REVIEW / PO-LIVE | Dottor Q + Nick |
+
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
@@ -516,6 +518,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | PR #111 pronta: XLSX intake gate code-only, head 5ea6320, core CI 36768807983 SUCCESS + baseline 36768807861 SUCCESS. Nessun dataset/manifest live toccato. | PR #111 + docs/ICA_SPRINT1_XLSX_INTAKE_GATE.md | No merge #111, no XLSX reale letto/importato | GATE: chiedere autorizzazione Dottor Q al merge code-only PR #111; separare sempre dal futuro intake reale e dalla pubblicazione | Dopo eventuale merge, il prossimo passo reale richiederà un nuovo XLSX/export da ispezionare privatamente oppure ulteriore hardening non distruttivo |
 
 | 2026-09-30 | Governance normalizzata: usare docs/ICA_CURRENT_RULES.md come fonte primaria; DEC-09 FROZEN salvo vera decisione prodotto/governance; S*-TECH-* per implementazione. Sprint 1 DONE con #109/#110/#111 merged. Sprint 2 Adunanze & Leghe IN_PROGRESS su dataset correnti. | Current Rules + S1 Completion + S2 Plan | No real XLSX import, no live manifest activation, no new dataset publication | Fermarsi solo per PO-UX / PO-DATA / PO-LIVE / PO-ROLLBACK | Implementare S2 autonomamente con QA obbligatorio |
+
+| 2026-09-30 | Sprint 2 implementation pronta in PR #112 head 2ed6241: calendario eventi futuri/in corso/conclusi, Blaze accordion Presentazione→Tappe→Classifica→Cronache, deep-link auto-open, Top3 rimossa home, QA 7/7 SUCCESS. Nessun dataset cambiato. Repo has_pages=true: NON mergiare senza PO-LIVE. | PR #112 + docs/ICA_SPRINT2_IMPLEMENTATION_REPORT.md | REVIEW / PO-LIVE | Gate richiesto: autorizzazione pubblicazione live/merge PR #112 | Dopo gate, merge + smoke test live; rollback solo con PO-ROLLBACK |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**

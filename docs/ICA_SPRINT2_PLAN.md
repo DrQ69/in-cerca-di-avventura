@@ -1,5 +1,5 @@
 # ICA — SPRINT 2 PLAN | Adunanze & Leghe
-**Stato:** AVVIATO · **Fonte dati iniziale:** dataset pubblici correnti.
+**Stato:** REVIEW / PO-LIVE · **Fonte dati:** dataset pubblici correnti · **PR:** #112
 
 ## Obiettivo
 Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, senza attendere il primo import XLSX reale.
@@ -25,3 +25,23 @@ Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, sen
 - URL esistenti preservati;
 - CI + regression + desktop + mobile + keyboard/accessibilità + deep-link PASS;
 - nessun nuovo dataset o contenuto non approvato introdotto.
+
+## Stato esecuzione 30/09/2026
+- S2-TECH-01: IMPLEMENTATO in PR #112.
+- S2-TECH-02: IMPLEMENTATO in PR #112.
+- S2-TECH-03: IMPLEMENTATO in PR #112.
+- S2-TECH-04: IMPLEMENTATO e verificato con browser deep-link.
+- S2-TECH-05: IMPLEMENTATO; test verifica assenza Top3 in homepage e presenza nella Lega.
+- S2-TECH-06: PASS nella PR; 7 workflow finali SUCCESS.
+- S2-TECH-07: NON ATTIVATO; non sono emersi nuovi dati pubblici né variazioni UX fuori dal perimetro approvato.
+
+### QA finale PR #112
+- baseline 36773830758 — SUCCESS
+- dataset/core + model test 36773830665 — SUCCESS
+- homepage visual 36773830651 — SUCCESS
+- Adunanze visual/keyboard/deep-link 36773830628 — SUCCESS
+- runtime 36773830752 — SUCCESS
+- banner consistency 36773830968 — SUCCESS
+- performance 36773830673 — SUCCESS al retry senza modifica soglie
+
+**Gate residuo:** GitHub Pages è attivo; il merge in main è considerato PO-LIVE. Nessun merge eseguito.
