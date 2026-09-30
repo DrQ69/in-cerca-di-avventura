@@ -59,7 +59,7 @@ test('synthetic rollback switches the pointer to a complete previous version wit
  const routes=new Map();
  for(const out of [oldRel,newRel])for(const [p,v] of Object.entries(out.files))routes.set('/'+p,v);
  const server=http.createServer((req,res)=>{
-   if(req.url==='/data/current-release.json'){
+   if(req.url==='/data/current-release.json'||req.url?.startsWith('/data/current-release.json?')){
      res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify(currentManifest));return;
    }
    const hit=routes.get(req.url);
