@@ -57,7 +57,8 @@ Dentro **Adunanze** (tre accessi): **In programma** (eventi futuri e in corso), 
 Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli nell'ordine di riferimento del brief (ancora da precisare nei dettagli): intestazione/menu/social; presentazione del progetto con testi DEC-01 e CTA; prossime Adunanze; trova una Community/anteprima Alleanze; Leghe in corso (quando ci sono dati adeguati); Proclami e selezione Cronache; eventuale anteprima secondaria Avventurieri; Chi siamo/invito adesione; newsletter soltanto se attiva; footer.
 **Scelta specifica approvata:** la Top 3 Blaze of Glory NON resta come blocco autonomo della homepage: va nella **sezione Leghe**, dove deve essere etichettata per la lega CREMOS pertinente, senza attribuzione nazionale impropria. Conservare feed/dati funzionanti; non cancellare la logica solo per spostare il punto di visualizzazione. La realizzazione della sezione Leghe dipende da DEC-06 e la semantica della classifica da DEC-09.
 **DEC-04.2 APPROVATA:** la homepage mostra **fino a 3 prossime Adunanze**, selezionate dai soli eventi futuri realmente disponibili e ordinate per data crescente, con accesso al calendario completo. Con 1 o 2 eventi non mostrare slot fittizi; con nessun evento utilizzare uno stato vuoto chiaro e collegamento alla sezione Adunanze/Alleanze. Ogni anteprima deve identificare la community organizzatrice quando il dato è verificato. Questa è una specifica di progetto, NON una funzione già implementata.
-**Questioni DEC-04 ancora da risolvere:** dettaglio dell'anteprima Alleanze (DEC-04.3); formato finale degli altri moduli/CTA e dei loro stati vuoti. Fino alla chiusura non segnare DEC-04 come APPROVED integrale e non alterare le pagine.
+**Vincolo aggiunto da Dottor Q:** PER ORA NON MODIFICARE la pagina esistente **/beta/alleanze/** né i suoi asset, filtri, mappa, medaglioni, dati o comportamento. F4 e i task T-09–T-11 passano a PAUSED. **DEC-04.3** (eventuale anteprima o semplice CTA alla pagina Alleanze dalla homepage) resta da chiarire separatamente: il blocco sulla pagina interna non equivale né all'approvazione né al divieto automatico di un collegamento in homepage. La normale navigazione/URL esistente va preservata.
+**Questioni DEC-04 ancora da risolvere:** formato dell'accesso dalla homepage alle Alleanze (DEC-04.3); dettagli degli altri moduli/CTA e relativi stati vuoti. Fino alla chiusura non segnare DEC-04 come APPROVED integrale e non alterare le pagine.
 
 ## 2. GATE DECISIONALI (nessuna PR funzionale prima delle decisioni pertinenti)
 | ID | Scelta da compiere | Stato | Referente | Output richiesto / blocca |
@@ -66,7 +67,7 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | DEC-02 | APPROVATO integralmente il vocabolario del brief: Reame, Avventuriero, Alleanza, Community, Mercante, Adunanza, Lega, Tappa, Cronaca, Proclama, Patto; per le tappe privilegiare “Tappa II” anziché “Duello II” (ferme eventuali denominazioni narrative proprie, accompagnate dall'indicazione Tappa); mantenere esplicite le informazioni operative. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-02 READY; T-12 ancora BLOCKED da DEC-09 e fonti evento; nessuna modifica al sito |
 | DEC-03 | APPROVATO menu principale: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; dentro Adunanze: In programma / Cronache / Leghe. Gli URL esistenti devono restare funzionanti. Questo approva l'architettura, non riapre l'artwork/banner V2 sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-03 READY; T-04 dipende ancora da DEC-06 per dati e struttura della sezione Leghe; T-10 appartiene alla mappa e non è dipendente da DEC-03 |
 | DEC-04 | APPROVAZIONE PARZIALE: homepage nazionale secondo Nick; Top 3 Blaze of Glory trasferita dalla homepage alla sezione Leghe con attribuzione corretta. **DEC-04.2 APPROVATA:** fino a tre prossime Adunanze reali, in ordine cronologico, senza card fittizie se meno di tre, con link calendario completo. Restano aperti: DEC-04.3 formato anteprima Alleanze; dettagli dei moduli/CTA e stati vuoti. | **DECISION — parzialmente approvata** (Dottor Q, 30/09/2026) | Dottor Q | Completare DEC-04 prima di sbloccare T-05–T-08; DEC-06 per Leghe |
-| DEC-05 | Mappa: dimensione marker e comportamento tooltip/click, se e quando prevedere cluster/elenco geografico | DECISION (riduzione R; interazione P) | Dottor Q + Nick | Specifica UI + mock; blocca T-09–T-11 |
+| DEC-05 | Mappa: dimensione marker e comportamento tooltip/click, se e quando prevedere cluster/elenco geografico. **SOSPESA da Dottor Q: pagina /beta/alleanze/ invariata per ora.** | **PAUSED** (non avviare revisioni senza nuovo via libera) | Dottor Q + Nick | T-09–T-11 PAUSED; nessun intervento sulla pagina o sugli asset |
 | DEC-06 | Schede Lega: dati minimi, URL/struttura, stagione, classifica, differenza evento autonomo/tappa | DECISION (P) | Dottor Q + Nick | Data model + routing; blocca T-13, T-15 |
 | DEC-07 | Pubblicazione e moderazione: chi inserisce/valida eventi, Proclami, Cronache e profili | DECISION (D) | Dottor Q + Nick | Workflow editoriale; blocca T-19, T-25 |
 | DEC-08 | Contatti pubblici ufficiali del progetto e delle alleanze; stato newsletter; modalità di adesione; status rispetto all'editore | BLOCKED (dati non tutti disponibili) | Dottor Q + singole alleanze | Fonte verificata per campo; blocca T-11, T-20–T-24 |
@@ -84,7 +85,7 @@ Le durate sotto sono intervalli di *pianificazione* per una sessione di decision
 | F1 — Identità e copy P0 | T-01,T-02 | DEC-01,DEC-02 | Copy coerente su homepage/sezioni/footer; regressioni contenuti assenti | 1–2 sessioni | BLOCKED (decisioni) |
 | F2 — Architettura navigazione | T-03,T-04 | DEC-03 APPROVED; DEC-06 ancora aperta per la scheda Leghe | Menu/routing approvati, vecchi deep link preservati, prototipo collaudato; nessuna modifica al banner V2 | 1–3 sessioni | READY (T-03), BLOCKED parzialmente (T-04) |
 | F3 — Homepage nazionale | T-05…T-08 | DEC-04, dati organismi | CTA e moduli utili, corretta attribuzione degli eventi/classifica | 2–4 sessioni | BLOCKED |
-| F4 — Alleanze | T-09…T-11 | DEC-05, DEC-08, DEC-09 | Mappa leggibile, filtri intatti, informazioni e contatti verificati | 2–4 sessioni | BLOCKED |
+| F4 — Alleanze | T-09…T-11 | DEC-05, DEC-08, DEC-09; sospensione esplicita Dottor Q | NON MODIFICARE pagina /beta/alleanze/ finché non riaperta | Da ripianificare | **PAUSED** |
 | F5 — Adunanze, Leghe, Cronache | T-12…T-16 | DEC-02,03,06,09 + fonti eventi | Schede identificabili; CTA veritiere; cronache collegate; leghe se approvate | 3–6 sessioni | BLOCKED |
 | F6 — Avventurieri e Proclami | T-17…T-20 | DEC-07,09 e dati community | Profili chiari e preservati; pubblicazioni attribuite correttamente | 2–4 sessioni | BLOCKED |
 | F7 — Chi siamo, adesione e contatti | T-21…T-24 | DEC-03,07,08 | Informazioni pubbliche verificabili; footer completo; newsletter solo se attiva | 2–3 sessioni | BLOCKED |
@@ -104,9 +105,9 @@ Colonne abbreviate: tipo R/P/V/D (come sopra); criterio = evidenza minima per ch
 | T-06 | P1 | P | Homepage: massimo 3 Prossime Adunanze reali, ordinamento per data crescente; meno di 3 = sole card esistenti; link calendario; community organizzatrice se verificata | DEC-04.2 APPROVED, DEC-04 complessiva e DEC-09 ancora aperte | BLOCKED (specifica DEC-04.2 definita) | dati e stati veritieri, link al calendario |
 | T-07 | P0 | P | Trasferire Top 3 Blaze of Glory dalla homepage alla sezione Leghe, etichettando lega/community/stagione e valutando accesso alla classifica completa | DEC-04 scelta struttura APPROVED; DEC-06 e DEC-09 ancora aperte | BLOCKED | no classifica nazionale fittizia, dati Top 3 esistenti preservati |
 | T-08 | P1 | P | Anteprima Alleanze in home, attribuzione ultima Cronaca e moduli | DEC-04 | BLOCKED | anteprime non inventate e accesso a sezioni |
-| T-09 | P0 | R/V | Ridurre ingombro medaglioni e preservare mappa e filtri | DEC-05 | BLOCKED | punti selezionabili anche vicini, filtri tutti funzionali |
-| T-10 | P1 | P | Hover sintetico + click stabile, tastiera/ESC e focus | DEC-05 | BLOCKED | tooltip non si chiude involontariamente; touch senza hover |
-| T-11 | P1 | R/P/D | Schede alleanza con tipo/area, contatto verificato e link dedicato se esiste; legenda chiara | DEC-08,09 | BLOCKED | nessun contatto inventato; categorie mercanti corrette |
+| T-09 | P0 | R/V | Ridurre ingombro medaglioni e preservare mappa e filtri | DEC-05; pagina Alleanze sospesa | PAUSED | punti selezionabili anche vicini, filtri tutti funzionali |
+| T-10 | P1 | P | Hover sintetico + click stabile, tastiera/ESC e focus | DEC-05; pagina Alleanze sospesa | PAUSED | tooltip non si chiude involontariamente; touch senza hover |
+| T-11 | P1 | R/P/D | Schede alleanza con tipo/area, contatto verificato e link dedicato se esiste; legenda chiara | DEC-08,09; pagina Alleanze sospesa | PAUSED | nessun contatto inventato; categorie mercanti corrette |
 | T-12 | P0 | P/V | Card evento: organizzatore, nome, tappa se applicabile, CTA iscrizione reale | DEC-02,09 | BLOCKED | Regolamento/Premi/Maps ancora funzionanti; no CTA finta |
 | T-13 | P1 | P | Definire e creare scheda lega per serie/stagione e classifica propria, se approvata | DEC-06,09 | BLOCKED | eventi autonomi non forzati in leghe |
 | T-14 | P1 | P | Calendario: eventuali filtri area/community/formato | DEC-03,04 | BLOCKED | risultati coerenti senza dati inventati |
@@ -168,6 +169,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 
 | 2026-09-30 | DEC-04.2 — numero eventi in homepage | APPROVATE massimo tre prossime Adunanze reali, ordinate per data; meno di tre = mostrare solo le disponibili, nessun segnaposto; collegamento calendario completo | Conferma esplicita di Dottor Q | Specifica T-06 definita, implementazione ancora BLOCKED da DEC-04 completa/DEC-09 | Dottor Q |
 
+| 2026-09-30 | Sospensione della pagina Alleanze | Dottor Q: “per ora la pagina delle Alleanze non viene modificata”. F4, DEC-05, T-09–T-11 PAUSED; DEC-04.3 sulla homepage ancora aperta e separata | Istruzione esplicita Dottor Q | Nessuna modifica applicativa; preservare /beta/alleanze/ integralmente | Dottor Q |
+
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
@@ -184,6 +187,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | DEC-04 approvata parzialmente: scelta struttura nazionale di Nick e trasferimento Top 3 Blaze of Glory in Leghe, senza alterare i dati. Nessuna modifica al sito. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessun QA applicativo necessario | DEC-01,02,03 approvate; DEC-04 PARZIALE; DEC-10 PAUSED | DEC-04: decidere numero di prossime Adunanze in homepage |
 
 | 2026-09-30 | DEC-04.2 approvata: fino a tre eventi futuri reali, ordinati cronologicamente, senza card dimostrative. Roadmap aggiornata; nessuna modifica al sito. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessun QA applicativo necessario | DEC-04 ancora PARZIALE; DEC-04.2 APPROVED | Affrontare DEC-04.3 anteprima Alleanze in homepage |
+
+| 2026-09-30 | Registrato vincolo: /beta/alleanze/ intoccabile per ora; F4, DEC-05 e T-09–T-11 PAUSED. DEC-04.3 homepage non ancora decisa. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live | Vincolo esplicito Dottor Q | Chiarire se homepage mostra un semplice collegamento alle Alleanze senza intervenire sulla loro pagina |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**
