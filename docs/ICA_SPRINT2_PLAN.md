@@ -35,13 +35,15 @@ Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, sen
 - S2-TECH-06: PASS nella PR; 7 workflow finali SUCCESS.
 - S2-TECH-07: NON ATTIVATO; non sono emersi nuovi dati pubblici né variazioni UX fuori dal perimetro approvato.
 
-### QA finale PR #112
-- baseline 36773830758 — SUCCESS
-- dataset/core + model test 36773830665 — SUCCESS
-- homepage visual 36773830651 — SUCCESS
-- Adunanze visual/keyboard/deep-link 36773830628 — SUCCESS
-- runtime 36773830752 — SUCCESS
-- banner consistency 36773830968 — SUCCESS
-- performance 36773830673 — SUCCESS al retry senza modifica soglie
+### QA finale PR #112 — head 7ef291c90093810a2a924fa3a0d54d92a0bea557
+- baseline 36780367322 — SUCCESS
+- dataset/core + model 36780367309 — SUCCESS
+- homepage visual 36780367393 — SUCCESS
+- Adunanze visual/keyboard/deep-link 36780367366 — SUCCESS
+- runtime 36780367413 — SUCCESS
+- banner consistency 36780367374 — SUCCESS
+- performance 36780367311 — SUCCESS al retry senza modifica soglie
+  - primo portal-mobile: perf 0.92 / LCP 2788 ms — FAIL
+  - retry portal-mobile: perf 0.99 / LCP 1954 ms — PASS
 
 **Gate residuo:** GitHub Pages è attivo; il merge in main è considerato PO-LIVE. Nessun merge eseguito.

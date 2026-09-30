@@ -1,5 +1,5 @@
 # ICA — SPRINT 2 IMPLEMENTATION REPORT
-**Sprint:** Adunanze & Leghe · **Stato:** REVIEW / PO-LIVE · **PR:** #112 · **Head:** 2ed6241307c8169f78b6b565f4fa12c4692a2728
+**Sprint:** Adunanze & Leghe · **Stato:** REVIEW / PO-LIVE · **PR:** #112 · **Head:** 7ef291c90093810a2a924fa3a0d54d92a0bea557
 
 ## Deliverable pronti
 - calendario Adunanze unificato con eventi in corso, futuri e conclusi dalla stessa sorgente;
@@ -23,15 +23,15 @@
 ## QA realmente eseguito
 | Controllo | Run | Esito |
 |---|---:|---|
-| ICA baseline | 36773830758 | PASS |
-| Dataset/core + model Sprint 2 | 36773830665 | PASS |
-| Homepage visual | 36773830651 | PASS |
-| Adunanze visual + keyboard + deep-link | 36773830628 | PASS |
-| Runtime LCS-02 | 36773830752 | PASS |
-| Shared banner consistency | 36773830968 | PASS |
-| Lighthouse Adunanze | 36773830673 | PASS al retry |
+| ICA baseline | 36780367322 | PASS |
+| Dataset/core + model Sprint 2 | 36780367309 | PASS |
+| Homepage visual | 36780367393 | PASS |
+| Adunanze visual + keyboard + deep-link | 36780367366 | PASS |
+| Runtime LCS-02 | 36780367413 | PASS |
+| Shared banner consistency | 36780367374 | PASS |
+| Lighthouse Adunanze | 36780367311 | PASS al retry |
 
-Il primo campione Lighthouse portal-mobile è risultato 0.92 / LCP 2734 ms; poiché il portale non era stato modificato è stato ripetuto senza cambiare soglie. Retry: portal-mobile 0.99 / 1956 ms, national-mobile 0.97 / 1964 ms, national-desktop 1.00 / 492 ms, portal-desktop 0.95 / 1483 ms.
+Il primo campione Lighthouse portal-mobile è risultato 0.92 / LCP 2788 ms; è stato ripetuto senza cambiare codice o soglie. Retry: portal-mobile 0.99 / 1954 ms, national-mobile 0.94 / 1969 ms, national-desktop 1.00 / 633 ms, portal-desktop 0.96 / 1384 ms.
 
 ## Definition of Done
 Il pacchetto è code-complete e QA-complete sulla PR. Non è DONE/live perché il merge su main può pubblicare GitHub Pages e richiede PO-LIVE.
