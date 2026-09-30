@@ -19,7 +19,7 @@ export async function readPublicRelease(manifestUrl,{fetcher=fetch,hasher}={}){
   if(typeof manifestUrl!=='string'||!manifestUrl.trim())throw new Error('MANIFEST_URL_REQUIRED');
   const read=async(url,opts)=>{
     const response=await fetcher(url,opts);
-    if(!response?.ok)throw new Error('RELEASE_FETCH_FAILED');
+    if(!response?.ok)throw new Error(response?.status===404?'RELEASE_POINTER_NOT_FOUND':'RELEASE_FETCH_FAILED');
     return response.text();
   };
   // One pointer read per operation, never one manifest read per dataset.
@@ -41,4 +41,29 @@ export async function readPublicRelease(manifestUrl,{fetcher=fetch,hasher}={}){
     throw new Error('RELEASE_SCHEMA_MISMATCH');
   return {releaseId:manifest.release_id,publishedAt:manifest.published_at,
     players,events,standings};
+}
+
+
+// Transitional adapter: fallback is permitted ONLY when the pointer is genuinely
+// absent (HTTP 404). Bad manifest/hash/schema/network errors NEVER fall back to
+// legacy JSON, because that would silently mask a failed active publication.
+// All versioned consumers must use one shared promise, not separate pointer reads.
+const inFlight=new Map();
+export function readSiteBundle(manifestUrl,legacyUrls,{fetcher=fetch,hasher}={}){
+  const key=new URL(manifestUrl,import.meta.url).toString();
+  if(inFlight.has(key))return inFlight.get(key);
+  const task=readPublicRelease(key,{fetcher,hasher}).catch(async error=>{
+    if(error.message!=='RELEASE_POINTER_NOT_FOUND')throw error;
+    const urls=['players','events','standings'].map(k=>legacyUrls?.[k]);
+    if(urls.some(x=>typeof x!=='string'||!x))throw new Error('LEGACY_URL_MISSING');
+    const response=await Promise.all(urls.map(u=>fetcher(u,{cache:'no-store'})));
+    if(response.some(x=>!x?.ok))throw new Error('LEGACY_FETCH_FAILED');
+    const [players,events,standings]=await Promise.all(response.map(x=>x.json()));
+    if(!Array.isArray(players?.players)||!Array.isArray(events?.events)||!Array.isArray(standings?.entries))
+      throw new Error('LEGACY_SCHEMA_MISMATCH');
+    return {releaseId:null,publishedAt:null,source:'legacy-no-manifest',players,events,standings};
+  });
+  inFlight.set(key,task);
+  task.catch(()=>{if(inFlight.get(key)===task)inFlight.delete(key);});
+  return task;
 }

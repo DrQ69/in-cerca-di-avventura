@@ -94,9 +94,13 @@ function render(events){
   }).join('');
 }
 
-fetch('../../data/events.json',{cache:'no-store'})
-  .then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();})
-  .then(data=>{
+import('../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+  new URL('../../data/current-release.json',document.baseURI).href,
+  {players:new URL('../../data/players.json',document.baseURI).href,
+   events:new URL('../../data/events.json',document.baseURI).href,
+   standings:new URL('../../data/league-standings.json',document.baseURI).href}
+))
+  .then(({events:data})=>{
     const events=Array.isArray(data.events)?data.events:[];
     render(events);
     loading.hidden=true;

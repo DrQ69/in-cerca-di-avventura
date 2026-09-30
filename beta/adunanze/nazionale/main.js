@@ -198,9 +198,13 @@ async function render(events){
   }
 }
 
-fetch('../../../data/events.json',{cache:'no-store'})
-  .then(response=>{if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();})
-  .then(async data=>{
+import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+  new URL('../../../data/current-release.json',document.baseURI).href,
+  {players:new URL('../../../data/players.json',document.baseURI).href,
+   events:new URL('../../../data/events.json',document.baseURI).href,
+   standings:new URL('../../../data/league-standings.json',document.baseURI).href}
+))
+  .then(async ({events:data})=>{
     const events=Array.isArray(data.events)?data.events:[];
     await render(events);
     loading.hidden=true;

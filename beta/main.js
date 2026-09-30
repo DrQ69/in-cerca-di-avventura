@@ -187,9 +187,15 @@ function renderProclamation(data){
   card.setAttribute('data-proclamation-id',published.id||'');
 }
 
-fetch('../data/events.json',{cache:'no-store'})
-  .then(response=>{if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
-  .then(data=>{
+const siteBundlePromise=import('./shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+  new URL('../data/current-release.json',document.baseURI).href,
+  {players:new URL('../data/players.json',document.baseURI).href,
+   events:new URL('../data/events.json',document.baseURI).href,
+   standings:new URL('../data/league-standings.json',document.baseURI).href}
+));
+
+siteBundlePromise
+  .then(({events:data})=>{
     const events=Array.isArray(data.events)?data.events:[];
     renderNextEvent(events);
     renderChronicle(events);
@@ -202,11 +208,8 @@ fetch('../data/events.json',{cache:'no-store'})
     if(chronicle)chronicle.textContent='Cronache non disponibili';
   });
 
-Promise.all([
-  fetch('../data/league-standings.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('standings HTTP '+r.status);return r.json();}),
-  fetch('../data/players.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('players HTTP '+r.status);return r.json();})
-])
-  .then(([standings,players])=>renderStandings(standings,players.players))
+siteBundlePromise
+  .then(({standings,players})=>renderStandings(standings,players.players))
   .catch(reason=>{
     console.error('Homepage standings load failed',reason);
     renderStandings({entries:[]},[]);

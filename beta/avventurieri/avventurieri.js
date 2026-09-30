@@ -140,16 +140,13 @@ function aggregatePlayerStats(playerId,events){
   },{events_played:0,wins:0,draws:0,losses:0,matches_played:0,event_wins:0,top8:0});
 }
 
-Promise.all([
-  fetch('../../data/players.json',{cache:'no-store'}),
-  fetch('../../data/events.json',{cache:'no-store'}),
-  fetch('../../data/league-standings.json',{cache:'no-store'})
-])
-  .then(async responses=>{
-    for(const response of responses)if(!response.ok)throw new Error('HTTP '+response.status);
-    return Promise.all(responses.map(response=>response.json()));
-  })
-  .then(([playerData,eventData,leagueData])=>{
+import('../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+  new URL('../../data/current-release.json',document.baseURI).href,
+  {players:new URL('../../data/players.json',document.baseURI).href,
+   events:new URL('../../data/events.json',document.baseURI).href,
+   standings:new URL('../../data/league-standings.json',document.baseURI).href}
+))
+  .then(({players:playerData,events:eventData,standings:leagueData})=>{
     const events=Array.isArray(eventData.events)?eventData.events:[];
     const leagueEntries=Array.isArray(leagueData.entries)?leagueData.entries:[];
     const leagueByPlayer=new Map(leagueEntries.map(entry=>[entry.player_id,entry]));
