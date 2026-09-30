@@ -141,7 +141,14 @@ export function buildReleaseFiles(candidate,id,publishedAt){
 }
 export function validateManifest(manifest){
   if(!isRecord(manifest)||!releaseId.test(manifest.release_id||''))return false;
-  return ['players','events','standings'].every(k=>safePath.test(manifest.paths?.[k]||'')
-    && manifest.paths[k].startsWith('data/releases/'+manifest.release_id+'/')
-    && /^[a-f0-9]{64}$/.test(manifest.sha256?.[manifest.paths[k]]||''));
+  const keys=['players','events','standings'];
+  const paths=keys.map(k=>manifest.paths?.[k]);
+  if(new Set(paths).size!==3)return false;
+  return keys.every(k=>{
+    const path=manifest.paths?.[k];
+    const expected=k==='standings'?'league-standings.json':k+'.json';
+    return safePath.test(path||'')
+      && path==='data/releases/'+manifest.release_id+'/'+expected
+      && /^[a-f0-9]{64}$/.test(manifest.sha256?.[path]||'');
+  });
 }

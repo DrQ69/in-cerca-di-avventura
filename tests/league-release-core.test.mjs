@@ -72,3 +72,9 @@ test('special owner gates are triggered by proposed new profiles, nickname chang
    assert.ok(result.requiredGates.includes(gate),gate);
  assert.deepEqual(result.changes.players.added,['PLY-0033']);
 });
+
+test('Node manifest validation rejects swapped file paths even if both hashes exist',()=>{
+ const b=base(),out=buildReleaseFiles(b,'bog-test-002','2026-09-30T18:36:00+02:00');
+ const m=structuredClone(out.manifest),tmp=m.paths.players;m.paths.players=m.paths.events;m.paths.events=tmp;
+ assert.equal(validateManifest(m),false);
+});
