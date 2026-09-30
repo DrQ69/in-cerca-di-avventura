@@ -30,10 +30,10 @@ for token in (
 if "new URL('../',import.meta.url)" not in shared:errors.append("Page-root URL resolution not found")
 if "new URL('../../assets/header-v2/',import.meta.url)" not in shared:errors.append("Shared asset-root resolution not found")
 expected_assets={
-    "banner-base-alpha.webp":("eb14ab715e4733ff3d8b4cebdff3c1ff1f3102916ae82aa3bb49add6be84a205",244908),
+    "banner-base-alpha.webp":("fcbe29920f9c2115b4be384371b7b14a548357e155686b2b9a23574a6f190e2d",239430),
     "banner-base.webp":("1805ca98a419e54cc916a69c1f235c01a7b8f9df1c29a5512e0b36b815106778",163460),
-    "banner-instagram-hover.webp":("bdd95cd548893303f88be77ad19fc18cfbc939de7cdd0bda3d04c0dc2edbf1ba",245686),
-    "banner-youtube-hover-alpha.webp":("9de069ff1b5b59650335fd6fbd1e47168ab17489bebb80ccff66b194d90d17c9",234214),
+    "banner-instagram-hover.webp":("cdd2d3955c3cf0de8680e899567c528bacd0c5a2fce938c59ce00aa4c546a31c",35468),
+    "banner-youtube-hover-alpha.webp":("ada4a59cf6e06953810e237edc0853c0f8267a79161d5e95e9a06c3b21d9e993",32974),
     "banner-youtube-hover.webp":("1edf4e126bf557113b6665e63866c4463b6bc9b5804b8a7b424c25a2b5196a9f",154304),
 }
 for filename,(digest,size) in expected_assets.items():
