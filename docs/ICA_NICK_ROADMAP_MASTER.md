@@ -21,10 +21,16 @@ Versione 1.0 · 30/09/2026 · Responsabile decisioni: Alessandro (Dottor Q)
 Visione da rendere esplicita: In cerca d'avventura è il progetto di contenuti di Nick e Dottor Q e un portale aperto alle **community italiane aderenti** di Sorcery: Contested Realm. CREMOS è una realtà territoriale con cui i fondatori sono direttamente coinvolti, non il sinonimo dell'intero portale.
 Preservare: mappa fantasy d'Italia, logo e identità blu/nero/oro, filtri Tutti/Community/Mercanti, dati pilot Il Regno di Cremos / Team Void / Ordinary Mortals, card Adunanze con Google Maps e pannelli Regolamento/Premi, archivio Cronache e collegamenti ai profili, registro 32 Avventurieri (conteggio da riverificare), ricerca e paginazione, classifica Top 3 dinamica, sezioni Proclami, dati verificati esistenti. Non inventare dati mancanti o trasformare l'assenza in zero. Pagina di riferimento: \`/beta/\`; l'URL radice storico non è la homepage beta.
 
+### Proposta testuale corrente per DEC-01 (30/09/2026)
+- **Nome principale — scelta del brief da confermare nell'implementazione:** “In cerca d'avventura”.
+- **Sottotitolo — scelta del brief da confermare nell'implementazione:** “Il reame delle community italiane di Sorcery: Contested Realm”.
+- **Descrizione introduttiva — formulazione proposta da Dottor Q, in attesa di conferma dell'intero blocco DEC-01:** “Trova una community vicino a te, partecipa a giostre e leghe e segui le storie dei giocatori italiani.”
+- Cambiamento rispetto alla proposta originale del brief: **eventi → giostre** nella descrizione; non sostituire automaticamente il termine tecnico “evento” in calendario e schede (dipende da DEC-02).
+
 ## 2. GATE DECISIONALI (nessuna PR funzionale prima delle decisioni pertinenti)
 | ID | Scelta da compiere | Stato | Referente | Output richiesto / blocca |
 |---|---|---|---|---|
-| DEC-01 | Confermare testo nome e sottotitolo già scelti: “In cerca d'avventura” / “Il reame delle community italiane di Sorcery: Contested Realm”; distinguere grafia in logo grafico | DECISION (approvazione brief; conferma implementazione) | Dottor Q + Nick | Copy finale; blocca T-01 |
+| DEC-01 | Confermare nome e sottotitolo del brief: “In cerca d'avventura” / “Il reame delle community italiane di Sorcery: Contested Realm”; aggiornare la descrizione introduttiva proposta da Dottor Q con “giostre” anziché “eventi”; distinguere grafia del logo grafico | DECISION (nuovo testo introduttivo proposto da Dottor Q il 30/09; approvazione complessiva ancora da confermare) | Dottor Q + Nick | Copy finale; blocca T-01 |
 | DEC-02 | Confermare lessico Reame/Alleanza/Community/Mercante/Adunanza/Tappa/Lega/Cronaca/Proclama/Patto e preferenza “Tappa” su “Duello” | DECISION | Dottor Q + Nick | Glossario; blocca T-02, T-12 |
 | DEC-03 | Approva o modifica menu proposto: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; Cronache e Leghe dentro Adunanze? | DECISION (P, non approvata) | Dottor Q + Nick | Sitemap e routing; blocca T-03, T-04, T-10 |
 | DEC-04 | Homepage: una o più “Prossime adunanze”; ordine/moduli/CTA; presenza anteprima Alleanze e classifica completa | DECISION (P) | Dottor Q + Nick | Wireframe e comportamento senza dati; blocca T-05–T-08 |
@@ -117,11 +123,13 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 |---|---|---|---|---|---|
 | 2026-09-30 | DEC-10 | **Banner artwork V2 PAUSED**; non toccare asset e hover | richiesto rollback PR #106/#107 | fuori scope di questa roadmap | Dottor Q |
 | 2026-09-30 | DEC-01…DEC-09 | APERTE (rispettare le scelte R già presenti nel brief) | serve ratifica del piano attuativo | vedi dipendenze | Dottor Q + Nick |
+| 2026-09-30 | DEC-01 — aggiornamento descrizione introduttiva | PROPOSTA DOTTOR Q: “Trova una community vicino a te, partecipa a giostre e leghe e segui le storie dei giocatori italiani.”; ratifica finale DEC-01 ancora aperta | Sostituisce solo “eventi” con “giostre” nel testo proposto da Nick | T-01; coordinare significato con DEC-02 | Dottor Q |
 
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
 | 2026-09-30 | Creato master di roadmap/tracking dai requisiti di Nick. Nessuna modifica al sito. | Documento docs/ICA_NICK_ROADMAP_MASTER.md | sito non alterato dall'introduzione del documento | DEC-01…09 aperte; DEC-10 paused | affrontare DEC-01, DEC-02 e DEC-03, poi DEC-04/05 |
+| 2026-09-30 | Registrata proposta DEC-01 di Dottor Q: descrizione con “giostre e leghe” anziché “eventi e leghe”. Solo aggiornamento roadmap. | docs/ICA_NICK_ROADMAP_MASTER.md | sito invariato; nessun test applicativo richiesto | DEC-01 attende conferma globale | Confermare nome, sottotitolo e frase, poi aprire DEC-02 |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**
