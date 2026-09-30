@@ -1,0 +1,33 @@
+name: Sprint 1 league dataset core
+on:
+  pull_request:
+    paths:
+      - 'scripts/league-release-core.mjs'
+      - 'tests/league-release-core.test.mjs'
+      - 'tests/league-private-preview.test.mjs'
+      - 'scripts/league-private-preview.mjs'
+      - 'scripts/league-preview-private.mjs'
+      - 'tests/league-release-integration.test.mjs'
+      - 'tests/league-release-current-data.test.mjs'
+      - 'data/players.json'
+      - 'data/events.json'
+      - 'data/league-standings.json'
+      - 'scripts/league-release-dry-run.mjs'
+      - 'beta/shared/release-reader.mjs'
+      - 'beta/main.js'
+      - 'beta/avventurieri/avventurieri.js'
+      - 'beta/adunanze/nazionale/main.js'
+      - 'beta/cronache/main.js'
+      - '.github/workflows/league-dataset-core.yml'
+  workflow_dispatch:
+jobs:
+  node-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/league-release-core.test.mjs tests/league-release-integration.test.mjs tests/league-release-current-data.test.mjs tests/league-private-preview.test.mjs
