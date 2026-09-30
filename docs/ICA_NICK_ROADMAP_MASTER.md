@@ -163,7 +163,7 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | Sprint / area | Stato | Output corrente / prossimo |
 |---|---|---|
 | Sprint 1 — Fondamenta dati | **DONE** | Report: `docs/ICA_SPRINT1_COMPLETION_REPORT.md`; primo XLSX reale e manifest live restano fuori scope di chiusura |
-| Sprint 2 — Adunanze & Leghe | **REVIEW / PO-LIVE** | PR #112 pronta e QA verde; merge sospeso perché main alimenta GitHub Pages e richiede gate PO-LIVE |
+| Sprint 2 — Adunanze & Leghe | **REVIEW / PO-LIVE** | PR #112 head `7ef291c` pronta, branch riallineato a main, 7 workflow finali SUCCESS; merge sospeso perché main alimenta GitHub Pages e richiede gate PO-LIVE |
 | Sprint 3 — Homepage & Avventurieri | PLANNED | Applicare struttura approvata, profili/ID e moduli homepage |
 | Sprint 4 — QA integrato & rilascio | PLANNED | QA completo, UAT, gate pubblicazione live |
 | Alleanze / mappa | **PAUSED** | Nessun intervento finché DEC-05 non viene riaperta |
@@ -377,6 +377,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | NORMALIZZAZIONE ROADMAP + CHIUSURA SPRINT 1 | Creati Current Rules, Completion Report e Sprint 2 Plan; PR #111 integrata code-only (merge ef43339a). DEC-09 congelata, quattro soli gate PO formalizzati, task operative semplificate, vecchio swap E02/E04 marcato SUPERSEDED. Primo XLSX reale e manifest live NON eseguiti ma non bloccano Sprint 2 | Mandato esplicito Dottor Q | SPRINT 1 DONE / SPRINT 2 IN_PROGRESS | Nick + Dottor Q |
 
 | 2026-09-30 | S2 — PR #112 pronta al gate live | Implementati calendario unificato, Leghe/Blaze, accordion, deep-link, Top3 spostata dalla home, QA keyboard/deep-link e fix popover 1024. Nessun data/* modificato. 7/7 workflow finali SUCCESS; performance Adunanze SUCCESS al retry senza riduzione soglie. GitHub Pages attivo: merge di #112 è trattato come PO-LIVE e NON eseguito | PR #112 head 2ed6241 | REVIEW / PO-LIVE | Dottor Q + Nick |
+
+| 2026-09-30 | Sprint 2 — final QA after roadmap normalization | PR #112 riallineata a main e Current Rules; head `7ef291c`; 7/7 workflow finali SUCCESS. Lighthouse portal-mobile primo tentativo 0.92 / LCP 2788ms FAIL, retry 0.99 / 1954ms PASS senza modifica codice/soglie. Nessun file data/ modificato. Merge non eseguito perché GitHub Pages rende il merge PO-LIVE | Modalità Sprint; gate PO-LIVE ancora richiesto | S2 REVIEW / PO-LIVE | Nick + Dottor Q |
 
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
