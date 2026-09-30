@@ -4,6 +4,9 @@ on:
     paths:
       - 'scripts/league-release-core.mjs'
       - 'tests/league-release-core.test.mjs'
+      - 'tests/league-release-integration.test.mjs'
+      - 'scripts/league-release-dry-run.mjs'
+      - 'beta/shared/release-reader.mjs'
       - '.github/workflows/league-dataset-core.yml'
   workflow_dispatch:
 jobs:
@@ -16,4 +19,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/league-release-core.test.mjs
+      - run: node --test tests/league-release-core.test.mjs tests/league-release-integration.test.mjs

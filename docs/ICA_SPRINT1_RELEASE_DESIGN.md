@@ -24,3 +24,9 @@
 **Limiti espliciti:** uno snapshot Excel storico non certifica il Google Sheet corrente; il core non offre al momento parser XLSX, riconciliazione privata, verifica cache formule, generazione HTML dell'anteprima, browser QA o rilascio live. Non usare buildReleaseFiles per pubblicare fino al completamento dei gate sopra e all'approvazione del rapporto dati effettivo.
 
 **Next in S1:** CLI di dry-run con input pubblici già sanitizzati + raccolta dei risultati dei test; adattatore di lettura del manifest per /beta/; protocollo versioni/rollback e rapporto anteprima completo.
+
+## Secondo incremento tecnico (non attivato sul sito)
+- `scripts/league-release-dry-run.mjs`: CLI rigorosamente read-only: accetta due cartelle di JSON già sanitizzati, genera report quantità + ID modificati/aggiunti/mancanti, nessuna scrittura e nessuna pubblicazione; exit 0 = struttura valida, NON dati ufficiali o release approvata; exit 1 = bloccante, 2 = input errato.
+- `beta/shared/release-reader.mjs`: lettore browser di UN puntatore `data/current-release.json`, verifica percorsi confinati alla versione e hash SHA-256 prima di consumare i tre file; non ancora cablato a `/beta/` fino a migrazione completa e simultanea dei consumer. In caso di errore non mischiare con JSON legacy.
+- `tests/league-release-integration.test.mjs`: prove sintetiche di hash, path traversal e blocco dello scambio obsoleto E02/E04.
+- **La validazione privacy della struttura NON sostituisce la verifica umana del contenuto stringhe** né convalida dati Excel/stati di ufficialità. Il dry-run su snapshot pubblico reale richiede confronto con una versione esplicitamente pubblicabile, non l'esportazione XLSX grezza.
