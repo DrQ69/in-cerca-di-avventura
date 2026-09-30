@@ -33,3 +33,7 @@
 
 ## Baseline real-world regression (read-only)
 - `tests/league-release-current-data.test.mjs` carica in CI i JSON pubblici già presenti in main/branch ed esegue core QA con un no-op dry-run. I controlli sulla cache formula/fonte XLSX e sull'ufficialità dei risultati non sono coperti da questo test; Fair Play rimane esplicitamente segnalato.
+
+## Terzo incremento: rapporto sicuro e checklist
+- `changedFieldNames` riporta per ID soltanto i nomi dei campi cambiati, senza valori stringa potenzialmente riservati nei log CI.
+- `docs/ICA_SPRINT1_RELEASE_CHECKLIST.md` definisce l'ordine completo di verifiche, conferme e rollback. Tutti i check sono inizialmente non spuntati e nessuna pubblicazione viene dichiarata.

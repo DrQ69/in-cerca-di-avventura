@@ -83,6 +83,18 @@ function delta(before,after,key){
     missing:[...a.keys()].filter(k=>!b.has(k))
   };
 }
+// Report keys only; never insert unreviewed raw values into public CI logs.
+// The owner-facing chat preview may add the authorized old/new values privately.
+function changedFields(before,after,key){
+ const a=idMap(before,key),b=idMap(after,key),result={};
+ for(const [id,proposed] of b){
+  if(!a.has(id)||same(a.get(id),proposed))continue;
+  const prior=a.get(id),names=new Set([...Object.keys(prior||{}),...Object.keys(proposed||{})]);
+  result[id]=[...names].filter(name=>name!==key&&!same(prior?.[name],proposed?.[name])).sort();
+ }
+ return result;
+}
+
 export function previewPublicChange(current,candidate){
   const qa=validatePublicBundle(candidate);
   if(!isRecord(current)||!isRecord(candidate))return {qa,changes:null,blocked:true};
@@ -91,11 +103,16 @@ export function previewPublicChange(current,candidate){
     events:delta(current.events?.events,candidate.events?.events,'event_id'),
     standings:delta(current.standings?.entries,candidate.standings?.entries,'player_id')
   };
+  const changedFieldNames={
+    players:changedFields(current.players?.players,candidate.players?.players,'id'),
+    events:changedFields(current.events?.events,candidate.events?.events,'event_id'),
+    standings:changedFields(current.standings?.entries,candidate.standings?.entries,'player_id')
+  };
   // Missing public entities must be preserved, unless separately authorized.
   for(const k of ['players','events'])
     if(changes[k].missing.length)qa.errors.push({code:'UNAUTHORIZED_OMISSION',where:k+': '+changes[k].missing.join(', ')});
   qa.ok=qa.errors.length===0;
-  return {qa,changes,blocked:!qa.ok,
+  return {qa,changes,changedFieldNames,blocked:!qa.ok,
     requiredGates:['owner_confirms_source_freshness','owner_confirms_formula_caches',
     'owner_confirms_officiality','private_desktop_and_mobile_preview',
     'functional_qa_desktop_and_mobile','explicit_final_publication_approval']};

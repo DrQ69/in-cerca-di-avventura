@@ -51,3 +51,13 @@ test('three immutable paths, hashes and one pointer manifest are coherent',()=>{
 test('release paths reject path traversal and unsafe release ids',()=>{
  assert.throws(()=>buildReleaseFiles(base(),'../escape','2026-09-30T18:36:00+02:00'));
 });
+
+test('field-level preview lists public changed keys without publishing field values',()=>{
+ const prior=base(),next=base();next.players.players[0].nickname='new nickname';
+ next.events.events[0].title='New public title';next.standings.entries[0].points=9;
+ const result=previewPublicChange(prior,next);
+ assert.deepEqual(result.changedFieldNames.players['PLY-0000'],['nickname']);
+ assert.deepEqual(result.changedFieldNames.events['bog-2026-duello-02'],['title']);
+ assert.deepEqual(result.changedFieldNames.standings['PLY-0000'],['points']);
+ assert.equal(JSON.stringify(result.changedFieldNames).includes('new nickname'),false);
+});

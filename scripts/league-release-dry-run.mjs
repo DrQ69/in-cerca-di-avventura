@@ -18,7 +18,8 @@ else {
       status:result.blocked?'BLOCKED':'STRUCTURAL_CHECK_PASSED_NOT_APPROVED_FOR_RELEASE',
       summary:Object.fromEntries(Object.entries(result.changes||{}).map(([k,v])=>
         [k,Object.fromEntries(Object.entries(v).map(([action,ids])=>[action,ids.length]))])),
-      changes:result.changes,errors:result.qa.errors,warnings:result.qa.warnings,
+      changes:result.changes,changedFieldNames:result.changedFieldNames||{},
+      errors:result.qa.errors,warnings:result.qa.warnings,
       requiredGates:result.requiredGates||[]
     };
     console.log(JSON.stringify(report,null,2));
