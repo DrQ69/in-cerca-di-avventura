@@ -4,6 +4,9 @@ on:
     paths:
       - 'scripts/league-release-core.mjs'
       - 'tests/league-release-core.test.mjs'
+      - 'tests/league-private-preview.test.mjs'
+      - 'scripts/league-private-preview.mjs'
+      - 'scripts/league-preview-private.mjs'
       - 'tests/league-release-integration.test.mjs'
       - 'tests/league-release-current-data.test.mjs'
       - 'data/players.json'
@@ -27,4 +30,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/league-release-core.test.mjs tests/league-release-integration.test.mjs tests/league-release-current-data.test.mjs
+      - run: node --test tests/league-release-core.test.mjs tests/league-release-integration.test.mjs tests/league-release-current-data.test.mjs tests/league-private-preview.test.mjs
