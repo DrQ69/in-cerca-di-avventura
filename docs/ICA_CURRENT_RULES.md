@@ -81,5 +81,5 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
   2. nuovi/modificati dati pubblici o ufficializzazione risultati;
   3. pubblicazione live;
   4. rollback.
-- PR code-only, test, refactoring, hardening e bugfix tecnici entro uno Sprint approvato sono autonomi se non alterano dati, comportamento approvato o contenuti pubblici.
+- PR code-only, test, refactoring, hardening e bugfix tecnici entro uno Sprint approvato sono autonomi se non alterano dati, comportamento approvato o contenuti pubblici. **Eccezione:** se il merge su `main` provoca automaticamente una pubblicazione del sito (es. GitHub Pages), il merge stesso ricade nel gate **PO-LIVE** anche quando non modifica `data/*.json`.
 - Rollback: mai automatico; prepararlo in caso di regressione critica, eseguirlo solo dopo autorizzazione specifica.
