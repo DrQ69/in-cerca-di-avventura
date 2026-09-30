@@ -18,3 +18,6 @@ The preview layer now distinguishes between fields that the approved XLSX workfl
 
 ## Private candidate packager
 `league-build-private-candidate.mjs` turns an already sanitized candidate into the exact immutable release directory + manifest inside a NEW PRIVATE LOCAL directory outside the repo, marked NOT PUBLISHED. It never performs GitHub or network writes. This makes the future owner review inspect the same files that would later be proposed for publication, while preserving the explicit publication gate.
+
+## Hardening aggiuntivo dopo code review
+Il candidate packager ora richiede anche il dataset pubblico corrente e invoca `previewPublicChange` prima di creare qualunque pacchetto privato: omissioni non autorizzate o cambi a campi non approvati bloccano l'output. Inoltre la workflow CI è stata corretta per eseguire realmente TUTTE le suite aggiunte in questo ramo (network activation, audit log e private candidate inclusi); i precedenti run verdi antecedenti a questa correzione non vanno considerati prova sufficiente di questi tre test.
