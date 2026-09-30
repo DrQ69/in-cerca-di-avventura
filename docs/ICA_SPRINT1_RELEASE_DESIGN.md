@@ -40,3 +40,9 @@
 
 ## Quarto incremento (solo in PR DRAFT)
 Le quattro pagine che consumano il registro giocatori/eventi/classifica sono state predisposte a leggere lo stesso manifest `data/current-release.json`. **Compatibilità transitoria esplicita, aggiornata dopo regressione visuale:** `readSiteBundle` usa per default `useManifest:false`: NON richiede un manifest assente (evitando il 404 visibile in console), legge una sola volta i tre JSON legacy per pagina. L'attivazione deve essere esplicita con `useManifest:true` per TUTTI i consumer, contestualmente alla pubblicazione autorizzata di manifest+tre file validi. In modalità attiva, 404/manifest invalido/hash errato/rete non disponibile sono sempre errori bloccanti e NON fanno ripiego silenzioso sul legacy. Prima di qualsiasi merge è comunque obbligatorio il collaudo reale delle pagine desktop/mobile e la successiva attivazione controllata di un release valido. Nessun manifest live o dato di rilascio è stato creato in questa PR.
+
+## Incremento 5 — simulazione visiva privata
+- `scripts/league-private-preview.mjs`: generatore di HTML responsive schematico con riepilogo delle differenze, Adunanze, Avventurieri e classifica generale, usando solo campi selezionati del candidato JSON **già sanitizzato**; escaping HTML obbligatorio.
+- `scripts/league-preview-private.mjs`: CLI che riceve directory del dataset pubblico corrente e del candidato sanitizzato, salva il file nuovo `.html` **solo fuori dal checkout GitHub**, con permessi `0600` e senza sovrascrivere file precedenti. Non caricare l'HTML generato nel sito o nel repository.
+- `tests/league-private-preview.test.mjs`: controllo su contenuto non pubblicato, responsive e escaping anti-iniezione.
+- Questa simulazione aiuta a valutare i contenuti, ma **NON** equivale al rendering fedele delle pagine `/beta/` né al QA desktop/mobile richiesto da DEC-09.33/.34. Questi ultimi rimangono gate autonomi prima del merge e dell'attivazione del puntatore.
