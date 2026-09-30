@@ -1,0 +1,44 @@
+name: ICA Beta V2 Visual QA
+on:
+  pull_request:
+    paths:
+      - 'beta-v2/**'
+      - 'beta/header-v2/**'
+      - 'assets/header-v2/**'
+      - 'scripts/beta_v2_visual_qa.mjs'
+      - '.github/workflows/beta-v2-visual-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'beta-v2/**'
+      - 'beta/header-v2/**'
+      - 'assets/header-v2/**'
+      - 'scripts/beta_v2_visual_qa.mjs'
+      - '.github/workflows/beta-v2-visual-qa.yml'
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Serve local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/ica-beta-v2-server.log 2>&1 &
+          sleep 2
+      - name: Render and check parallel pages
+        run: node scripts/beta_v2_visual_qa.mjs
+      - name: Save screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: beta-v2-visual-${{ github.sha }}
+          path: artifacts/beta-v2/
+          retention-days: 14
+          if-no-files-found: warn
