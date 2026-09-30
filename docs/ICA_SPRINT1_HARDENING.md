@@ -12,3 +12,6 @@ Allowed fields are version IDs, timestamp, commit SHA, previous version, four QA
 
 ## Remaining release gates
 A real activation still requires a new XLSX export in chat, freshness/cache checks, private reconciliation, officiality decisions, private visual preview, desktop/mobile QA, final owner authorization, immutable file upload + manifest activation, and post-release smoke test. Fair Play DEC-09.7 remains unresolved.
+
+## XLSX overwrite boundary hardening
+The preview layer now distinguishes between fields that the approved XLSX workflow may propose changing and other existing public fields that must be preserved. For example, nickname/date/venue/format/standings may enter the normal approval path; profile city/avatar/slug and event registration URLs or similar operational fields are blocked if an XLSX-derived candidate attempts to overwrite them. This prevents the workbook workflow from silently expanding beyond DEC-09.4/.21. Human review remains necessary for string contents and all owner gates.
