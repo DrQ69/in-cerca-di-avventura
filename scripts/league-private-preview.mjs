@@ -9,7 +9,7 @@ export function renderPrivatePreview(current,candidate){
  const names=new Map(p.map(x=>[x.id,x.nickname]));
  const summary=k=>['added','changed','missing'].map(action=>
    action+': '+(result.changes?.[k]?.[action]?.length||0)).join(' · ');
- const events=e.map(x=>card(x.title||x.event_id,'Tappa '+(x.stage_label||'—')+' · '+(x.date||'—')+
+ const events=e.map(x=>card(x.title||x.event_id,(x.stage_number?'Tappa '+(x.stage_label||x.stage_number):'Evento autonomo')+' · '+(x.date||'—')+
    ' · '+(x.venue||'—')+' · '+(x.format||'—'))).join('');
  const players=p.map(x=>card(x.nickname,x.id)).join('');
  const rows=r.map(x=>'<tr><td>'+esc(x.rank)+'</td><td>'+esc(names.get(x.player_id)||'—')+
