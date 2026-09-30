@@ -26,11 +26,11 @@ export async function readPublicRelease(manifestUrl,{fetcher=fetch,hasher}={}){
   const mUrl=new URL(manifestUrl,import.meta.url);
   const manifest=JSON.parse(await read(mUrl.toString(),{cache:'no-store'}));
   if(!validatePublicManifest(manifest))throw new Error('INVALID_RELEASE_MANIFEST');
-  const hashText=hasher||async text=>{
+  const hashText=hasher||(async text=>{
     if(!globalThis.crypto?.subtle)throw new Error('CRYPTO_SUBTLE_REQUIRED');
     const digest=await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));
     return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join('');
-  };
+  });
   const paths=['players','events','standings'].map(k=>manifest.paths[k]);
   const texts=await Promise.all(paths.map(p=>read(new URL('../'+p,mUrl).toString(),{cache:'no-store'})));
   for(let i=0;i<paths.length;i++){
