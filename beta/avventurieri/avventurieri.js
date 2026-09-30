@@ -159,7 +159,9 @@ Promise.all([
       league:leagueByPlayer.get(player.id)||{}
     }));
     const requestedPlayerId=new URLSearchParams(window.location.search).get('player');
-    const requestedPlayer=requestedPlayerId?players.find(player=>player.id===requestedPlayerId):null;
+    // Preserve previously shared profile links after Dr. Q's canonical ID migration.
+    const canonicalPlayerId=requestedPlayerId==='PLY-0002'?'PLY-0000':requestedPlayerId;
+    const requestedPlayer=canonicalPlayerId?players.find(player=>player.id===canonicalPlayerId):null;
     if(requestedPlayer){
       search.value=requestedPlayer.nickname;
       filtered=[requestedPlayer];
