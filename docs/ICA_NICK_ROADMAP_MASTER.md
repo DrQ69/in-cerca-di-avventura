@@ -43,12 +43,22 @@ Preservare: mappa fantasy d'Italia, logo e identità blu/nero/oro, filtri Tutti/
 | PATTO | Espressione narrativa dell'adesione, sempre con modalità pratiche spiegate in modo semplice. |
 Regole approvate: “Adunanza” non è sinonimo di “Lega”; evitare “Duello” come termine generale per una tappa e accompagnare eventuali denominazioni narrative con “Tappa II/III…” dopo verifica dei dati; stile fantasy per titoli e racconti ma date, costi, sedi, regolamenti, iscrizioni, classifiche e pulsanti operativi chiari e letterali. Decisione **editoriale**, non autorizzazione a modificare dati o percorsi prima delle altre decisioni.
 
+### DEC-03 — ARCHITETTURA DI NAVIGAZIONE APPROVATA (30/09/2026)
+Menu principale, in quest'ordine:
+1. **Adunanze**
+2. **Avventurieri**
+3. **Alleanze**
+4. **Proclami**
+5. **Chi siamo**
+
+Dentro **Adunanze** (tre accessi): **In programma** (eventi futuri e in corso), **Cronache** (eventi conclusi e risultati), **Leghe** (competizioni e relative stagioni, calendari e classifiche). La voce Cronache non compare più al primo livello della futura navigazione, ma **l'URL storico `/beta/cronache/` resta valido**. Preservare ugualmente gli URL profondi di Adunanze, Alleanze e Avventurieri. Proclami può mantenere inizialmente l'ancoraggio alla homepage in attesa delle decisioni editoriali; la modalità esatta della voce Chi siamo verrà definita nel suo task. **Non toccare il nuovo artwork/header `/beta-v2/`: DEC-10 PAUSED.** La scelta è approvazione architetturale; nessun file del sito è stato ancora modificato. L'esecuzione di Leghe richiede DEC-06 (modello dati/pagine).
+
 ## 2. GATE DECISIONALI (nessuna PR funzionale prima delle decisioni pertinenti)
 | ID | Scelta da compiere | Stato | Referente | Output richiesto / blocca |
 |---|---|---|---|---|
 | DEC-01 | Nome APPROVATO: “In cerca d'avventura”. Sottotitolo APPROVATO: “Il reame delle community italiane di Sorcery: Contested Realm”. Descrizione APPROVATA: “Trova una community vicino a te, partecipa a eventi e leghe e segui le storie dei giocatori italiani.” La grafia del logo fisico è una verifica separata, senza rielaborare il banner sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-01 sbloccata sul copy; applicazione alle pagine ancora non eseguita |
 | DEC-02 | APPROVATO integralmente il vocabolario del brief: Reame, Avventuriero, Alleanza, Community, Mercante, Adunanza, Lega, Tappa, Cronaca, Proclama, Patto; per le tappe privilegiare “Tappa II” anziché “Duello II” (ferme eventuali denominazioni narrative proprie, accompagnate dall'indicazione Tappa); mantenere esplicite le informazioni operative. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-02 READY; T-12 ancora BLOCKED da DEC-09 e fonti evento; nessuna modifica al sito |
-| DEC-03 | Approva o modifica menu proposto: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; Cronache e Leghe dentro Adunanze? | DECISION (P, non approvata) | Dottor Q + Nick | Sitemap e routing; blocca T-03, T-04, T-10 |
+| DEC-03 | APPROVATO menu principale: Adunanze / Avventurieri / Alleanze / Proclami / Chi siamo; dentro Adunanze: In programma / Cronache / Leghe. Gli URL esistenti devono restare funzionanti. Questo approva l'architettura, non riapre l'artwork/banner V2 sospeso. | **APPROVED** (Dottor Q, 30/09/2026) | Dottor Q | T-03 READY; T-04 dipende ancora da DEC-06 per dati e struttura della sezione Leghe; T-10 appartiene alla mappa e non è dipendente da DEC-03 |
 | DEC-04 | Homepage: una o più “Prossime adunanze”; ordine/moduli/CTA; presenza anteprima Alleanze e classifica completa | DECISION (P) | Dottor Q + Nick | Wireframe e comportamento senza dati; blocca T-05–T-08 |
 | DEC-05 | Mappa: dimensione marker e comportamento tooltip/click, se e quando prevedere cluster/elenco geografico | DECISION (riduzione R; interazione P) | Dottor Q + Nick | Specifica UI + mock; blocca T-09–T-11 |
 | DEC-06 | Schede Lega: dati minimi, URL/struttura, stagione, classifica, differenza evento autonomo/tappa | DECISION (P) | Dottor Q + Nick | Data model + routing; blocca T-13, T-15 |
@@ -66,7 +76,7 @@ Le durate sotto sono intervalli di *pianificazione* per una sessione di decision
 |---|---|---|---|---|---|
 | F0 — Baseline e approvazioni | T-00 + DEC-01…DEC-10 | Brief v2, main rollback | Sitemap, glossario, decision log e baseline condivisi; backlog validato | 1–2 sessioni | IN_PROGRESS (solo roadmap) |
 | F1 — Identità e copy P0 | T-01,T-02 | DEC-01,DEC-02 | Copy coerente su homepage/sezioni/footer; regressioni contenuti assenti | 1–2 sessioni | BLOCKED (decisioni) |
-| F2 — Architettura navigazione | T-03,T-04 | DEC-03 | Menu/routing approvati, vecchi deep link preservati, prototipo collaudato | 1–3 sessioni | BLOCKED |
+| F2 — Architettura navigazione | T-03,T-04 | DEC-03 APPROVED; DEC-06 ancora aperta per la scheda Leghe | Menu/routing approvati, vecchi deep link preservati, prototipo collaudato; nessuna modifica al banner V2 | 1–3 sessioni | READY (T-03), BLOCKED parzialmente (T-04) |
 | F3 — Homepage nazionale | T-05…T-08 | DEC-04, dati organismi | CTA e moduli utili, corretta attribuzione degli eventi/classifica | 2–4 sessioni | BLOCKED |
 | F4 — Alleanze | T-09…T-11 | DEC-05, DEC-08, DEC-09 | Mappa leggibile, filtri intatti, informazioni e contatti verificati | 2–4 sessioni | BLOCKED |
 | F5 — Adunanze, Leghe, Cronache | T-12…T-16 | DEC-02,03,06,09 + fonti eventi | Schede identificabili; CTA veritiere; cronache collegate; leghe se approvate | 3–6 sessioni | BLOCKED |
@@ -82,8 +92,8 @@ Colonne abbreviate: tipo R/P/V/D (come sopra); criterio = evidenza minima per ch
 | T-00 | P0 | V | Inventario baseline \`/beta/\`, link e screenshot delle pagine | — | READY | commit/tree, 5 URL e funzioni protette registrati |
 | T-01 | P0 | R | Nome, sottotitolo, descrizione nazionale e copy iniziale | DEC-01 | READY | testo approvato presente, nessuna falsa rappresentatività nazionale |
 | T-02 | P0 | R/P | Glossario, plurali “alleanze aderenti”, Adunanza ≠ Lega, “Tappa” | DEC-02 | READY | test di coerenza in tutte le sezioni |
-| T-03 | P0 | P | Sitemap/menu e orientamento/sezione attiva | DEC-03 | BLOCKED | navigazione e link legacy verificati da ogni pagina |
-| T-04 | P1 | P | Tre ingressi Adunanze: In programma / Cronache / Leghe (se approvati) | DEC-03,DEC-06 | BLOCKED | accessi e deep-link stabili |
+| T-03 | P0 | P | Sitemap/menu e orientamento/sezione attiva, senza modifiche all'artwork V2 | DEC-03 | READY | navigazione e link legacy verificati da ogni pagina |
+| T-04 | P1 | P | Tre ingressi Adunanze APPROVATI: In programma / Cronache / Leghe; dati e pagine Leghe da definire | DEC-03 approvata; DEC-06 aperta per Leghe | BLOCKED (parziale) | accessi e deep-link stabili |
 | T-05 | P1 | P | Hero compatto + 2 CTA Community/Eventi | DEC-04,T-01 | BLOCKED | CTA con destinazioni vere e prime schede visibili |
 | T-06 | P1 | P | Prossime adunanze multi-community, ordinamento per data e organizzatore | DEC-04,DEC-09 | BLOCKED | dati e stati veritieri, link al calendario |
 | T-07 | P0 | P | Etichettare classifica Top 3 con lega/community/stagione, eventuale link completa | DEC-09 | BLOCKED | no classifica nazionale fittizia, Top 3 esistente intatta |
@@ -146,6 +156,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 
 | 2026-09-30 | DEC-02 — approvazione definitiva | APPROVATI integralmente il vocabolario del brief e le precisazioni su Tappa/Duello e chiarezza operativa; testo completo nella sezione 2 | Conferma esplicita di Dottor Q | T-02 READY; T-12 resta vincolato a DEC-09 | Dottor Q |
 
+| 2026-09-30 | DEC-03 — approvazione definitiva | Menu principale: Adunanze, Avventurieri, Alleanze, Proclami, Chi siamo; Adunanze: In programma / Cronache / Leghe; mantenere gli URL esistenti e il banner V2 sospeso | Conferma esplicita di Dottor Q | T-03 READY; T-04 parzialmente BLOCKED su DEC-06 | Dottor Q |
+
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |
 |---|---|---|---|---|---|
@@ -156,6 +168,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | DEC-01 approvata integralmente da Dottor Q: nome, sottotitolo e frase introduttiva con “eventi e leghe”. T-01 passa a READY; nessun file applicativo modificato. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01 APPROVED | Affrontare DEC-02 lessico comune |
 
 | 2026-09-30 | DEC-02 approvata integralmente; aggiunto glossario canonico. T-02 passa a READY; non applicata alcuna modifica alle pagine. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01 e DEC-02 APPROVED; DEC-03 aperta | Discutere menu e organizzazione di Adunanze, Cronache, Leghe in DEC-03 |
+
+| 2026-09-30 | DEC-03 approvata integralmente; registrata la nuova sitemap e il vincolo sui deep-link. T-03 READY; T-04 resta vincolata alla definizione delle Leghe. Nessuna modifica al sito. | Solo docs/ICA_NICK_ROADMAP_MASTER.md | Nessuna modifica live né QA applicativo | DEC-01, DEC-02, DEC-03 APPROVED; DEC-10 PAUSED | Aprire DEC-04: moduli e struttura della homepage nazionale |
 
 ## 8. HANDOFF OBBLIGATORIO ALLA NUOVA CHAT
 **Prompt da incollare:**
