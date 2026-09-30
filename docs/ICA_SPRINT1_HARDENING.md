@@ -15,3 +15,6 @@ A real activation still requires a new XLSX export in chat, freshness/cache chec
 
 ## XLSX overwrite boundary hardening
 The preview layer now distinguishes between fields that the approved XLSX workflow may propose changing and other existing public fields that must be preserved. For example, nickname/date/venue/format/standings may enter the normal approval path; profile city/avatar/slug and event registration URLs or similar operational fields are blocked if an XLSX-derived candidate attempts to overwrite them. This prevents the workbook workflow from silently expanding beyond DEC-09.4/.21. Human review remains necessary for string contents and all owner gates.
+
+## Private candidate packager
+`league-build-private-candidate.mjs` turns an already sanitized candidate into the exact immutable release directory + manifest inside a NEW PRIVATE LOCAL directory outside the repo, marked NOT PUBLISHED. It never performs GitHub or network writes. This makes the future owner review inspect the same files that would later be proposed for publication, while preserving the explicit publication gate.

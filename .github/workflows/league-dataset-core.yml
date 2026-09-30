@@ -4,7 +4,7 @@ on:
     paths:
       - 'scripts/league-release-core.mjs'
       - 'tests/league-release-core.test.mjs'
-      - 'tests/league-private-preview.test.mjs tests/league-release-network.test.mjs tests/league-release-audit.test.mjs'
+      - 'tests/league-private-preview.test.mjs tests/league-release-network.test.mjs tests/league-release-audit.test.mjs tests/league-private-candidate.test.mjs'
       - 'scripts/league-private-preview.mjs'
       - 'scripts/league-preview-private.mjs'
       - 'tests/league-release-integration.test.mjs'
@@ -19,6 +19,8 @@ on:
       - 'beta/adunanze/nazionale/main.js'
       - 'beta/cronache/main.js'
       - 'scripts/league-release-audit.mjs'
+      - 'scripts/league-build-private-candidate.mjs'
+      - 'tests/league-private-candidate.test.mjs'
       - 'tests/league-release-network.test.mjs'
       - 'tests/league-release-audit.test.mjs'
       - 'docs/ICA_RELEASE_AUDIT_LOG.schema.json'
