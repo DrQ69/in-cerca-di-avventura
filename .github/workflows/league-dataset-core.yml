@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'scripts/league-release-core.mjs'
+      - 'scripts/league-xlsx-intake-core.mjs'
+      - 'tests/league-xlsx-intake-core.test.mjs'
       - 'scripts/league-release-dry-run.mjs'
       - 'scripts/league-release-audit.mjs'
       - 'scripts/league-build-private-candidate.mjs'
@@ -45,3 +47,4 @@ jobs:
           tests/league-release-network.test.mjs
           tests/league-release-audit.test.mjs
           tests/league-private-candidate.test.mjs
+          tests/league-xlsx-intake-core.test.mjs
