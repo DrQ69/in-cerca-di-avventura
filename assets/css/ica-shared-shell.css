@@ -167,8 +167,8 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{
 @media(min-width:1024px){
   .site-nav{
     height:84px;
-    grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr);
-    padding:0 6.5%;
+    grid-template-columns:minmax(0,1fr) 166px minmax(0,1fr);
+    padding:0 4.5%;
     border-bottom:0;
   }
   .site-nav::after{
@@ -192,7 +192,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{
   }
   .nav-side{
     display:flex;
-    gap:clamp(18px,2.3vw,34px);
+    gap:clamp(10px,1.45vw,24px);
     align-items:center;
     position:relative;
     z-index:6;
@@ -201,7 +201,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{
   .nav-side a{
     text-decoration:none;
     color:#d8bc7a;
-    font:600 .76rem Cinzel,serif;
+    font:600 clamp(.62rem,.72vw,.76rem) Cinzel,serif;
     text-transform:uppercase;
     letter-spacing:.075em;
     padding:22px 2px;
