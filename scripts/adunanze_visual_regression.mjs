@@ -127,7 +127,10 @@ try {
         rules:[...card.querySelectorAll('.info-trigger')].some(el=>el.textContent.trim()==='Regolamento'),
         prizes:[...card.querySelectorAll('.info-trigger')].some(el=>el.textContent.trim()==='Premi'),
         signup:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Iscriviti'),
-        chronicles:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Cronache')
+        chronicles:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Cronache'),
+        organizer:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Organizzatore'),
+        cost:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Costo'),
+        availability:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Disponibilità')
       }));
       const completedInUpcoming=[...document.querySelectorAll('#upcoming-root .adunanza-card')].some(card=>card.dataset.status==='conclusa');
       const completedCount=document.querySelectorAll('#completed-root .adunanza-card[data-status="conclusa"]').length;
@@ -167,8 +170,8 @@ try {
     if (!national.chronological) throw new Error(`${viewport.name}: upcoming events are not chronological`);
     if (national.mapLinkCount!==national.count||!national.mapsValid) throw new Error(`${viewport.name}: not every national event location links to Google Maps`);
     const upcomingDetails=national.details.filter(item=>item.status!=='conclusa');
-    if (upcomingDetails.some(item=>!item.checkIn||!item.start||!item.rules||!item.prizes||!item.signup)) {
-      throw new Error(`${viewport.name}: an upcoming event is missing check-in/start/rules/prizes/signup controls`);
+    if (upcomingDetails.some(item=>!item.checkIn||!item.start||!item.rules||!item.prizes||!item.signup||!item.organizer||!item.cost||!item.availability)) {
+      throw new Error(`${viewport.name}: an upcoming event is missing Nick v2 event metadata or controls`);
     }
     const concludedDetails=national.details.filter(item=>item.status==='conclusa');
     if(concludedDetails.some(item=>!item.chronicles))throw new Error(`${viewport.name}: concluded event lacks Cronache action`);
@@ -206,7 +209,7 @@ try {
       signup:card.querySelector('.signup-action')?.getAttribute('href')||''
     }));
     if(peasantSnapshot.title!=='Peasant')throw new Error(`${viewport.name}: Stage II title mismatch`);
-    for(const expected of ['20:30–21:00','21:15','Joker - comics&games']){
+    for(const expected of ['20:30–21:00','21:15','Joker - comics&games','Il Regno di Cremos','10 €']){
       if(!peasantSnapshot.text.includes(expected))throw new Error(`${viewport.name}: Stage II missing ${expected}`);
     }
     for(const expected of ['Ordinary: massimo 4 copie per carta.','Exceptional: massimo 3 copie per carta.','Elite e Unique: bandite.','DECKLIST OBBLIGATORIA']){
