@@ -47,7 +47,7 @@ try{
       };
     });
 
-    const expected=['home','next-event','classifica','cronache-home','proclami'];
+    const expected=['home','next-event','classifica','cronache-home','proclami','contattaci'];
     if(JSON.stringify(result.order)!==JSON.stringify(expected)){
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
