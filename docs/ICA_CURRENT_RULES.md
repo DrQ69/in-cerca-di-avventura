@@ -61,7 +61,7 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Qualunque vecchia indicazione E02→IV / E04→II è **SUPERSEDED**.
 - Classifiche pubbliche: usare i valori già calcolati dal gestionale; il sito non ricalcola GP, posizioni, tie-break o bonus.
 - Specialità non iniziate: “In attesa della prima Tappa ufficiale”, senza podio 0/0.
-- **Fair Play DEC-09.7 = OPEN**: nessuna scelta autonoma +2/+3 e nessuna validazione numerica basata su uno dei due valori.
+- **Fair Play DEC-09.7 = RISOLTA**: bonus confermato da Dottor Q pari a **+3 GP**. Il sito non deve ricalcolare autonomamente classifiche o bonus; deve usare i valori ufficiali/precalcolati del gestionale e può validare la coerenza con +3 solo quando il dato Fair Play è effettivamente coinvolto.
 
 ## 9. Gestione dataset
 - Google Sheet = gestionale originale; non modificarlo.
