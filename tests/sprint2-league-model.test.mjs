@@ -19,7 +19,7 @@ test('league view uses only matching series and only numbered stages in Tappe',(
  assert.deepEqual(m.stages.map(x=>x.stage_number),[1,2,4]);
  assert.equal(m.completed.length,1);
  assert.equal(m.season,'2026/2027');
- assert.equal(m.organizer,'In Cerca di Avventura');
+ assert.equal(m.organizer,'Il Regno di Cremos');
 });
 test('top standings are sorted but points are never recalculated',()=>{
  const m=buildLeagueView(events,standings,players);
