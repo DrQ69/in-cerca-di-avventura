@@ -25,7 +25,7 @@ export function buildLeagueView(events,standings,players){
     name:standings.series_name||seriesEvents[0].series_name||standings.series_id,
     season,
     status:standings.status==='current'?'active':'completed',
-    organizer:'In Cerca di Avventura',
+    organizer:'Il Regno di Cremos',
     stages,
     completed,
     entries,
