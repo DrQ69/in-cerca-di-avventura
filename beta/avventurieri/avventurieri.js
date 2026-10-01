@@ -21,6 +21,8 @@ const search=document.getElementById('player-search');
 const filterResults=document.getElementById('filter-results');
 const filterAvatar=document.getElementById('filter-avatar');
 const filterStyle=document.getElementById('filter-style');
+const filterCity=document.getElementById('filter-city');
+const filterCommunity=document.getElementById('filter-community');
 const clear=document.getElementById('clear-filters');
 
 let players=[];
@@ -67,7 +69,7 @@ function card(player){
   const leagueRank=Number.isFinite(league.rank)?'#'+league.rank:null;
   const leaguePoints=Number.isFinite(league.points)?league.points:null;
   return '<article class="player-card" id="player-'+esc(player.id)+'" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
-    '<header class="player-card-header" data-ica-id="AVV-CARD-HEAD-'+esc(player.id)+'"><div class="player-avatar" data-ica-id="AVV-CARD-AVATAR-'+esc(player.id)+'">'+avatar+'</div><div class="player-card-title" data-ica-id="AVV-CARD-NAME-'+esc(player.id)+'"><h3>'+esc(player.nickname)+'</h3><span class="player-id">'+esc(player.id)+'</span></div></header>'+
+    '<header class="player-card-header" data-ica-id="AVV-CARD-HEAD-'+esc(player.id)+'"><div class="player-avatar" data-ica-id="AVV-CARD-AVATAR-'+esc(player.id)+'">'+avatar+'</div><div class="player-card-title" data-ica-id="AVV-CARD-NAME-'+esc(player.id)+'"><h3>'+esc(player.nickname)+'</h3><span class="player-location">'+esc(valueOrMissing(player.city))+'</span><span class="player-id">'+esc(player.id)+'</span></div></header>'+
     '<div class="player-details" data-ica-id="AVV-CARD-DETAILS-'+esc(player.id)+'">'+
       detail('Eventi registrati',hasRecorded?stats.events_played:0,false)+
       detail('Vittorie evento',hasRecorded?stats.event_wins:0,false)+
@@ -78,6 +80,7 @@ function card(player){
       detail('Classifica Lega',leagueRank,false)+
       detail('Fair Play',Number.isFinite(league.fair_play_wins)?league.fair_play_wins:null,false)+
       detail('Città',player.city,false)+
+      detail('Community',player.community,false)+
       detail('Ultimo deck',player.last_deck,false)+
       detail('Stile di gioco',player.play_style,true)+
     '</div></article>';
@@ -104,8 +107,12 @@ function render(){
 function applyFilters(resetPage=true){
   const term=search.value.trim().toLocaleLowerCase('it');
   filtered=players.filter(player=>{
-    const matchName=!term||player.nickname.toLocaleLowerCase('it').includes(term);
-    return matchName && passesMode(filterResults.value,hasResults(player)) && passesMode(filterAvatar.value,hasAvatar(player)) && passesMode(filterStyle.value,hasStyle(player));
+    const haystack=[player.nickname,player.city,player.community].filter(Boolean).join(' ').toLocaleLowerCase('it');
+    const matchName=!term||haystack.includes(term);
+    const matchCity=filterCity.value==='all'||player.city===filterCity.value;
+    const matchCommunity=filterCommunity.value==='all'
+      ||(filterCommunity.value==='missing'?!player.community:player.community===filterCommunity.value);
+    return matchName && matchCity && matchCommunity && passesMode(filterResults.value,hasResults(player)) && passesMode(filterAvatar.value,hasAvatar(player)) && passesMode(filterStyle.value,hasStyle(player));
   });
   if(resetPage)page=0;
   render();
@@ -114,8 +121,8 @@ function applyFilters(resetPage=true){
 prev.addEventListener('click',()=>{if(page>0){page-=1;render();}});
 next.addEventListener('click',()=>{if(page<totalPages()-1){page+=1;render();}});
 search.addEventListener('input',()=>applyFilters());
-[filterResults,filterAvatar,filterStyle].forEach(control=>control.addEventListener('change',()=>applyFilters()));
-clear.addEventListener('click',()=>{search.value='';filterResults.value='all';filterAvatar.value='all';filterStyle.value='all';applyFilters();search.focus();});
+[filterResults,filterAvatar,filterStyle,filterCity,filterCommunity].forEach(control=>control.addEventListener('change',()=>applyFilters()));
+clear.addEventListener('click',()=>{search.value='';filterResults.value='all';filterAvatar.value='all';filterStyle.value='all';filterCity.value='all';filterCommunity.value='all';applyFilters();search.focus();});
 
 let lastSize=perPage();
 window.addEventListener('resize',()=>{const size=perPage();if(size!==lastSize){lastSize=size;page=0;render();}});
@@ -155,6 +162,11 @@ import('../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
       stats:aggregatePlayerStats(player.id,events),
       league:leagueByPlayer.get(player.id)||{}
     }));
+    const cities=[...new Set(players.map(player=>player.city).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'it'));
+    filterCity.insertAdjacentHTML('beforeend',cities.map(city=>'<option value="'+esc(city)+'">'+esc(city)+'</option>').join(''));
+    const communities=[...new Set(players.map(player=>player.community).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'it'));
+    filterCommunity.insertAdjacentHTML('beforeend',communities.map(name=>'<option value="'+esc(name)+'">'+esc(name)+'</option>').join(''));
+
     const requestedPlayerId=new URLSearchParams(window.location.search).get('player');
     // Preserve previously shared profile links after Dr. Q's canonical ID migration.
     const canonicalPlayerId=requestedPlayerId==='PLY-0002'?'PLY-0000':requestedPlayerId;
