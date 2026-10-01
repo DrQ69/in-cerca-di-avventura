@@ -92,7 +92,7 @@
   position:relative;
   z-index:1;
   display:grid;
-  grid-template-columns:1.2fr 1fr 1fr .72fr 1.35fr;
+  grid-template-columns:repeat(4,minmax(0,1fr));
   align-items:stretch;
 }
 
