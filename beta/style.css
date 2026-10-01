@@ -365,3 +365,11 @@ main{position:relative;z-index:8;margin:0 9.8%}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* Nick v2.0 — national portal positioning and verified contact channels */
+.identity-copy{max-width:1050px}
+.identity-copy h1{font-size:clamp(2.05rem,5.25vw,4.7rem);line-height:1.04}
+.contact-section{text-align:center;background:radial-gradient(circle at 50% 0,rgba(45,82,103,.16),transparent 38%),linear-gradient(180deg,#0b1116,#07090c)}
+.contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-note{margin:15px auto 0;color:#817d74;font-size:.68rem;max-width:680px}
+@media(max-width:700px){.identity-copy h1{font-size:2rem}.contact-actions .home-button{min-width:140px}}
