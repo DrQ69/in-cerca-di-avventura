@@ -50,6 +50,21 @@ function winnerContent(e){
   return esc(e.winner_display_name||'Da verificare');
 }
 
+function communityName(e){
+  if(e?.community_name)return e.community_name;
+  if(e?.series_id==='blaze-of-glory-2026-2027')return 'Il Regno di Cremos';
+  return 'Da verificare';
+}
+
+function leagueName(e){
+  return e?.series_name||'Evento autonomo';
+}
+
+function stageName(e){
+  if(!Number.isInteger(e?.stage_number))return '—';
+  return 'Tappa '+(e.stage_label||e.stage_number);
+}
+
 function deckLink(e){
   if(e.winner_deck_url){
     return `<a class="winner-deck-link" href="${esc(e.winner_deck_url)}" target="_blank" rel="noopener">Mazzo del vincitore →</a>`;
@@ -63,6 +78,9 @@ function eventCard(e){
       <h3>${esc(e.title)}</h3>
     </header>
     <div class="chronicle-facts">
+      <div class="chronicle-fact" data-ica-id="CRO-REC-COMMUNITY-${esc(e.event_id||'unknown')}"><span>Community</span><strong>${esc(communityName(e))}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-LEAGUE-${esc(e.event_id||'unknown')}"><span>Lega</span><strong>${esc(leagueName(e))}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-STAGE-${esc(e.event_id||'unknown')}"><span>Tappa</span><strong>${esc(stageName(e))}</strong></div>
       <div class="chronicle-fact" data-ica-id="CRO-REC-PLACE-${esc(e.event_id||'unknown')}"><span>Luogo</span><strong>${placeLink(e)}</strong></div>
       <div class="chronicle-fact" data-ica-id="CRO-REC-DATE-${esc(e.event_id||'unknown')}"><span>Data</span><strong>${esc(fmtDate(e.date))}</strong></div>
       <div class="chronicle-fact" data-ica-id="CRO-REC-WINNER-${esc(e.event_id||'unknown')}"><span>Vincitore</span><strong>${winnerContent(e)}</strong></div>
