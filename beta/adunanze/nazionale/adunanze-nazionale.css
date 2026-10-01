@@ -212,6 +212,23 @@
 .rules-copy h5{margin:14px 0 6px;color:#684b20;font:700 .72rem Georgia,"Times New Roman",serif;letter-spacing:.04em}
 .rules-copy .popover-list{margin-top:6px}
 .prize-copy h4{margin:0 0 8px;color:#684b20;font:700 .82rem Georgia,"Times New Roman",serif;letter-spacing:.05em}
+.prizes-control .event-popover{
+  background:#f0e5cc!important;
+  background-image:none!important;
+  opacity:1!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  isolation:isolate;
+  box-shadow:0 16px 42px rgba(0,0,0,.5);
+}
+.prizes-control .event-popover::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:#f0e5cc;
+  pointer-events:none;
+}
 .prize-copy-list{margin:10px 0 12px;padding-left:22px;display:grid;gap:6px}
 .prize-copy-list li{padding-left:2px}
 .prize-note{margin-top:9px!important;color:#5f5544}
