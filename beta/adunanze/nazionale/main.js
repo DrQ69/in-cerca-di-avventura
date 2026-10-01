@@ -77,6 +77,20 @@ function timeValue(value){
   return value||'Da definire';
 }
 
+function organizerName(event){
+  if(event?.organizer)return event.organizer;
+  if(event?.series_id==='blaze-of-glory-2026-2027')return 'Il Regno di Cremos';
+  return 'Da verificare';
+}
+
+function feeLabel(event){
+  return Number.isFinite(event?.entry_fee_eur)?event.entry_fee_eur+' €':'Da verificare';
+}
+
+function availabilityLabel(event){
+  return event?.availability_label||event?.availability||'Da verificare';
+}
+
 function prizeGrid(event){
   const pop=event.prize_popover;
   if(pop){
@@ -157,6 +171,9 @@ function card(event){
       <div class="fact"><span>Data</span><strong>${esc(fmtDate(event.date))}</strong></div>
       <div class="fact"><span>Luogo</span><strong>${placeLink(event)}</strong></div>
       <div class="fact"><span>Formato</span><strong>${esc(event.format||'Da definire')}</strong></div>
+      <div class="fact"><span>Organizzatore</span><strong>${esc(organizerName(event))}</strong></div>
+      <div class="fact"><span>Quota</span><strong>${esc(feeLabel(event))}</strong></div>
+      <div class="fact"><span>Disponibilità</span><strong>${esc(availabilityLabel(event))}</strong></div>
       <div class="fact"><span>Check-in</span><strong>${esc(timeValue(event.check_in_time))}</strong></div>
       <div class="fact"><span>Inizio</span><strong>${esc(timeValue(event.start_time))}</strong></div>
     </div>
