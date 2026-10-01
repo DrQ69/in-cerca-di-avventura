@@ -11,6 +11,7 @@ const year=document.getElementById('year');if(year)year.textContent=new Date().g
 const markerLayer=document.getElementById('marker-layer');
 const influenceLayer=document.getElementById('influence-layer');
 const statusEl=document.getElementById('map-status');
+const directoryRoot=document.getElementById('alliance-directory-root');
 const filters=[...document.querySelectorAll('.map-filter')];
 const VIEW_W=1000,VIEW_H=625;
 const ASSET_VERSION='20260929-2';
@@ -20,6 +21,24 @@ function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&l
 function pctX(x){return (Number(x)/VIEW_W*100).toFixed(3)+'%';}
 function pctY(y){return (Number(y)/VIEW_H*100).toFixed(3)+'%';}
 function radiusPct(r){return (Number(r)/VIEW_W*200).toFixed(3)+'%';}
+
+function contactMarkup(entity){
+  const url=entity.contact_url||entity.website_url||entity.instagram_url||entity.facebook_url||'';
+  if(!url)return '<span class="alliance-contact-pending">Contatto da verificare</span>';
+  return '<a class="alliance-contact-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Contatta la community →</a>';
+}
+
+function directoryCard(entity,tiers){
+  const tier=tiers[String(entity.influence_tier)]||tiers['1']||{label:'Presenza locale'};
+  return '<article class="alliance-directory-card" data-entity-id="'+esc(entity.id||'')+'">'+
+    '<header><img src="'+esc(versionedAsset(entity.logo))+'" alt=""><div><h3>'+esc(entity.name)+'</h3><p>'+esc(entity.city)+(entity.region?' · '+esc(entity.region):'')+'</p></div></header>'+
+    '<dl>'+
+      '<div><dt>Tipo</dt><dd>'+esc(entity.type==='community'?'Community':entity.type||'Da verificare')+'</dd></div>'+
+      '<div><dt>Prestigio</dt><dd>'+esc(entity.prestige_label||'Da verificare')+'</dd></div>'+
+      '<div><dt>Influenza</dt><dd>'+esc(tier.label||'Da verificare')+'</dd></div>'+
+      '<div><dt>Stato scheda</dt><dd>'+esc(entity.status==='pilot'?'Profilo pilota verificato':entity.status||'Da verificare')+'</dd></div>'+
+    '</dl>'+contactMarkup(entity)+'</article>';
+}
 
 function render(data){
   const tiers=data.influence_tiers||{};
@@ -60,6 +79,9 @@ function render(data){
   }
 
   statusEl.textContent=entities.length+' presidi pilota censiti. Le aree di influenza sono dimostrative e verranno aggiornate con i dati reali delle community.';
+  if(directoryRoot){
+    directoryRoot.innerHTML=entities.filter(entity=>entity.type==='community').map(entity=>directoryCard(entity,tiers)).join('');
+  }
 }
 
 function applyFilter(filter){
