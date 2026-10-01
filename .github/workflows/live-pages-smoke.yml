@@ -1,0 +1,48 @@
+name: Temporary live Pages smoke
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/live-pages-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  live-desktop-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Live Homepage smoke
+        env:
+          ICA_BASE_URL: https://drq69.github.io/in-cerca-di-avventura
+          HOMEPAGE_SCREENSHOT_DIR: artifacts/live-smoke/homepage
+        run: node scripts/homepage_visual_regression.mjs
+
+      - name: Live Adunanze smoke
+        env:
+          ICA_BASE_URL: https://drq69.github.io/in-cerca-di-avventura
+          ADUNANZE_SCREENSHOT_DIR: artifacts/live-smoke/adunanze
+        run: node scripts/adunanze_visual_regression.mjs
+
+      - name: Upload live smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-pages-smoke-${{ github.sha }}
+          path: artifacts/live-smoke/
+          if-no-files-found: error
+          retention-days: 14
