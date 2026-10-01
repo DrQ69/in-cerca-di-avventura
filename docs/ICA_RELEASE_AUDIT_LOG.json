@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "entries": [
+    {
+      "action": "publish",
+      "release_id": "ica-s2-ui-2026-10-01-51b58c4",
+      "published_at": "2026-10-01T09:11:59Z",
+      "commit_sha": "51b58c46b179c0721898a23f4e258077d1f33dd7",
+      "previous_release_id": null,
+      "qa_desktop": "PASS",
+      "qa_mobile": "PASS",
+      "functional_qa": "PASS",
+      "post_publish_smoke": "PASS",
+      "authorization_ref": "PO-LIVE-PR112-2026-10-01"
+    }
+  ]
+}

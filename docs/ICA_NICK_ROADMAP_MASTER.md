@@ -163,7 +163,7 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | Sprint / area | Stato | Output corrente / prossimo |
 |---|---|---|
 | Sprint 1 — Fondamenta dati | **DONE** | Report: `docs/ICA_SPRINT1_COMPLETION_REPORT.md`; primo XLSX reale e manifest live restano fuori scope di chiusura |
-| Sprint 2 — Adunanze & Leghe | **REVIEW / PO-LIVE** | PR #112 head `7ef291c` pronta, branch riallineato a main, 7 workflow finali SUCCESS; merge sospeso perché main alimenta GitHub Pages e richiede gate PO-LIVE |
+| Sprint 2 — Adunanze & Leghe | **DONE / LIVE** | PR #112 mergiata con autorizzazione PO-LIVE; merge `51b58c46`, GitHub Pages deploy `36841003715` SUCCESS, smoke live desktop/mobile `36841839539` SUCCESS |
 | Sprint 3 — Homepage & Avventurieri | PLANNED | Applicare struttura approvata, profili/ID e moduli homepage |
 | Sprint 4 — QA integrato & rilascio | PLANNED | QA completo, UAT, gate pubblicazione live |
 | Alleanze / mappa | **PAUSED** | Nessun intervento finché DEC-05 non viene riaperta |
@@ -178,16 +178,16 @@ Dottor Q sceglie la **homepage nazionale proposta da Nick**, con questi moduli n
 | T-01 | Applicare identità/copy approvati | dati/link reali | READY | copy coerente nelle pagine | nessuna falsa rappresentatività, CI/regressione PASS | DEC-01, Current Rules §1 |
 | T-02 | Applicare glossario coerente | T-01 | READY | terminologia uniforme | Adunanza/Lega/Tappa usate correttamente | DEC-02 |
 | T-03 | Navigazione principale approvata | URL esistenti | READY | menu + deep-link preservati | desktop/mobile/keyboard PASS | DEC-03 |
-| T-04 | Tre accessi Adunanze + area Leghe | Sprint 2 | REVIEW | In programma/Cronache/Leghe | URL storici preservati; area Leghe raggiungibile | DEC-03, DEC-06 |
+| T-04 | Tre accessi Adunanze + area Leghe | Sprint 2 | DONE | In programma/Cronache/Leghe | URL storici preservati; area Leghe live e raggiungibile | DEC-03, DEC-06 |
 | T-05 | Hero homepage + CTA | T-01,T-03 | PLANNED | hero compatto | CTA reali e accessibili | DEC-04 |
 | T-06 | Prossime Adunanze homepage | eventi correnti | PLANNED | max 3 eventi reali | ordinamento corretto, niente placeholder fittizi | DEC-04.2 |
-| T-07 | Top 3 dentro Blaze of Glory | Sprint 2 | REVIEW | podio/classifica nella Lega | assente dalla homepage, nessun ricalcolo GP | DEC-04, DEC-06, DEC-09 vigenti |
+| T-07 | Top 3 dentro Blaze of Glory | Sprint 2 | DONE | podio/classifica nella Lega | assente dalla homepage, presente nella Lega live, nessun ricalcolo GP | DEC-04, DEC-06, DEC-09 vigenti |
 | T-08 | Moduli restanti homepage | dati/link verificati | PLANNED | Leghe/Proclami/Cronache/Avventurieri/Chi siamo/footer | tutti i moduli rispettano Current Rules | DEC-04 |
 | T-09 | Mappa Alleanze marker | DEC-05 | PAUSED | — | — | DEC-05 |
 | T-10 | Interazione mappa Alleanze | DEC-05 | PAUSED | — | — | DEC-05 |
 | T-11 | Schede Alleanze | DEC-05,DEC-08 | PAUSED | — | — | DEC-05,DEC-08 |
 | T-12 | Card Adunanza operativa | eventi correnti | REVIEW | card evento preservate/normalizzate | CTA/Maps/popup reali; no regressioni | Current Rules §4 |
-| T-13 | Accordion Leghe | Sprint 2 | REVIEW | area Leghe esclusiva | auto-open deep-link, keyboard/mobile PASS | DEC-06.1–.8 |
+| T-13 | Accordion Leghe | Sprint 2 | DONE | area Leghe esclusiva | auto-open deep-link, keyboard/mobile PASS anche nello smoke live | DEC-06.1–.8 |
 | T-14 | Calendario unico Adunanze/Tappe | eventi correnti | REVIEW | singola vista dati eventi | autonomi ≠ Tappe, URL/ID preservati | Current Rules §4–5 |
 | T-15 | Collegamenti Cronache | dati cronache esistenti | REVIEW | archivio Lega senza duplicati | nessuna Cronaca inventata | Current Rules §6 |
 | T-16 | Audit CTA/Maps/deep-link | T-12–15 | REVIEW | test funzionali | link reali PASS o NON_VERIFICATO esplicito | Current Rules §10 |
@@ -381,6 +381,8 @@ PR piccoli: ideale **una PR per tema verificabile** (es. copy, mappa, schede eve
 | 2026-09-30 | Sprint 2 — final QA after roadmap normalization | PR #112 riallineata a main e Current Rules; head `7ef291c`; 7/7 workflow finali SUCCESS. Lighthouse portal-mobile primo tentativo 0.92 / LCP 2788ms FAIL, retry 0.99 / 1954ms PASS senza modifica codice/soglie. Nessun file data/ modificato. Merge non eseguito perché GitHub Pages rende il merge PO-LIVE | Modalità Sprint; gate PO-LIVE ancora richiesto | S2 REVIEW / PO-LIVE | Nick + Dottor Q |
 
 | 2026-10-01 | DEC-09.7 — FAIR PLAY RISOLTA | Dottor Q conferma esplicitamente bonus Fair Play = **+3 GP**. La precedente ambiguità +2/+3 è chiusa. Aggiornare Current Rules e validatori tecnici: nessun ricalcolo autonomo del sito, usare valori ufficiali/precalcolati e verificare coerenza +3 solo quando Fair Play è coinvolto. Nessun dataset live modificato in questa registrazione | Conferma esplicita Dottor Q | DEC-09.7 RESOLVED = +3 GP | Dottor Q + Nick |
+
+| 2026-10-01 | Sprint 2 — PO-LIVE eseguito e verificato | Dottor Q autorizza merge PR #112. Merge `51b58c46b179c0721898a23f4e258077d1f33dd7`; Pages deployment run `36841003715` SUCCESS su https://drq69.github.io/in-cerca-di-avventura/. Push QA su main: baseline, homepage visual, banner consistency, runtime, Adunanze visual e performance tutti SUCCESS. Smoke test realmente LIVE run `36841839539` SUCCESS: homepage desktop/mobile, portale Adunanze, pagina nazionale, deep-link Blaze auto-open, keyboard/interazioni, runtime/console. Artifact `11151900290`. Nessuna regressione critica; nessun rollback eseguito | PO-LIVE esplicito Dottor Q | SPRINT 2 DONE / LIVE | Dottor Q + Nick |
 
 ## 7. DIARIO / CHANGELOG OPERATIVO (aggiungere una riga per sessione)
 | Data | Cosa è accaduto | PR/commit | Stato test/deployment | Decisione/approvazione | Prossimo intervento |

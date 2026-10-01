@@ -1,5 +1,5 @@
 # ICA — SPRINT 2 IMPLEMENTATION REPORT
-**Sprint:** Adunanze & Leghe · **Stato:** REVIEW / PO-LIVE · **PR:** #112 · **Head:** 7ef291c90093810a2a924fa3a0d54d92a0bea557
+**Sprint:** Adunanze & Leghe · **Stato:** DONE / LIVE · **PR:** #112 · **Merge:** 51b58c46b179c0721898a23f4e258077d1f33dd7
 
 ## Deliverable pronti
 - calendario Adunanze unificato con eventi in corso, futuri e conclusi dalla stessa sorgente;
@@ -17,7 +17,7 @@
 ## Dati
 - Nessun file data/* modificato.
 - Nessun nuovo dato competitivo o contenuto inventato.
-- Fair Play DEC-09.7 invariato OPEN.
+- Fair Play DEC-09.7 **RISOLTA: +3 GP**.
 - Manifest live invariato/disattivato.
 
 ## QA realmente eseguito
@@ -33,8 +33,25 @@
 
 Il primo campione Lighthouse portal-mobile è risultato 0.92 / LCP 2788 ms; è stato ripetuto senza cambiare codice o soglie. Retry: portal-mobile 0.99 / 1954 ms, national-mobile 0.94 / 1969 ms, national-desktop 1.00 / 633 ms, portal-desktop 0.96 / 1384 ms.
 
-## Definition of Done
-Il pacchetto è code-complete e QA-complete sulla PR. Non è DONE/live perché il merge su main può pubblicare GitHub Pages e richiede PO-LIVE.
+## Rilascio live
+- PO-LIVE autorizzato da Dottor Q.
+- Merge PR #112: `51b58c46b179c0721898a23f4e258077d1f33dd7`.
+- GitHub Pages deployment: run `36841003715` — **SUCCESS**.
+- URL live: https://drq69.github.io/in-cerca-di-avventura/
+- Smoke live: run `36841839539` — **SUCCESS**.
+- Evidenza smoke: artifact `11151900290` (retention 14 giorni).
+- Nessuna regressione critica; nessun rollback eseguito.
 
-## Gate corrente
-**PO-LIVE:** autorizzazione Dottor Q al merge della PR #112. Dopo il merge: smoke test live obbligatorio. Eventuale rollback richiede PO-ROLLBACK separato.
+## Smoke live realmente eseguito
+- Homepage desktop/mobile: PASS.
+- Portale Adunanze desktop/mobile: PASS.
+- Adunanze Nazionali desktop/mobile: PASS.
+- Blaze deep-link auto-open: PASS.
+- Keyboard/interazioni pertinenti: PASS.
+- Runtime e console errors: PASS.
+
+## Definition of Done
+**RAGGIUNTA per Sprint 2.** Deliverable integrato in `main`, deploy Pages riuscito, QA push verde e smoke test live desktop/mobile PASS.
+
+## Gate residuo
+Nessun gate residuo per Sprint 2. Qualunque futuro rollback richiede **PO-ROLLBACK** separato.

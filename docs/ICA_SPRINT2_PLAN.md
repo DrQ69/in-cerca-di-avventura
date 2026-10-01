@@ -1,5 +1,5 @@
 # ICA — SPRINT 2 PLAN | Adunanze & Leghe
-**Stato:** REVIEW / PO-LIVE · **Fonte dati:** dataset pubblici correnti · **PR:** #112
+**Stato:** DONE / LIVE · **Fonte dati:** dataset pubblici correnti · **PR:** #112
 
 ## Obiettivo
 Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, senza attendere il primo import XLSX reale.
@@ -46,4 +46,4 @@ Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, sen
   - primo portal-mobile: perf 0.92 / LCP 2788 ms — FAIL
   - retry portal-mobile: perf 0.99 / LCP 1954 ms — PASS
 
-**Gate residuo:** GitHub Pages è attivo; il merge in main è considerato PO-LIVE. Nessun merge eseguito.
+**Gate residuo:** nessuno per Sprint 2. PO-LIVE autorizzato, PR #112 mergiata, deploy Pages e smoke live completati con PASS. Rollback eventuale sempre subordinato a PO-ROLLBACK.
