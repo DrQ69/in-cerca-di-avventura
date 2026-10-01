@@ -78,6 +78,7 @@ function card(player){
       detail('Classifica Lega',leagueRank,false)+
       detail('Fair Play',Number.isFinite(league.fair_play_wins)?league.fair_play_wins:null,false)+
       detail('Città',player.city,false)+
+      detail('Community',player.community_name,false)+
       detail('Ultimo deck',player.last_deck,false)+
       detail('Stile di gioco',player.play_style,true)+
     '</div></article>';
@@ -104,7 +105,8 @@ function render(){
 function applyFilters(resetPage=true){
   const term=search.value.trim().toLocaleLowerCase('it');
   filtered=players.filter(player=>{
-    const matchName=!term||player.nickname.toLocaleLowerCase('it').includes(term);
+    const haystack=[player.nickname,player.city,player.community_name].filter(Boolean).join(' ').toLocaleLowerCase('it');
+    const matchName=!term||haystack.includes(term);
     return matchName && passesMode(filterResults.value,hasResults(player)) && passesMode(filterAvatar.value,hasAvatar(player)) && passesMode(filterStyle.value,hasStyle(player));
   });
   if(resetPage)page=0;
