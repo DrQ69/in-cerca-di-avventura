@@ -38,9 +38,8 @@ try{
         chronicleId:chronicle?.getAttribute('data-event-id')||null,
         chronicleTitle:document.querySelector('#chronicle-title')?.textContent?.trim()||'',
         standingsCount:standingCards.length,
-        standingsLoading:standingCards.every(card=>card.classList.contains('standing-loading')),
-        standingsNames:standingCards.map(card=>card.querySelector('strong')?.textContent?.trim()||''),
-        standingsPoints:standingCards.map(card=>card.querySelector('small')?.textContent?.trim()||''),
+        leagueTitle:document.querySelector('#league-home-title')?.textContent?.trim()||'',
+        leagueHref:document.querySelector('[data-ica-id="HOME-LEG-02"]')?.getAttribute('href')||'',
         proclamationTitle:document.querySelector('#proclamation-title')?.textContent?.trim()||'',
         nextMapHref:document.querySelector('#next-event-facts .map-link')?.getAttribute('href')||'',
         chronicleMapHref:document.querySelector('#chronicle-facts .map-link')?.getAttribute('href')||'',
@@ -55,10 +54,9 @@ try{
     if(result.nextId!=='bog-2026-duello-02') throw new Error(viewport.name+': next event mismatch '+result.nextId);
     if(result.nextTitle!=='Peasant') throw new Error(viewport.name+': next event title mismatch');
     if(result.chronicleId!=='bog-2026-duello-01') throw new Error(viewport.name+': latest chronicle mismatch '+result.chronicleId);
-    if(result.standingsCount!==3) throw new Error(viewport.name+': top-3 visual structure missing');
-    if(result.standingsLoading) throw new Error(viewport.name+': official standings should not be in loading state');
-    if(JSON.stringify(result.standingsNames)!==JSON.stringify(['Nick the Wizard','Limitbreaker','Mikininja'])) throw new Error(viewport.name+': top-3 ranking mismatch '+JSON.stringify(result.standingsNames));
-    if(JSON.stringify(result.standingsPoints)!==JSON.stringify(['25 punti lega','22 punti lega','20 punti lega'])) throw new Error(viewport.name+': top-3 points mismatch '+JSON.stringify(result.standingsPoints));
+    if(result.standingsCount!==0) throw new Error(viewport.name+': Blaze Top 3 must not remain on homepage');
+    if(result.leagueTitle!=='Blaze of Glory — La Lega di Cremos') throw new Error(viewport.name+': league homepage title mismatch');
+    if(result.leagueHref!=='./adunanze/nazionale/#lega-blaze-of-glory-2026-2027') throw new Error(viewport.name+': Blaze league CTA mismatch '+result.leagueHref);
     if(result.proclamationTitle!=='Nessun Proclama pubblicato') throw new Error(viewport.name+': empty Proclami state mismatch');
     if(!result.nextMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': next event location is not linked to Google Maps');
     if(!result.chronicleMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': chronicle location is not linked to Google Maps');

@@ -24,7 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="../../../assets/css/ica-shared-shell.css">
-  <link rel="stylesheet" href="adunanze-nazionale.css?v=20260928-3">
+  <link rel="stylesheet" href="adunanze-nazionale.css?v=20260930-s2">
 </head>
 <body data-ica-page="ADU-NAT">
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -57,7 +57,7 @@
       <div>
         <p class="national-kicker" data-ica-id="AN-HERO-02">Nazionale</p>
         <h1 id="page-title" data-ica-id="AN-HERO-03">Adunanze</h1>
-        <p class="national-subtitle" data-ica-id="AN-HERO-04">Eventi in corso e in programma</p>
+        <p class="national-subtitle" data-ica-id="AN-HERO-04">Eventi, Tappe e Leghe del Reame</p>
       </div>
     </section>
 
@@ -81,6 +81,29 @@
         <div id="upcoming-root" class="event-list"></div>
         <p id="empty" class="empty-state" hidden>Nessuna Adunanza futura registrata.</p>
       </section>
+      <section id="completed-section" class="event-group" data-ica-section="COMPLETED" hidden aria-labelledby="completed-title">
+        <header class="group-heading" data-ica-id="AN-GRP-03">
+          <p>Archivio eventi</p>
+          <h2 id="completed-title">Adunanze concluse</h2>
+        </header>
+        <div id="completed-root" class="event-list"></div>
+      </section>
+
+      <section id="leghe" class="league-zone" data-ica-section="LEAGUES" aria-labelledby="leagues-title">
+        <header class="group-heading">
+          <p>Competizioni</p>
+          <h2 id="leagues-title">Leghe</h2>
+        </header>
+        <div id="active-leagues" class="league-group" aria-labelledby="active-leagues-title">
+          <h3 id="active-leagues-title" class="league-group-title">Leghe attive</h3>
+          <div id="active-leagues-root"></div>
+        </div>
+        <div id="completed-leagues" class="league-group" hidden aria-labelledby="completed-leagues-title">
+          <h3 id="completed-leagues-title" class="league-group-title">Leghe concluse</h3>
+          <div id="completed-leagues-root"></div>
+        </div>
+        <p id="leagues-empty" class="empty-state" hidden>Nessuna Lega disponibile.</p>
+      </section>
     </div>
   </main>
 
@@ -90,7 +113,7 @@
     <span>© <span id="year"></span></span>
   </footer>
 </div>
-<script src="main.js?v=20260928-3"></script>
+<script src="main.js?v=20260930-s2"></script>
 <script src="../../../assets/js/lcs02-inspector.js"></script>
 </body>
 </html>

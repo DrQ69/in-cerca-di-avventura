@@ -121,18 +121,29 @@ try {
       const scrollWidth = Math.max(html.scrollWidth, body.scrollWidth);
       const mapLinks=[...document.querySelectorAll('.adunanza-card .map-link')];
       const details=cards.map(card=>({
+        status:card.dataset.status||'',
         checkIn:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Check-in'),
         start:[...card.querySelectorAll('.fact span')].some(el=>el.textContent.trim()==='Inizio'),
         rules:[...card.querySelectorAll('.info-trigger')].some(el=>el.textContent.trim()==='Regolamento'),
         prizes:[...card.querySelectorAll('.info-trigger')].some(el=>el.textContent.trim()==='Premi'),
-        signup:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Iscriviti')
+        signup:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Iscriviti'),
+        chronicles:[...card.querySelectorAll('.signup-action')].some(el=>el.textContent.trim()==='Cronache')
       }));
+      const completedInUpcoming=[...document.querySelectorAll('#upcoming-root .adunanza-card')].some(card=>card.dataset.status==='conclusa');
+      const completedCount=document.querySelectorAll('#completed-root .adunanza-card[data-status="conclusa"]').length;
+      const league=document.querySelector('#lega-blaze-of-glory-2026-2027');
+      const leagueToggle=league?.querySelector('.league-toggle');
+      const leagueStageRows=[...(league?.querySelectorAll('.league-stage-row')||[])];
+      const leagueTop=[...(league?.querySelectorAll('.league-podium-card')||[])];
       return {
         count: cards.length,
         statuses,
         upcomingDates,
         chronological: JSON.stringify(upcomingDates) === JSON.stringify(sorted),
         hasCompleted: statuses.includes('conclusa'),
+        completedInUpcoming,
+        completedCount,
+        league:{present:Boolean(league),expanded:leagueToggle?.getAttribute('aria-expanded')||'',stageCount:leagueStageRows.length,topCount:leagueTop.length,stageText:leagueStageRows.map(x=>x.textContent||'')},
         mapLinkCount:mapLinks.length,
         mapsValid:mapLinks.every(link=>link.href.startsWith('https://www.google.com/maps/search/?api=1&query=')&&link.target==='_blank'),
         details,
@@ -145,12 +156,22 @@ try {
     });
 
     if (!national.count) throw new Error(`${viewport.name}: no national events rendered`);
-    if (national.hasCompleted) throw new Error(`${viewport.name}: completed event leaked into Adunanze Nazionale`);
+    if (!national.hasCompleted || national.completedCount<1) throw new Error(`${viewport.name}: completed Adunanze are missing from unified calendar`);
+    if (national.completedInUpcoming) throw new Error(`${viewport.name}: completed event leaked into upcoming group`);
+    if (!national.league.present) throw new Error(`${viewport.name}: Blaze of Glory league card missing`);
+    if (national.league.expanded!=='false') throw new Error(`${viewport.name}: league must be closed on normal entry`);
+    if (national.league.stageCount!==8) throw new Error(`${viewport.name}: expected 8 numbered Blaze stages, got ${national.league.stageCount}`);
+    if (national.league.topCount!==3) throw new Error(`${viewport.name}: Blaze Top 3 must render inside league`);
+    if (!national.league.stageText.some(x=>x.includes('Tappa II')&&x.includes('Peasant'))) throw new Error(`${viewport.name}: E02 Peasant / Tappa II missing`);
+    if (!national.league.stageText.some(x=>x.includes('Tappa IV')&&x.includes('Constructed Full'))) throw new Error(`${viewport.name}: E04 Constructed Full / Tappa IV missing`);
     if (!national.chronological) throw new Error(`${viewport.name}: upcoming events are not chronological`);
     if (national.mapLinkCount!==national.count||!national.mapsValid) throw new Error(`${viewport.name}: not every national event location links to Google Maps`);
-    if (national.details.some(item=>!item.checkIn||!item.start||!item.rules||!item.prizes||!item.signup)) {
+    const upcomingDetails=national.details.filter(item=>item.status!=='conclusa');
+    if (upcomingDetails.some(item=>!item.checkIn||!item.start||!item.rules||!item.prizes||!item.signup)) {
       throw new Error(`${viewport.name}: an upcoming event is missing check-in/start/rules/prizes/signup controls`);
     }
+    const concludedDetails=national.details.filter(item=>item.status==='conclusa');
+    if(concludedDetails.some(item=>!item.chronicles))throw new Error(`${viewport.name}: concluded event lacks Cronache action`);
     if (national.overflow.horizontal) throw new Error(`${viewport.name}: national page horizontal overflow`);
 
     const assertPopoverFits=async(locator,label)=>{
@@ -198,6 +219,14 @@ try {
       throw new Error(`${viewport.name}: Stage II signup link mismatch`);
     }
 
+    const leagueToggle=page.locator('#lega-blaze-of-glory-2026-2027 .league-toggle');
+    await leagueToggle.focus();
+    await page.keyboard.press('Enter');
+    if(await leagueToggle.getAttribute('aria-expanded')!=='true')throw new Error(`${viewport.name}: league accordion does not open from keyboard`);
+    if(!await page.locator('#lega-blaze-of-glory-2026-2027 .league-panel').isVisible())throw new Error(`${viewport.name}: league panel not visible after keyboard open`);
+    await page.keyboard.press('Enter');
+    if(await leagueToggle.getAttribute('aria-expanded')!=='false')throw new Error(`${viewport.name}: league accordion does not close from keyboard`);
+
     const firstRules=page.locator('#upcoming-root .adunanza-card .rules-control').first();
     const rulesBounds=await assertPopoverFits(firstRules,'Regolamento');
 
@@ -222,6 +251,23 @@ try {
 
     await page.close();
   }
+
+  const deepLinkPage=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
+  const deepErrors=[];
+  deepLinkPage.on('console',msg=>{if(msg.type()==='error')deepErrors.push(msg.text());});
+  deepLinkPage.on('pageerror',error=>deepErrors.push(String(error)));
+  await deepLinkPage.goto(baseURL+'/beta/adunanze/nazionale/#lega-blaze-of-glory-2026-2027',{waitUntil:'networkidle',timeout:30000});
+  await deepLinkPage.waitForSelector('#lega-blaze-of-glory-2026-2027 .league-toggle[aria-expanded="true"]',{timeout:10000});
+  const deep=await deepLinkPage.evaluate(()=>({
+    hash:location.hash,
+    expanded:document.querySelector('#lega-blaze-of-glory-2026-2027 .league-toggle')?.getAttribute('aria-expanded'),
+    panelHidden:document.querySelector('#lega-blaze-of-glory-2026-2027 .league-panel')?.hidden,
+    activeCount:document.querySelectorAll('.league-toggle[aria-expanded="true"]').length
+  }));
+  if(deep.hash!=='#lega-blaze-of-glory-2026-2027'||deep.expanded!=='true'||deep.panelHidden||deep.activeCount!==1)
+    throw new Error('Blaze deep-link does not auto-open exactly one league: '+JSON.stringify(deep));
+  if(deepErrors.length)throw new Error('Deep-link browser errors: '+deepErrors.join(' | '));
+  await deepLinkPage.close();
 
   const emptyPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await emptyPage.route('**/data/events.json', async route => {
@@ -260,6 +306,8 @@ try {
       rendered: document.querySelector('#next-event-card')?.getAttribute('data-event-id') || null,
       expected: expected?.event_id || null,
       staleFuture: staleFuture.map(event => ({ event_id:event.event_id, date:event.date })),
+      hasHomepagePodium:Boolean(document.querySelector('#league-standings')),
+      leagueHref:document.querySelector('[data-ica-id="HOME-LEG-02"]')?.getAttribute('href')||'',
     };
   });
 
@@ -269,6 +317,9 @@ try {
   if (homeResult.rendered !== homeResult.expected) {
     throw new Error(`Homepage next event mismatch: rendered=${homeResult.rendered} expected=${homeResult.expected}`);
   }
+  if(homeResult.hasHomepagePodium)throw new Error('Blaze Top 3 must not remain on homepage');
+  if(homeResult.leagueHref!=='./adunanze/nazionale/#lega-blaze-of-glory-2026-2027')
+    throw new Error('Homepage Blaze CTA deep-link mismatch: '+homeResult.leagueHref);
   if (homeErrors.length) throw new Error(`Homepage console errors: ${homeErrors.join(' | ')}`);
   await fs.writeFile(`${outDir}/homepage-next-event.json`, JSON.stringify(homeResult, null, 2), 'utf8');
   await home.close();

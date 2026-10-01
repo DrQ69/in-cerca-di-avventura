@@ -1,3 +1,4 @@
+// Sprint 2 final QA sync marker: no runtime effect; keeps checks on the exact PO-LIVE candidate head.
 const menu=document.getElementById('menu');
 const nav=document.getElementById('mobile-nav');
 if(menu&&nav){
@@ -206,13 +207,6 @@ siteBundlePromise
     const chronicle=document.getElementById('chronicle-title');
     if(next)next.textContent='Calendario non disponibile';
     if(chronicle)chronicle.textContent='Cronache non disponibili';
-  });
-
-siteBundlePromise
-  .then(({standings,players})=>renderStandings(standings,players.players))
-  .catch(reason=>{
-    console.error('Homepage standings load failed',reason);
-    renderStandings({entries:[]},[]);
   });
 
 fetch('../data/proclami.json',{cache:'no-store'})

@@ -296,3 +296,56 @@
   }
   .event-popover::after{display:none}
 }
+
+/* Sprint 2 — Adunanze & Leghe */
+.adunanza-card[data-status="conclusa"]::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#282d31,#6c716f,#b7b9b1,#6c716f,#282d31)}
+.league-zone{max-width:1180px;margin:0 auto 72px}
+.league-group{margin-top:24px}
+.league-group-title{margin:0 0 14px;color:#c7b483;font:700 1rem Georgia,"Times New Roman",serif;letter-spacing:.06em}
+.league-card{scroll-margin-top:24px;border:1px solid #5c431d;background:linear-gradient(180deg,rgba(25,35,44,.96),rgba(10,16,21,.98));box-shadow:0 16px 40px rgba(0,0,0,.28)}
+.league-card h3{margin:0}
+.league-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;border:0;background:transparent;color:#ead5a3;text-align:left;cursor:pointer}
+.league-toggle:focus-visible{outline:3px solid #c7a55b;outline-offset:3px}
+.league-toggle strong{display:block;font:700 clamp(1.05rem,2.6vw,1.5rem) Georgia,"Times New Roman",serif}
+.league-toggle small{display:block;margin-top:5px;color:#b8b0a0;font:.78rem system-ui,sans-serif}
+.league-toggle>[aria-hidden="true"]{font-size:1.4rem;color:#c7a55b}
+.league-panel{padding:0 22px 24px;border-top:1px solid rgba(199,165,91,.26)}
+.league-panel>section{padding-top:24px}
+.league-panel h4{margin:0 0 12px;color:#d9c184;font:700 1rem Georgia,"Times New Roman",serif;letter-spacing:.05em}
+.league-panel p{color:#c6c0b5}
+.league-stages{display:grid;gap:8px}
+.league-stage-row{display:grid;gap:4px;padding:11px 12px;border:1px solid rgba(199,165,91,.24);background:rgba(255,255,255,.025);color:#e9e1d0;text-decoration:none}
+.league-stage-row:hover,.league-stage-row:focus-visible{border-color:#c7a55b;background:rgba(199,165,91,.08)}
+.league-stage-row span{color:#aaa294;font-size:.82rem}
+.league-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.league-podium-card{display:grid;gap:4px;padding:14px;border:1px solid rgba(199,165,91,.32);background:rgba(199,165,91,.06)}
+.league-podium-card>span{color:#c7a55b;font:700 .72rem Georgia,"Times New Roman",serif}
+.league-podium-card strong{color:#f0e3c2}
+.league-podium-card small{color:#b8b0a0}
+.league-table-scroll{overflow-x:auto}
+.league-table{width:100%;border-collapse:collapse;color:#e3ddd1}
+.league-table th,.league-table td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.11);text-align:left}
+.league-table th{color:#c7b483;font:700 .72rem Georgia,"Times New Roman",serif;text-transform:uppercase;letter-spacing:.06em}
+.league-table a{color:#e9d29a}
+.league-history{display:grid;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+.league-history li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);color:#ddd6ca}
+.league-history span{color:#aaa294}
+.league-archive-link{color:#e9d29a}
+.league-empty-copy{margin:0;color:#aaa294}
+@media(max-width:700px){
+ .league-podium{grid-template-columns:1fr}
+ .league-toggle,.league-panel{padding-left:14px;padding-right:14px}
+ .league-history li{display:grid}
+}
+
+.info-control.fit-viewport .event-popover{
+  position:fixed;
+  left:50%!important;
+  right:auto!important;
+  top:12px!important;
+  bottom:12px!important;
+  transform:translateX(-50%);
+  width:min(440px,calc(100vw - 24px));
+  max-height:none;
+}
+.info-control.fit-viewport .event-popover::after{display:none}

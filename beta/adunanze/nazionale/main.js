@@ -28,6 +28,13 @@ const empty=document.getElementById('empty');
 const ongoingSection=document.getElementById('ongoing-section');
 const ongoingRoot=document.getElementById('ongoing-root');
 const upcomingRoot=document.getElementById('upcoming-root');
+const completedSection=document.getElementById('completed-section');
+const completedRoot=document.getElementById('completed-root');
+const activeLeagues=document.getElementById('active-leagues');
+const activeLeaguesRoot=document.getElementById('active-leagues-root');
+const completedLeagues=document.getElementById('completed-leagues');
+const completedLeaguesRoot=document.getElementById('completed-leagues-root');
+const leaguesEmpty=document.getElementById('leagues-empty');
 const nationalMain=document.getElementById('national-main');
 const nationalShell=document.getElementById('national-shell');
 
@@ -63,7 +70,7 @@ function placeLink(event){
 function stage(event){
   if(!event.stage_number)return '';
   const roman=['','I','II','III','IV','V','VI','VII','VIII','IX','X'][event.stage_number]||String(event.stage_number);
-  return `Duello ${roman}`;
+  return `Tappa ${roman}`;
 }
 
 function timeValue(value){
@@ -130,15 +137,17 @@ function infoPopover(label,content,kind,eventId){
 }
 
 function card(event){
-  const statusLabel=event.status==='in corso'?'In corso':'In programma';
+  const statusLabel=event.status==='in corso'?'In corso':event.status==='conclusa'?'Conclusa':'In programma';
   const series=[event.series_name,stage(event)].filter(Boolean).join(' · ');
   const registration=event.registration_url||event.official_event_url||'';
   const rules=infoPopover('Regolamento',rulesContent(event),'rules-control',event.event_id);
   const prizes=infoPopover('Premi',prizeGrid(event),'prizes-control',event.event_id);
-  const signup=registration
-    ? `<a class="card-action signup-action" href="${esc(registration)}" target="_blank" rel="noopener noreferrer">Iscriviti</a>`
-    : '<span class="card-action signup-action is-disabled" aria-disabled="true" title="Link evento Sorcery non ancora disponibile">Iscriviti</span>';
-  return `<article class="adunanza-card" data-ica-id="AN-CARD-${esc(event.event_id)}" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}" data-date="${esc(event.date||'')}">
+  const signup=event.status==='conclusa'
+    ? '<a class="card-action signup-action" href="../../cronache/">Cronache</a>'
+    : registration
+      ? `<a class="card-action signup-action" href="${esc(registration)}" target="_blank" rel="noopener noreferrer">Iscriviti</a>`
+      : '<span class="card-action signup-action is-disabled" aria-disabled="true" title="Link evento Sorcery non ancora disponibile">Iscriviti</span>';
+  return `<article id="event-${esc(event.event_id)}" class="adunanza-card" data-ica-id="AN-CARD-${esc(event.event_id)}" data-event-id="${esc(event.event_id)}" data-status="${esc(event.status)}" data-date="${esc(event.date||'')}">
     <header class="card-head" data-ica-id="AN-CARD-HEAD-${esc(event.event_id)}">
       <span class="card-status">${esc(statusLabel)}</span>
       <h3>${esc(event.title)}</h3>
@@ -180,6 +189,7 @@ async function appendCards(root,events){
 async function render(events){
   const ongoing=events.filter(event=>event.status==='in corso').sort(byDateAscending);
   const upcoming=events.filter(event=>event.status==='futura').sort(byDateAscending);
+  const completed=events.filter(event=>event.status==='conclusa').sort((a,b)=>byDateAscending(b,a));
 
   if(ongoing.length){
     ongoingSection.hidden=false;
@@ -196,6 +206,100 @@ async function render(events){
     upcomingRoot.innerHTML='';
     empty.hidden=false;
   }
+
+  if(completed.length){
+    completedSection.hidden=false;
+    await appendCards(completedRoot,completed);
+  }else{
+    completedSection.hidden=true;
+    completedRoot.innerHTML='';
+  }
+}
+
+function standingsRows(entries){
+  return entries.map(entry=>'<tr><td>'+esc(entry.rank)+'</td><td><a href="../../avventurieri/?player='+encodeURIComponent(entry.player_id)+'">'+esc(entry.nickname)+'</a></td><td>'+esc(entry.points)+'</td><td>'+esc(entry.stages_completed??'—')+'</td></tr>').join('');
+}
+
+function leagueMarkup(model,eventAnchor,leagueAnchor){
+  const stages=model.stages.map(event=>{
+    const label='Tappa '+esc(event.stage_label||event.stage_number);
+    return '<a class="league-stage-row" href="#'+esc(eventAnchor(event.event_id))+'">'+
+      '<strong>'+label+' · '+esc(event.title||event.event_id)+'</strong>'+
+      '<span>'+esc(fmtDate(event.date))+' · '+esc(place(event))+' · '+esc(event.format||'Formato da verificare')+' · '+esc(event.status||'Stato da verificare')+'</span>'+
+    '</a>';
+  }).join('');
+  const top=model.top3.length
+    ? model.top3.map((entry,index)=>'<article class="league-podium-card"><span>'+(index+1)+'</span><strong>'+esc(entry.nickname)+'</strong><small>'+esc(entry.points)+' GP</small></article>').join('')
+    : '<p class="league-empty-copy">In attesa della prima Tappa ufficiale.</p>';
+  const table=model.entries.length
+    ? '<div class="league-table-scroll"><table class="league-table"><thead><tr><th>Pos.</th><th>Avventuriero</th><th>GP</th><th>Tappe</th></tr></thead><tbody>'+standingsRows(model.entries)+'</tbody></table></div>'
+    : '<p class="league-empty-copy">Classifica non ancora disponibile.</p>';
+  const history=model.completed.length
+    ? '<ul class="league-history">'+model.completed.map(event=>'<li><strong>'+esc('Tappa '+(event.stage_label||event.stage_number||'—'))+' · '+esc(event.title)+'</strong><span>'+esc(fmtDate(event.date))+'</span></li>').join('')+'</ul><a class="league-archive-link" href="../../cronache/">Apri l’archivio Cronache →</a>'
+    : '<p class="league-empty-copy">Nessuna Cronaca di questa Lega disponibile.</p>';
+  const panelId=leagueAnchor(model.id)+'-panel';
+  return '<article class="league-card" id="'+esc(leagueAnchor(model.id))+'" data-series-id="'+esc(model.id)+'">'+
+    '<h3><button class="league-toggle" type="button" aria-expanded="false" aria-controls="'+esc(panelId)+'">'+
+      '<span><strong>'+esc(model.name)+'</strong><small>'+esc(model.season)+' · Organizzatore: '+esc(model.organizer)+'</small></span><span aria-hidden="true">＋</span></button></h3>'+
+    '<div class="league-panel" id="'+esc(panelId)+'" hidden>'+
+      '<section><h4>Presentazione</h4><p>Lega di Sorcery: Contested Realm organizzata da '+esc(model.organizer)+'.</p></section>'+
+      '<section><h4>Tappe</h4><div class="league-stages">'+stages+'</div></section>'+
+      '<section><h4>Classifica</h4><div class="league-podium">'+top+'</div>'+table+'</section>'+
+      '<section><h4>Cronache</h4>'+history+'</section>'+
+    '</div></article>';
+}
+
+function setupLeagueAccordion(root){
+  root.querySelectorAll('.league-toggle').forEach(button=>button.addEventListener('click',()=>{
+    const card=button.closest('.league-card');
+    const open=button.getAttribute('aria-expanded')==='true';
+    root.querySelectorAll('.league-toggle[aria-expanded="true"]').forEach(other=>{
+      if(other!==button){
+        other.setAttribute('aria-expanded','false');
+        other.querySelector('[aria-hidden="true"]')?.replaceChildren('＋');
+        const otherPanel=document.getElementById(other.getAttribute('aria-controls'));
+        if(otherPanel)otherPanel.hidden=true;
+      }
+    });
+    button.setAttribute('aria-expanded',String(!open));
+    button.querySelector('[aria-hidden="true"]')?.replaceChildren(open?'＋':'−');
+    const panel=document.getElementById(button.getAttribute('aria-controls'));
+    if(panel)panel.hidden=open;
+    if(!open)card?.scrollIntoView({block:'start',behavior:'smooth'});
+  }));
+}
+
+function openLeagueFromHash(){
+  const id=decodeURIComponent(location.hash.slice(1));
+  if(!id.startsWith('lega-'))return;
+  const card=document.getElementById(id);
+  const button=card?.querySelector('.league-toggle');
+  if(button&&button.getAttribute('aria-expanded')!=='true')button.click();
+}
+
+async function renderLeagues(events,standings,players){
+  const {buildLeagueView,eventAnchor,leagueAnchor}=await import('./league-model.mjs');
+  const model=buildLeagueView(events,standings,players);
+  if(!model){
+    activeLeagues.hidden=true;
+    completedLeagues.hidden=true;
+    leaguesEmpty.hidden=false;
+    return;
+  }
+  leaguesEmpty.hidden=true;
+  const html=leagueMarkup(model,eventAnchor,leagueAnchor);
+  if(model.status==='active'){
+    activeLeagues.hidden=false;
+    completedLeagues.hidden=true;
+    activeLeaguesRoot.innerHTML=html;
+    setupLeagueAccordion(activeLeaguesRoot);
+  }else{
+    activeLeagues.hidden=true;
+    completedLeagues.hidden=false;
+    completedLeaguesRoot.innerHTML=html;
+    setupLeagueAccordion(completedLeaguesRoot);
+  }
+  openLeagueFromHash();
 }
 
 import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
@@ -204,9 +308,10 @@ import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundl
    events:new URL('../../../data/events.json',document.baseURI).href,
    standings:new URL('../../../data/league-standings.json',document.baseURI).href}
 ))
-  .then(async ({events:data})=>{
+  .then(async ({events:data,standings,players})=>{
     const events=Array.isArray(data.events)?data.events:[];
     await render(events);
+    await renderLeagues(events,standings,players.players);
     loading.hidden=true;
     nationalMain?.classList.remove('is-loading');
     nationalShell?.classList.remove('is-loading');
@@ -222,7 +327,7 @@ import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundl
 
 function positionPopover(control){
   if(!control)return;
-  control.classList.remove('align-right','open-down');
+  control.classList.remove('align-right','open-down','fit-viewport');
   const popover=control.querySelector('.event-popover');
   if(!popover)return;
 
@@ -236,8 +341,12 @@ function positionPopover(control){
   if(triggerRect.left+popRect.width>window.innerWidth-margin){
     control.classList.add('align-right');
   }
-  if(triggerRect.top-popRect.height-margin<0 && triggerRect.bottom+popRect.height+margin<=window.innerHeight){
+  const fitsAbove=triggerRect.top-popRect.height-margin>=0;
+  const fitsBelow=triggerRect.bottom+popRect.height+margin<=window.innerHeight;
+  if(!fitsAbove&&fitsBelow){
     control.classList.add('open-down');
+  }else if(!fitsAbove&&!fitsBelow){
+    control.classList.add('fit-viewport');
   }
 
   popover.style.visibility='';
@@ -269,3 +378,5 @@ document.addEventListener('keydown',event=>{
     });
   }
 });
+
+window.addEventListener('hashchange',openLeagueFromHash);
