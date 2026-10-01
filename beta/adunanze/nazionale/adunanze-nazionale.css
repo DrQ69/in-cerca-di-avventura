@@ -103,6 +103,11 @@
   color:#2e281f;
   box-shadow:inset 0 0 28px rgba(74,49,16,.12),0 12px 24px rgba(0,0,0,.25);
 }
+.adunanza-card:has(.info-control:hover),
+.adunanza-card:has(.info-control:focus-within),
+.adunanza-card:has(.info-control.is-open){
+  z-index:200;
+}
 .adunanza-card::before{
   content:"";
   position:absolute;
@@ -225,9 +230,13 @@
   content:"";
   position:absolute;
   inset:0;
-  z-index:-1;
+  z-index:0;
   background:#f0e5cc;
   pointer-events:none;
+}
+.prizes-control .event-popover>*{
+  position:relative;
+  z-index:1;
 }
 .prize-copy-list{margin:10px 0 12px;padding-left:22px;display:grid;gap:6px}
 .prize-copy-list li{padding-left:2px}
