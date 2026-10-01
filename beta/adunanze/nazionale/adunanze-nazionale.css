@@ -349,3 +349,8 @@
   max-height:none;
 }
 .info-control.fit-viewport .event-popover::after{display:none}
+
+/* Nick v2.0 — richer event identity without inventing unavailable data */
+.card-body{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:980px){.card-body{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.card-body{grid-template-columns:1fr}}
