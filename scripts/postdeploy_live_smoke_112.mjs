@@ -21,8 +21,10 @@ async function checkTarget(t){
  page.on('requestfailed',r=>requestFailures.push(r.url()+' :: '+(r.failure()?.errorText||'')));
 
  const goto=async(path,label)=>{
-   const res=await page.goto(base+path,{waitUntil:'networkidle',timeout:45000});
-   if(!res||!res.ok())throw new Error(t.name+' '+label+' HTTP '+(res?.status()||'NO_RESPONSE'));
+   const target=base+path;
+   const res=await page.goto(target,{waitUntil:'networkidle',timeout:45000});
+   if(res && !res.ok())throw new Error(t.name+' '+label+' HTTP '+res.status());
+   if(!res && page.url()!==target)throw new Error(t.name+' '+label+' navigation mismatch '+page.url());
  };
 
  await goto('/beta/','home');
