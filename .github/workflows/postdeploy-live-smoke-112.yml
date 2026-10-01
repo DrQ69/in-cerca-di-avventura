@@ -1,0 +1,31 @@
+name: Postdeploy live smoke PR112
+on:
+  pull_request:
+    paths:
+      - 'scripts/postdeploy_live_smoke_112.mjs'
+      - '.github/workflows/postdeploy-live-smoke-112.yml'
+permissions:
+  contents: read
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run live desktop/mobile smoke
+        run: node scripts/postdeploy_live_smoke_112.mjs
+      - name: Upload smoke screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: postdeploy-smoke-112-${{ github.sha }}
+          path: artifacts/postdeploy-smoke-112/
+          if-no-files-found: warn
+          retention-days: 7
