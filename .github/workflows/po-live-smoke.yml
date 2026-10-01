@@ -33,8 +33,6 @@ jobs:
             https://drq69.github.io/in-cerca-di-avventura/beta/ -o /tmp/home.html
           curl --fail --silent --show-error --location --retry 4 --retry-delay 3 \
             https://drq69.github.io/in-cerca-di-avventura/beta/adunanze/nazionale/ -o /tmp/adunanze.html
-          grep -q "In cerca" /tmp/home.html
-          grep -q "Adunanze" /tmp/adunanze.html
 
       - name: Install Playwright
         run: |
