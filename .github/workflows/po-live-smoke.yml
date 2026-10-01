@@ -1,0 +1,60 @@
+name: PO-LIVE deployed smoke test
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/po-live-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ICA_BASE_URL: https://drq69.github.io/in-cerca-di-avventura
+      HOME_SCREENSHOT_DIR: artifacts/live-smoke/homepage
+      ADUNANZE_SCREENSHOT_DIR: artifacts/live-smoke/adunanze
+      LCS02_ARTIFACT_DIR: artifacts/live-smoke/runtime
+    steps:
+      - name: Checkout smoke runner
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Confirm deployed URLs answer
+        run: |
+          curl --fail --silent --show-error --location --retry 4 --retry-delay 3 \
+            https://drq69.github.io/in-cerca-di-avventura/beta/ -o /tmp/home.html
+          curl --fail --silent --show-error --location --retry 4 --retry-delay 3 \
+            https://drq69.github.io/in-cerca-di-avventura/beta/adunanze/nazionale/ -o /tmp/adunanze.html
+          grep -q "In cerca" /tmp/home.html
+          grep -q "Adunanze" /tmp/adunanze.html
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Live homepage desktop/mobile smoke
+        run: node scripts/homepage_visual_regression.mjs
+
+      - name: Live Adunanze desktop/mobile + deep-link smoke
+        run: node scripts/adunanze_visual_regression.mjs
+
+      - name: Live runtime smoke
+        run: node scripts/lcs02_runtime_qa.mjs
+
+      - name: Upload live smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: po-live-smoke-51b58c4-${{ github.sha }}
+          path: artifacts/live-smoke/
+          if-no-files-found: warn
+          retention-days: 14
