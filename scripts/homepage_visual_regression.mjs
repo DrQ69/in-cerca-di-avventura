@@ -43,11 +43,16 @@ try{
         proclamationTitle:document.querySelector('#proclamation-title')?.textContent?.trim()||'',
         nextMapHref:document.querySelector('#next-event-facts .map-link')?.getAttribute('href')||'',
         chronicleMapHref:document.querySelector('#chronicle-facts .map-link')?.getAttribute('href')||'',
+        identitySubtitle:document.querySelector('.identity-subtitle')?.textContent?.trim()||'',
+        identityIntro:document.querySelector('.identity-intro')?.textContent?.trim()||'',
+        leagueMeta:document.querySelector('#classifica .section-heading>p:last-child')?.textContent?.trim()||'',
+        youtubeHref:document.querySelector('#chi-siamo a[href*="youtube.com"]')?.getAttribute('href')||'',
+        instagramHref:document.querySelector('#chi-siamo a[href*="instagram.com"]')?.getAttribute('href')||'',
         overflow:Math.max(body.scrollWidth,html.scrollWidth)>window.innerWidth+2,
       };
     });
 
-    const expected=['home','next-event','classifica','cronache-home','proclami'];
+    const expected=['home','next-event','classifica','cronache-home','proclami','chi-siamo'];
     if(JSON.stringify(result.order)!==JSON.stringify(expected)){
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
@@ -58,6 +63,11 @@ try{
     if(result.leagueTitle!=='Blaze of Glory — La Lega di Cremos') throw new Error(viewport.name+': league homepage title mismatch');
     if(result.leagueHref!=='./adunanze/nazionale/#lega-blaze-of-glory-2026-2027') throw new Error(viewport.name+': Blaze league CTA mismatch '+result.leagueHref);
     if(result.proclamationTitle!=='Nessun Proclama pubblicato') throw new Error(viewport.name+': empty Proclami state mismatch');
+    if(result.identitySubtitle!=='Il reame delle community italiane di Sorcery: Contested Realm') throw new Error(viewport.name+': Nick v2 identity subtitle mismatch');
+    if(!result.identityIntro.includes('Trova una community vicino a te')) throw new Error(viewport.name+': Nick v2 identity intro missing');
+    if(!result.leagueMeta.includes('Organizzatore: Il Regno di Cremos')) throw new Error(viewport.name+': ICA/Cremos organizer separation missing');
+    if(!result.youtubeHref.includes('youtube.com/@incercadiavventura')) throw new Error(viewport.name+': YouTube link missing');
+    if(!result.instagramHref.includes('instagram.com/incercadavventura')) throw new Error(viewport.name+': Instagram link missing');
     if(!result.nextMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': next event location is not linked to Google Maps');
     if(!result.chronicleMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': chronicle location is not linked to Google Maps');
     if(result.overflow) throw new Error(viewport.name+': horizontal overflow');
