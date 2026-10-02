@@ -50,7 +50,7 @@ export function assessWorkbookIntake(meta){
  if(typeof meta.fair_play_affected!=='boolean')
    err('INVALID_FAIR_PLAY_AFFECTED','fair_play_affected');
  else if(meta.fair_play_affected)
-   requiredGates.push('resolve_DEC_09_7_before_publication');
+   warn('FAIR_PLAY_PLUS3_RULE_APPLIES','fair_play_affected');
 
  let freshness='UNVERIFIABLE';
  const trustworthyTimestamp=
