@@ -13,7 +13,7 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Menu principale: **Adunanze · Avventurieri · Alleanze · Tesori · Proclami · Chi siamo**.
 - Dentro Adunanze: **In programma · Cronache · Leghe**.
 - Preservare gli URL e deep-link storici già esistenti.
-- **Tesori** è attivo nella navigazione; la pagina può esistere come stato informativo, ma struttura e contenuti definitivi restano da definire prima della promozione canonica.
+- **Tesori** è attivo nella navigazione ma **ON HOLD lato contenuti**: mantenere la pagina nello stato informativo attuale finché il Product Owner non definisce funzione, struttura e contenuti.
 - Artwork/header `/beta-v2/`: **PAUSED**, non modificare senza vero gate di prodotto.
 
 ## 3. Homepage
@@ -72,12 +72,12 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Errori critici = blocco atomico dell’intera pubblicazione; niente aggiornamenti parziali.
 - Conservare eventi/profili già pubblici se assenti dall’export, salvo istruzione specifica di rimozione.
 - Pubblicazioni future: release coerente dei tre dataset con versione/manifest/hash. **Manifest live non ancora attivato**.
-- Primo import XLSX reale tramite il nuovo workflow: **NON ancora eseguito**.
+- Primo import XLSX reale tramite il nuovo workflow: **AVVIATO lato readiness il 2026-10-02; file XLSX reale non ancora ricevuto**. Fino alla ricezione del workbook sono consentiti solo preparazione, audit e dry-run su dati pubblici/candidati sanitizzati.
 
 ## 10. Stato release
 - **Sprint 2 / PR #112 è LIVE** dal 2026-10-01; merge commit `51b58c46b179c0721898a23f4e258077d1f33dd7`.
-- Il consolidamento visibile successivo è tracciato nella **PR #118**; finché non è mergiata non rappresenta lo stato live.
-- La PR tecnica **#113** applica nei validator la regola Fair Play +3 già approvata; finché non è mergiata la decisione è vigente ma l'hardening tecnico resta pendente.
+- **PR #118 è LIVE** dal 2026-10-02; merge commit `d83f2704de488d2f48923994db1d482e31afe55f`.
+- **PR #113 è LIVE** dal 2026-10-02; merge commit `01e07be876744f3bd5771f3d5da79c2f5bc60111`. L'hardening Fair Play +3 è quindi attivo nei validator.
 
 ## 11. QA / pubblicazione / rollback
 - Per ogni modifica: CI, regression test, desktop, mobile, keyboard/accessibilità pertinente, deep-link e nessuna regressione.
