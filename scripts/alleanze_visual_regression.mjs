@@ -65,7 +65,7 @@ try{
     if(!result.imagesLoaded||!result.mapLoaded)throw new Error(viewport.name+': map or marker asset failed to load');
     if(result.mapGeometry.width!==900||result.mapGeometry.height!==563)throw new Error(viewport.name+': Italy map asset is not the approved source '+JSON.stringify(result.mapGeometry));
     if(result.bronzeGeometry.width!==360||result.bronzeGeometry.height!==351)throw new Error(viewport.name+': bronze medallion asset is not the approved frame '+JSON.stringify(result.bronzeGeometry));
-    if(result.ordinaryGeometry.width!==320||result.ordinaryGeometry.height!==320)throw new Error(viewport.name+': Ordinary Mortals logo is not the approved source asset '+JSON.stringify(result.ordinaryGeometry));
+    if(result.ordinaryGeometry.width!==145||result.ordinaryGeometry.height!==145)throw new Error(viewport.name+': Ordinary Mortals V2 logo is not the approved source asset '+JSON.stringify(result.ordinaryGeometry));
     if(!result.ordinaryScale||result.ordinaryScale==='none')throw new Error(viewport.name+': Ordinary Mortals marker-specific logo scaling is missing');
     for(const expected of ['Il Regno di Cremos — Crema','Team Void — Prato','Ordinary Mortals — Roma']){
       if(!result.labels.includes(expected))throw new Error(viewport.name+': missing marker '+expected);
