@@ -1,5 +1,5 @@
 # ICA — SPRINT 2 IMPLEMENTATION REPORT
-**Sprint:** Adunanze & Leghe · **Stato:** REVIEW / PO-LIVE · **PR:** #112 · **Head:** 7ef291c90093810a2a924fa3a0d54d92a0bea557
+**Sprint:** Adunanze & Leghe · **Stato:** LIVE / COMPLETATO · **PR:** #112 · **Merge commit:** 51b58c46b179c0721898a23f4e258077d1f33dd7
 
 ## Deliverable pronti
 - calendario Adunanze unificato con eventi in corso, futuri e conclusi dalla stessa sorgente;
@@ -17,7 +17,7 @@
 ## Dati
 - Nessun file data/* modificato.
 - Nessun nuovo dato competitivo o contenuto inventato.
-- Fair Play DEC-09.7 invariato OPEN.
+- Durante la PR #112 Fair Play non è stato modificato. La decisione successiva del 2026-10-01 ha risolto DEC-09.7 a **+3 GP**; l'hardening dei validator è tracciato separatamente in PR #113.
 - Manifest live invariato/disattivato.
 
 ## QA realmente eseguito
@@ -34,7 +34,7 @@
 Il primo campione Lighthouse portal-mobile è risultato 0.92 / LCP 2788 ms; è stato ripetuto senza cambiare codice o soglie. Retry: portal-mobile 0.99 / 1954 ms, national-mobile 0.94 / 1969 ms, national-desktop 1.00 / 633 ms, portal-desktop 0.96 / 1384 ms.
 
 ## Definition of Done
-Il pacchetto è code-complete e QA-complete sulla PR. Non è DONE/live perché il merge su main può pubblicare GitHub Pages e richiede PO-LIVE.
+Il pacchetto è stato completato, approvato per PO-LIVE e pubblicato tramite merge della PR #112 il 2026-10-01. La fase Sprint 2 è chiusa.
 
-## Gate corrente
-**PO-LIVE:** autorizzazione Dottor Q al merge della PR #112. Dopo il merge: smoke test live obbligatorio. Eventuale rollback richiede PO-ROLLBACK separato.
+## Stato successivo
+Le modifiche visibili post-Sprint 2 sono sviluppate nella PR #118 e non vanno retroattribuite alla PR #112. Eventuali rollback del live restano soggetti a PO-ROLLBACK separato.
