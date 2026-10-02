@@ -179,7 +179,7 @@ try {
 
     const assertPopoverFits=async(locator,label)=>{
       await locator.scrollIntoViewIfNeeded();
-      await locator.hover({force:true});
+      await locator.locator('.info-trigger').click();
       const pop=locator.locator('.event-popover');
       if(!await pop.isVisible()) throw new Error(`${viewport.name}: ${label} popover does not open on hover`);
       const bounds=await pop.evaluate(el=>{
