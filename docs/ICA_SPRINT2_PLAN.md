@@ -1,5 +1,5 @@
 # ICA — SPRINT 2 PLAN | Adunanze & Leghe
-**Stato:** REVIEW / PO-LIVE · **Fonte dati:** dataset pubblici correnti · **PR:** #112
+**Stato:** LIVE / COMPLETATO · **Fonte dati:** dataset pubblici correnti · **PR:** #112
 
 ## Obiettivo
 Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, senza attendere il primo import XLSX reale.
@@ -26,7 +26,7 @@ Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, sen
 - CI + regression + desktop + mobile + keyboard/accessibilità + deep-link PASS;
 - nessun nuovo dataset o contenuto non approvato introdotto.
 
-## Stato esecuzione 30/09/2026
+## Stato esecuzione finale
 - S2-TECH-01: IMPLEMENTATO in PR #112.
 - S2-TECH-02: IMPLEMENTATO in PR #112.
 - S2-TECH-03: IMPLEMENTATO in PR #112.
@@ -46,4 +46,4 @@ Portare a risultato visibile l’architettura Adunanze/Leghe già approvata, sen
   - primo portal-mobile: perf 0.92 / LCP 2788 ms — FAIL
   - retry portal-mobile: perf 0.99 / LCP 1954 ms — PASS
 
-**Gate residuo:** GitHub Pages è attivo; il merge in main è considerato PO-LIVE. Nessun merge eseguito.
+**Release:** PO-LIVE autorizzato; PR #112 mergiata in `main` il 2026-10-01. Merge commit: `51b58c46b179c0721898a23f4e258077d1f33dd7`. Lo Sprint 2 è concluso; le evoluzioni successive appartengono a PR/sprint distinti.
