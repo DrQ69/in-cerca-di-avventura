@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "In Cerca di Avventura",
   "document_id": "ICA-ASSET-MANIFEST-001",
-  "updated_at": "2026-09-29",
+  "updated_at": "2026-10-02",
   "authority": "docs/ICA_CANONICAL_SPEC.md",
   "specialist_spec": "docs/ASSET_SPECIFICATION.md",
   "notes": [
@@ -1240,6 +1240,54 @@
         "scope": "ICA project use",
         "record": "docs/ASSET_APPROVAL_RECORD_2026-09-29.md"
       }
+    },
+    {
+      "id": "BNR-BETA-NAV-20261002",
+      "component": "beta-shared-navigation",
+      "path": "assets/banners/navigation/bnr-beta-nav-primary.png",
+      "planned_path": null,
+      "role": "Product Owner-approved current beta navigation banner artwork",
+      "category": "banner",
+      "format": "png",
+      "exists": true,
+      "status": "candidate",
+      "version": "1.0",
+      "priority": "beta",
+      "responsive": {
+        "desktop": true,
+        "tablet": "NAV-02 replacement",
+        "mobile": "NAV-02 replacement"
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "Navigation labels, Home and social controls remain semantic HTML overlays; raster carries no required functional copy."
+      },
+      "source": {
+        "type": "project-original-ai-assisted",
+        "creator": "Product Owner-directed ICA design iteration",
+        "licence_or_permission": "project-owned-or-authorized",
+        "generation_method": "AI-assisted art direction with Product Owner visual calibration"
+      },
+      "budget": "section-banner",
+      "file_size_bytes": 306897,
+      "dimensions_px": {
+        "width": 2048,
+        "height": 684
+      },
+      "safe_area": {
+        "method": "80x32 calibrated overlay grid",
+        "nav_row": 23
+      },
+      "constraints": [
+        "Beta-only visual integration; does not replace canonical BNR-01 taxonomy or promote beta pages to canonical status.",
+        "Desktop at >=1024px; mobile/tablet use semantic NAV-02-style menu instead of shrinking the banner.",
+        "Text and social interactions remain HTML/CSS overlays."
+      ],
+      "notes": [
+        "Approved text centers: H23; midpoint R23/S23; AC23; AZ23; midpoint BJ23/BK23; BU23.",
+        "Instagram glow center calibrated at native x=762,y=318 with 137px interaction diameter.",
+        "YouTube glow center restored to native x=1320.5,y=320.5 with 160px interaction diameter."
+      ]
     }
   ]
 }
