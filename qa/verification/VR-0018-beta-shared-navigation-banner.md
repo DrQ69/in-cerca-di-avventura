@@ -4,7 +4,7 @@
 - **Verification ID:** VR-0018
 - **Object:** shared beta navigation banner
 - **Object type:** beta UI / asset / interaction change
-- **Tested implementation SHA:** `750e98c0cd9d75bff9ebd13b28bdad77543a9dfa`
+- **Tested implementation SHA:** `c845255e3b52b113f12c9335e5427dfc99d966f3`
 - **Date:** 2026-10-02
 - **Lifecycle target:** beta implementation only
 - **Release readiness target:** STAGING_READY beta scope
@@ -42,7 +42,7 @@ Shared implementation:
 
 ## Evidence
 
-Static inspection against implementation SHA `750e98c0cd9d75bff9ebd13b28bdad77543a9dfa`:
+Static inspection against implementation SHA `c845255e3b52b113f12c9335e5427dfc99d966f3`:
 
 - all seven beta pages contain the shared banner mount;
 - all seven beta pages load the shared banner stylesheet and module;
@@ -59,12 +59,26 @@ Static inspection against implementation SHA `750e98c0cd9d75bff9ebd13b28bdad7754
 - `prefers-reduced-motion` is handled;
 - navigation labels are not baked into the raster asset.
 
-Product Owner visual calibration was completed interactively before repository integration. Repository/browser CI evidence is attached through the PR once available.
+Product Owner visual calibration was completed interactively before repository integration.
+
+Automated evidence against implementation SHA `c845255e3b52b113f12c9335e5427dfc99d966f3`:
+
+- ICA baseline QA run **37021441507** — PASS
+- Homepage visual QA run **37021441608** — PASS
+- Cronache visual QA run **37021441635** — PASS
+- Avventurieri visual QA run **37021441693** — PASS
+- Alleanze visual QA run **37021441399** — PASS
+- Adunanze visual QA run **37021441740** — PASS
+- Shared banner consistency QA run **37021441915** — PASS
+- LCS-02 runtime QA run **37021441543** — PASS
+- Adunanze performance QA run **37021441619** — PASS
+
+The final implementation reserves banner geometry before runtime injection and loads the large decorative desktop artwork only at the desktop breakpoint, preventing the initial CLS and mobile LCP regression identified during the first CI pass.
 
 ## Outcome
 
-- **Static verification result:** PASS
-- **Implementation state supported:** IMPLEMENTED for beta scope
+- **Verification result:** PASS
+- **Implementation state supported:** VERIFIED / STAGING_READY for this beta integration scope
 - **Canonical / PRODUCTION_READY:** no
 - **M11 approved baseline created:** no
 - **M12 canonical-page registration changed:** no
@@ -73,4 +87,4 @@ Product Owner visual calibration was completed interactively before repository i
 
 ## Residual uncertainty
 
-Runtime/browser rendering on the deployed beta must still be smoke-tested after merge. This record does not promote the beta surfaces to canonical status and does not replace canonical `BNR-01` governance.
+Automated local-browser QA passes. The deployed beta must still receive a post-merge live desktop/mobile smoke test after GitHub Pages publication. This record does not promote the beta surfaces to canonical status and does not replace canonical `BNR-01` governance.
