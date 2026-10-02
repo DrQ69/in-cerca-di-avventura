@@ -11,7 +11,7 @@
 - [ ] E02 Peasant Tappa II ed E04 Constructed Full Tappa IV rispettate; conflitto nello snapshot originario segnalato prima di procedere.
 - [ ] Dati selezionati secondo whitelist; nessun nome reale, XLSX grezzo, nota privata o valore amministrativo nei file pubblici.
 - [ ] Eventi/giocatori assenti dall'export conservati, salvo distinta autorizzazione.
-- [ ] Fair Play DEC-09.7 verificato ufficialmente ove il rilascio coinvolga bonus/nuove graduatorie; non presumere +2/+3.
+- [ ] Se il rilascio coinvolge Fair Play, verificare coerenza con la regola ufficiale **+3 GP** senza ricalcolare autonomamente GP o posizioni.
 - [ ] Rapporto unico: versioni, aggiunte, modifiche campo-per-campo, conservazioni, ufficializzazione, errori critici e avvisi.
 - [ ] Anteprima visiva PRIVATA della stessa proposta.
 
@@ -33,4 +33,4 @@
 - [ ] Se regressione critica: blocco ulteriori update, rapporto e piano rollback; NON effettuare rollback senza nuova autorizzazione specifica.
 - [ ] Dopo eventuale rollback autorizzato, smoke test e storico ripristino.
 
-**BLOCCO ATTUALE:** loader browser implementato a livello di modulo ma non collegato alle pagine /beta/; manifest live non esiste; preview desktop/mobile e workflow di sourcing XLSX non sono stati eseguiti. Nessuna release autorizzata.
+**BLOCCO ATTUALE:** manifest live non esiste; il primo workbook XLSX reale non è ancora stato ricevuto. Il ciclo può arrivare fino a intake privato, candidato sanitizzato, dry-run, preview e QA; la pubblicazione versionata/atomica resta bloccata fino all'attivazione controllata del manifest e a specifico PO-LIVE.
