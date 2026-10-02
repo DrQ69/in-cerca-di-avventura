@@ -41,11 +41,12 @@ test('older/equal/unverifiable export requires separate freshness approval',()=>
  assert.ok(r.requiredGates.includes('owner_confirms_source_freshness'));
 });
 
-test('pending officiality and Fair Play impact remain explicit gates',()=>{
+test('pending officiality remains a gate while Fair Play uses confirmed +3 rule',()=>{
  const m=good();m.officiality='PENDING';m.fair_play_affected=true;
  const r=assessWorkbookIntake(m);
  assert.ok(r.requiredGates.includes('owner_confirms_officiality'));
- assert.ok(r.requiredGates.includes('resolve_DEC_09_7_before_publication'));
+ assert.ok(!r.requiredGates.includes('resolve_DEC_09_7_before_publication'));
+ assert.ok(r.warnings.some(x=>x.code==='FAIR_PLAY_PLUS3_RULE_APPLIES'));
 });
 
 test('private or unexpected intake metadata keys are rejected',()=>{

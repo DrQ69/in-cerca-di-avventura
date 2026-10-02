@@ -37,11 +37,21 @@ test('an actual nickname change is previewed by ID and does not change player id
  const r=previewPublicChange(current,next);assert.equal(r.blocked,false);
  assert.deepEqual(r.changes.players.changed,['PLY-0000']);
 });
-test('Fair Play is flagged but never computed or silently set to +2/+3',()=>{
- const b=base();b.standings.entries[0].fair_play_bonus_points=3;
+test('Fair Play +3 is validated without recalculating or mutating values',()=>{
+ const b=base();b.standings.entries[0].fair_play_wins=1;b.standings.entries[0].fair_play_bonus_points=3;
  const r=validatePublicBundle(b);
- assert.ok(r.warnings.some(x=>x.code==='FAIR_PLAY_RULE_UNRESOLVED_DO_NOT_RECALCULATE'));
+ assert.equal(r.errors.some(x=>x.code.startsWith('FAIR_PLAY_')),false);
  assert.equal(b.standings.entries[0].fair_play_bonus_points,3);
+});
+test('Fair Play inconsistent with +3 rule blocks candidate',()=>{
+ const b=base();b.standings.entries[0].fair_play_wins=2;b.standings.entries[0].fair_play_bonus_points=3;
+ const r=validatePublicBundle(b);
+ assert.ok(r.errors.some(x=>x.code==='FAIR_PLAY_PLUS3_INCONSISTENT'));
+});
+test('Fair Play bonus must be a non-negative multiple of 3',()=>{
+ const b=base();b.standings.entries[0].fair_play_bonus_points=2;
+ const r=validatePublicBundle(b);
+ assert.ok(r.errors.some(x=>x.code==='FAIR_PLAY_BONUS_NOT_MULTIPLE_OF_3'));
 });
 test('three immutable paths, hashes and one pointer manifest are coherent',()=>{
  const b=base();const out=buildReleaseFiles(b,'bog-2026-09-30-001','2026-09-30T18:36:00+02:00');
