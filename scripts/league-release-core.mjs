@@ -63,7 +63,20 @@ export function validatePublicBundle(bundle) {
     if(!Number.isInteger(r?.rank)||r.rank<1)err('INVALID_RANK',path);
     else if(ranks.has(r.rank))err('DUPLICATE_RANK',path);else ranks.add(r.rank);
     if(!Number.isFinite(r?.points)||r.points<0)err('INVALID_POINTS',path);
-    if(r?.fair_play_bonus_points!=null)warn('FAIR_PLAY_RULE_UNRESOLVED_DO_NOT_RECALCULATE',path);
+    if(r?.fair_play_wins!=null){
+      if(!Number.isInteger(r.fair_play_wins)||r.fair_play_wins<0)err('INVALID_FAIR_PLAY_WINS',path);
+    }
+    if(r?.fair_play_bonus_points!=null){
+      if(!Number.isFinite(r.fair_play_bonus_points)||r.fair_play_bonus_points<0)
+        err('INVALID_FAIR_PLAY_BONUS',path);
+      else if(r.fair_play_bonus_points%3!==0)
+        err('FAIR_PLAY_BONUS_NOT_MULTIPLE_OF_3',path);
+    }
+    if(Number.isInteger(r?.fair_play_wins)&&r.fair_play_wins>=0&&Number.isFinite(r?.fair_play_bonus_points)){
+      const expected=r.fair_play_wins*3;
+      if(r.fair_play_bonus_points!==expected)
+        err('FAIR_PLAY_PLUS3_INCONSISTENT',path+' expected '+expected+' GP');
+    }
   });
   if(bundle.standings?.series_id && events.every(e=>e.series_id!==bundle.standings.series_id))
     warn('SERIES_NOT_FOUND_IN_EVENTS','standings.series_id');
