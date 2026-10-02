@@ -72,7 +72,7 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Errori critici = blocco atomico dell’intera pubblicazione; niente aggiornamenti parziali.
 - Conservare eventi/profili già pubblici se assenti dall’export, salvo istruzione specifica di rimozione.
 - Pubblicazioni future: release coerente dei tre dataset con versione/manifest/hash. **Manifest live non ancora attivato**.
-- Primo import XLSX reale tramite il nuovo workflow: **AVVIATO lato readiness il 2026-10-02; file XLSX reale non ancora ricevuto**. Fino alla ricezione del workbook sono consentiti solo preparazione, audit e dry-run su dati pubblici/candidati sanitizzati.
+- Primo import XLSX reale tramite il nuovo workflow: **NON ancora eseguito**. La readiness operativa è completata, ma il file XLSX reale non è ancora stato ricevuto. Fino alla ricezione del workbook sono consentiti solo preparazione, audit e dry-run su dati pubblici/candidati sanitizzati.
 
 ## 10. Stato release
 - **Sprint 2 / PR #112 è LIVE** dal 2026-10-01; merge commit `51b58c46b179c0721898a23f4e258077d1f33dd7`.
