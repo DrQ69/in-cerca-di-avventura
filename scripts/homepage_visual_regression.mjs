@@ -66,7 +66,7 @@ try{
       const now=new Date();
       const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
       return (data.events||[])
-        .filter(event=>event.status==='futura'&&event.date&&event.date>key)
+        .filter(event=>event.status==='futura'&&event.date&&event.date>=key)
         .sort((x,y)=>x.date.localeCompare(y.date))[0]||null;
     });
     if(result.nextId!==(expectedNext?.event_id||null)) throw new Error(viewport.name+': next event mismatch rendered='+result.nextId+' expected='+(expectedNext?.event_id||null));
