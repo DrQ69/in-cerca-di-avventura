@@ -179,7 +179,9 @@ try {
 
     const assertPopoverFits=async(locator,label)=>{
       await locator.scrollIntoViewIfNeeded();
-      await locator.locator('.info-trigger').click();
+      const trigger=locator.locator('.info-trigger');
+      await trigger.focus();
+      await trigger.press('Enter');
       const pop=locator.locator('.event-popover');
       if(!await pop.isVisible()) throw new Error(`${viewport.name}: ${label} popover does not open on hover`);
       const bounds=await pop.evaluate(el=>{
@@ -197,7 +199,7 @@ try {
       if(bounds.scrollHeight>bounds.clientHeight && !['auto','scroll'].includes(bounds.overflowY)){
         throw new Error(`${viewport.name}: ${label} long content cannot be scrolled`);
       }
-      await locator.locator('.info-trigger').press('Escape');
+      await trigger.press('Escape');
       return bounds;
     };
 
