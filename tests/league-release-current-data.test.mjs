@@ -10,7 +10,12 @@ test('the EXISTING published public JSON passes core structural validation (not 
  assert.equal(out.ok,true);
  const e02=bundle.events.events.find(e=>e.event_code==='E02'),e04=bundle.events.events.find(e=>e.event_code==='E04');
  assert.deepEqual([e02.stage_number,e02.stage_label,e04.stage_number,e04.stage_label],[2,'II',4,'IV']);
- assert.ok(out.warnings.some(w=>w.code==='FAIR_PLAY_RULE_UNRESOLVED_DO_NOT_RECALCULATE'));
+ assert.ok(!out.warnings.some(w=>w.code==='FAIR_PLAY_RULE_UNRESOLVED_DO_NOT_RECALCULATE'));
+ for(const row of bundle.standings.entries){
+   if(row.fair_play_bonus_points!=null)assert.equal(row.fair_play_bonus_points%3,0);
+   if(Number.isInteger(row.fair_play_wins)&&row.fair_play_bonus_points!=null)
+     assert.equal(row.fair_play_bonus_points,row.fair_play_wins*3);
+ }
  // A no-op dry run does not create/officialize data, while still reporting manual gates.
  const preview=previewPublicChange(bundle,structuredClone(bundle));
  assert.equal(preview.blocked,false);
