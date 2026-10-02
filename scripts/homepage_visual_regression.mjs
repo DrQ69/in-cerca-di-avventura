@@ -35,6 +35,10 @@ try{
         order:direct,
         nextId:next?.getAttribute('data-event-id')||null,
         nextTitle:document.querySelector('#next-title')?.textContent?.trim()||'',
+        expectedNext:(()=>{
+          const cards=[...document.querySelectorAll('#next-event-card[data-event-id]')];
+          return cards.length?cards[0].getAttribute('data-event-id'):null;
+        })(),
         chronicleId:chronicle?.getAttribute('data-event-id')||null,
         chronicleTitle:document.querySelector('#chronicle-title')?.textContent?.trim()||'',
         standingsCount:standingCards.length,
@@ -56,8 +60,17 @@ try{
     if(JSON.stringify(result.order)!==JSON.stringify(expected)){
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
-    if(result.nextId!=='bog-2026-duello-02') throw new Error(viewport.name+': next event mismatch '+result.nextId);
-    if(result.nextTitle!=='Peasant') throw new Error(viewport.name+': next event title mismatch');
+    const expectedNext=await page.evaluate(async()=>{
+      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const data=await response.json();
+      const now=new Date();
+      const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+      return (data.events||[])
+        .filter(event=>event.status==='futura'&&event.date&&event.date>key)
+        .sort((x,y)=>x.date.localeCompare(y.date))[0]||null;
+    });
+    if(result.nextId!==(expectedNext?.event_id||null)) throw new Error(viewport.name+': next event mismatch rendered='+result.nextId+' expected='+(expectedNext?.event_id||null));
+    if(result.nextTitle!==(expectedNext?.title||'')) throw new Error(viewport.name+': next event title mismatch rendered='+result.nextTitle+' expected='+(expectedNext?.title||''));
     if(result.chronicleId!=='bog-2026-duello-01') throw new Error(viewport.name+': latest chronicle mismatch '+result.chronicleId);
     if(result.standingsCount!==0) throw new Error(viewport.name+': Blaze Top 3 must not remain on homepage');
     if(result.leagueTitle!=='Blaze of Glory — La Lega di Cremos') throw new Error(viewport.name+': league homepage title mismatch');
