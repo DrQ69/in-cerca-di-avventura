@@ -13,7 +13,7 @@
 - PR #111: core `36768807983` SUCCESS con test intake XLSX realmente incluso; baseline `36768807861` SUCCESS.
 
 ## Limitazioni residue
-- **Fair Play DEC-09.7 resta OPEN** (+2 vs +3 non deciso).
+- **Fair Play DEC-09.7 RISOLTA il 2026-10-01:** bonus confermato **+3 GP**; il sito non ricalcola autonomamente, ma i validator possono bloccare valori incoerenti con la regola ufficiale.
 - **Primo import XLSX reale NON eseguito**.
 - **Manifest live NON attivato**; i consumer restano in modalità legacy approvata.
 - Preview privata disponibile come strumento schematico, non sostituisce QA browser reale su una futura release dati.
