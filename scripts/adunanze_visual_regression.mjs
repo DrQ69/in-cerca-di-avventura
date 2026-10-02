@@ -178,7 +178,8 @@ try {
     if (national.overflow.horizontal) throw new Error(`${viewport.name}: national page horizontal overflow`);
 
     const assertPopoverFits=async(locator,label)=>{
-      await locator.hover();
+      await locator.scrollIntoViewIfNeeded();
+      await locator.hover({force:true});
       const pop=locator.locator('.event-popover');
       if(!await pop.isVisible()) throw new Error(`${viewport.name}: ${label} popover does not open on hover`);
       const bounds=await pop.evaluate(el=>{
