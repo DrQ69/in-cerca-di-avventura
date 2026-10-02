@@ -11,6 +11,7 @@ const year=document.getElementById('year');if(year)year.textContent=new Date().g
 const markerLayer=document.getElementById('marker-layer');
 const influenceLayer=document.getElementById('influence-layer');
 const statusEl=document.getElementById('map-status');
+const directoryRoot=document.getElementById('alliance-directory-root');
 const filters=[...document.querySelectorAll('.map-filter')];
 const VIEW_W=1000,VIEW_H=625;
 const ASSET_VERSION='20260929-2';
@@ -21,11 +22,25 @@ function pctX(x){return (Number(x)/VIEW_W*100).toFixed(3)+'%';}
 function pctY(y){return (Number(y)/VIEW_H*100).toFixed(3)+'%';}
 function radiusPct(r){return (Number(r)/VIEW_W*200).toFixed(3)+'%';}
 
+function directoryCard(entity,tier){
+  const contact=entity.contact_url
+    ? '<a href="'+esc(entity.contact_url)+'" target="_blank" rel="noopener noreferrer">Contatta la community →</a>'
+    : '<span class="directory-pending">Contatti da completare</span>';
+  return '<article class="alliance-directory-card">'+
+    '<img src="'+esc(versionedAsset(entity.logo))+'" alt="">'+
+    '<div><h3>'+esc(entity.name)+'</h3>'+
+    '<p>'+esc(entity.city)+(entity.region?' · '+esc(entity.region):'')+'</p>'+
+    '<dl><div><dt>Prestigio</dt><dd>'+esc(entity.prestige_label||'Bronzo')+'</dd></div>'+
+    '<div><dt>Influenza</dt><dd>'+esc(tier.label||'Presenza locale')+'</dd></div></dl>'+
+    contact+'</div></article>';
+}
+
 function render(data){
   const tiers=data.influence_tiers||{};
   const entities=Array.isArray(data.entities)?data.entities:[];
   influenceLayer.innerHTML='';
   markerLayer.innerHTML='';
+  if(directoryRoot)directoryRoot.innerHTML='';
 
   for(const entity of entities){
     if(!Number.isFinite(entity.x)||!Number.isFinite(entity.y))continue;
@@ -57,6 +72,9 @@ function render(data){
       button.classList.toggle('is-open');
     });
     markerLayer.append(button);
+    if(directoryRoot && (entity.type||'community')==='community'){
+      directoryRoot.insertAdjacentHTML('beforeend',directoryCard(entity,tier));
+    }
   }
 
   statusEl.textContent=entities.length+' presidi pilota censiti. Le aree di influenza sono dimostrative e verranno aggiornate con i dati reali delle community.';

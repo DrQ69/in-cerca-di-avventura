@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tesori — In Cerca di Avventura</title>
+  <meta name="description" content="Tesori di In cerca d’avventura: archivio di risorse, collezioni e contenuti della community italiana di Sorcery: Contested Realm.">
+  <meta name="theme-color" content="#090b0d">
+  <link rel="icon" href="../../assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
+</head>
+<body data-ica-page="TES">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="world-frame">
+  <header class="site-nav" data-ica-section="NAV" data-ica-id="TES-NAV-01">
+    <nav class="nav-side" aria-label="Navigazione principale sinistra">
+      <a href="../adunanze/nazionale/">Adunanze</a>
+      <a href="../avventurieri/">Avventurieri</a>
+      <a href="../alleanze/">Alleanze</a>
+    </nav>
+    <a class="logo-host" data-ica-id="TES-NAV-02" href="../" aria-label="In Cerca di Avventura — Home">
+      <img src="../../assets/logo-emblem.webp" alt="">
+    </a>
+    <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
+      <a href="./" aria-current="page">Tesori</a>
+      <a href="../#proclami">Proclami</a>
+      <a href="../#chi-siamo">Chi siamo</a>
+    </nav>
+    <button class="menu-toggle" id="menu" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile">
+      <a href="../adunanze/nazionale/">Adunanze</a>
+      <a href="../avventurieri/">Avventurieri</a>
+      <a href="../alleanze/">Alleanze</a>
+      <a href="./" aria-current="page">Tesori</a>
+      <a href="../#proclami">Proclami</a>
+      <a href="../#chi-siamo">Chi siamo</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="identity-block" aria-labelledby="tesori-title">
+      <div class="identity-glow" aria-hidden="true"></div>
+      <div class="identity-copy">
+        <p class="section-kicker">Archivio del Reame</p>
+        <h1 id="tesori-title">Tesori</h1>
+        <p class="identity-subtitle">Reliquie, risorse e collezioni della community</p>
+        <p class="identity-intro">Questa sezione è stata attivata nella navigazione ed è pronta per accogliere i contenuti definitivi.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <span>In Cerca di Avventura · Tesori</span>
+    <span>Il reame delle community italiane di Sorcery: Contested Realm</span>
+    <span>© <span id="year"></span></span>
+  </footer>
+</div>
+<script>
+const menu=document.getElementById('menu'),mobile=document.getElementById('mobile-nav');
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));mobile?.classList.toggle('is-open',!open);});
+const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+</script>
+<script src="../../assets/js/lcs02-inspector.js"></script>
+</body>
+</html>

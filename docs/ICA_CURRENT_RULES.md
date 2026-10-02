@@ -1,5 +1,5 @@
 # ICA — CURRENT RULES BASELINE
-**Versione operativa:** 2026-09-30 · **Fonte primaria per agenti:** questo file.  
+**Versione operativa:** 2026-10-02 · **Fonte primaria per agenti:** questo file.  
 Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto prevale questa baseline e la decisione più recente esplicitamente registrata.
 
 ## 1. Identità e terminologia
@@ -10,9 +10,10 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Non usare “Duello” come termine generale al posto di “Tappa”. Un nome narrativo proprio può restare, accompagnato dall’indicazione operativa della Tappa.
 
 ## 2. Navigazione
-- Menu principale: **Adunanze · Avventurieri · Alleanze · Proclami · Chi siamo**.
+- Menu principale: **Adunanze · Avventurieri · Alleanze · Tesori · Proclami · Chi siamo**.
 - Dentro Adunanze: **In programma · Cronache · Leghe**.
 - Preservare gli URL e deep-link storici già esistenti.
+- **Tesori** è attivo nella navigazione; la pagina può esistere come stato informativo, ma struttura e contenuti definitivi restano da definire prima della promozione canonica.
 - Artwork/header `/beta-v2/`: **PAUSED**, non modificare senza vero gate di prodotto.
 
 ## 3. Homepage
@@ -73,7 +74,12 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Pubblicazioni future: release coerente dei tre dataset con versione/manifest/hash. **Manifest live non ancora attivato**.
 - Primo import XLSX reale tramite il nuovo workflow: **NON ancora eseguito**.
 
-## 10. QA / pubblicazione / rollback
+## 10. Stato release
+- **Sprint 2 / PR #112 è LIVE** dal 2026-10-01; merge commit `51b58c46b179c0721898a23f4e258077d1f33dd7`.
+- Il consolidamento visibile successivo è tracciato nella **PR #118**; finché non è mergiata non rappresenta lo stato live.
+- La PR tecnica **#113** applica nei validator la regola Fair Play +3 già approvata; finché non è mergiata la decisione è vigente ma l'hardening tecnico resta pendente.
+
+## 11. QA / pubblicazione / rollback
 - Per ogni modifica: CI, regression test, desktop, mobile, keyboard/accessibilità pertinente, deep-link e nessuna regressione.
 - Non dichiarare PASS per controlli non eseguiti.
 - Quattro soli gate riservati al Dottor Q:

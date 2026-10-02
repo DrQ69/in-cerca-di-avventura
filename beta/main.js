@@ -73,7 +73,7 @@ function initials(nickname){
 
 function futureEvents(events){
   const today=todayKey();
-  return events.filter(event=>event.status==='futura'&&event.date&&event.date>today).sort((a,b)=>a.date.localeCompare(b.date));
+  return events.filter(event=>event.status==='futura'&&event.date&&event.date>=today).sort((a,b)=>a.date.localeCompare(b.date));
 }
 
 function completedEvents(events){

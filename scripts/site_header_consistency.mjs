@@ -40,7 +40,7 @@ try{
         const navLink=window.innerWidth>=1024
           ? document.querySelector('.nav-side a')
           : document.querySelector('.mobile-nav a');
-        const adunanzeLinks=[...document.querySelectorAll('.site-nav a')].filter(a=>a.textContent.trim()==='Le Adunanze');
+        const adunanzeLinks=[...document.querySelectorAll('.site-nav a')].filter(a=>a.textContent.trim()==='Adunanze');
         const hr=header.getBoundingClientRect();
         const lr=logo.getBoundingClientRect();
         const hs=getComputedStyle(header);
@@ -59,7 +59,7 @@ try{
       });
       if(errors.length) throw new Error(`${viewport.name}/${name}: console errors: ${errors.join(' | ')}`);
       if(!result.adunanzeTargets.length||result.adunanzeTargets.some(path=>!path.endsWith('/beta/adunanze/nazionale/'))){
-        throw new Error(`${viewport.name}/${name}: Le Adunanze must route directly to national events: ${JSON.stringify(result.adunanzeTargets)}`);
+        throw new Error(`${viewport.name}/${name}: Adunanze must route directly to national events: ${JSON.stringify(result.adunanzeTargets)}`);
       }
       results.push({name,...result});
       await page.screenshot({path:`${outDir}/${viewport.name}-${name}.png`,fullPage:false,animations:'disabled'});

@@ -35,6 +35,10 @@ try{
         order:direct,
         nextId:next?.getAttribute('data-event-id')||null,
         nextTitle:document.querySelector('#next-title')?.textContent?.trim()||'',
+        expectedNext:(()=>{
+          const cards=[...document.querySelectorAll('#next-event-card[data-event-id]')];
+          return cards.length?cards[0].getAttribute('data-event-id'):null;
+        })(),
         chronicleId:chronicle?.getAttribute('data-event-id')||null,
         chronicleTitle:document.querySelector('#chronicle-title')?.textContent?.trim()||'',
         standingsCount:standingCards.length,
@@ -43,21 +47,40 @@ try{
         proclamationTitle:document.querySelector('#proclamation-title')?.textContent?.trim()||'',
         nextMapHref:document.querySelector('#next-event-facts .map-link')?.getAttribute('href')||'',
         chronicleMapHref:document.querySelector('#chronicle-facts .map-link')?.getAttribute('href')||'',
+        identitySubtitle:document.querySelector('.identity-subtitle')?.textContent?.trim()||'',
+        identityIntro:document.querySelector('.identity-intro')?.textContent?.trim()||'',
+        leagueMeta:document.querySelector('#classifica .section-heading>p:last-child')?.textContent?.trim()||'',
+        youtubeHref:document.querySelector('#chi-siamo a[href*="youtube.com"]')?.getAttribute('href')||'',
+        instagramHref:document.querySelector('#chi-siamo a[href*="instagram.com"]')?.getAttribute('href')||'',
         overflow:Math.max(body.scrollWidth,html.scrollWidth)>window.innerWidth+2,
       };
     });
 
-    const expected=['home','next-event','classifica','cronache-home','proclami'];
+    const expected=['home','next-event','classifica','cronache-home','proclami','chi-siamo'];
     if(JSON.stringify(result.order)!==JSON.stringify(expected)){
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
-    if(result.nextId!=='bog-2026-duello-02') throw new Error(viewport.name+': next event mismatch '+result.nextId);
-    if(result.nextTitle!=='Peasant') throw new Error(viewport.name+': next event title mismatch');
+    const expectedNext=await page.evaluate(async()=>{
+      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const data=await response.json();
+      const now=new Date();
+      const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+      return (data.events||[])
+        .filter(event=>event.status==='futura'&&event.date&&event.date>=key)
+        .sort((x,y)=>x.date.localeCompare(y.date))[0]||null;
+    });
+    if(result.nextId!==(expectedNext?.event_id||null)) throw new Error(viewport.name+': next event mismatch rendered='+result.nextId+' expected='+(expectedNext?.event_id||null));
+    if(result.nextTitle!==(expectedNext?.title||'')) throw new Error(viewport.name+': next event title mismatch rendered='+result.nextTitle+' expected='+(expectedNext?.title||''));
     if(result.chronicleId!=='bog-2026-duello-01') throw new Error(viewport.name+': latest chronicle mismatch '+result.chronicleId);
     if(result.standingsCount!==0) throw new Error(viewport.name+': Blaze Top 3 must not remain on homepage');
     if(result.leagueTitle!=='Blaze of Glory — La Lega di Cremos') throw new Error(viewport.name+': league homepage title mismatch');
     if(result.leagueHref!=='./adunanze/nazionale/#lega-blaze-of-glory-2026-2027') throw new Error(viewport.name+': Blaze league CTA mismatch '+result.leagueHref);
     if(result.proclamationTitle!=='Nessun Proclama pubblicato') throw new Error(viewport.name+': empty Proclami state mismatch');
+    if(result.identitySubtitle!=='Il reame delle community italiane di Sorcery: Contested Realm') throw new Error(viewport.name+': Nick v2 identity subtitle mismatch');
+    if(!result.identityIntro.includes('Trova una community vicino a te')) throw new Error(viewport.name+': Nick v2 identity intro missing');
+    if(!result.leagueMeta.includes('Organizzatore: Il Regno di Cremos')) throw new Error(viewport.name+': ICA/Cremos organizer separation missing');
+    if(!result.youtubeHref.includes('youtube.com/@incercadiavventura')) throw new Error(viewport.name+': YouTube link missing');
+    if(!result.instagramHref.includes('instagram.com/incercadavventura')) throw new Error(viewport.name+': Instagram link missing');
     if(!result.nextMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': next event location is not linked to Google Maps');
     if(!result.chronicleMapHref.startsWith('https://www.google.com/maps/search/?api=1&query=')) throw new Error(viewport.name+': chronicle location is not linked to Google Maps');
     if(result.overflow) throw new Error(viewport.name+': horizontal overflow');
