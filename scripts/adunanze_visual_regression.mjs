@@ -305,9 +305,9 @@ try {
     const now = new Date();
     const key = [now.getFullYear(), String(now.getMonth()+1).padStart(2,'0'), String(now.getDate()).padStart(2,'0')].join('-');
     const events = data.events || [];
-    const staleFuture = events.filter(event => event.status === 'futura' && event.date && event.date <= key);
+    const staleFuture = events.filter(event => event.status === 'futura' && event.date && event.date < key);
     const expected = events
-      .filter(event => event.status === 'futura' && event.date && event.date > key)
+      .filter(event => event.status === 'futura' && event.date && event.date >= key)
       .sort((a,b) => a.date.localeCompare(b.date))[0] || null;
     return {
       rendered: document.querySelector('#next-event-card')?.getAttribute('data-event-id') || null,
