@@ -10,6 +10,7 @@ const pages=[
   ['cronache','/beta/cronache/'],
   ['avventurieri','/beta/avventurieri/'],
   ['alleanze','/beta/alleanze/'],
+  ['tesori','/beta/tesori/'],
 ];
 const viewports=[
   {name:'mobile-390',width:390,height:844},
@@ -30,26 +31,25 @@ try{
       page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
       page.on('pageerror',e=>errors.push(String(e)));
       await page.goto(baseURL+path,{waitUntil:'networkidle',timeout:30000});
-      await page.waitForSelector('.site-nav .logo-host img',{timeout:10000});
+      await page.waitForSelector('.ica-main-banner',{timeout:10000});
       await page.evaluate(()=>document.fonts?.ready);
 
       const result=await page.evaluate(()=>{
-        const header=document.querySelector('.site-nav');
-        const host=document.querySelector('.logo-host');
-        const logo=document.querySelector('.logo-host img');
-        const navLink=window.innerWidth>=1024
-          ? document.querySelector('.nav-side a')
-          : document.querySelector('.mobile-nav a');
-        const adunanzeLinks=[...document.querySelectorAll('.site-nav a')].filter(a=>a.textContent.trim()==='Adunanze');
+        const desktop=window.innerWidth>=1024;
+        const header=document.querySelector('.ica-main-banner');
+        const surface=document.querySelector(desktop?'.ica-main-banner__desktop':'.ica-main-banner__mobile');
+        const art=document.querySelector(desktop?'.ica-main-banner__art':'.ica-main-banner__mobile-brand img');
+        const navLink=document.querySelector(desktop?'.ica-main-banner__link':'.ica-main-banner__mobile-menu a');
+        const adunanzeLinks=[...document.querySelectorAll('.ica-main-banner a')].filter(a=>a.textContent.trim()==='Adunanze');
         const hr=header.getBoundingClientRect();
-        const lr=logo.getBoundingClientRect();
+        const sr=surface.getBoundingClientRect();
+        const ar=art.getBoundingClientRect();
         const hs=getComputedStyle(header);
-        const ls=getComputedStyle(logo);
         const ns=getComputedStyle(navLink);
         return {
           header:{x:hr.x,y:hr.y,width:hr.width,height:hr.height,background:hs.backgroundImage},
-          logo:{x:lr.x,y:lr.y,width:lr.width,height:lr.height,src:logo.getAttribute('src'),filter:ls.filter},
-          hostClass:host?.className||'',
+          surface:{x:sr.x,y:sr.y,width:sr.width,height:sr.height},
+          art:{x:ar.x,y:ar.y,width:ar.width,height:ar.height,source:desktop?getComputedStyle(art).backgroundImage:art.getAttribute('src')},
           navFont:ns.fontFamily,
           navWeight:ns.fontWeight,
           navTransform:ns.textTransform,
@@ -57,6 +57,7 @@ try{
           adunanzeTargets:adunanzeLinks.map(a=>new URL(a.href,location.href).pathname),
         };
       });
+
       if(errors.length) throw new Error(`${viewport.name}/${name}: console errors: ${errors.join(' | ')}`);
       if(!result.adunanzeTargets.length||result.adunanzeTargets.some(path=>!path.endsWith('/beta/adunanze/nazionale/'))){
         throw new Error(`${viewport.name}/${name}: Adunanze must route directly to national events: ${JSON.stringify(result.adunanzeTargets)}`);
@@ -68,16 +69,17 @@ try{
 
     const reference=results[0];
     for(const current of results.slice(1)){
-      const h=current.header, rh=reference.header;
-      const l=current.logo, rl=reference.logo;
+      const h=current.header,rh=reference.header,s=current.surface,rs=reference.surface,a=current.art,ra=reference.art;
       if(!near(h.x,rh.x)||!near(h.y,rh.y)||!near(h.width,rh.width)||!near(h.height,rh.height)){
-        throw new Error(`${viewport.name}/${current.name}: header geometry differs from Home`);
+        throw new Error(`${viewport.name}/${current.name}: banner host geometry differs from Home`);
       }
-      if(!near(l.x,rl.x)||!near(l.y,rl.y)||!near(l.width,rl.width)||!near(l.height,rl.height)){
-        throw new Error(`${viewport.name}/${current.name}: logo geometry differs from Home`);
+      if(!near(s.x,rs.x)||!near(s.y,rs.y)||!near(s.width,rs.width)||!near(s.height,rs.height)){
+        throw new Error(`${viewport.name}/${current.name}: active banner surface geometry differs from Home`);
       }
-      if(h.background!==rh.background) throw new Error(`${viewport.name}/${current.name}: banner background differs from Home`);
-      if(l.filter!==rl.filter) throw new Error(`${viewport.name}/${current.name}: logo rendering differs from Home`);
+      if(!near(a.x,ra.x)||!near(a.y,ra.y)||!near(a.width,ra.width)||!near(a.height,ra.height)){
+        throw new Error(`${viewport.name}/${current.name}: banner/brand art geometry differs from Home`);
+      }
+      if(h.background!==rh.background) throw new Error(`${viewport.name}/${current.name}: banner host background differs from Home`);
       if(current.navFont!==reference.navFont||current.navWeight!==reference.navWeight||current.navTransform!==reference.navTransform||current.navLetterSpacing!==reference.navLetterSpacing){
         throw new Error(`${viewport.name}/${current.name}: navigation typography differs from Home`);
       }

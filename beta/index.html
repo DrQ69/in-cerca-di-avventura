@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../assets/css/ica-shared-shell.css">
+  <link rel="stylesheet" href="shared/ica-banner.css?v=20261002-1">
 </head>
 <body data-ica-page="HOME">
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -23,30 +24,7 @@
   <div class="outer-rail rail-left" aria-hidden="true"><span></span></div>
   <div class="outer-rail rail-right" aria-hidden="true"><span></span></div>
 
-  <header class="site-nav" data-ica-section="NAV" data-ica-id="HOME-NAV-01">
-    <nav class="nav-side" aria-label="Navigazione principale sinistra">
-      <a href="./adunanze/nazionale/">Adunanze</a>
-      <a href="./avventurieri/">Avventurieri</a>
-      <a href="./alleanze/">Alleanze</a>
-    </nav>
-    <a class="logo-host" data-ica-id="HOME-NAV-02" href="#home" aria-label="In Cerca di Avventura — Home">
-      <img src="../assets/logo-emblem.webp" alt="">
-    </a>
-    <nav class="nav-side nav-right" aria-label="Navigazione principale destra">
-      <a href="./tesori/">Tesori</a>
-      <a href="./#proclami">Proclami</a>
-      <a href="./#chi-siamo">Chi siamo</a>
-    </nav>
-    <button class="menu-toggle" id="menu" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile">
-      <a href="./adunanze/nazionale/">Adunanze</a>
-      <a href="./avventurieri/">Avventurieri</a>
-      <a href="./alleanze/">Alleanze</a>
-      <a href="./tesori/">Tesori</a>
-      <a href="./#proclami">Proclami</a>
-      <a href="./#chi-siamo">Chi siamo</a>
-    </nav>
-  </header>
+  <div id="ica-main-banner" data-ica-section="NAV"></div>
 
   <main id="main">
     <section class="identity-block" id="home" data-ica-section="IDENTITY" data-ica-id="HOME-ID-01" aria-labelledby="home-title">
@@ -141,5 +119,6 @@
 </div>
 <script src="main.js?v=20260930-s2"></script>
 <script src="../assets/js/lcs02-inspector.js"></script>
+  <script type="module" src="shared/ica-banner.js?v=20261002-1"></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+/* ICA beta shared navigation banner — PO visual direction 2026-10-02. */
+#ica-main-banner,.ica-main-banner{position:relative;z-index:70;width:100%;min-height:72px;background:linear-gradient(180deg,rgba(5,8,12,.96),rgba(7,12,17,.72) 78%,transparent)}
+.ica-main-banner__desktop{display:none;position:relative;width:100%;max-width:1536px;margin:0 auto;aspect-ratio:2048/684;isolation:isolate}
+.ica-main-banner__art{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;background-position:center;background-repeat:no-repeat;background-size:contain}
+.ica-main-banner__link,.ica-main-banner__home,.ica-main-banner__social{position:absolute;z-index:2;text-decoration:none;outline:none}
+.ica-main-banner__link{left:var(--cx);top:70.3125%;width:12.7%;height:13.4%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;color:#ead49a;font:700 clamp(9px,1.12vw,18px)/1 Cinzel,Georgia,serif;letter-spacing:.055em;text-transform:uppercase;text-align:center;white-space:nowrap;text-shadow:0 1px 1px #000,0 2px 3px rgba(0,0,0,.95),0 0 8px rgba(226,185,96,.20);transition:color .18s ease,text-shadow .18s ease,filter .18s ease}
+.ica-main-banner__link[aria-current="page"]{color:#f4dda4;text-shadow:0 0 7px rgba(236,190,88,.38),0 2px 3px #000}
+.ica-main-banner__home{left:43.2%;top:9%;width:13.6%;height:69%;border-radius:42%}
+.ica-main-banner__social{border-radius:50%;transform:translate(-50%,-50%);cursor:pointer}
+.ica-main-banner__social::before,.ica-main-banner__social::after{content:"";position:absolute;inset:-8%;border-radius:50%;opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease,filter .22s ease}
+.ica-main-banner__social::after{inset:-16%;filter:blur(12px)}
+.ica-main-banner__social--instagram{left:37.20703125%;top:46.49122807%;width:6.689453125%;aspect-ratio:1}
+.ica-main-banner__social--instagram::before{background:radial-gradient(circle at 48% 38%,rgba(255,255,255,.50) 0 7%,rgba(202,70,255,.34) 18%,rgba(255,45,145,.28) 42%,rgba(255,135,20,.23) 67%,transparent 78%);box-shadow:0 0 12px rgba(203,70,255,.78),0 0 22px rgba(255,58,151,.56),0 0 32px rgba(255,132,28,.40);mix-blend-mode:screen}
+.ica-main-banner__social--instagram::after{background:conic-gradient(from 210deg,rgba(255,120,20,.38),rgba(255,45,145,.38),rgba(166,74,255,.42),rgba(255,120,20,.38));mix-blend-mode:screen}
+.ica-main-banner__social--youtube{left:64.47753906%;top:46.85672515%;width:7.8125%;aspect-ratio:1}
+.ica-main-banner__social--youtube::before{background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.46) 0 7%,rgba(255,80,55,.33) 21%,rgba(255,35,25,.29) 47%,rgba(255,95,22,.20) 68%,transparent 79%);box-shadow:0 0 14px rgba(255,88,55,.76),0 0 26px rgba(255,35,25,.58),0 0 38px rgba(255,100,25,.36);mix-blend-mode:screen}
+.ica-main-banner__social--youtube::after{background:radial-gradient(circle,rgba(255,40,25,.38),rgba(255,100,20,.20) 48%,transparent 72%);mix-blend-mode:screen}
+.ica-main-banner__link:focus-visible,.ica-main-banner__home:focus-visible,.ica-main-banner__social:focus-visible,.ica-main-banner__menu-button:focus-visible,.ica-main-banner__mobile-menu a:focus-visible{outline:3px solid #9bd7f4;outline-offset:3px;border-radius:7px}
+.ica-main-banner__social:focus-visible::before,.ica-main-banner__social:focus-visible::after{opacity:1;transform:scale(1.04)}
+.ica-main-banner__mobile{display:block;border-bottom:1px solid rgba(190,151,80,.46);background:linear-gradient(180deg,#14191e,#080b0e);box-shadow:0 8px 22px rgba(0,0,0,.32)}
+.ica-main-banner__mobile-bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 16px}
+.ica-main-banner__mobile-brand{min-width:0;display:flex;align-items:center;gap:10px;color:#e7dcc1;text-decoration:none;font:700 .78rem Cinzel,Georgia,serif;text-transform:uppercase;letter-spacing:.05em}
+.ica-main-banner__mobile-brand img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 5px 8px rgba(0,0,0,.78))}
+.ica-main-banner__menu-button{min-width:72px;min-height:44px;padding:0 14px;border:1px solid rgba(190,151,80,.55);background:#10161b;color:#e1c984;font:700 .72rem Cinzel,Georgia,serif;text-transform:uppercase;cursor:pointer}
+.ica-main-banner__mobile-menu{display:none;grid-template-columns:1fr;gap:6px;padding:8px 12px 12px;border-top:1px solid rgba(190,151,80,.18)}
+.ica-main-banner__mobile-menu.is-open{display:grid}
+.ica-main-banner__mobile-menu a{min-height:44px;display:flex;align-items:center;justify-content:center;padding:8px 12px;border:1px solid rgba(190,151,80,.34);background:#111820;color:#e5cf9a;text-decoration:none;font:700 .78rem Cinzel,Georgia,serif;text-transform:uppercase;text-align:center}
+.ica-main-banner__mobile-menu a[aria-current="page"]{color:#fff0bd;border-color:#b58c4c;background:#18212a}
+.ica-main-banner__mobile-socials{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media (hover:hover) and (pointer:fine){.ica-main-banner__link:hover{color:#fff3bd;text-shadow:0 0 3px #fff9df,0 0 8px #ffd66f,0 0 16px rgba(255,174,42,.95),0 0 28px rgba(255,110,20,.62);filter:brightness(1.28)}.ica-main-banner__social:hover::before,.ica-main-banner__social:hover::after{opacity:1;transform:scale(1.04)}}
+@media(min-width:1024px){#ica-main-banner,.ica-main-banner{aspect-ratio:2048/684;min-height:0}.ica-main-banner__desktop{display:block}.ica-main-banner__desktop .ica-main-banner__art{background-image:url("../../assets/banners/navigation/bnr-beta-nav-primary.png")}.ica-main-banner__mobile{display:none}}
+@media(max-width:479px){.ica-main-banner__mobile-brand span{font-size:.68rem}.ica-main-banner__mobile-brand img{width:46px;height:46px}}
+@media(prefers-reduced-motion:reduce){.ica-main-banner__link,.ica-main-banner__social::before,.ica-main-banner__social::after{transition:none}}
