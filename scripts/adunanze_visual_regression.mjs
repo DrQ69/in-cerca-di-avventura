@@ -197,6 +197,7 @@ try {
       if(bounds.scrollHeight>bounds.clientHeight && !['auto','scroll'].includes(bounds.overflowY)){
         throw new Error(`${viewport.name}: ${label} long content cannot be scrolled`);
       }
+      await locator.locator('.info-trigger').press('Escape');
       return bounds;
     };
 
