@@ -49,7 +49,7 @@ try{
         return {
           header:{x:hr.x,y:hr.y,width:hr.width,height:hr.height,background:hs.backgroundImage},
           surface:{x:sr.x,y:sr.y,width:sr.width,height:sr.height},
-          art:{x:ar.x,y:ar.y,width:ar.width,height:ar.height,src:art.getAttribute('src')},
+          art:{x:ar.x,y:ar.y,width:ar.width,height:ar.height,source:desktop?getComputedStyle(art).backgroundImage:art.getAttribute('src')},
           navFont:ns.fontFamily,
           navWeight:ns.fontWeight,
           navTransform:ns.textTransform,
