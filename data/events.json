@@ -858,6 +858,55 @@
       "prize_grid_status": "pending",
       "prize_grid": [],
       "registration_url": null
+    },
+    {
+      "event_id": "cremos-cornerstone-2026",
+      "title": "CREMOS – Cornerstone Championship 2026",
+      "classification": "torneo",
+      "series_id": null,
+      "series_name": null,
+      "stage_number": null,
+      "status": "futura",
+      "date": "2026-12-19",
+      "weekday": "Sab",
+      "date_status": "po_schedule_confirmed",
+      "season": "2026",
+      "venue": "Casa dei Giochi",
+      "city": "Milano",
+      "province": "MI",
+      "country": "IT",
+      "address": "Via Sant’Uguzzone 8, Milano, Italia",
+      "organizer": "CREMOS",
+      "format": "Constructed",
+      "format_family": "Constructed",
+      "structure": "Turni di Svizzera seguiti da Top Cut secondo il numero dei partecipanti",
+      "rounds": "Turni di Svizzera seguiti da Top Cut secondo il numero dei partecipanti",
+      "match_format": "Best of One · 50 minuti per turno",
+      "rules_details": "Formato Constructed. Turni di Svizzera seguiti da Top Cut in base al numero dei partecipanti. Best of One: 50 minuti per turno. Judge ufficiale. Evento ufficiale valido per l’assegnazione dei Dust.",
+      "entry_fee_eur": 30,
+      "capacity": 50,
+      "availability_status": "Massimo 50 posti",
+      "check_in_time": null,
+      "start_time": null,
+      "registration_url": "https://sorcerytcg.com/events/cmux5giq1000306mjsmeprzmh",
+      "official_event_url": "https://sorcerytcg.com/events/cmux5giq1000306mjsmeprzmh",
+      "prize_grid_status": "announced_partial",
+      "prize_popover": {
+        "title": "Rewards of the Realm",
+        "subtitle": "Premi annunciati",
+        "prizes": [
+          "Den of Evil alternate art non-foil per tutti i partecipanti",
+          "Den of Evil alternate art FOIL al miglior classificato",
+          "Swap alternate art FOIL al Champion, riconoscimento per spirito di condivisione, epicità e valore fraterno"
+        ],
+        "notes": [
+          "Ulteriori premi, carte, booster, ospiti e iniziative speciali saranno annunciati progressivamente.",
+          "I premi aggiuntivi non sono ancora confermati."
+        ]
+      },
+      "notes": "Presso la location sarà possibile acquistare cibo e bevande. Occasione di incontro e scambio carte per la community italiana di Sorcery.",
+      "source_note": "Informazioni e premi comunicati espressamente dal Product Owner il 9 ottobre 2026. L'URL di iscrizione è fornito dal PO; la pagina remota non era consultabile dal browser di verifica.",
+      "truth_status": "po_announcement_confirmed"
     }
   ]
 }
