@@ -538,7 +538,7 @@
       "series_name": "Blaze of Glory — La Lega di Cremos",
       "stage_number": 2,
       "stage_label": "II",
-      "status": "futura",
+      "status": "conclusa",
       "date": "2026-10-02",
       "weekday": "Ven",
       "date_status": "po_schedule_confirmed",
@@ -550,7 +550,7 @@
       "format_family": "Constructed",
       "structure": "Ordinary & Exceptional only",
       "notes": "Ordinary & Exceptional only; +5€ Joker's",
-      "truth_status": "po_schedule_confirmed",
+      "truth_status": "po_results_confirmed",
       "check_in_time": "20:30–21:00",
       "start_time": "21:15",
       "rules_details": "Spellbook e Atlas potranno contenere soltanto carte Ordinary ed Exceptional. Ordinary: massimo 4 copie per carta. Exceptional: massimo 3 copie per carta. Elite e Unique: bandite. Avatar ammessi — Beta: Sorcerer, Flamecaller, Geomancer, Sparkmage, Waveshaper. Gothic: Harbinger, Necromancer, Persecutor, Savior. Arthurian Legends: Druid, Templar. Decklist obbligatoria: mazzo 60/30/10 creato con account sorcerytcg.com e caricato al link dell’evento entro il 01 ottobre.",
@@ -615,7 +615,7 @@
         "La Flaming Skull (Promo NF - Alternate Art by Brom) è sempre garantita indipendentemente dal numero di partecipanti."
       ],
       "official_event_url": "https://sorcerytcg.com/events/cmua2gkxc00090agm7qvfrh45",
-      "source_note": "Detailed Stage II Peasant event information supplied by Product Owner on 2026-09-28.",
+      "source_note": "23 piazzamenti e punti BOG (incluso bonus partecipazione), punti BOG e punti evento forniti dal Product Owner il 2026-10-09. Colonna Epic Sorcerer senza valori: nessun bonus attribuito. Collegamento player_id solo per corrispondenze già note; altri giocatori restano non collegati.",
       "rules_popover": {
         "title": "LE LEGGI DEL TORNEO",
         "intro": "Spellbook e Atlas potranno contenere soltanto:",
@@ -651,7 +651,220 @@
           "I premi del Joker’s verranno distribuiti tra tutti i partecipanti con modalità ISTRIONICHE!",
           "La Flaming Skull (Promo NF - Alternate Art by Brom) è generosamente offerta dalla congrega dei NECROMANTI del Reame ed è sempre garantita indipendentemente dal numero di stregoni partecipanti."
         ]
-      }
+      },
+      "player_count": 23,
+      "winner_display_name": "Michele S",
+      "winner_rank": 1,
+      "standings": [
+        {
+          "rank": 1,
+          "display_name": "Michele S",
+          "points": 25,
+          "bog_points": 20,
+          "event_points": 12,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0017",
+          "nickname": "Mikininja"
+        },
+        {
+          "rank": 2,
+          "display_name": "Simone C",
+          "points": 22,
+          "bog_points": 17,
+          "event_points": 9,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0021",
+          "nickname": "TERRONATOR"
+        },
+        {
+          "rank": 3,
+          "display_name": "Luke C",
+          "points": 20,
+          "bog_points": 15,
+          "event_points": 9,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 4,
+          "display_name": "Jonni R",
+          "points": 18,
+          "bog_points": 14,
+          "event_points": 9,
+          "participation_bonus_points": 4,
+          "player_id": "PLY-0010",
+          "nickname": "Curjo"
+        },
+        {
+          "rank": 5,
+          "display_name": "Tommaso M",
+          "points": 17,
+          "bog_points": 13,
+          "event_points": 9,
+          "participation_bonus_points": 4,
+          "player_id": "PLY-0003",
+          "nickname": "Metalgrave"
+        },
+        {
+          "rank": 6,
+          "display_name": "Mohamed A",
+          "points": 16,
+          "bog_points": 11,
+          "event_points": 6,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0012",
+          "nickname": "AchaMoh"
+        },
+        {
+          "rank": 7,
+          "display_name": "Fabio B",
+          "points": 15,
+          "bog_points": 10,
+          "event_points": 6,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 8,
+          "display_name": "Niccolò C",
+          "points": 14,
+          "bog_points": 9,
+          "event_points": 6,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0001",
+          "nickname": "Nick the Wizard"
+        },
+        {
+          "rank": 9,
+          "display_name": "Jacopo N",
+          "points": 13,
+          "bog_points": 8,
+          "event_points": 6,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 10,
+          "display_name": "Nicolò B",
+          "points": 12,
+          "bog_points": 7,
+          "event_points": 6,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 11,
+          "display_name": "Antonio B",
+          "points": 11,
+          "bog_points": 6,
+          "event_points": 6,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0007",
+          "nickname": "Demigod"
+        },
+        {
+          "rank": 12,
+          "display_name": "Amedeo B",
+          "points": 10,
+          "bog_points": 5,
+          "event_points": 6,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 13,
+          "display_name": "Andrea R",
+          "points": 9,
+          "bog_points": 4,
+          "event_points": 6,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0018",
+          "nickname": "Sir Bes"
+        },
+        {
+          "rank": 14,
+          "display_name": "Federico M",
+          "points": 8,
+          "bog_points": 3,
+          "event_points": 6,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 15,
+          "display_name": "Angelo S",
+          "points": 7,
+          "bog_points": 2,
+          "event_points": 6,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 16,
+          "display_name": "Giuseppe B",
+          "points": 6,
+          "bog_points": 1,
+          "event_points": 3,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0005",
+          "nickname": "Dagon"
+        },
+        {
+          "rank": 17,
+          "display_name": "Davide F",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 3,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 18,
+          "display_name": "Daniele Carlo Giuseppe S",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 3,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0031",
+          "nickname": "Daniele Carlo Giuseppe S"
+        },
+        {
+          "rank": 19,
+          "display_name": "Alessandro Q",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 3,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0000",
+          "nickname": "Dr. Q"
+        },
+        {
+          "rank": 20,
+          "display_name": "Hui24",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 3,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 21,
+          "display_name": "Rocco G",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 3,
+          "participation_bonus_points": 5,
+          "player_id": "PLY-0019",
+          "nickname": "ROCCODDIO"
+        },
+        {
+          "rank": 22,
+          "display_name": "Riccardo V",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 3,
+          "participation_bonus_points": 5
+        },
+        {
+          "rank": 23,
+          "display_name": "Mattia L",
+          "points": 5,
+          "bog_points": 0,
+          "event_points": 0,
+          "participation_bonus_points": 5
+        }
+      ]
     },
     {
       "event_id": "bog-2026-duello-03",
