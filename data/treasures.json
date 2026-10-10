@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-10-10",
+  "purpose": "Public ICA prize archive linked to events by event_id.",
+  "items": [
+    {
+      "treasure_id": "TRE-0001",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Den of Evil alternate art",
+      "family": "card",
+      "expansion": null,
+      "rarity": null,
+      "finish": "non_foil",
+      "signature": null,
+      "champion_type": null,
+      "quantity": "1 per partecipante",
+      "prize_position": "Premio di partecipazione",
+      "state": "announced",
+      "image": null,
+      "notes": "Premio annunciato per tutti i partecipanti."
+    },
+    {
+      "treasure_id": "TRE-0002",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Den of Evil alternate art",
+      "family": "card",
+      "expansion": null,
+      "rarity": null,
+      "finish": "foil",
+      "signature": null,
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "Miglior classificato",
+      "state": "announced",
+      "image": null,
+      "notes": "Premio annunciato."
+    },
+    {
+      "treasure_id": "TRE-0003",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Swap alternate art",
+      "family": "card",
+      "expansion": null,
+      "rarity": null,
+      "finish": "foil",
+      "signature": null,
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "Champion",
+      "state": "announced",
+      "image": null,
+      "notes": "Riconoscimento annunciato per spirito di condivisione, epicità e valore fraterno."
+    }
+  ]
+}
