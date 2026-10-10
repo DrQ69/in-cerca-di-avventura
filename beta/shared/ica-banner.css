@@ -17,7 +17,11 @@
 .ica-main-banner__social--youtube::after{background:radial-gradient(circle,rgba(255,40,25,.38),rgba(255,100,20,.20) 48%,transparent 72%);mix-blend-mode:screen}
 .ica-main-banner__link:focus-visible,.ica-main-banner__home:focus-visible,.ica-main-banner__social:focus-visible,.ica-main-banner__menu-button:focus-visible,.ica-main-banner__mobile-menu a:focus-visible{outline:3px solid #9bd7f4;outline-offset:3px;border-radius:7px}
 .ica-main-banner__social:focus-visible::before,.ica-main-banner__social:focus-visible::after{opacity:1;transform:scale(1.04)}
-.ica-main-banner__mobile-art{display:block;width:100%;aspect-ratio:2048/684;background-image:url("../../assets/banners/navigation/bnr-beta-nav-primary.png");background-position:center;background-repeat:no-repeat;background-size:contain;background-color:#05080c}
+.ica-main-banner__mobile-art{display:block;position:relative;width:100%;aspect-ratio:2048/684;background-color:#05080c;isolation:isolate}
+.ica-main-banner__mobile-art-bg{position:absolute;inset:0;z-index:0;background-image:url("../../assets/banners/navigation/bnr-beta-nav-primary.png");background-position:center;background-repeat:no-repeat;background-size:contain;pointer-events:none}
+.ica-main-banner__mobile-art-link{position:absolute;z-index:2;left:var(--cx);top:70.3125%;width:13.7%;height:15%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;padding:0 1px;color:#ead49a;text-decoration:none;font:700 clamp(5.3px,1.55vw,10px)/1 Cinzel,Georgia,serif;letter-spacing:.015em;text-transform:uppercase;text-align:center;white-space:nowrap;text-shadow:0 1px 1px #000,0 2px 3px #000,0 0 5px rgba(226,185,96,.28)}
+.ica-main-banner__mobile-art-link[aria-current="page"]{color:#fff0bd;text-shadow:0 0 6px rgba(236,190,88,.58),0 2px 3px #000}
+.ica-main-banner__mobile-art-link:focus-visible{outline:2px solid #9bd7f4;outline-offset:1px;border-radius:4px}
 .ica-main-banner__mobile{display:block;border-bottom:1px solid rgba(190,151,80,.46);background:linear-gradient(180deg,#14191e,#080b0e);box-shadow:0 8px 22px rgba(0,0,0,.32)}
 .ica-main-banner__mobile-bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 16px}
 .ica-main-banner__mobile-brand{min-width:0;display:flex;align-items:center;gap:10px;color:#e7dcc1;text-decoration:none;font:700 .78rem Cinzel,Georgia,serif;text-transform:uppercase;letter-spacing:.05em}
@@ -30,5 +34,5 @@
 .ica-main-banner__mobile-socials{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 @media (hover:hover) and (pointer:fine){.ica-main-banner__link:hover{color:#fff3bd;text-shadow:0 0 3px #fff9df,0 0 8px #ffd66f,0 0 16px rgba(255,174,42,.95),0 0 28px rgba(255,110,20,.62);filter:brightness(1.28)}.ica-main-banner__social:hover::before,.ica-main-banner__social:hover::after{opacity:1;transform:scale(1.04)}}
 @media(min-width:1024px){#ica-main-banner,.ica-main-banner{aspect-ratio:2048/684;min-height:0}.ica-main-banner__mobile-art{display:none}.ica-main-banner__desktop{display:block}.ica-main-banner__desktop .ica-main-banner__art{background-image:url("../../assets/banners/navigation/bnr-beta-nav-primary.png")}.ica-main-banner__mobile{display:none}}
-@media(max-width:479px){.ica-main-banner__mobile-art{min-height:112px;background-size:cover;background-position:center top}.ica-main-banner__mobile-brand span{font-size:.68rem}.ica-main-banner__mobile-brand img{width:46px;height:46px}}
+@media(max-width:479px){.ica-main-banner__mobile-art-link{font-size:clamp(5px,1.5vw,7px);width:14.2%}.ica-main-banner__mobile-brand span{font-size:.68rem}.ica-main-banner__mobile-brand img{width:46px;height:46px}}
 @media(prefers-reduced-motion:reduce){.ica-main-banner__link,.ica-main-banner__social::before,.ica-main-banner__social::after{transition:none}}
