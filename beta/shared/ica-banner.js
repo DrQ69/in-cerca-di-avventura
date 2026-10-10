@@ -13,7 +13,8 @@ if(mount){
   {key:'chi-siamo',label:'Chi siamo',href:route('./#chi-siamo'),cx:'90.625%'}];
  const current=n=>n.key===currentKey?' aria-current="page"':'';
  const desktop=n=>'<a class="ica-main-banner__link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
- const mobile=n=>'<a href="'+n.href+'"'+current(n)+'>'+n.label+'</a>';\n const mobileArt=n=>'<a class="ica-main-banner__mobile-art-link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
+ const mobile=n=>'<a href="'+n.href+'"'+current(n)+'>'+n.label+'</a>';
+ const mobileArt=n=>'<a class="ica-main-banner__mobile-art-link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
  const logo=new URL('logo-emblem.webp',repoAssets).href;
  mount.className='ica-main-banner';
  mount.dataset.icaId='BETA-NAV-01';
