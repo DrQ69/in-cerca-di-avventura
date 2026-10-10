@@ -37,7 +37,7 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Cronache: solo l’ultima Cronaca realmente disponibile con data verificata.
 - Avventurieri: 3 profili reali cliccabili, con rotazione periodica; non usare nickname come chiave persistente.
 
-## 4. Adunanze
+## 5. Adunanze
 - Una sola fonte pubblica eventi: `data/events.json` finché non verrà attivato il manifest versionato.
 - Il calendario generale contiene eventi autonomi e Tappe di Lega senza duplicare i dati.
 - ID tecnico evento e numero Tappa sono distinti.
