@@ -320,21 +320,26 @@ async function renderLeagues(events,standings,players){
   openLeagueFromHash();
 }
 
-import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+const eventsUrl=new URL('../../../data/events.json',document.baseURI).href;
+const bundlePromise=import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
   new URL('../../../data/current-release.json',document.baseURI).href,
   {players:new URL('../../../data/players.json',document.baseURI).href,
-   events:new URL('../../../data/events.json',document.baseURI).href,
+   events:eventsUrl,
    standings:new URL('../../../data/league-standings.json',document.baseURI).href}
-))
-  .then(async ({events:data,standings,players})=>{
+));
+
+fetch(eventsUrl,{cache:'no-store'})
+  .then(response=>{if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
+  .then(async data=>{
     const rawEvents=Array.isArray(data.events)?data.events:[];
     const events=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
     await render(events);
-    await renderLeagues(events,standings,players.players);
     loading.hidden=true;
     nationalMain?.classList.remove('is-loading');
     nationalShell?.classList.remove('is-loading');
+    return events;
   })
+  .then(events=>bundlePromise.then(({standings,players})=>renderLeagues(events,standings,players.players)))
   .catch(reason=>{
     console.error('Adunanze data load failed',reason);
     loading.hidden=true;
