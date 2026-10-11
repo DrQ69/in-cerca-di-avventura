@@ -327,7 +327,8 @@ import('../../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundl
    standings:new URL('../../../data/league-standings.json',document.baseURI).href}
 ))
   .then(async ({events:data,standings,players})=>{
-    const events=Array.isArray(data.events)?data.events:[];
+    const rawEvents=Array.isArray(data.events)?data.events:[];
+    const events=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
     await render(events);
     await renderLeagues(events,standings,players.players);
     loading.hidden=true;
