@@ -37,6 +37,7 @@ test('validation distinguishes standings entries from players with recorded roun
   assert.equal(normalized.event.registration_count, 3);
   assert.equal(normalized.event.standings_count, 3);
   assert.equal(normalized.event.played_participant_count, 2);
+  assert.equal(normalized.registrations.find((item) => item.display_name === 'Alberto I').participation_status, 'registered_no_show');
   assert.match(result.warnings.join('\n'), /standings entries \(3\) differ from players with at least one recorded round \(2\)/);
 });
 
