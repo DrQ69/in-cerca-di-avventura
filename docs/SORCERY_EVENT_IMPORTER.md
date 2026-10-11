@@ -31,7 +31,7 @@ Snapshots are written by default to:
 
 `data/external/sorcery/events/<EVENT_ID>.json`
 
-They keep registrations and ranked standings separate. A registered player with no rounds can therefore exist without being counted as tournament attendance.
+They keep three separate counts: registrations, standings entries, and players with at least one recorded round. A player can therefore appear in Sorcery standings with zero rounds without being counted automatically as ICA tournament attendance.
 
 Deck board names are preserved exactly as Sorcery returns them (`Avatar`, `Main`, `Collection`). V1 deliberately does not reinterpret them as ICA `Avatar + Atlas + Spellbook` until that mapping is proven.
 
@@ -63,7 +63,7 @@ node --test tests/sorcery_event_importer.test.mjs
 
 The fixtures are reduced, privacy-minimized reproductions of the captured BOG Stage II `event.get` and `event.playerSnapshot` response shapes. They are test evidence, not production event data.
 
-A manual workflow is provided for live validation. It creates an artifact/report only; it does not commit, merge or publish.
+Pull requests run the offline importer test suite automatically. A manual workflow is also provided for live validation after the workflow is available on the default branch; it creates an artifact/report only and does not commit, merge or publish.
 
 ## Known residual risks
 
@@ -72,3 +72,16 @@ A manual workflow is provided for live validation. It creates an artifact/report
 3. `Main`/`Collection` semantics are intentionally not mapped to Atlas/Spellbook in V1.
 4. Public availability today does not imply a supported long-term API contract.
 5. A future Terms/robots/policy change may require disabling live import.
+
+## BOG Stage II live validation — 2026-10-11
+
+A live run from a local Node environment against event `cmua2gkxc00090agm7qvfrh45` succeeded without authentication and returned:
+
+- 24 registrations;
+- 24 Sorcery standings entries;
+- 23 players with at least one recorded round;
+- 24 deck snapshots available, 0 missing, 0 errors;
+- ICA winner and ranks 1–23 names/points matched the source;
+- Sorcery also contains Alberto I at rank 24 with 0 points and no recorded rounds, while ICA currently records 23 participants.
+
+V1 therefore does not equate `standings.length` with attendance. The discrepancy is preserved for Product Owner/source reconciliation rather than silently corrected.
