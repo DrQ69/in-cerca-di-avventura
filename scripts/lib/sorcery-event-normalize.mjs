@@ -82,6 +82,8 @@ export function normalizeSorceryEvent(raw, deckResults = new Map(), retrievedAt 
     } : null,
   }));
 
+  const playedParticipantCount = registrations.filter((registration) => registration.rounds.length > 0).length;
+
   const core = {
     event: {
       id: event.id,
@@ -94,6 +96,9 @@ export function normalizeSorceryEvent(raw, deckResults = new Map(), retrievedAt 
       address: event.address ?? null,
       country: event.country ?? null,
       track_decks: Boolean(event.trackDecks),
+      registration_count: registrations.length,
+      standings_count: standings.length,
+      played_participant_count: playedParticipantCount,
     },
     registrations,
     standings,
