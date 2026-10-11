@@ -66,10 +66,13 @@ function stageName(e){
 }
 
 function deckLink(e){
+  if(e.official_results_url||e.official_event_url){
+    return '<a class="winner-deck-link" href="evento/?id='+encodeURIComponent(e.event_id)+'">Risultati e mazzi →</a>';
+  }
   if(e.winner_deck_url){
     return `<a class="winner-deck-link" href="${esc(e.winner_deck_url)}" target="_blank" rel="noopener">Mazzo del vincitore →</a>`;
   }
-  return '<span class="winner-deck-pending">Mazzo del vincitore — prossimamente</span>';
+  return '<span class="winner-deck-pending">Dettagli — prossimamente</span>';
 }
 
 function eventCard(e){
