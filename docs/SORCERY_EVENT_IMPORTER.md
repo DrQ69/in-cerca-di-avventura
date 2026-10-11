@@ -31,7 +31,7 @@ Snapshots are written by default to:
 
 `data/external/sorcery/events/<EVENT_ID>.json`
 
-They keep three separate counts: registrations, standings entries, and players with at least one recorded round. A player can therefore appear in Sorcery standings with zero rounds without being counted automatically as ICA tournament attendance.
+They keep three separate counts: registrations, standings entries, and players with at least one recorded round. Product Owner rule (2026-10-11): a registration with zero recorded rounds represents a player who registered online but did not attend the tournament. Such records are normalized with `participation_status: "registered_no_show"` and are excluded from ICA attendance. Registrations with one or more rounds use `participation_status: "played"`.
 
 Deck board names are preserved exactly as Sorcery returns them (`Avatar`, `Main`, `Collection`). V1 deliberately does not reinterpret them as ICA `Avatar + Atlas + Spellbook` until that mapping is proven.
 
@@ -82,6 +82,6 @@ A live run from a local Node environment against event `cmua2gkxc00090agm7qvfrh4
 - 23 players with at least one recorded round;
 - 24 deck snapshots available, 0 missing, 0 errors;
 - ICA winner and ranks 1–23 names/points matched the source;
-- Sorcery also contains Alberto I at rank 24 with 0 points and no recorded rounds, while ICA currently records 23 participants.
+- Sorcery also contains Alberto I at rank 24 with 0 points and no recorded rounds; per Product Owner rule this is an online registration/no-show and is not part of ICA attendance.
 
 V1 therefore does not equate `standings.length` with attendance. The discrepancy is preserved for Product Owner/source reconciliation rather than silently corrected.
