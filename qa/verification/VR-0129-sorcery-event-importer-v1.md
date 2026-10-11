@@ -2,7 +2,7 @@
 
 **Primary QA Profile:** QAP-CODE  
 **Secondary family:** DAT  
-**Lifecycle claim:** IMPLEMENTED; offline verification passed; live external-network evidence still pending.  
+**Lifecycle claim:** IMPLEMENTED; offline automated QA and local live-source validation passed.  
 **Release readiness:** NOT_READY / non-runtime tooling only.
 
 ## Scope
@@ -19,35 +19,59 @@ UI/browser checks are N/A: this PR adds repository tooling/data import only and 
 
 ## Evidence
 
-Tested branch head before this record update: `447f3874e8ebb916b080314af4f2b45695e9871b`.
+Current tested head before this record update: `4f4203ae6d7fbd6e865ce6b2d1628c4fbd1ca8cb`.
 
-Local automated result: **PASS — 5/5 tests** using Node's built-in test runner.\n\nRepository baseline CI: **PASS** on head `fd40d05c1696a7561569bc0417da65d663cb63e1` (`ICA baseline QA`, run 520).
+Automated PR checks on that head:
 
-Automated offline test command:
+- `ICA baseline QA` run 526 — **PASS**;
+- `Sorcery event importer QA` run 1 — **PASS**.
 
-`node --test tests/sorcery_event_importer.test.mjs`
+Offline importer coverage:
 
-Expected coverage:
-
-- captured tRPC JSONL response-shape parsing;
+- tRPC response-shape parsing;
 - privacy minimization;
 - exact preservation of `Avatar` / `Main` / `Collection` board values;
-- registrations vs standings separation;
+- registrations / standings / played-participant separation;
 - read-only comparison reporting;
 - fail-closed schema drift handling.
 
-## Source evidence
+A first local execution on macOS exposed invalid reduced fixture encoding: 1/5 passed. This was treated as a real QA defect, the fixtures were corrected, and PR-level importer QA now passes. No production/canonical data had been modified.
 
-Captured BOG Stage II browser responses established:
+## Live BOG Stage II evidence
+
+Command executed locally against the public source:
+
+`node scripts/import_sorcery_event.mjs cmua2gkxc00090agm7qvfrh45 --dry-run --compare`
+
+Observed live source result:
+
+- registrations: **24**;
+- Sorcery standings entries: **24**;
+- players with at least one recorded round: **23** (derived from the source player/round data);
+- decklists: **24 available / 0 missing / 0 error**;
+- winner Michele S: **MATCH**;
+- ICA ranks 1–23 display names and points: **MATCH**;
+- Sorcery additionally lists Alberto I at rank 24, 0 points, with no recorded rounds.
+
+The earlier working assumption “24 registrations / 23 standings entries” was therefore incorrect. The implementation now preserves all three concepts instead of using standings count as attendance.
+
+## Source / privacy evidence
+
+Captured browser requests and the successful live run establish:
 
 - event ID `cmua2gkxc00090agm7qvfrh45`;
 - event status `Complete`;
-- 24 registrations vs 23 ranked participants (one `DecklistSubmitted` registration with no rounds);
 - `event.playerSnapshot` exposes event snapshot cards with `Avatar`, `Main`, `Collection` boards;
-- calls contained no cookie or Authorization header.
+- all 24 event registrations returned a deck snapshot in this event;
+- calls used no cookie or Authorization header.
 
-The complete live import is intentionally not represented as verified until the branch workflow (or an equivalent Node environment with network access) successfully reaches `sorcerytcg.com`.
+Normalized public output excludes Sorcery username, ELO, authentication/user IDs and source deck IDs. No Sorcery user is mapped automatically to an ICA Avventuriero.
 
 ## Residual risk
 
-High integration risk remains from undocumented endpoint/schema drift; mitigated by adapter isolation, fixture regression tests, validation and fail-closed behaviour. GitHub runner reachability is unknown until manual workflow execution.
+- Sorcery endpoints remain undocumented and may drift or disappear.
+- GitHub-hosted live runner reachability is not yet proven; local live access is proven.
+- Sorcery `Main`/`Collection` semantics are intentionally not mapped to ICA Atlas/Spellbook.
+- The Alberto I source discrepancy remains a data-governance decision; this PR does not alter `data/events.json`.
+
+No Critical/High defect is known in the implemented importer scope.
