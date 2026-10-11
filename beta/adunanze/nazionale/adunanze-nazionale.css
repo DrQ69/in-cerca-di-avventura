@@ -58,7 +58,7 @@
   letter-spacing:.06em;
 }
 .national-main{position:relative;padding:40px 16px 80px}
-.national-main.is-loading .event-group{visibility:hidden}
+.national-main.is-loading .event-group{visibility:visible}
 .national-main > .system-state{
   position:absolute;
   top:18px;
@@ -405,3 +405,7 @@
   .adunanze-subnav{justify-content:stretch}
   .adunanze-subnav a{flex:1;justify-content:center;padding-inline:8px;font-size:.61rem}
 }
+
+/* Keep meaningful page structure paintable during data hydration so mobile LCP
+   does not wait for JSON; reserve space to avoid layout movement. */
+.national-main.is-loading #upcoming-root{min-height:240px}
