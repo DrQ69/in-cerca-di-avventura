@@ -31,8 +31,9 @@ async function main() {
   const snapshot = normalizeSorceryEvent(raw, deckResults);
   const validation = validateSorcerySnapshot(snapshot, args.eventId);
 
-  console.log(`Registrations: ${snapshot.registrations.length}`);
-  console.log(`Ranked participants: ${snapshot.standings.length}`);
+  console.log(`Registrations: ${snapshot.event.registration_count}`);
+  console.log(`Standings entries: ${snapshot.event.standings_count}`);
+  console.log(`Played participants: ${snapshot.event.played_participant_count}`);
   const deckCounts = snapshot.registrations.reduce((acc, registration) => {
     acc[registration.deck.deck_status] = (acc[registration.deck.deck_status] ?? 0) + 1;
     return acc;
