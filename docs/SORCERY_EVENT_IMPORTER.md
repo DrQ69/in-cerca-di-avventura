@@ -85,3 +85,33 @@ A live run from a local Node environment against event `cmua2gkxc00090agm7qvfrh4
 - Sorcery also contains Alberto I at rank 24 with 0 points and no recorded rounds; per Product Owner rule this is an online registration/no-show and is not part of ICA attendance.
 
 V1 therefore does not equate `standings.length` with attendance. The discrepancy is preserved for Product Owner/source reconciliation rather than silently corrected.
+
+
+## Public beta integration
+
+Completed-event snapshots can be registered in:
+
+`data/external/sorcery/events/index.json`
+
+The beta event surfaces then apply a read-only runtime overlay from the normalized snapshot:
+
+- `player_count` = registrations with `participation_status: played`;
+- winner = rank 1 among played participants;
+- standings = played participants only, including W/D/L, OMW, CMP and Avatar;
+- `registration_count` and `no_show_count` remain available as separate metrics;
+- decklists remain stored only in the external snapshot and are not duplicated into `data/events.json`.
+
+This means imported Sorcery results can update what the beta site renders while `data/events.json` remains unchanged. If a snapshot is absent from the manifest, the site falls back to ICA event data without issuing a missing-file request.
+
+The detailed Cronache event page reads the same normalized snapshot and presents:
+- final standings;
+- participant / registration / no-show counts;
+- Avatar;
+- W-D-L, points, OMW and CMP;
+- event decklists.
+
+For public deck presentation, the raw source remains unchanged, while ICA derives the canonical Sorcery structure:
+- source `Avatar` -> Avatar;
+- source `Main` + card category `Site` -> Atlas;
+- source `Main` + non-Site card -> Spellbook;
+- source `Collection` remains explicitly labelled Collection as a supplementary source section.
