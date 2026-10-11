@@ -332,7 +332,9 @@ fetch(eventsUrl,{cache:'no-store'})
   .then(response=>{if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
   .then(async data=>{
     const rawEvents=Array.isArray(data.events)?data.events:[];
-    const events=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
+    const normalized=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
+    const {applySorceryEventOverlays}=await import('../../shared/sorcery-event-overlay.mjs');
+    const events=await applySorceryEventOverlays(normalized,{dataRoot:new URL('../../../data/',document.baseURI).href});
     await render(events);
     loading.hidden=true;
     nationalMain?.classList.remove('is-loading');
