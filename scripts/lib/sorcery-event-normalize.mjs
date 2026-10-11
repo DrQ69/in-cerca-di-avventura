@@ -56,13 +56,17 @@ export function normalizeSorceryEvent(raw, deckResults = new Map(), retrievedAt 
   const event = raw?.event;
   if (!event?.id) throw new Error('Cannot normalize Sorcery event: event payload missing id.');
 
-  const registrations = (event.players ?? []).map((player) => ({
-    registration_id: player.id,
-    display_name: player?.user?.displayname ?? null,
-    status: player?.status ?? null,
-    rounds: (player?.seats ?? []).map((seat) => normalizeRound(seat, player.id)),
-    deck: normalizeDeck(deckResults.get(player.id)),
-  }));
+  const registrations = (event.players ?? []).map((player) => {
+    const rounds = (player?.seats ?? []).map((seat) => normalizeRound(seat, player.id));
+    return {
+      registration_id: player.id,
+      display_name: player?.user?.displayname ?? null,
+      status: player?.status ?? null,
+      participation_status: rounds.length > 0 ? 'played' : 'registered_no_show',
+      rounds,
+      deck: normalizeDeck(deckResults.get(player.id)),
+    };
+  });
 
   const standings = (raw?.standings ?? []).map((entry) => ({
     registration_id: entry?.id ?? null,
