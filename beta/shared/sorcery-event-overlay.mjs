@@ -44,9 +44,19 @@ export function overlayEventFromSorcery(event,snapshot){
 
 export async function applySorceryEventOverlays(events,{dataRoot,fetchImpl=fetch}={}){
   const root=dataRoot||new URL('../../data/',document.baseURI).href;
+  let available=new Set();
+  try{
+    const manifestResponse=await fetchImpl(new URL('external/sorcery/events/index.json',root).href,{cache:'no-store'});
+    if(manifestResponse.ok){
+      const manifest=await manifestResponse.json();
+      available=new Set(Array.isArray(manifest.events)?manifest.events:[]);
+    }
+  }catch{
+    return events||[];
+  }
   return Promise.all((events||[]).map(async event=>{
     const externalId=sorceryEventId(event);
-    if(!externalId||event.status!=='conclusa') return event;
+    if(!externalId||event.status!=='conclusa'||!available.has(externalId)) return event;
     try{
       const url=new URL('external/sorcery/events/'+encodeURIComponent(externalId)+'.json',root).href;
       const response=await fetchImpl(url,{cache:'no-store'});
