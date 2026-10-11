@@ -66,10 +66,13 @@ function stageName(e){
 }
 
 function deckLink(e){
+  if(e.official_results_url||e.official_event_url){
+    return '<a class="winner-deck-link" href="evento/?id='+encodeURIComponent(e.event_id)+'">Risultati e mazzi →</a>';
+  }
   if(e.winner_deck_url){
     return `<a class="winner-deck-link" href="${esc(e.winner_deck_url)}" target="_blank" rel="noopener">Mazzo del vincitore →</a>`;
   }
-  return '<span class="winner-deck-pending">Mazzo del vincitore — prossimamente</span>';
+  return '<span class="winner-deck-pending">Dettagli — prossimamente</span>';
 }
 
 function eventCard(e){
@@ -112,18 +115,21 @@ function render(events){
   }).join('');
 }
 
-import('../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+Promise.all([
+  import('../shared/release-reader.mjs'),
+  import('../shared/sorcery-event-overlay.mjs')
+]).then(([{readSiteBundle},{applySorceryEventOverlays}])=>readSiteBundle(
   new URL('../../data/current-release.json',document.baseURI).href,
   {players:new URL('../../data/players.json',document.baseURI).href,
    events:new URL('../../data/events.json',document.baseURI).href,
    standings:new URL('../../data/league-standings.json',document.baseURI).href}
-))
-  .then(({events:data})=>{
-    const rawEvents=Array.isArray(data.events)?data.events:[];
-    const events=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
-    render(events);
-    loading.hidden=true;
-  })
+).then(async ({events:data})=>{
+  const rawEvents=Array.isArray(data.events)?data.events:[];
+  const normalized=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
+  const events=await applySorceryEventOverlays(normalized,{dataRoot:new URL('../../data/',document.baseURI).href});
+  render(events);
+  loading.hidden=true;
+}))
   .catch(err=>{
     console.error('Cronache data load failed',err);
     loading.hidden=true;

@@ -7,6 +7,8 @@ on:
       - 'scripts/lib/sorcery-event-*.mjs'
       - 'tests/sorcery_event_importer.test.mjs'
       - 'tests/fixtures/sorcery/**'
+      - 'tests/sorcery_event_overlay.test.mjs'
+      - 'beta/shared/sorcery-event-overlay.mjs'
       - '.github/workflows/sorcery-event-import.yml'
   workflow_dispatch:
     inputs:
@@ -28,7 +30,7 @@ jobs:
         with:
           node-version: '20'
       - name: Offline importer tests
-        run: node --test tests/sorcery_event_importer.test.mjs
+        run: node --test tests/sorcery_event_importer.test.mjs tests/sorcery_event_overlay.test.mjs
 
   live-import:
     if: github.event_name == 'workflow_dispatch'

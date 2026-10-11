@@ -120,6 +120,88 @@ try {
 
     await page.close();
   }
+
+  const detailURL = new URL('evento/?id=bog-2026-duello-02', baseURL).href;
+  const detailViewports = [
+    { name: 'event-desktop-1440', width: 1440, height: 1200 },
+    { name: 'event-tablet-768', width: 768, height: 1200 },
+    { name: 'event-mobile-390', width: 390, height: 844 },
+  ];
+
+  for (const viewport of detailViewports) {
+    const page = await browser.newPage({
+      viewport: { width: viewport.width, height: viewport.height },
+      deviceScaleFactor: 1,
+      reducedMotion: 'reduce',
+    });
+
+    const consoleErrors = [];
+    page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+    page.on('pageerror', error => consoleErrors.push(String(error)));
+
+    await page.goto(detailURL, { waitUntil: 'networkidle', timeout: 30000 });
+    await page.waitForSelector('#standings-body tr', { timeout: 15000 });
+
+    const state = await page.evaluate(() => ({
+      title: document.getElementById('event-title')?.textContent?.trim() || '',
+      rows: document.querySelectorAll('#standings-body tr').length,
+      participant: document.querySelector('.summary-stat strong')?.textContent?.trim() || '',
+      stats: [...document.querySelectorAll('.summary-stat')].map(node=>({
+        label:node.querySelector('span')?.textContent?.trim()||'',
+        value:node.querySelector('strong')?.textContent?.trim()||''
+      })),
+      deckButtons: document.querySelectorAll('.deck-button').length,
+      horizontal: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > window.innerWidth + 2,
+    }));
+
+    if (state.rows !== 23) throw new Error(`${viewport.name}: expected 23 played standings rows, got ${state.rows}`);
+    if (!state.stats.some(stat=>stat.label==='Registrazioni online'&&stat.value==='24')) throw new Error(`${viewport.name}: registration count 24 missing`);
+    if (!state.stats.some(stat=>stat.label==='No-show'&&stat.value==='1')) throw new Error(`${viewport.name}: no-show count 1 missing`);
+    if (state.deckButtons !== 23) throw new Error(`${viewport.name}: expected 23 available played deck buttons, got ${state.deckButtons}`);
+    if (state.horizontal) throw new Error(`${viewport.name}: event detail page has horizontal overflow`);
+
+    await page.locator('.deck-button').first().click();
+    await page.waitForSelector('#deck-dialog[open]');
+    const deckState = await page.evaluate(() => ({
+      headings: [...document.querySelectorAll('#deck-dialog .deck-board h3')].map(node=>node.textContent.trim()),
+      dialogOverflow: (() => {
+        const dialog=document.getElementById('deck-dialog');
+        return dialog ? dialog.scrollWidth > dialog.clientWidth + 2 : true;
+      })(),
+    }));
+    for (const expected of ['Avatar','Atlas','Spellbook','Collection']) {
+      if (!deckState.headings.some(value=>value.startsWith(expected))) throw new Error(`${viewport.name}: deck section ${expected} missing`);
+    }
+    if (deckState.dialogOverflow) throw new Error(`${viewport.name}: deck dialog horizontal overflow`);
+
+    await page.screenshot({
+      path: `${outDir}/${viewport.name}.png`,
+      fullPage: true,
+      animations: 'disabled',
+    });
+
+    await page.keyboard.press('Escape');
+    if (await page.locator('#deck-dialog[open]').count()) {
+      throw new Error(`${viewport.name}: Escape did not close deck dialog`);
+    }
+    const firstDeckButton=page.locator('.deck-button').first();
+    await firstDeckButton.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('#deck-dialog[open]');
+    const focusedInDialog=await page.evaluate(()=>document.getElementById('deck-dialog')?.contains(document.activeElement));
+    if(!focusedInDialog) throw new Error(`${viewport.name}: keyboard-opened deck dialog did not receive focus`);
+    await page.keyboard.press('Escape');
+
+    await fs.writeFile(
+      `${outDir}/${viewport.name}.json`,
+      JSON.stringify({ viewport, state, deckState, consoleErrors }, null, 2),
+      'utf8'
+    );
+
+    if (consoleErrors.length) throw new Error(`${viewport.name}: browser console errors: ${consoleErrors.join(' | ')}`);
+    await page.close();
+  }
+
 } finally {
   await browser.close();
 }
