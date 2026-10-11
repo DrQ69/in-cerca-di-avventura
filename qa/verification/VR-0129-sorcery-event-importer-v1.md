@@ -19,6 +19,10 @@ UI/browser checks are N/A: this PR adds repository tooling/data import only and 
 
 ## Evidence
 
+Tested branch head before this record update: `447f3874e8ebb916b080314af4f2b45695e9871b`.
+
+Local automated result: **PASS — 5/5 tests** using Node's built-in test runner.
+
 Automated offline test command:
 
 `node --test tests/sorcery_event_importer.test.mjs`
