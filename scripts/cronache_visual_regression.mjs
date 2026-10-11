@@ -179,6 +179,19 @@ try {
       fullPage: true,
       animations: 'disabled',
     });
+
+    await page.keyboard.press('Escape');
+    if (await page.locator('#deck-dialog[open]').count()) {
+      throw new Error(`${viewport.name}: Escape did not close deck dialog`);
+    }
+    const firstDeckButton=page.locator('.deck-button').first();
+    await firstDeckButton.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('#deck-dialog[open]');
+    const focusedInDialog=await page.evaluate(()=>document.getElementById('deck-dialog')?.contains(document.activeElement));
+    if(!focusedInDialog) throw new Error(`${viewport.name}: keyboard-opened deck dialog did not receive focus`);
+    await page.keyboard.press('Escape');
+
     await fs.writeFile(
       `${outDir}/${viewport.name}.json`,
       JSON.stringify({ viewport, state, deckState, consoleErrors }, null, 2),
