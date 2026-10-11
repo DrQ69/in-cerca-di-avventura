@@ -52,3 +52,24 @@ jobs:
           name: sorcery-event-${{ inputs.event_id }}
           path: qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.*
           if-no-files-found: warn
+
+
+  live-e02-preview:
+    if: github.event_name == 'pull_request' && github.head_ref == 'feature/sorcery-results-ui-v1-20261011'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Capture BOG E02 preview snapshot
+        run: |
+          mkdir -p qa/evidence/reports
+          node scripts/import_sorcery_event.mjs cmua2gkxc00090agm7qvfrh45 --compare --output qa/evidence/reports/cmua2gkxc00090agm7qvfrh45.json 2>&1 | tee qa/evidence/reports/cmua2gkxc00090agm7qvfrh45.log
+      - name: Upload BOG E02 preview snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorcery-e02-preview
+          path: qa/evidence/reports/cmua2gkxc00090agm7qvfrh45.*
+          if-no-files-found: error
