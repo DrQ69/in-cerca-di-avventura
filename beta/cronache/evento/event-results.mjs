@@ -18,25 +18,33 @@ function sorceryId(event){
   return url.match(/\/events\/([a-z0-9]+)/i)?.[1]||null;
 }
 
-function boardLabel(board){
-  return board==='Avatar'?'Avatar':board==='Main'?'Main':board==='Collection'?'Collection':board||'Altro';
+function deckSections(deck){
+  const sections=new Map([['Avatar',[]],['Atlas',[]],['Spellbook',[]],['Collection',[]]]);
+  for(const card of deck?.cards||[]){
+    if(card.board_source==='Avatar') sections.get('Avatar').push(card);
+    else if(card.board_source==='Main'&&card.category==='Site') sections.get('Atlas').push(card);
+    else if(card.board_source==='Main') sections.get('Spellbook').push(card);
+    else if(card.board_source==='Collection') sections.get('Collection').push(card);
+    else{
+      if(!sections.has(card.board_source||'Altro')) sections.set(card.board_source||'Altro',[]);
+      sections.get(card.board_source||'Altro').push(card);
+    }
+  }
+  return sections;
 }
 
 function deckMarkup(registration){
   const deck=registration?.deck;
   if(!deck||deck.deck_status!=='available') return '<p class="deck-empty">Decklist non disponibile.</p>';
-  const groups=new Map();
-  for(const card of deck.cards||[]){
-    if(!groups.has(card.board_source)) groups.set(card.board_source,[]);
-    groups.get(card.board_source).push(card);
-  }
-  const order=['Avatar','Main','Collection',...Array.from(groups.keys()).filter(key=>!['Avatar','Main','Collection'].includes(key))];
+  const groups=deckSections(deck);
+  const order=['Avatar','Atlas','Spellbook','Collection',...Array.from(groups.keys()).filter(key=>!['Avatar','Atlas','Spellbook','Collection'].includes(key))];
   return '<div class="deck-heading"><p>Decklist evento</p><h2 id="deck-title">'+esc(registration.display_name)+'</h2>'+
-    (deck.deck_name?'<span>'+esc(deck.deck_name)+'</span>':'')+'</div>'+
-    order.filter(key=>groups.has(key)).map(key=>{
+    (deck.deck_name?'<span>'+esc(deck.deck_name)+'</span>':'')+
+    '<small>Presentazione ICA derivata dalla snapshot Sorcery: Main viene separato in Atlas (Sites) e Spellbook (Spells); Collection resta indicata con il nome sorgente.</small></div>'+
+    order.filter(key=>(groups.get(key)||[]).length).map(key=>{
       const cards=groups.get(key);
       const total=cards.reduce((sum,card)=>sum+(Number(card.quantity)||0),0);
-      return '<section class="deck-board"><h3>'+esc(boardLabel(key))+' <small>'+total+' carte</small></h3><div class="deck-grid">'+
+      return '<section class="deck-board"><h3>'+esc(key)+' <small>'+total+' carte</small></h3><div class="deck-grid">'+
         cards.map(card=>'<article class="deck-card">'+
           (card.image_source_url?'<img src="'+esc(card.image_source_url)+'" alt="" loading="lazy">':'')+
           '<div><strong>'+esc(card.name)+'</strong><span>×'+esc(card.quantity)+'</span><small>'+esc(card.category||'')+'</small></div></article>').join('')+
