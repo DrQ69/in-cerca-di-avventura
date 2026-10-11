@@ -222,8 +222,8 @@ try {
     for(const expected of ['Flaming Skull','Askelon Phoenix','Sir Tom Thumb','Highland Clansmen']){
       if(!peasantSnapshot.prizes.includes(expected))throw new Error(`${viewport.name}: Stage II prizes missing ${expected}`);
     }
-    if(!peasantSnapshot.signup.includes('sorcerytcg.com/events/cmua2gkxc00090agm7qvfrh45')){
-      throw new Error(`${viewport.name}: Stage II signup link mismatch`);
+    if(!peasantSnapshot.signup.includes('/beta/cronache/')){
+      throw new Error(`${viewport.name}: concluded Stage II must link to Cronache`);
     }
 
     const leagueToggle=page.locator('#lega-blaze-of-glory-2026-2027 .league-toggle');
