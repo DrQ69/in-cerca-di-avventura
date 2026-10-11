@@ -1,0 +1,35 @@
+name: Sorcery event import (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      event_id:
+        description: Sorcery event ID
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Offline importer tests
+        run: node --test tests/sorcery_event_importer.test.mjs
+      - name: Live import and comparison
+        run: |
+          mkdir -p qa/evidence/reports
+          node scripts/import_sorcery_event.mjs "${{ inputs.event_id }}" --compare --output qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.json 2>&1 | tee qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.log
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorcery-event-${{ inputs.event_id }}
+          path: qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.*
+          if-no-files-found: warn
