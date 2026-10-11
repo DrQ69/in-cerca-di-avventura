@@ -146,14 +146,17 @@ try {
       title: document.getElementById('event-title')?.textContent?.trim() || '',
       rows: document.querySelectorAll('#standings-body tr').length,
       participant: document.querySelector('.summary-stat strong')?.textContent?.trim() || '',
-      stats: [...document.querySelectorAll('.summary-stat')].map(node=>node.textContent.replace(/\s+/g,' ').trim()),
+      stats: [...document.querySelectorAll('.summary-stat')].map(node=>({
+        label:node.querySelector('span')?.textContent?.trim()||'',
+        value:node.querySelector('strong')?.textContent?.trim()||''
+      })),
       deckButtons: document.querySelectorAll('.deck-button').length,
       horizontal: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > window.innerWidth + 2,
     }));
 
     if (state.rows !== 23) throw new Error(`${viewport.name}: expected 23 played standings rows, got ${state.rows}`);
-    if (!state.stats.some(text=>text.includes('Registrazioni online 24'))) throw new Error(`${viewport.name}: registration count 24 missing`);
-    if (!state.stats.some(text=>text.includes('No-show 1'))) throw new Error(`${viewport.name}: no-show count 1 missing`);
+    if (!state.stats.some(stat=>stat.label==='Registrazioni online'&&stat.value==='24')) throw new Error(`${viewport.name}: registration count 24 missing`);
+    if (!state.stats.some(stat=>stat.label==='No-show'&&stat.value==='1')) throw new Error(`${viewport.name}: no-show count 1 missing`);
     if (state.deckButtons !== 23) throw new Error(`${viewport.name}: expected 23 available played deck buttons, got ${state.deckButtons}`);
     if (state.horizontal) throw new Error(`${viewport.name}: event detail page has horizontal overflow`);
 
