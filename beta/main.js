@@ -197,7 +197,8 @@ const siteBundlePromise=import('./shared/release-reader.mjs').then(({readSiteBun
 
 siteBundlePromise
   .then(({events:data})=>{
-    const events=Array.isArray(data.events)?data.events:[];
+    const rawEvents=Array.isArray(data.events)?data.events:[];
+    const events=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
     renderNextEvent(events);
     renderChronicle(events);
   })
