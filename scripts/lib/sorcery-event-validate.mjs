@@ -23,8 +23,8 @@ export function validateSorcerySnapshot(snapshot, expectedEventId = null) {
   }
 
   if (snapshot?.event?.status !== 'Complete') warnings.push(`event status is ${snapshot?.event?.status ?? 'unknown'}, not Complete; results may be provisional`);
-  if ((snapshot?.registrations?.length ?? 0) !== (snapshot?.standings?.length ?? 0)) {
-    warnings.push(`registrations (${snapshot.registrations.length}) differ from ranked participants (${snapshot.standings.length}); this is allowed and must not be auto-reconciled`);
+  if (snapshot?.event?.played_participant_count !== snapshot?.event?.standings_count) {
+    warnings.push(`standings entries (${snapshot.event.standings_count}) differ from players with at least one recorded round (${snapshot.event.played_participant_count}); preserve both counts and do not auto-reconcile`);
   }
 
   return { ok: errors.length === 0, errors, warnings };
