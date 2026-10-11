@@ -71,7 +71,16 @@ try{
     });
     if(result.nextId!==(expectedNext?.event_id||null)) throw new Error(viewport.name+': next event mismatch rendered='+result.nextId+' expected='+(expectedNext?.event_id||null));
     if(result.nextTitle!==(expectedNext?.title||'')) throw new Error(viewport.name+': next event title mismatch rendered='+result.nextTitle+' expected='+(expectedNext?.title||''));
-    if(result.chronicleId!=='bog-2026-duello-01') throw new Error(viewport.name+': latest chronicle mismatch '+result.chronicleId);
+    const expectedChronicle=await page.evaluate(async()=>{
+      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const data=await response.json();
+      const now=new Date();
+      const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+      return (data.events||[])
+        .filter(event=>event.date&&(event.status==='conclusa'||event.date<key))
+        .sort((x,y)=>y.date.localeCompare(x.date))[0]||null;
+    });
+    if(result.chronicleId!==(expectedChronicle?.event_id||null)) throw new Error(viewport.name+': latest chronicle mismatch '+result.chronicleId+' expected='+(expectedChronicle?.event_id||null));
     if(result.standingsCount!==0) throw new Error(viewport.name+': Blaze Top 3 must not remain on homepage');
     if(result.leagueTitle!=='Blaze of Glory — La Lega di Cremos') throw new Error(viewport.name+': league homepage title mismatch');
     if(result.leagueHref!=='./adunanze/nazionale/#lega-blaze-of-glory-2026-2027') throw new Error(viewport.name+': Blaze league CTA mismatch '+result.leagueHref);
