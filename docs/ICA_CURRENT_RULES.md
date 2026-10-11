@@ -1,5 +1,5 @@
 # ICA — CURRENT RULES BASELINE
-**Versione operativa:** 2026-10-10 · **Fonte primaria per agenti:** questo file.  
+**Versione operativa:** 2026-10-11 · **Fonte primaria per agenti:** questo file.  
 Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto prevale questa baseline e la decisione più recente esplicitamente registrata.
 
 ## 1. Identità e terminologia
@@ -41,7 +41,7 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - Una sola fonte pubblica eventi: `data/events.json` finché non verrà attivato il manifest versionato.
 - Il calendario generale contiene eventi autonomi e Tappe di Lega senza duplicare i dati.
 - ID tecnico evento e numero Tappa sono distinti.
-- Un evento con data passata può essere classificato operativamente “Concluso” salvo stato esplicito contrario; ciò **non ufficializza risultati o Cronaca**.
+- **Regola automatica approvata 2026-10-11:** dal giorno successivo alla data dell’evento, lo stato operativo pubblico diventa automaticamente `conclusa`, anche se il valore statico nel dataset non è ancora stato aggiornato. La conclusione automatica **non ufficializza da sola risultati o Cronaca**.
 - CTA, Google Maps, luogo, regolamento e premi: usare solo informazioni reali e verificate.
 - Preservare event_id, URL e deep-link esistenti.
 
@@ -71,6 +71,7 @@ Per contesto storico usare `ICA_NICK_ROADMAP_MASTER.md`; in caso di conflitto pr
 - `series_id = blaze-of-glory-2026-2027`.
 - **E02 — Peasant = Tappa II**.
 - **E04 — Constructed Full = Tappa IV**.
+- **E02 — Peasant / Tappa II (02/10/2026) = CONCLUSA**; risultati finali forniti dal Product Owner e stato dati `po_results_confirmed`.
 - Qualunque vecchia indicazione E02→IV / E04→II è **SUPERSEDED**.
 - Classifiche pubbliche: usare i valori già calcolati dal gestionale; il sito non ricalcola GP, posizioni, tie-break o bonus.
 - Specialità non iniziate: “In attesa della prima Tappa ufficiale”, senza podio 0/0.

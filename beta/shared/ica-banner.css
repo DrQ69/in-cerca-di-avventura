@@ -98,3 +98,14 @@
     font-size:.62rem;
   }
 }
+
+/* Reserve the final mobile banner stack before JS mounts it, avoiding layout shift. */
+@media(max-width:420px){
+  #ica-main-banner,.ica-main-banner{min-height:413px}
+}
+@media(min-width:421px) and (max-width:767px){
+  #ica-main-banner,.ica-main-banner{min-height:clamp(406px,101vw,430px)}
+}
+@media(min-width:768px) and (max-width:1023px){
+  #ica-main-banner,.ica-main-banner{min-height:calc((100vw * 684 / 2048) + 72px)}
+}
