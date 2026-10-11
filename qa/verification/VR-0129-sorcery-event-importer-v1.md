@@ -51,9 +51,9 @@ Observed live source result:
 - decklists: **24 available / 0 missing / 0 error**;
 - winner Michele S: **MATCH**;
 - ICA ranks 1–23 display names and points: **MATCH**;
-- Sorcery additionally lists Alberto I at rank 24, 0 points, with no recorded rounds.
+- Sorcery additionally lists Alberto I at rank 24, 0 points, with no recorded rounds; Product Owner clarified this means registered online but did not attend.
 
-The earlier working assumption “24 registrations / 23 standings entries” was therefore incorrect. The implementation now preserves all three concepts instead of using standings count as attendance.
+The earlier working assumption “24 registrations / 23 standings entries” was therefore incorrect. The implementation now preserves all three concepts and applies the Product Owner rule that zero-round registrations are `registered_no_show` and excluded from attendance.
 
 ## Source / privacy evidence
 
@@ -72,6 +72,6 @@ Normalized public output excludes Sorcery username, ELO, authentication/user IDs
 - Sorcery endpoints remain undocumented and may drift or disappear.
 - GitHub-hosted live runner reachability is not yet proven; local live access is proven.
 - Sorcery `Main`/`Collection` semantics are intentionally not mapped to ICA Atlas/Spellbook.
-- The Alberto I source discrepancy remains a data-governance decision; this PR does not alter `data/events.json`.
+- Zero-round registrations are now explicitly classified as no-shows for attendance purposes; this PR still does not alter `data/events.json`.
 
 No Critical/High defect is known in the implemented importer scope.
