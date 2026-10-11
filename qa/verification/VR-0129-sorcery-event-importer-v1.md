@@ -2,7 +2,7 @@
 
 **Primary QA Profile:** QAP-CODE  
 **Secondary family:** DAT  
-**Lifecycle claim:** IMPLEMENTED; verification candidate pending repository CI/live external-network evidence.  
+**Lifecycle claim:** IMPLEMENTED; offline verification passed; live external-network evidence still pending.  
 **Release readiness:** NOT_READY / non-runtime tooling only.
 
 ## Scope
@@ -21,7 +21,7 @@ UI/browser checks are N/A: this PR adds repository tooling/data import only and 
 
 Tested branch head before this record update: `447f3874e8ebb916b080314af4f2b45695e9871b`.
 
-Local automated result: **PASS — 5/5 tests** using Node's built-in test runner.
+Local automated result: **PASS — 5/5 tests** using Node's built-in test runner.\n\nRepository baseline CI: **PASS** on head `fd40d05c1696a7561569bc0417da65d663cb63e1` (`ICA baseline QA`, run 520).
 
 Automated offline test command:
 
