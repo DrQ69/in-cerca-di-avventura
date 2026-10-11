@@ -14,7 +14,7 @@ export function compareWithIca(snapshot, eventsDocument) {
   if (!icaEvent) return { event_found: false, rows: [], summary: { differences: 0, missing: 1, matches: 0 } };
 
   const rows = [
-    row('event', 'player_count', snapshot.standings.length, icaEvent.player_count),
+    row('event', 'player_count', snapshot.event.played_participant_count, icaEvent.player_count),
     row('event', 'winner', snapshot.standings[0]?.display_name ?? null, icaEvent.winner_display_name ?? null),
   ];
   const icaByRank = new Map((icaEvent.standings ?? []).map((standing) => [standing.rank, standing]));
