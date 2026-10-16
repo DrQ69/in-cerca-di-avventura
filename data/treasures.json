@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-10-16",
   "purpose": "Public ICA prize archive linked to events by event_id.",
   "items": [
     {
@@ -17,7 +17,7 @@
       "prize_position": "Premio di partecipazione",
       "state": "announced",
       "image": null,
-      "notes": "Premio annunciato per tutti i partecipanti."
+      "notes": "Una copia non-foil per ogni partecipante al CREMOS – Cornerstone Championship 2026."
     },
     {
       "treasure_id": "TRE-0002",
@@ -30,10 +30,10 @@
       "signature": null,
       "champion_type": null,
       "quantity": 1,
-      "prize_position": "Miglior classificato",
+      "prize_position": "2° posto",
       "state": "announced",
       "image": null,
-      "notes": "Premio annunciato."
+      "notes": "Premio annunciato per il secondo classificato."
     },
     {
       "treasure_id": "TRE-0003",
@@ -46,10 +46,10 @@
       "signature": null,
       "champion_type": null,
       "quantity": 1,
-      "prize_position": "Champion",
+      "prize_position": "1° posto",
       "state": "announced",
       "image": null,
-      "notes": "Riconoscimento annunciato per spirito di condivisione, epicità e valore fraterno."
+      "notes": "Parte del premio del primo classificato insieme a Crown of the Victor Alpha."
     },
     {
       "treasure_id": "TRE-0004",
@@ -194,6 +194,270 @@
       "state": "awarded",
       "image": null,
       "notes": "Premio della Tappa II — Peasant."
+    },
+    {
+      "treasure_id": "TRE-0013",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Crown of the Victor",
+      "family": "card",
+      "expansion": "Alpha",
+      "rarity": null,
+      "finish": null,
+      "signature": null,
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "1° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Parte del premio del primo classificato insieme a Swap alternate art FOIL."
+    },
+    {
+      "treasure_id": "TRE-0014",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Ed Beard art print",
+      "family": "limited_print",
+      "expansion": null,
+      "rarity": null,
+      "finish": null,
+      "signature": null,
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "3° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Stampa d'arte di Ed Beard destinata al terzo classificato."
+    },
+    {
+      "treasure_id": "TRE-0015",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Bodach Bogeyman",
+      "family": "card",
+      "expansion": null,
+      "rarity": null,
+      "finish": null,
+      "signature": null,
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "4° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Premio annunciato per il quarto classificato."
+    },
+    {
+      "treasure_id": "TRE-0016",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Frost Nova",
+      "family": "card",
+      "expansion": "Beta",
+      "rarity": null,
+      "finish": "foil",
+      "signature": {
+        "status": "signed",
+        "artist": "Francesca Baerald",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "5° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Beta FOIL firmata da Francesca Baerald."
+    },
+    {
+      "treasure_id": "TRE-0017",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Belmotte Longbowmen",
+      "family": "card",
+      "expansion": "Alpha",
+      "rarity": null,
+      "finish": "foil",
+      "signature": {
+        "status": "signed",
+        "artist": "Andrea Modesti",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "5° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Alpha FOIL firmata da Andrea Modesti."
+    },
+    {
+      "treasure_id": "TRE-0018",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Dome of Osiris",
+      "family": "card",
+      "expansion": "Beta First Wave",
+      "rarity": null,
+      "finish": "foil",
+      "signature": {
+        "status": "signed",
+        "artist": "Vincent Pompetti",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "6° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Beta First Wave FOIL firmata da Vincent Pompetti."
+    },
+    {
+      "treasure_id": "TRE-0019",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Royal Bodyguard",
+      "family": "card",
+      "expansion": "Alpha",
+      "rarity": null,
+      "finish": null,
+      "signature": {
+        "status": "signed",
+        "artist": "Danforth",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "7° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Alpha firmata da Danforth. Finitura non specificata nel dato sorgente."
+    },
+    {
+      "treasure_id": "TRE-0020",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Imperial Road",
+      "family": "card",
+      "expansion": "Alpha",
+      "rarity": null,
+      "finish": null,
+      "signature": {
+        "status": "signed",
+        "artist": "Vincent Pompetti",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "7° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Alpha firmata da Vincent Pompetti. Finitura non specificata nel dato sorgente."
+    },
+    {
+      "treasure_id": "TRE-0021",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Teleport",
+      "family": "card",
+      "expansion": "Alpha",
+      "rarity": null,
+      "finish": null,
+      "signature": {
+        "status": "signed",
+        "artist": "Francesca Baerald",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "8° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Alpha firmata da Francesca Baerald. Finitura non specificata nel dato sorgente."
+    },
+    {
+      "treasure_id": "TRE-0022",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Verdant Knight",
+      "family": "card",
+      "expansion": "Arthurian Legends",
+      "rarity": null,
+      "finish": "foil",
+      "signature": {
+        "status": "signed",
+        "artist": "Andrea Modesti",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "8° posto",
+      "state": "announced",
+      "image": null,
+      "notes": "Arthurian Legends FOIL firmata da Andrea Modesti."
+    },
+    {
+      "treasure_id": "TRE-0023",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Ed Beard art print",
+      "family": "limited_print",
+      "expansion": null,
+      "rarity": null,
+      "finish": null,
+      "signature": null,
+      "champion_type": "community_champion",
+      "quantity": 1,
+      "prize_position": "Community Champion",
+      "state": "announced",
+      "image": null,
+      "notes": "Stampa d'arte di Ed Beard destinata al Community Champion."
+    },
+    {
+      "treasure_id": "TRE-0024",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "The Returned King",
+      "family": "card",
+      "expansion": "Gothic",
+      "rarity": "unique",
+      "finish": "non_foil",
+      "signature": null,
+      "champion_type": "special",
+      "quantity": 1,
+      "prize_position": "Premio speciale",
+      "state": "announced",
+      "image": null,
+      "notes": "Al miglior classificato che gioca Frost Mage o Lavamancer."
+    },
+    {
+      "treasure_id": "TRE-0025",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Beta Booster",
+      "family": "booster",
+      "expansion": "Beta",
+      "rarity": null,
+      "finish": null,
+      "signature": null,
+      "champion_type": null,
+      "quantity": 25,
+      "prize_position": "Estrazione",
+      "state": "announced",
+      "image": null,
+      "notes": "25 buste Beta messe a sorteggio tra i partecipanti."
+    },
+    {
+      "treasure_id": "TRE-0026",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Cornerstone",
+      "family": "card",
+      "expansion": "Beta",
+      "rarity": null,
+      "finish": "foil",
+      "signature": {
+        "status": "signed",
+        "artist": "Tutti i partecipanti e gli organizzatori",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": "raffle",
+      "quantity": 1,
+      "prize_position": "Estrazione",
+      "state": "announced",
+      "image": null,
+      "notes": "Cornerstone Beta FOIL firmato da tutti i partecipanti e dagli organizzatori, assegnato a sorteggio."
     }
   ]
 }
