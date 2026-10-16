@@ -1011,23 +1011,67 @@
       "start_time": null,
       "registration_url": "https://sorcerytcg.com/events/cmux5giq1000306mjsmeprzmh",
       "official_event_url": "https://sorcerytcg.com/events/cmux5giq1000306mjsmeprzmh",
-      "prize_grid_status": "announced_partial",
+      "prize_grid_status": "po_announced_variable_by_registrations",
       "prize_popover": {
         "title": "Rewards of the Realm",
-        "subtitle": "Premi annunciati",
+        "subtitle": "Griglia premi annunciata — soggetta a variazioni in base agli iscritti",
         "prizes": [
-          "Den of Evil alternate art non-foil per tutti i partecipanti",
-          "Den of Evil alternate art FOIL al miglior classificato",
-          "Swap alternate art FOIL al Champion, riconoscimento per spirito di condivisione, epicità e valore fraterno"
+          "1° — Crown of the Victor Alpha + Swap alternate art FOIL",
+          "2° — Den of Evil alternate art FOIL",
+          "3° — Ed Beard art print",
+          "4° — Bodach Bogeyman",
+          "5° — Frost Nova Beta FOIL Signed Francesca Baerald + Belmotte Longbowmen Alpha FOIL Signed Andrea Modesti",
+          "6° — Dome of Osiris Beta First Wave FOIL Signed Vincent Pompetti",
+          "7° — Royal Bodyguard Alpha Signed Danforth + Imperial Road Alpha Signed Vincent Pompetti",
+          "8° — Teleport Alpha Signed Francesca Baerald + Verdant Knight Arthurian Legends FOIL Signed Andrea Modesti",
+          "Community Champion — Ed Beard art print",
+          "Premio speciale — The Returned King Gothic Unique Non-Foil al miglior classificato che gioca Frost Mage o Lavamancer",
+          "Partecipazione — Den of Evil alternate art Non-Foil per ogni partecipante",
+          "Estrazione — 25 Beta Booster",
+          "Estrazione — Cornerstone Beta FOIL firmato da tutti i partecipanti e dagli organizzatori"
         ],
         "notes": [
-          "Ulteriori premi, carte, booster, ospiti e iniziative speciali saranno annunciati progressivamente.",
-          "I premi aggiuntivi non sono ancora confermati."
+          "La griglia premi potrà subire variazioni in funzione del numero di iscritti effettivi.",
+          "Le fasce grafiche degli scrigni della pagina Tesori dipendono dal numero di partecipanti effettivi all'evento."
         ]
       },
       "notes": "Presso la location sarà possibile acquistare cibo e bevande. Occasione di incontro e scambio carte per la community italiana di Sorcery.",
-      "source_note": "Informazioni e premi comunicati espressamente dal Product Owner il 9 ottobre 2026. L'URL di iscrizione è fornito dal PO; la pagina remota non era consultabile dal browser di verifica.",
-      "truth_status": "po_announcement_confirmed"
+      "source_note": "Informazioni evento e griglia premi comunicate espressamente dal Product Owner; griglia Cornerstone aggiornata il 16 ottobre 2026. L'URL di iscrizione è fornito dal PO.",
+      "truth_status": "po_announcement_confirmed",
+      "prize_grid": [
+        {
+          "top_label": "1°",
+          "prize": "Crown of the Victor Alpha + Swap alternate art FOIL"
+        },
+        {
+          "top_label": "2°",
+          "prize": "Den of Evil alternate art FOIL"
+        },
+        {
+          "top_label": "3°",
+          "prize": "Ed Beard art print"
+        },
+        {
+          "top_label": "4°",
+          "prize": "Bodach Bogeyman"
+        },
+        {
+          "top_label": "5°",
+          "prize": "Frost Nova Beta FOIL Signed Francesca Baerald + Belmotte Longbowmen Alpha FOIL Signed Andrea Modesti"
+        },
+        {
+          "top_label": "6°",
+          "prize": "Dome of Osiris Beta First Wave FOIL Signed Vincent Pompetti"
+        },
+        {
+          "top_label": "7°",
+          "prize": "Royal Bodyguard Alpha Signed Danforth + Imperial Road Alpha Signed Vincent Pompetti"
+        },
+        {
+          "top_label": "8°",
+          "prize": "Teleport Alpha Signed Francesca Baerald + Verdant Knight Arthurian Legends FOIL Signed Andrea Modesti"
+        }
+      ]
     }
   ]
 }
