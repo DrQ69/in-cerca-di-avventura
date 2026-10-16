@@ -1,0 +1,65 @@
+name: Tesori visual QA
+
+on:
+  pull_request:
+    paths:
+      - 'beta/tesori/**'
+      - 'assets/tesori/**'
+      - 'assets/manifest.json'
+      - 'data/treasures.json'
+      - 'data/events.json'
+      - 'tests/treasure_chests.test.mjs'
+      - 'scripts/tesori_visual_regression.mjs'
+      - '.github/workflows/tesori-visual-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'beta/tesori/**'
+      - 'assets/tesori/**'
+      - 'assets/manifest.json'
+      - 'data/treasures.json'
+      - 'data/events.json'
+      - 'tests/treasure_chests.test.mjs'
+      - 'scripts/tesori_visual_regression.mjs'
+      - '.github/workflows/tesori-visual-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tesori-visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rendered-visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit test chest rules
+        run: node --test tests/treasure_chests.test.mjs
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          echo $! > /tmp/ica-http.pid
+          sleep 2
+      - name: Capture and verify Tesori
+        run: node scripts/tesori_visual_regression.mjs
+      - name: Upload visual QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tesori-visual-qa-${{ github.sha }}
+          path: artifacts/tesori-visual/
+          if-no-files-found: error
+          retention-days: 14
