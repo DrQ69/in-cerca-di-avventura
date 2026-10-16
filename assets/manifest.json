@@ -1326,7 +1326,12 @@
       "approval": {
         "authority": "Product Owner",
         "date": "2026-10-16",
-        "scope": "Tesori beta visual use"
+        "scope": "ICA Tesori page dynamic chest use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-16_TESORI_CHESTS.md"
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 160
       }
     },
     {
@@ -1366,7 +1371,12 @@
       "approval": {
         "authority": "Product Owner",
         "date": "2026-10-16",
-        "scope": "Tesori beta visual use"
+        "scope": "ICA Tesori page dynamic chest use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-16_TESORI_CHESTS.md"
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 160
       }
     },
     {
@@ -1406,7 +1416,12 @@
       "approval": {
         "authority": "Product Owner",
         "date": "2026-10-16",
-        "scope": "Tesori beta visual use"
+        "scope": "ICA Tesori page dynamic chest use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-16_TESORI_CHESTS.md"
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 160
       }
     },
     {
@@ -1446,7 +1461,12 @@
       "approval": {
         "authority": "Product Owner",
         "date": "2026-10-16",
-        "scope": "Tesori beta visual use"
+        "scope": "ICA Tesori page dynamic chest use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-16_TESORI_CHESTS.md"
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 160
       }
     },
     {
@@ -1486,7 +1506,12 @@
       "approval": {
         "authority": "Product Owner",
         "date": "2026-10-16",
-        "scope": "Tesori beta visual use"
+        "scope": "ICA Tesori page dynamic chest use",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-16_TESORI_CHESTS.md"
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 160
       }
     }
   ]
