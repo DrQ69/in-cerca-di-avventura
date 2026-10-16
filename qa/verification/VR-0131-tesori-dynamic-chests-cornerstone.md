@@ -2,8 +2,8 @@
 
 **Primary QA Profile:** QAP-PAG  
 **Secondary profiles:** QAP-CODE, QAP-DAT, VIS, A11Y  
-**Lifecycle claim:** IMPLEMENTED candidate; automated verification pending PR execution.  
-**Release readiness:** NOT_READY — Product Owner visual review required.
+**Lifecycle claim:** IMPLEMENTED; Tesori-specific automated and visual verification passed on the tested branch.  
+**Release readiness:** NOT_READY — Product Owner visual review remains required before merge.
 
 ## Scope
 
@@ -52,17 +52,34 @@ The event prize note states that the grid may vary with actual registrations.
 
 The source PNGs were supplied directly by the Product Owner on 2026-10-16. The repository stores optimized native WebP derivatives of those exact artworks for responsive web delivery. The source artwork identity and Product Owner usage rule are preserved; no synthetic replacement chest is used.
 
-## Automated evidence planned
+## Automated evidence
 
-- `node --test tests/treasure_chests.test.mjs`
-- Tesori visual QA at 1440 / 768 / 390 px for the archive;
-- E02 detail QA at 1440 / 390;
-- Cornerstone detail QA at 1440 / 390;
-- verify 23-player E02 resolves to 20–39 chest and image loads;
-- verify Cornerstone does not infer capacity as attendance;
-- verify 17 Cornerstone catalog entries and key special rewards;
-- keyboard dialog open/focus/Escape close;
-- horizontal overflow and browser console error checks.
+Tested branch head: `23684307aabb4cb9396f3e99cb4fd8646cfa0746`.
+
+- ICA baseline QA run 552 — **PASS**.
+- Sprint 1 league dataset core run 93 — **PASS**.
+- LCS-02 runtime QA run 164 — **PASS**.
+- Homepage visual QA run 117 — **PASS**.
+- Shared banner consistency QA run 171 — **PASS**.
+- Cronache visual QA run 157 — **PASS**.
+- Tesori visual QA run 6 — **PASS**.
+
+Tesori visual QA verifies:
+- archive at 1440 / 768 / 390 px;
+- BOG E02 at 23 participants resolves to the 20–39 chest;
+- chest image loads successfully;
+- Cornerstone does not infer capacity 50 as attendance and shows a pending chest state;
+- Cornerstone detail contains 17 catalog entries and the announced special rewards;
+- keyboard dialog open/focus/Escape-close behavior;
+- no horizontal overflow or browser console errors.
+
+Two repository-wide checks currently fail for reasons outside this Tesori change:
+- Adunanze visual QA: `bog-2026-duello-03` is dated 2026-10-14 but still marked `futura` in shared event data; no event-status guess was made in this PR.
+- Adunanze performance QA: existing mobile LCP thresholds fail on the Adunanze portal/national pages; this PR does not modify those pages or their assets.
+
+## Previous automated evidence planned
+
+All planned Tesori checks above were executed by Tesori visual QA run 6 and passed.
 
 ## Residual risk
 
