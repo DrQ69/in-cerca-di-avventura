@@ -16,11 +16,11 @@
 
 | Actual participants | Chest |
 | ---: | --- |
-| 10–19 | scrigno-10-19.svg |
-| 20–39 | scrigno-20-39.svg |
-| 40–59 | scrigno-40-59.svg |
-| 60–79 | scrigno-60-79.svg |
-| 80–100 | scrigno-80-100.svg |
+| 10–19 | scrigno-10-19-giocatori.webp |
+| 20–39 | scrigno-20-39-giocatori.webp |
+| 40–59 | scrigno-40-59-giocatori.webp |
+| 60–79 | scrigno-60-79-giocatori.webp |
+| 80–100 | scrigno-80-100-giocatori.webp |
 
 The implementation does **not** use `capacity` as a participant-count fallback.
 
@@ -50,7 +50,7 @@ The event prize note states that the grid may vary with actual registrations.
 
 ## Asset handling
 
-The source PNGs were supplied directly by the Product Owner on 2026-10-16. The beta repository representation uses a lightweight embedded WebP derivative inside an SVG transport wrapper because the available repository write path is text-based. These are recorded as beta candidate assets, not canonical vector artwork.
+The source PNGs were supplied directly by the Product Owner on 2026-10-16. The repository stores optimized native WebP derivatives of those exact artworks for responsive web delivery. The source artwork identity and Product Owner usage rule are preserved; no synthetic replacement chest is used.
 
 ## Automated evidence planned
 
@@ -66,7 +66,7 @@ The source PNGs were supplied directly by the Product Owner on 2026-10-16. The b
 
 ## Residual risk
 
-- The SVG transport wrapper is intentionally beta-only and should be replaced by native raster files if/when a binary asset write path is used for canonical production packaging.
+- The optimized WebP derivatives are delivery assets; the original supplied PNGs remain the visual source.
 - Cornerstone chest tier cannot be selected until a verified participant/registration count is stored for the event.
 
 No canonical participant count has been invented.
