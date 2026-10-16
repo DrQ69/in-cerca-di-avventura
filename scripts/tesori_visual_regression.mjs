@@ -44,7 +44,7 @@ try{
    };
   });
   if(state.e02Band!=='20–39 giocatori'||state.e02Players!=='23') throw new Error(`${viewport.name}: E02 chest band mismatch: ${JSON.stringify(state)}`);
-  if(!state.e02Image?.endsWith('/assets/tesori/scrigno-20-39.svg')||!state.e02ImageLoaded) throw new Error(`${viewport.name}: E02 chest image did not load: ${JSON.stringify(state)}`);
+  if(!state.e02Image?.endsWith('/assets/tesori/scrigno-20-39-giocatori.webp')||!state.e02ImageLoaded) throw new Error(`${viewport.name}: E02 chest image did not load: ${JSON.stringify(state)}`);
   if(state.cornerstoneBand!=='none'||!state.cornerstonePending) throw new Error(`${viewport.name}: Cornerstone must not infer capacity as attendance: ${JSON.stringify(state)}`);
   if(state.cornerstoneCount!=='17 Tesori') throw new Error(`${viewport.name}: expected 17 Cornerstone catalog entries, got ${state.cornerstoneCount}`);
   const ov=await overflow(page);
@@ -86,7 +86,7 @@ try{
      if(!state.text.includes(expectedText)) throw new Error(`${target.name}-${viewport.name}: missing text ${expectedText}`);
     }
     if(state.chestImage) throw new Error(`${target.name}-${viewport.name}: unknown attendance must not select a chest image`);
-   }else if(!state.chestImage?.endsWith('/assets/tesori/scrigno-20-39.svg')){
+   }else if(!state.chestImage?.endsWith('/assets/tesori/scrigno-20-39-giocatori.webp')){
     throw new Error(`${target.name}-${viewport.name}: wrong chest image ${state.chestImage}`);
    }
 
