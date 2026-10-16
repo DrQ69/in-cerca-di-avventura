@@ -15,19 +15,25 @@
 .tesori-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .tesoro-event-card{position:relative;display:flex;flex-direction:column;min-height:390px;text-decoration:none;color:var(--tesori-text);border:1px solid #806039;background:linear-gradient(180deg,#111a23,#091016);box-shadow:0 14px 34px rgba(0,0,0,.3);overflow:hidden}
 .tesoro-event-card:focus-visible{outline:3px solid #2c84ff;outline-offset:4px}
-.tesoro-event-art{display:grid;place-items:center;min-height:230px;background:radial-gradient(circle at 50% 52%,rgba(214,154,64,.22),transparent 38%),linear-gradient(180deg,#17212a,#0a0f14)}
-.tesoro-chest{position:relative;width:150px;height:92px;border:4px solid #6f4920;border-radius:16px 16px 8px 8px;background:linear-gradient(90deg,#6f451d,#c08231 48%,#5b3517);box-shadow:0 0 0 3px #2a1a0d,0 0 34px rgba(226,155,57,.18)}
-.tesoro-chest:before{content:"";position:absolute;left:-4px;right:-4px;top:-38px;height:48px;border:4px solid #6f4920;border-bottom-width:6px;border-radius:60px 60px 10px 10px;background:linear-gradient(90deg,#6a421b,#c18534 48%,#5b3416);box-shadow:0 -8px 20px rgba(0,0,0,.4)}
-.tesoro-chest:after{content:"";position:absolute;left:50%;top:30px;width:22px;height:28px;transform:translateX(-50%);border:3px solid #e0b35f;background:#6b471f;border-radius:3px}
+.tesoro-event-art{position:relative;display:grid;place-items:center;min-height:250px;padding:18px 14px 34px;background:radial-gradient(circle at 50% 52%,rgba(214,154,64,.24),transparent 42%),linear-gradient(180deg,#17212a,#0a0f14)}
+.tesoro-event-art.is-pending{background:radial-gradient(circle at 50% 48%,rgba(133,110,73,.12),transparent 38%),linear-gradient(180deg,#141c23,#090f14)}
+.tesoro-chest-image{display:block;width:min(88%,240px);height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.46));transition:transform .22s ease,filter .22s ease}
+.tesoro-chest-pending{display:grid;place-items:center;width:112px;height:112px;border:1px dashed #7f6846;border-radius:50%;color:#9b8769;font:700 2.5rem Cinzel,Georgia,serif;background:rgba(5,9,12,.35)}
+.tesoro-band-label{position:absolute;left:10px;right:10px;bottom:10px;text-align:center;color:#bdaa8d;font:600 .68rem Inter,Arial,sans-serif}
 .tesoro-event-copy{padding:20px;text-align:center}
 .tesoro-event-copy h2{margin:0 0 8px;font:700 1.15rem Cinzel,Georgia,serif;color:var(--tesori-gold-light)}
 .tesoro-event-copy p{margin:5px 0;color:var(--tesori-muted)}
 .tesoro-count{margin-top:auto;padding:12px;text-align:center;border-top:1px solid var(--tesori-line);background:#1c150d;color:var(--tesori-gold-light);font-weight:700}
-.tesoro-event-card:hover .tesoro-chest{box-shadow:0 0 0 3px #2a1a0d,0 0 48px rgba(255,183,70,.5)}
+.tesoro-event-card:hover .tesoro-chest-image{transform:translateY(-3px) scale(1.025);filter:drop-shadow(0 20px 22px rgba(220,159,65,.28))}
 .tesori-empty{padding:40px;text-align:center;border:1px dashed #6d5738;color:var(--tesori-muted)}
 .tesori-breadcrumb{margin-bottom:20px;color:var(--tesori-muted);font-size:.9rem}
 .tesori-breadcrumb a{color:var(--tesori-gold-light)}
-.tesori-event-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:30px;padding:24px;border:1px solid var(--tesori-line);background:linear-gradient(180deg,#111a22,#0b1117)}
+.tesori-event-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:28px;align-items:center;margin-bottom:30px;padding:24px;border:1px solid var(--tesori-line);background:linear-gradient(180deg,#111a22,#0b1117)}
+.tesori-event-head-copy{min-width:0}
+.tesori-event-chest{display:grid;justify-items:center;align-content:center;min-height:235px;padding:8px 10px;text-align:center;border-left:1px solid rgba(201,154,74,.22)}
+.tesori-event-chest img{display:block;width:min(100%,260px);height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(0,0,0,.48))}
+.tesori-event-chest p{margin:4px 0 0;color:var(--tesori-muted);font:600 .72rem Inter,Arial,sans-serif;line-height:1.45}
+.tesori-event-chest.is-pending{opacity:.82}
 .tesori-event-head h1{margin:0 0 8px;font:700 clamp(2rem,5vw,3.6rem) Cinzel,Georgia,serif;color:var(--tesori-gold-light)}
 .tesori-event-meta{display:flex;flex-wrap:wrap;gap:14px;color:var(--tesori-muted)}
 .tesori-event-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
@@ -52,12 +58,12 @@
 .dialog-close{position:absolute;right:14px;top:10px;width:44px;height:44px;border:0;background:transparent;color:#f0d08b;font-size:1.7rem;cursor:pointer}
 @media(max-width:1023px){
  .tesori-main{padding:32px 24px 64px}.tesori-grid,.prize-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .tesori-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.tesori-event-head{grid-template-columns:1fr}
+ .tesori-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.tesori-event-head{grid-template-columns:1fr}.tesori-event-chest{border-left:0;border-top:1px solid rgba(201,154,74,.22);min-height:210px}
 }
 @media(max-width:767px){
  .tesori-main{padding:24px 16px 48px}.tesori-search-row{grid-template-columns:1fr}.tesori-filters{display:none}.tesori-tools.is-open .tesori-filters{display:grid;grid-template-columns:1fr}
- .tesori-grid,.prize-grid{grid-template-columns:1fr}.tesoro-event-card{min-height:0;display:grid;grid-template-columns:128px 1fr}.tesoro-event-art{min-height:150px}.tesoro-chest{transform:scale(.58)}.tesoro-event-copy{text-align:left;padding:16px}.tesoro-count{grid-column:1/-1}
+ .tesori-grid,.prize-grid{grid-template-columns:1fr}.tesoro-event-card{min-height:0;display:grid;grid-template-columns:142px minmax(0,1fr)}.tesoro-event-art{min-height:164px;padding:8px 5px 30px}.tesoro-chest-image{width:132px}.tesoro-chest-pending{width:82px;height:82px;font-size:1.8rem}.tesoro-band-label{font-size:.58rem;line-height:1.25}.tesoro-event-copy{text-align:left;padding:16px}.tesoro-count{grid-column:1/-1}.tesori-event-chest{min-height:190px;padding:6px}.tesori-event-chest img{width:min(82vw,240px)}
  .dialog-inner{grid-template-columns:1fr}.dialog-media{min-height:260px}.dialog-copy{padding:22px}
 }
 @media(hover:hover) and (pointer:fine){.tesoro-event-card,.prize-card{transition:transform .18s ease,border-color .18s ease}.tesoro-event-card:hover,.prize-card:hover{transform:translateY(-2px);border-color:#c49753}}
-@media(prefers-reduced-motion:reduce){.tesoro-event-card,.prize-card{transition:none}}
+@media(prefers-reduced-motion:reduce){.tesoro-event-card,.prize-card,.tesoro-chest-image{transition:none}}
