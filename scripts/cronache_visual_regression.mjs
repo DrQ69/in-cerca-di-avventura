@@ -202,6 +202,61 @@ try {
     await page.close();
   }
 
+
+  const e03URL = new URL('evento/?id=bog-2026-duello-03', baseURL).href;
+  for (const viewport of [
+    { name: 'e03-desktop-1440', width: 1440, height: 1200 },
+    { name: 'e03-tablet-768', width: 768, height: 1200 },
+    { name: 'e03-mobile-390', width: 390, height: 844 },
+  ]) {
+    const page = await browser.newPage({
+      viewport: { width: viewport.width, height: viewport.height },
+      deviceScaleFactor: 1,
+      reducedMotion: 'reduce',
+    });
+    const consoleErrors = [];
+    page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+    page.on('pageerror', error => consoleErrors.push(String(error)));
+
+    await page.goto(e03URL, { waitUntil: 'networkidle', timeout: 30000 });
+    await page.waitForSelector('#standings-body tr', { timeout: 15000 });
+
+    const state = await page.evaluate(() => ({
+      title: document.getElementById('event-title')?.textContent?.trim() || '',
+      rows: document.querySelectorAll('#standings-body tr').length,
+      winner: document.querySelector('#standings-body tr:first-child td:nth-child(2) strong')?.textContent?.trim() || '',
+      stats: [...document.querySelectorAll('.summary-stat')].map(node=>({
+        label:node.querySelector('span')?.textContent?.trim()||'',
+        value:node.querySelector('strong')?.textContent?.trim()||''
+      })),
+      deckButtons: document.querySelectorAll('.deck-button').length,
+      horizontal: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > window.innerWidth + 2,
+    }));
+
+    if (state.title !== 'Chaos Draft') throw new Error(`${viewport.name}: wrong E03 title ${state.title}`);
+    if (state.rows !== 12) throw new Error(`${viewport.name}: expected 12 played standings rows, got ${state.rows}`);
+    if (state.winner !== 'Andrea P') throw new Error(`${viewport.name}: expected Andrea P as E03 winner, got ${state.winner}`);
+    if (!state.stats.some(stat=>stat.label==='Partecipanti'&&stat.value==='12')) throw new Error(`${viewport.name}: participant count 12 missing`);
+    if (!state.stats.some(stat=>stat.label==='Registrazioni online'&&stat.value==='15')) throw new Error(`${viewport.name}: registration count 15 missing`);
+    if (!state.stats.some(stat=>stat.label==='No-show'&&stat.value==='3')) throw new Error(`${viewport.name}: no-show count 3 missing`);
+    if (!state.stats.some(stat=>stat.label==='Decklist disponibili'&&stat.value==='0/12')) throw new Error(`${viewport.name}: expected untracked draft decklists 0/12`);
+    if (state.deckButtons !== 0) throw new Error(`${viewport.name}: draft event unexpectedly exposes deck buttons`);
+    if (state.horizontal) throw new Error(`${viewport.name}: E03 detail page has horizontal overflow`);
+    if (consoleErrors.length) throw new Error(`${viewport.name}: browser console errors: ${consoleErrors.join(' | ')}`);
+
+    await page.screenshot({
+      path: `${outDir}/${viewport.name}.png`,
+      fullPage: true,
+      animations: 'disabled',
+    });
+    await fs.writeFile(
+      `${outDir}/${viewport.name}.json`,
+      JSON.stringify({ viewport, state, consoleErrors }, null, 2),
+      'utf8'
+    );
+    await page.close();
+  }
+
 } finally {
   await browser.close();
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "purpose": "Canonical public player registry for Avventurieri. Public profiles are nickname-based only; real-name/event-name reconciliation is intentionally not shipped in this public static file.",
-  "source_of_truth": "Product Owner supplied public nickname/city/profile data; private reconciliation data is not stored in this public repository file.",
-  "updated_at": "2026-09-29",
+  "source_of_truth": "Product Owner supplied public nickname/profile data; BLAZE OF GLORY-2.xlsx added league participants on 2026-10-17. Private reconciliation data is not stored in this public repository file.",
+  "updated_at": "2026-10-17",
   "players": [
     {
       "id": "PLY-0001",
@@ -195,6 +195,66 @@
       "id": "PLY-0032",
       "slug": "andrea-p",
       "nickname": "Andrea P",
+      "city": null
+    },
+    {
+      "id": "PLY-0033",
+      "slug": "luke-ciao",
+      "nickname": "Luke Ciao",
+      "city": null
+    },
+    {
+      "id": "PLY-0034",
+      "slug": "fabio-b",
+      "nickname": "Fabio B",
+      "city": null
+    },
+    {
+      "id": "PLY-0035",
+      "slug": "jacopo-n",
+      "nickname": "Jacopo N",
+      "city": null
+    },
+    {
+      "id": "PLY-0036",
+      "slug": "amedeo-b",
+      "nickname": "Amedeo B",
+      "city": null
+    },
+    {
+      "id": "PLY-0037",
+      "slug": "federico-m",
+      "nickname": "Federico M",
+      "city": null
+    },
+    {
+      "id": "PLY-0038",
+      "slug": "angelo-s",
+      "nickname": "Angelo S",
+      "city": null
+    },
+    {
+      "id": "PLY-0039",
+      "slug": "davide-f",
+      "nickname": "Davide F",
+      "city": null
+    },
+    {
+      "id": "PLY-0040",
+      "slug": "hui24",
+      "nickname": "Hui24",
+      "city": null
+    },
+    {
+      "id": "PLY-0041",
+      "slug": "riccardo-v",
+      "nickname": "Riccardo V",
+      "city": null
+    },
+    {
+      "id": "PLY-0042",
+      "slug": "mattia-l",
+      "nickname": "Mattia L",
       "city": null
     }
   ]

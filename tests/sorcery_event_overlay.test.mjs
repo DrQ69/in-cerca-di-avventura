@@ -2,7 +2,10 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {overlayEventFromSorcery} from '../beta/shared/sorcery-event-overlay.mjs';
 
-const event={event_id:'bog-2026-duello-02',status:'conclusa',player_count:99,winner_display_name:'Old Winner',standings:[]};
+const event={event_id:'bog-2026-duello-02',status:'conclusa',player_count:99,winner_display_name:'Old Winner',standings:[
+  {rank:1,display_name:'Michele S',player_id:'PLY-0017',nickname:'Mikininja',league_stage_points:25},
+  {rank:2,display_name:'Simone C',player_id:'PLY-0021',nickname:'TERRONATOR'}
+]};
 const snapshot={
   provenance:{sorcery_event_id:'cmua2gkxc00090agm7qvfrh45',retrieved_at:'2026-10-11T10:00:00.000Z',content_sha256:'abc'},
   event:{id:'cmua2gkxc00090agm7qvfrh45',registration_count:3,played_participant_count:2},
@@ -27,4 +30,7 @@ test('overlay excludes zero-round no-shows from attendance and public standings'
   assert.equal(result.standings.length,2);
   assert.equal(result.standings[1].omw_percent,65.625);
   assert.equal(result.standings.some(row=>row.display_name==='No Show'),false);
+  assert.equal(result.standings[0].player_id,'PLY-0017');
+  assert.equal(result.standings[0].nickname,'Mikininja');
+  assert.equal(result.standings[0].league_stage_points,25);
 });

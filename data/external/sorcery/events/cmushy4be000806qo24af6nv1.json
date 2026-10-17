@@ -1,0 +1,678 @@
+{
+  "provenance": {
+    "provider": "sorcerytcg.com",
+    "sorcery_event_id": "cmushy4be000806qo24af6nv1",
+    "retrieved_at": "2026-10-17T10:29:07.183Z",
+    "adapter_version": 1,
+    "source_endpoints": [
+      "https://sorcerytcg.com/api/trpc/event.get",
+      "https://sorcerytcg.com/api/trpc/event.playerSnapshot"
+    ],
+    "content_sha256": "d7d25f027c97c4176e8bf7ede987c96daa07ffb9633b48fa5d6bd30ec887cde3",
+    "source_class": "public-undocumented-internal-api"
+  },
+  "event": {
+    "id": "cmushy4be000806qo24af6nv1",
+    "title": "CREMOS - Chaos Draft - BOG#3",
+    "status": "Complete",
+    "starts_at": "2026-10-14T19:00:00.000Z",
+    "ends_at": "2026-10-14T23:00:00.000Z",
+    "completed_at": "2026-10-14T22:28:41.989Z",
+    "capacity": 32,
+    "address": "Via Castello, 10, Crema, Cremona, 26013, IT",
+    "country": "IT",
+    "track_decks": false,
+    "registration_count": 15,
+    "standings_count": 15,
+    "played_participant_count": 12
+  },
+  "registrations": [
+    {
+      "registration_id": "cmuwzmes5000306o294uyu0rk",
+      "display_name": "Simone C",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Rocco G",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Alessandro S",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "alessandro u",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmv0ti8a5000006p4ssbnrcom",
+      "display_name": "Alessandro Q",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Michele S",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "alessandro u",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Rocco G",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmv43ngjj001304l8155n5vhy",
+      "display_name": "Matteo M",
+      "status": "Dropped",
+      "participation_status": "registered_no_show",
+      "rounds": [],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmushyjwu000t06qom2b7k51u",
+      "display_name": "Niccolò C",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Andrea P",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Andrea R",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Daniele Carlo Giuseppe S",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmv3wlxr4000106oqsnqet8ut",
+      "display_name": "Tommaso M",
+      "status": "Dropped",
+      "participation_status": "registered_no_show",
+      "rounds": [],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmv45or2l000606oxsdrq3u8b",
+      "display_name": "Alessandro S",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "alessandro u",
+          "result": "Draw",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Simone C",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Michele S",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmuwzqh5b000906npuve5tbnd",
+      "display_name": "Andrea R",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Mohamed A",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Niccolò C",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Jonni R",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmuwzkckk000006qgiwzwh9uf",
+      "display_name": "Michele S",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Alessandro Q",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Rocco G",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Alessandro S",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmux0ewqj001s06p8hd9st2ec",
+      "display_name": "Jonni R",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Daniele Carlo Giuseppe S",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Mohamed A",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Andrea R",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmuwzkq8y000006meinhg6vlk",
+      "display_name": "Mohamed A",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Andrea R",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Jonni R",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Andrea P",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmv3ybzhw000i06qcqo0yy76l",
+      "display_name": "alessandro u",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Alessandro S",
+          "result": "Draw",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Alessandro Q",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Simone C",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmux1ddmt001906k22cz8kbvk",
+      "display_name": "Daniele Carlo Giuseppe S",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Jonni R",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Andrea P",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Niccolò C",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmux4p1ik000706o6xxcsrev2",
+      "display_name": "Rocco G",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Simone C",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Michele S",
+          "result": "Loss",
+          "score": 0,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Alessandro Q",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmv6s24o4001506mi9nsb0zy8",
+      "display_name": "Matteo Z",
+      "status": "Dropped",
+      "participation_status": "registered_no_show",
+      "rounds": [],
+      "deck": {
+        "deck_status": "missing"
+      }
+    },
+    {
+      "registration_id": "cmux05pec000006nkwji31zzd",
+      "display_name": "Andrea P",
+      "status": "Ready",
+      "participation_status": "played",
+      "rounds": [
+        {
+          "round": 1,
+          "structure": "Swiss",
+          "opponent": "Niccolò C",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 2,
+          "structure": "Swiss",
+          "opponent": "Daniele Carlo Giuseppe S",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        },
+        {
+          "round": 3,
+          "structure": "Swiss",
+          "opponent": "Mohamed A",
+          "result": "Win",
+          "score": 3,
+          "is_bye": false
+        }
+      ],
+      "deck": {
+        "deck_status": "missing"
+      }
+    }
+  ],
+  "standings": [
+    {
+      "registration_id": "cmux05pec000006nkwji31zzd",
+      "rank": 1,
+      "display_name": "Andrea P",
+      "points": 9,
+      "wins": 3,
+      "draws": 0,
+      "losses": 0,
+      "omw": 0.4444444444444444,
+      "cmp": 18,
+      "tiebreak": "cf",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmuwzkckk000006qgiwzwh9uf",
+      "rank": 2,
+      "display_name": "Michele S",
+      "points": 9,
+      "wins": 3,
+      "draws": 0,
+      "losses": 0,
+      "omw": 0.4444444444444444,
+      "cmp": 18,
+      "tiebreak": "score",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmuwzkq8y000006meinhg6vlk",
+      "rank": 3,
+      "display_name": "Mohamed A",
+      "points": 6,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "omw": 0.6666666666666666,
+      "cmp": 15,
+      "tiebreak": "cmp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmux4p1ik000706o6xxcsrev2",
+      "rank": 4,
+      "display_name": "Rocco G",
+      "points": 6,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "omw": 0.6666666666666666,
+      "cmp": 12,
+      "tiebreak": "omwp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmuwzmes5000306o294uyu0rk",
+      "rank": 5,
+      "display_name": "Simone C",
+      "points": 6,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "omw": 0.4444444444444444,
+      "cmp": 9,
+      "tiebreak": "cf",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmuwzqh5b000906npuve5tbnd",
+      "rank": 6,
+      "display_name": "Andrea R",
+      "points": 6,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "omw": 0.4444444444444444,
+      "cmp": 9,
+      "tiebreak": "score",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmv0ti8a5000006p4ssbnrcom",
+      "rank": 7,
+      "display_name": "Alessandro Q",
+      "points": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "omw": 0.6666666666666666,
+      "cmp": 6,
+      "tiebreak": "cmp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmushyjwu000t06qom2b7k51u",
+      "rank": 8,
+      "display_name": "Niccolò C",
+      "points": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "omw": 0.6666666666666666,
+      "cmp": 3,
+      "tiebreak": "omwp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmux0ewqj001s06p8hd9st2ec",
+      "rank": 9,
+      "display_name": "Jonni R",
+      "points": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "omw": 0.5555555555555555,
+      "cmp": 9,
+      "tiebreak": "score",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmv45or2l000606oxsdrq3u8b",
+      "rank": 10,
+      "display_name": "Alessandro S",
+      "points": 0,
+      "wins": 0,
+      "draws": 1,
+      "losses": 2,
+      "omw": 0.6666666666666666,
+      "cmp": 0,
+      "tiebreak": "omwp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmux1ddmt001906k22cz8kbvk",
+      "rank": 11,
+      "display_name": "Daniele Carlo Giuseppe S",
+      "points": 0,
+      "wins": 0,
+      "draws": 0,
+      "losses": 3,
+      "omw": 0.5555555555555555,
+      "cmp": 0,
+      "tiebreak": "omwp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmv3ybzhw000i06qcqo0yy76l",
+      "rank": 12,
+      "display_name": "alessandro u",
+      "points": 0,
+      "wins": 0,
+      "draws": 1,
+      "losses": 2,
+      "omw": 0.4444444444444444,
+      "cmp": 0,
+      "tiebreak": "omwp",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmv6s24o4001506mi9nsb0zy8",
+      "rank": 13,
+      "display_name": "Matteo Z",
+      "points": 0,
+      "wins": 0,
+      "draws": 0,
+      "losses": 0,
+      "omw": 0.3333333333333333,
+      "cmp": 0,
+      "tiebreak": "cf",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmv3wlxr4000106oqsnqet8ut",
+      "rank": 14,
+      "display_name": "Tommaso M",
+      "points": 0,
+      "wins": 0,
+      "draws": 0,
+      "losses": 0,
+      "omw": 0.3333333333333333,
+      "cmp": 0,
+      "tiebreak": "cf",
+      "avatar": null
+    },
+    {
+      "registration_id": "cmv43ngjj001304l8155n5vhy",
+      "rank": 15,
+      "display_name": "Matteo M",
+      "points": 0,
+      "wins": 0,
+      "draws": 0,
+      "losses": 0,
+      "omw": 0.3333333333333333,
+      "cmp": 0,
+      "tiebreak": "none",
+      "avatar": null
+    }
+  ]
+}
