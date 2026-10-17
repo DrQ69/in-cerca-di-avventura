@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archivio del Reame — In Cerca di Avventura</title>
+<meta name="description" content="Esplora gli eventi conclusi del Reame: cerca per evento, luogo, lega, formato e anno.">
+<meta name="robots" content="index,follow"><meta name="theme-color" content="#0b141d">
+<link rel="canonical" href="https://drq69.github.io/in-cerca-di-avventura/archivio/">
+<link rel="icon" href="../assets/favicon-32.png">
+<link rel="stylesheet" href="../assets/css/ica-shared-shell.css">
+<link rel="stylesheet" href="../shared/ica-banner.css?v=20261002-1">
+<link rel="stylesheet" href="archivio.css">
+</head>
+<body data-ica-page="ARC">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="site-shell">
+<div id="ica-main-banner" data-ica-section="NAV"></div>
+<main id="main" class="archive">
+<header class="archive-intro"><p class="eyebrow">La memoria del Reame</p><h1>Archivio</h1><p>Consulta le Adunanze concluse, riscopri i risultati e ritrova le storie della community.</p><a href="../cronache/">Vai alle Cronache →</a></header>
+<section class="archive-body" aria-labelledby="find-heading">
+<h2 id="find-heading">Esplora gli eventi</h2>
+<form class="filters" role="search" id="archive-filters">
+<label>Ricerca libera<input id="q" type="search" placeholder="Titolo, luogo, formato, lega…" autocomplete="off"></label>
+<label>Anno<select id="year-filter"><option value="">Tutti gli anni</option></select></label>
+<label>Formato<select id="format-filter"><option value="">Tutti i formati</option></select></label>
+<label>Lega o circuito<select id="series-filter"><option value="">Tutti i circuiti</option></select></label>
+<button type="reset">Azzera filtri</button>
+</form>
+<p id="archive-status" class="archive-status" role="status" aria-live="polite">Caricamento dell'archivio…</p>
+<div id="archive-results" class="archive-results"></div>
+</section>
+</main>
+<footer class="site-footer"><span>In Cerca di Avventura · Archivio</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
+</div>
+<script src="../shared/event-status.js?v=20261011-1"></script>
+<script type="module" src="../shared/ica-banner.js?v=20261002-1"></script>
+<script type="module" src="archivio.js"></script>
+</body></html>
