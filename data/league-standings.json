@@ -141,7 +141,8 @@
       "nickname": "Luke Ciao",
       "points": 20,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0033"
     },
     {
       "rank": 16,
@@ -158,7 +159,8 @@
       "nickname": "Fabio B",
       "points": 15,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0034"
     },
     {
       "rank": 18,
@@ -175,7 +177,8 @@
       "nickname": "Jacopo N",
       "points": 13,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0035"
     },
     {
       "rank": 20,
@@ -210,7 +213,8 @@
       "nickname": "Amedeo B",
       "points": 10,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0036"
     },
     {
       "rank": 24,
@@ -218,7 +222,8 @@
       "nickname": "Federico M",
       "points": 8,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0037"
     },
     {
       "rank": 25,
@@ -226,7 +231,8 @@
       "nickname": "Angelo S",
       "points": 7,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0038"
     },
     {
       "rank": 26,
@@ -234,7 +240,8 @@
       "nickname": "Davide F",
       "points": 5,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0039"
     },
     {
       "rank": 27,
@@ -242,7 +249,8 @@
       "nickname": "Hui24",
       "points": 5,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0040"
     },
     {
       "rank": 28,
@@ -250,7 +258,8 @@
       "nickname": "Riccardo V",
       "points": 5,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0041"
     },
     {
       "rank": 29,
@@ -258,7 +267,8 @@
       "nickname": "Mattia L",
       "points": 5,
       "stages_completed": 1,
-      "fair_play_wins": 0
+      "fair_play_wins": 0,
+      "player_id": "PLY-0042"
     }
   ]
 }
