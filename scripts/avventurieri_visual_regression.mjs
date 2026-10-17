@@ -39,19 +39,19 @@ try{
         nextDisabled:document.querySelector('#next-page')?.disabled ?? true,
         overflow:Math.max(body.scrollWidth,html.scrollWidth)>window.innerWidth+2,
         nickStats:{
-          hasTwoEvents:nickText.includes('Eventi registrati')&&nickText.includes('2'),
-          hasRecord:nickText.includes('4 V · 1 P · 3 S'),
-          hasLeaguePoints:nickText.includes('25'),
-          hasLeagueRank:nickText.includes('#1')
+          hasThreeEvents:nickText.includes('Eventi registrati')&&nickText.includes('3'),
+          hasRecord:nickText.includes('5 V · 1 P · 5 S'),
+          hasLeaguePoints:nickText.includes('57'),
+          hasLeagueRank:nickText.includes('#3')
         }
       };
     });
 
     if(initial.visibleCards!==viewport.expected) throw new Error(`${viewport.name}: expected ${viewport.expected} visible cards, got ${initial.visibleCards}`);
-    if(!initial.countText.includes('32')) throw new Error(`${viewport.name}: canonical 32-player count not rendered`);
+    if(!initial.countText.includes('42')) throw new Error(`${viewport.name}: canonical 42-player count not rendered`);
     if(initial.overflow) throw new Error(`${viewport.name}: horizontal overflow`);
     if(initial.nextDisabled) throw new Error(`${viewport.name}: next arrow unexpectedly disabled on first page`);
-    if(!initial.nickStats.hasTwoEvents||!initial.nickStats.hasRecord||!initial.nickStats.hasLeaguePoints||!initial.nickStats.hasLeagueRank){
+    if(!initial.nickStats.hasThreeEvents||!initial.nickStats.hasRecord||!initial.nickStats.hasLeaguePoints||!initial.nickStats.hasLeagueRank){
       throw new Error(`${viewport.name}: Nick the Wizard derived statistics mismatch ${JSON.stringify(initial.nickStats)}`);
     }
 
@@ -64,9 +64,9 @@ try{
         count:document.querySelectorAll('.player-card').length,
         nickname:card?.querySelector('h3')?.textContent?.trim()||'',
         countText:document.querySelector('#player-count')?.textContent||'',
-        hasRecord:text.includes('8 V · 0 P · 3 S'),
-        hasLeaguePoints:text.includes('8'),
-        hasLeagueRank:text.includes('#14')
+        hasRecord:text.includes('9 V · 0 P · 5 S'),
+        hasLeaguePoints:text.includes('31'),
+        hasLeagueRank:text.includes('#11')
       };
     });
     if(searchResult.count!==1||searchResult.nickname!=='Dr. Q') throw new Error(`${viewport.name}: nickname search failed`);
