@@ -2,8 +2,8 @@
 
 **Primary QA Profile:** QAP-PAG  
 **Secondary profiles:** QAP-CODE, QAP-DAT, QAP-AST-P  
-**Lifecycle claim:** IMPLEMENTED candidate; automated verification pending PR execution.  
-**Release readiness:** NOT_READY — Product Owner visual review required before merge.
+**Lifecycle claim:** IMPLEMENTED and VERIFIED on the release branch.  
+**Release readiness:** READY_FOR_MERGE for the V1.1 + V1.2 scope; final ICA v1 release closure remains a later block.
 
 ## Product Owner decisions — 2026-10-17
 
@@ -56,7 +56,28 @@ Approval record:
 
 The two-gate portal is no longer a public v1 surface. `/adunanze/` redirects directly to `/adunanze/nazionale/`. No unavailable/in-development International choice is shown in v1.
 
-## Planned verification
+## Automated verification evidence
+
+Tested release-branch head: `f2fdd1aeb10b416e243a6764d4e1656faeed763c`.
+
+- ICA baseline QA run 583 — **PASS**.
+- Homepage visual QA run 148 — **PASS**.
+- Adunanze visual QA run 215 — **PASS**.
+- Adunanze performance QA run 195 — **PASS**.
+- Avventurieri visual QA run 100 — **PASS**.
+- Cronache visual QA run 186 — **PASS**.
+- Alleanze visual QA run 83 — **PASS**.
+- Tesori visual QA run 35 — **PASS**.
+- Shared banner consistency QA run 199 — **PASS**.
+- LCS-02 runtime QA run 192 — **PASS**.
+
+Adunanze Lighthouse evidence after the mobile navigation optimization:
+- desktop: performance **1.00**, accessibility **1.00**, SEO **1.00**, LCP **766 ms**, CLS **0**;
+- mobile: performance **0.98**, accessibility **1.00**, SEO **1.00**, LCP **2130 ms**, CLS **0**.
+
+The shared navigation mobile artwork now uses the approved optimized WebP derivative `assets/banners/navigation/bnr-beta-nav-mobile.webp` (960×321, 69,040 bytes) while desktop retains the full-resolution PNG. This removes the previous mobile LCP blocker without changing the Product Owner-approved artwork.
+
+## Verification coverage
 
 - ICA structural baseline;
 - Homepage visual QA at 390 / 768 / 1280 / 1920;
@@ -70,10 +91,11 @@ The two-gate portal is no longer a public v1 surface. `/adunanze/` redirects dir
 - root/beta compatibility redirect checks;
 - no horizontal overflow or browser console errors on tested surfaces.
 
+All checks above passed on the tested release branch.
+
 ## Known non-blocking items outside this block
 
 - Unified Archivio is the next approved v1 implementation block.
 - Sorcery controlled publish workflow is the following v1 block.
-- Adunanze mobile LCP remediation remains part of production hardening.
 - GitHub Issue #17 requires repository-admin branch protection.
 - GitHub Issue #94 remains open until external-logo permission metadata is confirmed by the Product Owner.
