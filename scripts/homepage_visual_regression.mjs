@@ -15,9 +15,9 @@ const browser=await chromium.launch({headless:true});
 
 try{
   const redirectPage=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
-  await redirectPage.goto(baseURL+'/',{waitUntil:'networkidle',timeout:30000});
-  if(!redirectPage.url().endsWith('/beta/')){
-    throw new Error('root homepage did not redirect to /beta/: '+redirectPage.url());
+  await redirectPage.goto(baseURL+'/beta/',{waitUntil:'networkidle',timeout:30000});
+  if(!redirectPage.url().endsWith('/')){
+    throw new Error('legacy /beta/ did not redirect to root: '+redirectPage.url());
   }
   await redirectPage.close();
   for(const viewport of viewports){
@@ -26,7 +26,7 @@ try{
     page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
     page.on('pageerror',err=>errors.push(String(err)));
 
-    await page.goto(baseURL+'/beta/',{waitUntil:'networkidle',timeout:30000});
+    await page.goto(baseURL+'/',{waitUntil:'networkidle',timeout:30000});
     await page.waitForSelector('#next-event-card[data-event-id]',{timeout:10000});
     await page.waitForSelector('#latest-chronicle[data-event-id]',{timeout:10000});
 
