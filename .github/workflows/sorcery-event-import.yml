@@ -108,7 +108,7 @@ jobs:
       - name: Open controlled publication PR
         run: |
           REPORT="qa/evidence/reports/sorcery-publish-${{ inputs.event_id }}.json"
-          ICA_EVENT=$(node -e "const r=require('./'$REPORT); process.stdout.write(r.ica_event_id||'unknown')")
+          ICA_EVENT=$(node -e "const r=require('./${REPORT}'); process.stdout.write(r.ica_event_id||'unknown')")
           gh pr create             --base main             --head "${{ steps.branch.outputs.name }}"             --title "Publish Sorcery snapshot: $ICA_EVENT"             --body "Controlled Sorcery publication prepared by workflow run ${{ github.run_id }}.
 
           Source event: \`${{ inputs.event_id }}\`
