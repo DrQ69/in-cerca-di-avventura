@@ -15,9 +15,21 @@ const browser=await chromium.launch({headless:true});
 
 try{
   const redirectPage=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
-  await redirectPage.goto(baseURL+'/beta/',{waitUntil:'networkidle',timeout:30000});
-  if(new URL(redirectPage.url()).pathname!=='/'){
-    throw new Error('legacy /beta/ did not redirect to root: '+redirectPage.url());
+  const redirects=[
+    ['/beta/','/'],
+    ['/beta/adunanze/','/adunanze/nazionale/'],
+    ['/beta/adunanze/nazionale/','/adunanze/nazionale/'],
+    ['/beta/avventurieri/','/avventurieri/'],
+    ['/beta/cronache/','/cronache/'],
+    ['/beta/cronache/evento/?id=bog-2026-duello-03','/cronache/evento/'],
+    ['/beta/alleanze/','/alleanze/'],
+    ['/beta/tesori/','/tesori/'],
+    ['/beta/tesori/evento.html?event=cremos-cornerstone-2026','/tesori/evento.html'],
+  ];
+  for(const [legacy,expectedPath] of redirects){
+    await redirectPage.goto(baseURL+legacy,{waitUntil:'networkidle',timeout:30000});
+    const actual=new URL(redirectPage.url()).pathname;
+    if(actual!==expectedPath)throw new Error('legacy redirect mismatch '+legacy+' -> '+actual+' expected '+expectedPath);
   }
   await redirectPage.close();
   for(const viewport of viewports){
