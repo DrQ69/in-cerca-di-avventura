@@ -4,12 +4,12 @@ import fs from 'node:fs/promises';
 const baseURL=process.env.ICA_BASE_URL||'http://127.0.0.1:8000';
 const outDir=process.env.LCS02_ARTIFACT_DIR||'artifacts/lcs02-runtime';
 const pages=[
-  {code:'HOME',path:'/beta/',min:18},
-  {code:'ADU',path:'/beta/adunanze/',min:8},
-  {code:'ADU-NAT',path:'/beta/adunanze/nazionale/',min:10},
-  {code:'CRO',path:'/beta/cronache/',min:12},
-  {code:'AVV',path:'/beta/avventurieri/',min:18},
-  {code:'ALL',path:'/beta/alleanze/',min:8},
+  {code:'HOME',path:'/',min:18},
+  {code:'ADU',path:'/adunanze/nazionale/',min:10},
+  {code:'ADU-NAT',path:'/adunanze/nazionale/',min:10},
+  {code:'CRO',path:'/cronache/',min:12},
+  {code:'AVV',path:'/avventurieri/',min:18},
+  {code:'ALL',path:'/alleanze/',min:8},
 ];
 
 await fs.mkdir(outDir,{recursive:true});
