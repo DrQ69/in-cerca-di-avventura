@@ -1,14 +1,16 @@
-name: Sorcery event importer QA
+name: Sorcery event controlled publish
 
 on:
   pull_request:
     paths:
       - 'scripts/import_sorcery_event.mjs'
+      - 'scripts/register_sorcery_event_snapshot.mjs'
       - 'scripts/lib/sorcery-event-*.mjs'
       - 'tests/sorcery_event_importer.test.mjs'
+      - 'tests/sorcery_event_publish.test.mjs'
       - 'tests/fixtures/sorcery/**'
       - 'tests/sorcery_event_overlay.test.mjs'
-      - 'beta/shared/sorcery-event-overlay.mjs'
+      - 'shared/sorcery-event-overlay.mjs'
       - '.github/workflows/sorcery-event-import.yml'
   workflow_dispatch:
     inputs:
@@ -16,39 +18,110 @@ on:
         description: Sorcery event ID
         required: true
         type: string
-
-permissions:
-  contents: read
+      operation:
+        description: Validate only, or prepare a publication Pull Request
+        required: true
+        default: validate_only
+        type: choice
+        options:
+          - validate_only
+          - prepare_publish_pr
 
 jobs:
   offline-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - name: Offline importer tests
-        run: node --test tests/sorcery_event_importer.test.mjs tests/sorcery_event_overlay.test.mjs
+          node-version: '22'
+      - name: Offline importer and publication tests
+        run: node --test tests/sorcery_event_importer.test.mjs tests/sorcery_event_overlay.test.mjs tests/sorcery_event_publish.test.mjs
 
-  live-import:
-    if: github.event_name == 'workflow_dispatch'
+  live-validate:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'validate_only'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - name: Live import and comparison
+          node-version: '22'
+      - name: Import, validate and compare without publication
         run: |
           mkdir -p qa/evidence/reports
-          node scripts/import_sorcery_event.mjs "${{ inputs.event_id }}" --compare --output qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.json 2>&1 | tee qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.log
-      - name: Upload report artifact
+          node scripts/import_sorcery_event.mjs "${{ inputs.event_id }}" --compare --output "data/external/sorcery/events/${{ inputs.event_id }}.json" 2>&1 | tee "qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.log"
+          node scripts/register_sorcery_event_snapshot.mjs "${{ inputs.event_id }}" --check-only --report "qa/evidence/reports/sorcery-publish-${{ inputs.event_id }}.json"
+      - name: Upload validation evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sorcery-event-${{ inputs.event_id }}
-          path: qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.*
+          name: sorcery-validate-${{ inputs.event_id }}
+          path: qa/evidence/reports/sorcery-*
           if-no-files-found: warn
+          retention-days: 14
+
+  prepare-publish-pr:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'prepare_publish_pr'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout production main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Import and run publication gate
+        run: |
+          mkdir -p qa/evidence/reports
+          node scripts/import_sorcery_event.mjs "${{ inputs.event_id }}" --compare --output "data/external/sorcery/events/${{ inputs.event_id }}.json" 2>&1 | tee "qa/evidence/reports/sorcery-event-${{ inputs.event_id }}.log"
+          node scripts/register_sorcery_event_snapshot.mjs "${{ inputs.event_id }}" --report "qa/evidence/reports/sorcery-publish-${{ inputs.event_id }}.json"
+          node --test tests/sorcery_event_importer.test.mjs tests/sorcery_event_overlay.test.mjs tests/sorcery_event_publish.test.mjs
+      - name: Prepare publication branch
+        id: branch
+        run: |
+          BRANCH="automation/sorcery-${{ inputs.event_id }}-${{ github.run_id }}"
+          echo "name=$BRANCH" >> "$GITHUB_OUTPUT"
+          git switch -c "$BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "data/external/sorcery/events/${{ inputs.event_id }}.json" data/external/sorcery/events/index.json
+          if git diff --cached --quiet; then
+            echo "No publication changes were produced."
+            exit 2
+          fi
+          git commit -m "Publish Sorcery event ${{ inputs.event_id }} snapshot"
+          git push origin "$BRANCH"
+      - name: Open controlled publication PR
+        run: |
+          REPORT="qa/evidence/reports/sorcery-publish-${{ inputs.event_id }}.json"
+          ICA_EVENT=$(node -e "const r=require('./${REPORT}'); process.stdout.write(r.ica_event_id||'unknown')")
+          gh pr create             --base main             --head "${{ steps.branch.outputs.name }}"             --title "Publish Sorcery snapshot: $ICA_EVENT"             --body "Controlled Sorcery publication prepared by workflow run ${{ github.run_id }}.
+
+          Source event: \`${{ inputs.event_id }}\`
+          ICA event: \`$ICA_EVENT\`
+
+          The live source was fetched read-only, normalized, schema-validated, matched to an existing ICA event, compared with ICA data, registered in the snapshot manifest, and passed the offline importer/publication tests.
+
+          **Publication occurs only if this PR passes normal ICA QA and is merged.**"
+      - name: Upload publication evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorcery-publish-${{ inputs.event_id }}
+          path: qa/evidence/reports/sorcery-*
+          if-no-files-found: warn
+          retention-days: 14
