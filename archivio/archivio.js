@@ -79,7 +79,7 @@ async function buildDeckRecords(events){
 }
 
 function populateFilters(){
- const kinds=[...new Set(records.map(r=>r.kind))].sort((a,b)=>(KIND_LABELS[a]||a).localeCompare(KIND_LABELS[b]||b,'it'));
+ const kinds=Object.keys(KIND_LABELS).sort((a,b)=>(KIND_LABELS[a]||a).localeCompare(KIND_LABELS[b]||b,'it'));
  typeEl.insertAdjacentHTML('beforeend',kinds.map(kind=>'<option value="'+esc(kind)+'">'+esc(KIND_LABELS[kind]||kind)+'</option>').join(''));
  const years=[...new Set(records.map(r=>r.year).filter(Boolean))].sort((a,b)=>b.localeCompare(a));
  yearEl.insertAdjacentHTML('beforeend',years.map(year=>'<option>'+esc(year)+'</option>').join(''));
