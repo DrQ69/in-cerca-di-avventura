@@ -11,6 +11,7 @@ const pages=[
   ['avventurieri','/avventurieri/'],
   ['alleanze','/alleanze/'],
   ['tesori','/tesori/'],
+  ['archivio','/archivio/'],
 ];
 const viewports=[
   {name:'mobile-390',width:390,height:844},
