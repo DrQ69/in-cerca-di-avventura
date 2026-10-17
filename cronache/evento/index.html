@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Risultati evento — In Cerca di Avventura</title>
+  <meta name="description" content="Risultati, classifica e decklist di un evento concluso di Sorcery: Contested Realm.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b141d">
+  <link rel="icon" href="../../assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/ica-shared-shell.css">
+  <link rel="stylesheet" href="../cronache-consolidated.css?v=20260929-1">
+  <link rel="stylesheet" href="event-results.css?v=20261011-1">
+  <link rel="stylesheet" href="../../shared/ica-banner.css?v=20261002-1">
+</head>
+<body data-ica-page="CRO-EVENT">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="site-shell cronache-shell">
+  <div id="ica-main-banner" data-ica-section="NAV"></div>
+  <main id="main">
+    <section class="event-results-hero" aria-labelledby="event-title">
+      <p class="event-results-kicker">Cronache · Risultati ufficiali</p>
+      <h1 id="event-title">Caricamento evento…</h1>
+      <p id="event-subtitle" class="event-results-subtitle"></p>
+    </section>
+
+    <div class="event-results-main">
+      <p id="loading" class="system-state" aria-live="polite">Consultazione dei risultati…</p>
+      <p id="error" class="system-state system-error" hidden aria-live="assertive">I risultati dettagliati non sono disponibili in questo momento.</p>
+
+      <section id="summary" class="results-summary" hidden aria-label="Riepilogo evento"></section>
+
+      <section id="standings-section" class="results-panel" hidden aria-labelledby="standings-title">
+        <header class="results-panel-head">
+          <p>Classifica finale</p>
+          <h2 id="standings-title">Standings</h2>
+        </header>
+        <div class="results-table-scroll">
+          <table class="results-table">
+            <thead>
+              <tr><th>Pos.</th><th>Giocatore</th><th>Avatar</th><th>W-D-L</th><th>Pt.</th><th>OMW</th><th>CMP</th><th>Mazzo</th></tr>
+            </thead>
+            <tbody id="standings-body"></tbody>
+          </table>
+        </div>
+        <p class="results-source-note">I registrati con 0 round disputati sono classificati come no-show e non vengono conteggiati tra i partecipanti effettivi.</p>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="deck-dialog" class="deck-dialog" aria-labelledby="deck-title">
+    <form method="dialog"><button class="deck-close" aria-label="Chiudi decklist">×</button></form>
+    <div id="deck-content"></div>
+  </dialog>
+
+  <footer class="site-footer"><span>In Cerca di Avventura · Cronache</span><span>Sorcery: Contested Realm · Italia</span><span>© <span id="year"></span></span></footer>
+</div>
+<script type="module" src="event-results.mjs?v=20261011-1"></script>
+<script type="module" src="../../shared/ica-banner.js?v=20261002-1"></script>
+</body>
+</html>
