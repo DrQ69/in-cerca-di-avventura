@@ -36,76 +36,60 @@
 @media(min-width:1024px){#ica-main-banner,.ica-main-banner{aspect-ratio:2048/684;min-height:0}.ica-main-banner__mobile-art{display:none}.ica-main-banner__desktop{display:block}.ica-main-banner__desktop .ica-main-banner__art{background-image:url("../assets/banners/navigation/bnr-beta-nav-primary.png")}.ica-main-banner__mobile{display:none}}
 @media(max-width:479px){.ica-main-banner__mobile-art-link{font-size:clamp(5px,1.5vw,7px);width:14.2%}.ica-main-banner__mobile-brand span{font-size:.68rem}.ica-main-banner__mobile-brand img{width:46px;height:46px}}
 @media(prefers-reduced-motion:reduce){.ica-main-banner__link,.ica-main-banner__social::before,.ica-main-banner__social::after{transition:none}}
-/* Mobile banner legibility correction — 2026-10-11
-   On narrow phones, the full 2048×684 composition made six one-line labels
-   physically too small to read. Preserve the art as a larger crop and expose
-   the six destinations as persistent 3×2 fantasy buttons below it. */
-@media(max-width:767px){
-  .ica-main-banner__mobile-art{
+/* Responsive ICA banner — same interactive artwork on mobile/tablet.
+   No duplicated navigation strip below the artwork. */
+@media(max-width:1023px){
+  #ica-main-banner,.ica-main-banner{
+    min-height:0;
     aspect-ratio:auto;
-    height:clamp(168px,46vw,220px);
+  }
+  .ica-main-banner__mobile-art{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:2048/684;
     overflow:hidden;
     background:#05080c;
   }
   .ica-main-banner__mobile-art-bg{
-    object-fit:cover;
-    object-position:center center;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
   }
-  .ica-main-banner__mobile-art-link{display:none}
-  .ica-main-banner__mobile-bar{
-    min-height:58px;
-    padding:6px 12px;
-    border-top:1px solid rgba(190,151,80,.34);
+  .ica-main-banner__mobile-art-link{
+    display:flex;
+    width:13.7%;
+    height:15%;
+    top:70.3125%;
+    font-size:clamp(5px,1.45vw,10px);
+    line-height:1;
+    letter-spacing:.01em;
   }
-  .ica-main-banner__menu-button{display:none}
-  .ica-main-banner__mobile-menu{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:7px;
-    padding:10px 10px 12px;
+  .ica-main-banner__mobile{
+    display:none;
   }
-  .ica-main-banner__mobile-menu a{
-    min-height:48px;
-    padding:8px 5px;
-    border:1px solid rgba(202,158,82,.58);
-    background:
-      linear-gradient(180deg,rgba(37,30,22,.96),rgba(12,16,20,.98));
-    box-shadow:
-      inset 0 0 0 1px rgba(255,224,160,.05),
-      0 3px 8px rgba(0,0,0,.32);
-    color:#ecd59e;
-    font-size:clamp(.62rem,2.5vw,.76rem);
-    line-height:1.05;
-    letter-spacing:.025em;
+  .ica-main-banner__mobile-home{
+    display:block;
   }
-  .ica-main-banner__mobile-menu a[aria-current="page"]{
-    color:#fff2bd;
-    border-color:#d1a45c;
-    background:linear-gradient(180deg,#3a2918,#18212a);
-    text-shadow:0 0 8px rgba(236,190,88,.42);
+  .ica-main-banner__mobile-social{
+    display:block;
+    min-width:44px;
+    min-height:44px;
   }
-  .ica-main-banner__mobile-socials{
-    grid-column:1/-1;
-    grid-template-columns:1fr 1fr;
+  .ica-main-banner__social--instagram.ica-main-banner__mobile-social{
+    width:max(6.689453125%,44px);
   }
-  .ica-main-banner__mobile-socials a{min-height:44px}
-}
-@media(max-width:420px){
-  .ica-main-banner__mobile-art{
-    height:176px;
-  }
-  .ica-main-banner__mobile-brand span{
-    font-size:.62rem;
+  .ica-main-banner__social--youtube.ica-main-banner__mobile-social{
+    width:max(7.8125%,44px);
   }
 }
-
-/* Reserve the final mobile banner stack before JS mounts it, avoiding layout shift. */
-@media(max-width:420px){
-  #ica-main-banner,.ica-main-banner{min-height:413px}
+@media(max-width:479px){
+  .ica-main-banner__mobile-art-link{
+    font-size:clamp(4.8px,1.42vw,6.4px);
+    width:14.1%;
+  }
 }
-@media(min-width:421px) and (max-width:767px){
-  #ica-main-banner,.ica-main-banner{min-height:clamp(406px,101vw,430px)}
-}
-@media(min-width:768px) and (max-width:1023px){
-  #ica-main-banner,.ica-main-banner{min-height:calc((100vw * 684 / 2048) + 72px)}
+@media(prefers-reduced-motion:reduce){
+  .ica-main-banner__link,.ica-main-banner__social::before,.ica-main-banner__social::after{transition:none}
 }
