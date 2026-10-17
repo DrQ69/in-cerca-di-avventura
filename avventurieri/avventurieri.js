@@ -38,7 +38,7 @@ function valueOrMissing(value){
 function avatarSrc(value){
   if(!value)return '';
   if(/^https?:\/\//i.test(value)||value.startsWith('/'))return value;
-  return '../../'+value.replace(/^\.\//,'');
+  return '../'+value.replace(/^\.\//,'');
 }
 
 function initials(nickname){
