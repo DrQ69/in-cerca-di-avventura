@@ -2,8 +2,8 @@
 
 **Primary QA Profile:** QAP-PAG  
 **Secondary profiles:** QAP-CODE, QAP-DAT  
-**Lifecycle claim:** IMPLEMENTED candidate; PR verification pending.  
-**Release readiness:** NOT_READY — automated visual QA and Product Owner visual review pending.
+**Lifecycle claim:** IMPLEMENTED and VERIFIED on the feature branch.  
+**Release readiness:** READY_FOR_MERGE for the unified Archivio scope.
 
 ## Product Owner decision
 
@@ -56,7 +56,25 @@ Deck search includes available deck name, player display name, Avatar and card n
 
 Avventurieri results use public nickname/profile identifiers only. No private reconciliation fields are introduced by Archivio.
 
-## Planned verification
+## Automated verification evidence
+
+Tested feature-branch head: `f0d1a8e7d7742a5f2173a739ffcabb9577330fe4`.
+
+- ICA baseline QA run 593 — **PASS**.
+- Archivio visual QA run 2 — **PASS** at 390 / 768 / 1440 px.
+- Shared banner consistency QA run 209 — **PASS**.
+- Homepage visual QA run 155 — **PASS**.
+- LCS-02 runtime QA run 200 — **PASS**.
+
+Archivio visual QA confirms:
+- all six type filters are present;
+- Eventi / Cronache / Avventurieri / Tesori / Deck are populated;
+- Proclami has the correct empty state while its feed is empty;
+- full-text search for `Flaming Skull` returns both Tesoro and Deck records;
+- at least one deck is indexed from an existing available public Sorcery snapshot;
+- no horizontal overflow or browser console errors.
+
+## Verification coverage
 
 - ICA baseline QA;
 - Archivio visual QA at 390 / 768 / 1440 px;
@@ -67,3 +85,5 @@ Avventurieri results use public nickname/profile identifiers only. No private re
 - root Home exposes Archivio;
 - shared banner consistency includes Archivio;
 - no horizontal overflow or browser console errors.
+
+All checks above passed.
