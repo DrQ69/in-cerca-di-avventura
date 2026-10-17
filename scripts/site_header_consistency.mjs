@@ -37,9 +37,9 @@ try{
       const result=await page.evaluate(()=>{
         const desktop=window.innerWidth>=1024;
         const header=document.querySelector('.ica-main-banner');
-        const surface=document.querySelector(desktop?'.ica-main-banner__desktop':'.ica-main-banner__mobile');
-        const art=document.querySelector(desktop?'.ica-main-banner__art':'.ica-main-banner__mobile-brand img');
-        const navLink=document.querySelector(desktop?'.ica-main-banner__link':'.ica-main-banner__mobile-menu a');
+        const surface=document.querySelector(desktop?'.ica-main-banner__desktop':'.ica-main-banner__mobile-art');
+        const art=document.querySelector(desktop?'.ica-main-banner__art':'.ica-main-banner__mobile-art-bg');
+        const navLink=document.querySelector(desktop?'.ica-main-banner__link':'.ica-main-banner__mobile-art-link');
         const adunanzeLinks=[...document.querySelectorAll('.ica-main-banner a')].filter(a=>a.textContent.trim()==='Adunanze');
         const hr=header.getBoundingClientRect();
         const sr=surface.getBoundingClientRect();
