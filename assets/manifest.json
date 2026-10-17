@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "In Cerca di Avventura",
   "document_id": "ICA-ASSET-MANIFEST-001",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-17",
   "authority": "docs/ICA_CANONICAL_SPEC.md",
   "specialist_spec": "docs/ASSET_SPECIFICATION.md",
   "notes": [
@@ -15,16 +15,52 @@
   ],
   "assets": [
     {
-      "id": "SIG-01-CANDIDATE-ROOT",
+      "id": "SIG-01-SOURCE-MASTER",
+      "component": "SIG-01",
+      "path": "assets/brand/sigils/sig-01-source.png",
+      "planned_path": null,
+      "role": "Official ICA logo source master supplied by the Product Owner",
+      "category": "brand-source",
+      "format": "png",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P0",
+      "responsive": {
+        "desktop": true,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "informative"
+      },
+      "source": {
+        "type": "product-owner-supplied-source",
+        "creator": "ICA / Product Owner supplied",
+        "licence_or_permission": "Product Owner designated this supplied artwork as the official ICA v1 visual source on 2026-10-17.",
+        "generation_method": null
+      },
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-10-17",
+        "scope": "ICA v1 official brand source",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-17_ICA_BRAND.md"
+      },
+      "constraints": [
+        "Preserve as source/master artwork; do not overwrite with optimized derivatives."
+      ]
+    },
+    {
+      "id": "SIG-01-PRIMARY",
       "component": "SIG-01",
       "path": "assets/logo-emblem.webp",
       "planned_path": "assets/brand/sigils/sig-01-primary.webp",
-      "role": "ICA emblem candidate / current root-level production reference",
+      "role": "ICA emblem — approved v1 web-delivery asset",
       "category": "brand",
       "format": "webp",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": true,
@@ -36,17 +72,22 @@
         "usage_note": "Alt text depends on context; if adjacent brand text already conveys the identity, decorative treatment may use empty alt."
       },
       "source": {
-        "type": "existing-project-asset",
-        "creator": null,
-        "licence_or_permission": "project-owned-or-authorized-to-be-confirmed",
-        "generation_method": null
+        "type": "web-delivery-asset",
+        "creator": "ICA / Product Owner supplied",
+        "licence_or_permission": "Approved by Product Owner for ICA v1 project use on 2026-10-17.",
+        "generation_method": "Existing project WebP retained as the v1 runtime rendition of the approved ICA logo source."
       },
       "budget": "sigil-logo",
       "constraints": [
         "Do not redraw, distort, rotate arbitrarily or recolour outside an approved variant.",
         "Must be reviewed as the source for the canonical SIG-01 derivative family."
       ],
-      "approval_blocker": "Exact canonical ICA logo source/identity installation remains open; current WebP is a layout/runtime proxy and is not promoted by this cleanup."
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-10-17",
+        "scope": "ICA v1 public website",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-17_ICA_BRAND.md"
+      }
     },
     {
       "id": "MED-HERO-01-CANDIDATE-ROOT",
@@ -93,8 +134,8 @@
       "category": "system",
       "format": "png",
       "exists": true,
-      "status": "candidate",
-      "version": "0.9",
+      "status": "approved",
+      "version": "1.0",
       "priority": "P0",
       "responsive": {
         "desktop": true,
@@ -105,16 +146,21 @@
         "classification": "decorative"
       },
       "source": {
-        "type": "existing-project-asset",
-        "creator": null,
-        "licence_or_permission": "project-owned-or-authorized-to-be-confirmed",
-        "generation_method": null
+        "type": "existing-project-derivative",
+        "creator": "ICA",
+        "licence_or_permission": "Approved with the official ICA v1 brand family by Product Owner on 2026-10-17.",
+        "generation_method": "Existing favicon derivative retained for v1."
       },
       "budget": "icon",
       "constraints": [
         "Complete favicon family may require additional sizes/formats later."
       ],
-      "approval_blocker": "Canonical favicon approval depends on final canonical ICA brand source/derivative family."
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-10-17",
+        "scope": "ICA v1 favicon",
+        "record": "docs/ASSET_APPROVAL_RECORD_2026-10-17_ICA_BRAND.md"
+      }
     },
     {
       "id": "BNR-01-STRUCTURE",
