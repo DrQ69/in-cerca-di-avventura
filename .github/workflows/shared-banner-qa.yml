@@ -3,7 +3,15 @@ name: Shared banner consistency QA
 on:
   pull_request:
     paths:
-      - 'beta/**'
+      - 'index.html'
+      - 'style.css'
+      - 'main.js'
+      - 'shared/**'
+      - 'adunanze/**'
+      - 'avventurieri/**'
+      - 'alleanze/**'
+      - 'cronache/**'
+      - 'tesori/**'
       - 'assets/css/ica-shared-shell.css'
       - 'assets/logo-emblem.webp'
       - 'scripts/site_header_consistency.mjs'
@@ -12,7 +20,15 @@ on:
     branches:
       - main
     paths:
-      - 'beta/**'
+      - 'index.html'
+      - 'style.css'
+      - 'main.js'
+      - 'shared/**'
+      - 'adunanze/**'
+      - 'avventurieri/**'
+      - 'alleanze/**'
+      - 'cronache/**'
+      - 'tesori/**'
       - 'assets/css/ica-shared-shell.css'
       - 'assets/logo-emblem.webp'
       - 'scripts/site_header_consistency.mjs'

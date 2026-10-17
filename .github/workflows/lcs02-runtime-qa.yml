@@ -3,7 +3,14 @@ name: LCS-02 runtime QA
 on:
   pull_request:
     paths:
-      - 'beta/**'
+      - 'index.html'
+      - 'main.js'
+      - 'shared/**'
+      - 'adunanze/**'
+      - 'avventurieri/**'
+      - 'alleanze/**'
+      - 'cronache/**'
+      - 'tesori/**'
       - 'assets/js/lcs02-inspector.js'
       - 'scripts/lcs02_runtime_qa.mjs'
       - '.github/workflows/lcs02-runtime-qa.yml'
@@ -11,7 +18,14 @@ on:
     branches:
       - main
     paths:
-      - 'beta/**'
+      - 'index.html'
+      - 'main.js'
+      - 'shared/**'
+      - 'adunanze/**'
+      - 'avventurieri/**'
+      - 'alleanze/**'
+      - 'cronache/**'
+      - 'tesori/**'
       - 'assets/js/lcs02-inspector.js'
       - 'scripts/lcs02_runtime_qa.mjs'
       - '.github/workflows/lcs02-runtime-qa.yml'

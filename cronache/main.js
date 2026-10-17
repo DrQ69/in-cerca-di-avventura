@@ -1,0 +1,137 @@
+const menu=document.getElementById('menu');
+const mobile=document.getElementById('mobile-nav');
+if(menu&&mobile){
+  const closeMenu=()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');};
+  menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+  mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+}
+
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const root=document.getElementById('chronicles-root');
+const loading=document.getElementById('loading');
+const error=document.getElementById('error');
+const empty=document.getElementById('empty');
+
+function esc(v){
+  return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+}
+
+function fmtDate(v){
+  if(!v)return 'Da verificare';
+  const d=new Date(v+'T12:00:00');
+  return new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'}).format(d);
+}
+
+function placeName(e){
+  return [e.venue,e.city].filter(Boolean).join(', ')||'Da verificare';
+}
+
+function mapsUrl(e){
+  const query=e?.address||[e?.venue,e?.city,e?.province,e?.country].filter(Boolean).join(', ');
+  return query?'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query):'';
+}
+
+function placeLink(e){
+  const label=placeName(e);
+  const url=mapsUrl(e);
+  if(!url)return esc(label);
+  return '<a class="map-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" aria-label="Apri '+esc(label)+' in Google Maps">'+esc(label)+'</a>';
+}
+
+function winnerContent(e){
+  const standings=Array.isArray(e.standings)?e.standings:[];
+  const winner=standings.find(row=>row.rank===1);
+  if(winner?.nickname&&winner?.player_id){
+    const href='../avventurieri/?player='+encodeURIComponent(winner.player_id)+'#player-'+encodeURIComponent(winner.player_id);
+    return '<a class="winner-player-link" href="'+esc(href)+'" aria-label="Apri il profilo di '+esc(winner.nickname)+'">'+esc(winner.nickname)+'</a>';
+  }
+  return esc(e.winner_display_name||'Da verificare');
+}
+
+function communityName(e){
+  if(e?.community_name)return e.community_name;
+  if(e?.series_id==='blaze-of-glory-2026-2027')return 'Il Regno di Cremos';
+  return 'Da verificare';
+}
+
+function leagueName(e){
+  return e?.series_name||'Evento autonomo';
+}
+
+function stageName(e){
+  if(!Number.isInteger(e?.stage_number))return 'Non applicabile';
+  return 'Tappa '+(e.stage_label||e.stage_number);
+}
+
+function deckLink(e){
+  if(e.official_results_url||e.official_event_url){
+    return '<a class="winner-deck-link" href="evento/?id='+encodeURIComponent(e.event_id)+'">Risultati e mazzi →</a>';
+  }
+  if(e.winner_deck_url){
+    return `<a class="winner-deck-link" href="${esc(e.winner_deck_url)}" target="_blank" rel="noopener">Mazzo del vincitore →</a>`;
+  }
+  return '<span class="winner-deck-pending">Dettagli — prossimamente</span>';
+}
+
+function eventCard(e){
+  return `<article class="chronicle-record" data-ica-id="CRO-REC-${esc(e.event_id||'unknown')}">
+    <header class="chronicle-record-head" data-ica-id="CRO-REC-TITLE-${esc(e.event_id||'unknown')}">
+      <h3>${esc(e.title)}</h3>
+    </header>
+    <div class="chronicle-facts">
+      <div class="chronicle-fact" data-ica-id="CRO-REC-PLACE-${esc(e.event_id||'unknown')}"><span>Luogo</span><strong>${placeLink(e)}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-DATE-${esc(e.event_id||'unknown')}"><span>Data</span><strong>${esc(fmtDate(e.date))}</strong></div>
+      <div class="chronicle-fact"><span>Community</span><strong>${esc(communityName(e))}</strong></div>
+      <div class="chronicle-fact"><span>Lega</span><strong>${esc(leagueName(e))}</strong></div>
+      <div class="chronicle-fact"><span>Tappa</span><strong>${esc(stageName(e))}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-WINNER-${esc(e.event_id||'unknown')}"><span>Vincitore</span><strong>${winnerContent(e)}</strong></div>
+      <div class="chronicle-fact" data-ica-id="CRO-REC-PLAYERS-${esc(e.event_id||'unknown')}"><span>Giocatori</span><strong>${esc(e.player_count??'—')}</strong></div>
+      <div class="chronicle-fact chronicle-deck" data-ica-id="CRO-REC-DECK-${esc(e.event_id||'unknown')}">${deckLink(e)}</div>
+    </div>
+  </article>`;
+}
+
+function render(events){
+  const completed=events
+    .filter(e=>e.status==='conclusa')
+    .sort((a,b)=>(b.date||'0000-00-00').localeCompare(a.date||'0000-00-00'));
+
+  if(!completed.length){
+    empty.hidden=false;
+    return;
+  }
+
+  const seasons=[...new Set(completed.map(e=>e.season).filter(Boolean))].sort().reverse();
+  root.innerHTML=seasons.map(season=>{
+    const list=completed.filter(e=>e.season===season);
+    return `<section class="chronicle-season" data-ica-id="CRO-SEA-${esc(season)}" aria-labelledby="chronicle-season-${esc(season)}">
+      <header class="chronicle-season-head" data-ica-id="CRO-SEA-HEAD-${esc(season)}">
+        <h2 id="chronicle-season-${esc(season)}">${esc(season)}</h2>
+      </header>
+      <div class="chronicle-records">${list.map(eventCard).join('')}</div>
+    </section>`;
+  }).join('');
+}
+
+Promise.all([
+  import('../shared/release-reader.mjs'),
+  import('../shared/sorcery-event-overlay.mjs')
+]).then(([{readSiteBundle},{applySorceryEventOverlays}])=>readSiteBundle(
+  new URL('../data/current-release.json',document.baseURI).href,
+  {players:new URL('../data/players.json',document.baseURI).href,
+   events:new URL('../data/events.json',document.baseURI).href,
+   standings:new URL('../data/league-standings.json',document.baseURI).href}
+).then(async ({events:data})=>{
+  const rawEvents=Array.isArray(data.events)?data.events:[];
+  const normalized=window.ICAEventStatus?.normalize(rawEvents)??rawEvents;
+  const events=await applySorceryEventOverlays(normalized,{dataRoot:new URL('../data/',document.baseURI).href});
+  render(events);
+  loading.hidden=true;
+}))
+  .catch(err=>{
+    console.error('Cronache data load failed',err);
+    loading.hidden=true;
+    error.hidden=false;
+  });

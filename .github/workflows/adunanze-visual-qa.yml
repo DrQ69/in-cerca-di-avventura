@@ -3,10 +3,10 @@ name: Adunanze visual QA
 on:
   pull_request:
     paths:
-      - 'beta/adunanze/**'
-      - 'beta/cronache/**'
+      - 'adunanze/**'
+      - 'cronache/**'
       - 'beta/index.html'
-      - 'beta/main.js'
+      - 'main.js'
       - 'assets/adunanze/**'
       - 'assets/css/ica-shared-shell.css'
       - 'data/events.json'
@@ -16,10 +16,10 @@ on:
     branches:
       - main
     paths:
-      - 'beta/adunanze/**'
-      - 'beta/cronache/**'
+      - 'adunanze/**'
+      - 'cronache/**'
       - 'beta/index.html'
-      - 'beta/main.js'
+      - 'main.js'
       - 'assets/adunanze/**'
       - 'assets/css/ica-shared-shell.css'
       - 'data/events.json'

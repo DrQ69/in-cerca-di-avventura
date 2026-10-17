@@ -5,8 +5,8 @@ on:
     paths:
       - 'index.html'
       - 'beta/index.html'
-      - 'beta/style.css'
-      - 'beta/main.js'
+      - 'style.css'
+      - 'main.js'
       - 'data/events.json'
       - 'data/players.json'
       - 'data/league-standings.json'
@@ -20,8 +20,8 @@ on:
     paths:
       - 'index.html'
       - 'beta/index.html'
-      - 'beta/style.css'
-      - 'beta/main.js'
+      - 'style.css'
+      - 'main.js'
       - 'data/events.json'
       - 'data/players.json'
       - 'data/league-standings.json'

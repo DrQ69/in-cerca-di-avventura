@@ -22,7 +22,7 @@ try{
     page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
     page.on('pageerror',err=>errors.push(String(err)));
 
-    await page.goto(baseURL+'/beta/alleanze/',{waitUntil:'networkidle',timeout:30000});
+    await page.goto(baseURL+'/alleanze/',{waitUntil:'networkidle',timeout:30000});
     await page.waitForSelector('.map-marker',{timeout:10000});
 
     const result=await page.evaluate(()=>{

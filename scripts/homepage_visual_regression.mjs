@@ -15,9 +15,21 @@ const browser=await chromium.launch({headless:true});
 
 try{
   const redirectPage=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
-  await redirectPage.goto(baseURL+'/',{waitUntil:'networkidle',timeout:30000});
-  if(!redirectPage.url().endsWith('/beta/')){
-    throw new Error('root homepage did not redirect to /beta/: '+redirectPage.url());
+  const redirects=[
+    ['/beta/','/'],
+    ['/beta/adunanze/','/adunanze/nazionale/'],
+    ['/beta/adunanze/nazionale/','/adunanze/nazionale/'],
+    ['/beta/avventurieri/','/avventurieri/'],
+    ['/beta/cronache/','/cronache/'],
+    ['/beta/cronache/evento/?id=bog-2026-duello-03','/cronache/evento/'],
+    ['/beta/alleanze/','/alleanze/'],
+    ['/beta/tesori/','/tesori/'],
+    ['/beta/tesori/evento.html?event=cremos-cornerstone-2026','/tesori/evento.html'],
+  ];
+  for(const [legacy,expectedPath] of redirects){
+    await redirectPage.goto(baseURL+legacy,{waitUntil:'networkidle',timeout:30000});
+    const actual=new URL(redirectPage.url()).pathname;
+    if(actual!==expectedPath)throw new Error('legacy redirect mismatch '+legacy+' -> '+actual+' expected '+expectedPath);
   }
   await redirectPage.close();
   for(const viewport of viewports){
@@ -26,7 +38,7 @@ try{
     page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
     page.on('pageerror',err=>errors.push(String(err)));
 
-    await page.goto(baseURL+'/beta/',{waitUntil:'networkidle',timeout:30000});
+    await page.goto(baseURL+'/',{waitUntil:'networkidle',timeout:30000});
     await page.waitForSelector('#next-event-card[data-event-id]',{timeout:10000});
     await page.waitForSelector('#latest-chronicle[data-event-id]',{timeout:10000});
 
@@ -67,7 +79,7 @@ try{
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
     const expectedNext=await page.evaluate(async()=>{
-      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const response=await fetch('data/events.json',{cache:'no-store'});
       const data=await response.json();
       const now=new Date();
       const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
@@ -78,7 +90,7 @@ try{
     if(result.nextId!==(expectedNext?.event_id||null)) throw new Error(viewport.name+': next event mismatch rendered='+result.nextId+' expected='+(expectedNext?.event_id||null));
     if(result.nextTitle!==(expectedNext?.title||'')) throw new Error(viewport.name+': next event title mismatch rendered='+result.nextTitle+' expected='+(expectedNext?.title||''));
     const expectedChronicle=await page.evaluate(async()=>{
-      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const response=await fetch('data/events.json',{cache:'no-store'});
       const data=await response.json();
       const now=new Date();
       const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');

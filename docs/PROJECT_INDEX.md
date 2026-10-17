@@ -101,7 +101,7 @@ Regardless of task:
 - public Avventuriero identity is nickname-only;
 - Avventuriero and Avatar are not synonyms;
 - decks use Avatar + Atlas + Spellbook;
-- primary navigation is Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio;
+- primary navigation is Adunanze / Avventurieri / Alleanze / Tesori / Proclami / Chi siamo;
 - the logo/sigil returns Home;
 - narrative may enrich facts but never alter them;
 - important UI text remains accessible HTML where practical;
@@ -110,7 +110,7 @@ Regardless of task:
 - mobile is deliberately composed, not scaled desktop;
 - no Critical/High defect is acceptable for production readiness;
 - AI/developers may verify, but only the Product Owner may approve unless a future written delegation exists;
-- legacy/prototype UI must not be frozen into M11 production baselines or registered as M12 canonical-page coverage merely because it is public;
+- legacy `/beta/` compatibility redirects must not be treated as active v1 surfaces or registered as canonical pages;
 - canonical production UI targets WCAG 2.2 AA and the measurable thresholds defined by M12;
 - a real canonical production-candidate page must carry the M12 canonical marker and be registered in the same coherent change.
 

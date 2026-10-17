@@ -3,7 +3,7 @@ name: Alleanze visual QA
 on:
   pull_request:
     paths:
-      - 'beta/alleanze/**'
+      - 'alleanze/**'
       - 'data/alliances.json'
       - 'data/map-italia-calibration.json'
       - 'assets/alleanze/**'
@@ -16,7 +16,7 @@ on:
     branches:
       - main
     paths:
-      - 'beta/alleanze/**'
+      - 'alleanze/**'
       - 'data/alliances.json'
       - 'assets/alleanze/**'
       - 'assets/logo-emblem.webp'

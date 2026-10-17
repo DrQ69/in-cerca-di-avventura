@@ -23,7 +23,7 @@ try{
     page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
     page.on('pageerror',err=>errors.push(String(err)));
 
-    await page.goto(`${baseURL}/beta/avventurieri/`,{waitUntil:'networkidle',timeout:30000});
+    await page.goto(`${baseURL}/avventurieri/`,{waitUntil:'networkidle',timeout:30000});
     await page.waitForFunction(()=>document.querySelectorAll('.player-card').length>0,null,{timeout:10000});
 
     const initial=await page.evaluate(()=>{
@@ -86,7 +86,7 @@ try{
   }
 
   const direct=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,reducedMotion:'reduce'});
-  await direct.goto(`${baseURL}/beta/avventurieri/?player=PLY-0001#player-PLY-0001`,{waitUntil:'networkidle',timeout:30000});
+  await direct.goto(`${baseURL}/avventurieri/?player=PLY-0001#player-PLY-0001`,{waitUntil:'networkidle',timeout:30000});
   await direct.waitForSelector('#player-PLY-0001',{timeout:10000});
   const directResult=await direct.evaluate(()=>({
     count:document.querySelectorAll('.player-card').length,

@@ -4,13 +4,13 @@ import fs from 'node:fs/promises';
 const baseURL=process.env.ICA_BASE_URL||'http://127.0.0.1:8000';
 const outDir=process.env.HEADER_QA_DIR||'artifacts/header-consistency';
 const pages=[
-  ['home','/beta/'],
-  ['adunanze','/beta/adunanze/'],
-  ['nazionale','/beta/adunanze/nazionale/'],
-  ['cronache','/beta/cronache/'],
-  ['avventurieri','/beta/avventurieri/'],
-  ['alleanze','/beta/alleanze/'],
-  ['tesori','/beta/tesori/'],
+  ['home','/'],
+  ['adunanze','/adunanze/nazionale/'],
+  ['nazionale','/adunanze/nazionale/'],
+  ['cronache','/cronache/'],
+  ['avventurieri','/avventurieri/'],
+  ['alleanze','/alleanze/'],
+  ['tesori','/tesori/'],
 ];
 const viewports=[
   {name:'mobile-390',width:390,height:844},
@@ -37,9 +37,9 @@ try{
       const result=await page.evaluate(()=>{
         const desktop=window.innerWidth>=1024;
         const header=document.querySelector('.ica-main-banner');
-        const surface=document.querySelector(desktop?'.ica-main-banner__desktop':'.ica-main-banner__mobile');
-        const art=document.querySelector(desktop?'.ica-main-banner__art':'.ica-main-banner__mobile-brand img');
-        const navLink=document.querySelector(desktop?'.ica-main-banner__link':'.ica-main-banner__mobile-menu a');
+        const surface=document.querySelector(desktop?'.ica-main-banner__desktop':'.ica-main-banner__mobile-art');
+        const art=document.querySelector(desktop?'.ica-main-banner__art':'.ica-main-banner__mobile-art-bg');
+        const navLink=document.querySelector(desktop?'.ica-main-banner__link':'.ica-main-banner__mobile-art-link');
         const adunanzeLinks=[...document.querySelectorAll('.ica-main-banner a')].filter(a=>a.textContent.trim()==='Adunanze');
         const hr=header.getBoundingClientRect();
         const sr=surface.getBoundingClientRect();
@@ -59,7 +59,7 @@ try{
       });
 
       if(errors.length) throw new Error(`${viewport.name}/${name}: console errors: ${errors.join(' | ')}`);
-      if(!result.adunanzeTargets.length||result.adunanzeTargets.some(path=>!path.endsWith('/beta/adunanze/nazionale/'))){
+      if(!result.adunanzeTargets.length||result.adunanzeTargets.some(path=>!path.endsWith('/adunanze/nazionale/'))){
         throw new Error(`${viewport.name}/${name}: Adunanze must route directly to national events: ${JSON.stringify(result.adunanzeTargets)}`);
       }
       results.push({name,...result});
