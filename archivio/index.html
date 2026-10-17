@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Archivio — In Cerca di Avventura</title>
+  <meta name="description" content="Archivio unificato di In Cerca di Avventura: eventi, Cronache, Avventurieri, Tesori, deck e Proclami di Sorcery: Contested Realm.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#090b0d">
+  <link rel="canonical" href="https://drq69.github.io/in-cerca-di-avventura/archivio/">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/ica-shared-shell.css">
+  <link rel="stylesheet" href="../shared/ica-banner.css?v=20261017-1">
+  <link rel="stylesheet" href="archivio.css?v=20261017-1">
+</head>
+<body data-ica-page="ARCH">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="archive-shell">
+  <div id="ica-main-banner" data-ica-section="NAV"></div>
+  <main id="main" class="archive-main">
+    <section class="archive-hero" aria-labelledby="archive-title">
+      <p class="archive-kicker">Memoria del Reame</p>
+      <h1 id="archive-title">Archivio</h1>
+      <p>Un unico indice per ritrovare eventi, Cronache, Avventurieri, Tesori, deck e Proclami di In Cerca di Avventura.</p>
+    </section>
+
+    <section class="archive-controls" aria-labelledby="archive-search-title">
+      <h2 id="archive-search-title" class="visually-hidden">Ricerca nell'Archivio</h2>
+      <label class="archive-search">
+        <span>Cerca nel Reame</span>
+        <input id="archive-query" type="search" autocomplete="off" placeholder="Evento, giocatore, carta, deck, premio…">
+      </label>
+      <div class="archive-filters">
+        <label><span>Tipo</span><select id="archive-type"><option value="">Tutti i contenuti</option></select></label>
+        <label><span>Anno</span><select id="archive-year"><option value="">Tutti gli anni</option></select></label>
+        <label><span>Formato</span><select id="archive-format"><option value="">Tutti i formati</option></select></label>
+        <button id="archive-reset" type="button">Azzera filtri</button>
+      </div>
+      <div class="archive-summary"><strong id="archive-count">—</strong><span id="archive-status" aria-live="polite">Consultazione dell'Archivio…</span></div>
+    </section>
+
+    <section class="archive-results-section" aria-labelledby="archive-results-title">
+      <h2 id="archive-results-title" class="visually-hidden">Risultati</h2>
+      <div id="archive-results" class="archive-results" aria-live="polite"></div>
+      <p id="archive-empty" class="archive-empty" hidden>Nessun ricordo corrisponde ai filtri selezionati.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <span>In Cerca di Avventura · Archivio</span>
+    <a href="../">Home</a>
+    <span>© <span id="year"></span></span>
+  </footer>
+</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+<script type="module" src="../shared/ica-banner.js?v=20261017-1"></script>
+<script type="module" src="archivio.js?v=20261017-1"></script>
+</body>
+</html>
