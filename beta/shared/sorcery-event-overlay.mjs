@@ -23,17 +23,23 @@ export function overlayEventFromSorcery(event,snapshot){
     no_show_count:noShows.length,
     winner_display_name:winner?.display_name??event.winner_display_name,
     winner_rank:winner?.rank??event.winner_rank,
-    standings:playedStandings.map(row=>({
-      rank:row.rank,
-      display_name:row.display_name,
-      points:row.points,
-      wins:row.wins,
-      draws:row.draws,
-      losses:row.losses,
-      omw_percent:Number.isFinite(row.omw)?row.omw*100:null,
-      cmp:row.cmp,
-      avatar:row.avatar??null,
-    })),
+    standings:playedStandings.map(row=>{
+      const canonical=(event.standings||[]).find(item=>item.rank===row.rank&&String(item.display_name||'').toLocaleLowerCase('it')===String(row.display_name||'').toLocaleLowerCase('it'))
+        ||(event.standings||[]).find(item=>String(item.display_name||'').toLocaleLowerCase('it')===String(row.display_name||'').toLocaleLowerCase('it'))
+        ||{};
+      return {
+        ...canonical,
+        rank:row.rank,
+        display_name:row.display_name,
+        points:row.points,
+        wins:row.wins,
+        draws:row.draws,
+        losses:row.losses,
+        omw_percent:Number.isFinite(row.omw)?row.omw*100:null,
+        cmp:row.cmp,
+        avatar:row.avatar??canonical.avatar??null,
+      };
+    }),
     sorcery_snapshot:{
       event_id:snapshot.provenance?.sorcery_event_id??snapshot.event.id??null,
       retrieved_at:snapshot.provenance?.retrieved_at??null,
