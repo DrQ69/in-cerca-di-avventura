@@ -31,84 +31,15 @@ try {
     });
     page.on('pageerror', error => consoleErrors.push(String(error)));
 
-    await page.goto(`${baseURL}/beta/adunanze/`, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForSelector('.battlefield-panel img');
-    await page.waitForSelector('.gate-international img');
-    await page.waitForSelector('a.gate-national');
-
-    const portal = await page.evaluate(() => {
-      const imgs = [...document.querySelectorAll('.battlefield-panel img,.gate-panel img')];
-      const national = document.querySelector('a.gate-national');
-      const international = document.querySelector('.gate-international');
-      const skip = document.querySelector('.skip-link');
-      const html = document.documentElement;
-      const body = document.body;
-      const scrollWidth = Math.max(html.scrollWidth, body.scrollWidth);
-      const nr = national?.getBoundingClientRect();
-      const ir = international?.getBoundingClientRect();
-      const sr = skip?.getBoundingClientRect();
-      return {
-        imageCount: imgs.length,
-        imagesLoaded: imgs.every(img => img instanceof HTMLImageElement && img.complete && img.naturalWidth > 0),
-        nationalHref: national?.getAttribute('href') || '',
-        internationalIsLink: Boolean(international?.closest('a') || international?.querySelector('a')),
-        nationalRect: nr ? { top:nr.top, left:nr.left, width:nr.width, height:nr.height } : null,
-        internationalRect: ir ? { top:ir.top, left:ir.left, width:ir.width, height:ir.height } : null,
-        skipConcealed: skip ? (getComputedStyle(skip).clipPath !== 'none' || getComputedStyle(skip).clip !== 'auto') : false,
-        overflow: {
-          horizontal: scrollWidth > window.innerWidth + 2,
-          scrollWidth,
-          viewportWidth: window.innerWidth,
-        },
-      };
-    });
-
-    const skipFocus = await page.locator('.skip-link').evaluate(el => {
-      el.focus();
-      const style = getComputedStyle(el);
-      const rect = el.getBoundingClientRect();
-      return {
-        active: document.activeElement === el,
-        clipPath: style.clipPath,
-        width: rect.width,
-        height: rect.height,
-      };
-    });
-
-    await page.locator('a.gate-national').focus();
-    const focus = await page.locator('a.gate-national').evaluate(el => {
-      const style = getComputedStyle(el);
-      return {
-        active: document.activeElement === el,
-        outlineWidth: style.outlineWidth,
-        outlineStyle: style.outlineStyle,
-      };
-    });
-
-    if (portal.imageCount !== 3 || !portal.imagesLoaded) throw new Error(`${viewport.name}: portal images missing/not loaded`);
-    if (!portal.nationalHref.endsWith('/nazionale/')) throw new Error(`${viewport.name}: national gate href is incorrect: ${portal.nationalHref}`);
-    if (portal.internationalIsLink) throw new Error(`${viewport.name}: International gate must not be active`);
-    if (!portal.skipConcealed) throw new Error(`${viewport.name}: skip link is not concealed outside focus`);
-    if (!skipFocus.active || skipFocus.clipPath !== 'none' || skipFocus.width < 44 || skipFocus.height < 30) {
-      throw new Error(`${viewport.name}: skip link does not become visibly focusable`);
+    await page.goto(`${baseURL}/adunanze/`, { waitUntil: 'networkidle', timeout: 30000 });
+    if(!page.url().endsWith('/adunanze/nazionale/')){
+      throw new Error(`${viewport.name}: /adunanze/ did not redirect to the National v1 route: ${page.url()}`);
     }
-    if (!portal.nationalRect || !portal.internationalRect) throw new Error(`${viewport.name}: gate geometry unavailable`);
-    if (viewport.width < 768 && portal.nationalRect.top >= portal.internationalRect.top) {
-      throw new Error(`${viewport.name}: National gate must precede International on mobile`);
-    }
-    if (viewport.width >= 768 && portal.internationalRect.left >= portal.nationalRect.left) {
-      throw new Error(`${viewport.name}: International must remain left of National on tablet/desktop`);
-    }
-    if (!focus.active || focus.outlineStyle === 'none' || focus.outlineWidth === '0px') throw new Error(`${viewport.name}: national gate focus is not visibly testable`);
-    if (portal.overflow.horizontal) throw new Error(`${viewport.name}: portal horizontal overflow`);
+    const portal={redirected:true,url:page.url()};
+    const skipFocus=null;
+    const focus=null;
 
-    await page.screenshot({
-      path: `${outDir}/portal-${viewport.name}.png`,
-      fullPage: true,
-      animations: 'disabled',
-    });
-
-    await page.goto(`${baseURL}/beta/adunanze/nazionale/`, { waitUntil: 'networkidle', timeout: 30000 });
+    await page.goto(`${baseURL}/adunanze/nazionale/`, { waitUntil: 'networkidle', timeout: 30000 });
     await page.waitForSelector('#upcoming-root .adunanza-card', { timeout: 15000 });
 
     const national = await page.evaluate(() => {
@@ -222,7 +153,7 @@ try {
     for(const expected of ['Flaming Skull','Askelon Phoenix','Sir Tom Thumb','Highland Clansmen']){
       if(!peasantSnapshot.prizes.includes(expected))throw new Error(`${viewport.name}: Stage II prizes missing ${expected}`);
     }
-    if(!(peasantSnapshot.signup.includes('../../cronache/')||peasantSnapshot.signup.includes('/beta/cronache/'))){
+    if(!(peasantSnapshot.signup.includes('../../cronache/')||peasantSnapshot.signup.includes('/cronache/'))){
       throw new Error(`${viewport.name}: concluded Stage II must link to Cronache`);
     }
 
@@ -263,7 +194,7 @@ try {
   const deepErrors=[];
   deepLinkPage.on('console',msg=>{if(msg.type()==='error')deepErrors.push(msg.text());});
   deepLinkPage.on('pageerror',error=>deepErrors.push(String(error)));
-  await deepLinkPage.goto(baseURL+'/beta/adunanze/nazionale/#lega-blaze-of-glory-2026-2027',{waitUntil:'networkidle',timeout:30000});
+  await deepLinkPage.goto(baseURL+'/adunanze/nazionale/#lega-blaze-of-glory-2026-2027',{waitUntil:'networkidle',timeout:30000});
   await deepLinkPage.waitForSelector('#lega-blaze-of-glory-2026-2027 .league-toggle[aria-expanded="true"]',{timeout:10000});
   const deep=await deepLinkPage.evaluate(()=>({
     hash:location.hash,
@@ -284,7 +215,7 @@ try {
       body: JSON.stringify({ schema_version: 'qa', events: [] }),
     });
   });
-  await emptyPage.goto(`${baseURL}/beta/adunanze/nazionale/`, { waitUntil: 'networkidle', timeout: 30000 });
+  await emptyPage.goto(`${baseURL}/adunanze/nazionale/`, { waitUntil: 'networkidle', timeout: 30000 });
   await emptyPage.waitForSelector('#empty:not([hidden])', { timeout: 10000 });
   await emptyPage.screenshot({ path: `${outDir}/national-empty-mobile-390.png`, fullPage: true });
   await emptyPage.close();
@@ -293,14 +224,14 @@ try {
   const homeErrors = [];
   home.on('console', msg => { if (msg.type() === 'error') homeErrors.push(msg.text()); });
   home.on('pageerror', error => homeErrors.push(String(error)));
-  await home.goto(`${baseURL}/beta/`, { waitUntil: 'networkidle', timeout: 30000 });
+  await home.goto(`${baseURL}/`, { waitUntil: 'networkidle', timeout: 30000 });
   await home.waitForFunction(() => {
     const title = document.querySelector('#next-title');
     return title && !title.textContent.includes('Consultazione');
   }, null, { timeout: 10000 });
 
   const homeResult = await home.evaluate(async () => {
-    const response = await fetch('../data/events.json', { cache: 'no-store' });
+    const response = await fetch('data/events.json', { cache: 'no-store' });
     const data = await response.json();
     const now = new Date();
     const key = [now.getFullYear(), String(now.getMonth()+1).padStart(2,'0'), String(now.getDate()).padStart(2,'0')].join('-');
