@@ -1,0 +1,64 @@
+name: Archivio visual QA
+
+on:
+  pull_request:
+    paths:
+      - 'archivio/**'
+      - 'index.html'
+      - 'data/events.json'
+      - 'data/players.json'
+      - 'data/treasures.json'
+      - 'data/proclami.json'
+      - 'data/external/sorcery/events/**'
+      - 'shared/**'
+      - 'scripts/archivio_visual_regression.mjs'
+      - '.github/workflows/archivio-visual-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'archivio/**'
+      - 'index.html'
+      - 'data/events.json'
+      - 'data/players.json'
+      - 'data/treasures.json'
+      - 'data/proclami.json'
+      - 'data/external/sorcery/events/**'
+      - 'shared/**'
+      - 'scripts/archivio_visual_regression.mjs'
+      - '.github/workflows/archivio-visual-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: archivio-visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rendered-visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ica-http.log 2>&1 &
+          sleep 2
+      - name: Capture and verify Archivio
+        run: node scripts/archivio_visual_regression.mjs
+      - name: Upload visual QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivio-visual-qa-${{ github.sha }}
+          path: artifacts/archivio-visual/
+          if-no-files-found: error
+          retention-days: 14
