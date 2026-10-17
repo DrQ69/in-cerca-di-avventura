@@ -15,7 +15,7 @@ if(mount){
  const desktop=n=>'<a class="ica-main-banner__link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
  const mobile=n=>'<a href="'+n.href+'"'+current(n)+'>'+n.label+'</a>';
  const mobileArt=n=>'<a class="ica-main-banner__mobile-art-link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
- const logo=new URL('logo-emblem.webp',repoAssets).href;
+ const logo=new URL('logo-emblem.webp',repoAssets).href,bannerArt=new URL('banners/navigation/bnr-beta-nav-primary.png',repoAssets).href;
  mount.className='ica-main-banner';
  mount.dataset.icaId='BETA-NAV-01';
  const desktopMarkup='<nav class="ica-main-banner__desktop" data-ica-id="BETA-NAV-02" aria-label="Navigazione principale"><div class="ica-main-banner__art" aria-hidden="true"></div>'+nav.slice(0,3).map(desktop).join('')+'<a class="ica-main-banner__home" href="'+route('./')+'" aria-label="In Cerca di Avventura — Home" title="Torna alla Home"></a>'+nav.slice(3).map(desktop).join('')+'<a class="ica-main-banner__social ica-main-banner__social--instagram" href="https://www.instagram.com/incercadavventura?utm_source=ig_web_button_share_sheet&amp;stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram — In Cerca di Avventura"></a><a class="ica-main-banner__social ica-main-banner__social--youtube" href="https://www.youtube.com/@incercadiavventura" target="_blank" rel="noopener noreferrer" aria-label="YouTube — In Cerca di Avventura"></a></nav>';
@@ -23,11 +23,12 @@ if(mount){
  const preservedArt=mount.querySelector('.ica-main-banner__mobile-art');
  if(preservedArt){
   preservedArt.removeAttribute('aria-hidden');
+  preservedArt.setAttribute('role','navigation');
   preservedArt.setAttribute('aria-label','Navigazione rapida');
   if(!preservedArt.querySelector('.ica-main-banner__mobile-art-link'))preservedArt.insertAdjacentHTML('beforeend',nav.map(mobileArt).join(''));
   preservedArt.insertAdjacentHTML('afterend',desktopMarkup+mobileMarkup);
  }else{
-  mount.innerHTML='<nav class="ica-main-banner__mobile-art" aria-label="Navigazione rapida"><div class="ica-main-banner__mobile-art-bg" aria-hidden="true"></div>'+nav.map(mobileArt).join('')+'</nav>'+desktopMarkup+mobileMarkup;
+  mount.innerHTML='<nav class="ica-main-banner__mobile-art" aria-label="Navigazione rapida"><img class="ica-main-banner__mobile-art-bg" src="'+bannerArt+'" alt="" fetchpriority="high" decoding="async">'+nav.map(mobileArt).join('')+'</nav>'+desktopMarkup+mobileMarkup;
  }
  const button=mount.querySelector('.ica-main-banner__menu-button'),menu=mount.querySelector('.ica-main-banner__mobile-menu');
  const close=()=>{menu?.classList.remove('is-open');button?.setAttribute('aria-expanded','false')};
