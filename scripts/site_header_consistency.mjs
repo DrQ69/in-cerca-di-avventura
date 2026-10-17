@@ -55,6 +55,10 @@ try{
           navTransform:ns.textTransform,
           navLetterSpacing:ns.letterSpacing,
           adunanzeTargets:adunanzeLinks.map(a=>new URL(a.href,location.href).pathname),
+          legacyMobileNavVisible:getComputedStyle(document.querySelector('.ica-main-banner__mobile')).display!=='none',
+          artLinks:[...document.querySelectorAll('.ica-main-banner__mobile-art-link')].length,
+          mobileHomeLinks:document.querySelectorAll('.ica-main-banner__mobile-home').length,
+          mobileSocialLinks:document.querySelectorAll('.ica-main-banner__mobile-social').length,
         };
       });
 
@@ -62,6 +66,8 @@ try{
       if(!result.adunanzeTargets.length||result.adunanzeTargets.some(path=>!path.endsWith('/adunanze/nazionale/'))){
         throw new Error(`${viewport.name}/${name}: Adunanze must route directly to national events: ${JSON.stringify(result.adunanzeTargets)}`);
       }
+      if(viewport.width<1024 && (result.legacyMobileNavVisible||result.artLinks!==6||result.mobileHomeLinks!==1||result.mobileSocialLinks!==2))
+        throw new Error(viewport.name+'/'+name+': mobile artwork links incomplete or duplicated mobile navigation visible');
       results.push({name,...result});
       await page.screenshot({path:`${outDir}/${viewport.name}-${name}.png`,fullPage:false,animations:'disabled'});
       await page.close();
