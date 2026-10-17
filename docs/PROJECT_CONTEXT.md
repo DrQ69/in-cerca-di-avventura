@@ -6,40 +6,44 @@ For product, information architecture, content model, design, component, asset, 
 
 ## Current repository state
 
-- Active public homepage: `https://drq69.github.io/in-cerca-di-avventura/beta/`
-- Repository root `https://drq69.github.io/in-cerca-di-avventura/` is a redirect only and must not serve the obsolete legacy homepage.
+- Active public homepage: `https://drq69.github.io/in-cerca-di-avventura/`
 - Repository: `DrQ69/in-cerca-di-avventura`
 - Production branch: `main`
-- Hosting: GitHub Pages
+- Hosting for ICA v1: GitHub Pages
+- Future approved hosting/domain direction: Vercel, explicitly deferred beyond v1 closure
 - Current stack: static HTML, shared CSS, lightweight JavaScript
 - No framework, package-manager requirement, CMS, backend, database or authentication
+- No analytics, tracking or non-essential cookies in ICA v1
 
 Current public implementation entry points:
 
-- `index.html` — redirect only to `/beta/`
-- `beta/index.html` — active public homepage
-- `beta/style.css`
-- `beta/main.js`
-- `assets/manifest.json`
+- `index.html` — ICA v1 Home
+- `style.css` / `main.js` — Home runtime
+- `shared/` — shared ICA shell/runtime
+- `adunanze/nazionale/` — Adunanze Nazionali
+- `avventurieri/` — Avventurieri directory
+- `cronache/` — completed-event archive and detailed results
+- `alleanze/` — current Alleanze surface; feature expansion on hold
+- `tesori/` — Tesori archive
+- `beta/` — compatibility redirects only
+- `assets/manifest.json` — governed asset registry
 
 ## Implementation status
 
-The current public markup/CSS predates the canonical ICA architecture and is therefore a **legacy/prototype implementation**.
+The Product Owner consolidated the current navigation and section organization for ICA v1 on 2026-10-17. The former plan to replace the public navigation with Imprese / Campagne / Il Reame / Archivio taxonomy is superseded.
 
-It may be used to inspect existing technical behaviour, but it is not a design, IA, responsive, component, visual-baseline or canonical technical-compliance precedent for new work.
+ICA v1 is promoted to the repository root. Legacy `/beta/` public URLs remain only as compatibility redirects and must not be treated as the active implementation.
 
-In particular, current navigation labels, legacy responsive breakpoints, prototype copy and rendered event data must not be promoted into new work merely because they exist on the current homepage.
+The current navigation is:
 
-Canonical Implementation v1 has begun P0-first in an isolated validation fixture rather than by cosmetically refactoring the legacy homepage.
+- Adunanze
+- Avventurieri
+- Alleanze
+- Tesori
+- Proclami
+- Chi siamo
 
-First implementation slice:
-
-- `docs/components/P0_SHELL_NAV_SIG.md` — responsive/accessibility contract for Canonical Shell v1, `SIG-01`, `NAV-01`, `NAV-02`;
-- `assets/css/canonical-shell.css` — canonical shell/component styles;
-- `tests/fixtures/canonical-shell.html` — non-production QA fixture;
-- `qa/verification/VR-0007-m7-1-shell-runtime.md` — first browser/runtime M7.1 evidence.
-
-The legacy root homepage has been retired. The repository root now redirects to the active `/beta/` homepage; the obsolete root implementation must not be used as a public surface.
+The supplied ICA logo is the official v1 brand source and is installed under the governed brand path. International Adunanze is removed from v1; `/adunanze/` routes directly to the National area.
 
 ## Governance status
 
@@ -107,34 +111,30 @@ These beta pages remain implementation/prototype surfaces. They are not automati
 
 ## Current known gaps
 
-1. The legacy homepage does not yet implement the canonical primary navigation: Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.
-2. The current CSS predates the canonical responsive system and must not be treated as M7-conformant evidence.
-3. M7.1 is not fully verified yet: NAV-02 runtime mechanics have passed the tested matrix, while NAV-01 still needs fit verification with the actual Cinzel-family production candidate and final visual evidence.
-4. Final production typography remains intentionally open pending real HTML fit/readability testing and therefore triggers NAV fit recheck.
-5. `SIG-01`, `NAV-01` and `NAV-02` remain formally IMPLEMENTED, not VERIFIED or APPROVED.
-6. `SIG-01` currently uses the registered candidate emblem asset; exact canonical ICA brand-source installation/identity closure remains pending. The current proxy was intentionally not promoted by the 2026-09-29 asset cleanup.
-7. M11 has no production screenshots yet by design: the legacy/prototype homepage must not become the canonical baseline.
-8. M12 `canonical_pages` starts empty by design: legacy/prototype pages and QA fixtures must not be counted as canonical technical compliance.
-9. M12 v1.1 guards against future registry omission: a page carrying `<meta name="ica-status" content="canonical">` must be registered or CI fails.
-10. Browser/runtime performance and accessibility evidence will be generated progressively with canonical pages; static M12 CI does not pretend to measure Core Web Vitals or full WCAG conformance by itself.
-11. Minimal technical protection of `main` is not yet enforced; GitHub Issue #17 tracks the required admin settings (`ICA baseline QA` required, no force-push, no branch deletion).
-12. External Alleanze community logos remain candidate until production-use permission evidence is recorded; GitHub Issue #94 tracks this closure.
-13. Exact canonical ICA brand-source installation and SIG-01/favicon approval remain separate from this governance cleanup; GitHub Issue #95 tracks the visually reviewed replacement path.
+1. **Unified Archivio:** approved for ICA v1 but not yet implemented; it must search/filter events, Cronache, Avventurieri, Tesori, decks and Proclami.
+2. **Sorcery controlled publishing workflow:** importer exists and is verified, but the v1 operator workflow still needs the final validate → snapshot → QA → publish command/workflow.
+3. **Adunanze mobile performance:** the known mobile LCP gate remains open and must be resolved before final PRODUCTION_READY.
+4. **M11/M12 v1 closure:** root pages still need final Product Owner visual acceptance, production visual baselines and canonical technical registry closure.
+5. **Branch protection:** GitHub Issue #17 remains an administrator action — require ICA baseline QA, disallow force-push and branch deletion, without mandatory review for every routine PR.
+6. **External Alleanze logo permissions:** the Product Owner believes permission exists, but Issue #94 remains open until attribution/commercial-use/source details are confirmed.
+7. **Proclami dedicated page:** approved in principle but intentionally on hold; it is not a v1 release blocker.
+8. **Alleanze expansion:** intentionally on hold; the current verified surface may remain in v1.
+9. **Public contact channel:** deferred by Product Owner decision and not a v1 blocker.
+10. **Vercel/custom domain migration:** approved future direction, explicitly deferred and not a v1 blocker.
 
 ## Current implementation objective
 
-Two workstreams now coexist and must be kept explicit:
+The active programme is **ICA v1 closure**, with scope frozen by Product Owner decisions on 2026-10-17.
 
-1. **stabilise the current beta surfaces and factual data** without promoting them implicitly to canonical status;
-2. continue **Canonical Implementation v1**, P0-first, and deliberately decide when beta structures are migrated, replaced or retired.
+The shortest complete path is:
 
-The first shell runtime pass now confirms NAV-02 keyboard path, visible focus, 44px targets, mobile/short-landscape containment and no page-level horizontal overflow across the tested matrix. Conditional NAV-01 geometry also fits at the tested desktop widths, but final fit closure requires the real production-font candidate.
+1. root migration + governance/brand closure;
+2. unified Archivio;
+3. controlled Sorcery publishing workflow;
+4. production hardening (performance, accessibility, SEO/system files, privacy);
+5. M11/M12 release closure and Product Owner final approval.
 
-Immediate next work should therefore focus on closing the remaining shell evidence efficiently: real `SIG-01` rendering + production-font NAV fit + visual acceptance. Once that is done, the shell slice can be considered for VERIFIED and M11 baseline candidacy.
-
-After shell closure, proceed to the next P0 visual/structural components such as `BNR-01`/`BNR-02`, buttons and headers, then core cards/entity/table/system components.
-
-As canonical components/pages become VERIFIED and are accepted visually, populate `qa/visual-baselines.json`. As canonical public pages become real production candidates, add the M12 canonical marker and the corresponding `qa/technical-baseline.json` entry in the same coherent change.
+Do not reopen navigation, section taxonomy, Avventurieri profile expansion, Proclami page development, Alleanze feature expansion, analytics, International Adunanze, contact-channel design or hosting migration during v1 closure unless the Product Owner explicitly changes scope.
 
 ## Documentation freshness note — 2026-09-29
 
