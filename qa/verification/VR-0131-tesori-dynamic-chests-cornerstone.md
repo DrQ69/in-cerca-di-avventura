@@ -3,7 +3,7 @@
 **Primary QA Profile:** QAP-PAG  
 **Secondary profiles:** QAP-CODE, QAP-DAT, VIS, A11Y  
 **Lifecycle claim:** IMPLEMENTED; Tesori-specific automated and visual verification passed on the tested branch.  
-**Release readiness:** NOT_READY — Product Owner visual review remains required before merge.
+**Release readiness:** READY_FOR_MERGE — Product Owner authorized continuation/merge after visual review on 2026-10-17.
 
 ## Scope
 
@@ -87,3 +87,8 @@ All planned Tesori checks above were executed by Tesori visual QA run 6 and pass
 - Cornerstone chest tier cannot be selected until a verified participant/registration count is stored for the event.
 
 No canonical participant count has been invented.
+
+
+## Product Owner acceptance
+
+On 2026-10-17, after the desktop/mobile Tesori and Cornerstone preview screenshots were provided, the Product Owner instructed to resume and proceed. This is recorded as authorization to complete the normal branch → PR → merge workflow for this scope.
