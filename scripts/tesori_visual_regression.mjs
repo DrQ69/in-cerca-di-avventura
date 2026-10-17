@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 
-const baseURL=process.env.TESORI_URL||'http://127.0.0.1:8000/beta/tesori/';
+const baseURL=process.env.TESORI_URL||'http://127.0.0.1:8000/tesori/';
 const outDir=process.env.TESORI_SCREENSHOT_DIR||'artifacts/tesori-visual';
 const viewports=[
  {name:'desktop-1440',width:1440,height:1200},
