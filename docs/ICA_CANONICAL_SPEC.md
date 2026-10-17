@@ -2,7 +2,7 @@
 
 **Document ID:** ICA-CANON-001  
 **Status:** Canonical  
-**Version:** 1.2  
+**Version:** 1.3  
 **Purpose:** single source of truth for product, content, design, asset and implementation decisions.
 
 > If another repository document, prototype, screenshot, generated image, placeholder, previous asset kit or AI conversation conflicts with this file, this file wins unless the Product Owner explicitly approves a newer decision and this file is updated.
@@ -103,45 +103,47 @@ The site should feel like a persistent chronicle, not a disposable news feed.
 
 ## 4. Approved information architecture
 
-Primary navigation:
+### Primary navigation — Product Owner decision 2026-10-17
 
-1. **Imprese**
-2. **Campagne**
-3. **Avventurieri**
-4. **Cronache**
-5. **Il Reame**
-6. **Archivio**
+The current ICA navigation is consolidated and becomes the v1 navigation:
+
+1. **Adunanze**
+2. **Avventurieri**
+3. **Alleanze**
+4. **Tesori**
+5. **Proclami**
+6. **Chi siamo**
 
 The ICA emblem/logo links to Home.
 
-### Adunanze access layer — Product Owner decision 2026-09-21
+The existing sections remain where they are and retain their current product meaning. Do not rename, merge or remap them into the former Imprese / Campagne / Il Reame / Archivio taxonomy without a new explicit Product Owner decision.
 
-The current beta/product implementation uses **Le Adunanze** as the public access portal for the event domain. This is an explicitly approved access layer and must not be removed merely because the broader canonical taxonomy also uses **Imprese** for persistent Event entities.
+### Adunanze access layer — Product Owner decision 2026-10-17
 
-The portal route is:
+**Adunanze Nazionali** is the only v1 Adunanze access path.
 
-- `/beta/adunanze/`
+Canonical route:
 
-Its approved visual hierarchy is:
+- `/adunanze/nazionale/`
 
-1. shared ICA navigation;
-2. battlefield panorama;
-3. International gate on the left;
-4. National gate on the right.
+`/adunanze/` redirects to the National area.
 
-The two branches are:
-
-- **Internazionale — Oltre i Confini Noti:** future area, not yet available;
-- **Nazionale — Il Regno di Cremos:** active access to Italian events.
+The former International Adunanze branch is removed from ICA v1 and must not be shown as an unavailable/in-development option.
 
 Current functional separation:
 
-- **Adunanze Nazionale** = events that are ongoing or scheduled for the future;
+- **Adunanze Nazionali** = events that are ongoing or scheduled for the future;
 - **Cronache** = factual memory of completed events.
 
 Both views derive from the same EVENT source of truth; records must not be manually duplicated between them.
 
 Institutional/legal content belongs in secondary navigation/footer unless there is a specific reason otherwise.
+
+### Hold areas
+
+- **Proclami:** a dedicated page is approved in principle but remains on hold for ICA v1 until explicitly resumed; the existing Home feed may remain.
+- **Alleanze:** the current implementation remains available, but feature expansion is on hold until explicitly resumed.
+- **International Adunanze:** removed from v1 rather than shown as a future placeholder.
 
 ### Home
 
@@ -276,7 +278,11 @@ Do **not** introduce a MATCH entity or round-by-round pairing model unless expli
 
 ### Campaign rankings
 
-Rankings should be derived from RESULT records plus that Campaign's scoring rules wherever possible. Bonus, penalty and discard rules must be represented explicitly rather than silently editing totals.
+For ICA v1, **Blaze of Glory league standings are maintained from the Product Owner-supplied Excel workbook**. The workbook is the authoritative ranking source for the current league implementation.
+
+The Fair Play rule is explicit: **each recorded Fair Play win contributes +3 league points**.
+
+Do not silently reconstruct or overwrite the Product Owner-approved Excel totals from event results. A future derived-scoring engine may be introduced only through a separate approved change. Bonus, penalty and discard rules must always remain explicit rather than being hidden in edited totals.
 
 ---
 
@@ -530,7 +536,8 @@ Until a documented requirement proves otherwise:
 - static HTML;
 - shared CSS;
 - lightweight JavaScript;
-- GitHub Pages;
+- GitHub Pages for ICA v1 production hosting;
+- Vercel is the approved future direction for custom-domain hosting/deployment integration, but is not a v1 blocker and must not trigger migration during v1 closure;
 - no framework;
 - no package manager requirement;
 - no CMS;
@@ -651,15 +658,24 @@ The following are locked until explicitly changed by the Product Owner and docum
 - Future commercial features are possible but not current scope.
 - ICA is community heritage, not primarily a personal site.
 - The narrative layer is a true persistent diegetic universe grounded in real facts.
-- Primary navigation is Imprese / Campagne / Avventurieri / Cronache / Il Reame / Archivio.
+- Primary navigation is Adunanze / Avventurieri / Alleanze / Tesori / Proclami / Chi siamo.
 - Important entity URLs should remain stable.
 - Results are W/L/D + placement, not round-by-round matches.
-- Each Campagna may define its own scoring system.
+- Blaze of Glory v1 standings are maintained from the Product Owner Excel source; Fair Play is explicitly +3 points per recorded Fair Play win.
 - Decklists are complete and structured as Avatar + Atlas + Spellbook.
 - Sorcery Air/Earth/Fire/Water form a secondary visual/data layer.
 - UI is disciplined; art may be expressive and painterly.
 - Historical Heraldry Kit is ignored.
 - Static HTML/CSS/JS remains the current technical baseline.
+- ICA v1 is published at the repository root; legacy `/beta/` URLs are compatibility redirects only.
+- The current section organization is consolidated; sections are not to be renamed or merged without a new Product Owner decision.
+- Sorcery event ingestion uses a controlled command/workflow with validation and QA before publication; there is no continuous polling.
+- Avventurieri v1 remains a directory rather than a dedicated persistent profile-page product.
+- ICA v1 contains no analytics, tracking or non-essential cookies.
+- International Adunanze is excluded from v1.
+- Proclami dedicated-page development and Alleanze feature expansion are on hold.
+- A unified Archivio with filters across events, Cronache, players, Tesori, decks and Proclami is approved for ICA v1 implementation.
+- The ICA logo already supplied by the Product Owner is the official visual source for v1.
 - Responsive architecture follows the approved M7 specification and is verified through M7.1/M9 evidence rather than legacy CSS assumptions.
 
 ---
@@ -672,7 +688,6 @@ Do not invent final answers for these until explicitly approved:
 - final exact colour token values after in-browser validation;
 - final production dimensions for individual banner/button/frame assets;
 - content-driven NAV-01 desktop activation width if real production-fit testing requires a local breakpoint above 1024px;
-- future search implementation;
 - future CMS/static-site-generator decision;
 - future account, marketplace, sponsorship or payment architecture.
 
