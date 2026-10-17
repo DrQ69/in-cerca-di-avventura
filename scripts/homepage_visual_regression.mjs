@@ -16,7 +16,7 @@ const browser=await chromium.launch({headless:true});
 try{
   const redirectPage=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await redirectPage.goto(baseURL+'/beta/',{waitUntil:'networkidle',timeout:30000});
-  if(!redirectPage.url().endsWith('/')){
+  if(new URL(redirectPage.url()).pathname!=='/'){
     throw new Error('legacy /beta/ did not redirect to root: '+redirectPage.url());
   }
   await redirectPage.close();
@@ -67,7 +67,7 @@ try{
       throw new Error(viewport.name+': homepage block order mismatch: '+JSON.stringify(result.order));
     }
     const expectedNext=await page.evaluate(async()=>{
-      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const response=await fetch('data/events.json',{cache:'no-store'});
       const data=await response.json();
       const now=new Date();
       const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
@@ -78,7 +78,7 @@ try{
     if(result.nextId!==(expectedNext?.event_id||null)) throw new Error(viewport.name+': next event mismatch rendered='+result.nextId+' expected='+(expectedNext?.event_id||null));
     if(result.nextTitle!==(expectedNext?.title||'')) throw new Error(viewport.name+': next event title mismatch rendered='+result.nextTitle+' expected='+(expectedNext?.title||''));
     const expectedChronicle=await page.evaluate(async()=>{
-      const response=await fetch('../data/events.json',{cache:'no-store'});
+      const response=await fetch('data/events.json',{cache:'no-store'});
       const data=await response.json();
       const now=new Date();
       const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
