@@ -1,6 +1,6 @@
 # Sorcery Event Importer V1
 
-Status: **IMPLEMENTED / not approved as a canonical source**.
+Status: **IMPLEMENTED / controlled publication workflow for ICA v1**.
 
 ## Purpose
 
@@ -63,7 +63,14 @@ node --test tests/sorcery_event_importer.test.mjs
 
 The fixtures are reduced, privacy-minimized reproductions of the captured BOG Stage II `event.get` and `event.playerSnapshot` response shapes. They are test evidence, not production event data.
 
-Pull requests run the offline importer test suite automatically. A manual workflow is also provided for live validation after the workflow is available on the default branch; it creates an artifact/report only and does not commit, merge or publish.
+Pull requests run the offline importer and publication-gate tests automatically.
+
+The manual workflow offers two explicit operations:
+
+- `validate_only`: fetches the live Sorcery event read-only, normalizes and validates it, compares it with the matching ICA event, and uploads evidence only. It does not publish.
+- `prepare_publish_pr`: performs the same read-only import and validation, requires a matching ICA event and a Sorcery status of `Complete`, registers the snapshot in `data/external/sorcery/events/index.json`, runs the offline QA suite, then commits the snapshot and manifest to a dedicated automation branch and opens a Pull Request.
+
+The workflow never writes directly to `main`. Publication occurs only after the generated Pull Request passes the normal ICA QA and is merged. Continuous polling is intentionally not used.
 
 ## Known residual risks
 
@@ -115,3 +122,21 @@ For public deck presentation, the raw source remains unchanged, while ICA derive
 - source `Main` + card category `Site` -> Atlas;
 - source `Main` + non-Site card -> Spellbook;
 - source `Collection` remains explicitly labelled Collection as a supplementary source section.
+
+
+## ICA v1 controlled publication gate — 2026-10-17
+
+The Product Owner approved a controlled, manual publishing model:
+
+`workflow_dispatch -> FETCH -> NORMALIZE -> VALIDATE -> MATCH ICA EVENT -> COMPARE -> TEST -> PR -> normal ICA QA -> MERGE`
+
+Safety properties:
+
+- live access remains GET/read-only;
+- no automatic polling or scheduled import;
+- schema validation fails closed;
+- non-complete events cannot be prepared for publication;
+- an existing ICA EVENT mapping is mandatory;
+- the workflow does not automatically edit `data/events.json`;
+- canonical publication is represented by the reviewed snapshot manifest plus normal PR merge;
+- differences between Sorcery and existing ICA facts are reported, not silently reconciled.
