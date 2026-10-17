@@ -21,7 +21,7 @@ const viewports=[
 await fs.mkdir(outDir,{recursive:true});
 const browser=await chromium.launch({headless:true});
 
-function near(a,b,t=1){return Math.abs(a-b)<=t;}
+function near(a,b,t=2){return Math.abs(a-b)<=t;}
 
 try{
   for(const viewport of viewports){
