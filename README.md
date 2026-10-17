@@ -10,13 +10,16 @@ Il repository contiene due livelli distinti:
 2. **beta operativa** — pagine statiche sotto `beta/`, alimentate da fonti JSON condivise e da uno shell visuale comune.
 
 Pagine beta attive:
-- `/beta/` — homepage beta;
-- `/beta/adunanze/nazionale/` — eventi nazionali futuri/in corso;
-- `/beta/cronache/` — archivio degli eventi conclusi;
-- `/beta/avventurieri/` — directory giocatori;
-- `/beta/alleanze/` — mappa community/mercanti.
+- `/` — homepage ICA v1;
+- `/adunanze/nazionale/` — eventi nazionali futuri/in corso;
+- `/cronache/` — archivio degli eventi conclusi;
+- `/avventurieri/` — directory giocatori;
+- `/alleanze/` — mappa community/mercanti;
+- `/tesori/` — archivio premi.
 
-Il portale visuale `/beta/adunanze/` con le due porte esiste nel repository ma, per decisione operativa corrente, la navigazione beta porta direttamente agli eventi nazionali.
+Le vecchie URL sotto `/beta/` sono mantenute solo come redirect di compatibilità.
+
+International Adunanze è escluso da ICA v1. `/adunanze/` reindirizza direttamente a `/adunanze/nazionale/`; il vecchio portale a due porte non è più una superficie pubblica.
 
 ## Fonti dati principali
 
@@ -64,4 +67,4 @@ La beta corrente usa una navigazione operativa (`Le Adunanze / Cronache / Avvent
 python3 -m http.server 8000
 ```
 
-Aprire `http://localhost:8000/beta/` per la beta operativa.
+Aprire `http://localhost:8000/` per ICA v1.
