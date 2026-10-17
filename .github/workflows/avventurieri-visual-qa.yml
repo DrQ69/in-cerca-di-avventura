@@ -3,7 +3,7 @@ name: Avventurieri visual QA
 on:
   pull_request:
     paths:
-      - 'beta/avventurieri/**'
+      - 'avventurieri/**'
       - 'data/players.json'
       - 'data/events.json'
       - 'data/league-standings.json'
@@ -14,7 +14,7 @@ on:
     branches:
       - main
     paths:
-      - 'beta/avventurieri/**'
+      - 'avventurieri/**'
       - 'data/players.json'
       - 'assets/css/ica-shared-shell.css'
       - 'scripts/avventurieri_visual_regression.mjs'
