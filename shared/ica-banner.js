@@ -15,6 +15,7 @@ if(mount){
  const desktop=n=>'<a class="ica-main-banner__link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
  const mobile=n=>'<a href="'+n.href+'"'+current(n)+'>'+n.label+'</a>';
  const mobileArt=n=>'<a class="ica-main-banner__mobile-art-link" style="--cx:'+n.cx+'" href="'+n.href+'"'+current(n)+'><span>'+n.label+'</span></a>';
+ const mobileArtControls='<a class="ica-main-banner__home ica-main-banner__mobile-home" href="'+route('./')+'" aria-label="In Cerca di Avventura — Home" title="Torna alla Home"></a><a class="ica-main-banner__social ica-main-banner__social--instagram ica-main-banner__mobile-social" href="https://www.instagram.com/incercadavventura?utm_source=ig_web_button_share_sheet&amp;stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram — In Cerca di Avventura"></a><a class="ica-main-banner__social ica-main-banner__social--youtube ica-main-banner__mobile-social" href="https://www.youtube.com/@incercadiavventura" target="_blank" rel="noopener noreferrer" aria-label="YouTube — In Cerca di Avventura"></a>';
  const logo=new URL('logo-emblem.webp',repoAssets).href,bannerMobileArt=new URL('banners/navigation/bnr-beta-nav-mobile.webp',repoAssets).href;
  mount.className='ica-main-banner';
  mount.dataset.icaId='BETA-NAV-01';
@@ -25,10 +26,10 @@ if(mount){
   preservedArt.removeAttribute('aria-hidden');
   preservedArt.setAttribute('role','navigation');
   preservedArt.setAttribute('aria-label','Navigazione rapida');
-  if(!preservedArt.querySelector('.ica-main-banner__mobile-art-link'))preservedArt.insertAdjacentHTML('beforeend',nav.map(mobileArt).join(''));
+  if(!preservedArt.querySelector('.ica-main-banner__mobile-art-link'))preservedArt.insertAdjacentHTML('beforeend',nav.map(mobileArt).join('')+mobileArtControls);
   preservedArt.insertAdjacentHTML('afterend',desktopMarkup+mobileMarkup);
  }else{
-  mount.innerHTML='<nav class="ica-main-banner__mobile-art" aria-label="Navigazione rapida"><img class="ica-main-banner__mobile-art-bg" src="'+bannerMobileArt+'" alt="" fetchpriority="high" decoding="async">'+nav.map(mobileArt).join('')+'</nav>'+desktopMarkup+mobileMarkup;
+  mount.innerHTML='<nav class="ica-main-banner__mobile-art" aria-label="Navigazione rapida"><img class="ica-main-banner__mobile-art-bg" src="'+bannerMobileArt+'" alt="" fetchpriority="high" decoding="async">'+nav.map(mobileArt).join('')+mobileArtControls+'</nav>'+desktopMarkup+mobileMarkup;
  }
  const button=mount.querySelector('.ica-main-banner__menu-button'),menu=mount.querySelector('.ica-main-banner__mobile-menu');
  const close=()=>{menu?.classList.remove('is-open');button?.setAttribute('aria-expanded','false')};
