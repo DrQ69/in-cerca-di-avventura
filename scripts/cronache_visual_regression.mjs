@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 
-const baseURL = process.env.CRONACHE_URL || 'http://127.0.0.1:8000/beta/cronache/';
+const baseURL = process.env.CRONACHE_URL || 'http://127.0.0.1:8000/cronache/';
 const outDir = process.env.CRONACHE_SCREENSHOT_DIR || 'artifacts/cronache-visual';
 
 const viewports = [
