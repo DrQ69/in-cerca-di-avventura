@@ -5,6 +5,8 @@ on:
     paths:
       - 'beta/avventurieri/**'
       - 'data/players.json'
+      - 'data/events.json'
+      - 'data/league-standings.json'
       - 'assets/css/ica-shared-shell.css'
       - 'scripts/avventurieri_visual_regression.mjs'
       - '.github/workflows/avventurieri-visual-qa.yml'
