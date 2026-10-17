@@ -1,0 +1,178 @@
+const menu=document.getElementById('menu');
+const mobile=document.getElementById('mobile-nav');
+if(menu&&mobile){
+  const closeMenu=()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');};
+  menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+  mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
+}
+
+const year=document.getElementById('year');
+if(year)year.textContent=new Date().getFullYear();
+
+const track=document.getElementById('player-track');
+const statusEl=document.getElementById('player-status');
+const emptyEl=document.getElementById('player-empty');
+const countEl=document.getElementById('player-count');
+const indicator=document.getElementById('page-indicator');
+const prev=document.getElementById('prev-page');
+const next=document.getElementById('next-page');
+const search=document.getElementById('player-search');
+const filterResults=document.getElementById('filter-results');
+const filterAvatar=document.getElementById('filter-avatar');
+const filterStyle=document.getElementById('filter-style');
+const clear=document.getElementById('clear-filters');
+
+let players=[];
+let filtered=[];
+let page=0;
+
+function esc(value){
+  return String(value??'').replace(/[&<>'\"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[char]));
+}
+
+function valueOrMissing(value){
+  return value===null||value===undefined||value===''?'Da completare':String(value);
+}
+
+function avatarSrc(value){
+  if(!value)return '';
+  if(/^https?:\/\//i.test(value)||value.startsWith('/'))return value;
+  return '../../'+value.replace(/^\.\//,'');
+}
+
+function initials(nickname){
+  return String(nickname||'?').replace(/[^\p{L}\p{N}\s]/gu,' ').trim().split(/\s+/).filter(Boolean).slice(0,2).map(part=>part[0]?.toUpperCase()||'').join('')||'?';
+}
+
+function hasResults(player){
+  const stats=player.stats||{};
+  return Number.isFinite(stats.events_played)&&stats.events_played>0;
+}
+function hasAvatar(player){return Boolean(player.avatar_url);}
+function hasStyle(player){return Boolean(player.play_style);}
+function passesMode(mode,available){return mode==='all'||(mode==='available'?available:!available);}
+
+function detail(label,value,wide){
+  const missing=value===null||value===undefined||value==='';
+  return '<div class="detail'+(wide?' detail-wide':'')+'"><span>'+esc(label)+'</span><strong class="'+(missing?'profile-missing':'')+'">'+esc(valueOrMissing(value))+'</strong></div>';
+}
+
+function card(player){
+  const stats=player.stats||{};
+  const league=player.league||{};
+  const avatar=player.avatar_url ? '<img src="'+esc(avatarSrc(player.avatar_url))+'" alt="">' : '<span aria-hidden="true">'+esc(initials(player.nickname))+'</span>';
+  const hasRecorded=Number.isFinite(stats.events_played)&&stats.events_played>0;
+  const record=hasRecorded ? stats.wins+' V · '+stats.draws+' P · '+stats.losses+' S' : 'Nessun risultato registrato';
+  const leagueRank=Number.isFinite(league.rank)?'#'+league.rank:null;
+  const leaguePoints=Number.isFinite(league.points)?league.points:null;
+  return '<article class="player-card" id="player-'+esc(player.id)+'" data-ica-id="AVV-CARD-'+esc(player.id)+'" data-player-id="'+esc(player.id)+'">'+
+    '<header class="player-card-header" data-ica-id="AVV-CARD-HEAD-'+esc(player.id)+'"><div class="player-avatar" data-ica-id="AVV-CARD-AVATAR-'+esc(player.id)+'">'+avatar+'</div><div class="player-card-title" data-ica-id="AVV-CARD-NAME-'+esc(player.id)+'"><h3>'+esc(player.nickname)+'</h3><span class="player-id">'+esc(player.id)+'</span></div></header>'+
+    '<div class="player-details" data-ica-id="AVV-CARD-DETAILS-'+esc(player.id)+'">'+
+      detail('Eventi registrati',hasRecorded?stats.events_played:0,false)+
+      detail('Vittorie evento',hasRecorded?stats.event_wins:0,false)+
+      detail('Record V / P / S',record,true)+
+      detail('Top 8',hasRecorded?stats.top8:0,false)+
+      detail('Partite giocate',hasRecorded?stats.matches_played:0,false)+
+      detail('Punti Lega',leaguePoints,false)+
+      detail('Classifica Lega',leagueRank,false)+
+      detail('Fair Play',Number.isFinite(league.fair_play_wins)?league.fair_play_wins:null,false)+
+      detail('Città',player.city,false)+
+      detail('Community',player.community_name,false)+
+      detail('Ultimo deck',player.last_deck,false)+
+      detail('Stile di gioco',player.play_style,true)+
+    '</div></article>';
+}
+
+function perPage(){if(window.innerWidth<768)return 1;if(window.innerWidth<1024)return 2;return 3;}
+function totalPages(){return Math.max(1,Math.ceil(filtered.length/perPage()));}
+
+function render(){
+  const size=perPage();
+  const pages=totalPages();
+  page=Math.min(Math.max(page,0),pages-1);
+  const start=page*size;
+  const slice=filtered.slice(start,start+size);
+  track.innerHTML=slice.map(card).join('');
+  emptyEl.hidden=filtered.length!==0;
+  track.hidden=filtered.length===0;
+  prev.disabled=page===0||filtered.length===0;
+  next.disabled=page>=pages-1||filtered.length===0;
+  indicator.textContent=filtered.length?'Pagina '+(page+1)+' di '+pages:'Nessun profilo';
+  countEl.textContent=filtered.length+' di '+players.length+' Avventurieri';
+}
+
+function applyFilters(resetPage=true){
+  const term=search.value.trim().toLocaleLowerCase('it');
+  filtered=players.filter(player=>{
+    const haystack=[player.nickname,player.city,player.community_name].filter(Boolean).join(' ').toLocaleLowerCase('it');
+    const matchName=!term||haystack.includes(term);
+    return matchName && passesMode(filterResults.value,hasResults(player)) && passesMode(filterAvatar.value,hasAvatar(player)) && passesMode(filterStyle.value,hasStyle(player));
+  });
+  if(resetPage)page=0;
+  render();
+}
+
+prev.addEventListener('click',()=>{if(page>0){page-=1;render();}});
+next.addEventListener('click',()=>{if(page<totalPages()-1){page+=1;render();}});
+search.addEventListener('input',()=>applyFilters());
+[filterResults,filterAvatar,filterStyle].forEach(control=>control.addEventListener('change',()=>applyFilters()));
+clear.addEventListener('click',()=>{search.value='';filterResults.value='all';filterAvatar.value='all';filterStyle.value='all';applyFilters();search.focus();});
+
+let lastSize=perPage();
+window.addEventListener('resize',()=>{const size=perPage();if(size!==lastSize){lastSize=size;page=0;render();}});
+
+function aggregatePlayerStats(playerId,events){
+  const rows=[];
+  for(const event of events){
+    if(event.status!=='conclusa'||!Array.isArray(event.standings))continue;
+    const row=event.standings.find(item=>item.player_id===playerId);
+    if(row)rows.push({event,row});
+  }
+  return rows.reduce((acc,item)=>{
+    const row=item.row;
+    acc.events_played+=1;
+    acc.wins+=Number(row.wins)||0;
+    acc.draws+=Number(row.draws)||0;
+    acc.losses+=Number(row.losses)||0;
+    acc.matches_played+=(Number(row.wins)||0)+(Number(row.draws)||0)+(Number(row.losses)||0);
+    if(row.rank===1)acc.event_wins+=1;
+    if(row.top8===true)acc.top8+=1;
+    return acc;
+  },{events_played:0,wins:0,draws:0,losses:0,matches_played:0,event_wins:0,top8:0});
+}
+
+import('../shared/release-reader.mjs').then(({readSiteBundle})=>readSiteBundle(
+  new URL('../data/current-release.json',document.baseURI).href,
+  {players:new URL('../data/players.json',document.baseURI).href,
+   events:new URL('../data/events.json',document.baseURI).href,
+   standings:new URL('../data/league-standings.json',document.baseURI).href}
+))
+  .then(({players:playerData,events:eventData,standings:leagueData})=>{
+    const events=Array.isArray(eventData.events)?eventData.events:[];
+    const leagueEntries=Array.isArray(leagueData.entries)?leagueData.entries:[];
+    const leagueByPlayer=new Map(leagueEntries.map(entry=>[entry.player_id,entry]));
+    players=(Array.isArray(playerData.players)?playerData.players:[]).map(player=>({
+      ...player,
+      stats:aggregatePlayerStats(player.id,events),
+      league:leagueByPlayer.get(player.id)||{}
+    }));
+    const requestedPlayerId=new URLSearchParams(window.location.search).get('player');
+    // Preserve previously shared profile links after Dr. Q's canonical ID migration.
+    const canonicalPlayerId=requestedPlayerId==='PLY-0002'?'PLY-0000':requestedPlayerId;
+    const requestedPlayer=canonicalPlayerId?players.find(player=>player.id===canonicalPlayerId):null;
+    if(requestedPlayer){
+      search.value=requestedPlayer.nickname;
+      filtered=[requestedPlayer];
+      page=0;
+      render();
+      requestAnimationFrame(()=>{
+        document.getElementById('player-'+requestedPlayer.id)?.scrollIntoView({block:'center'});
+      });
+    }else{
+      filtered=[...players];
+      applyFilters(false);
+    }
+    statusEl.hidden=true;
+  })
+  .catch(reason=>{console.error('Avventurieri data load failed',reason);statusEl.textContent='Il registro degli Avventurieri non è disponibile in questo momento.';countEl.textContent='Registro non disponibile';prev.disabled=true;next.disabled=true;});
