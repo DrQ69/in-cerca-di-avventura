@@ -1288,21 +1288,21 @@
       }
     },
     {
-      "id": "BNR-BETA-NAV-20261002",
+      "id": "BNR-ICA-NAV-PRIMARY",
       "component": "beta-shared-navigation",
       "path": "assets/banners/navigation/bnr-beta-nav-primary.png",
       "planned_path": null,
-      "role": "Product Owner-approved current beta navigation banner artwork",
+      "role": "ICA v1 primary navigation banner artwork",
       "category": "banner",
       "format": "png",
       "exists": true,
-      "status": "candidate",
+      "status": "approved",
       "version": "1.0",
-      "priority": "beta",
+      "priority": "P0",
       "responsive": {
         "desktop": true,
-        "tablet": "NAV-02 replacement",
-        "mobile": "NAV-02 replacement"
+        "tablet": "paired with optimized mobile derivative",
+        "mobile": "paired with optimized mobile derivative"
       },
       "accessibility": {
         "classification": "decorative",
@@ -1311,7 +1311,7 @@
       "source": {
         "type": "project-original-ai-assisted",
         "creator": "Product Owner-directed ICA design iteration",
-        "licence_or_permission": "project-owned-or-authorized",
+        "licence_or_permission": "Product Owner approved for ICA v1 project use; project-original AI-assisted design.",
         "generation_method": "AI-assisted art direction with Product Owner visual calibration"
       },
       "budget": "section-banner",
@@ -1325,15 +1325,66 @@
         "nav_row": 23
       },
       "constraints": [
-        "Beta-only visual integration; does not replace canonical BNR-01 taxonomy or promote beta pages to canonical status.",
-        "Desktop at >=1024px; mobile/tablet use semantic NAV-02-style menu instead of shrinking the banner.",
-        "Text and social interactions remain HTML/CSS overlays."
+        "Desktop navigation uses this full-resolution PNG at >=1024px.",
+        "Navigation labels, Home and social controls remain semantic HTML/CSS overlays.",
+        "Do not bake functional navigation text into replacement derivatives."
       ],
       "notes": [
         "Approved text centers: H23; midpoint R23/S23; AC23; AZ23; midpoint BJ23/BK23; BU23.",
         "Instagram glow center calibrated at native x=762,y=318 with 137px interaction diameter.",
-        "YouTube glow center restored to native x=1320.5,y=320.5 with 160px interaction diameter."
-      ]
+        "YouTube glow center restored to native x=1320.5,y=320.5 with 160px interaction diameter.",
+        "Promoted from beta-only navigation artwork to ICA v1 shared navigation by Product Owner decision to consolidate the current navigation."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-10-17",
+        "scope": "ICA v1 shared navigation",
+        "record": "qa/verification/VR-0135-ica-v1-root-governance.md"
+      }
+    },
+    {
+      "id": "BNR-ICA-NAV-MOBILE",
+      "component": "ICA-SHARED-NAVIGATION",
+      "path": "assets/banners/navigation/bnr-beta-nav-mobile.webp",
+      "planned_path": null,
+      "role": "Optimized mobile/tablet delivery derivative of the ICA v1 navigation banner",
+      "category": "banner",
+      "format": "webp",
+      "exists": true,
+      "status": "approved",
+      "version": "1.0",
+      "priority": "P0",
+      "responsive": {
+        "desktop": false,
+        "tablet": true,
+        "mobile": true
+      },
+      "accessibility": {
+        "classification": "decorative",
+        "usage_note": "Functional navigation remains semantic HTML; this raster is visual artwork only."
+      },
+      "source": {
+        "type": "optimized-derivative",
+        "creator": "ICA build workflow",
+        "licence_or_permission": "Derived from the Product Owner-approved ICA v1 navigation artwork.",
+        "generation_method": "960px-wide WebP derivative generated from BNR-ICA-NAV-PRIMARY with high-quality Lanczos resize and WebP quality 80."
+      },
+      "budget": "section-banner",
+      "file_size_bytes": 69040,
+      "dimensions_px": {
+        "width": 960,
+        "height": 321
+      },
+      "constraints": [
+        "Use below 1024px for faster mobile delivery.",
+        "Do not substitute a visually different artwork without Product Owner review."
+      ],
+      "approval": {
+        "authority": "Product Owner",
+        "date": "2026-10-17",
+        "scope": "ICA v1 responsive web delivery derivative",
+        "record": "qa/verification/VR-0135-ica-v1-root-governance.md"
+      }
     },
     {
       "id": "MED-TES-CHEST-10-19",
