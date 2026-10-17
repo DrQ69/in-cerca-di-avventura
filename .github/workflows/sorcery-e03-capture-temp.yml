@@ -1,0 +1,45 @@
+name: Temporary BOG E03 Sorcery capture
+
+on:
+  push:
+    branches:
+      - content/bog-stage-03-results-20261017
+    paths:
+      - '.github/workflows/sorcery-e03-capture-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Import BOG E03
+        run: |
+          mkdir -p data/external/sorcery/events
+          node scripts/import_sorcery_event.mjs cmushy4be000806qo24af6nv1 --compare --output data/external/sorcery/events/cmushy4be000806qo24af6nv1.json
+      - name: Register snapshot
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const p='data/external/sorcery/events/index.json';
+          const doc=JSON.parse(fs.readFileSync(p,'utf8'));
+          doc.updated_at='2026-10-17';
+          doc.events=Array.from(new Set([...(doc.events||[]),'cmushy4be000806qo24af6nv1']));
+          fs.writeFileSync(p,JSON.stringify(doc,null,2)+'\n');
+          NODE
+      - name: Commit normalized snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/external/sorcery/events/cmushy4be000806qo24af6nv1.json data/external/sorcery/events/index.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Add BOG Stage III Sorcery snapshot"
+          git push origin HEAD:${{ github.ref_name }}
