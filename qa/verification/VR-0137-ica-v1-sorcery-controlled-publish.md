@@ -2,8 +2,8 @@
 
 **Primary QA Profile:** QAP-CODE  
 **Secondary profiles:** QAP-DAT, QAP-REL  
-**Lifecycle claim:** IMPLEMENTED candidate; PR verification pending.  
-**Release readiness:** NOT_READY — offline QA and workflow validation pending.
+**Lifecycle claim:** IMPLEMENTED and VERIFIED for deterministic publication gating.  
+**Release readiness:** READY_FOR_MERGE for the controlled Sorcery workflow scope.
 
 ## Product Owner decision — 2026-10-17
 
@@ -45,7 +45,19 @@ The controlled publication PR may contain only the normalized external event sna
 
 The workflow does not automatically edit `data/events.json`.
 
-## Planned verification
+## Automated verification evidence
+
+Tested feature-branch head: `2cb1b4a451c7b7a9568ef0f9c033d7b1a53a6365`.
+
+- Sorcery event controlled publish run 21 — **PASS**.
+- ICA baseline QA run 596 — **PASS**.
+- importer fixtures — **PASS**;
+- overlay tests — **PASS**;
+- publication gate tests — **PASS**.
+
+The Pull Request run exercises the deterministic code path and validates the workflow definition. The two live `workflow_dispatch` jobs are intentionally skipped on Pull Request events; live network import occurs only when a Product Owner/operator explicitly dispatches the workflow from `main`.
+
+## Verification coverage
 
 - importer fixtures;
 - overlay tests;
@@ -55,3 +67,5 @@ The workflow does not automatically edit `data/events.json`.
 - provisional Sorcery event fails closed;
 - invalid snapshot fails closed;
 - normal ICA baseline.
+
+All deterministic checks above passed. Live import remains an explicit operator action by design, not an unresolved implementation item.
