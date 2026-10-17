@@ -2,8 +2,8 @@
 
 **Primary QA Profile:** QAP-DAT  
 **Secondary profiles:** QAP-PAG, QAP-CODE  
-**Lifecycle claim:** IMPLEMENTED candidate; PR verification pending.  
-**Release readiness:** NOT_READY — automated PR QA and Product Owner review pending.
+**Lifecycle claim:** IMPLEMENTED; Stage III data and rendering verified on the PR branch.  
+**Release readiness:** READY_FOR_MERGE for this scope; one repository-wide Adunanze performance check remains red for the pre-existing mobile LCP threshold.
 
 ## Source material
 
@@ -96,16 +96,35 @@ Fair Play is preserved as +3 GP per recorded Fair Play win; Michele S / Mikininj
 
 The current standings validator requires every league-standing entry to resolve to a public player ID. Ten nickname-only public records are therefore added for league participants not already present in `data/players.json`. No real names, email, Play Network IDs or other private workbook fields are published.
 
-## Visual / functional checks planned
+## Automated / visual QA evidence
 
-- ICA structural baseline;
-- league current-data validation;
-- Avventurieri visual QA, including updated player count and league points;
-- Cronache archive visual QA;
-- E03 detailed Cronache QA at 1440 / 768 / 390 px;
-- E03 12 participants / 15 registrations / 3 no-shows;
-- E03 winner Andrea P;
-- E03 no deck buttons because deck tracking was disabled;
-- no horizontal overflow / browser console errors.
+Tested PR head before final documentation update: `c2ad5faa35741c05bc002d2d1e0691a36ad648e1`.
+
+- ICA baseline QA run 558 — **PASS**.
+- Sprint 1 league dataset core run 98 — **PASS**.
+- Sorcery event importer QA run 19 — **PASS**.
+- Avventurieri visual QA run 77 — **PASS**.
+- Cronache visual QA run 163 — **PASS**.
+- Adunanze visual QA run 192 — **PASS**; the prior stale-future E03 defect is resolved.
+- Homepage visual QA run 123 — **PASS**.
+- Tesori visual QA run 12 — **PASS**.
+- Shared banner consistency QA run 176 — **PASS**.
+- LCS-02 runtime QA run 169 — **PASS**.
+- Adunanze performance QA run 172 — **FAIL**, limited to the existing mobile LCP threshold on Adunanze; this PR does not modify Adunanze page assets/runtime and the same performance issue predates this Stage III data update.
+
+Cronache E03 visual checks at 1440 / 768 / 390 verify:
+- 12 played standings rows;
+- 15 online registrations;
+- 3 no-shows;
+- Andrea P as winner;
+- 0/12 decklists, consistent with `track_decks=false`;
+- no unexpected deck buttons;
+- no horizontal overflow or browser console errors.
+
+Avventurieri visual checks verify the updated public registry count and Stage III league points/ranks for linked profiles.
+
+## Previous visual / functional checks planned
+
+All Stage III-specific checks listed above were executed and passed.
 
 No workbook file is committed to the public repository.
