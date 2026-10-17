@@ -3,7 +3,7 @@ name: Cronache visual QA
 on:
   pull_request:
     paths:
-      - 'beta/cronache/**'
+      - 'cronache/**'
       - 'assets/ui/cronache/**'
       - 'data/events.json'
       - 'scripts/cronache_visual_regression.mjs'
@@ -12,7 +12,7 @@ on:
     branches:
       - main
     paths:
-      - 'beta/cronache/**'
+      - 'cronache/**'
       - 'assets/ui/cronache/**'
       - 'data/events.json'
       - 'scripts/cronache_visual_regression.mjs'
