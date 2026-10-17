@@ -5,7 +5,6 @@ const baseURL=process.env.ICA_BASE_URL||'http://127.0.0.1:8000';
 const outDir=process.env.LCS02_ARTIFACT_DIR||'artifacts/lcs02-runtime';
 const pages=[
   {code:'HOME',path:'/',min:18},
-  {code:'ADU',path:'/adunanze/nazionale/',min:10},
   {code:'ADU-NAT',path:'/adunanze/nazionale/',min:10},
   {code:'CRO',path:'/cronache/',min:12},
   {code:'AVV',path:'/avventurieri/',min:18},
