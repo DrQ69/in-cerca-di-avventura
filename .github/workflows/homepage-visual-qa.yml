@@ -3,6 +3,7 @@ name: Homepage visual QA
 on:
   pull_request:
     paths:
+      - 'index.html'
       - 'beta/index.html'
       - 'beta/style.css'
       - 'beta/main.js'
@@ -17,6 +18,7 @@ on:
     branches:
       - main
     paths:
+      - 'index.html'
       - 'beta/index.html'
       - 'beta/style.css'
       - 'beta/main.js'

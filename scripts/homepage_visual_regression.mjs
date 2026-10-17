@@ -14,6 +14,12 @@ await fs.mkdir(outDir,{recursive:true});
 const browser=await chromium.launch({headless:true});
 
 try{
+  const redirectPage=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
+  await redirectPage.goto(baseURL+'/',{waitUntil:'networkidle',timeout:30000});
+  if(!redirectPage.url().endsWith('/beta/')){
+    throw new Error('root homepage did not redirect to /beta/: '+redirectPage.url());
+  }
+  await redirectPage.close();
   for(const viewport of viewports){
     const page=await browser.newPage({viewport:{width:viewport.width,height:viewport.height},deviceScaleFactor:1,reducedMotion:'reduce'});
     const errors=[];

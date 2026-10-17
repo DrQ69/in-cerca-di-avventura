@@ -6,18 +6,20 @@ For product, information architecture, content model, design, component, asset, 
 
 ## Current repository state
 
-- Public site: `https://drq69.github.io/in-cerca-di-avventura/`
+- Active public homepage: `https://drq69.github.io/in-cerca-di-avventura/beta/`
+- Repository root `https://drq69.github.io/in-cerca-di-avventura/` is a redirect only and must not serve the obsolete legacy homepage.
 - Repository: `DrQ69/in-cerca-di-avventura`
 - Production branch: `main`
 - Hosting: GitHub Pages
 - Current stack: static HTML, shared CSS, lightweight JavaScript
 - No framework, package-manager requirement, CMS, backend, database or authentication
 
-Current implementation entry points:
+Current public implementation entry points:
 
-- `index.html`
-- `assets/css/style.css`
-- `assets/js/main.js`
+- `index.html` — redirect only to `/beta/`
+- `beta/index.html` — active public homepage
+- `beta/style.css`
+- `beta/main.js`
 - `assets/manifest.json`
 
 ## Implementation status
@@ -37,7 +39,7 @@ First implementation slice:
 - `tests/fixtures/canonical-shell.html` — non-production QA fixture;
 - `qa/verification/VR-0007-m7-1-shell-runtime.md` — first browser/runtime M7.1 evidence.
 
-The legacy public homepage remains unchanged by this first slice.
+The legacy root homepage has been retired. The repository root now redirects to the active `/beta/` homepage; the obsolete root implementation must not be used as a public surface.
 
 ## Governance status
 
