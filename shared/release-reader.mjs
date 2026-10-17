@@ -1,5 +1,5 @@
 // Browser-side, read-only, single-manifest loader for a future versioned release.
-// NOT yet wired to /beta/ pages. Do not activate until all consumers migrate together.
+// ICA v1 root pages currently use the legacy bundle mode; do not enable the immutable-release pointer until all consumers migrate together.
 const releaseId=/^[a-z0-9][a-z0-9._-]{2,79}$/;
 const releasePath=/^data\/releases\/[a-z0-9][a-z0-9._-]*\/(players|events|league-standings)\.json$/;
 export function validatePublicManifest(m){
