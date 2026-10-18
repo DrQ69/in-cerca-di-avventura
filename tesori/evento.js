@@ -21,7 +21,7 @@ function eventChest(){
   const label=count===null?'Lo scrigno cambierà automaticamente quando sarà aggiornato il numero dei partecipanti.':'Nessuno scrigno previsto per questa fascia.';
   return '<div class="tesori-event-chest is-pending" data-player-count="'+esc(count??'')+'" data-chest-band="none"><div class="tesoro-chest-pending" aria-hidden="true">?</div><p>'+esc(label)+'</p></div>';
  }
- return '<div class="tesori-event-chest" data-player-count="'+esc(count)+'" data-chest-band="'+esc(band.label)+'"><img src="../assets/tesori/'+esc(band.file)+'" width="320" height="320" alt=""><p>'+esc(count)+' partecipanti · Scrigno '+esc(band.label)+'</p></div>';
+ return '<div class="tesori-event-chest" data-player-count="'+esc(count)+'" data-chest-band="'+esc(band.label)+'"><img src="../assets/tesori/'+esc(band.file)+'" width="320" height="320" alt=""><p>'+esc(count)+(eventData?.status==='futura'&&eventData?.registration_count!=null?' iscritti':' partecipanti')+' · Scrigno '+esc(band.label)+'</p></div>';
 }
 
 function renderHead(){
