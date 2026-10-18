@@ -376,3 +376,16 @@ main{position:relative;z-index:8;margin:0 9.8%}
   .about-actions .home-button{width:100%}
   .contact-pending{text-align:center}
 }
+
+/* ICA homepage-only panoramic fantasy background (desktop). The central site frame remains opaque. */
+@media (min-width:1181px){
+  body[data-ica-page="HOME"]{
+    background-color:#03070c;
+    background-image:linear-gradient(90deg,rgba(2,5,8,.25),transparent 24%,transparent 76%,rgba(2,5,8,.25)),url("assets/backgrounds/homepage-avventura-dnd.webp");
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+  }
+}
+@media (max-width:1180px){body[data-ica-page="HOME"]{background-image:none;background-color:#030405}}
