@@ -1220,8 +1220,8 @@
       "match_format": "Best of One · 50 minuti per turno",
       "rules_details": "Formato Constructed. Turni di Svizzera seguiti da Top Cut in base al numero dei partecipanti. Best of One: 50 minuti per turno. Judge ufficiale. Evento ufficiale valido per l’assegnazione dei Dust.",
       "entry_fee_eur": 30,
-      "capacity": 50,
-      "availability_status": "Massimo 50 posti",
+      "capacity": null,
+      "availability_status": "57 iscritti al 18 ottobre 2026 · capienza massima da confermare",
       "check_in_time": null,
       "start_time": null,
       "registration_url": "https://sorcerytcg.com/events/cmux5giq1000306mjsmeprzmh",
@@ -1251,7 +1251,7 @@
         ]
       },
       "notes": "Presso la location sarà possibile acquistare cibo e bevande. Occasione di incontro e scambio carte per la community italiana di Sorcery.",
-      "source_note": "Informazioni evento e griglia premi comunicate espressamente dal Product Owner; griglia Cornerstone aggiornata il 16 ottobre 2026. L'URL di iscrizione è fornito dal PO.",
+      "source_note": "Informazioni evento e griglia premi comunicate espressamente dal Product Owner; griglia Cornerstone aggiornata il 16 ottobre 2026. L'URL di iscrizione è fornito dal PO. Numero iscritti (57) comunicato dal Product Owner il 18 ottobre 2026; precedente limite 50 da riconfermare.",
       "truth_status": "po_announcement_confirmed",
       "prize_grid": [
         {
@@ -1286,7 +1286,8 @@
           "top_label": "8°",
           "prize": "Teleport Alpha Signed Francesca Baerald + Verdant Knight Arthurian Legends FOIL Signed Andrea Modesti"
         }
-      ]
+      ],
+      "registration_count": 57
     }
   ]
 }
