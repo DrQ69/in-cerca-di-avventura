@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-18",
   "purpose": "Public ICA prize archive linked to events by event_id.",
   "items": [
     {
@@ -16,7 +16,7 @@
       "quantity": "1 per partecipante",
       "prize_position": "Premio di partecipazione",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/den-of-evil-alt-art-non-foil.webp",
       "notes": "Una copia non-foil per ogni partecipante al CREMOS – Cornerstone Championship 2026."
     },
     {
@@ -32,7 +32,7 @@
       "quantity": 1,
       "prize_position": "2° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/den-of-evil-alt-art-foil.webp",
       "notes": "Premio annunciato per il secondo classificato."
     },
     {
@@ -48,7 +48,7 @@
       "quantity": 1,
       "prize_position": "1° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/swap-alt-art-foil.webp",
       "notes": "Parte del premio del primo classificato insieme a Crown of the Victor Alpha."
     },
     {
@@ -208,13 +208,13 @@
       "quantity": 1,
       "prize_position": "1° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/crown-of-the-victor.webp",
       "notes": "Parte del premio del primo classificato insieme a Swap alternate art FOIL."
     },
     {
       "treasure_id": "TRE-0014",
       "event_id": "cremos-cornerstone-2026",
-      "name": "Ed Beard art print",
+      "name": "Stampa Ed Beard — 21/100",
       "family": "limited_print",
       "expansion": null,
       "rarity": null,
@@ -224,7 +224,7 @@
       "quantity": 1,
       "prize_position": "3° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/ed-beard-print-21-of-100.webp",
       "notes": "Stampa d'arte di Ed Beard destinata al terzo classificato."
     },
     {
@@ -240,7 +240,7 @@
       "quantity": 1,
       "prize_position": "4° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/bodach-bogeyman.webp",
       "notes": "Premio annunciato per il quarto classificato."
     },
     {
@@ -261,7 +261,7 @@
       "quantity": 1,
       "prize_position": "5° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/frost-nova-signed.webp",
       "notes": "Beta FOIL firmata da Francesca Baerald."
     },
     {
@@ -282,7 +282,7 @@
       "quantity": 1,
       "prize_position": "5° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/belmotte-longbowmen-signed.webp",
       "notes": "Alpha FOIL firmata da Andrea Modesti."
     },
     {
@@ -303,7 +303,7 @@
       "quantity": 1,
       "prize_position": "6° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/dome-of-osiris-signed.webp",
       "notes": "Beta First Wave FOIL firmata da Vincent Pompetti."
     },
     {
@@ -324,7 +324,7 @@
       "quantity": 1,
       "prize_position": "7° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/royal-bodyguard-signed.webp",
       "notes": "Alpha firmata da Danforth. Finitura non specificata nel dato sorgente."
     },
     {
@@ -387,13 +387,13 @@
       "quantity": 1,
       "prize_position": "8° posto",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/verdant-knight-signed.webp",
       "notes": "Arthurian Legends FOIL firmata da Andrea Modesti."
     },
     {
       "treasure_id": "TRE-0023",
       "event_id": "cremos-cornerstone-2026",
-      "name": "Ed Beard art print",
+      "name": "Draco Corvus — stampa Ed Beard",
       "family": "limited_print",
       "expansion": null,
       "rarity": null,
@@ -403,7 +403,7 @@
       "quantity": 1,
       "prize_position": "Community Champion",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/ed-beard-draco-corvus.webp",
       "notes": "Stampa d'arte di Ed Beard destinata al Community Champion."
     },
     {
@@ -419,7 +419,7 @@
       "quantity": 1,
       "prize_position": "Premio speciale",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/returned-king.webp",
       "notes": "Al miglior classificato che gioca Frost Mage o Lavamancer."
     },
     {
@@ -456,7 +456,7 @@
       "quantity": 1,
       "prize_position": "Estrazione",
       "state": "announced",
-      "image": null,
+      "image": "assets/tesori/cremos-cornerstone-2026/cornerstone.webp",
       "notes": "Cornerstone Beta FOIL firmato da tutti i partecipanti e dagli organizzatori, assegnato a sorteggio."
     }
   ]
