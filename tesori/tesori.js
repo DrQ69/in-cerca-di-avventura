@@ -32,7 +32,7 @@ function chestMarkup(ev){
   return '<div class="tesoro-event-art is-pending" data-player-count="'+esc(count??'')+'" data-chest-band="none"><div class="tesoro-chest-pending" aria-hidden="true">?</div><span class="tesoro-band-label">'+esc(status)+'</span></div>';
  }
  const src='../assets/tesori/'+band.file;
- return '<div class="tesoro-event-art" data-player-count="'+esc(count)+'" data-chest-band="'+esc(band.label)+'"><img class="tesoro-chest-image" src="'+esc(src)+'" width="320" height="320" alt="" loading="lazy"><span class="tesoro-band-label">'+esc(count)+' partecipanti · Scrigno '+esc(band.label)+'</span></div>';
+ return '<div class="tesoro-event-art" data-player-count="'+esc(count)+'" data-chest-band="'+esc(band.label)+'"><img class="tesoro-chest-image" src="'+esc(src)+'" width="320" height="320" alt="" loading="lazy"><span class="tesoro-band-label">'+esc(count)+(ev?.status==='futura'&&ev?.registration_count!=null?' iscritti':' partecipanti')+' · Scrigno '+esc(band.label)+'</span></div>';
 }
 
 function render(){
