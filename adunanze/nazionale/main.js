@@ -157,6 +157,18 @@ function card(event){
   const registration=event.registration_url||event.official_event_url||'';
   const rules=infoPopover('Regolamento',rulesContent(event),'rules-control',event.event_id);
   const prizes=infoPopover('Premi',prizeGrid(event),'prizes-control',event.event_id);
+  const transit=event.transport_info
+    ? infoPopover('Come arrivare',
+        '<div class="rules-copy"><h4>Come arrivare</h4>'+
+        (event.address?'<p><strong>'+esc(event.address)+'</strong></p>':'')+
+        (event.transport_info.metro?'<p><strong>Metropolitana:</strong> '+esc(event.transport_info.metro)+'</p>':'')+
+        (event.transport_info.bus?'<p><strong>Autobus:</strong> '+esc(event.transport_info.bus)+'</p>':'')+
+        (event.transport_info.note?'<p>'+esc(event.transport_info.note)+'</p>':'')+
+        '</div>','rules-control',event.event_id)
+    : '';
+  const treasures=event.event_id==='cremos-cornerstone-2026'
+    ? '<a class="card-action" href="../../tesori/evento.html?event='+encodeURIComponent(event.event_id)+'">Foto dei premi</a>'
+    : '';
   const signup=event.status==='conclusa'
     ? '<a class="card-action signup-action" href="../../cronache/">Cronache</a>'
     : registration
@@ -181,6 +193,8 @@ function card(event){
     <div class="card-tools" data-ica-id="AN-CARD-TOOLS-${esc(event.event_id)}">
       ${rules}
       ${prizes}
+      ${transit}
+      ${treasures}
       ${signup}
     </div>
   </article>`;
