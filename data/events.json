@@ -1243,15 +1243,18 @@
           "Premio speciale — The Returned King Gothic Unique Non-Foil al miglior classificato che gioca Frost Mage o Lavamancer",
           "Partecipazione — Den of Evil alternate art Non-Foil per ogni partecipante",
           "Estrazione — 25 Beta Booster",
-          "Estrazione — Cornerstone Beta FOIL firmato da tutti i partecipanti e dagli organizzatori"
+          "Estrazione — Cornerstone Beta FOIL firmato da tutti i partecipanti e dagli organizzatori",
+          "Estrazione per iscritti che saldano entro il 30 novembre — stampa Seelie Court di Liz Danforth",
+          "Premio aggiuntivo — Castle Ablazel FOIL firmata Andrea Modesti (assegnazione da definire)"
         ],
         "notes": [
           "La griglia premi potrà subire variazioni in funzione del numero di iscritti effettivi.",
-          "Le fasce grafiche degli scrigni della pagina Tesori dipendono dal numero di partecipanti effettivi all'evento."
+          "Le fasce grafiche degli scrigni della pagina Tesori dipendono dal numero di partecipanti effettivi all'evento.",
+          "La stampa di Liz Danforth viene estratta tra i partecipanti che versano la quota entro fine novembre."
         ]
       },
-      "notes": "Presso la location sarà possibile acquistare cibo e bevande. Occasione di incontro e scambio carte per la community italiana di Sorcery.",
-      "source_note": "Informazioni evento e griglia premi comunicate espressamente dal Product Owner; griglia Cornerstone aggiornata il 16 ottobre 2026. L'URL di iscrizione è fornito dal PO. Numero iscritti (57) comunicato dal Product Owner il 18 ottobre 2026; precedente limite 50 da riconfermare.",
+      "notes": "Presso la location sarà possibile acquistare cibo e bevande. Occasione di incontro e scambio carte per la community italiana di Sorcery. Come arrivare: M1 rossa fermata Villa San Giovanni. Da Milano Centrale: autobus 87 per Villa San Giovanni oppure M2 verde fino a Loreto e cambio con M1 rossa direzione Sesto 1° Maggio FS, fermata Villa San Giovanni. Proseguire a piedi fino a Via Sant’Uguzzone 8. I tempi effettivi possono variare.",
+      "source_note": "Informazioni evento e griglia premi comunicate espressamente dal Product Owner; griglia Cornerstone aggiornata il 16 ottobre 2026. L'URL di iscrizione è fornito dal PO. Numero iscritti (57) comunicato dal Product Owner il 18 ottobre 2026; precedente limite 50 da riconfermare. Aggiornamento 29 ottobre 2026: premi aggiuntivi e indicazioni di trasporto forniti dal Product Owner; percorso M1 e bus 87 riscontrato su fonti Comune di Milano e ATM.",
       "truth_status": "po_announcement_confirmed",
       "prize_grid": [
         {
@@ -1287,7 +1290,12 @@
           "prize": "Teleport Alpha Signed Francesca Baerald + Verdant Knight Arthurian Legends FOIL Signed Andrea Modesti"
         }
       ],
-      "registration_count": 57
+      "registration_count": 57,
+      "transport_info": {
+        "metro": "M1 (linea rossa), fermata Villa San Giovanni; dalla Stazione Centrale prendere M2 (verde) e cambiare a Loreto con M1 direzione Sesto 1° Maggio FS.",
+        "bus": "Dalla Stazione Centrale autobus 87 in direzione Villa San Giovanni M1, poi breve tratto a piedi fino a Via Sant’Uguzzone 8.",
+        "note": "I tempi di viaggio variano secondo traffico e frequenza dei mezzi; verificare il percorso con ATM prima della partenza."
+      }
     }
   ]
 }
