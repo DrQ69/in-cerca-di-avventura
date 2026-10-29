@@ -1044,9 +1044,32 @@
       "check_in_time": "20:30",
       "start_time": "21:00",
       "rules_details": "Constructed Full: formato Constructed completo.",
-      "prize_grid_status": "pending",
-      "prize_grid": [],
-      "registration_url": null
+      "prize_grid_status": "projected_20_players",
+      "prize_grid": [
+        {
+          "top_label": "1°",
+          "prize": "Occult Ritual + Flaming Skull + 1 bustina Beta"
+        },
+        {
+          "top_label": "2°",
+          "prize": "Piston Angel Ascendant FOIL + Lucky Charm FOIL + 1 bustina Beta"
+        },
+        {
+          "top_label": "3°",
+          "prize": "Sky Baron FOIL + Wings of Invention FOIL + 1 bustina Beta"
+        },
+        {
+          "top_label": "4°",
+          "prize": "1 bustina Beta"
+        }
+      ],
+      "registration_url": null,
+      "prize_notes": [
+        "Griglia premi prevista per 20 giocatori (Top 4).",
+        "Con 16 giocatori è prevista una Top 3; distribuzione dei premi da definire.",
+        "La griglia può variare in base ai partecipanti effettivi."
+      ],
+      "source_note": " Griglia premi IV Tappa comunicata dal Product Owner il 29 ottobre 2026."
     },
     {
       "event_id": "bog-2026-duello-05",
