@@ -1069,7 +1069,9 @@
         "Con 16 giocatori è prevista una Top 3; distribuzione dei premi da definire.",
         "La griglia può variare in base ai partecipanti effettivi."
       ],
-      "source_note": " Griglia premi IV Tappa comunicata dal Product Owner il 29 ottobre 2026."
+      "source_note": " Griglia premi IV Tappa comunicata dal Product Owner il 29 ottobre 2026.",
+      "registration_count": 24,
+      "registration_count_updated_at": "2026-10-29"
     },
     {
       "event_id": "bog-2026-duello-05",
