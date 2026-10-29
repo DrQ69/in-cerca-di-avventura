@@ -13,8 +13,8 @@ $('#reset-filters')?.addEventListener('click',()=>{tools.querySelectorAll('input
 
 let events=[],treasures=[];
 Promise.all([
- fetch('../data/events.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('events.json HTTP '+r.status);return r.json();}),
- fetch('../data/treasures.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('treasures.json HTTP '+r.status);return r.json();})
+ fetch('../data/events.json?v=20261029-24-iscritti',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('events.json HTTP '+r.status);return r.json();}),
+ fetch('../data/treasures.json?v=20261029-24-iscritti',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('treasures.json HTTP '+r.status);return r.json();})
 ]).then(([e,t])=>{events=e.events||[];treasures=t.items||[];populate();render();}).catch(err=>{console.error(err);root.innerHTML='<p class="tesori-empty">Archivio Tesori non disponibile in questo momento.</p>';});
 
 function populate(){
