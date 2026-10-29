@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-10-27",
+  "updated_at": "2026-10-29",
   "purpose": "Public ICA prize archive linked to events by event_id.",
   "items": [
     {
@@ -618,6 +618,43 @@
       "state": "announced",
       "image": null,
       "notes": "Griglia premi prevista per 20 giocatori (Top 4). Con 16 giocatori è prevista una Top 3; composizione dei premi da definire."
+    },
+    {
+      "treasure_id": "TRE-0037",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Seelie Court — stampa di Liz Danforth",
+      "family": "limited_print",
+      "expansion": null,
+      "rarity": null,
+      "finish": null,
+      "signature": null,
+      "champion_type": "raffle",
+      "quantity": 1,
+      "prize_position": "Estrazione — iscrizione saldata entro novembre",
+      "state": "announced",
+      "image": "assets/tesori/cremos-cornerstone-2026/Liz Danforth Court.jpeg",
+      "notes": "Estrazione tra i partecipanti che avranno confermato l'iscrizione pagando la quota entro il 30 novembre 2026."
+    },
+    {
+      "treasure_id": "TRE-0038",
+      "event_id": "cremos-cornerstone-2026",
+      "name": "Castle Ablazel",
+      "family": "card",
+      "expansion": null,
+      "rarity": null,
+      "finish": "foil",
+      "signature": {
+        "status": "signed",
+        "artist": "Andrea Modesti",
+        "style": null,
+        "colour": null
+      },
+      "champion_type": null,
+      "quantity": 1,
+      "prize_position": "Premio aggiuntivo — assegnazione da definire",
+      "state": "announced",
+      "image": "assets/tesori/cremos-cornerstone-2026/Castle Ablazel Foil Signed Andrea Modesti.jpeg",
+      "notes": "Carta FOIL firmata da Andrea Modesti. Posizione o modalità di assegnazione non ancora specificata."
     }
   ]
 }
