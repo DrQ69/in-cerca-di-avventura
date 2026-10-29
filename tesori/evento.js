@@ -8,8 +8,8 @@ const fmtDate=v=>{if(!v)return'Data da verificare';const [y,m,d]=v.split('-').ma
 const eventId=new URLSearchParams(location.search).get('event');
 let eventData,items=[];
 Promise.all([
- fetch('../data/events.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('events.json HTTP '+r.status);return r.json();}),
- fetch('../data/treasures.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('treasures.json HTTP '+r.status);return r.json();})
+ fetch('../data/events.json?v=20261029-24-iscritti',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('events.json HTTP '+r.status);return r.json();}),
+ fetch('../data/treasures.json?v=20261029-24-iscritti',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('treasures.json HTTP '+r.status);return r.json();})
 ]).then(([e,t])=>{
  eventData=(e.events||[]).find(x=>x.event_id===eventId);items=(t.items||[]).filter(x=>x.event_id===eventId);
  if(!eventData)throw new Error('event not found');renderHead();renderFilters();renderItems('all');
