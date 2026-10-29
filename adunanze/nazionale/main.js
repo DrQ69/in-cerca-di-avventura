@@ -166,7 +166,7 @@ function card(event){
         (event.transport_info.note?'<p>'+esc(event.transport_info.note)+'</p>':'')+
         '</div>','rules-control',event.event_id)
     : '';
-  const treasures=event.event_id==='cremos-cornerstone-2026'
+  const treasures=['cremos-cornerstone-2026','bog-2026-duello-04'].includes(event.event_id)
     ? '<a class="card-action" href="../../tesori/evento.html?event='+encodeURIComponent(event.event_id)+'">Foto dei premi</a>'
     : '';
   const signup=event.status==='conclusa'
