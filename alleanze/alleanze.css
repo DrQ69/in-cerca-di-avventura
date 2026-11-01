@@ -61,3 +61,32 @@
 .directory-pending{color:#777f7e;font-size:.68rem;font-style:italic}
 @media(max-width:900px){.alliance-directory-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.alliance-directory{padding-inline:12px}.alliance-directory-grid{grid-template-columns:1fr}}
+
+/* ICA Alleanze: responsive map-led layout (design proposal B). */
+.map-section{max-width:none;width:min(100%,1920px);padding-inline:clamp(16px,2.5vw,40px)}
+.map-workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+.map-frame{min-width:0}
+.map-detail{min-width:0;border:1px solid #6f5126;background:linear-gradient(180deg,#17232b,#0e151b);padding:clamp(18px,2vw,28px);color:#d1c5ad;box-shadow:0 20px 45px rgba(0,0,0,.24)}
+.map-detail h3{margin:0 0 16px;font:700 clamp(1.05rem,1.8vw,1.5rem) Cinzel,serif;color:#e3ca86}
+.map-detail p{line-height:1.6;margin:0 0 12px;font-size:.89rem}
+.map-detail-emblem{display:block;width:96px;height:96px;object-fit:contain;margin:2px auto 16px}
+.map-detail dl{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px;margin:20px 0}
+.map-detail dt{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#a99b7d}
+.map-detail dd{margin:4px 0 0;font-size:.87rem;color:#e9dbbd}
+.map-detail a{display:inline-block;color:#f0d28b;font:600 .8rem Cinzel,serif;text-underline-offset:4px}
+.map-marker.is-selected .marker-frame{filter:drop-shadow(0 0 12px rgba(247,210,126,.85))}
+@media(min-width:1024px){
+  .map-workspace{grid-template-columns:minmax(0,3fr) minmax(260px,1fr);gap:20px}
+  .map-detail{position:sticky;top:24px;min-height:320px}
+  .alliances-hero{min-height:280px;padding-top:82px;padding-bottom:44px}
+}
+@media(max-width:1023px){
+  .map-detail{order:2}
+  .map-frame{order:1}
+}
+@media(max-width:700px){
+  .map-section{padding-inline:12px}
+  .map-frame{overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch}
+  .map-detail{padding:18px}
+  .alliances-hero{min-height:240px;padding-top:70px;padding-bottom:36px}
+}
