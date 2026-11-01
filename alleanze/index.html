@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="../assets/css/ica-shared-shell.css">
-  <link rel="stylesheet" href="alleanze.css?v=20260929-2">
+  <link rel="stylesheet" href="alleanze.css?v=20261101-b">
   <link rel="stylesheet" href="../shared/ica-banner.css?v=20261002-1">
 </head>
 <body data-ica-page="ALL">
@@ -42,10 +42,20 @@
         </div>
       </header>
 
-      <div class="map-frame" data-ica-id="ALL-MAP-03">
+      <div class="map-workspace">
+      <div class="map-frame" data-ica-id="ALL-MAP-03" role="region" aria-label="Mappa dei presidi; su schermi piccoli scorri orizzontalmente per esplorarla" tabindex="0">
         <img class="italy-map" src="../assets/alleanze/map-italia.webp?v=20260929-2" alt="Mappa fantasy dell'Italia">
         <div id="influence-layer" class="influence-layer" aria-hidden="true"></div>
         <div id="marker-layer" class="marker-layer" aria-label="Presidi sulla mappa"></div>
+      </div>
+
+      <aside class="map-detail" id="map-detail" aria-labelledby="map-detail-title">
+        <p class="section-kicker">Il presidio</p>
+        <h3 id="map-detail-title">Esplora le Alleanze</h3>
+        <div id="map-detail-content" aria-live="polite">
+          <p>Seleziona uno stemma sulla mappa per conoscere la community, la sua città e il suo prestigio.</p>
+        </div>
+      </aside>
       </div>
 
       <p id="map-status" class="map-status" data-ica-id="ALL-MAP-04" aria-live="polite">Caricamento delle Alleanze…</p>
@@ -87,7 +97,7 @@
     <span>© <span id="year"></span></span>
   </footer>
 </div>
-<script src="alleanze.js?v=20260929-2"></script>
+<script src="alleanze.js?v=20261101-b"></script>
 <script src="../assets/js/lcs02-inspector.js"></script>
 <!-- pages-republish: 2026-09-29 cache-bust-2 -->
   <script type="module" src="../shared/ica-banner.js?v=20261002-1"></script>
