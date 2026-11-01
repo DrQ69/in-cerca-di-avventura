@@ -14,6 +14,11 @@ const statusEl=document.getElementById('map-status');
 const directoryRoot=document.getElementById('alliance-directory-root');
 const filters=[...document.querySelectorAll('.map-filter')];
 const VIEW_W=1000,VIEW_H=625;
+const detailTitle=document.getElementById('map-detail-title');
+const detailContent=document.getElementById('map-detail-content');
+let selectedEntityId=null;
+let currentFilter='all';
+
 const ASSET_VERSION='20260929-2';
 function versionedAsset(path){return '../'+String(path||'').replace(/^\.\.\//,'')+'?v='+ASSET_VERSION;}
 
@@ -35,6 +40,27 @@ function directoryCard(entity,tier){
     contact+'</div></article>';
 }
 
+function showDetail(entity,tier){
+  if(!detailTitle||!detailContent)return;
+  selectedEntityId=entity.id||null;
+  detailTitle.textContent=entity.name;
+  const location=[entity.city,entity.region].filter(Boolean).map(esc).join(' · ');
+  const contact=entity.contact_url?'<a href="'+esc(entity.contact_url)+'" target="_blank" rel="noopener noreferrer">Contatta la community →</a>':'<p>Contatto non ancora disponibile.</p>';
+  detailContent.innerHTML='<img class="map-detail-emblem" src="'+esc(versionedAsset(entity.logo))+'" alt="">'+
+    '<p>'+location+'</p><dl><div><dt>Prestigio</dt><dd>'+esc(entity.prestige_label||'Bronzo')+'</dd></div>'+
+    '<div><dt>Influenza</dt><dd>'+esc(tier.label||'Presenza locale')+'</dd></div></dl>'+contact;
+  document.querySelectorAll('.map-marker').forEach(el=>{
+    const selected=el.dataset.entityId===selectedEntityId;
+    el.classList.toggle('is-selected',selected);
+    el.setAttribute('aria-pressed',String(selected));
+  });
+}
+function resetDetail(){
+  selectedEntityId=null;
+  if(detailTitle)detailTitle.textContent='Esplora le Alleanze';
+  if(detailContent)detailContent.innerHTML='<p>Seleziona uno stemma sulla mappa per conoscere la community, la sua città e il suo prestigio.</p>';
+  document.querySelectorAll('.map-marker').forEach(el=>{el.classList.remove('is-selected');el.setAttribute('aria-pressed','false');});
+}
 function render(data){
   const tiers=data.influence_tiers||{};
   const entities=Array.isArray(data.entities)?data.entities:[];
@@ -61,6 +87,7 @@ function render(data){
     button.style.setProperty('--x',pctX(entity.x));
     button.style.setProperty('--y',pctY(entity.y));
     button.setAttribute('aria-label',entity.name+' — '+entity.city);
+    button.setAttribute('aria-pressed','false');
     button.innerHTML=
       '<img class="marker-logo" src="'+esc(versionedAsset(entity.logo))+'" alt="">'+
       '<img class="marker-frame" src="../assets/alleanze/medallion-bronze.webp?v='+ASSET_VERSION+'" alt="">'+
@@ -70,6 +97,7 @@ function render(data){
     button.addEventListener('click',()=>{
       document.querySelectorAll('.map-marker.is-open').forEach(el=>{if(el!==button)el.classList.remove('is-open');});
       button.classList.toggle('is-open');
+      showDetail(entity,tier);
     });
     markerLayer.append(button);
     if(directoryRoot && (entity.type||'community')==='community'){
@@ -81,6 +109,9 @@ function render(data){
 }
 
 function applyFilter(filter){
+  currentFilter=filter;
+  const selected=document.querySelector('.map-marker.is-selected');
+  if(selected&&filter!=='all'&&selected.dataset.category!==filter)resetDetail();
   document.querySelectorAll('.map-marker,.influence-zone').forEach(el=>{
     el.classList.toggle('is-hidden',filter!=='all'&&el.dataset.category!==filter);
   });
